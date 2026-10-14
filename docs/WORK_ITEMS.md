@@ -11,10 +11,10 @@ Numbers and tree order are locked in `AI_REQUIREMENTS.md`. The exact click steps
 | ID | Status | Item | Notes |
 | --- | --- | --- | --- |
 | AI1-01 | In progress | Rebuild `BT_EnemyIA` into the five-branch tree: hit stun, defend, attack, orbit, roam. | Saved. Agent PIE on 2026-10-14 showed roam, orbit, defend, and attack running. Force Success was removed from Attack on 2026-10-14. That decorator was the "does not walk" bug. Hit stun is untested until AI1-03. Done after the owner's AI1-T1, AI1-T2, AI1-T3, and AI1-T6 pass. |
-| AI1-02 | In progress | Add an orbit task that holds the 150–210 band around a 180 unit radius (owner decision 2026-10-14; was 320–480 / 400). | The old 400 orbit worked in agent PIE (387–464 units). The service still holds the old numbers. Change them with `HANDOFF.md` Step 0 (150 / 210 / 180 / 40°). Controller writes `DetectionRadius` 1500. Done after the owner's AI1-T2 and AI1-T5 pass. |
+| AI1-02 | In progress | Add an orbit task that holds the 150–210 band around a 180 unit radius (owner decision 2026-10-14; was 320–480 / 400). | Step 0 and Step 0b saved. Agent PIE 2026-10-14 after Step 0b: distances 150–170, orbit point moved, enemies changed position around the player. Reach Test Includes Agent Radius is off on the orbit Move To. Done after the owner's AI1-T2 and AI1-T5 pass. |
 | AI1-03 | Todo | Apply damage only from a player light attack, and set `bReceivingDamage` only when health actually drops. | Not wired. Click steps: `HANDOFF.md` step 4. Light damage changes from 100 to 25 (owner decision 2026-10-14), so it takes 4 hits to kill. |
-| AI1-04 | In progress | Print String on attack start, defend start, and hit-stun end, using the three Spanish lines. | Attack and defend lines were seen in the log during agent PIE. The defend text is missing the accent (`se esta`): `HANDOFF.md` step 1. The hit-stun line is untested until AI1-03. |
-| AI1-05 | Todo | Cleanup: remove the `BTTask_Roam` debug prints and the orphan Branch. Clear the `BTTask_HitSun` error badge. | `HANDOFF.md` steps 2 and 3. |
+| AI1-04 | In progress | Print String on attack start, defend start, and hit-stun end, using the three Spanish lines. | Attack and defend lines were seen in the log during agent PIE. The owner added the defend accent on 2026-10-14 and asked not to play-test it. The hit-stun line is untested until AI1-03. |
+| AI1-05 | Done | Cleanup: remove the `BTTask_Roam` debug prints and the orphan Branch. Clear the `BTTask_HitSun` error badge. | Roam cleanup saved 2026-10-14; owner asked not to play-test it. HitSun's graph node has no `ErrorType`. Two leftover objects are in the asset text and are not Event Graph nodes. |
 | AI1-06 | Todo | Enemy death: bind `E_Dead` on BeginPlay, and stop the tree, movement, and collision on death. Add `bIsDead` and a health guard. | `HANDOFF.md` steps 5 and 7. Required before AI 2 can count living enemies. |
 | AI1-07 | Todo | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | `HANDOFF.md` step 8. Ask the owner first, because it edits the player. Needed for AI 3 contact damage. |
 
@@ -40,7 +40,7 @@ Required by the course rubric. Different tree from the orbiter. Not a second mes
 
 ## Order
 
-1. `HANDOFF.md` Step 0 (new orbit numbers), AI1-04 accent, AI1-05 cleanup (10 minutes).
+1. AI1-03 light damage (accent, Roam cleanup, HitSun, Step 0, and Step 0b are done).
 2. AI1-03 light damage (Damage 25).
 3. AI1-06 death, AI1-07 player damage.
 4. Owner PIE checks AI1-T1 to AI1-T6. Set AI1 rows Done.
@@ -69,7 +69,7 @@ How to run: open `ThirdPersonMap` and press Play. Press `'` (apostrophe) for the
 | ID | Status | Becomes ready | Check |
 | --- | --- | --- | --- |
 | AI1-T1 | Ready | — | Walk toward an enemy. Inside 1500 units it leaves roam and starts orbit, defend, or attack. Far away, it wanders and pauses about 3 seconds between walks. |
-| AI1-T2 | Not ready | After `HANDOFF.md` Step 0. | After it detects you, stand still. It circles close, near 180 units, and does not walk onto your capsule. It prints `Enemigo: va a atacar` about every 3 s while circling. Step back past 210 (still inside 1500) and it follows. Walk into it, inside 150, and it backs out. |
+| AI1-T2 | Ready | — | After it detects you, stand still. It circles close, near 180 units, and does not walk onto your capsule. It prints `Enemigo: va a atacar` about every 3 s while circling. Step back past 210 (still inside 1500) and it follows. Walk into it, inside 150, and it backs out. |
 | AI1-T3 | Ready | After step 1 (accent), to check the exact text. | Inside 220, with the 3 second cooldown ready, the screen shows `Enemigo: va a atacar` for about 2 seconds. Inside 600, at least 6 seconds after the last defend, it shows `Enemigo: se está defendiendo` for about 2 seconds, and the enemy faces you without moving for 1.5 seconds. |
 | AI1-T4 | Not ready | After `HANDOFF.md` step 4. | A light attack drops the orbiter's health. About 0.6 seconds later the screen shows `Enemigo: ya no recibe daño`. The 4th light hit kills it (25 × 4 = 100). A heavy attack does not drop that health and does not show that line. |
 | AI1-T5 | Ready | — | Stand between 1000 and 1500 units from an enemy. It detects you and comes in to orbit. |
@@ -85,3 +85,5 @@ How to run: open `ThirdPersonMap` and press Play. Press `'` (apostrophe) for the
 | 2026-10-13 | AI1-T1, AI1-T2 | Failed | Agent-run PIE, not the owner. No Accessed None. No movement during 60 s of roam. When the player was teleported 450 units from an enemy, the Blackboard got the target, distance, and orbit point. Both enemies printed defend once and froze, because `BTTask_Defend` had no Finish Execute. |
 | 2026-10-14 | (informal) | Owner report | After Force Success was removed, the owner reported "now they're moving". This is not a formal check of any row. |
 | 2026-10-14 | AI1-T1, AI1-T2, AI1-T3 | Agent PIE, not a pass | Roam: both enemies walked, then waited. When the player was teleported 450 units away, the enemy orbited at 387–719 units (mostly 387–464) without touching the capsule. Defend printed every 8–10 s and finished. Attack printed once. No errors in the log. The owner must still run these for a pass. |
+| 2026-10-14 | AI1-T2 | Agent PIE, not a pass | After Step 0 (150 / 210 / 180 / 40). Player teleported 450 units from enemy 0. Both enemies closed in, then froze at 213 and 145 for at least 45 s of game time. Orbit points sat on the 180 circle and did not rotate. Attack and defend kept printing. No `Accessed None`. They never entered 150–210, so they did not circle. |
+| 2026-10-14 | AI1-T2 | Agent PIE, not a pass | After Step 0b. Distances at 98 s were 170 and 154; at 152 s they were 161 and 170. Both enemies moved around the player and `OrbitLocation` changed. Attack lines continued. No `Accessed None`. The step-back and step-in parts of AI1-T2 were not run. The owner must still pass this test. |

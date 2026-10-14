@@ -16,7 +16,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ### TL;DR
 
-On 2026-10-14 the owner resolved both open decisions: orbit at 180 (band 150–210) and light damage 25. Their click steps are Step 0 and Step 4 below. The orbiter now roams, detects the player, orbits, defends, and attacks. The agent verified this in Play In Editor on 2026-10-14 and the owner confirmed the enemies move. The remaining AI 1 work is small cleanups, the light-attack damage wire, enemy death, and two owner decisions. AI 2 (hostage) and AI 3 (charger) have not started.
+On 2026-10-14 the owner resolved both open decisions: orbit at 180 (band 150–210) and light damage 25. Step 0 and Step 0b are saved. Agent PIE after Step 0b showed both enemies inside 150–210 (distances 150–170), orbit points moving between samples, and `Enemigo: va a atacar` about every 3 seconds. The remaining AI 1 work is the HitSun badge, light-attack damage 25, enemy death, and the player damage wire. The owner finished the defend accent and the Roam debug cleanup on 2026-10-14 and asked not to play-test either. AI 2 and AI 3 have not started.
 
 ### What fixed movement (read this before touching any tree)
 
@@ -42,7 +42,7 @@ These were run through `Tools/UnrealPython/` (see `GOVERNANCE.md` → Agent tool
 1. `Sequence_0`. Decorator: Blackboard `bReceivingDamage` Is Set, Observer aborts Self. Child: `BTTask_HitSun`.
 2. `Sequence_1`. Decorators: Blackboard `DistanceToTarget` <= 600 with abort Lower Priority, and Cooldown 6. Children: Rotate to face BB entry `TargetActor`, then `BTTask_Defend`.
 3. `BTTask_Attack` (Target = `TargetActor`). Decorators: Cooldown 3, and Blackboard `DistanceToTarget` <= 220 with abort Lower Priority. No Force Success.
-4. `Sequence_3`. Decorator: Blackboard `TargetActor` Is Set, abort Lower Priority. Children: Rotate to face `TargetActor`, then Move To `OrbitLocation`. Move To settings: Allow Strafe on, Observe Blackboard Value on, plus the service "Set default focus" with key `TargetActor`.
+4. `Sequence_3`. Decorator: Blackboard `TargetActor` Is Set, abort Lower Priority. Children: Rotate to face `TargetActor`, then Move To `OrbitLocation`. Move To settings: Allow Strafe on, Observe Blackboard Value on, Reach Test Includes Agent Radius **off** (Step 0b, 2026-10-14), Acceptable Radius still the default 5, plus the service "Set default focus" with key `TargetActor`.
 5. `Sequence_2`, no decorator. Children: `BTTask_Roam`, then Wait 3 ± 0.5.
 
 `BB_EnemyIA` keys: `SelfActor`, `DetectionRadius` (float, default 1500), `TargetActor` (object), `bReceivingDamage` (bool), `DistanceToTarget` (float, default 100000), `OrbitLocation` (vector).
@@ -56,22 +56,21 @@ These were run through `Tools/UnrealPython/` (see `GOVERNANCE.md` → Agent tool
 4. If `PlayerCharacter` is valid, it sets BB `TargetActor` and BB `DistanceToTarget`, then writes BB `OrbitLocation`:
    - Distance below 320 or above 480: player + Normalize(enemy − player) × 400.
    - Distance from 320 to 480: player + (enemy − player) rotated 18° around Z.
-   - These are the **old** saved values. Step 0 changes them to 150 / 210 / 180 / 40°.
+   - Saved values as of 2026-10-14 after Step 0: 150 / 210 / 180 / 40°. Export check passed (`=320`, `=480`, `=400`, `=18.` had no hits).
 5. If it is not valid, it clears `TargetActor` and sets `DistanceToTarget` to 100000.
 
-`BTTask_Defend`: Receive Execute AI → Print String `Enemigo: se esta defendiendo` (2 s, **accent missing**) → Delay 1.5 → Finish Execute (Success on).
+`BTTask_Defend`: Receive Execute AI → Print String `Enemigo: se está defendiendo` (2 s) → Delay 1.5 → Finish Execute (Success on). The owner added the accent on 2026-10-14. Not re-exported. The package was not dirty.
 
 `BTTask_Attack`: Receive Execute AI → Print String `Enemigo: va a atacar` (2 s) → Is Valid (Get Blackboard Value as Actor, key `Target`).
 - Is Valid → `BPI_Enemy` Attack (message) on the controlled pawn → Finish Execute (Success on).
 - Is Not Valid → Finish Execute (Success off).
 
-`BTTask_HitSun`: Receive Execute AI → Delay 0.6 → Set Value as Bool (target: Get Blackboard of Owner Controller, Key Name: Make Literal Name `bReceivingDamage`, value off) → Print String `Enemigo: ya no recibe daño` (2 s) → Finish Execute (Success on). The Set Value as Bool node is saved with `ErrorType=1` (an error badge from an earlier compile). The wiring is correct. See pending step 3.
+`BTTask_HitSun`: Receive Execute AI → Delay 0.6 → Set Value as Bool (target: Get Blackboard of Owner Controller, Key Name: Make Literal Name `bReceivingDamage`, value off) → Print String `Enemigo: ya no recibe daño` (2 s) → Finish Execute (Success on). That node is the only Set Value as Bool in the Event Graph node list, and it has no `ErrorType`. The owner moved it to about (880, −352) on 2026-10-14. Two old objects (`SetValueAsBool` with `ErrorType=1`, and an unwired `SetBlackboardValueAsBool`) are still in the asset text but are not in the Event Graph `Nodes` list, so they do not appear in the editor. Do not ask the owner to delete them.
 
 `BTTask_Roam`: Receive Execute AI → AI MoveTo (pawn = Controlled Pawn, destination = Get Random Reachable Point In Radius around the pawn location, radius = variable `RoamRadius` 1000, acceptance radius 5).
 - On Success → Finish Execute (Success on).
-- On Fail → Print String `this comes from ai moveto` → Finish Execute (Success off).
-- There is also a Branch on the random-point Return Value with **no exec input** (it never runs), plus a Print String `this comes from branch`.
-- Both prints and the Branch are the owner's temporary debug nodes. See pending step 2.
+- On Fail → Finish Execute (Success off).
+- The owner removed the debug prints and the orphan Branch on 2026-10-14. Not re-exported. The package was not dirty.
 
 `BP_BaseEnemy` (not changed yet):
 - Event `Attack` (from `BPI_Enemy`, input `TargetActor`) runs these nodes in order:
@@ -111,17 +110,17 @@ Nav: `SupportedAgents` is empty, so every pawn uses `RecastNavMesh-Default` (hei
 
 ### Pending work, in order
 
-**Start with Step 0** (new orbit numbers). It is in "Owner decisions" just below Step 9, next to the reasoning for the numbers.
+**Start with Step 4** (light-only damage on `BP_ThirdPersonCharacter`). Steps 1–3 are done.
 
 Each step: the owner (or an agent instructing the owner) makes the edit, presses **Compilar**, then **Guardar**. Then re-export with `Tools/UnrealPython/export_ai.py` and confirm the change in the summary before going to the next step. Spanish UI names are given in parentheses.
 
-**Step 1 — Defend accent (AI1-04).** Open `BTTask_Defend`. In the Print String node, change `In String` to `Enemigo: se está defendiendo` (á with accent). Compile, save.
+**Step 1 — Defend accent (AI1-04).** Done 2026-10-14. Owner edited the Print String and asked not to play-test it. Dirty packages were none. Original click: open `BTTask_Defend`, set `In String` to `Enemigo: se está defendiendo`, compile, save.
 
-**Step 2 — Remove Roam debug nodes.** Open `BTTask_Roam`. Delete the Print String `this comes from branch`, the Branch with no exec input, and the Print String `this comes from ai moveto`. Then wire AI MoveTo **On Fail** directly to the Finish Execute that has Success off. Leave everything else. Compile, save. Reason: governance forbids debug text beyond the three required lines.
+**Step 2 — Remove Roam debug nodes.** Done 2026-10-14. Owner removed both debug Print Strings and the orphan Branch, and wired AI MoveTo On Fail to Finish Execute with Success off. Asked not to play-test it. Dirty packages were none.
 
-**Step 3 — Clear the HitSun error badge.** Open `BTTask_HitSun` and press Compile.
-- If the Set Value as Bool node shows no red ERROR badge, just save.
-- If it still shows an error, delete that node and add a new one. Right-click → "Set Value as Bool" under Blackboard, where the target is a Blackboard Component. Wire it like this:
+**Step 3 — Clear the HitSun error badge.** Done 2026-10-14. The node on the graph is wired Delay → Set Value as Bool → Print String → Finish Execute, with no `ErrorType`. A second export after the owner moved that node confirmed it is the only Set Value as Bool in the Event Graph `Nodes` list. An `ErrorType=1` object remains in the asset text and is not a graph node, so it is not visible and is not part of this step.
+
+Original rewire, already applied on the live node:
   - exec in from Delay `then`, exec out to the Print String.
   - Target from Get Blackboard (whose Target is the event's Owner Controller).
   - Key Name from Make Literal Name `bReceivingDamage`.
@@ -176,7 +175,13 @@ The owner chose to shrink the orbit and lower the damage. `AI_REQUIREMENTS.md` a
   Result: while orbiting, the enemy is always inside attack range, so it attacks each time the 3 second cooldown is ready. Defend still has higher priority, so roughly every 7.5 s it defends instead. Spacing check: at 150 units between centers, the two capsules (34 + 35) leave about 80 units of gap, so it does not touch the player. `BP_BaseEnemy` Attack traces 200 from the enemy center, which reaches the player capsule at up to about 234, so attacks at 210 still connect.
 - **B. One-hit kill.** The light damage on the player's `E_Decrease_Health` call changes from 100 to **25**. Enemy `E_Health` stays 100, so it takes 4 light hits to kill. The 0.6 s hit stun and `Enemigo: ya no recibe daño` show after each of the first 3 hits. 25 is also the value the player's own debug damage key already uses.
 
-**Step 0 — Apply decision A (orbit numbers).** Do this before step 1.
+**Step 0b — Let Move To reach the 180 point.** Done 2026-10-14. Export shows `bReachTestIncludesAgentRadius=(DefaultValue=False)` on `BTTask_MoveTo_0`. Agent PIE: at game time 98 s distances were 170 and 154; at 152 s they were 161 and 170, and both positions and `OrbitLocation` had changed. Attack lines continued. No `Accessed None`. Original click sequence, already applied:
+1. Open `BT_EnemyIA`. Select the **Move To** whose Blackboard Key is `OrbitLocation` (orbit sequence, the fourth Selector child). Do not select the roam task.
+2. In Details, uncheck **Reach Test Includes Agent Radius**. Leave Acceptable Radius at `5`. Leave Allow Strafe and Observe Blackboard Value on.
+3. Compile, save.
+4. Agent check: `export_ai.py`, then confirm `BT_EnemyIA.t3d` `BTTask_MoveTo_0` has `bReachTestIncludesAgentRadius` false (or the property serialized off). Then PIE with `teleport.flag` and `pie_sample.py`. `DistanceToTarget` should move into 150–210, and `OrbitLocation` should change between samples. `Enemigo: va a atacar` should still appear about every 3 s per enemy.
+
+**Step 0 — Apply decision A (orbit numbers).** Done 2026-10-14. Export confirmed 150 / 210 / 180 / 40. PIE did not pass; see Step 0b. Original click sequence, already applied:
 1. Open `BTService_LocatePlayer` (Content/ThirdPerson/Blueprints/EnemigoIA). In the Event Graph, find the orbit math after Set Blackboard Value as Float (`DistanceToTargetKey`).
 2. On the **Less** node (`<`), where the distance is pin A, change pin B from `320` to `150`.
 3. On the **Greater** node (`>`), where the distance is pin A, change pin B from `480` to `210`.
@@ -281,6 +286,34 @@ The specs are in `AI_REQUIREMENTS.md` → AI 3. Put the assets in `Content/Third
 - `docs/HANDOFF.md`
 
 ## History
+
+### 2026-10-14 — HitSun error object is not on the graph
+
+A fresh export after the owner moved Set Value as Bool to (880, −352) shows that node in the Event Graph `Nodes` list with no `ErrorType`. The `ErrorType=1` Set Value as Bool and the extra Set Blackboard Value as Bool are serialized objects that are absent from that list, which is why they are not behind the node in the editor. Step 3 is done. Next click is Step 4.
+
+### 2026-10-14 — HitSun rewire is live, old error node remains
+
+The owner added a new Set Value as Bool and wired Delay → that node → Print String → Finish Execute. Export shows no `ErrorType` on that node. The old Set Value as Bool is still in the graph with `ErrorType=1` and no wires, plus an unwired Set Blackboard Value as Bool. Next click is to delete those two nodes.
+
+### 2026-10-14 — HitSun compile did not clear the badge
+
+The owner compiled and saved `BTTask_HitSun`. Dirty packages were none. The export still has `ErrorType=1` on Set Value as Bool and no `ErrorMsg`. Wiring is unchanged. Next click is the Step 3 rewire.
+
+### 2026-10-14 — Roam debug nodes removed, not play-tested
+
+The owner cleaned `BTTask_Roam` and asked the agent not to test it. `ping.py` reported no dirty packages. Next click is Step 3.
+
+### 2026-10-14 — Defend accent saved, not play-tested
+
+The owner set `BTTask_Defend` Print String to `Enemigo: se está defendiendo` and asked the agent not to test it. `ping.py` reported no dirty packages. Next click is Step 2.
+
+### 2026-10-14 — Step 0b: enemies enter the band and circle
+
+The orbit Move To now has Reach Test Includes Agent Radius off. Agent PIE after teleport: both enemies stayed in 150–170, moved around the player, and the orbit point changed between samples 54 seconds apart. Attack and defend lines kept printing. No `Accessed None`. Next click is Step 1.
+
+### 2026-10-14 — Step 0 saved, orbit does not enter the band
+
+`BTService_LocatePlayer` export has Less 150, Greater 210, Multiply 180, Rotate Angle Axis 40. Old pins are gone. Dirty packages were none. Agent PIE with the player teleported 450 units from enemy 0: both enemies closed in, then froze. Samples at game time 87s and 133s were identical: distances 213 and 145, speeds 0, `OrbitLocation` on the 180 circle `(2265,3486)` and `(2246,3465)`. Attack and defend lines kept printing (about every 3 s per enemy). No `Accessed None`. The 40° branch never ran because Move To already counted them as arrived. Next edit is Step 0b, not a new radius.
 
 ### 2026-10-14 — Owner decisions A and B resolved
 
