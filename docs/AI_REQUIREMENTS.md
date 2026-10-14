@@ -2,7 +2,15 @@
 
 Distances are Unreal units (centimeters). Every numeric value in "Locked decisions" is a **Decision** the owner delegated on 2026-10-11. Expose each one as an editable variable on the Blackboard or the actor, initialized to the value below.
 
-Existing enemy assets are listed in `PROJECT_CONTEXT.md`. The orbiter graphs were exported from the open editor on 2026-10-13. What is already saved is in `HANDOFF.md`. The numbers below stay the target. Play In Editor has not been run, so none of the acceptance checks are done. Inspect the current graph before adding a second damage path or a second task that does the same job.
+Existing enemy assets are listed in `PROJECT_CONTEXT.md`. What is already saved is in `HANDOFF.md`, which was exported on 2026-10-14. The numbers below stay the target.
+
+Agent PIE showed the orbiter's movement branches working, but the owner has not run the acceptance checks, so none is done yet. Inspect the current graph before adding a second damage path or a second task that does the same job.
+
+On 2026-10-14 the owner changed two orbiter values. Both are **Decisions** now (see `HANDOFF.md` → Owner decisions):
+- Orbit: radius 180, band 150–210 (was 400, band 320–480). The old band kept the enemy outside the attack distance of 220.
+- Light damage: 25 (was 100). With health 100, the old value killed in one hit, so hit stun was never seen.
+
+The AI 3 contact damage resolves to 10, the existing `BP_BaseEnemy` hit. The 15 fallback below does not apply.
 
 The professor's rule: each AI is a Behavior Tree, not a pile of conditionals. Tree shape is specified under each AI.
 
@@ -28,10 +36,11 @@ This is enemy one of the two required by the rubric. It orbits at melee range an
 
 ### Orbit
 
-- Preferred radius: 400.
-- Inner limit: 320. Closer than this, strafe outward.
-- Outer limit: 480. Farther than this, and still detected, move inward.
-- Strafe speed while inside the band: 250 units per second.
+- Preferred radius: 180. (Owner decision 2026-10-14; was 400.)
+- Inner limit: 150. Closer than this, strafe outward. (Was 320.)
+- Outer limit: 210. Farther than this, and still detected, move inward. (Was 480.)
+- The whole band sits inside the attack distance of 220, so the orbiter attacks whenever the cooldown allows.
+- Strafe speed while inside the band: 250 units per second. With the service's 0.5 s tick, this is a 40° rotation step at radius 180 (it was 18° at radius 400).
 - Face the player while orbiting.
 - Do not stop on the player's capsule.
 
@@ -41,11 +50,11 @@ No defend animation was found. The defend task faces the player and does not mov
 
 Only a player light attack reduces this enemy's health. Heavy attacks and any other damage source are ignored.
 
-Use the existing path. `SaveLightAttack_AN` calls `SaveLightAttack` on `BP_ThirdPersonCharacter`. `bSaveLightAttack` is a combo-input buffer, not a light-hit window. `ResetState_AN` calls `ResetState`, and that event currently goes to `SetState`. `BPC_E_Health.E_Decrease_Health` subtracts its Damage argument and fires `E_Dead` when health reaches 0 or less. The light-attack window still needs its own bool, set when the light attack starts and cleared from `ResetState`. Do not add a second health system. The unused player damage node already says 100. Leave that number. `BP_BaseEnemy` Attack applies 10 damage with a sphere of radius 200. That is this enemy hitting another actor. AI 3 contact damage reuses 10. Do not change it while building the orbiter.
+Use the existing path. `SaveLightAttack_AN` calls `SaveLightAttack` on `BP_ThirdPersonCharacter`. `bSaveLightAttack` is a combo-input buffer, not a light-hit window. `ResetState_AN` calls `ResetState`, and that event currently goes to `SetState`. `BPC_E_Health.E_Decrease_Health` subtracts its Damage argument and fires `E_Dead` when health reaches 0 or less. The light-attack window still needs its own bool, set when the light attack starts and cleared from `ResetState`. Do not add a second health system. The unused player damage node says 100. Change it to **25** (owner decision 2026-10-14), so the enemy, at health 100, dies after 4 light hits. `BP_BaseEnemy` Attack applies 10 damage with a sphere of radius 200. That is this enemy hitting another actor. AI 3 contact damage reuses 10. Do not change it while building the orbiter.
 
 A light hit that actually removes health sets `bReceivingDamage` for the hit-stun branch. A rejected heavy hit does not.
 
-Do not change max health. Do not invent a new damage number if the light attack already has one.
+Do not change max health (100). Light damage is 25. Do not invent any other damage number.
 
 ### Print String
 
@@ -131,7 +140,7 @@ An item is done only after Play In Editor on `ThirdPersonMap` shows the behavior
 | Check | Pass condition |
 | --- | --- |
 | Tree | Stopping the Behavior Tree stops the decision. The character Blueprint has no Tick branch that chooses orbit, attack, defend, chase, flee, or follow. |
-| Orbit | After detection, the orbiter stays near 400 units and circles. It does not overlap the player capsule. |
+| Orbit | After detection, the orbiter stays near 180 units (150–210) and circles. It does not overlap the player capsule. It attacks about every 3 seconds while orbiting. |
 | Light damage | A light attack reduces orbiter health. A heavy attack does not. |
 | Prints | The three Spanish lines appear on attack start, defend start, and hit-stun end. |
 | Calm follow | With no enemy inside 800 units, the hostage stops around 300 units from the player. |

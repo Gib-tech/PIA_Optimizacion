@@ -106,22 +106,25 @@ Only the AI items are in the current work queue. The rest stay recorded so anoth
 
 ## Locked decisions
 
-Orbit distances, defend timing, Print String text, hostage spacing, zone lock, conditional spawn, and the second enemy behavior are Decisions in `AI_REQUIREMENTS.md`. The owner delegated those choices on 2026-10-11.
+Orbit distances, defend timing, Print String text, hostage spacing, zone lock, conditional spawn, and the second enemy behavior are Decisions in `AI_REQUIREMENTS.md`. The owner delegated those choices on 2026-10-11. On 2026-10-14 the owner changed the orbit to radius 180 (band 150–210) and light damage to 25.
 
 ## Verified graph facts
 
-Exported from the open editor on 2026-10-13, except `BP_IAController`, which was exported on 2026-10-11 and not opened again.
+Exported from the open editor on 2026-10-14. The full per-asset state is in `HANDOFF.md` → "Saved asset state".
 
-- `BT_EnemyIA` is the five-branch Selector in `HANDOFF.md`. `BTService_LocatePlayer` sits on that Selector.
+- Git: branch `main` (commit `7198fa9`) is the original project. Branch `feat/ai` holds the AI work. Assets are in Git LFS, so `git diff` on a `.uasset` only shows pointers. Compare behavior by exporting both versions.
+- `BT_EnemyIA` is the five-branch Selector in `HANDOFF.md`. `BTService_LocatePlayer` sits on that Selector. On `main` the tree was smaller: a Selector containing a chase Sequence (Rotate to face → Move To `TargetActor` → Attack with Cooldown and Force Success) and Roam → Wait.
+- Agent PIE on 2026-10-14 showed roam, orbit, defend, and attack running.
+- `BP_ThirdPersonCharacter` has no Event AnyDamage. Player health (`BPC_Health.Decrease_Health`) is called only from a debug key with Damage 25. Enemy Apply Damage does not reach the player yet.
 - `E_States` has two values: Nothing and Attack. `ResetState` calls `SetState` with Nothing.
 - `SaveLightAttack_AN` calls `SaveLightAttack`. `bSaveLightAttack` buffers the next light-combo input.
 - `BPC_E_Health.E_Decrease_Health` subtracts the Damage argument and fires `E_Dead` at 0 or below. BeginPlay and Tick on that component do not continue.
-- `BP_BaseEnemy` Attack sphere-traces with radius 200 and applies damage 10 to the hit actor, then plays a montage. `E_Dead` calls `Enemy_Death`, which plays `Enemy_Death_Montage`.
-- `BP_IAController` writes Blackboard `DetectionRadius` as 1000 on BeginPlay. The locked orbiter detect distance is 1500. That mismatch is still in the asset.
+- `BP_BaseEnemy` Attack binds `E_Dead` (this belongs on BeginPlay), sphere-traces with radius 200, and applies damage 10 to the hit actor, then plays a montage with no asset set. `E_Dead` calls `Enemy_Death`, which only plays `Enemy_Death_Montage`.
+- `BP_IAController` writes Blackboard `DetectionRadius` as 1500 on BeginPlay. That matches the locked value.
 - The player weapon overlap casts to `BP_BaseEnemy`, prints `Hitbox detectada`, and does not execute `E_Decrease_Health`. That call is on the graph with Damage 100 and an empty execute pin.
 
 ## Unknown
 
 - Walkable coordinates in `ThirdPersonMap`. Place new zones in reachable space and record the actor labels in `HANDOFF.md`. Do not invent landmark names.
 - Hammer effect, progression rewards, survival time limit, and the wave-count formula.
-- Whether Play In Editor shows the saved orbiter tree. No play test was run on 2026-10-13.
+- Which existing montage fits the enemy attack. The `BP_BaseEnemy` Play Montage node is empty.
