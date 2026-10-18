@@ -106,7 +106,7 @@ Only the AI items are in the current work queue. The rest stay recorded so anoth
 
 ## Locked decisions
 
-Orbit distances, defend timing, Print String text, hostage spacing, zone lock, conditional spawn, and the second enemy behavior are Decisions in `AI_REQUIREMENTS.md`. The owner delegated those choices on 2026-10-11. On 2026-10-14 the owner changed the orbit to radius 180 (band 150–210) and light damage to 25.
+Orbit distances, defend timing, Print String text, hostage spacing, zone lock, conditional spawn, and the second enemy behavior are Decisions in `AI_REQUIREMENTS.md`. The owner delegated those choices on 2026-10-11. On 2026-10-14 the owner changed the orbit to radius 180 (band 150–210) and light damage to 25. On 2026-10-18 the owner changed light damage again, to combo 15 / 15 / 19.
 
 ## Verified graph facts
 

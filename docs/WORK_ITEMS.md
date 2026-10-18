@@ -12,11 +12,11 @@ Numbers and tree order are locked in `AI_REQUIREMENTS.md`. The exact click steps
 | --- | --- | --- | --- |
 | AI1-01 | In progress | Rebuild `BT_EnemyIA` into the five-branch tree: hit stun, defend, attack, orbit, roam. | Saved. Agent PIE on 2026-10-14 showed roam, orbit, defend, and attack running. Force Success was removed from Attack on 2026-10-14. That decorator was the "does not walk" bug. Hit stun is untested until AI1-03. Done after the owner's AI1-T1, AI1-T2, AI1-T3, and AI1-T6 pass. |
 | AI1-02 | In progress | Add an orbit task that holds the 150–210 band around a 180 unit radius (owner decision 2026-10-14; was 320–480 / 400). | Step 0 and Step 0b saved. Agent PIE 2026-10-14 after Step 0b: distances 150–170, orbit point moved, enemies changed position around the player. Reach Test Includes Agent Radius is off on the orbit Move To. Done after the owner's AI1-T2 and AI1-T5 pass. |
-| AI1-03 | Todo | Apply damage only from a player light attack, and set `bReceivingDamage` only when health actually drops. | Not wired. Click steps: `HANDOFF.md` step 4. Light damage changes from 100 to 25 (owner decision 2026-10-14), so it takes 4 hits to kill. |
+| AI1-03 | In progress | Apply damage only from a player light attack, and set `bReceivingDamage` only when health actually drops. | Saved 2026-10-18. Select is 15 / 15 / 19 from `LightSwingIndex`. `FA_1_Montage` EnableHitbox is at 0.08 s and DisableHitbox at 0.34 s, so swing 1 can connect. Done after the owner's AI1-T4 pass. |
 | AI1-04 | In progress | Print String on attack start, defend start, and hit-stun end, using the three Spanish lines. | Attack and defend lines were seen in the log during agent PIE. The owner added the defend accent on 2026-10-14 and asked not to play-test it. The hit-stun line is untested until AI1-03. |
 | AI1-05 | Done | Cleanup: remove the `BTTask_Roam` debug prints and the orphan Branch. Clear the `BTTask_HitSun` error badge. | Roam cleanup saved 2026-10-14; owner asked not to play-test it. HitSun's graph node has no `ErrorType`. Two leftover objects are in the asset text and are not Event Graph nodes. |
-| AI1-06 | Todo | Enemy death: bind `E_Dead` on BeginPlay, and stop the tree, movement, and collision on death. Add `bIsDead` and a health guard. | `HANDOFF.md` steps 5 and 7. Required before AI 2 can count living enemies. |
-| AI1-07 | Todo | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | `HANDOFF.md` step 8. Ask the owner first, because it edits the player. Needed for AI 3 contact damage. |
+| AI1-06 | In progress | Enemy death: bind `E_Dead` on BeginPlay, and stop the tree, movement, and collision on death. Add `bIsDead` and a health guard. | Wiring saved 2026-10-18. BeginPlay binds `E_Dead`, death stops the brain, movement, and collision, life span 3, Reason `Dead`, and `E_Decrease_Health` ignores hits at 0 health. Done after the owner's AI1-T6 pass. |
+| AI1-07 | In progress | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | Owner approved 2026-10-18. Click sequence is in `HANDOFF.md`. The enemy already sends 10. Not saved yet. |
 
 ## AI 2 — Hostage escort
 
@@ -40,8 +40,8 @@ Required by the course rubric. Different tree from the orbiter. Not a second mes
 
 ## Order
 
-1. AI1-03 light damage (accent, Roam cleanup, HitSun, Step 0, and Step 0b are done).
-2. AI1-03 light damage (Damage 25).
+1. AI1-07 player AnyDamage. The owner approved it on 2026-10-18. The click is in `HANDOFF.md` and is not saved yet.
+2. AI1-03 light combo damage (15 / 15 / 19) and the `FA_1_Montage` hit window are saved. Owner PIE is AI1-T4.
 3. AI1-06 death, AI1-07 player damage.
 4. Owner PIE checks AI1-T1 to AI1-T6. Set AI1 rows Done.
 5. AI2-01 through AI2-04.
@@ -71,9 +71,9 @@ How to run: open `ThirdPersonMap` and press Play. Press `'` (apostrophe) for the
 | AI1-T1 | Ready | — | Walk toward an enemy. Inside 1500 units it leaves roam and starts orbit, defend, or attack. Far away, it wanders and pauses about 3 seconds between walks. |
 | AI1-T2 | Ready | — | After it detects you, stand still. It circles close, near 180 units, and does not walk onto your capsule. It prints `Enemigo: va a atacar` about every 3 s while circling. Step back past 210 (still inside 1500) and it follows. Walk into it, inside 150, and it backs out. |
 | AI1-T3 | Ready | After step 1 (accent), to check the exact text. | Inside 220, with the 3 second cooldown ready, the screen shows `Enemigo: va a atacar` for about 2 seconds. Inside 600, at least 6 seconds after the last defend, it shows `Enemigo: se está defendiendo` for about 2 seconds, and the enemy faces you without moving for 1.5 seconds. |
-| AI1-T4 | Not ready | After `HANDOFF.md` step 4. | A light attack drops the orbiter's health. About 0.6 seconds later the screen shows `Enemigo: ya no recibe daño`. The 4th light hit kills it (25 × 4 = 100). A heavy attack does not drop that health and does not show that line. |
+| AI1-T4 | Ready | The 15 / 15 / 19 Select and the `FA_1_Montage` hit window are saved. | Swings 1 and 2 drop 15 health. Swing 3 drops 19. About 0.6 seconds later the screen shows `Enemigo: ya no recibe daño`. Two full combos leave 2 health. The next light hit kills. A heavy attack does not drop that health and does not show that line. |
 | AI1-T5 | Ready | — | Stand between 1000 and 1500 units from an enemy. It detects you and comes in to orbit. |
-| AI1-T6 | Not ready | After `HANDOFF.md` step 5. | Kill an enemy. It plays the death montage, stops moving, stops printing, and disappears after a few seconds. |
+| AI1-T6 | Ready | — | Kill an enemy. It plays the death montage, stops moving, stops printing, and disappears after a few seconds. |
 
 ### Result log
 

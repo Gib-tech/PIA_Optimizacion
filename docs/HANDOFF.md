@@ -8,7 +8,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
-- Date: 2026-10-14
+- Date: 2026-10-18
 - Branch: `feat/ai`. `main` is the untouched original project and is the reference for "how it was before".
 - Uncommitted: `Content/ThirdPerson/Blueprints/EnemigoIA/BT_EnemyIA.uasset` (Force Success removed), the docs, and `Tools/UnrealPython/`. Only the owner commits.
 - Area: AI 1 orbiter. Its movement works. Combat integration and cleanup are still open.
@@ -16,7 +16,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ### TL;DR
 
-On 2026-10-14 the owner resolved both open decisions: orbit at 180 (band 150–210) and light damage 25. Step 0 and Step 0b are saved. Agent PIE after Step 0b showed both enemies inside 150–210 (distances 150–170), orbit points moving between samples, and `Enemigo: va a atacar` about every 3 seconds. The remaining AI 1 work is the HitSun badge, light-attack damage 25, enemy death, and the player damage wire. The owner finished the defend accent and the Roam debug cleanup on 2026-10-14 and asked not to play-test either. AI 2 and AI 3 have not started.
+On 2026-10-14 the owner resolved both open decisions: orbit at 180 (band 150–210) and light damage 25. On 2026-10-18 the owner replaced the flat 25 with combo damage **15 / 15 / 19** (swings 1 and 2, then the finisher). That Select is saved, and `FA_1_Montage` now has the hit window. Step 0, Step 0b, and the light hitbox switch are saved. Agent PIE after Step 0b showed both enemies inside 150–210 (distances 150–170), orbit points moving between samples, and `Enemigo: va a atacar` about every 3 seconds. The remaining AI 1 work is the player damage wire, which needs the owner's go-ahead, then the owner's PIE checks. The owner finished the defend accent and the Roam debug cleanup on 2026-10-14 and asked not to play-test either. AI 2 and AI 3 have not started.
 
 ### What fixed movement (read this before touching any tree)
 
@@ -72,29 +72,29 @@ These were run through `Tools/UnrealPython/` (see `GOVERNANCE.md` → Agent tool
 - On Fail → Finish Execute (Success off).
 - The owner removed the debug prints and the orphan Branch on 2026-10-14. Not re-exported. The package was not dirty.
 
-`BP_BaseEnemy` (not changed yet):
-- Event `Attack` (from `BPI_Enemy`, input `TargetActor`) runs these nodes in order:
-  1. **Bind Event to E_Dead** (on `BPC_E_Health`, event `Enemy_Death`).
-  2. Sphere Trace Multi for Objects at its own location, radius 200, Pawn.
-  3. For Each with Break. If Hit Actor == `TargetActor`, it calls Apply Damage 10 and then Play Montage (mesh `Mesh`). **Montage To Play is empty**, then the loop breaks.
-- Custom event `Enemy_Death` → Play Anim Montage `Enemy_Death_Montage`. It does not stop the tree, movement, or collision, and it does not destroy the actor.
-- There is no Event BeginPlay node in this Blueprint.
+`BP_BaseEnemy` (death chain saved 2026-10-18, Reason `Dead`):
+- Event BeginPlay → Bind Event to E_Dead. Target is `BPC_E_Health`. Event is custom event `Enemy_Death`.
+- Event `Attack` (from `BPI_Enemy`, input `TargetActor`) goes straight to Sphere Trace Multi for Objects at its own location, radius 200, Pawn. The bind is no longer in this chain.
+- For Each with Break. If Hit Actor == `TargetActor`, it calls Apply Damage 10 and then Play Montage (mesh `Mesh`). **Montage To Play is empty**, then the loop breaks.
+- Custom event `Enemy_Death` → Set `bIsDead` true → Play Anim Montage `Enemy_Death_Montage` → Get Controller → Cast To AIController → Get Brain Component → Stop Logic (Reason `Dead`) → Disable Movement → Set Collision Enabled No Collision on the capsule → Set Life Span 3.
+- Attack Play Montage still has Montage To Play empty. The mesh is `SK_SciFiWarrior02` (skeleton `UE4_Mannequin_Skeleton`). None of the 20 montages in the project use that skeleton, so Step 6 left the pin empty. `Enemy_Death_Montage` uses the SciFi trooper skeleton.
 - Pawn defaults: capsule radius 34, half height 88. Max walk speed 600. Orient Rotation to Movement off. Use Controller Rotation Yaw on. Auto Possess AI = Placed in World or Spawned. AI Controller Class = `BP_IAController`.
 
 `BPC_E_Health`: `E_Decrease_Health(Damage)` does these steps in order:
-1. `E_Health` −= Damage. `E_Health` defaults to 100.
-2. Calls `E_Updated_Heatlh` (the typo is in the asset).
-3. If `E_Health` <= 0, calls `E_Dead`.
-
-It has no "already dead" guard.
+1. Branch: `E_Health` > 0. False ends. True continues. The greater-than B pin has no serialized number, which is the float default 0, same as the existing less-or-equal pin below.
+2. `E_Health` −= Damage. `E_Health` defaults to 100.
+3. Calls `E_Updated_Heatlh` (the typo is in the asset).
+4. If `E_Health` <= 0, calls `E_Dead`.
 
 `BP_ThirdPersonCharacter` (relevant parts):
-- WeaponHitbox On Component Begin Overlap → Cast to `BP_BaseEnemy` → Print String `Hitbox detectada`. That Print String's `then` pin is empty.
-- The node `E_Decrease_Health` (target: the cast enemy's `BPC_E_Health`, Damage 100, which step 4 changes to 25) sits on the graph with an empty exec input.
+- WeaponHitbox On Component Begin Overlap → Cast to `BP_BaseEnemy` → Print String `Hitbox detectada` → Branch on `bLightAttackActive`.
+- The node `E_Decrease_Health` (target: the cast enemy's `BPC_E_Health`, Damage 25) runs from the hitbox Branch's True pin. Its `then` pin goes to the object Cast To AIController.
 - The light and heavy attack chains are separate copies. Light starts at event `IA_Light_Attack` (graph Y ≈ −2672). Heavy starts at `IA_Heavy_Attack` (Y ≈ −1760).
-  - Light: Started → Branch → (False) Set `IsAttacking` → Weapon to Hand → Play Montage `LightAttackCombo[AttackIndex]`. On Completed → `IsAttacking` false → `AttackIndex` 0 → Weapon to Back.
+  - Light: Started → Branch → (False) Set `IsAttacking` → Set `bLightAttackActive` → Weapon to Hand → Play Montage `LightAttackCombo[AttackIndex]` at (4144, −2624). That node's white `then` goes to a Branch at (4416, −2160) which sets `AttackIndex` to `AttackIndex + 1`, or to 0 on the last swing. On Completed → `IsAttacking` false → `bLightAttackActive` false → `AttackIndex` 0 → Weapon to Back.
+  - That same Play Montage's On Notify Begin feeds Switch on Name at (4672, −2896). `EnableHitbox` sets `WeaponHitbox` collision to Query Only. `DisableHitbox` sets it to No Collision. Saved 2026-10-18.
 - `ResetState` → `SetState` (Nothing) → `AttackIndex` 0 → `bSaveLightAttack` false.
-- `bLightAttackActive` does not exist yet.
+- `bLightAttackActive` exists (bool, default false). Light start sets it true, light On Completed and `ResetState` set it false. WeaponHitbox overlap → Cast to `BP_BaseEnemy` → Print String → Branch on `bLightAttackActive`. True calls `E_Decrease_Health`. Its Damage pin is a Select: Index = `LightSwingIndex`, Option 0 = 15, Option 1 = 15, Option 2 = 19. Then Cast To AIController (object) fed by Get Controller, then Get Blackboard → Set Value as Bool `bReceivingDamage` checked. Heavy attack was not changed.
+- `LightSwingIndex` is set from `AttackIndex` on the live Play Montage's `then` pin, before the Branch that increments `AttackIndex`. `LightAttackCombo` order is `FA_1_Montage`, `FA_2_Montage`, `L_FA_3_Montage`.
 - The player has **no Event AnyDamage**. Its own health (`BPC_Health.Decrease_Health`) is called only from a debug key with Damage 25. So the enemy's Apply Damage 10 currently does nothing to the player. This is Verified from the export. See pending step 8.
 
 Placed actors on `ThirdPersonMap`:
@@ -110,7 +110,17 @@ Nav: `SupportedAgents` is empty, so every pawn uses `RecastNavMesh-Default` (hei
 
 ### Pending work, in order
 
-**Start with Step 4** (light-only damage on `BP_ThirdPersonCharacter`). Steps 1–3 are done.
+**Playtest block, before Step 8.** Combo damage is saved: Select Option 0 = 15, Option 1 = 15, Option 2 = 19, Index = `LightSwingIndex`. The live light Play Montage at (4144, −2624) enables the hitbox through Switch on Name at (4672, −2896). All three light montages now have the hit window. `FA_1_Montage`: EnableHitbox at 0.08 s, DisableHitbox at 0.34 s (saved 2026-10-18). `FA_2_Montage`: EnableHitbox at 0.09 s, DisableHitbox at 0.34 s. `L_FA_3_Montage`: EnableHitbox at 0.10 s, DisableHitbox at 0.54 s. Swing 1 can connect. AI1-T4 is ready for the owner to play.
+
+**Next click — Step 8, player damage.** The owner approved this on 2026-10-18. One asset: `BP_ThirdPersonCharacter`. The player still has no Event AnyDamage. Do not type a damage number. The enemy already sends 10.
+
+1. Open `BP_ThirdPersonCharacter`, Event Graph. Right-click empty space away from the light-attack chain (that chain is around X 4000) and add **Event AnyDamage** (Evento Cualquier daño).
+2. Drag `BPC_Health` from the Components panel into the graph and choose Get.
+3. Drag from the event's white `then` pin and add **Decrease Health**. Its target is that `BPC_Health` get. This is the player's `BPC_Health`, not the enemy's `E_Decrease_Health`.
+4. Drag the event's **Damage** pin into that node's Damage pin. Do not type 10 or 25. Leave Damage Type, Instigated By, and Damage Causer empty.
+5. Compilar, then Guardar.
+
+Do not touch the debug key at (−704, −3456). That key still calls Decrease Health with 25. Do not use the unwired Decrease Health at (4288, −800); it sits next to the enemy hit. Do not wire this event into the light-attack Select.
 
 Each step: the owner (or an agent instructing the owner) makes the edit, presses **Compilar**, then **Guardar**. Then re-export with `Tools/UnrealPython/export_ai.py` and confirm the change in the summary before going to the next step. Spanish UI names are given in parentheses.
 
@@ -127,7 +137,7 @@ Original rewire, already applied on the live node:
   - Bool Value unchecked.
 - Compile, save.
 
-**Step 4 — Light-only damage (AI1-03).** On `BP_ThirdPersonCharacter`. Edit only the light chain.
+**Step 4 — Light-only damage (AI1-03).** Done 2026-10-18. Export confirms `bLightAttackActive`, Damage 25, and Set Value as Bool `bReceivingDamage` true on the object cast path. Original clicks, already applied:
 1. My Blueprint → Variables → + → name `bLightAttackActive`, type Boolean, default unchecked. Compile once so the variable appears.
 2. Find event `IA_Light_Attack` (Y ≈ −2672). Its Started pin goes into a Branch. That Branch's False output goes to Set `IsAttacking`. Alt+left click the wire from Set `IsAttacking` `then` to Weapon to Hand. Insert Set `bLightAttackActive` (checked) between them.
 3. On that same chain, find the light Play Montage's On Completed path. Set `IsAttacking` false → Set `AttackIndex` 0 → Weapon to Back. Insert Set `bLightAttackActive` (unchecked) right after Set `IsAttacking` false.
@@ -138,9 +148,9 @@ Original rewire, already applied on the live node:
 
 Do not use `bSaveLightAttack` or `IsAttacking` as the gate. Those are a combo buffer and a shared state, and both are true for heavy attacks too. Do not touch the `IA_Heavy_Attack` chain.
 
-Expected behavior after step 4: each light hit takes 25 health. The enemy stops for 0.6 s, then prints `Enemigo: ya no recibe daño`. The 4th hit kills it. If one swing removes 50 or more, the sword overlapped twice; step 7 (health guard) does not fix that. Record it and escalate. Do not add a new number.
+Step 4 saved the flat 25. The owner replaced that on 2026-10-18 with 15 / 15 / 19, and that Select is saved. The enemy still stops for 0.6 s, then prints `Enemigo: ya no recibe daño`, after each hit that removes health. Two full combos leave 2 health. The next light hit kills.
 
-**Step 5 — Enemy death (AI1 cleanup, needed before AI 2 counts living enemies).** On `BP_BaseEnemy`.
+**Step 5 — Enemy death (AI1 cleanup, needed before AI 2 counts living enemies).** Done 2026-10-18. Export confirms BeginPlay binds `E_Dead`, Attack goes to the sphere trace, `bIsDead` is set true, and Stop Logic Reason is `Dead`. Original clicks:
 1. Add Event BeginPlay (Evento BeginPlay). Move the existing **Bind Event to E_Dead** node there: BeginPlay → Bind Event to E_Dead. Its Target stays `BPC_E_Health`, and its Event stays the `Enemy_Death` red pin.
 2. In Event `Attack`, wire the event's `then` directly to the Sphere Trace node. The bind is no longer in this chain.
 3. On `Enemy_Death`, after Play Anim Montage add these nodes in order:
@@ -153,11 +163,11 @@ Expected behavior after step 4: each light hit takes 25 health. The enemy stops 
 4. Add a boolean `bIsDead` on `BP_BaseEnemy`. Set it true at the start of `Enemy_Death`. AI 2 uses it to count living enemies.
 5. Compile, save.
 
-**Step 6 — Attack montage (cosmetic).** In `BP_BaseEnemy` Event `Attack`, the Play Montage node has Montage To Play empty. Pick an existing enemy attack montage from the Paragon or SciFi packs that matches the enemy skeleton. If none matches, leave it empty. It does not block anything. Record the choice here.
+**Step 6 — Attack montage (cosmetic).** Closed 2026-10-18 with Montage To Play left empty. The enemy mesh `SK_SciFiWarrior02` uses `UE4_Mannequin_Skeleton`. No montage in the project uses that skeleton.
 
-**Step 7 — Health component guard.** On `BPC_E_Health`, inside `E_Decrease_Health`, add a Branch at the start: condition `E_Health` > 0. True continues to the existing subtract. False ends. This prevents `E_Dead` firing twice when the sword overlaps twice.
+**Step 7 — Health component guard.** Done 2026-10-18. `E_Decrease_Health` starts with a Branch whose condition is Get `E_Health` > 0. True goes to the existing subtract. False is empty.
 
-**Step 8 — Player receives enemy damage (needed for AI 3 and for AI 1's attack to matter).** On `BP_ThirdPersonCharacter`, add Event AnyDamage (Evento Cualquier daño) → `BPC_Health` → `Decrease_Health` with Damage = the event's Damage pin. This is new wiring on the player, so ask the owner before doing it. The number stays the 10 that `BP_BaseEnemy` already sends.
+**Step 8 — Player receives enemy damage (needed for AI 3 and for AI 1's attack to matter).** Owner approved 2026-10-18. The click sequence is the next click above. On `BP_ThirdPersonCharacter`, add Event AnyDamage (Evento Cualquier daño) → `BPC_Health` → `Decrease_Health` with Damage = the event's Damage pin. The number stays the 10 that `BP_BaseEnemy` already sends.
 
 **Step 9 — Owner PIE checks.** Run the editor tests in `WORK_ITEMS.md` that say Ready. Write each result in the result log. Set an AI1 row to Done only after its checks pass.
 
@@ -173,7 +183,7 @@ The owner chose to shrink the orbit and lower the damage. `AI_REQUIREMENTS.md` a
   - Unchanged: attack distance 220, cooldown 3, defend 600, detection 1500.
 
   Result: while orbiting, the enemy is always inside attack range, so it attacks each time the 3 second cooldown is ready. Defend still has higher priority, so roughly every 7.5 s it defends instead. Spacing check: at 150 units between centers, the two capsules (34 + 35) leave about 80 units of gap, so it does not touch the player. `BP_BaseEnemy` Attack traces 200 from the enemy center, which reaches the player capsule at up to about 234, so attacks at 210 still connect.
-- **B. One-hit kill.** The light damage on the player's `E_Decrease_Health` call changes from 100 to **25**. Enemy `E_Health` stays 100, so it takes 4 light hits to kill. The 0.6 s hit stun and `Enemigo: ya no recibe daño` show after each of the first 3 hits. 25 is also the value the player's own debug damage key already uses.
+- **B. One-hit kill.** The light damage on the player's `E_Decrease_Health` call changed from 100 to **25** on 2026-10-14. Enemy `E_Health` stays 100. On 2026-10-18 the owner replaced that flat 25 with combo damage **15 / 15 / 19** (the finisher was going to be 20; the owner set 19 so two combos do not kill). Two full combos leave 2 health. The next light hit kills. The 0.6 s hit stun still shows after each hit that removes health. The Select is saved.
 
 **Step 0b — Let Move To reach the 180 point.** Done 2026-10-14. Export shows `bReachTestIncludesAgentRadius=(DefaultValue=False)` on `BTTask_MoveTo_0`. Agent PIE: at game time 98 s distances were 170 and 154; at 152 s they were 161 and 170, and both positions and `OrbitLocation` had changed. Attack lines continued. No `Accessed None`. Original click sequence, already applied:
 1. Open `BT_EnemyIA`. Select the **Move To** whose Blackboard Key is `OrbitLocation` (orbit sequence, the fourth Selector child). Do not select the roam task.
@@ -191,7 +201,7 @@ The owner chose to shrink the orbit and lower the damage. `AI_REQUIREMENTS.md` a
 7. Agent check: run `export_ai.py`, then `summarize.py BTService_LocatePlayer`. Then confirm with `Select-String -Path Intermediate\inspect\live\_BTService_LocatePlayer.txt -Pattern "=150|=210|=180|=40"`: you should see each of the four new values. Search again for `=320|=480|=400|=18\.` and expect no hits.
 8. PIE check: teleport the player with `teleport.flag`, then `pie_sample.py`. `DistanceToTarget` should settle around 150–210, with `Enemigo: va a atacar` in the log about every 3 s.
 
-Decision B is applied inside step 4: set Damage to 25 on `E_Decrease_Health`.
+Decision B's flat 25 was replaced on 2026-10-18 by the Select 15 / 15 / 19.
 
 If PIE shows the enemy pushing the player or jittering at 150–210, do not tune further. Record what you saw and escalate.
 
@@ -286,6 +296,46 @@ The specs are in `AI_REQUIREMENTS.md` → AI 3. Put the assets in `Content/Third
 - `docs/HANDOFF.md`
 
 ## History
+
+### 2026-10-18 — FA_1 hit window saved
+
+Export, dirty packages none. `FA_1_Montage` Montage Notify `EnableHitbox` triggers at 0.08 s. `DisableHitbox` triggers at 0.34 s. EdAttack stays at 0.39 s and AttackFinished stays at the end. Swing 1 can now connect for 15 damage. Next decision is Step 8, player AnyDamage. Ask the owner before editing the player.
+
+### 2026-10-18 — Combo damage saved as 15 / 15 / 19
+
+Export, dirty packages none. Live Play Montage `then` sets `LightSwingIndex` from `AttackIndex`, then the Branch increments `AttackIndex`. Select Index is `LightSwingIndex`. Option 0 = 15, Option 1 = 15, Option 2 = 19. That return value is the Damage pin of `E_Decrease_Health`. The owner set 19 instead of 20 so two full combos leave the enemy at 2 health. `FA_1_Montage` still has no EnableHitbox. Next click is that montage.
+
+### 2026-10-18 — Light hitbox enable saved, combo damage chosen
+
+Export: the live light Play Montage On Notify Begin feeds Switch on Name at (4672, −2896). `EnableHitbox` sets `WeaponHitbox` to Query Only. `DisableHitbox` sets No Collision. Dirty packages were none. The owner chose light combo damage 15 / 15 / 20. `E_Decrease_Health` still has Damage 25. `FA_1_Montage` still has no EnableHitbox notify. Next click is `LightSwingIndex` plus Select on that Damage pin.
+
+### 2026-10-18 — Light notify switch saved without the enable branch
+
+Export: light Play Montage On Notify Begin and Notify Name feed a new Switch on Name at (4672, −2896) with pins `EnableHitbox` and `DisableHitbox`. `DisableHitbox` goes to Set Collision Enabled No Collision on `WeaponHitbox`. `EnableHitbox` has no wire and there is no Query Only node in that chain, so the hitbox still never turns on. Next click: add that node.
+
+### 2026-10-18 — Light attack never enables the hitbox
+
+`Weapon` is No Collision now and the owner still saw no `Hitbox detectada`. The light Play Montage's On Notify Begin is unwired. The old Switch on Name chain that enables `WeaponHitbox` has no exec input. `FA_1_Montage` has no EnableHitbox notify. `FA_2_Montage` and `L_FA_3_Montage` have one. No asset changed.
+
+### 2026-10-18 — Sword mesh blocks the enemy
+
+Playtest: the longsword pushes the enemy and the hit does not register. `Weapon` is Query and Physics, Block All Dynamic, Block on Pawn. `WeaponHitbox` is a 32-unit box, Overlap on Pawn, and No Collision until the `EnableHitbox` notify. The pasted `RigHierarchy.GetController` node has no wires and is not the hit path.
+
+### 2026-10-18 — Health guard saved
+
+`BPC_E_Health` export: `E_Decrease_Health` starts with a Branch on `E_Health` > 0. True continues to the subtract. False is empty. Next decision is whether to add Event AnyDamage on the player.
+
+### 2026-10-18 — Death reason saved, attack montage left empty
+
+Stop Logic Reason is `Dead`. Montage To Play stays empty: `SK_SciFiWarrior02` uses `UE4_Mannequin_Skeleton`, and no project montage uses that skeleton. Next click is the health guard on `BPC_E_Health`.
+
+### 2026-10-18 — Enemy death chain saved, Reason empty
+
+`BP_BaseEnemy` export: BeginPlay binds `E_Dead` to `Enemy_Death`. Attack goes straight to the sphere trace. `Enemy_Death` sets `bIsDead`, plays the death montage, stops the brain, disables movement, turns capsule collision off, and sets life span 3. Stop Logic's Reason pin has no text.
+
+### 2026-10-18 — Light damage wire saved
+
+`BP_ThirdPersonCharacter` export: light attack sets `bLightAttackActive`, the hitbox Branch calls `E_Decrease_Health` with Damage 25, then an object Cast To AIController (Get Controller from the enemy) writes blackboard `bReceivingDamage` true. Heavy attack is unchanged. Next click is Step 5.
 
 ### 2026-10-14 — HitSun error object is not on the graph
 

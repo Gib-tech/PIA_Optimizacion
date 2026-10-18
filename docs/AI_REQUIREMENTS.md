@@ -8,7 +8,7 @@ Agent PIE showed the orbiter's movement branches working, but the owner has not 
 
 On 2026-10-14 the owner changed two orbiter values. Both are **Decisions** now (see `HANDOFF.md` → Owner decisions):
 - Orbit: radius 180, band 150–210 (was 400, band 320–480). The old band kept the enemy outside the attack distance of 220.
-- Light damage: 25 (was 100). With health 100, the old value killed in one hit, so hit stun was never seen.
+- Light damage: combo **15 / 15 / 19** (owner choice 2026-10-18; the finisher was drafted as 20, then set to 19 so two combos do not kill). Was a flat 25, and before that 100. With health 100, one full combo leaves 51. Two full combos leave 2. The next light hit kills.
 
 The AI 3 contact damage resolves to 10, the existing `BP_BaseEnemy` hit. The 15 fallback below does not apply.
 
@@ -50,11 +50,21 @@ No defend animation was found. The defend task faces the player and does not mov
 
 Only a player light attack reduces this enemy's health. Heavy attacks and any other damage source are ignored.
 
-Use the existing path. `SaveLightAttack_AN` calls `SaveLightAttack` on `BP_ThirdPersonCharacter`. `bSaveLightAttack` is a combo-input buffer, not a light-hit window. `ResetState_AN` calls `ResetState`, and that event currently goes to `SetState`. `BPC_E_Health.E_Decrease_Health` subtracts its Damage argument and fires `E_Dead` when health reaches 0 or less. The light-attack window still needs its own bool, set when the light attack starts and cleared from `ResetState`. Do not add a second health system. The unused player damage node says 100. Change it to **25** (owner decision 2026-10-14), so the enemy, at health 100, dies after 4 light hits. `BP_BaseEnemy` Attack applies 10 damage with a sphere of radius 200. That is this enemy hitting another actor. AI 3 contact damage reuses 10. Do not change it while building the orbiter.
+Use the existing path. `SaveLightAttack_AN` calls `SaveLightAttack` on `BP_ThirdPersonCharacter`. `bSaveLightAttack` is a combo-input buffer, not a light-hit window. `ResetState_AN` calls `ResetState`, and that event currently goes to `SetState`. `BPC_E_Health.E_Decrease_Health` subtracts its Damage argument and fires `E_Dead` when health reaches 0 or less. The light-attack window uses `bLightAttackActive`, set when the light attack starts and cleared from the light montage's On Completed and from `ResetState`. Do not add a second health system. `BP_BaseEnemy` Attack applies 10 damage with a sphere of radius 200. That is this enemy hitting another actor. AI 3 contact damage reuses 10. Do not change it while building the orbiter.
+
+Light combo damage (owner choice 2026-10-18), by the swing that is playing, not by the already-incremented `AttackIndex`:
+
+| Swing | `LightSwingIndex` | Damage |
+| --- | --- | --- |
+| 1 | 0 | 15 |
+| 2 | 1 | 15 |
+| 3 | 2 | 19 |
+
+One full combo removes 49. Two full combos remove 98 and leave 2 health. The next light hit kills. A heavy hit is still ignored.
 
 A light hit that actually removes health sets `bReceivingDamage` for the hit-stun branch. A rejected heavy hit does not.
 
-Do not change max health (100). Light damage is 25. Do not invent any other damage number.
+Do not change max health (100). Do not invent a damage number other than 15, 15, and 19.
 
 ### Print String
 
