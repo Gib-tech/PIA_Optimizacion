@@ -10,13 +10,13 @@ Numbers and tree order are locked in `AI_REQUIREMENTS.md`. The exact click steps
 
 | ID | Status | Item | Notes |
 | --- | --- | --- | --- |
-| AI1-01 | In progress | Rebuild `BT_EnemyIA` into the five-branch tree: hit stun, defend, attack, orbit, roam. | Saved. Agent PIE on 2026-10-14 showed roam, orbit, defend, and attack running. Force Success was removed from Attack on 2026-10-14. That decorator was the "does not walk" bug. Hit stun is untested until AI1-03. Done after the owner's AI1-T1, AI1-T2, AI1-T3, and AI1-T6 pass. |
+| AI1-01 | Done | Rebuild `BT_EnemyIA` into the five-branch tree: hit stun, defend, attack, orbit, roam. | Owner passed AI1-T1, AI1-T2, AI1-T3, and AI1-T6 on 2026-10-21. Force Success was removed from Attack on 2026-10-14. |
 | AI1-02 | In progress | Add an orbit task that holds the 150–210 band around a 180 unit radius (owner decision 2026-10-14; was 320–480 / 400). | Step 0 and Step 0b saved. Agent PIE 2026-10-14 after Step 0b: distances 150–170, orbit point moved, enemies changed position around the player. Reach Test Includes Agent Radius is off on the orbit Move To. Done after the owner's AI1-T2 and AI1-T5 pass. |
-| AI1-03 | In progress | Apply damage only from a player light attack, and set `bReceivingDamage` only when health actually drops. | Saved 2026-10-18. Select is 15 / 15 / 19 from `LightSwingIndex`. `FA_1_Montage` EnableHitbox is at 0.08 s and DisableHitbox at 0.34 s, so swing 1 can connect. Done after the owner's AI1-T4 pass. |
-| AI1-04 | In progress | Print String on attack start, defend start, and hit-stun end, using the three Spanish lines. | Attack and defend lines were seen in the log during agent PIE. The owner added the defend accent on 2026-10-14 and asked not to play-test it. The hit-stun line is untested until AI1-03. |
+| AI1-03 | Done | Apply damage only from a player light attack, and set `bReceivingDamage` only when health actually drops. | Owner passed AI1-T4 on 2026-10-21. Select is 15 / 15 / 19 from `LightSwingIndex`. `FA_1_Montage` EnableHitbox is at 0.08 s and DisableHitbox at 0.34 s. |
+| AI1-04 | Done | Print String on attack start, defend start, and hit-stun end, using the three Spanish lines. | Owner passed AI1-T2, AI1-T3, and AI1-T4 on 2026-10-21, which include the attack, defend, and hit-stun lines. |
 | AI1-05 | Done | Cleanup: remove the `BTTask_Roam` debug prints and the orphan Branch. Clear the `BTTask_HitSun` error badge. | Roam cleanup saved 2026-10-14; owner asked not to play-test it. HitSun's graph node has no `ErrorType`. Two leftover objects are in the asset text and are not Event Graph nodes. |
-| AI1-06 | In progress | Enemy death: bind `E_Dead` on BeginPlay, and stop the tree, movement, and collision on death. Add `bIsDead` and a health guard. | Wiring saved 2026-10-18. BeginPlay binds `E_Dead`, death stops the brain, movement, and collision, life span 3, Reason `Dead`, and `E_Decrease_Health` ignores hits at 0 health. Done after the owner's AI1-T6 pass. |
-| AI1-07 | In progress | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | Saved 2026-10-18. The event Damage pin feeds Decrease Health. The enemy still sends 10. Done after the owner sees their health drop on an enemy hit. |
+| AI1-06 | Done | Enemy death: bind `E_Dead` on BeginPlay, and stop the tree, movement, and collision on death. Add `bIsDead` and a health guard. | Owner passed AI1-T6 on 2026-10-21. The enemy stops and disappears. No death montage plays. The owner accepted that: the montage belongs to the 3D animation team. |
+| AI1-07 | Done | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | Owner on 2026-10-21: an enemy hit removes 10 health. |
 
 ## AI 2 — Hostage escort
 
@@ -40,12 +40,9 @@ Required by the course rubric. Different tree from the orbiter. Not a second mes
 
 ## Order
 
-1. AI1-07 player AnyDamage is saved. Next is the owner's PIE on AI1-T1 through AI1-T6, plus an enemy hit dropping player health by 10.
-2. AI1-03 light combo damage (15 / 15 / 19) and the `FA_1_Montage` hit window are saved. Owner PIE is AI1-T4.
-3. AI1-06 death, AI1-07 player damage.
-4. Owner PIE checks AI1-T1 to AI1-T6. Set AI1 rows Done.
-5. AI2-01 through AI2-04.
-6. AI3-01 and AI3-02. A second spawn zone may use `BP_ChargerEnemy` after AI3-01 exists.
+1. AI 1 playtests: T1–T4, T6, and the 10-damage hit passed on 2026-10-21. The death montage is accepted as the animation team's work. AI1-02 stays open because the owner said the orbit does not flow naturally (AI1-T5).
+2. AI2-01 through AI2-04.
+3. AI3-01 and AI3-02. A second spawn zone may use `BP_ChargerEnemy` after AI3-01 exists.
 
 ## Not in this queue
 
@@ -68,12 +65,12 @@ How to run: open `ThirdPersonMap` and press Play. Press `'` (apostrophe) for the
 
 | ID | Status | Becomes ready | Check |
 | --- | --- | --- | --- |
-| AI1-T1 | Ready | — | Walk toward an enemy. Inside 1500 units it leaves roam and starts orbit, defend, or attack. Far away, it wanders and pauses about 3 seconds between walks. |
-| AI1-T2 | Ready | — | After it detects you, stand still. It circles close, near 180 units, and does not walk onto your capsule. It prints `Enemigo: va a atacar` about every 3 s while circling. Step back past 210 (still inside 1500) and it follows. Walk into it, inside 150, and it backs out. |
-| AI1-T3 | Ready | After step 1 (accent), to check the exact text. | Inside 220, with the 3 second cooldown ready, the screen shows `Enemigo: va a atacar` for about 2 seconds. Inside 600, at least 6 seconds after the last defend, it shows `Enemigo: se está defendiendo` for about 2 seconds, and the enemy faces you without moving for 1.5 seconds. |
-| AI1-T4 | Ready | The 15 / 15 / 19 Select and the `FA_1_Montage` hit window are saved. | Swings 1 and 2 drop 15 health. Swing 3 drops 19. About 0.6 seconds later the screen shows `Enemigo: ya no recibe daño`. Two full combos leave 2 health. The next light hit kills. A heavy attack does not drop that health and does not show that line. |
+| AI1-T1 | Passed | — | Walk toward an enemy. Inside 1500 units it leaves roam and starts orbit, defend, or attack. Far away, it wanders and pauses about 3 seconds between walks. |
+| AI1-T2 | Passed | — | After it detects you, stand still. It circles close, near 180 units, and does not walk onto your capsule. It prints `Enemigo: va a atacar` about every 3 s while circling. Step back past 210 (still inside 1500) and it follows. Walk into it, inside 150, and it backs out. |
+| AI1-T3 | Passed | After step 1 (accent), to check the exact text. | Inside 220, with the 3 second cooldown ready, the screen shows `Enemigo: va a atacar` for about 2 seconds. Inside 600, at least 6 seconds after the last defend, it shows `Enemigo: se está defendiendo` for about 2 seconds, and the enemy faces you without moving for 1.5 seconds. |
+| AI1-T4 | Passed | The 15 / 15 / 19 Select and the `FA_1_Montage` hit window are saved. | Swings 1 and 2 drop 15 health. Swing 3 drops 19. About 0.6 seconds later the screen shows `Enemigo: ya no recibe daño`. Two full combos leave 2 health. The next light hit kills. A heavy attack does not drop that health and does not show that line. |
 | AI1-T5 | Ready | — | Stand between 1000 and 1500 units from an enemy. It detects you and comes in to orbit. |
-| AI1-T6 | Ready | — | Kill an enemy. It plays the death montage, stops moving, stops printing, and disappears after a few seconds. |
+| AI1-T6 | Passed | — | Kill an enemy. It stops moving, stops printing, and disappears after a few seconds. The death montage is not playing. The owner accepted that on 2026-10-21: the montage is the 3D animation team's work. |
 
 ### Result log
 
@@ -87,3 +84,5 @@ How to run: open `ThirdPersonMap` and press Play. Press `'` (apostrophe) for the
 | 2026-10-14 | AI1-T1, AI1-T2, AI1-T3 | Agent PIE, not a pass | Roam: both enemies walked, then waited. When the player was teleported 450 units away, the enemy orbited at 387–719 units (mostly 387–464) without touching the capsule. Defend printed every 8–10 s and finished. Attack printed once. No errors in the log. The owner must still run these for a pass. |
 | 2026-10-14 | AI1-T2 | Agent PIE, not a pass | After Step 0 (150 / 210 / 180 / 40). Player teleported 450 units from enemy 0. Both enemies closed in, then froze at 213 and 145 for at least 45 s of game time. Orbit points sat on the 180 circle and did not rotate. Attack and defend kept printing. No `Accessed None`. They never entered 150–210, so they did not circle. |
 | 2026-10-14 | AI1-T2 | Agent PIE, not a pass | After Step 0b. Distances at 98 s were 170 and 154; at 152 s they were 161 and 170. Both enemies moved around the player and `OrbitLocation` changed. Attack lines continued. No `Accessed None`. The step-back and step-in parts of AI1-T2 were not run. The owner must still pass this test. |
+| 2026-10-21 | AI1-T1, AI1-T2, AI1-T3, AI1-T4 | Passed | Owner on `ThirdPersonMap`. T1 through T4 passed. On T5 the owner saw the enemy come in, and said the orbit does not flow naturally. Several behaviors feel unnatural. T5 is not a pass. T6 was not run. |
+| 2026-10-21 | AI1-T6, AI1-07 | Passed | Owner: an enemy hit removes 10 health. On death the enemy stands still and disappears. No death montage plays. The owner accepted that as the 3D animation team's work. |

@@ -9,7 +9,8 @@ This file is written so a smaller model can continue without re-auditing. Every 
 ## Current handoff
 
 - Date: 2026-10-21
-- Branch: `feat/ai`. `main` (`1545b36`, weapon switch) is merged into this branch. The only conflict was `BP_ThirdPersonCharacter`. The AI wiring stayed, and the weapon graph was copied onto it.
+- Branch: `main`, same commit as `feat/ai`. `BP_ThirdPersonCharacter` keeps the AI wiring and the weapon graph. Do not replace it with the menu zip's copy.
+- Menu widgets from the partner zip (UE 5.4) are in `Content/Menu` (`/Game/Menu/...`). `MainMenuLevel` now opens `/Game/Menu/Menu_Inicio`. `DefaultEngine.ini` sets `GameInstanceClass` to the existing `BP_GameInstance`. The old widgets under `Content/LevelMenu/Menu` are still there. Pause on **P** is not on this player Blueprint yet.
 - `hammer` is a child of the character mesh, Parent Socket `HammerSocket` (bone `hand_r` on `SK_SciFITrooper_Man_03`). Component location and rotation are 0. Visible is off, so it starts hidden. Hidden in Game is off, because the Set Visibility nodes only change the Visible flag.
 - Keys in `IMC_Default`: `Y` is `IA_SwitchToSword`, `T` is `IA_SwitchToHammer`. `Y` shows the hammer and hides the sword. `T` shows the sword and hides the hammer. The visibility pins are the opposite of the event names.
 - Reference copy of `main` before the merge: worktree `../PIA_Optimizacion_main`.
@@ -302,6 +303,14 @@ The specs are in `AI_REQUIREMENTS.md` → AI 3. Put the assets in `Content/Third
 - `docs/HANDOFF.md`
 
 ## History
+
+### 2026-10-21 — Partner menu widgets copied in
+
+Copied `Content/Menu` (22 widgets) from the extracted UE 5.4 zip into this project so the `/Game/Menu/...` paths stay valid. Replaced `MainMenuLevel` with the zip's level, which creates `/Game/Menu/Menu_Inicio`. Added `GameInstanceClass` in `DefaultEngine.ini`. Did not replace `BP_ThirdPersonCharacter`, the game mode, the third-person map, or `BP_GameInstance`. Pause on P still has to be added on the current player Blueprint.
+
+### 2026-10-21 — AI 1 playtests, death montage left to animation
+
+Owner on `ThirdPersonMap`: T1–T4 passed. An enemy hit removes 10 health. On death the enemy stops and disappears; no death montage plays, and the owner accepted that as the 3D animation team's work. T5 is not a pass: the orbit comes in, but the motion does not flow naturally. AI1-02 stays open.
 
 ### 2026-10-21 — Weapon switch merged onto the AI player Blueprint
 
