@@ -16,7 +16,7 @@ Numbers and tree order are locked in `AI_REQUIREMENTS.md`. The exact click steps
 | AI1-04 | In progress | Print String on attack start, defend start, and hit-stun end, using the three Spanish lines. | Attack and defend lines were seen in the log during agent PIE. The owner added the defend accent on 2026-10-14 and asked not to play-test it. The hit-stun line is untested until AI1-03. |
 | AI1-05 | Done | Cleanup: remove the `BTTask_Roam` debug prints and the orphan Branch. Clear the `BTTask_HitSun` error badge. | Roam cleanup saved 2026-10-14; owner asked not to play-test it. HitSun's graph node has no `ErrorType`. Two leftover objects are in the asset text and are not Event Graph nodes. |
 | AI1-06 | In progress | Enemy death: bind `E_Dead` on BeginPlay, and stop the tree, movement, and collision on death. Add `bIsDead` and a health guard. | Wiring saved 2026-10-18. BeginPlay binds `E_Dead`, death stops the brain, movement, and collision, life span 3, Reason `Dead`, and `E_Decrease_Health` ignores hits at 0 health. Done after the owner's AI1-T6 pass. |
-| AI1-07 | In progress | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | Owner approved 2026-10-18. Click sequence is in `HANDOFF.md`. The enemy already sends 10. Not saved yet. |
+| AI1-07 | In progress | Player receives enemy damage (Event AnyDamage → `BPC_Health.Decrease_Health`). | Saved 2026-10-18. The event Damage pin feeds Decrease Health. The enemy still sends 10. Done after the owner sees their health drop on an enemy hit. |
 
 ## AI 2 — Hostage escort
 
@@ -40,7 +40,7 @@ Required by the course rubric. Different tree from the orbiter. Not a second mes
 
 ## Order
 
-1. AI1-07 player AnyDamage. The owner approved it on 2026-10-18. The click is in `HANDOFF.md` and is not saved yet.
+1. AI1-07 player AnyDamage is saved. Next is the owner's PIE on AI1-T1 through AI1-T6, plus an enemy hit dropping player health by 10.
 2. AI1-03 light combo damage (15 / 15 / 19) and the `FA_1_Montage` hit window are saved. Owner PIE is AI1-T4.
 3. AI1-06 death, AI1-07 player damage.
 4. Owner PIE checks AI1-T1 to AI1-T6. Set AI1 rows Done.

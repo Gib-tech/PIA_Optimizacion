@@ -115,7 +115,7 @@ Exported from the open editor on 2026-10-14. The full per-asset state is in `HAN
 - Git: branch `main` (commit `7198fa9`) is the original project. Branch `feat/ai` holds the AI work. Assets are in Git LFS, so `git diff` on a `.uasset` only shows pointers. Compare behavior by exporting both versions.
 - `BT_EnemyIA` is the five-branch Selector in `HANDOFF.md`. `BTService_LocatePlayer` sits on that Selector. On `main` the tree was smaller: a Selector containing a chase Sequence (Rotate to face → Move To `TargetActor` → Attack with Cooldown and Force Success) and Roam → Wait.
 - Agent PIE on 2026-10-14 showed roam, orbit, defend, and attack running.
-- `BP_ThirdPersonCharacter` has no Event AnyDamage. Player health (`BPC_Health.Decrease_Health`) is called only from a debug key with Damage 25. Enemy Apply Damage does not reach the player yet.
+- `BP_ThirdPersonCharacter` Event AnyDamage calls `BPC_Health.Decrease_Health` with the event's Damage pin. A debug key still calls that function with Damage 25. Enemy Apply Damage is 10 and now reaches the player.
 - `E_States` has two values: Nothing and Attack. `ResetState` calls `SetState` with Nothing.
 - `SaveLightAttack_AN` calls `SaveLightAttack`. `bSaveLightAttack` buffers the next light-combo input.
 - `BPC_E_Health.E_Decrease_Health` subtracts the Damage argument and fires `E_Dead` at 0 or below. BeginPlay and Tick on that component do not continue.

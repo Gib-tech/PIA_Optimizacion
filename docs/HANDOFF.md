@@ -16,7 +16,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ### TL;DR
 
-On 2026-10-14 the owner resolved both open decisions: orbit at 180 (band 150–210) and light damage 25. On 2026-10-18 the owner replaced the flat 25 with combo damage **15 / 15 / 19** (swings 1 and 2, then the finisher). That Select is saved, and `FA_1_Montage` now has the hit window. Step 0, Step 0b, and the light hitbox switch are saved. Agent PIE after Step 0b showed both enemies inside 150–210 (distances 150–170), orbit points moving between samples, and `Enemigo: va a atacar` about every 3 seconds. The remaining AI 1 work is the player damage wire, which needs the owner's go-ahead, then the owner's PIE checks. The owner finished the defend accent and the Roam debug cleanup on 2026-10-14 and asked not to play-test either. AI 2 and AI 3 have not started.
+On 2026-10-14 the owner resolved both open decisions: orbit at 180 (band 150–210) and light damage 25. On 2026-10-18 the owner replaced the flat 25 with combo damage **15 / 15 / 19** (swings 1 and 2, then the finisher). That Select is saved, and `FA_1_Montage` now has the hit window. Step 0, Step 0b, and the light hitbox switch are saved. Agent PIE after Step 0b showed both enemies inside 150–210 (distances 150–170), orbit points moving between samples, and `Enemigo: va a atacar` about every 3 seconds. The remaining AI 1 work is the owner's PIE checks. The player damage wire is saved. The owner finished the defend accent and the Roam debug cleanup on 2026-10-14 and asked not to play-test either. AI 2 and AI 3 have not started.
 
 ### What fixed movement (read this before touching any tree)
 
@@ -88,14 +88,14 @@ These were run through `Tools/UnrealPython/` (see `GOVERNANCE.md` → Agent tool
 
 `BP_ThirdPersonCharacter` (relevant parts):
 - WeaponHitbox On Component Begin Overlap → Cast to `BP_BaseEnemy` → Print String `Hitbox detectada` → Branch on `bLightAttackActive`.
-- The node `E_Decrease_Health` (target: the cast enemy's `BPC_E_Health`, Damage 25) runs from the hitbox Branch's True pin. Its `then` pin goes to the object Cast To AIController.
+- The node `E_Decrease_Health` (target: the cast enemy's `BPC_E_Health`) runs from the hitbox Branch's True pin. Its Damage pin is the 15 / 15 / 19 Select. Its `then` pin goes to the object Cast To AIController.
 - The light and heavy attack chains are separate copies. Light starts at event `IA_Light_Attack` (graph Y ≈ −2672). Heavy starts at `IA_Heavy_Attack` (Y ≈ −1760).
   - Light: Started → Branch → (False) Set `IsAttacking` → Set `bLightAttackActive` → Weapon to Hand → Play Montage `LightAttackCombo[AttackIndex]` at (4144, −2624). That node's white `then` goes to a Branch at (4416, −2160) which sets `AttackIndex` to `AttackIndex + 1`, or to 0 on the last swing. On Completed → `IsAttacking` false → `bLightAttackActive` false → `AttackIndex` 0 → Weapon to Back.
   - That same Play Montage's On Notify Begin feeds Switch on Name at (4672, −2896). `EnableHitbox` sets `WeaponHitbox` collision to Query Only. `DisableHitbox` sets it to No Collision. Saved 2026-10-18.
 - `ResetState` → `SetState` (Nothing) → `AttackIndex` 0 → `bSaveLightAttack` false.
 - `bLightAttackActive` exists (bool, default false). Light start sets it true, light On Completed and `ResetState` set it false. WeaponHitbox overlap → Cast to `BP_BaseEnemy` → Print String → Branch on `bLightAttackActive`. True calls `E_Decrease_Health`. Its Damage pin is a Select: Index = `LightSwingIndex`, Option 0 = 15, Option 1 = 15, Option 2 = 19. Then Cast To AIController (object) fed by Get Controller, then Get Blackboard → Set Value as Bool `bReceivingDamage` checked. Heavy attack was not changed.
 - `LightSwingIndex` is set from `AttackIndex` on the live Play Montage's `then` pin, before the Branch that increments `AttackIndex`. `LightAttackCombo` order is `FA_1_Montage`, `FA_2_Montage`, `L_FA_3_Montage`.
-- The player has **no Event AnyDamage**. Its own health (`BPC_Health.Decrease_Health`) is called only from a debug key with Damage 25. So the enemy's Apply Damage 10 currently does nothing to the player. This is Verified from the export. See pending step 8.
+- The player has Event AnyDamage (`ReceiveAnyDamage`). Its `then` calls `BPC_Health.Decrease_Health`, and the event's Damage pin feeds that node's Damage pin. Damage Type, Instigated By, and Damage Causer are empty. The debug key still calls Decrease Health with 25. Saved 2026-10-18. Enemy Apply Damage 10 now reaches the player.
 
 Placed actors on `ThirdPersonMap`:
 
@@ -110,17 +110,15 @@ Nav: `SupportedAgents` is empty, so every pawn uses `RecastNavMesh-Default` (hei
 
 ### Pending work, in order
 
-**Playtest block, before Step 8.** Combo damage is saved: Select Option 0 = 15, Option 1 = 15, Option 2 = 19, Index = `LightSwingIndex`. The live light Play Montage at (4144, −2624) enables the hitbox through Switch on Name at (4672, −2896). All three light montages now have the hit window. `FA_1_Montage`: EnableHitbox at 0.08 s, DisableHitbox at 0.34 s (saved 2026-10-18). `FA_2_Montage`: EnableHitbox at 0.09 s, DisableHitbox at 0.34 s. `L_FA_3_Montage`: EnableHitbox at 0.10 s, DisableHitbox at 0.54 s. Swing 1 can connect. AI1-T4 is ready for the owner to play.
+**Playtest block.** Combo damage is saved: Select Option 0 = 15, Option 1 = 15, Option 2 = 19. All three light montages open the hitbox. Event AnyDamage is saved and forwards the incoming Damage pin to `BPC_Health.Decrease_Health`. The enemy still sends 10. AI1-T1 through AI1-T6 are ready for the owner. An export is not a pass.
 
-**Next click — Step 8, player damage.** The owner approved this on 2026-10-18. One asset: `BP_ThirdPersonCharacter`. The player still has no Event AnyDamage. Do not type a damage number. The enemy already sends 10.
+**Next — Step 9, owner play.** No more Blueprint edits until the play result is written down. Open `ThirdPersonMap`, press Play, and check:
 
-1. Open `BP_ThirdPersonCharacter`, Event Graph. Right-click empty space away from the light-attack chain (that chain is around X 4000) and add **Event AnyDamage** (Evento Cualquier daño).
-2. Drag `BPC_Health` from the Components panel into the graph and choose Get.
-3. Drag from the event's white `then` pin and add **Decrease Health**. Its target is that `BPC_Health` get. This is the player's `BPC_Health`, not the enemy's `E_Decrease_Health`.
-4. Drag the event's **Damage** pin into that node's Damage pin. Do not type 10 or 25. Leave Damage Type, Instigated By, and Damage Causer empty.
-5. Compilar, then Guardar.
+1. A light combo deals 15, then 15, then 19. About 0.6 seconds after each hit the screen shows `Enemigo: ya no recibe daño`. A heavy attack does not drop that health.
+2. Two full light combos leave the enemy at 2 health. The next light hit kills it. It plays the death montage, stops moving, stops printing, and disappears after a few seconds.
+3. While an enemy is in range, its attack lowers the player's health by 10. The debug key is still a separate 25.
 
-Do not touch the debug key at (−704, −3456). That key still calls Decrease Health with 25. Do not use the unwired Decrease Health at (4288, −800); it sits next to the enemy hit. Do not wire this event into the light-attack Select.
+If one swing removes 30 or 38, the hitbox overlapped twice. Record what was seen. Do not add a new number.
 
 Each step: the owner (or an agent instructing the owner) makes the edit, presses **Compilar**, then **Guardar**. Then re-export with `Tools/UnrealPython/export_ai.py` and confirm the change in the summary before going to the next step. Spanish UI names are given in parentheses.
 
@@ -167,7 +165,7 @@ Step 4 saved the flat 25. The owner replaced that on 2026-10-18 with 15 / 15 / 1
 
 **Step 7 — Health component guard.** Done 2026-10-18. `E_Decrease_Health` starts with a Branch whose condition is Get `E_Health` > 0. True goes to the existing subtract. False is empty.
 
-**Step 8 — Player receives enemy damage (needed for AI 3 and for AI 1's attack to matter).** Owner approved 2026-10-18. The click sequence is the next click above. On `BP_ThirdPersonCharacter`, add Event AnyDamage (Evento Cualquier daño) → `BPC_Health` → `Decrease_Health` with Damage = the event's Damage pin. The number stays the 10 that `BP_BaseEnemy` already sends.
+**Step 8 — Player receives enemy damage (needed for AI 3 and for AI 1's attack to matter).** Done 2026-10-18. Export: Event AnyDamage `then` calls `BPC_Health.Decrease_Health`, and the event Damage pin feeds that Damage pin. The debug key remains 25. The light Select remains 15 / 15 / 19. The number that arrives is the 10 `BP_BaseEnemy` already sends.
 
 **Step 9 — Owner PIE checks.** Run the editor tests in `WORK_ITEMS.md` that say Ready. Write each result in the result log. Set an AI1 row to Done only after its checks pass.
 
@@ -296,6 +294,10 @@ The specs are in `AI_REQUIREMENTS.md` → AI 3. Put the assets in `Content/Third
 - `docs/HANDOFF.md`
 
 ## History
+
+### 2026-10-18 — Player AnyDamage saved
+
+Export, dirty packages none. Event AnyDamage calls `BPC_Health.Decrease_Health`. The event's Damage pin is wired to that node's Damage pin. Damage Type, Instigated By, and Damage Causer are empty. The debug key is still 25. The light Select is still 15 / 15 / 19. Next step is the owner's play on `ThirdPersonMap`.
 
 ### 2026-10-18 — FA_1 hit window saved
 
