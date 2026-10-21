@@ -8,9 +8,17 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
-- Date: 2026-10-18
-- Branch: `feat/ai`. `main` is the untouched original project and is the reference for "how it was before".
-- Uncommitted: `Content/ThirdPerson/Blueprints/EnemigoIA/BT_EnemyIA.uasset` (Force Success removed), the docs, and `Tools/UnrealPython/`. Only the owner commits.
+- Date: 2026-10-21
+- Branch: `feat/ai`. `main` (`1545b36`, weapon switch) is merged into this branch. The only conflict was `BP_ThirdPersonCharacter`. The AI wiring stayed, and the weapon graph was copied onto it.
+- `hammer` is a child of the character mesh, Parent Socket `HammerSocket` (bone `hand_r` on `SK_SciFITrooper_Man_03`). Component location and rotation are 0. Visible is off, so it starts hidden. Hidden in Game is off, because the Set Visibility nodes only change the Visible flag.
+- Keys in `IMC_Default`: `Y` is `IA_SwitchToSword`, `T` is `IA_SwitchToHammer`. `Y` shows the hammer and hides the sword. `T` shows the sword and hides the hammer. The visibility pins are the opposite of the event names.
+- Reference copy of `main` before the merge: worktree `../PIA_Optimizacion_main`.
+- Weapon graph exported 2026-10-21. Dirty packages were none. Both events fire on **Started**, and the False pin of each Branch is empty. A few unused nodes remain (an unwired Widget Set Visibility, an unwired NOT, and an unwired Set `Weapon`); they are not on the exec chain.
+  - `IA_SwitchToSword`, if `bIsSwordEquipped` is false: Set Visibility `hammer` true → Set Visibility `Weapon` false → `bIsSwordEquipped` true → `bIsHammerEquipped` false. Propagate to Children off.
+  - `IA_SwitchToHammer`, if `bIsHammerEquipped` is false: Set Visibility `hammer` false → Set Visibility `Weapon` true → `bIsSwordEquipped` false → `bIsHammerEquipped` true.
+  - The visibility pins are the opposite of the event names. Confirm with the author before changing them.
+- `main` is no longer the untouched original. The AI reference for "how it was before" remains `7198fa9`.
+- Only the owner commits. Do not push this merge unless the owner asks.
 - Area: AI 1 orbiter. Its movement works. Combat integration and cleanup are still open.
 - Editor: Unreal Engine 5.6.1, Spanish UI, project `Terreno.uproject`, map `ThirdPersonMap`.
 
@@ -294,6 +302,14 @@ The specs are in `AI_REQUIREMENTS.md` → AI 3. Put the assets in `Content/Third
 - `docs/HANDOFF.md`
 
 ## History
+
+### 2026-10-21 — Weapon switch merged onto the AI player Blueprint
+
+`main` `1545b36` is merged into `feat/ai`. `BP_ThirdPersonCharacter` keeps the light combo and AnyDamage wiring, and now has the hammer component on `HammerSocket` plus the two switch events. `Y` shows the hammer. `T` shows the sword. The hammer starts hidden.
+
+### 2026-10-21 — Merge of main started, player Blueprint kept
+
+`main` `1545b36` merged into `feat/ai`. The only conflict was `BP_ThirdPersonCharacter.uasset`. Resolved with the `feat/ai` asset. Hammer assets and input actions are staged. The weapon switch graph is not on the player Blueprint yet. The merge commit is still open.
 
 ### 2026-10-18 — Player AnyDamage saved
 
