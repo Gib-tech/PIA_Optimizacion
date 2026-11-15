@@ -2,6 +2,15 @@
 
 Status values: `Todo`, `In progress`, `Blocked`, `Done`.
 
+## Prioridad actual — entrega 2026-11-18
+
+- **Ready para aceptación del propietario:** nivel nuevo con escenario de Ian, navegación y cuatro enemigos; balizas 1 → 2 → 3 y extracción; HUD con objetivos, victoria/derrota y reintento.
+- **Ready para aceptación del propietario:** rehén con árbol propio, seguimiento, detección visual de enemigos, huida a refugio alcanzable y reanudación por E/RB. Pruebas del agente aprobadas en PIE; no equivalen a aceptación del propietario.
+- **Ready:** Nuevo juego abre el nivel nuevo. Continuar está deshabilitado hasta persistir los objetivos y la escolta.
+- **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`. UAT terminó correctamente (0 errores de cook, 20 advertencias de recursos anteriores). Prueba del ejecutable aprobó menú/nivel/interacción y la corrección de iluminación; CRC del ZIP aprobado. Sigue pendiente una partida completa manual.
+- **Todo / dependencia del equipo:** modelo definitivo de baliza; coordinación de partículas con Dany.
+- **Todo:** segundo enemigo, oleadas/bloqueos, guardado completo y recorrido manual de principio a fin.
+
 `Done` requires the acceptance check in `AI_REQUIREMENTS.md`. The owner's board says AI 1 is Done. These rows stay `In progress` or `Todo` until Play In Editor on `ThirdPersonMap` shows the behavior. `In progress` means the saved asset already contains that work.
 
 Numbers and tree order are locked in `AI_REQUIREMENTS.md`. The exact click steps for every open row are in `HANDOFF.md` → "Pending work, in order".
@@ -24,10 +33,10 @@ Build recipe: `HANDOFF.md` → "After AI 1: AI 2 hostage build recipe".
 
 | ID | Status | Item | Notes |
 | --- | --- | --- | --- |
-| AI2-01 | Todo | Create `BP_Hostage`, `BB_Hostage`, `BT_Hostage`, and a controller that runs only that tree. | Follow, hold, and idle use the distances in the requirements. |
+| AI2-01 | In progress | `BP_Hostage`, `BB_Hostage`, `BT_Hostage`, controller, sense service, arrival task and animation copy saved. | Ready for owner acceptance. Agent PIE 2026-11-15 passed follow, visual threat, reachable refuge and manual E resume. Current request supersedes old auto-resume distances; see current handoff. |
 | AI2-02 | Todo | Create `BP_CombatZone` with an entrance blocker and a flee-point reference. Place one in reachable space on `ThirdPersonMap`. | Record the actor label in `HANDOFF.md`. Needs AI1-06 (`bIsDead`, `E_Dead` bound on BeginPlay). |
 | AI2-03 | Todo | Create `BP_HostageSpawnZone`. Spawn 2 enemies once, only while the hostage is accompanying. | First zone uses `BP_BaseEnemy`. |
-| AI2-04 | Todo | After the zone is clear, release the blocker and resume escort when the player comes within 400 units. | Depends on AI2-01 and AI2-02. |
+| AI2-04 | In progress | Resume escort through explicit interaction within 400 units when there is no visible nearby threat. | Agent PIE passed manual E resume; owner acceptance pending. Combat-zone blocker release remains Todo with AI2-02. Auto-resume is superseded by the owner's 2026-11-15 request. |
 
 ## AI 3 — Charger
 

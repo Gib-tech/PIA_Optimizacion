@@ -1,0 +1,12 @@
+from generate_delivery_graphs import Graph,PAWN,ACTOR
+g=Graph()
+e=g.event('/Script/Engine.AnimInstance','BlueprintUpdateAnimation',x=0,y=0).pin('DeltaTimeX','real',sub='float',out=True)
+p=g.call('/Script/Engine.AnimInstance','TryGetPawnOwner',pure=True,x=0,y=300).pin('ReturnValue','object',obj=PAWN,out=True)
+valid=g.call('/Script/Engine.KismetSystemLibrary','IsValid',pure=True,static=True,x=300,y=300).pin('Object','object',obj='/Script/CoreUObject.Object').pin('ReturnValue','bool',out=True)
+g.wire(p,'ReturnValue',valid,'Object')
+b=g.branch(x=600,y=0);g.wire(e,'then',b,'execute');g.wire(valid,'ReturnValue',b,'Condition')
+vel=g.call(ACTOR,'GetVelocity',pure=True,x=600,y=300).pin('ReturnValue','struct',obj='/Script/CoreUObject.Vector',out=True);g.wire(p,'ReturnValue',vel,'self')
+speed=g.call('/Script/Engine.KismetMathLibrary','VSizeXY',pure=True,static=True,x=900,y=300).pin('A','struct',obj='/Script/CoreUObject.Vector').pin('ReturnValue','real',sub='double',out=True)
+g.wire(vel,'ReturnValue',speed,'A')
+save=g.set('speed','real','0',sub='double',x=1200,y=0);g.wire(b,'then',save,'execute');g.wire(speed,'ReturnValue',save,'speed')
+g.write('ABP_Hostage')

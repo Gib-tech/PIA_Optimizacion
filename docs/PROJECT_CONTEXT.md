@@ -2,6 +2,15 @@
 
 Facts below are separated from the assignment brief. Do not merge the two.
 
+## Estado verificado — 2026-11-15
+
+- Entrega indicada por el propietario: miércoles 18 de noviembre de 2026.
+- `Nivel_Entrega` incorpora el FBX de `Escenario.zip` de Ian, cuatro enemigos existentes, tres balizas provisionales, extracción y rehén con Behavior Tree propio.
+- Inicio del editor: `/Game/ThirdPerson/Maps/Nivel_Entrega`. Inicio del juego: `/Game/LevelMenu/MainMenuLevel`. Nuevo juego del menú abre el nivel nuevo.
+- Sistemas nuevos bajo `Content/ThirdPerson/Blueprints/Entrega/` y `Content/ThirdPerson/Blueprints/Aliado/`; importación bajo `Content/ThirdPerson/Environment/EscenarioIan/`.
+- El proyecto sigue sin módulo C++ de gameplay. UAT puede generar targets temporales dentro de `Intermediate` por los plugins habilitados.
+- Consultar `HANDOFF.md` actual para pruebas, controles y límites. La sección de hechos de octubre que sigue se conserva como historia y no define los mapas actuales.
+
 ## Verified repository facts
 
 Checked on 2026-10-11.

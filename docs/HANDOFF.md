@@ -8,6 +8,61 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha: **2026-11-15**. Entrega indicada por el propietario: **miércoles 18 de noviembre de 2026**.
+- **Stated:** el propietario pidió avanzar de forma autónoma, importar el escenario de Ian y priorizar la escolta del rehén. Las instrucciones antiguas que pedían que el propietario hiciera cada clic ya no describen este encargo.
+- **Verified:** nuevo nivel guardado `/Game/ThirdPerson/Maps/Nivel_Entrega`. Usa los cuatro sectores de `Downloads/Escenario.zip`, suelo, límites, navegación, cuatro instancias del enemigo existente, tres balizas provisionales y una salida azul. Las puertas del FBX original medían aproximadamente 1.29 m; los sectores se colocaron a escala uniforme 2 para permitir el paso de las cápsulas.
+- **Verified:** `/Game/Menu/Menu_Inicio` → Nuevo juego abre el nivel nuevo. `MainMenuLevel` usa `BP_GameMode_Menu` para evitar el personaje y su barra de vida detrás del menú. El mapa inicial del juego es el menú; el mapa inicial del editor es `Nivel_Entrega`.
+- **Verified:** la misión usa `BP_DirectorEntrega`, `BP_HUD_Entrega` y `BP_GameMode_Entrega` bajo `/Game/ThirdPerson/Blueprints/Entrega`. Activa balizas 1 → 2 → 3 una sola vez, luego exige jugador y rehén juntos en extracción. La muerte del jugador produce derrota. **R** reinicia y **Enter** vuelve al menú después de ganar o morir.
+- **Verified:** interacción con **E** o **RB/R1** cerca del rehén o la baliza. RB se eligió porque X/cuadrado ya está asignado al ataque ligero; no se cambió el mapa de entradas del personaje.
+- **Verified:** `/Game/ThirdPerson/Blueprints/Aliado/` contiene `BP_Hostage`, `BP_HostageController`, `BB_Hostage`, `BT_Hostage`, `BTService_HostageSense`, `BTTask_HostageArrive` y `ABP_Hostage`. El original `ABP_Aliado` del compañero permanece intacto. La copia añade actualización de velocidad para sus transiciones idle/caminar.
+- **Verified:** la decisión de movimiento del rehén se ejecuta en `BT_Hostage`: huir → esperar interacción → seguir → idle. El servicio sólo actualiza Blackboard; las tareas MoveTo ejecutan el movimiento. `Interactuar` escribe el estado tras comprobar distancia y ausencia de amenaza. El director recibe las teclas porque un Pawn controlado por IA no recibe las entradas del jugador directamente.
+- **Decision del agente bajo la autonomía concedida:** interacción 400 cm; iniciar seguimiento a más de 500 cm y terminar MoveTo a 300 cm; velocidad 400 cm/s; enemigo vivo visible hasta 800 cm; refugio navegable a ≥1000 cm del jugador y ≥1200 cm de todos los enemigos vivos. Son ajustes iniciales, no decisiones expresas del propietario. El servicio revisa cada 0.5 s y elige el refugio alcanzable más cercano entre 13 TargetPoints etiquetados `RefugioRehen`.
+- **Verified:** `Rehen_Entrega` empieza cerca del jugador. Si ve una amenaza después de ser rescatado, huye; al llegar espera. Acercarse sin interactuar **no** reanuda la escolta. Esto sustituye el requisito antiguo de reanudación automática a 400 cm.
+- **Verified:** `PlayerActor` en `BB_Hostage` debe ser Object con **BaseClass Actor**. Con UObject, el filtro de MoveTo vacía la selección al guardar. El decorador de distancia de seguimiento usa **Lower Priority**, para que la marcha llegue hasta 300 cm sin abortarse a 500 cm.
+- **Verified:** no se editaron el combate, los montajes ni las partículas del equipo. El modelo definitivo de baliza está pendiente de la subida del compañero; los cilindros naranja/verde ya permiten jugar.
+- **Verified:** Continuar se deshabilitó en el menú de esta entrega porque el guardado existente no persiste balizas/estado de escolta y apuntaba al mapa anterior. Nuevo juego funciona. No afirmar soporte de guardado de esta misión.
+- **Verified:** todos los paquetes estaban guardados antes de cerrar Unreal para UAT. El primer empaquetado se detuvo por Live Coding activo; el empaquetado final terminó **BUILD SUCCESSFUL**, ExitCode 0, configuración Win64 Development. Cook final: 0 errores y 20 advertencias de recursos existentes; los intentos anteriores también advirtieron sobre poses de Manny obsoletas y el material Landscape del mapa anterior al cocinar SM5. No se modificaron esos recursos ajenos a la misión nueva.
+- **Verified:** paquete jugable `Deliverables/Windows/Terreno.exe`; ZIP `Deliverables/TimeOut_Avance_18Nov2026.zip` (736346100 bytes), con verificación CRC completa aprobada. Incluye `LEEME.txt`; omite símbolos de depuración y datos locales de guardado. Conservar la carpeta Windows completa al ejecutar.
+- **Verified:** prueba fuera del editor: menú, Nuevo juego, nivel nuevo, HUD E/RB, interacción E y cambio a estado de escolta. Continuar aparece deshabilitado. La primera prueba reveló paredes negras por iluminación indirecta; se corrigió **sólo en Nivel_Entrega** con `Iluminacion_Entrega` (PostProcess unbound, GI dinámica None), sin sombras de Skylight y sin contribución DF de los cuatro sectores; las sombras del sol permanecen. El ejecutable final se volvió a abrir sin comandos de diagnóstico y mostró las texturas/iluminación correctas.
+- Sin commit ni push. Los nuevos `.uasset` y `.umap` están pendientes de añadir a Git por el propietario.
+
+### Cómo probar lo nuevo
+
+1. Abrir `Terreno.uproject` con UE 5.6. El editor abre `Nivel_Entrega`.
+2. Play: acercarse al maniquí aliado del inicio y pulsar E; caminar y observar el seguimiento.
+3. Acercarse a un enemigo: el rehén debe buscar un refugio. Ir a buscarlo, despejar amenazas y pulsar E cerca para recuperarlo.
+4. Activar las balizas numeradas en orden y llevar al rehén a la salida azul. El HUD muestra el objetivo y el estado de la escolta.
+5. Para comprobar el flujo de menú, abrir `MainMenuLevel`, Play y Nuevo juego.
+
+### Pruebas del agente, no aceptación del propietario
+
+- **Verified, PIE 2026-11-15:** E rescata al aliado; sigue a 400 cm/s, la variable `speed` de `ABP_Hostage` también vale aproximadamente 400 al moverse y se detiene a unos 297 cm del jugador.
+- **Verified, PIE:** amenaza visible a 600 cm activa huida; el aliado recorre el NavMesh, llega a ≤80 cm del refugio y queda `bWaiting=true`, `bMustFlee=false`, `bAccompanying=false`. Se observó espera con el jugador cerca, y reanudación sólo después de E.
+- **Verified, PIE:** baliza lejana y baliza fuera de orden no avanzan el objetivo; cada activación correcta cambia a verde; repetir E no vuelve a avanzar. Extracción anticipada no gana.
+- **Verified, PIE final de extracción:** con las tres balizas activas, el jugador solo en salida quedó en Paso 3 sin pausa. Llevar al aliado, interactuar y estar ambos en la salida produjo Paso 4 y pausa. Se usaron teletransportes de prueba para aislar condiciones; no equivalen a una partida completa recorrida a mano.
+- **Verified, PIE:** daño real de 100 a través de GameplayStatics produce salud 0, Paso 5 y pausa. R reinicia balizas/salud; Enter retorna al menú. Los enemigos existentes se movieron y quitaron 10 de salud por golpe.
+- **Verified, PIE:** Nuevo juego abre `Nivel_Entrega`, sin advertencia de iluminación pendiente después de pasar las luces a Movable. El aliado responde a E después de entrar desde el menú.
+- **Unknown:** validación con mando físico, partida completa sin teletransportes, aceptación del propietario y rendimiento en otra computadora.
+
+### Pendientes inmediatos
+
+- Integrar el modelo final de baliza cuando el compañero lo suba; conservar orden, referencias del director y colores de activación.
+- Coordinar con Dany las partículas/notifies de ataque y daño. No trabajarlos simultáneamente.
+- Recorrer la misión completa y ajustar refugios/población enemiga si la dificultad lo requiere. El rehén es invulnerable y utiliza el maniquí provisional.
+- El segundo enemigo de la rúbrica (charger), las zonas de oleadas/bloqueo y la persistencia completa de misión siguen pendientes; no se presentaron como terminados.
+
+### Herramientas y precauciones
+
+- `python Tools/UnrealPython/run.py Tools/UnrealPython/ping.py` comprueba el editor remoto. `check_delivery_routes.py` valida caminos; `playtest_hostage.py` y `playtest_delivery.py` actúan sólo sobre PIE mediante archivos JSON en `Intermediate/inspect`.
+- `generate_delivery_graphs.py`, `generate_hostage_graphs.py`, `generate_hostage_tree.py` y `generate_hostage_animation.py` generan texto de portapapeles revisable. Se pega en el gráfico correspondiente mediante la UI y después se compila/exporta. No se ejecuta Python durante el juego empaquetado.
+- Los scripts de importación/creación son recetas de la construcción inicial; **no volver a ejecutar toda la secuencia sobre el nivel terminado**. `resize_delivery_level.py` tiene una protección contra aplicación doble. Los assets guardados son la entrega principal.
+- Exportaciones y registros están bajo `Intermediate/inspect`; UAT genera paquetes locales bajo `Deliverables` (ignorado por Git).
+- Reconstrucción del paquete: guardar y cerrar Unreal, ejecutar `powershell -NoProfile -File Tools/Build-Delivery.ps1`; después `python Tools/Archive-Delivery.py`. El log de compilación queda en `Deliverables/build.log`, la prueba final en `Deliverables/package-smoke-final.log`. Actualizar el ZIP después de cambiar assets; el ZIP actual corresponde al último paquete probado.
+
+## History
+
+### Handoff anterior — 2026-10-21
+
 - Date: 2026-10-21
 - Branch: `main`, same commit as `feat/ai`. `BP_ThirdPersonCharacter` keeps the AI wiring and the weapon graph. Do not replace it with the menu zip's copy.
 - Menu widgets from the partner zip (UE 5.4) are in `Content/Menu` (`/Game/Menu/...`). `MainMenuLevel` now opens `/Game/Menu/Menu_Inicio`. `DefaultEngine.ini` sets `GameInstanceClass` to the existing `BP_GameInstance`. The old widgets under `Content/LevelMenu/Menu` are still there. Pause on **P** is not on this player Blueprint yet.

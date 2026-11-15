@@ -1,5 +1,11 @@
 # AI requirements
 
+## Actualización del propietario — 2026-11-15
+
+**Stated:** para la entrega del miércoles 18 se prioriza el nuevo nivel con el escenario de Ian y la IA del rehén: seguir al jugador, huir al ver enemigos hacia una zona segura lejos del jugador y esperar una nueva interacción para seguirlo. El propietario pidió implementación autónoma. La reanudación automática descrita más abajo es histórica y queda sustituida por interacción manual.
+
+**Verified:** esta escolta está implementada en `BT_Hostage`/`BB_Hostage`; detalles, ajustes iniciales y pruebas del agente están en el handoff actual. Los valores del combate existente siguen vigentes. Las zonas de oleadas y el segundo enemigo permanecen pendientes; la actualización no los declara satisfechos ni los elimina de la rúbrica.
+
 Distances are Unreal units (centimeters). Every numeric value in "Locked decisions" is a **Decision** the owner delegated on 2026-10-11. Expose each one as an editable variable on the Blackboard or the actor, initialized to the value below.
 
 Existing enemy assets are listed in `PROJECT_CONTEXT.md`. What is already saved is in `HANDOFF.md`, which was exported on 2026-10-14. The numbers below stay the target.

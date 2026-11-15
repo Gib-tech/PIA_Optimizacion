@@ -2,6 +2,10 @@
 
 Operating rules for any agent working in this repository. Read this file before changing the project. Then read `PROJECT_CONTEXT.md`, `AI_REQUIREMENTS.md`, `WORK_ITEMS.md`, and `HANDOFF.md`.
 
+## Actualización de alcance — 2026-11-15
+
+El propietario pidió avanzar autónomamente para la entrega del 18 de noviembre: importar el escenario de Ian, crear el nivel entregable e implementar prioritariamente el rehén. Esa autorización sustituye el flujo antiguo de pedir al propietario cada clic, y permite conectar el menú al nuevo nivel. El agente dispone ahora de UI y Python del editor; compila, guarda, exporta y prueba los cambios. Mantener las reglas de evidencia, los Behavior Trees y el combate existente. No marcar aceptación del propietario a partir de una prueba del agente ni hacer commit/push sin su solicitud.
+
 ## Evidence rules
 
 Label every claim with one of these sources:

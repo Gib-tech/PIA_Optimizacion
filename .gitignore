@@ -72,4 +72,8 @@ Plugins/**/Intermediate/*
  
 # Cache files for the editor to use
 DerivedDataCache/*
- 
+
+# Local delivery packages and Python bytecode
+Deliverables/
+__pycache__/
+*.pyc
