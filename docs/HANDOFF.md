@@ -9,7 +9,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 ## Current handoff
 
 - Fecha: **2026-11-15**. Entrega: **miércoles 18 de noviembre de 2026**.
-- **Stated:** el propietario autorizó trabajo autónomo, priorizó segundo enemigo y oleadas, pidió refinar IA/animaciones, rama nueva y commits. Rama: `codex/entrega-18nov-ia-oleadas`. El avance anterior quedó en `3383b43`. No se pidió push. `origin/main` seguía en `68eb221` tras fetch al comenzar este avance.
+- **Stated:** el propietario autorizó trabajo autónomo, priorizó segundo enemigo y oleadas, pidió refinar IA/animaciones, rama nueva y commits. Rama: `codex/entrega-18nov-ia-oleadas`. El avance anterior quedó en `3383b43`; IA, oleadas y animaciones quedaron en `d641200`. No se pidió push. `origin/main` seguía en `68eb221` tras fetch al comenzar este avance.
 - **Verified:** `/Game/ThirdPerson/Maps/Nivel_Entrega` contiene los cuatro sectores de Ian de `Escenario.zip`, suelo, límites, navegación, rehén, tres balizas y extracción. Los sectores usan escala 2 por el tamaño original de sus puertas. Las cuatro instancias enemigas fijas se sustituyeron por encuentros de oleadas.
 - **Verified:** Nuevo juego abre este mapa; el juego inicia en `MainMenuLevel`. `BP_GameMode_Menu` evita el personaje/barra detrás del menú. Continuar permanece deshabilitado: no hay persistencia de esta misión.
 
@@ -53,7 +53,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ### Paquete y pendientes
 
-- **Paquete actualizado: en construcción.** Se reconstruye `Deliverables/Windows/Terreno.exe` y `Deliverables/TimeOut_Avance_18Nov2026.zip`; el ZIP anterior no contenía estas oleadas. `Tools/Delivery-README.txt` genera el LEEME del paquete.
+- **Verified:** paquete actualizado `Deliverables/Windows/Terreno.exe` y `Deliverables/TimeOut_Avance_18Nov2026.zip` (**647494072 bytes**, CRC completo aprobado). Win64 Development, BUILD SUCCESSFUL, ExitCode 0, cook 0 errores/20 advertencias de recursos anteriores. Prueba del ejecutable actualizado: menú, Nuevo juego, escenario iluminado, HUD de oleadas e interacción E con rehén. La prueba completa de oleadas/animaciones se hizo en PIE. `Tools/Delivery-README.txt` genera el LEEME del paquete.
 - Iluminación se mantiene corregida sólo en el nivel nuevo: PostProcess GI None, Skylight sin sombras y sectores sin contribución DF. No modificar los materiales antiguos de Landscape por las advertencias de SM5.
 - Pendiente del equipo: modelo final de baliza y del aliado; coordinar partículas/notifies con Dany, sin trabajarlos simultáneamente.
 - Pendiente de aceptación: recorrido completo sin teletransportes, balance de ocho enemigos, mando físico y rendimiento en otra computadora. Persistencia completa de misión y supervivencia posterior a extracción no están implementadas.

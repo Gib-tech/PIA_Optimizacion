@@ -7,7 +7,7 @@ Status values: `Todo`, `In progress`, `Blocked`, `Done`.
 - **Ready para aceptación del propietario:** nivel nuevo con escenario de Ian, navegación y dos zonas de oleadas; balizas 1 → 2 → 3 y extracción; HUD con objetivos, victoria/derrota y reintento.
 - **Ready para aceptación del propietario:** rehén con árbol propio, seguimiento, detección visual de enemigos, huida a refugio alcanzable y reanudación por E/RB. Pruebas del agente aprobadas en PIE; no equivalen a aceptación del propietario.
 - **Ready:** Nuevo juego abre el nivel nuevo. Continuar está deshabilitado hasta persistir los objetivos y la escolta.
-- **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`. UAT terminó correctamente (0 errores de cook, 20 advertencias de recursos anteriores). Prueba del ejecutable aprobó menú/nivel/interacción y la corrección de iluminación; CRC del ZIP aprobado. Sigue pendiente una partida completa manual.
+- **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`. UAT terminó correctamente (0 errores de cook, 20 advertencias de recursos anteriores). Paquete actualizado con embestidor/oleadas. Prueba del ejecutable aprobó menú/nivel/HUD/interacción y la iluminación; CRC del ZIP de 647494072 bytes aprobado. Sigue pendiente una partida completa manual.
 - **Todo / dependencia del equipo:** modelo definitivo de baliza; coordinación de partículas con Dany.
 - **Ready para aceptación:** embestidor con árbol propio, daño ligero/pesado, oleadas 2 × 2 por zona, barreras y animaciones con cancelación. Pruebas automatizadas de PIE aprobadas; ver evidencia en el handoff.
 - **Todo:** guardado completo y recorrido manual de principio a fin.

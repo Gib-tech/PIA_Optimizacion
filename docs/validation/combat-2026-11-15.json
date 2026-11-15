@@ -68,5 +68,15 @@
     "extraction_alone_step": 3,
     "extraction_with_escort_step": 4,
     "restart_resets_zones_health_beacons": true
+  },
+  "package": {
+    "platform": "Win64 Development",
+    "uat_exit_code": 0,
+    "cook_errors": 0,
+    "cook_warnings": 20,
+    "zip_bytes": 647494072,
+    "zip_crc_passed": true,
+    "standalone_menu_new_game_hud_escort_interaction": true,
+    "full_manual_playthrough": false
   }
 }
