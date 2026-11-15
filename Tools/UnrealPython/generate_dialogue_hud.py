@@ -1,0 +1,224 @@
+"""Reviewable Blueprint source: contextual retro dialogue, typewriter, dismiss/reveal and audio.
+
+Presentation only: reads existing mission/Blackboard state, never changes AI or objectives.
+"""
+import textwrap
+from generate_combat_graphs import CombatGraph,ACTOR,OBJECT,ref,q
+from generate_wave_graphs import ZONE,HOSTAGE
+from generate_delivery_graphs import DIRECTOR,HEALTH
+HUD='/Script/Engine.HUD'
+MATH='/Script/Engine.KismetMathLibrary'
+STRING='/Script/Engine.KismetStringLibrary'
+AUDIO='/Game/ThirdPerson/Audio/'
+FONT='/Game/ThirdPerson/Blueprints/Entrega/F_DialogueMono.F_DialogueMono'
+MESSAGES=[
+ ('','', ''),
+ ('TIME OUT','Hay alguien que necesita tu ayuda. Acércate al rehén para rescatarlo.','[E / RB] Interactuar al acercarte'),
+ ('REHÉN','Por favor, sácame de aquí. No puedo salir solo.','[E / RB] Rescatar'),
+ ('REHÉN','Te seguiré. Si veo enemigos, buscaré un refugio. Cuando esté a salvo, tendrás que volver a llamarme.','WASD: moverte   Ratón: cámara'),
+ ('REHÉN','¡Enemigos! Buscaré un lugar seguro. Despeja la zona y después vuelve por mí.','Despeja la zona y recupera al rehén'),
+ ('REHÉN','El rehén espera en su refugio. Acércate cuando no haya enemigos para que vuelva a seguirte.','[E / RB] Llamarlo al acercarte'),
+ ('REHÉN','Ya estoy a salvo. ¿Seguimos?','[E / RB] Volver a seguir'),
+ ('REHÉN','Todavía hay enemigos cerca. No es seguro salir.','Elimina las amenazas cercanas'),
+ ('ALERTA','Estás por entrar en una zona de combate. Entrar con el rehén cerca activa 2 oleadas de 2 enemigos.','Prepárate antes de entrar'),
+ ('ALERTA','Esta zona necesita al rehén para activarse. Entra con él siguiéndote a menos de 6 metros.','Recupera al rehén y vuelve con él'),
+ ('OLEADA 1 / 2','El rehén busca refugio. Los orbitadores sólo reciben ataques ligeros.','Clic izquierdo: ataque ligero'),
+ ('OLEADA 2 / 2','Otro par de orbitadores. Despeja el área para abrir la barrera.','Clic izquierdo: ataque ligero'),
+ ('OLEADA 1 / 2','El rehén busca refugio. Los embestidores reciben ataques ligeros y pesados.','Clic izquierdo: ligero   Clic derecho: pesado'),
+ ('OLEADA 2 / 2','Cuidado con las cargas. Ataca durante su preparación o su retirada.','Clic izquierdo: ligero   Clic derecho: pesado'),
+ ('UNA BREVE CALMA','La siguiente oleada llega en 3 segundos. Aprovecha para tomar distancia.','Prepárate para la siguiente oleada'),
+ ('ZONA DESPEJADA','No quedan enemigos en esta zona. Recupera al rehén y activa la primera baliza.','[E / RB] Interactuar al acercarte'),
+ ('ZONA DESPEJADA','No quedan enemigos en esta zona. Recupera al rehén y activa la segunda baliza.','[E / RB] Interactuar al acercarte'),
+ ('BALIZA 1','Esta baliza ya puede activarse. Su señal te permitirá avanzar hacia la salida.','[E / RB] Activar baliza'),
+ ('BALIZA 2','Esta baliza ya puede activarse. Su señal te permitirá avanzar hacia la salida.','[E / RB] Activar baliza'),
+ ('BALIZA 3','La última baliza está lista. Actívala para preparar la extracción.','[E / RB] Activar baliza'),
+ ('BALIZA ACTIVADA','Primera baliza activada. Lleva al rehén a la siguiente zona.','Continúa con el rehén'),
+ ('BALIZA ACTIVADA','Segunda baliza activada. Encuentra la última baliza y mantén al rehén contigo.','Continúa con el rehén'),
+ ('EXTRACCIÓN','Las tres balizas responden. Llega a la salida azul junto con el rehén.','Llegar solo no completa la misión'),
+ ('FALTA ALGUIEN','No puedes dejarlo atrás. Reúnete con el rehén y entra con él a la salida.','[E / RB] Recuperar al rehén'),
+ ('A SALVO','Lo lograron. El rehén está a salvo.','[R] Reintentar    [ENTER] Menú'),
+ ('OTRA OPORTUNIDAD','Esta vez no pudo ser. Todavía puedes volver a intentarlo.','[R] Reintentar    [ENTER] Menú')]
+class DialogueGraph(CombatGraph):
+    def node(self,kind,props=(),**pos):
+        i=len(self.nodes);pos.setdefault('x',(i%9)*380);pos.setdefault('y',(i//9)*310)
+        return super().node(kind,props,**pos)
+g=DialogueGraph()
+KINDS={**dict.fromkeys(['CurrentDialog','LastDialog','DismissedDialog','VisibleCharacters'],'int'),**dict.fromkeys(['DialogStarted','LastBeepAt','LastHealth','CharactersPerSecond','HoldSeconds','UIAudioVolume'],'real'),**dict.fromkeys(['ForceReveal','DialogueVisible'],'bool'),**dict.fromkeys(['FullText','VisibleText','Speaker','ActionHint'],'string')}
+def v(name):
+    cat=KINDS[name];return (g.get(name,cat,sub='double' if cat=='real' else ''),name)
+def wire(value,node,pin):
+    if isinstance(value,tuple):
+        if value[0].pins[value[1]]['cat']=='int' and node.pins[pin]['cat']=='real':
+            value=call(MATH,'Conv_IntToDouble',[('InInt','int',value)])
+        g.wire(*value,node,pin)
+    else:node.pins[pin]['default']=str(value).lower() if isinstance(value,bool) else str(value)
+def call(owner,name,inputs,output='ReturnValue',cat='real',obj=None,pure=True,static=True):
+    n=g.call(owner,name,pure=pure,static=static)
+    for pin,typ,value in inputs:
+        n.pin(pin,typ,sub='double' if typ=='real' else '')
+        wire(value,n,pin)
+    n.pin(output,cat,obj=obj,sub='double' if cat=='real' else '',out=True)
+    return n,output
+def calc(fn,a,b,cat='real'):
+    return call(MATH,fn,[('A',cat,a),('B',cat,b)],cat=cat)
+def cmp(fn,a,b,cat='int'):
+    return call(MATH,fn,[('A',cat,a),('B',cat,b)],cat='bool')
+def both(a,b):return calc('BooleanAND',a,b,'bool')
+def either(a,b):return calc('BooleanOR',a,b,'bool')
+def neg(a):return call(MATH,'Not_PreBool',[('A','bool',a)],cat='bool')
+def pick(cond,a,b,cat='int'):
+    return call(MATH,'SelectInt' if cat=='int' else 'SelectFloat',[('A',cat,a),('B',cat,b),('bPickA','bool',cond)],cat=cat)
+def table(index,values,cat='string',obj=None):
+    n=g.node('K2Node_Select',['NumOptionPins='+str(len(values)),'IndexPinType=(PinCategory="int")']).pin('Index','int').pin('ReturnValue',cat,obj=obj,out=True);wire(index,n,'Index')
+    for i,value in enumerate(values):
+        n.pin('Option '+str(i),cat,obj=obj)
+        if cat=='object':n.pins['Option '+str(i)]['default_obj']=value
+        else:wire(value,n,'Option '+str(i))
+    return n,'ReturnValue'
+def save(prev,name,value,pin='then'):
+    cat=KINDS[name];n=g.set(name,cat,None,sub='double' if cat=='real' else '');g.chain(prev,n,pin);wire(value,n,name);return n
+def branch(prev,condition,pin='then'):
+    n=g.branch();g.chain(prev,n,pin);wire(condition,n,'Condition');return n
+def sound(prev,name,volume=None,pin='then',spawn=False):
+    n=g.call('/Script/Engine.GameplayStatics','SpawnSound2D' if spawn else 'PlaySound2D',static=True).pin('Sound','object',obj='/Script/Engine.SoundBase').pin('VolumeMultiplier','real',sub='float',default='.32').pin('PitchMultiplier','real',sub='float',default='1').pin('StartTime','real',sub='float',default='0').pin('ConcurrencySettings','object',obj='/Script/Engine.SoundConcurrency').pin('bIsUISound','bool',default='true')
+    if isinstance(name,tuple):wire(name,n,'Sound')
+    else:n.pins['Sound']['default_obj']=AUDIO+'SW_'+name+'.SW_'+name
+    if volume is not None:wire(volume,n,'VolumeMultiplier')
+    if spawn:
+        del n.pins['bIsUISound']
+        n.pin('bPersistAcrossLevelTransition','bool',default='false').pin('bAutoDestroy','bool',default='true').pin('ReturnValue','object',obj='/Script/Engine.AudioComponent',out=True)
+    else:n.pin('OwningActor','object',obj=ACTOR)
+    g.chain(prev,n,pin);return n
+# Cache actors once; gameplay remains entirely in existing director and behavior trees.
+begin=g.event(ACTOR,'ReceiveBeginPlay');prev=begin
+for name,cls in [('CachedDirector',DIRECTOR),('CachedHostage',HOSTAGE)]:
+    n=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True).pin('ActorClass','class',obj=ACTOR,default_obj=cls).pin('ReturnValue','object',obj=cls,out=True);g.chain(prev,n)
+    s=g.set(name,'object',None,obj=cls);g.chain(n,s);g.wire(n,'ReturnValue',s,name);prev=s
+ambient=sound(prev,'Ambience',.18,spawn=True)
+cache=g.set('AmbientAudio','object',None,obj='/Script/Engine.AudioComponent');g.chain(ambient,cache);g.wire(ambient,'ReturnValue',cache,'AmbientAudio')
+# Enter reveals the sentence immediately; a second press dismisses this context.
+key=g.key('Enter');length=call(STRING,'Len',[('S','string',v('FullText'))],cat='int')
+reading=branch(key,cmp('Less_IntInt',v('VisibleCharacters'),length),'Pressed')
+save(reading,'ForceReveal',True)
+save(reading,'DismissedDialog',v('CurrentDialog'),'else')
+draw=g.event(HUD,'ReceiveDrawHUD').pin('SizeX','int',out=True).pin('SizeY','int',out=True)
+director=g.get('CachedDirector','object',obj=DIRECTOR);hostage=g.get('CachedHostage','object',obj=HOSTAGE);player=g.player()
+ready=both((g.valid(director,'CachedDirector'),'ReturnValue'),(g.valid(hostage,'CachedHostage'),'ReturnValue'))
+valid=branch(draw,ready)
+step=g.get('Paso','int',owner=DIRECTOR);g.wire(director,'CachedDirector',step,'self');step=(step,'Paso')
+bb=g.blackboard(hostage,'CachedHostage')
+following=(g.bbget(bb,'bAccompanying'),'ReturnValue');rescued=(g.bbget(bb,'bRescued'),'ReturnValue')
+unsafe=either((g.bbget(bb,'bMustFlee'),'ReturnValue'),(g.bbget(bb,'bEnemyNear'),'ReturnValue'))
+hdist=(g.dist(hostage,'CachedHostage',player,'ReturnValue'),'ReturnValue');nearhostage=cmp('LessEqual_DoubleDouble',hdist,400,'real')
+zoneindex=calc('Min',step,1,'int')
+zones=[]
+for i in [1,2]:
+    z=g.get('Zona'+str(i),'object',owner=DIRECTOR,obj=ZONE);g.wire(director,'CachedDirector',z,'self');zones.append((z,'Zona'+str(i)))
+zone=table(zoneindex,[None,None],'object',ZONE)
+for i,z in enumerate(zones):wire(z,zone[0],'Option '+str(i))
+def zget(name):
+    n=g.get(name,'int',owner=ZONE);wire(zone,n,'self');return n,name
+phase=zget('Phase');wave=zget('CurrentWave');living=zget('LivingCount')
+relevant=cmp('Less_IntInt',step,2)
+zdist=(g.dist(zone[0],zone[1],player,'ReturnValue'),'ReturnValue')
+nearzone=cmp('LessEqual_DoubleDouble',zdist,1700,'real')
+overlap=g.call(ACTOR,'IsOverlappingActor',pure=True).pin('Other','object',obj=ACTOR).pin('ReturnValue','bool',out=True);wire(zone,overlap,'self');g.wire(player,'ReturnValue',overlap,'Other')
+# Context priorities: escort, nearby entry, wave, clear, safe interaction, beacon, outcome.
+default=table(step,[3,20,21,22,24,25],'int')
+context=pick(following,default,pick(rescued,pick(nearhostage,6,5),pick(nearhostage,2,1)))
+context=pick(both(unsafe,rescued),4,context)
+idlezone=both(relevant,cmp('EqualEqual_IntInt',phase,0))
+context=pick(both(idlezone,both(following,nearzone)),8,context)
+context=pick(both(idlezone,both((overlap,'ReturnValue'),neg(following))),9,context)
+waveid=calc('Add_IntInt',10,calc('Add_IntInt',calc('Multiply_IntInt',zoneindex,2,'int'),calc('Subtract_IntInt',wave,1,'int'),'int'),'int')
+context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,1)),waveid,context)
+context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,2)),14,context)
+context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,3)),calc('Add_IntInt',15,zoneindex,'int'),context)
+context=pick(both(nearhostage,both(neg(following),neg(unsafe))),pick(rescued,6,2),context)
+beacons=[]
+for i in [1,2,3]:
+    b=g.get('Baliza'+str(i),'object',owner=DIRECTOR,obj='/Script/Engine.StaticMeshActor');g.wire(director,'CachedDirector',b,'self');beacons.append((b,'Baliza'+str(i)))
+beacon=table(calc('Min',step,2,'int'),[None]*3,'object','/Script/Engine.StaticMeshActor')
+for i,b in enumerate(beacons):wire(b,beacon[0],'Option '+str(i))
+bdist=(g.dist(beacon[0],beacon[1],player,'ReturnValue'),'ReturnValue')
+beaconready=both(cmp('Less_IntInt',step,3),either(cmp('EqualEqual_IntInt',step,2),cmp('EqualEqual_IntInt',phase,3)))
+context=pick(both(beaconready,cmp('LessEqual_DoubleDouble',bdist,250,'real')),calc('Add_IntInt',17,step,'int'),context)
+exit=g.get('Salida','object',owner=DIRECTOR,obj='/Script/Engine.StaticMeshActor');g.wire(director,'CachedDirector',exit,'self')
+edist=(g.dist(exit,'Salida',player,'ReturnValue'),'ReturnValue')
+alone=both(cmp('EqualEqual_IntInt',step,3),both(cmp('LessEqual_DoubleDouble',edist,300,'real'),either(neg(following),cmp('Greater_DoubleDouble',hdist,600,'real'))))
+context=pick(alone,23,context)
+context=pick(cmp('GreaterEqual_IntInt',step,4),calc('Add_IntInt',20,step,'int'),context)
+current=save(valid,'CurrentDialog',context)
+texts=['\n'.join('* '+line for line in textwrap.wrap(m[1],width=58)) for m in MESSAGES]
+prev=current
+for name,values in [('FullText',texts),('Speaker',[m[0] for m in MESSAGES]),('ActionHint',[m[2] for m in MESSAGES])]:prev=save(prev,name,table(v('CurrentDialog'),values))
+now=call('/Script/Engine.GameplayStatics','GetRealTimeSeconds',[])
+changed=branch(prev,cmp('NotEqual_IntInt',v('CurrentDialog'),v('LastDialog')))
+prev=save(changed,'LastDialog',v('CurrentDialog'));prev=save(prev,'DialogStarted',now);prev=save(prev,'ForceReveal',False);prev=save(prev,'DismissedDialog',-1);prev=save(prev,'LastBeepAt',now)
+names=['Open']*len(MESSAGES)
+for i in [3]:names[i]='Rescue'
+for i in [4,8,10,11,12,13,14]:names[i]='Alert'
+for i in [15,16,20,21,22]:names[i]='Clear'
+names[24]='Victory';names[25]='Defeat'
+notification=table(v('CurrentDialog'),[AUDIO+'SW_'+name+'.SW_'+name for name in names],'object','/Script/Engine.SoundBase')
+played=sound(prev,notification,v('UIAudioVolume'))
+age=calc('Subtract_DoubleDouble',now,v('DialogStarted'))
+rate=v('CharactersPerSecond');progress=calc('Multiply_DoubleDouble',age,rate)
+count=call(MATH,'FFloor',[('A','real',progress)],cat='int')
+count=pick(v('ForceReveal'),length,calc('Min',length,count,'int'))
+substring=call(STRING,'Left',[('SourceString','string',v('FullText')),('Count','int',count)],cat='string')
+update=save(played,'VisibleText',substring);g.chain(changed,update,'else')
+duration=calc('Add_DoubleDouble',calc('Divide_DoubleDouble',length,rate),v('HoldSeconds'))
+pers=table(v('CurrentDialog'),[i in [2,6,17,18,19,23,24,25] for i in range(len(MESSAGES))],'bool')
+visible=both(cmp('NotEqual_IntInt',v('DismissedDialog'),v('CurrentDialog')),either(pers,cmp('Less_DoubleDouble',age,duration,'real')))
+visible_set=save(update,'DialogueVisible',visible)
+typing=both(v('DialogueVisible'),both(neg(v('ForceReveal')),both(cmp('Greater_IntInt',count,v('VisibleCharacters')),cmp('Greater_DoubleDouble',calc('Subtract_DoubleDouble',now,v('LastBeepAt')),.07,'real'))))
+typebranch=branch(visible_set,typing)
+beep=sound(typebranch,'Text',calc('Multiply_DoubleDouble',v('UIAudioVolume'),.36))
+pitch=call(MATH,'RandomFloatInRange',[('Min','real',.94),('Max','real',1.08)]);wire(pitch,beep,'PitchMultiplier')
+last=save(beep,'LastBeepAt',now)
+chars=save(last,'VisibleCharacters',count);g.chain(typebranch,chars,'else')
+# Damage feedback reads the existing player health component.
+health=g.call(ACTOR,'GetComponentByClass',pure=True).pin('ComponentClass','class',obj='/Script/Engine.ActorComponent',default_obj=HEALTH).pin('ReturnValue','object',obj=HEALTH,out=True);g.wire(player,'ReturnValue',health,'self')
+hp=g.get('Health','real',owner=HEALTH,sub='double');g.wire(health,'ReturnValue',hp,'self');hp=(hp,'Health')
+hurt=branch(chars,cmp('Less_DoubleDouble',hp,v('LastHealth'),'real'))
+impact=sound(hurt,'PlayerHurt',calc('Multiply_DoubleDouble',v('UIAudioVolume'),2))
+health_save=save(impact,'LastHealth',hp);g.chain(hurt,health_save,'else')
+# Adaptive 900px frame at 1280; monospaced font, white border, no world-space text.
+width=(draw,'SizeX');height=(draw,'SizeY')
+ratio=calc('Divide_DoubleDouble',width,1280)
+scale=call(MATH,'FClamp',[('Value','real',ratio),('Min','real',.65),('Max','real',1.35)])
+def mul(a,b):return calc('Multiply_DoubleDouble',a,b)
+def add(a,b):return calc('Add_DoubleDouble',a,b)
+def sub(a,b):return calc('Subtract_DoubleDouble',a,b)
+bw=call(MATH,'FMin',[('A','real',mul(900,scale)),('B','real',sub(width,40))]);bh=mul(180,scale)
+x=mul(sub(width,bw),.5);y=sub(sub(height,bh),mul(24,scale))
+def rect(prev,x,y,w,h,color):
+    n=g.call(HUD,'DrawRect').pin('RectColor','struct',obj='/Script/CoreUObject.LinearColor',default=color)
+    for pin,value in [('ScreenX',x),('ScreenY',y),('ScreenW',w),('ScreenH',h)]:n.pin(pin,'real',sub='float');wire(value,n,pin)
+    g.chain(prev,n);return n
+def text(prev,value,x,y,size=1,color='(R=1,G=1,B=1,A=1)'):
+    n=g.call(HUD,'DrawText').pin('Text','string').pin('TextColor','struct',obj='/Script/CoreUObject.LinearColor',default=color).pin('Font','object',obj='/Script/Engine.Font',default_obj=FONT).pin('bScalePosition','bool',default='false')
+    wire(value,n,'Text')
+    for pin,value in [('ScreenX',x),('ScreenY',y),('Scale',mul(size*.85,scale))]:n.pin(pin,'real',sub='float');wire(value,n,pin)
+    g.chain(prev,n);return n
+chipx=sub(width,mul(270,scale));chipy=mul(22,scale)
+incombat=both(relevant,either(cmp('EqualEqual_IntInt',phase,1),cmp('EqualEqual_IntInt',phase,2)))
+chip=rect(health_save,chipx,chipy,mul(248,scale),mul(pick(incombat,63,32),scale),'(R=0,G=0,B=0,A=.8)')
+objectives=table(step,['1 / 4   PRIMERA BALIZA','2 / 4   SEGUNDA BALIZA','3 / 4   ÚLTIMA BALIZA','4 / 4   EXTRACCIÓN','REHÉN A SALVO','FIN DEL INTENTO'])
+title=text(chip,objectives,add(chipx,mul(12,scale)),add(chipy,mul(9,scale)),1.05)
+active=branch(title,incombat)
+wc=call(STRING,'Conv_IntToString',[('InInt','int',wave)],cat='string');lc=call(STRING,'Conv_IntToString',[('InInt','int',living)],cat='string')
+def concat(a,b):return call(STRING,'Concat_StrStr',[('A','string',a),('B','string',b)],cat='string')
+counters=concat(concat(concat('OLEADA ',wc),' / 2    VIVOS '),lc)
+counter=text(active,counters,add(chipx,mul(12,scale)),add(chipy,mul(42,scale)),1.0)
+box=branch(counter,v('DialogueVisible'));g.chain(active,box,'else')
+outer=rect(box,x,y,bw,bh,'(R=1,G=1,B=1,A=1)')
+inner=rect(outer,add(x,mul(3,scale)),add(y,mul(3,scale)),sub(bw,mul(6,scale)),sub(bh,mul(6,scale)),'(R=0,G=0,B=0,A=1)')
+speaker=text(inner,v('Speaker'),add(x,mul(28,scale)),add(y,mul(15,scale)),1.1)
+body=text(speaker,v('VisibleText'),add(x,mul(28,scale)),add(y,mul(43,scale)),1.8)
+action=text(body,v('ActionHint'),add(x,mul(28,scale)),add(y,mul(150,scale)),1.1)
+end=cmp('Less_IntInt',step,4)
+hint=branch(action,end)
+text(hint,'ENTER: leer / cerrar',sub(add(x,bw),mul(218,scale)),add(y,mul(150,scale)),1.1)
+g.write('BP_HUD_Entrega')

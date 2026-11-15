@@ -24,10 +24,10 @@
         "enter_alone": 0,
         "waves": 2,
         "total_enemies": 4,
-        "intermission_seconds": 3.201,
+        "intermission_seconds": 3.0,
         "death_stops_tree": true,
         "gate_opens": true,
-        "world_prompts_updated": true,
+        "dialogue_prompts_updated": true,
         "reentry_respawn": 0
       },
       {
@@ -35,10 +35,10 @@
         "enter_alone": 0,
         "waves": 2,
         "total_enemies": 4,
-        "intermission_seconds": 3.004,
+        "intermission_seconds": 3.008,
         "death_stops_tree": true,
         "gate_opens": true,
-        "world_prompts_updated": true,
+        "dialogue_prompts_updated": true,
         "reentry_respawn": 0
       }
     ]
@@ -81,12 +81,12 @@
     "platform": "Win64 Development",
     "uat_exit_code": 0,
     "cook_errors": 0,
-    "cook_warnings": 20,
-    "zip_bytes": 737213304,
+    "cook_warnings": 34,
+    "zip_bytes": 737270129,
     "zip_crc_passed": true,
     "standalone_menu_new_game_hud_escort_interaction": true,
     "full_manual_playthrough": false,
-    "status": "Verified after wall/camera/appearance/guidance refinements"
+    "status": "Verified: contextual dialogue, original audio and baked monospaced font"
   },
   "walls_camera": {
     "passed": true,
@@ -133,8 +133,10 @@
     ]
   },
   "guidance": {
-    "physical_E_changes_hostage_prompt": true,
-    "initial_rescue_and_resume_distinct": true,
-    "zone_text_phases_checked_in_wave_test": true
+    "style": "retro dialogue HUD",
+    "no_floating_world_text": true,
+    "progressive_text_and_Enter_reveal_dismiss": true,
+    "audio_cues_and_looping_ambience": true,
+    "evidence": "presentation-2026-11-15.json"
   }
 }

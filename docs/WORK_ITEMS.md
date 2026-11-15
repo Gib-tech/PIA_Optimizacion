@@ -1,6 +1,6 @@
 # Work items
 
-Refinamiento 2026-11-15: aspecto Warrior original restaurado por elección expresa; contacto 6; prismas de colisión en cuatro sectores; cámara con sonda 24; indicadores de rescate y oleadas dentro del mundo. Pruebas y límites en HANDOFF actual; aceptación del propietario pendiente.
+Refinamiento 2026-11-15: aspecto Warrior original restaurado por elección expresa; contacto 6; prismas de colisión en cuatro sectores; cámara con sonda 24; recuadro contextual inspirado en Undertale para rescate/alertas/oleadas y audio propio. El texto flotante fue rechazado y retirado. Pruebas y límites en HANDOFF actual; aceptación del propietario pendiente.
 
 Status values: `Todo`, `In progress`, `Blocked`, `Done`.
 

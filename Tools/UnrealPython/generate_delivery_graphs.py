@@ -173,7 +173,7 @@ def director():
         g.wire(p,'then',op,'execute')
     g.write('BP_DirectorEntrega')
 
-def hud():
+def legacy_hud():
     from generate_hostage_graphs import HostageGraph
     g=HostageGraph()
     event=g.event('/Script/Engine.HUD','ReceiveDrawHUD',x=0,y=0).pin('SizeX','int',out=True).pin('SizeY','int',out=True)
@@ -229,6 +229,10 @@ def hud():
     full=concat(suffix,'ReturnValue',count,'ReturnValue',x=4500,y=2100)
     counters=draw('',185,line,scale='1.0');g.wire(full,'ReturnValue',counters,'Text')
     g.write('BP_HUD_Entrega')
+
+def hud():
+    # The current HUD uses contextual dialogue; keep the original source above for history.
+    import generate_dialogue_hud
 
 if __name__=='__main__':
     director()

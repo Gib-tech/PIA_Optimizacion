@@ -3,23 +3,25 @@ import unreal,json,os,traceback
 w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_game_world();assert w
 p=unreal.GameplayStatics.get_player_pawn(w,0)
 h=unreal.GameplayStatics.get_actor_of_class(w,unreal.load_class(None,'/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage_C'))
+director=unreal.GameplayStatics.get_actor_of_class(w,unreal.load_class(None,'/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega.BP_DirectorEntrega_C'))
+hud=unreal.GameplayStatics.get_player_controller(w,0).get_hud()
 b=h.get_controller().get_component_by_class(unreal.BlackboardComponent)
 zs=sorted(unreal.GameplayStatics.get_all_actors_of_class(w,unreal.load_class(None,'/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone.BP_CombatZone_C')),key=lambda a:a.get_actor_label())
 assert all(z.get_editor_property('Phase')==0 for z in zs),'Run in a fresh PIE session.'
 unreal.get_default_object(unreal.SystemLibrary.static_class()).call_method('SetBoolPropertyByName',(p,'bCanBeDamaged',False))
 project=unreal.Paths.convert_relative_path_to_full(unreal.Paths.project_dir())
 state={'index':0,'stage':'enter','since':unreal.GameplayStatics.get_time_seconds(w),'handle':None,'results':[]}
-def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,root=project):
+def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,root=project,mission=director,ui=hud):
     try:
         now=unreal.GameplayStatics.get_time_seconds(world);zone=zones[s['index']];phase=zone.get_editor_property('Phase');wave=zone.get_editor_property('CurrentWave');count=zone.get_editor_property('SpawnedCount')
         if s['stage']=='enter':
+            unreal.get_default_object(unreal.SystemLibrary.static_class()).call_method('SetIntPropertyByName',(mission,'Paso',s['index']))
             center=zone.get_actor_location();player.set_actor_location(unreal.Vector(center.x,center.y+600,100),False,True)
             bb.set_value_as_bool('bAccompanying',False);bb.set_value_as_bool('bWaiting',True);bb.set_value_as_bool('bMustFlee',False)
             s.update(stage='alone',since=now)
         elif s['stage']=='alone' and now-s['since']>1:
             assert count==0 and phase==0,'Entering alone spawned enemies'
-            prompt=next(a for a in unreal.GameplayStatics.get_all_actors_of_class(world,unreal.TextRenderActor) if a.get_class().get_name()=='BP_ZonaIndicador_C' and a.get_editor_property('Zona')==zone)
-            assert 'ENTRA CON EL REHEN' in str(prompt.get_component_by_class(unreal.TextRenderComponent).get_editor_property('text'))
+            assert ui.get_editor_property('CurrentDialog')==9,ui.get_editor_property('CurrentDialog')
             hostage.set_actor_location(player.get_actor_location()+unreal.Vector(150,150,0),False,True)
             for key,value in [('bWaiting',False),('bMustFlee',False),('bRescued',True),('bAccompanying',True)]:bb.set_value_as_bool(key,value)
             bb.set_value_as_int('Estado',1);s.update(stage='first',since=now)
@@ -54,9 +56,8 @@ def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,roo
             s.update(stage='check_once',since=now)
         elif s['stage']=='check_once' and now-s['since']>.5:
             assert count==4 and phase==3,'Completed zone respawned'
-            prompt=next(a for a in unreal.GameplayStatics.get_all_actors_of_class(world,unreal.TextRenderActor) if a.get_class().get_name()=='BP_ZonaIndicador_C' and a.get_editor_property('Zona')==zone)
-            assert 'ZONA DESPEJADA' in str(prompt.get_component_by_class(unreal.TextRenderComponent).get_editor_property('text'))
-            s['results'][-1]['world_prompts_updated']=True
+            assert ui.get_editor_property('CurrentDialog')==15+s['index'],ui.get_editor_property('CurrentDialog')
+            s['results'][-1]['dialogue_prompts_updated']=True
             s['results'][-1]['reentry_respawn']=0
             if s['index']==0:s.update(index=1,stage='enter',since=now)
             else:

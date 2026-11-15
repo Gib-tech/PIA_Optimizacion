@@ -1,0 +1,93 @@
+{
+  "no_world_text": true,
+  "progressive_text": true,
+  "ambient_playing": true,
+  "does_not_pause": true,
+  "enter_reveals": true,
+  "enter_dismisses": true,
+  "rescue_changes_dialogue": true,
+  "type_audio_ticks": true,
+  "auto_hides": true,
+  "manual_resume_prompt": true,
+  "passed": true,
+  "style": "black and white monospaced dialogue; 42 characters per second; Enter reveal/dismiss",
+  "wave_dialogues": {
+    "passed": true,
+    "zones": [
+      {
+        "zone": "Zona_01_Orbitadores",
+        "enter_alone": 0,
+        "waves": 2,
+        "total_enemies": 4,
+        "intermission_seconds": 3.0,
+        "death_stops_tree": true,
+        "gate_opens": true,
+        "dialogue_prompts_updated": true,
+        "reentry_respawn": 0
+      },
+      {
+        "zone": "Zona_02_Embestidores",
+        "enter_alone": 0,
+        "waves": 2,
+        "total_enemies": 4,
+        "intermission_seconds": 3.008,
+        "death_stops_tree": true,
+        "gate_opens": true,
+        "dialogue_prompts_updated": true,
+        "reentry_respawn": 0
+      }
+    ]
+  },
+  "paused_outcome_text": true,
+  "physical_R_restarts": true,
+  "physical_Enter_returns_menu": true,
+  "original_audio": {
+    "SW_Alert": {
+      "seconds": 0.32,
+      "peak": 0.188
+    },
+    "SW_Ambience": {
+      "seconds": 12.0,
+      "peak": 0.116
+    },
+    "SW_Clear": {
+      "seconds": 0.4,
+      "peak": 0.215
+    },
+    "SW_Defeat": {
+      "seconds": 0.68,
+      "peak": 0.197
+    },
+    "SW_Open": {
+      "seconds": 0.125,
+      "peak": 0.161
+    },
+    "SW_PlayerHurt": {
+      "seconds": 0.22,
+      "peak": 0.324
+    },
+    "SW_Rescue": {
+      "seconds": 0.38,
+      "peak": 0.215
+    },
+    "SW_Text": {
+      "seconds": 0.026,
+      "peak": 0.07
+    },
+    "SW_Victory": {
+      "seconds": 0.71,
+      "peak": 0.215
+    }
+  },
+  "font": {
+    "asset": "F_DialogueMono",
+    "type": "offline non-streaming atlas",
+    "face": "Consolas",
+    "spanish_glyphs": true
+  },
+  "packaged_rescue_input": true,
+  "packaged_native_capture_text_complete_after_80_seconds": true,
+  "packaged_full_and_visible_text_match": true,
+  "preview": "dialogue-preview.png",
+  "capture_note": "Automated Windows window capture sometimes omitted glyphs. Native Unreal screenshots and runtime property dumps retained the complete text."
+}

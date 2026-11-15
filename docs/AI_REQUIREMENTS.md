@@ -8,6 +8,8 @@
 
 **Stated, refinamiento posterior:** recuperar la apariencia anterior de los enemigos, mejorar camara/paredes, impedir que el jugador quede atrapado, senalar el rescate dentro del mundo, explicar activacion y reducir dano enemigo.
 
+**Stated, presentación posterior:** el propietario rechazó el texto flotante y pidió recuadros tipo Undertale para señales/alertas y agregar audio. La presentación nueva sustituye los TextRender anteriores; no altera las reglas de activación de las IA.
+
 **Verified:** escolta en `BT_Hostage`/`BB_Hostage`; segundo enemigo en `BT_Charger`/`BB_Charger`; encuentros finitos en `BP_CombatZone`, colocados en `Nivel_Entrega`. Pruebas del agente y límites en el handoff actual. La aceptación del propietario sigue pendiente.
 
 **Decision de implementación:** una misma zona combina la condición de escolta y el control de oleadas: no se crea un segundo volumen `BP_HostageSpawnZone` superpuesto. Cada zona activa dos oleadas de dos enemigos, con intermedio de 3 s; vuelve a abrir la barrera al morir el último enemigo y no repite al reentrar. La primera y segunda baliza exigen despejar sus respectivas zonas. No es la supervivencia posterior a la extracción descrita en el documento histórico.
