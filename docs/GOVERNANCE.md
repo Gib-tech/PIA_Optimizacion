@@ -6,6 +6,8 @@ Operating rules for any agent working in this repository. Read this file before 
 
 El propietario pidió avanzar autónomamente para la entrega del 18 de noviembre: importar el escenario de Ian, crear el nivel entregable e implementar prioritariamente el rehén. Esa autorización sustituye el flujo antiguo de pedir al propietario cada clic, y permite conectar el menú al nuevo nivel. El agente dispone ahora de UI y Python del editor; compila, guarda, exporta y prueba los cambios. Mantener las reglas de evidencia, los Behavior Trees y el combate existente. No marcar aceptación del propietario a partir de una prueba del agente ni hacer commit/push sin su solicitud.
 
+**Ampliación expresa del propietario, 2026-11-15:** priorizar segundo enemigo y oleadas, refinar ambas IA y el ciclo de animaciones, trabajar en una rama nueva y hacer commits. Rama de trabajo: `codex/entrega-18nov-ia-oleadas`. Los commits locales están autorizados; no se pidió push. Se permiten ajustes de implementación necesarios para terminar estos sistemas; registrar sus valores y pruebas. La colocación se realiza en `Nivel_Entrega`, que sustituye el mapa de pruebas antiguo para esta entrega.
+
 ## Evidence rules
 
 Label every claim with one of these sources:

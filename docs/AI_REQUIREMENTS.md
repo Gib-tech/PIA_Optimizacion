@@ -4,7 +4,13 @@
 
 **Stated:** para la entrega del miércoles 18 se prioriza el nuevo nivel con el escenario de Ian y la IA del rehén: seguir al jugador, huir al ver enemigos hacia una zona segura lejos del jugador y esperar una nueva interacción para seguirlo. El propietario pidió implementación autónoma. La reanudación automática descrita más abajo es histórica y queda sustituida por interacción manual.
 
-**Verified:** esta escolta está implementada en `BT_Hostage`/`BB_Hostage`; detalles, ajustes iniciales y pruebas del agente están en el handoff actual. Los valores del combate existente siguen vigentes. Las zonas de oleadas y el segundo enemigo permanecen pendientes; la actualización no los declara satisfechos ni los elimina de la rúbrica.
+**Stated, ampliación del 2026-11-15:** el propietario pidió priorizar el segundo enemigo y las oleadas, refinar las IA y las animaciones, y guardar el trabajo en una rama nueva mediante commits.
+
+**Verified:** escolta en `BT_Hostage`/`BB_Hostage`; segundo enemigo en `BT_Charger`/`BB_Charger`; encuentros finitos en `BP_CombatZone`, colocados en `Nivel_Entrega`. Pruebas del agente y límites en el handoff actual. La aceptación del propietario sigue pendiente.
+
+**Decision de implementación:** una misma zona combina la condición de escolta y el control de oleadas: no se crea un segundo volumen `BP_HostageSpawnZone` superpuesto. Cada zona activa dos oleadas de dos enemigos, con intermedio de 3 s; vuelve a abrir la barrera al morir el último enemigo y no repite al reentrar. La primera y segunda baliza exigen despejar sus respectivas zonas. No es la supervivencia posterior a la extracción descrita en el documento histórico.
+
+**Decision de ajuste:** pesado del embestidor 25; ligero conserva 15/15/19 y el orbitador mantiene inmunidad al pesado. El ataque del orbitador aplica 10 a los 0.45 s y finaliza a los 1.3 s; recibir daño lo interrumpe. En el embestidor la preparación dura 0.8 s, la carga hasta 1 s, la retirada tiene límite de 4 s si la navegación se atasca y después espera 2 s. Persecución con aceptación 450 cm para entrar con margen en su rango 250–700. Las decisiones de cada personaje siguen en su árbol.
 
 Distances are Unreal units (centimeters). Every numeric value in "Locked decisions" is a **Decision** the owner delegated on 2026-10-11. Expose each one as an editable variable on the Blackboard or the actor, initialized to the value below.
 

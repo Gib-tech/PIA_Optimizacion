@@ -123,7 +123,13 @@ def director():
         distance=g.distance(beacon,'Baliza%d'%(i+1),player,850,y+200)
         near=g.compare('LessEqual_DoubleDouble','real','250',sub='double',x=1100,y=y+200)
         g.wire(distance,'ReturnValue',near,'A')
-        branch=g.branch(x=1400,y=y);g.wire(switch,str(i),branch,'execute');g.wire(near,'ReturnValue',branch,'Condition')
+        branch=g.branch(x=1400,y=y);g.wire(switch,str(i),branch,'execute')
+        if i<2:
+            zoneclass='/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone.BP_CombatZone_C'
+            zone=g.get('Zona'+str(i+1),'object',obj=zoneclass,x=600,y=y+350)
+            cleared=g.get('bCleared','bool',owner=zoneclass,x=850,y=y+350);g.wire(zone,'Zona'+str(i+1),cleared,'self')
+            enabled=g.boolean('BooleanAND',near,'ReturnValue',cleared,'bCleared',x=1100,y=y+350);g.wire(enabled,'ReturnValue',branch,'Condition')
+        else:g.wire(near,'ReturnValue',branch,'Condition')
         component=g.get('StaticMeshComponent','object',owner=MESH_ACTOR,obj=MESH_COMP,x=1450,y=y+200)
         # Native variables require a native member-parent reference.
         component.props=['VariableReference=(MemberParent='+ref(MESH_ACTOR)+',MemberName="StaticMeshComponent")']
@@ -174,22 +180,22 @@ def hud():
     get=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True,x=0,y=400).pin('ActorClass','class',obj=ACTOR,default_obj=DIRECTOR).pin('ReturnValue','object',obj=ACTOR,out=True)
     step=g.get('Paso','int',owner=DIRECTOR,x=600,y=400);g.wire(get,'ReturnValue',step,'self')
     text=g.node('K2Node_Select',['NumOptionPins=6','IndexPinType=(PinCategory="int")'],x=900,y=400).pin('Index','int',default='0').pin('ReturnValue','string',out=True)
-    messages=['OBJETIVO 1/4 | Activa la baliza 1','OBJETIVO 2/4 | Activa la baliza 2','OBJETIVO 3/4 | Activa la baliza 3','OBJETIVO 4/4 | Lleva al rehen a la zona azul','MISION COMPLETADA | REHEN A SALVO','HAS MUERTO']
+    messages=['OBJETIVO 1/4 | Despeja la zona 1 y activa su baliza','OBJETIVO 2/4 | Despeja la zona 2 y activa su baliza','OBJETIVO 3/4 | Activa la baliza 3','OBJETIVO 4/4 | Lleva al rehen a la zona azul','MISION COMPLETADA | REHEN A SALVO','HAS MUERTO']
     for i,msg in enumerate(messages):text.pin('Option %d'%i,'string',default=msg)
     g.wire(step,'Paso',text,'Index')
     # Fixed left margin; occupies the strip below the existing health widget.
-    rect=g.call('/Script/Engine.HUD','DrawRect',x=300,y=0).pin('RectColor','struct',obj='/Script/CoreUObject.LinearColor',default='(R=0.008,G=0.018,B=0.035,A=0.88)').pin('ScreenX','real',sub='float',default='24').pin('ScreenY','real',sub='float',default='95').pin('ScreenW','real',sub='float',default='660').pin('ScreenH','real',sub='float',default='160')
+    rect=g.call('/Script/Engine.HUD','DrawRect',x=300,y=0).pin('RectColor','struct',obj='/Script/CoreUObject.LinearColor',default='(R=0.008,G=0.018,B=0.035,A=0.75)').pin('ScreenX','real',sub='float',default='24').pin('ScreenY','real',sub='float',default='50').pin('ScreenW','real',sub='float',default='690').pin('ScreenH','real',sub='float',default='165')
     g.wire(event,'then',get,'execute');g.wire(get,'then',rect,'execute')
     def draw(value,y,prev,x=600,scale='1.2',color='(R=0.9,G=0.95,B=1,A=1)'):
         n=g.call('/Script/Engine.HUD','DrawText',x=x,y=y*4).pin('Text','string',default=value).pin('TextColor','struct',obj='/Script/CoreUObject.LinearColor',default=color).pin('ScreenX','real',sub='float',default='40').pin('ScreenY','real',sub='float',default=str(y)).pin('Font','object',obj='/Script/Engine.Font',default_obj='/Engine/EngineFonts/Roboto.Roboto').pin('Scale','real',sub='float',default=scale).pin('bScalePosition','bool',default='false')
         g.wire(prev,'then',n,'execute')
         return n
-    title=draw('OBJETIVOS DE LA MISION',110,rect,scale='1.3',color='(R=0.1,G=0.8,B=1,A=1)')
-    objective=draw('',145,title);g.wire(text,'ReturnValue',objective,'Text')
+    title=draw('OBJETIVOS DE LA MISION',60,rect,scale='1.0',color='(R=0.1,G=0.8,B=1,A=1)')
+    objective=draw('',85,title,scale='1.0');g.wire(text,'ReturnValue',objective,'Text')
     controls=g.node('K2Node_Select',['NumOptionPins=6','IndexPinType=(PinCategory="int")'],x=1200,y=700).pin('Index','int',default='0').pin('ReturnValue','string',out=True)
-    for i in range(6):controls.pin('Option %d'%i,'string',default='E / RB: interactuar cerca | Balizas en orden 1 > 2 > 3' if i<3 else ('Reunete con el rehen y escoltalo hasta la salida.' if i==3 else 'R: reintentar | Enter: volver al menu'))
+    for i in range(6):controls.pin('Option %d'%i,'string',default='E / RB: interactuar | Clic izq.: ligero | Clic der.: pesado' if i<3 else ('Reunete con el rehen y escoltalo hasta la salida.' if i==3 else 'R: reintentar | Enter: volver al menu'))
     g.wire(step,'Paso',controls,'Index')
-    hint=draw('',180,objective,scale='1.0');g.wire(controls,'ReturnValue',hint,'Text')
+    hint=draw('',110,objective,scale='1.0');g.wire(controls,'ReturnValue',hint,'Text')
     escort=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True,x=1600,y=900).pin('ActorClass','class',obj=ACTOR,default_obj='/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage_C').pin('ReturnValue','object',obj=ACTOR,out=True)
     g.chain(hint,escort)
     bb=g.blackboard(escort,'ReturnValue',x=1900,y=1000)
@@ -197,7 +203,31 @@ def hud():
     status=g.node('K2Node_Select',['NumOptionPins=4','IndexPinType=(PinCategory="int")'],x=2500,y=1000).pin('Index','int',default='0').pin('ReturnValue','string',out=True)
     for i,msg in enumerate(['REHEN: esperando | Acercate y pulsa E / RB para rescatarlo','REHEN: siguiendote | Si detecta enemigos buscara un refugio','REHEN: huyendo | Reunete con el en su refugio','REHEN: refugiado | Despeja la zona y pulsa E / RB cerca']):status.pin('Option %d'%i,'string',default=msg)
     g.wire(state,'ReturnValue',status,'Index')
-    statusline=draw('',215,escort,scale='1.0',color='(R=1,G=0.8,B=0.2,A=1)');g.wire(status,'ReturnValue',statusline,'Text')
+    statusline=draw('',135,escort,scale='1.0',color='(R=1,G=0.8,B=0.2,A=1)');g.wire(status,'ReturnValue',statusline,'Text')
+    zoneclass='/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone.BP_CombatZone_C'
+    choose=g.node('K2Node_Select',['NumOptionPins=2','IndexPinType=(PinCategory="int")'],x=3000,y=1000).pin('Index','int').pin('ReturnValue','object',obj=zoneclass,out=True)
+    for i in range(2):
+        z=g.get('Zona'+str(i+1),'object',obj=zoneclass,owner=DIRECTOR,x=2500,y=1400+i*200);g.wire(get,'ReturnValue',z,'self')
+        choose.pin('Option '+str(i),'object',obj=zoneclass);g.wire(z,'Zona'+str(i+1),choose,'Option '+str(i))
+    other=g.call('/Script/Engine.KismetMathLibrary','Min',pure=True,static=True,x=2800,y=1800).pin('A','int').pin('B','int',default='1').pin('ReturnValue','int',out=True);g.wire(step,'Paso',other,'A');g.wire(other,'ReturnValue',choose,'Index')
+    phase=g.get('Phase','int',owner=zoneclass,x=3300,y=1400);g.wire(choose,'ReturnValue',phase,'self')
+    wave=g.get('CurrentWave','int',owner=zoneclass,x=3300,y=1700);g.wire(choose,'ReturnValue',wave,'self')
+    alive=g.get('LivingCount','int',owner=zoneclass,x=3300,y=2000);g.wire(choose,'ReturnValue',alive,'self')
+    msg=g.node('K2Node_Select',['NumOptionPins=4','IndexPinType=(PinCategory="int")'],x=3600,y=1400).pin('Index','int').pin('ReturnValue','string',out=True)
+    for i,s in enumerate(['ZONA: entra con el rehen cerca para iniciar las oleadas','ZONA: combate activo | Elimina a todos los enemigos','ZONA: siguiente oleada en 3 segundos','ZONA: despejada | Recupera al rehen y activa la baliza']):msg.pin('Option '+str(i),'string',default=s)
+    g.wire(phase,'Phase',msg,'Index')
+    line=draw('',160,statusline,scale='1.0');g.wire(msg,'ReturnValue',line,'Text')
+    def concat(a,ap,b=None,bp=None,value='',x=4000,y=1500):
+        n=g.call('/Script/Engine.KismetStringLibrary','Concat_StrStr',pure=True,static=True,x=x,y=y).pin('A','string').pin('B','string',default=value).pin('ReturnValue','string',out=True)
+        g.wire(a,ap,n,'A')
+        if b:g.wire(b,bp,n,'B')
+        return n
+    w=g.call('/Script/Engine.KismetStringLibrary','Conv_IntToString',pure=True,static=True,x=3600,y=2100).pin('InInt','int').pin('ReturnValue','string',out=True);g.wire(wave,'CurrentWave',w,'InInt')
+    prefix=g.call('/Script/Engine.KismetStringLibrary','Concat_StrStr',pure=True,static=True,x=3900,y=2100).pin('A','string',default='Oleada ').pin('B','string').pin('ReturnValue','string',out=True);g.wire(w,'ReturnValue',prefix,'B')
+    suffix=concat(prefix,'ReturnValue',value='/2  |  Enemigos vivos: ',x=4200,y=2100)
+    count=g.call('/Script/Engine.KismetStringLibrary','Conv_IntToString',pure=True,static=True,x=4200,y=2400).pin('InInt','int').pin('ReturnValue','string',out=True);g.wire(alive,'LivingCount',count,'InInt')
+    full=concat(suffix,'ReturnValue',count,'ReturnValue',x=4500,y=2100)
+    counters=draw('',185,line,scale='1.0');g.wire(full,'ReturnValue',counters,'Text')
     g.write('BP_HUD_Entrega')
 
 if __name__=='__main__':

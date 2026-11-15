@@ -4,12 +4,13 @@ Status values: `Todo`, `In progress`, `Blocked`, `Done`.
 
 ## Prioridad actual — entrega 2026-11-18
 
-- **Ready para aceptación del propietario:** nivel nuevo con escenario de Ian, navegación y cuatro enemigos; balizas 1 → 2 → 3 y extracción; HUD con objetivos, victoria/derrota y reintento.
+- **Ready para aceptación del propietario:** nivel nuevo con escenario de Ian, navegación y dos zonas de oleadas; balizas 1 → 2 → 3 y extracción; HUD con objetivos, victoria/derrota y reintento.
 - **Ready para aceptación del propietario:** rehén con árbol propio, seguimiento, detección visual de enemigos, huida a refugio alcanzable y reanudación por E/RB. Pruebas del agente aprobadas en PIE; no equivalen a aceptación del propietario.
 - **Ready:** Nuevo juego abre el nivel nuevo. Continuar está deshabilitado hasta persistir los objetivos y la escolta.
 - **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`. UAT terminó correctamente (0 errores de cook, 20 advertencias de recursos anteriores). Prueba del ejecutable aprobó menú/nivel/interacción y la corrección de iluminación; CRC del ZIP aprobado. Sigue pendiente una partida completa manual.
 - **Todo / dependencia del equipo:** modelo definitivo de baliza; coordinación de partículas con Dany.
-- **Todo:** segundo enemigo, oleadas/bloqueos, guardado completo y recorrido manual de principio a fin.
+- **Ready para aceptación:** embestidor con árbol propio, daño ligero/pesado, oleadas 2 × 2 por zona, barreras y animaciones con cancelación. Pruebas automatizadas de PIE aprobadas; ver evidencia en el handoff.
+- **Todo:** guardado completo y recorrido manual de principio a fin.
 
 `Done` requires the acceptance check in `AI_REQUIREMENTS.md`. The owner's board says AI 1 is Done. These rows stay `In progress` or `Todo` until Play In Editor on `ThirdPersonMap` shows the behavior. `In progress` means the saved asset already contains that work.
 
@@ -34,8 +35,8 @@ Build recipe: `HANDOFF.md` → "After AI 1: AI 2 hostage build recipe".
 | ID | Status | Item | Notes |
 | --- | --- | --- | --- |
 | AI2-01 | In progress | `BP_Hostage`, `BB_Hostage`, `BT_Hostage`, controller, sense service, arrival task and animation copy saved. | Ready for owner acceptance. Agent PIE 2026-11-15 passed follow, visual threat, reachable refuge and manual E resume. Current request supersedes old auto-resume distances; see current handoff. |
-| AI2-02 | Todo | Create `BP_CombatZone` with an entrance blocker and a flee-point reference. Place one in reachable space on `ThirdPersonMap`. | Record the actor label in `HANDOFF.md`. Needs AI1-06 (`bIsDead`, `E_Dead` bound on BeginPlay). |
-| AI2-03 | Todo | Create `BP_HostageSpawnZone`. Spawn 2 enemies once, only while the hostage is accompanying. | First zone uses `BP_BaseEnemy`. |
+| AI2-02 | In progress | Create `BP_CombatZone` with an entrance blocker and a flee-point reference. Place one in reachable space on `ThirdPersonMap`. | Implementado en Nivel_Entrega: Zona_01_Orbitadores y Zona_02_Embestidores, barreras y refugios. Pruebas del agente aprobadas; aceptación pendiente. |
+| AI2-03 | In progress | Create `BP_HostageSpawnZone`. Spawn 2 enemies once, only while the hostage is accompanying. | Integrado en BP_CombatZone: escolta requerida para activar 2 oleadas de 2 enemigos; sin un volumen duplicado. 0 spawns al entrar solo y al reentrar tras completar. |
 | AI2-04 | In progress | Resume escort through explicit interaction within 400 units when there is no visible nearby threat. | Agent PIE passed manual E resume; owner acceptance pending. Combat-zone blocker release remains Todo with AI2-02. Auto-resume is superseded by the owner's 2026-11-15 request. |
 
 ## AI 3 — Charger
@@ -44,8 +45,8 @@ Required by the course rubric. Different tree from the orbiter. Not a second mes
 
 | ID | Status | Item | Notes |
 | --- | --- | --- | --- |
-| AI3-01 | Todo | Create `BP_ChargerEnemy`, `BB_Charger`, `BT_Charger`, and a controller for that tree. | Chase, windup, charge, retreat, roam. |
-| AI3-02 | Todo | Charge contact damages the player. Light and heavy attacks both damage the charger. | Existing enemy-hit damage is 10 (`BP_BaseEnemy` Apply Damage), so use 10, not the 15 fallback. Needs AI1-07 so the player actually loses health. |
+| AI3-01 | In progress | Create `BP_ChargerEnemy`, `BB_Charger`, `BT_Charger`, and a controller for that tree. | Guardado y probado: daño, preparar, cargar, retirarse/recuperarse, perseguir y patrullar. Segundo árbol distinto de BT_EnemyIA. |
+| AI3-02 | In progress | Charge contact damages the player. Light and heavy attacks both damage the charger. | Carga causa 10 una vez; ligero 15/15/19 y pesado 25 en embestidor, pesado 0 en orbitador. Pruebas de manejadores aprobadas; aceptación pendiente. |
 
 ## Order
 

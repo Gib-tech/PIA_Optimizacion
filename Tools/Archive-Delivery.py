@@ -1,11 +1,13 @@
 """Archive the playable Windows folder, omitting debug symbols and local save data."""
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
+from shutil import copyfile
 
 root=Path(__file__).resolve().parent.parent
 delivery=root/'Deliverables'
 windows=delivery/'Windows'
 assert (windows/'Terreno.exe').is_file(), 'Build the Windows package first.'
+copyfile(root/'Tools'/'Delivery-README.txt',delivery/'LEEME.txt')
 target=delivery/'TimeOut_Avance_18Nov2026.zip'
 temporary=target.with_suffix('.zip.part')
 with ZipFile(temporary,'w',compression=ZIP_DEFLATED,compresslevel=1,allowZip64=True) as archive:

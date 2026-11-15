@@ -41,3 +41,4 @@ for item in result.get("output") or []:
     print(item.get("type"), item.get("output"))
 if not result.get("success"):
     print(result.get("result"))
+    raise SystemExit(1)

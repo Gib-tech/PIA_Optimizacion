@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-15",
+  "engine": "Unreal Engine 5.6",
+  "scope": "PIE integration assertions; agent verification, owner acceptance pending",
+  "damage": {
+    "passed": true,
+    "light_combo_both": [
+      15,
+      15,
+      19
+    ],
+    "heavy_charger": 25,
+    "heavy_orbiter": 0,
+    "repeat_heavy_overlap": 0,
+    "inactive_heavy_overlap": 0,
+    "charger_mesh": "SK_SciFITrooper_Man_03",
+    "charger_anim": "ABP_EnemyEntrega_C"
+  },
+  "waves": {
+    "passed": true,
+    "zones": [
+      {
+        "zone": "Zona_01_Orbitadores",
+        "enter_alone": 0,
+        "waves": 2,
+        "total_enemies": 4,
+        "intermission_seconds": 3.195,
+        "death_stops_tree": true,
+        "gate_opens": true,
+        "reentry_respawn": 0
+      },
+      {
+        "zone": "Zona_02_Embestidores",
+        "enter_alone": 0,
+        "waves": 2,
+        "total_enemies": 4,
+        "intermission_seconds": 3.0,
+        "death_stops_tree": true,
+        "gate_opens": true,
+        "reentry_respawn": 0
+      }
+    ]
+  },
+  "animation": {
+    "interrupted_damage": 0,
+    "impact_seconds": 0.446,
+    "attack_damage": 10,
+    "attack_seconds": 1.3,
+    "death_stops_tree_and_collision": true,
+    "passed": true,
+    "death_cleanup": true
+  },
+  "charger": {
+    "seen_tasks": [
+      "BTTask_ChargerCharge_C",
+      "BTTask_ChargerRetreat_C",
+      "BTTask_ChargerWindup_C"
+    ],
+    "max_speed": 900.0,
+    "max_distance": 1004.8,
+    "passed": true
+  },
+  "mission": {
+    "isolation_teleports": true,
+    "physical_E_input": true,
+    "blocked_beacon_before_clear": true,
+    "sequential_beacons_after_clear": true,
+    "extraction_alone_step": 3,
+    "extraction_with_escort_step": 4,
+    "restart_resets_zones_health_beacons": true
+  }
+}

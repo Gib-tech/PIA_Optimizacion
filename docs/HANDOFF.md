@@ -8,6 +8,69 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha: **2026-11-15**. Entrega: **miércoles 18 de noviembre de 2026**.
+- **Stated:** el propietario autorizó trabajo autónomo, priorizó segundo enemigo y oleadas, pidió refinar IA/animaciones, rama nueva y commits. Rama: `codex/entrega-18nov-ia-oleadas`. El avance anterior quedó en `3383b43`. No se pidió push. `origin/main` seguía en `68eb221` tras fetch al comenzar este avance.
+- **Verified:** `/Game/ThirdPerson/Maps/Nivel_Entrega` contiene los cuatro sectores de Ian de `Escenario.zip`, suelo, límites, navegación, rehén, tres balizas y extracción. Los sectores usan escala 2 por el tamaño original de sus puertas. Las cuatro instancias enemigas fijas se sustituyeron por encuentros de oleadas.
+- **Verified:** Nuevo juego abre este mapa; el juego inicia en `MainMenuLevel`. `BP_GameMode_Menu` evita el personaje/barra detrás del menú. Continuar permanece deshabilitado: no hay persistencia de esta misión.
+
+### Combate y animación
+
+- **Verified:** `BP_BaseEnemy` conserva salud 100 y sólo acepta ligero por el camino original del personaje: **15 / 15 / 19**. `BTTask_Attack` mantiene la tarea activa durante el golpe; el impacto ocurre a 0.45 s, exige distancia ≤220 y visión, aplica 10 una vez y finaliza a 1.3 s. `ReceiveAbortAI` cancela el ataque y su montaje.
+- **Verified:** el decorador de daño de `BT_EnemyIA` era Self y no interrumpía ramas inferiores. Ahora es **Both**. Se restauraron los tiempos documentados: ataque 3 s y defensa 6 s. Se conservan órbita 180, banda 150–210, defensa de 1.5 s y aturdimiento de 0.6 s. Las tres líneas de Print del orbitador se conservan.
+- **Verified:** `BP_ChargerEnemy` hereda la salud/muerte del enemigo base, pero usa `BP_ChargerController`, `BB_Charger` y **su propio `BT_Charger`**. El controlador arranca el árbol en On Possess para que exista un Pawn antes de ejecutar tareas.
+- **Verified:** prioridad del árbol nuevo: daño → carga → retirada/recuperación → crear distancia si está demasiado cerca → preparar → perseguir → patrullar. El servicio sólo escribe distancia/objetivo cada 0.2 s. No usa la órbita ni los Print propios del orbitador.
+- **Decision de ajuste:** detección 1800; preparar entre 250 y 700 durante 0.8 s; carga de 900 cm/s hacia una posición comprometida del jugador, hasta 1 s o contacto a 180 cm; contacto 10 una vez con visión. Retirada hacia un TargetPoint navegable, a ≥1100 del jugador y en dirección contraria, hasta llegar a distancia 1000 o timeout 4 s; espera 2 s antes de recuperarse. Persecución acepta 450 para entrar con margen en el rango de preparación. El timeout evita quedarse bloqueado si el escenario impide la retirada.
+- **Verified:** `BP_PlayerEntrega` hereda del personaje original. Su manejador adicional de WeaponHitbox acepta sólo pesado contra el embestidor, con caché por golpe; conserva el manejador ligero original. **Decision:** daño pesado 25. El orbitador sigue inmune al pesado. No se añadió otro sistema de salud.
+- **Verified:** había una incompatibilidad entre la malla UE4 del enemigo y el AnimBP Trooper. Ambos enemigos ahora usan `SK_SciFITrooper_Man_03` y `ABP_EnemyEntrega`: locomoción original enlazada → DefaultSlot → salida. El embestidor tiene armadura naranja y escala visual 1.08 para distinguirlo.
+- **Verified:** montajes propios `AM_EnemyAttack_Entrega`, `AM_EnemyHit_Entrega`, `AM_EnemyDeath_Entrega`. Se usa `enemigo_lastimado1`, compatible con Trooper; `enemigo_lastimado` corresponde a Manny. El AnimBP propio usa Ignore Root Motion para que el árbol controle la traslación. La reacción dura 0.6 s; muerte reproduce 2.433 s, detiene árbol/movimiento/colisión y elimina el actor a los 3 s. Sin auto blend out en muerte para evitar levantarse al acabar.
+- **Verified:** no se editaron las animaciones ni los efectos originales de los compañeros; los montajes y el AnimBP son copias propias de entrega.
+
+### Oleadas y misión
+
+- **Verified:** `BP_CombatZone` combina la condición de escolta y el control de combate; no hace falta un segundo volumen superpuesto llamado `BP_HostageSpawnZone`.
+- `Zona_01_Orbitadores`: centro (0, -2700, 150), extensión (1300, 1000, 250), clase BP_BaseEnemy; refugio `Refugio_Rehen_01`.
+- `Zona_02_Embestidores`: centro (-3200, -4800, 150), extensión (1000, 900, 250), clase BP_ChargerEnemy; refugio `Refugio_Rehen_04`.
+- **Verified:** entrar solo no genera enemigos. Entrar con rehén acompañando a ≤600 cm inicia dos oleadas de dos enemigos. El rehén recibe destino de huida fuera del volumen. La barrera se activa mientras haya combate y durante el intermedio de 3 s; al morir el último enemigo de la segunda oleada, se abre y la zona queda completada para toda la partida. Reentrar no repite enemigos. La segunda oleada no exige volver a traer al rehén.
+- **Verified:** se cuentan enemigos válidos con `bIsDead=false`; los cadáveres no retrasan la siguiente oleada. SpawnPoints y refugios están sobre navegación. Las barreras se ocultan y no colisionan antes/después del encuentro.
+- **Verified:** baliza 1 exige zona 1 completada y baliza 2 exige zona 2 completada. Se activan 1 → 2 → 3 una vez con E/RB. El HUD muestra objetivo, estado del rehén, estado de zona, oleada y vivos. Las balizas siguen siendo cilindros naranja/verde hasta recibir el modelo definitivo.
+- **Verified:** extracción exige las tres balizas, jugador a ≤300 de la salida, rehén a ≤600 y acompañando. Ganar/morir pausa. R reinicia mapa, salud, escolta, oleadas, barreras y balizas; Enter vuelve al menú al terminar.
+
+### Escolta conservada
+
+- `BP_Hostage`, controlador, `BT_Hostage`/`BB_Hostage`, servicio, tarea y `ABP_Hostage` están en `/Game/ThirdPerson/Blueprints/Aliado/`. El original `ABP_Aliado` permanece intacto.
+- El árbol decide huir → esperar → seguir → idle; el servicio escribe Blackboard. E/RB interactúa a 400 cm. Sigue a 400 cm/s al superar 500 cm y termina MoveTo a 300. Ve amenazas vivas con LOS hasta 800 cm; busca uno de 13 refugios alcanzables a ≥1000 del jugador y ≥1200 de enemigos vivos. Al llegar espera **otra interacción**, no vuelve automáticamente.
+- `PlayerActor` de BB_Hostage debe ser Object con BaseClass Actor; el decorador de distancia de seguimiento usa Lower Priority. El rehén es invulnerable y usa maniquí provisional.
+
+### Pruebas del agente, no aceptación del propietario
+
+- Evidencia resumida en `docs/validation/combat-2026-11-15.json`. Los observadores de PIE usan callbacks y escriben resultados sin bloquear el editor.
+- Manejadores reales de daño: ligero 15/15/19 en ambos enemigos; pesado 25 sólo en embestidor; solapamiento pesado repetido e inactivo no añaden daño. Se invocaron los manejadores para aislar condiciones; falta aceptación manual de combos/controlador físico.
+- Árbol real del embestidor: observadas preparación, carga y retirada, velocidad máxima 900 y distancia de retirada >1000.
+- Ciclo real del orbitador: interrupción durante preparación causó 0 daño; golpe completo quitó 10 a los 0.446 s y terminó a 1.3 s; muerte detuvo árbol y colisión, reprodujo montaje y eliminó cadáver.
+- Ambas zonas: entrar sin rehén → 0 spawns; entrar acompañado → 2 + 2; intermedios de aproximadamente 3.0 s, muerte deja de contar inmediatamente, barrera se abre y reentrada genera 0 enemigos adicionales.
+- Flujo con E real y teletransportes de aislamiento: baliza bloqueada antes de completar zona, activación ordenada tras oleadas, salida solo mantiene Paso 3, recuperar rehén con E en salida produce Paso 4 y pausa; R vuelve a salud 100, Paso 0, ambas zonas sin iniciar y todas las balizas pendientes.
+- Pruebas anteriores de escolta: seguimiento, huida ante enemigo visible, espera y reanudación sólo con E. No equivalen a una partida completa recorrida a mano.
+
+### Paquete y pendientes
+
+- **Paquete actualizado: en construcción.** Se reconstruye `Deliverables/Windows/Terreno.exe` y `Deliverables/TimeOut_Avance_18Nov2026.zip`; el ZIP anterior no contenía estas oleadas. `Tools/Delivery-README.txt` genera el LEEME del paquete.
+- Iluminación se mantiene corregida sólo en el nivel nuevo: PostProcess GI None, Skylight sin sombras y sectores sin contribución DF. No modificar los materiales antiguos de Landscape por las advertencias de SM5.
+- Pendiente del equipo: modelo final de baliza y del aliado; coordinar partículas/notifies con Dany, sin trabajarlos simultáneamente.
+- Pendiente de aceptación: recorrido completo sin teletransportes, balance de ocho enemigos, mando físico y rendimiento en otra computadora. Persistencia completa de misión y supervivencia posterior a extracción no están implementadas.
+
+### Herramientas y continuidad
+
+- `run.py` ejecuta Python de editor y ahora retorna código distinto de cero si falla. Los assets guardados son la entrega; no se ejecuta Python durante el juego empaquetado.
+- `generate_combat_graphs.py`, `generate_charger_tree.py`, `generate_wave_graphs.py` y `generate_delivery_graphs.py` son fuentes revisables de portapapeles Blueprint. Tras pegar, compilar/exportar y usar `inspect_blueprint_active.py`: los T3D pueden retener objetos huérfanos con errores antiguos; contar sólo Nodes del gráfico activo.
+- No invocar directamente en un nodo genérico funciones BlueprintInternalUseOnly de spawn: se filtran al pegar. Se usa el nodo nativo SpawnActorFromClass. Tampoco pegar llamadas a eventos propios antes de que exista su firma; la zona comparte las conexiones de ejecución de generación.
+- `create_charger_wave_assets.py` y `place_delivery_encounters.py` son recetas iniciales protegidas: no repetir sobre los assets/nivel terminado. `finalize_charger_runtime.py`, `finalize_combat_delivery.py` y `finalize_orbiter_tree.py` aplican defaults propios.
+- Pruebas: `verify_combat_damage.py`, `verify_charger_cycle.py`, `verify_delivery_waves.py`, `verify_enemy_animation_lifecycle.py`, siempre en PIE; la de oleadas requiere zonas recién iniciadas. `playtest_combat_waves.py` es diagnóstico, no código de gameplay.
+- Para empaquetar, guardar todo, detener PIE y cerrar Unreal (Live Coding bloquea UAT). Ejecutar `Tools/Build-Delivery.ps1` y después `python Tools/Archive-Delivery.py`. Deliverables e Intermediate están ignorados por Git.
+
+## History
+
+### Avance anterior del 15 de noviembre — antes del segundo enemigo
+
 - Fecha: **2026-11-15**. Entrega indicada por el propietario: **miércoles 18 de noviembre de 2026**.
 - **Stated:** el propietario pidió avanzar de forma autónoma, importar el escenario de Ian y priorizar la escolta del rehén. Las instrucciones antiguas que pedían que el propietario hiciera cada clic ya no describen este encargo.
 - **Verified:** nuevo nivel guardado `/Game/ThirdPerson/Maps/Nivel_Entrega`. Usa los cuatro sectores de `Downloads/Escenario.zip`, suelo, límites, navegación, cuatro instancias del enemigo existente, tres balizas provisionales y una salida azul. Las puertas del FBX original medían aproximadamente 1.29 m; los sectores se colocaron a escala uniforme 2 para permitir el paso de las cápsulas.
@@ -59,7 +122,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - Exportaciones y registros están bajo `Intermediate/inspect`; UAT genera paquetes locales bajo `Deliverables` (ignorado por Git).
 - Reconstrucción del paquete: guardar y cerrar Unreal, ejecutar `powershell -NoProfile -File Tools/Build-Delivery.ps1`; después `python Tools/Archive-Delivery.py`. El log de compilación queda en `Deliverables/build.log`, la prueba final en `Deliverables/package-smoke-final.log`. Actualizar el ZIP después de cambiar assets; el ZIP actual corresponde al último paquete probado.
 
-## History
+
 
 ### Handoff anterior — 2026-10-21
 

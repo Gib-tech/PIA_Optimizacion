@@ -5,9 +5,10 @@ Facts below are separated from the assignment brief. Do not merge the two.
 ## Estado verificado — 2026-11-15
 
 - Entrega indicada por el propietario: miércoles 18 de noviembre de 2026.
-- `Nivel_Entrega` incorpora el FBX de `Escenario.zip` de Ian, cuatro enemigos existentes, tres balizas provisionales, extracción y rehén con Behavior Tree propio.
+- `Nivel_Entrega` incorpora el FBX de `Escenario.zip` de Ian, dos zonas con dos oleadas de dos enemigos cada una, tres balizas provisionales, extracción y rehén con Behavior Tree propio. La primera zona genera orbitadores; la segunda, embestidores con `BT_Charger` propio.
 - Inicio del editor: `/Game/ThirdPerson/Maps/Nivel_Entrega`. Inicio del juego: `/Game/LevelMenu/MainMenuLevel`. Nuevo juego del menú abre el nivel nuevo.
 - Sistemas nuevos bajo `Content/ThirdPerson/Blueprints/Entrega/` y `Content/ThirdPerson/Blueprints/Aliado/`; importación bajo `Content/ThirdPerson/Environment/EscenarioIan/`.
+- `BP_PlayerEntrega` hereda del personaje original y añade daño pesado sólo al embestidor. `ABP_EnemyEntrega` conserva la locomoción del pack mediante un gráfico enlazado y añade un Slot para los montajes propios. Los originales del equipo se conservan.
 - El proyecto sigue sin módulo C++ de gameplay. UAT puede generar targets temporales dentro de `Intermediate` por los plugins habilitados.
 - Consultar `HANDOFF.md` actual para pruebas, controles y límites. La sección de hechos de octubre que sigue se conserva como historia y no define los mapas actuales.
 
