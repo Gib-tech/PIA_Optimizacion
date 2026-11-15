@@ -132,7 +132,7 @@ def base_enemy():
     sight=g.sight(ctrl,'ReturnValue',victimget,'AttackVictim',x=1500,y=5100)
     hittable=g.boolean('BooleanAND',near,'ReturnValue',sight,'ReturnValue',x=1800,y=4800)
     hit=g.branch(x=2100,y=4200);g.chain(check,hit);g.wire(hittable,'ReturnValue',hit,'Condition')
-    damage=g.call('/Script/Engine.GameplayStatics','ApplyDamage',static=True,x=2400,y=4200).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='10').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
+    damage=g.call('/Script/Engine.GameplayStatics','ApplyDamage',static=True,x=2400,y=4200).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='6').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
     g.chain(hit,damage);g.wire(victimget,'AttackVictim',damage,'DamagedActor');g.wire(ctrl,'ReturnValue',damage,'EventInstigator');g.wire(self,'self',damage,'DamageCauser')
     end=g.custom('EndAttack',x=0,y=5700)
     reset=g.set('bAttackInProgress','bool','false',x=350,y=5700);g.chain(end,reset)
@@ -154,6 +154,7 @@ def base_enemy():
     collision=g.call(ACTOR,'SetActorEnableCollision',x=2100,y=3000).pin('bNewActorEnableCollision','bool',default='false');g.chain(disable,collision)
     deathplay=g.montage(self,'self','AM_EnemyDeath_Entrega',x=2450,y=3000);g.chain(collision,deathplay)
     lifespan=g.call(ACTOR,'SetLifeSpan',x=2800,y=3000).pin('InLifespan','real',sub='float',default='3.0');g.chain(deathplay,lifespan)
+    amount=g.get('ContactDamage','real',sub='double',x=2100,y=5400);g.wire(amount,'ContactDamage',damage,'BaseDamage')
     g.write('BP_BaseEnemy')
 
 def attack_task():
@@ -240,7 +241,7 @@ def charge():
     valid=g.boolean('BooleanAND',fresh,'ReturnValue',sight,'ReturnValue',x=1550,y=1800)
     b=g.branch(x=1850,y=1000);g.chain(elapsed,b);g.wire(valid,'ReturnValue',b,'Condition')
     flag=g.set('bHit','bool','true',x=2150,y=1000);g.chain(b,flag)
-    damage=g.call('/Script/Engine.GameplayStatics','ApplyDamage',static=True,x=2450,y=1000).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='10').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
+    damage=g.call('/Script/Engine.GameplayStatics','ApplyDamage',static=True,x=2450,y=1000).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='6').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
     g.chain(flag,damage);g.wire(target,'ReturnValue',damage,'DamagedActor');g.wire(tick,'OwnerController',damage,'EventInstigator');g.wire(tick,'ControlledPawn',damage,'DamageCauser')
     expired=g.compare('GreaterEqual_DoubleDouble','real','1.0',sub='double',x=2150,y=2300);g.wire(elapsed,'Output_Get',expired,'A')
     donecond=g.boolean('BooleanOR',near,'ReturnValue',expired,'ReturnValue',x=2450,y=2300)
@@ -251,6 +252,8 @@ def charge():
         clear=g.bbset(bb,'bCharging','Bool','false',x=3850 if not isabort else 1050,y=y);g.chain(speed,clear)
         retreat=g.bbset(bb,'bRetreat','Bool','true',x=4200 if not isabort else 1400,y=y);g.chain(clear,retreat)
         g.finish(retreat,abort=isabort,x=4550 if not isabort else 1750,y=y)
+    pawn=g.get('CachedPawn','object',obj=BASE,x=2150,y=2700)
+    amount=g.get('ContactDamage','real',owner=BASE,sub='double',x=2450,y=2700);g.wire(pawn,'CachedPawn',amount,'self');g.wire(amount,'ContactDamage',damage,'BaseDamage')
     g.write('BTTask_ChargerCharge')
 
 def retreat():

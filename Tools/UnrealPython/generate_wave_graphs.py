@@ -114,6 +114,14 @@ def heavy_player():
     reset=g.boolean('BooleanOR',stop,'ReturnValue',light,'bLightAttackActive',x=600,y=1800)
     b=g.branch(x=900,y=1500);g.chain(tick,b);g.wire(reset,'ReturnValue',b,'Condition')
     clear=g.array('HeavyHitActors','Array_Clear',x=1200,y=1500);g.chain(b,clear)
+    begin=g.event(ACTOR,'ReceiveBeginPlay',x=0,y=2600)
+    parent=g.call(PLAYER,'ReceiveBeginPlay',x=300,y=2600);parent.kind='BlueprintGraph.K2Node_CallParentFunction';g.chain(begin,parent)
+    arm='/Script/Engine.SpringArmComponent'
+    boom=g.get('CameraBoom','object',obj=arm,x=0,y=3000)
+    previous=parent
+    for i,(name,cat,value,sub) in enumerate([('bDoCollisionTest','bool','true',''),('ProbeSize','real','24','float'),('TargetArmLength','real','350','float'),('bEnableCameraLag','bool','false',''),('bEnableCameraRotationLag','bool','true',''),('CameraRotationLagSpeed','real','18','float')]):
+        n=g.set(name,cat,value,sub=sub,x=650+i*300,y=2600);n.props=['VariableReference=(MemberParent='+ref(arm)+',MemberName='+q(name)+')'];n.pin('self','object',obj=arm);g.wire(boom,'CameraBoom',n,'self');g.chain(previous,n);previous=n
+    pivot=g.call('/Script/Engine.SceneComponent','K2_SetRelativeLocation',x=2600,y=2600).pin('NewLocation','struct',obj='/Script/CoreUObject.Vector',default='0,0,55').pin('bSweep','bool',default='false').pin('SweepHitResult','struct',obj='/Script/Engine.HitResult',out=True).pin('bTeleport','bool',default='true');g.wire(boom,'CameraBoom',pivot,'self');g.chain(previous,pivot)
     g.write('BP_PlayerEntrega')
 
 if __name__=='__main__':zone();heavy_player()

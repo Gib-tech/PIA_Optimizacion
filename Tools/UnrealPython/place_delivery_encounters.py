@@ -41,10 +41,5 @@ for i,(label,center,extent,points,gatepos,refuge,enemy) in enumerate(specs):
 mode=unreal.load_asset(ROOT+'BP_GameMode_Entrega')
 unreal.get_default_object(mode.generated_class()).set_editor_property('default_pawn_class',unreal.load_class(None,ROOT+'BP_PlayerEntrega.BP_PlayerEntrega_C'))
 unreal.EditorAssetLibrary.save_loaded_asset(mode,only_if_is_dirty=False)
-# Distinct orange upper armor for the charger; keep the shared skeleton and locomotion.
-charger=unreal.load_asset(AI+'BP_ChargerEnemy')
-cdo=unreal.get_default_object(charger.generated_class())
-cdo.mesh.set_material(0,unreal.load_asset('/Game/ThirdPerson/Environment/EscenarioIan/M_Baliza_Pendiente'))
-unreal.EditorAssetLibrary.save_loaded_asset(charger,only_if_is_dirty=False)
 unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
 unreal.log('DELIVERY_ENCOUNTERS_PLACED')

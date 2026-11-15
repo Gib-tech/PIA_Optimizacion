@@ -18,6 +18,8 @@ def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,roo
             s.update(stage='alone',since=now)
         elif s['stage']=='alone' and now-s['since']>1:
             assert count==0 and phase==0,'Entering alone spawned enemies'
+            prompt=next(a for a in unreal.GameplayStatics.get_all_actors_of_class(world,unreal.TextRenderActor) if a.get_class().get_name()=='BP_ZonaIndicador_C' and a.get_editor_property('Zona')==zone)
+            assert 'ENTRA CON EL REHEN' in str(prompt.get_component_by_class(unreal.TextRenderComponent).get_editor_property('text'))
             hostage.set_actor_location(player.get_actor_location()+unreal.Vector(150,150,0),False,True)
             for key,value in [('bWaiting',False),('bMustFlee',False),('bRescued',True),('bAccompanying',True)]:bb.set_value_as_bool(key,value)
             bb.set_value_as_int('Estado',1);s.update(stage='first',since=now)
@@ -52,6 +54,9 @@ def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,roo
             s.update(stage='check_once',since=now)
         elif s['stage']=='check_once' and now-s['since']>.5:
             assert count==4 and phase==3,'Completed zone respawned'
+            prompt=next(a for a in unreal.GameplayStatics.get_all_actors_of_class(world,unreal.TextRenderActor) if a.get_class().get_name()=='BP_ZonaIndicador_C' and a.get_editor_property('Zona')==zone)
+            assert 'ZONA DESPEJADA' in str(prompt.get_component_by_class(unreal.TextRenderComponent).get_editor_property('text'))
+            s['results'][-1]['world_prompts_updated']=True
             s['results'][-1]['reentry_respawn']=0
             if s['index']==0:s.update(index=1,stage='enter',since=now)
             else:

@@ -6,11 +6,13 @@
 
 **Stated, ampliación del 2026-11-15:** el propietario pidió priorizar el segundo enemigo y las oleadas, refinar las IA y las animaciones, y guardar el trabajo en una rama nueva mediante commits.
 
+**Stated, refinamiento posterior:** recuperar la apariencia anterior de los enemigos, mejorar camara/paredes, impedir que el jugador quede atrapado, senalar el rescate dentro del mundo, explicar activacion y reducir dano enemigo.
+
 **Verified:** escolta en `BT_Hostage`/`BB_Hostage`; segundo enemigo en `BT_Charger`/`BB_Charger`; encuentros finitos en `BP_CombatZone`, colocados en `Nivel_Entrega`. Pruebas del agente y límites en el handoff actual. La aceptación del propietario sigue pendiente.
 
 **Decision de implementación:** una misma zona combina la condición de escolta y el control de oleadas: no se crea un segundo volumen `BP_HostageSpawnZone` superpuesto. Cada zona activa dos oleadas de dos enemigos, con intermedio de 3 s; vuelve a abrir la barrera al morir el último enemigo y no repite al reentrar. La primera y segunda baliza exigen despejar sus respectivas zonas. No es la supervivencia posterior a la extracción descrita en el documento histórico.
 
-**Decision de ajuste:** pesado del embestidor 25; ligero conserva 15/15/19 y el orbitador mantiene inmunidad al pesado. El ataque del orbitador aplica 10 a los 0.45 s y finaliza a los 1.3 s; recibir daño lo interrumpe. En el embestidor la preparación dura 0.8 s, la carga hasta 1 s, la retirada tiene límite de 4 s si la navegación se atasca y después espera 2 s. Persecución con aceptación 450 cm para entrar con margen en su rango 250–700. Las decisiones de cada personaje siguen en su árbol.
+**Decision de ajuste:** pesado del embestidor 25; ligero conserva 15/15/19 y el orbitador mantiene inmunidad al pesado. El ataque del orbitador aplica 6 a los 0.45 s y finaliza a los 1.3 s; recibir daño lo interrumpe. En el embestidor la preparación dura 0.8 s, la carga hasta 1 s, la retirada tiene límite de 4 s si la navegación se atasca y después espera 2 s. Persecución con aceptación 450 cm para entrar con margen en su rango 250–700. Las decisiones de cada personaje siguen en su árbol.
 
 Distances are Unreal units (centimeters). Every numeric value in "Locked decisions" is a **Decision** the owner delegated on 2026-10-11. Expose each one as an editable variable on the Blackboard or the actor, initialized to the value below.
 
@@ -22,7 +24,7 @@ On 2026-10-14 the owner changed two orbiter values. Both are **Decisions** now (
 - Orbit: radius 180, band 150–210 (was 400, band 320–480). The old band kept the enemy outside the attack distance of 220.
 - Light damage: combo **15 / 15 / 19** (owner choice 2026-10-18; the finisher was drafted as 20, then set to 19 so two combos do not kill). Was a flat 25, and before that 100. With health 100, one full combo leaves 51. Two full combos leave 2. The next light hit kills.
 
-The AI 3 contact damage resolves to 10, the existing `BP_BaseEnemy` hit. The 15 fallback below does not apply.
+Current owner balance request: AI 3 and orbiter contact damage is 6, exposed as `BP_BaseEnemy.ContactDamage` (previously 10). The 15 fallback below does not apply.
 
 The professor's rule: each AI is a Behavior Tree, not a pile of conditionals. Tree shape is specified under each AI.
 

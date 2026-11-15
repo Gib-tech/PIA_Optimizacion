@@ -38,6 +38,11 @@ flag('IsAttacking',False);hit(child,charger);assert hp(charger)==26.0,hp(charger
 assert charger.get_controller().get_component_by_class(unreal.BlackboardComponent).get_value_as_bool('bReceivingDamage')
 report={'passed':True,'light_combo_both':[15,15,19],'heavy_charger':25,'heavy_orbiter':0,'repeat_heavy_overlap':0,'inactive_heavy_overlap':0,'charger_mesh':charger.mesh.get_skeletal_mesh_asset().get_name(),'charger_anim':charger.mesh.get_anim_instance().get_class().get_name()}
 assert report['charger_anim']=='ABP_EnemyEntrega_C',report
+for actor in [orbiter,charger]:
+    assert actor.mesh.get_skeletal_mesh_asset().get_name()=='SK_SciFiWarrior02'
+    assert actor.mesh.get_editor_property('relative_scale3d').distance(unreal.Vector(1,1,1))<.001
+    assert not actor.mesh.get_editor_property('override_materials')
+    assert actor.get_editor_property('ContactDamage')==6
 project=unreal.Paths.convert_relative_path_to_full(unreal.Paths.project_dir())
 with open(os.path.join(project,'Intermediate/inspect/damage_assertions.json'),'w') as f:json.dump(report,f,indent=2)
 orbiter.destroy_actor();charger.destroy_actor()

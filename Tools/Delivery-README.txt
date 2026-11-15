@@ -5,7 +5,7 @@ necesita los archivos y subcarpetas que lo acompañan.
 
 MISION
 1. Nuevo juego abre el escenario de Ian.
-2. Acercarse al aliado del inicio y pulsar E para rescatarlo.
+2. Seguir el letrero sobre el rehen: [E / RB] RESCATAR. Acercarse y pulsar E.
 3. Entrar con el aliado cerca a la primera zona. Aparecen dos oleadas de dos
    orbitadores. El aliado huye a un refugio; no hace falta traerlo entre oleadas.
 4. Al eliminar al ultimo enemigo, la barrera se abre. Recuperar al aliado con E
@@ -17,15 +17,19 @@ MISION
 
 El aliado no vuelve a seguir automaticamente al acercarse. Hay que despejar
 las amenazas cercanas y pulsar E. Las zonas se activan una sola vez por partida.
+Los limites en el suelo y los letreros marcan las zonas de combate. Se requiere
+que el aliado este siguiendote a no mas de 6 metros. El letrero cambia al
+iniciar una oleada, entre oleadas y al despejar la zona.
 Hay unos tres segundos entre sus oleadas. Las primeras dos balizas requieren
 despejar su zona y las tres se activan en orden.
 
 COMBATE
 Orbitador: se mueve alrededor del jugador; solo recibe golpes ligeros.
-Embestidor (armadura naranja): prepara una carga, avanza en linea y se retira.
+Embestidor: prepara una carga, avanza en linea y se retira.
 Recibe golpes ligeros y pesados. Aprovechar su preparacion y recuperacion.
-Combo ligero: 15 / 15 / 19. Pesado contra embestidor: 25. Golpe enemigo: 10.
-Los ataques enemigos pueden interrumpirse al causarles dano.
+Combo ligero: 15 / 15 / 19. Pesado contra embestidor: 25. Golpe enemigo: 6 (antes 10).
+Los ataques enemigos pueden interrumpirse al causarles dano. Ambos enemigos
+conservan la malla Warrior y sus materiales originales, sin armadura naranja.
 
 CONTROLES
 WASD / flechas: moverse. Raton: camara. Espacio: saltar.

@@ -13,7 +13,7 @@
     "heavy_orbiter": 0,
     "repeat_heavy_overlap": 0,
     "inactive_heavy_overlap": 0,
-    "charger_mesh": "SK_SciFITrooper_Man_03",
+    "charger_mesh": "SK_SciFiWarrior02",
     "charger_anim": "ABP_EnemyEntrega_C"
   },
   "waves": {
@@ -24,9 +24,10 @@
         "enter_alone": 0,
         "waves": 2,
         "total_enemies": 4,
-        "intermission_seconds": 3.195,
+        "intermission_seconds": 3.201,
         "death_stops_tree": true,
         "gate_opens": true,
+        "world_prompts_updated": true,
         "reentry_respawn": 0
       },
       {
@@ -34,18 +35,19 @@
         "enter_alone": 0,
         "waves": 2,
         "total_enemies": 4,
-        "intermission_seconds": 3.0,
+        "intermission_seconds": 3.004,
         "death_stops_tree": true,
         "gate_opens": true,
+        "world_prompts_updated": true,
         "reentry_respawn": 0
       }
     ]
   },
   "animation": {
     "interrupted_damage": 0,
-    "impact_seconds": 0.446,
-    "attack_damage": 10,
-    "attack_seconds": 1.3,
+    "impact_seconds": 0.443,
+    "attack_damage": 6,
+    "attack_seconds": 1.29,
     "death_stops_tree_and_collision": true,
     "passed": true,
     "death_cleanup": true
@@ -57,7 +59,13 @@
       "BTTask_ChargerWindup_C"
     ],
     "max_speed": 900.0,
-    "max_distance": 1004.8,
+    "max_distance": 1004.6,
+    "contact_damage_events": [
+      6.0,
+      6.0
+    ],
+    "original_mesh": "SK_SciFiWarrior02",
+    "hand_motion_cm": 93.8,
     "passed": true
   },
   "mission": {
@@ -74,9 +82,59 @@
     "uat_exit_code": 0,
     "cook_errors": 0,
     "cook_warnings": 20,
-    "zip_bytes": 647494072,
+    "zip_bytes": 737213304,
     "zip_crc_passed": true,
     "standalone_menu_new_game_hud_escort_interaction": true,
-    "full_manual_playthrough": false
+    "full_manual_playthrough": false,
+    "status": "Verified after wall/camera/appearance/guidance refinements"
+  },
+  "walls_camera": {
+    "passed": true,
+    "walls": [
+      {
+        "direction": 0,
+        "escaped_cm": 428.0,
+        "contact": [
+          0.0,
+          -61.10050503829379,
+          91.15000502881708
+        ]
+      },
+      {
+        "direction": 1,
+        "escaped_cm": 427.9,
+        "contact": [
+          940.8726601527654,
+          -443.8378331959303,
+          91.150000071156
+        ]
+      },
+      {
+        "direction": 2,
+        "escaped_cm": 427.5,
+        "contact": [
+          -948.0802479750521,
+          -435.9769768113995,
+          91.14999432002534
+        ]
+      }
+    ],
+    "retracted_cm": 40.0,
+    "recovered_cm": 350.0,
+    "probe_cm": 24
+  },
+  "navigation": {
+    "all_beacons_and_exit_reachable": true,
+    "goals": [
+      "Baliza_01",
+      "Baliza_02",
+      "Baliza_03",
+      "Salida_Extraccion"
+    ]
+  },
+  "guidance": {
+    "physical_E_changes_hostage_prompt": true,
+    "initial_rescue_and_resume_distinct": true,
+    "zone_text_phases_checked_in_wave_test": true
   }
 }

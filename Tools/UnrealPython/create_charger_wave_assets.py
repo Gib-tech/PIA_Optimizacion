@@ -71,7 +71,7 @@ assert anim
 unreal.BlueprintEditorLibrary.compile_blueprint(anim)
 unreal.EditorAssetLibrary.save_loaded_asset(anim,only_if_is_dirty=False)
 cdo=unreal.get_default_object(basebp.generated_class())
-cdo.mesh.set_skeletal_mesh_asset(unreal.load_asset('/Game/SciFITrooper_Man_03/SkeletalMesh/SK_SciFITrooper_Man_03'))
+cdo.mesh.set_skeletal_mesh_asset(unreal.load_asset('/Game/SciFiWarrior02/Meshes/SK_SciFiWarrior02'))
 cdo.mesh.set_anim_instance_class(anim.generated_class())
 cdo.mesh.set_editor_property('relative_location',unreal.Vector(0,0,-88))
 cdo.mesh.set_editor_property('relative_rotation',unreal.Rotator(pitch=0,yaw=-90,roll=0))
