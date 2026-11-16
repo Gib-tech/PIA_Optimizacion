@@ -1,0 +1,362 @@
+{
+  "date": "2026-11-15",
+  "branch": "codex/entrega-18nov-ia-oleadas",
+  "agent_tests_not_owner_acceptance": true,
+  "tests": {
+    "hostage_prompt_voice_and_fixation": {
+      "rescue_marker_visible": true,
+      "hostage_voice": "SW_HostageVoice_1",
+      "following_hides_marker": true,
+      "narrator_keeps_original_sound": true,
+      "both_prioritize_hostage_over_close_player": true,
+      "fixation_retained_beyond_acquisition_radius": true,
+      "temporary_occlusion_keeps_fixation": true,
+      "release_targets": [
+        {
+          "enemy": "BP_BaseEnemy_C",
+          "target": "player",
+          "locked": false
+        },
+        {
+          "enemy": "BP_ChargerEnemy_C",
+          "target": "player",
+          "locked": false
+        }
+      ],
+      "unrescued_hostage_releases_fixation": true,
+      "leash_releases_fixation": true,
+      "passed": true
+    },
+    "sword_recovery": {
+      "passed": true,
+      "attacks": [
+        {
+          "montage": "H_attack_1_Montage",
+          "recovery_limit": 1.18,
+          "movement_speed": 500.0,
+          "moving_without_attack_pose": true,
+          "hitbox_off": true
+        },
+        {
+          "montage": "H_attack_2_Montage",
+          "recovery_limit": 1.05,
+          "movement_speed": 500.0,
+          "moving_without_attack_pose": true,
+          "hitbox_off": true
+        },
+        {
+          "montage": "H_attack_3_Montage",
+          "recovery_limit": 1.7,
+          "movement_speed": 500.0,
+          "moving_without_attack_pose": true,
+          "hitbox_off": true
+        }
+      ]
+    },
+    "invalid_door_hits": {
+      "passed": true,
+      "sealed_door_does_not_crack": true,
+      "unpowered_hammer_does_not_crack": true,
+      "light_hit_does_not_crack": true
+    },
+    "real_hammer_cracks_and_break": {
+      "passed": true,
+      "real_input_and_hammer_montage": true,
+      "physical_door_hits": 2,
+      "per_hit_damage": 25,
+      "cracked_material_after_first_hit": true,
+      "upgrade_particles_active": true,
+      "interrupted_attack_damage": 0,
+      "interruption_clears_attack_and_collision": true,
+      "sword_hitbox_restored": true
+    },
+    "ten_physical_attacks": {
+      "passed": true,
+      "attacks": [
+        {
+          "weapon": "sword",
+          "kind": "light",
+          "index": 0,
+          "montage": "FA_1_Montage",
+          "window_opened": true,
+          "damage_events": [
+            15.0
+          ],
+          "expected": 15,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "sword",
+          "kind": "light",
+          "index": 1,
+          "montage": "FA_2_Montage",
+          "window_opened": true,
+          "damage_events": [
+            15.0
+          ],
+          "expected": 15,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "sword",
+          "kind": "light",
+          "index": 2,
+          "montage": "L_FA_3_Montage",
+          "window_opened": true,
+          "damage_events": [
+            19.0
+          ],
+          "expected": 19,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "sword",
+          "kind": "light",
+          "index": 3,
+          "montage": "L_FA_4_Montage",
+          "window_opened": true,
+          "damage_events": [
+            22.0
+          ],
+          "expected": 22,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "sword",
+          "kind": "heavy",
+          "index": 0,
+          "montage": "H_attack_1_Montage",
+          "window_opened": true,
+          "damage_events": [
+            25.0
+          ],
+          "expected": 25,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "sword",
+          "kind": "heavy",
+          "index": 1,
+          "montage": "H_attack_2_Montage",
+          "window_opened": true,
+          "damage_events": [
+            25.0
+          ],
+          "expected": 25,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "sword",
+          "kind": "heavy",
+          "index": 2,
+          "montage": "H_attack_3_Montage",
+          "window_opened": true,
+          "damage_events": [
+            25.0
+          ],
+          "expected": 25,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "hammer",
+          "kind": "light",
+          "index": 0,
+          "montage": "HA_1_Montage",
+          "window_opened": true,
+          "damage_events": [
+            15.0
+          ],
+          "expected": 15,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "hammer",
+          "kind": "light",
+          "index": 1,
+          "montage": "HA_2_Montage",
+          "window_opened": true,
+          "damage_events": [
+            15.0
+          ],
+          "expected": 15,
+          "collision_closed": true,
+          "passed": true
+        },
+        {
+          "weapon": "hammer",
+          "kind": "heavy",
+          "index": 0,
+          "montage": "Attack_3_Montage",
+          "window_opened": true,
+          "damage_events": [
+            25.0
+          ],
+          "expected": 25,
+          "collision_closed": true,
+          "passed": true
+        }
+      ]
+    },
+    "mission_regression": {
+      "passed": true,
+      "locked_light_unpowered_damage": 0,
+      "friendly_fire": 0,
+      "zones": [
+        {
+          "beacon": 1,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.0,
+          "horde_enemies": 4
+        },
+        {
+          "beacon": 2,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.0,
+          "horde_enemies": 4
+        },
+        {
+          "beacon": 3,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.01,
+          "horde_enemies": 0
+        }
+      ],
+      "escort_extraction": true
+    },
+    "blueprint_compile_calls": {
+      "passed": true,
+      "assets": [
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerController",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_LocatePlayer",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_ChargerSense",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Attack",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerWindup",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerCharge",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRetreat",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_FaceCombatTarget",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestructibleDoor",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+          "status": "Compiled; status transient in export"
+        }
+      ]
+    }
+  },
+  "windows_package": {
+    "status": "built_and_archived",
+    "build_successful": true,
+    "configuration": "Win64 Development",
+    "cook_errors": 0,
+    "cook_warnings": 21,
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 737914216,
+    "full_crc_verified": true,
+    "native_smoke_test": {
+      "menu_opened": true,
+      "new_game_opened_delivery_level": true,
+      "floating_E_RB_visible": true,
+      "rescue_E_hides_marker": true
+    },
+    "native_smoke_does_not_replace_full_manual_playthrough": true
+  },
+  "design": {
+    "marker": "World-anchored E / RB projected by HUD; safe, waiting/unrescued, visible <=1200 cm; interaction <=400 cm. Hidden while following/fleeing/channeling/dead, occluded or behind camera.",
+    "voice": "Three original 68 ms formant-shaped synthetic syllables; hostage speaker selects them; narrator keeps SW_Text.",
+    "fixation": "Both enemy services latch bHostageLocked on rescued/alive/visible hostage <=650 cm, retain through occlusion <=1800 cm, release when invalid/unrescued/dead/outside leash. Committed charge victim is unchanged mid-charge.",
+    "sword_recovery": {
+      "H_attack_1_Montage": 1.18,
+      "H_attack_2_Montage": 1.05,
+      "H_attack_3_Montage": 1.7,
+      "blend_out_seconds": 0.12
+    },
+    "door": "First valid powered heavy hammer hit changes 50 ->25 health and material to branching cracks; second hit breaks it. Invalid damage leaves cracks and health unchanged."
+  },
+  "previews": [
+    "docs/validation/hostage-prompt-preview.png",
+    "docs/validation/cracked-door-preview.png"
+  ],
+  "limitations": [
+    "Tests isolate conditions with teleports, damage controls or movement calls inside PIE.",
+    "Complete manual playthrough, physical gamepad and another PC remain pending."
+  ]
+}

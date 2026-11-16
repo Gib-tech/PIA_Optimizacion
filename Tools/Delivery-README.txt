@@ -12,7 +12,8 @@ MISION
    llevarlo a la baliza 1. Solo el rehen puede activarla: se acerca y tarda 3 s.
    Una amenaza interrumpe el proceso. El jugador no activa balizas con E.
 5. La baliza equipa automaticamente el martillo, que emite particulas de mejora.
-   Dos golpes pesados (clic derecho) rompen la puerta habilitada de esa zona.
+   El primer pesado (clic derecho) deja grietas con bordes energizados;
+   el segundo rompe la puerta habilitada de esa zona.
    Las otras puertas siguen selladas hasta activar su propia baliza.
 6. Llevar al aliado a la segunda zona. Completar otras dos oleadas de dos
    embestidores, recuperar al aliado, escoltarlo a la baliza 2 y romper su puerta.
@@ -28,8 +29,10 @@ el combate, el intermedio y la zona despejada. No hay texto flotando en el mundo
 Hay unos tres segundos entre sus oleadas. Las primeras dos balizas requieren
 despejar su zona y las tres se activan en orden.
 El rehen tiene 100 de vida, visible en la barra superior izquierda. Ambos tipos
-de enemigo pueden atacarlo. Si muere, termina el intento; acercarte al enemigo
-permite atraer su atencion. La barra se vuelve roja si queda poca vida.
+de enemigo pueden atacarlo. Al verlo a menos de 6.5 metros, se fijan en el rehen
+y lo priorizan aunque el jugador este mas cerca. Protege su retirada atacandolos.
+Si muere, termina el intento. La barra se vuelve roja si queda poca vida.
+La fijacion se libera si deja de ser un objetivo valido o se aleja mas de 18 m.
 
 COMBATE
 Orbitador: se mueve alrededor del jugador. Embestidor: prepara una carga,
@@ -38,6 +41,7 @@ Ambos reciben golpes ligeros y pesados. Aprovechar preparacion y recuperacion.
 Espada ligera: 15 / 15 / 19 / 22. Martillo ligero: 15 / 15.
 Todos los pesados: 25 contra ambos enemigos. Golpe enemigo: 6.
 Cada ataque alcanza una sola vez a cada enemigo y requiere linea de vision.
+La recuperacion del pesado de espada cede la pose a locomocion al volver a moverse.
 Recibir dano produce una punzada roja tenue en las esquinas durante 0.38 s.
 El rehen elige refugios cercanos con rutas de hasta 18 metros, sin rodear sectores.
 Los ataques enemigos pueden interrumpirse al causarles dano. Ambos enemigos
@@ -47,6 +51,8 @@ DIALOGO Y AUDIO
 Recuadro negro con borde blanco y texto progresivo. ENTER completa la frase;
 un segundo ENTER cierra ese mensaje. Los avisos informativos se ocultan solos.
 No pausan el juego. Las interacciones siguen siendo E / RB.
+Sobre el rehen aparece E / RB cuando espera a salvo para rescatarlo o llamarlo.
+La voz del rehen usa tres silabas sinteticas propias, distintas al sonido narrativo.
 Audio propio para texto, avisos, rescate, zona despejada, dano, victoria y derrota;
 ambiente tenue en bucle. El audio se limpia al reiniciar o volver al menu.
 Las puertas tienen sonido de impacto y rotura; la mejora tiene su propia senal.
@@ -66,4 +72,4 @@ Falta aceptacion del propietario y una partida completa recorrida a mano.
 Las pruebas aisladas del agente usan teletransportes y dano de prueba en PIE.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
-Detalles y evidencia: docs/HANDOFF.md y docs/validation/refinement-2026-11-15.json.
+Detalles y evidencia: docs/HANDOFF.md y docs/validation/hostage-feedback-2026-11-15.json.

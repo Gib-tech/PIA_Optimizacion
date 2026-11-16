@@ -1,5 +1,9 @@
 # Governance
 
+## Capa de señales y fijación — 2026-11-15
+
+**Stated:** el propietario solicita expresamente la señal flotante de interacción del rehén, voz diferenciada, fijación enemiga, corregir recuperación de espada y grietas de primer golpe. Esta petición permite la placa E/RB sobre el rehén y sustituye el veto histórico a esa señal; permite priorizar al rehén aun con el jugador cerca. Mantener los árboles y registrar ajuste/pruebas.
+
 ## Refinamiento autorizado — 2026-11-15
 
 **Stated:** corregir refugio remoto y retirada errática, completar daño de todos los ataques y añadir punzada roja al recibir daño. El propietario delega el balance pendiente. Esta petición sustituye la inmunidad histórica del orbitador al pesado y permite ajustar recorridos/tiempos necesarios, registrándolos en AI_REQUIREMENTS y HANDOFF. Se conservan los árboles de decisión y la implementación Blueprint-only.

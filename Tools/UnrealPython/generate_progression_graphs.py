@@ -105,7 +105,7 @@ def player():
  # Manage their authored hit windows in this child, with interruption cleanup.
  tick=next(n for n in g.nodes if n.kind.endswith('K2Node_Event') and any('ReceiveTick' in p for p in n.props))
  old=list(tick.pins['then']['links']);tick.pins['then']['links']=[]
- seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True).pin('then_2',out=True);g.chain(tick,seq)
+ seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True).pin('then_2',out=True).pin('then_3',out=True);g.chain(tick,seq)
  for name,pid in old:
   n=next(n for n in g.nodes if n.name==name);p=next(p for p in n.pins.values() if p['id']==pid);p['links'].remove((tick.name,tick.pins['then']['id']));g.chain(seq,n,'then_0',p['name'])
  current=g.call(CHAR,'GetCurrentMontage',pure=True).pin('ReturnValue','object',obj='/Script/Engine.AnimMontage',out=True)
@@ -131,6 +131,20 @@ def player():
  ended=g.br(managed,g.v('bHeavyWindowManaged','bool'),'else');clear=g.s(ended,'bHeavyWindowManaged',False,'bool')
  disable=g.call(PRIM,'SetCollisionEnabled').pin('NewType','byte',obj='/Script/Engine.ECollisionEnabled',default='NoCollision');g.w(hitbox,disable,'self');g.chain(clear,disable)
  interrupted=g.br(disable,g.neg(g.v('bLightAttackActive','bool')));g.s(interrupted,'IsAttacking',False,'bool')
+ # The parent's canAttack notify releases movement while the full-body heavy
+ # montage still owns the pose. End its recovery cleanly before locomotion resumes.
+ sword_ready=None
+ for path,cut in [('H_attack_1_Montage',1.18),('H_attack_2_Montage',1.05),('H_attack_3_Montage',1.70)]:
+  same=g.call(MATH,'EqualEqual_ObjectObject',pure=True,static=True).pin('A','object',obj=OBJECT).pin('B','object',obj=OBJECT,default_obj='/Game/ThirdPerson/Animations/Heavy_attacks/Sword/'+path+'.'+path).pin('ReturnValue','bool',out=True);g.wire(current,'ReturnValue',same,'A')
+  ready=g.c(MATH,'BooleanOR',[('A','bool',g.neg(g.v('IsAttacking','bool'))),('B','bool',g.cmp('GreaterEqual_DoubleDouble',(pos,'ReturnValue'),cut))],cat='bool')
+  ready=g.both((same,'ReturnValue'),ready)
+  sword_ready=ready if sword_ready is None else g.c(MATH,'BooleanOR',[('A','bool',sword_ready),('B','bool',ready)],cat='bool')
+ recover=g.br(seq,sword_ready,'then_3')
+ stop=g.call('/Script/Engine.AnimInstance','Montage_Stop').pin('InBlendOutTime','real',sub='float',default='.12').pin('Montage','object',obj='/Script/Engine.AnimMontage');g.wire(anim,'ReturnValue',stop,'self');g.wire(current,'ReturnValue',stop,'Montage');g.chain(recover,stop)
+ clean=g.s(stop,'IsAttacking',False,'bool');clean=g.s(clean,'bLightAttackActive',False,'bool');clean=g.s(clean,'bHeavyWindowManaged',False,'bool');clean=g.s(clean,'AttackIndex',0,'int')
+ off=g.call(PRIM,'SetCollisionEnabled').pin('NewType','byte',obj='/Script/Engine.ECollisionEnabled',default='NoCollision');g.w(hitbox,off,'self');g.chain(clean,off)
+ reset=g.action('ResetState',owner=PLAYER);g.chain(off,reset)
+ sheath=g.action('WeaponToBack',owner=PLAYER);g.chain(reset,sheath)
  g.write('BP_PlayerEntrega')
 
 def door():
@@ -142,7 +156,13 @@ def door():
  valid=g.both(valid,g.cmp('Greater_DoubleDouble',(e,'Damage'),0));b=g.br(cast,valid)
  amount=g.c(MATH,'FMin',[('A','real',(e,'Damage')),('B','real',25)])
  hp=g.s(b,'Health',g.c(MATH,'FMax',[('A','real',g.op('Subtract_DoubleDouble',g.v('Health'),amount)),('B','real',0)]))
- impact=g.sound(hp,'DoorHit');broken=g.br(impact,g.cmp('LessEqual_DoubleDouble',g.v('Health'),0))
+ impact=g.sound(hp,'DoorHit')
+ damaged=g.both(g.cmp('Greater_DoubleDouble',g.v('Health'),0),g.cmp('Less_DoubleDouble',g.v('Health'),50))
+ first=g.br(impact,g.both(damaged,g.neg(g.v('bCracked','bool'))));mark=g.s(first,'bCracked',True,'bool')
+ comp=g.v('StaticMeshComponent','object',owner=SM,obj=SMC,native=True,target=(g.selfnode(typ=DOOR),'self'))
+ for index in [0,1]:
+  mat=g.call(PRIM,'SetMaterial').pin('ElementIndex','int',default=str(index)).pin('Material','object',obj='/Script/Engine.MaterialInterface',default_obj='/Game/ThirdPerson/Environment/Progression/M_DoorCracked.M_DoorCracked');g.w(comp,mat,'self');g.chain(mark,mat);mark=mat
+ broken=g.br(mark,g.cmp('LessEqual_DoubleDouble',g.v('Health'),0));g.chain(first,broken,'else')
  prev=g.s(broken,'bDestroyed',True,'bool');prev=g.s(prev,'bDoorPending',False,'bool',owner=HERO,target=hero)
  c=g.call(ACTOR,'SetActorEnableCollision').pin('bNewActorEnableCollision','bool',default='false');g.chain(prev,c)
  hide=g.call(ACTOR,'SetActorHiddenInGame').pin('bNewHidden','bool',default='true');g.chain(c,hide)
@@ -271,10 +291,12 @@ def enemy_sense(charger=False):
  cast=g.cast(BASE);g.chain(e,cast);g.wire(e,'ControlledPawn',cast,'Object');pawn=(cast,'AsBP_BaseEnemy');p=g.player();player=(p,'ReturnValue');bb=g.blackboard(e,'OwnerController')
  prev=g.s(cast,'ChosenTarget',player,'object',obj=ACTOR);host=g.find(prev,HOSTAGE);h=(host,'ReturnValue');hbb=g.blackboard(host,'ReturnValue')
  hd=(g.dist(*pawn,*h),'ReturnValue');pd=(g.dist(*pawn,*player),'ReturnValue')
- ok=g.both((g.bbget(hbb,'bRescued'),'ReturnValue'),g.neg(g.v('bIsDead','bool',owner=HOSTAGE,target=h)))
- ok=g.both(ok,g.both(g.cmp('LessEqual_DoubleDouble',hd,650),g.cmp('Greater_DoubleDouble',pd,220)))
- ok=g.both(ok,g.cmp('Less_DoubleDouble',g.op('Add_DoubleDouble',hd,150),pd))
- ok=g.both(ok,(g.sight(e,'OwnerController',host,'ReturnValue'),'ReturnValue'));choose=g.br(host,ok)
+ alive=g.both((g.bbget(hbb,'bRescued'),'ReturnValue'),g.neg(g.v('bIsDead','bool',owner=HOSTAGE,target=h)))
+ detected=g.both(g.cmp('LessEqual_DoubleDouble',hd,650),(g.sight(e,'OwnerController',host,'ReturnValue'),'ReturnValue'))
+ retained=g.both((g.bbget(bb,'bHostageLocked'),'ReturnValue'),g.cmp('LessEqual_DoubleDouble',hd,1800))
+ locked=g.both(alive,g.c(MATH,'BooleanOR',[('A','bool',detected),('B','bool',retained)],cat='bool'))
+ setlock=g.bbset(bb,'bHostageLocked','Bool');g.w(locked,setlock,'BoolValue');g.chain(host,setlock)
+ choose=g.br(setlock,(g.bbget(bb,'bHostageLocked'),'ReturnValue'))
  use=g.s(choose,'ChosenTarget',h,'object',obj=ACTOR)
  chosen=g.v('ChosenTarget','object',obj=ACTOR);target=g.s(use,'CombatTarget',chosen,'object',owner=BASE,target=pawn,obj=ACTOR);g.chain(choose,target,'else')
  distance=(g.dist(*pawn,*chosen),'ReturnValue');setdist=g.bbset(bb,'DistanceToTarget','Float');g.w(distance,setdist,'FloatValue');g.chain(target,setdist)

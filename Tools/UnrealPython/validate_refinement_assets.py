@@ -6,7 +6,7 @@ A='/Game/ThirdPerson/Blueprints/Aliado/'
 R='/Game/ThirdPerson/Blueprints/Entrega/'
 bp=unreal.load_asset(E+'BTTask_ChargerRetreat')
 unreal.BlueprintEditorLibrary.remove_unused_variables(bp)
-paths=[E+n for n in ['BP_BaseEnemy','BP_ChargerEnemy','BP_ChargerController','BTService_LocatePlayer','BTTask_Attack','BTTask_ChargerWindup','BTTask_ChargerCharge','BTTask_ChargerRetreat','BTTask_FaceCombatTarget']]+[A+n for n in ['BP_Hostage','BTService_HostageSense','BTTask_ActivateBeacon']]+[R+n for n in ['BP_PlayerEntrega','BP_BeaconEntrega','BP_CombatZone','BP_DirectorEntrega','BP_HUD_Entrega']]
+paths=[E+n for n in ['BP_BaseEnemy','BP_ChargerEnemy','BP_ChargerController','BTService_LocatePlayer','BTService_ChargerSense','BTTask_Attack','BTTask_ChargerWindup','BTTask_ChargerCharge','BTTask_ChargerRetreat','BTTask_FaceCombatTarget']]+[A+n for n in ['BP_Hostage','BTService_HostageSense','BTTask_ActivateBeacon']]+[R+n for n in ['BP_PlayerEntrega','BP_DestructibleDoor','BP_BeaconEntrega','BP_CombatZone','BP_DirectorEntrega','BP_HUD_Entrega']]
 project=unreal.Paths.convert_relative_path_to_full(unreal.Paths.project_dir())
 results=[]
 for path in paths:

@@ -8,6 +8,31 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`. Commits locales autorizados; no push solicitado. Base anterior `bbf1f98`. Entrega 18 de noviembre.
+- **Stated:** añadir señal flotante con tecla para llamar al rehén, diferenciar su voz (referencias de estilo: Canelita/Sans), fijación de los enemigos en el rehén detectado, eliminar deslizamiento en recuperación de pesado de espada y agrietar puertas al primer impacto del martillo energizado.
+- **Verified:** continúa Blueprint-only, con los tres Behavior Trees/Blackboards; sin Source ni dependencia del helper nativo en el proyecto/juego.
+
+### Cambios actuales
+
+- **Verified / Decision:** `BP_HUD_Entrega` proyecta una placa compacta **E / RB** sobre la cabeza del rehén. Aparece al esperar rescate/reanudación a ≤1200 cm, con visión y dentro de pantalla. Se oculta siguiendo, huyendo, usando baliza, muerto o tapado por pared. `HostagePromptInRange` corresponde al alcance de interacción existente de 400 cm; la señal distante guía para acercarse. Esta petición sustituye la prohibición histórica de toda señal flotante; los otros textos siguen en el recuadro.
+- **Verified:** voz original en `/Game/ThirdPerson/Audio/SW_HostageVoice_1/2/3`, tres sílabas sintéticas de 68 ms con armónicos/formantes y variación ligera de tono. El speaker REHÉN usa estas voces; narrador/alertas conservan SW_Text. Se conserva ENTER para revelar/cerrar sin ráfaga de sonidos. Generador `Tools/generate_hostage_voice.py`; WAVs en Tools/AudioSource.
+- **Verified / Decision:** `BTService_LocatePlayer` y `BTService_ChargerSense` escriben `bHostageLocked` en sus Blackboards. Adquieren al rehén rescatado/vivo/visible a ≤650 cm, aunque el jugador esté más cerca. Retienen la prioridad aunque se pierda visión brevemente y hasta 1800 cm. Liberan al morir, dejar de estar rescatado o superar el límite. Los árboles siguen decidiendo órbita, preparación, carga, ataque y retirada; no se trasladaron decisiones a Tick de un Pawn. Una carga ya comprometida conserva ChargeVictim hasta terminar; la siguiente decisión usa la fijación. El jugador cercano ya no roba la prioridad: se protege al rehén atacando a sus perseguidores.
+- **Verified / Decision:** `BP_PlayerEntrega` libera el montaje de pesado de espada al habilitarse nuevamente la acción, con límites de recuperación H_attack_1 1.18 s, H_attack_2 1.05 s, H_attack_3 1.70 s y blend-out 0.12 s. Apaga hitbox, limpia estado/índice y devuelve el arma al reposo. Así vuelve la locomoción al moverse, en lugar de arrastrar la pose final. No se modificaron los montajes originales ni sus ventanas de daño.
+- **Verified:** `BP_DestructibleDoor` activa `bCracked` y asigna `M_DoorCracked` a las superficies del panel tras el primer daño válido (50→25). Máscara procedural de fracturas ramificadas, núcleo oscuro y bordes ámbar; coordenadas mundiales X/Z para las tres medidas de puerta. El segundo pesado conserva rotura/escombros/audio. Cerrada, ligero o martillo sin energizar: ni daño ni grietas. Marco y luz de baliza conservados.
+- **Verified:** material y máscara en `/Game/ThirdPerson/Environment/Progression/M_DoorCracked` y `T_DoorCracks`; fuente `Tools/generate_door_cracks.py` → `Tools/ArtSource/UI/T_DoorCracks.tga`. En MaterialEditingLibrary, ComponentMask usa entrada vacía y TextureSample usa UVs; se verificaron conexiones y render. El flujo de grietas está conectado directamente entre daño y comprobación de rotura.
+
+### Pruebas y continuidad
+
+- **Verified:** siete informes aprobados en `docs/validation/hostage-feedback-2026-11-15.json`: HUD/voz/fijación y sus controles de liberación; movimiento tras los tres pesados a 500 cm/s sin pose de ataque; golpes inválidos sin grietas; primer impacto físico agrieta y segundo rompe; diez montajes con daño físico correcto; misión completa aislada (hordas/balizas/puertas); recompilación de 19 Blueprints. Capturas `hostage-prompt-preview.png` y `cracked-door-preview.png` bajo docs/validation.
+- **Verified:** estas pruebas usan condiciones aisladas/teletransportes en PIE. No son aceptación del propietario ni un recorrido manual completo. La fijación sustituye la expectativa histórica de poder interceptar aggro por proximidad. `verify_hostage_combat.py` se actualizó para esa prioridad; la prueba específica nueva es `verify_hostage_feedback.py`.
+- **Continuidad:** fuentes de gráficos vigentes `generate_progression_graphs.py` y `generate_dialogue_hud.py`. Orden para reproducir esta capa: generar WAVs/máscara → ambos generadores de gráficos → `prepare_hostage_feedback.py` → `install_hostage_feedback.py`. El instalador refresca también baliza/tarea de canalización porque llaman a eventos del jugador. No ejecutar recetas antiguas de reconstrucción completa ni sobrescribir el árbol del orbitador; conserva su tarea FaceCombatTarget del avance anterior.
+- **Verified:** Win64 Development actualizado: BUILD SUCCESSFUL / ExitCode 0; cook 0 errores y 21 advertencias de recursos anteriores. ZIP `Deliverables/TimeOut_Avance_18Nov2026.zip`, **737914216 bytes**, CRC completo aprobado. Prueba del ejecutable: menú, Nuevo juego, señal E/RB visible y rescate E que la oculta. Las pruebas detalladas de fijación, voz, tres recuperaciones y grietas son de PIE. Log resumido en `docs/validation/hostage-feedback-package-log.txt`.
+- **Unknown / pendiente:** recorrido manual completo, aceptación del propietario, mando físico, otra PC, guardado/Continuar y modelos definitivos del equipo.
+
+## History
+
+### Estado anterior del 15 de noviembre — antes de señal, voz, fijación y grietas
+
 - Fecha: **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`; commits locales autorizados, sin push solicitado. Entrega: 18 de noviembre.
 - **Stated:** el propietario reportó huida excesiva del rehén en la segunda baliza y enemigos que se alejaban caminando de espaldas. Pidió refinar ambas IA, dar daño a todos los ataques y una punzada roja tenue al recibir daño; delegó el balance pendiente.
 - **Verified:** gameplay Blueprint-only; tres Behavior Trees/Blackboards conservados. No se añadió Source ni plugin al proyecto. La herramienta nativa de edición permanece exclusivamente en Intermediate y se carga sólo con un argumento del editor.
@@ -39,7 +64,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - **Verified:** Win64 Development reconstruido: BUILD SUCCESSFUL / ExitCode 0; cook 0 errores y 21 advertencias. ZIP actualizado `Deliverables/TimeOut_Avance_18Nov2026.zip`, **737829582 bytes**, CRC completo aprobado. Prueba nativa: menú → Nuevo juego → Nivel_Entrega, rescate E, HUD y descenso de vida con la tecla de depuración existente. Las pruebas detalladas de IA/10 ataques/puertas son de PIE. Resumen del empaquetado en `docs/validation/refinement-package-log.txt`.
 - **Unknown / pendiente:** aceptación manual del propietario, recorrido completo, mando físico, rendimiento en otra PC, guardado completo/Continuar y modelos definitivos del equipo.
 
-## History
+
 
 ### Estado anterior del 15 de noviembre — antes de refugios locales y daño completo
 

@@ -29,9 +29,9 @@ def observe(delta,world=w,player=p,hostage=h,mission=d,state=s,root=project,spaw
    player.set_actor_location(unreal.Vector(0,-1800,100),False,True)
    state.update(stage='intercept',since=now,enemy=spawn('BP_BaseEnemy',0,-1630))
   elif stage=='intercept' and now-state['since']>1:
-   assert e.get_editor_property('CombatTarget')==player,'Player cannot intercept aggro'
-   assert hp==88
-   state['results']['player_intercepts_target']=True
+   assert e.get_editor_property('CombatTarget')==hostage,'Hostage fixation lost to a closer player'
+   assert hp<=88 and hp>0
+   state['results']['hostage_fixation_survives_player_proximity']=True
    unreal.get_default_object(unreal.SystemLibrary.static_class()).call_method('SetDoublePropertyByName',(hostage,'InvulnerableUntil',0.0))
    unreal.GameplayStatics.apply_damage(hostage,200,None,e,None)
    assert hostage.get_editor_property('bIsDead') and hostage.get_editor_property('Health')==0

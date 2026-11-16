@@ -1,5 +1,12 @@
 # Work items
 
+## Capa actual de feedback — 2026-11-15
+
+- **In progress / Ready para aceptación:** placa flotante E/RB del rehén, voz sintética propia, fijación de ambos enemigos, locomoción tras pesado de espada y grietas al primer golpe válido.
+- **Verified:** siete informes del agente aprobados en docs/validation/hostage-feedback-2026-11-15.json; capturas de señal/puerta y 10 montajes físicos. No equivalen a aceptación del propietario.
+- **Verified / Ready para aceptación:** Win64/ZIP actualizados, 737914216 bytes, CRC completo aprobado; cook 0 errores/21 advertencias. Señal y rescate comprobados en el ejecutable.
+- **Pendiente:** recorrido manual completo y aceptación del propietario.
+
 ## Refinamiento actual — 2026-11-15
 
 - **In progress / Ready para aceptación:** refugios locales del rehén con límite de recorrido; retirada breve del embestidor, regreso al combate y orientación por movimiento; corrección de espera de giro del orbitador.

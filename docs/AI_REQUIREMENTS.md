@@ -1,5 +1,9 @@
 # AI requirements
 
+## Señal, fijación y feedback — 2026-11-15
+
+**Stated / Decision:** señal E/RB segura hasta 1200 cm, interacción existente 400; voz sintética propia exclusiva del speaker REHÉN. Ambos enemigos fijan al rehén visible/rescatado/vivo a ≤650 cm y retienen prioridad hasta 1800 cm, incluso con jugador cercano o pérdida temporal de visión. Liberan objetivo inválido/muerto/no rescatado/fuera de límite; carga comprometida no cambia víctima a mitad. Recuperación pesada de espada con corte 1.18/1.05/1.70 s, mezcla 0.12 s. Primer pesado energizado contra puerta habilitada: grietas/25 de vida; segundo: rotura. Valores de daño conservados. Esta prioridad sustituye la intercepción histórica por proximidad.
+
 ## Refinamiento de IA y daño completo — 2026-11-15
 
 **Stated:** ambas IA deben mantener el encuentro local; el rehén no debe rodear el mapa y los enemigos no deben abandonar el combate caminando de espaldas. Todos los ataques deben causar daño, con balance delegado.
