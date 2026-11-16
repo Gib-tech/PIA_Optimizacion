@@ -9,7 +9,7 @@ try:cdo.get_editor_property('ContactDamage')
 except Exception:lib.add_member_variable(bp,'ContactDamage',lib.get_basic_type_by_name('real'))
 lib.set_blueprint_variable_instance_editable(bp,'ContactDamage',True)
 lib.compile_blueprint(bp)
-unreal.get_default_object(bp.generated_class()).set_editor_property('ContactDamage',6.0)
+unreal.get_default_object(bp.generated_class()).set_editor_property('ContactDamage',13.2)
 unreal.EditorAssetLibrary.save_loaded_asset(bp,only_if_is_dirty=False)
 for folder,name in [(AI,'BP_BaseEnemy'),(AI,'BP_ChargerEnemy'),('/Game/ThirdPerson/Blueprints/Aliado/','BP_Hostage')]:
     asset=unreal.load_asset(folder+name);cdo=unreal.get_default_object(asset.generated_class())

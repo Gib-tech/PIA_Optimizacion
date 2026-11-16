@@ -1,0 +1,9 @@
+LogInit: Display: Warning/Error Summary (Unique only)
+LogInit: Display: Success - 0 error(s), 21 warning(s)
+BuildCookRun time: 74.97 s
+BUILD SUCCESSFUL
+AutomationTool exiting with ExitCode=0 (Success)
+ZIP_BYTES 739814428
+ZIP full CRC: passed
+Native smoke: menu and Nuevo juego / Nivel_Entrega with HUD and E/RB marker.
+Detailed enemy damage and door fracture tests: PIE, not owner acceptance.

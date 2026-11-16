@@ -35,7 +35,7 @@ def observe_charger(delta,w=world,p=player,e=enemy,board=bb,tree=brain,s=state,p
             hits=[a['player_hp']-b['player_hp'] for a,b in zip(data,data[1:]) if a['player_hp']>b['player_hp']]
             motion=max(unreal.Vector(*x['hand']).distance(unreal.Vector(*data[0]['hand'])) for x in data)
             result.update(contact_damage_events=hits,original_mesh=e.mesh.get_skeletal_mesh_asset().get_name(),hand_motion_cm=round(motion,1))
-            result['passed']=all(name in seen for name in ['BTTask_ChargerWindup_C','BTTask_ChargerCharge_C','BTTask_ChargerRetreat_C']) and result['max_speed']>=800 and bool(hits) and all(x==6 for x in hits) and motion>5
+            result['passed']=all(name in seen for name in ['BTTask_ChargerWindup_C','BTTask_ChargerCharge_C','BTTask_ChargerRetreat_C']) and result['max_speed']>=800 and bool(hits) and all(abs(x-13.2)<.001 for x in hits) and motion>5
             with open(os.path.join(project,'Intermediate/inspect/charger_cycle_assertions.json'),'w') as f:json.dump(result,f,indent=2)
             e.destroy_actor();unreal.log('CHARGER_CYCLE_RESULT '+json.dumps({k:v for k,v in result.items() if k!='samples'}))
     except Exception:

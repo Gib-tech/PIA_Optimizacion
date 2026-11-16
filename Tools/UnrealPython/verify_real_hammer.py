@@ -28,7 +28,7 @@ def observe(delta,world=w,pawn=p,gate=door,state=s,root=project,hit=hit):
      state.setdefault('ended_at',now);assert now-state['ended_at']<.15,'Hitbox stayed active after attack';return
     state.pop('ended_at',None)
     if stage=='first':
-     assert gate.get_editor_property('bCracked') and gate.static_mesh_component.get_material(0).get_name()=='M_DoorCracked',(gate.get_editor_property('bCracked'),str(gate.static_mesh_component.get_material(0)))
+     assert gate.get_editor_property('bCracked') and gate.static_mesh_component.static_mesh==gate.get_editor_property('CrackedMesh')
      unreal.SystemLibrary.execute_console_command(world,'HighResShot 1280x720 filename="'+os.path.join(root,'docs/validation/cracked-door-preview.png').replace('\\','/')+'"')
      hit();state.update(stage='second',since=now)
     else:
@@ -39,7 +39,7 @@ def observe(delta,world=w,pawn=p,gate=door,state=s,root=project,hit=hit):
    assert box.get_attach_parent()==pawn.get_editor_property('Weapon') and box.get_unscaled_box_extent().distance(unreal.Vector(45,45,90))<.001
    assert box.get_editor_property('relative_location').distance(pawn.get_editor_property('SwordHitboxRelativeTransform').translation)<.001
    unreal.unregister_slate_post_tick_callback(state['handle'])
-   with open(os.path.join(root,'Intermediate/inspect/real_hammer_assertions.json'),'w') as f:json.dump({'passed':True,'real_input_and_hammer_montage':True,'physical_door_hits':2,'per_hit_damage':25,'cracked_material_after_first_hit':True,'upgrade_particles_active':True,'interrupted_attack_damage':0,'interruption_clears_attack_and_collision':True,'sword_hitbox_restored':True},f,indent=2)
+   with open(os.path.join(root,'Intermediate/inspect/real_hammer_assertions.json'),'w') as f:json.dump({'passed':True,'real_input_and_hammer_montage':True,'physical_door_hits':2,'per_hit_damage':25,'cracked_geometry_after_first_hit':True,'upgrade_particles_active':True,'interrupted_attack_damage':0,'interruption_clears_attack_and_collision':True,'sword_hitbox_restored':True},f,indent=2)
    unreal.log('REAL_HAMMER_ASSERTIONS_PASSED');return
   assert age<8,'Timeout '+stage
  except Exception:

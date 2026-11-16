@@ -42,7 +42,7 @@ for actor in [orbiter,charger]:
     assert actor.mesh.get_skeletal_mesh_asset().get_name()=='SK_SciFiWarrior02'
     assert actor.mesh.get_editor_property('relative_scale3d').distance(unreal.Vector(1,1,1))<.001
     assert not actor.mesh.get_editor_property('override_materials')
-    assert actor.get_editor_property('ContactDamage')==6
+    assert abs(actor.get_editor_property('ContactDamage')-13.2)<.001
 project=unreal.Paths.convert_relative_path_to_full(unreal.Paths.project_dir())
 with open(os.path.join(project,'Intermediate/inspect/damage_assertions.json'),'w') as f:json.dump(report,f,indent=2)
 orbiter.destroy_actor();charger.destroy_actor()

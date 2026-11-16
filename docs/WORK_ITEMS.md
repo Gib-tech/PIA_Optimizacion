@@ -1,5 +1,12 @@
 # Work items
 
+## Dificultad y fractura actuales — 2026-11-15
+
+- **In progress / Ready para aceptación:** daño enemigo 13.2 (+120% sobre 6) y puertas con grietas geométricas que se separan en 42/56/72 piezas irregulares coincidentes.
+- **Verified:** siete informes aprobados en docs/validation/fracture-difficulty-2026-11-15.json: daño real de ambos enemigos, rehén, martillo físico, tres fracturas/navegación, misión completa aislada y compilación de 20 Blueprints. Son pruebas del agente, no aceptación del propietario.
+- **Verified / Ready para aceptación:** Win64/ZIP actualizados, 739814428 bytes, CRC completo aprobado; cook 0 errores/21 advertencias anteriores. Menú/Nuevo juego/HUD/señal comprobados en el ejecutable.
+- **Pendiente:** recorrido manual completo y aceptación del propietario. Las capas anteriores se conservan debajo como historial.
+
 ## Capa actual de feedback — 2026-11-15
 
 - **In progress / Ready para aceptación:** placa flotante E/RB del rehén, voz sintética propia, fijación de ambos enemigos, locomoción tras pesado de espada y grietas al primer golpe válido.

@@ -17,20 +17,20 @@ def observe(delta,world=w,player=p,hostage=h,mission=d,state=s,root=project,spaw
  try:
   now=unreal.GameplayStatics.get_time_seconds(world);e=state['enemy'];hp=hostage.get_editor_property('Health');stage=state['stage']
   if stage=='orbiter' and hp<100:
-   assert hp==94 and e.get_editor_property('CombatTarget')==hostage
-   unreal.GameplayStatics.apply_damage(hostage,6,None,e,None);assert hostage.get_editor_property('Health')==94,'No hit grace'
-   state['results'].update(orbiter_damage=6,hostage_target=True,immediate_repeat_damage=0)
+   assert abs(hp-86.8)<.001 and e.get_editor_property('CombatTarget')==hostage
+   unreal.GameplayStatics.apply_damage(hostage,13.2,None,e,None);assert abs(hostage.get_editor_property('Health')-86.8)<.001,'No hit grace'
+   state['results'].update(orbiter_damage=13.2,hostage_target=True,immediate_repeat_damage=0)
    e.destroy_actor();state.update(stage='charger_wait',since=now)
   elif stage=='charger_wait' and now-state['since']>1:
    state.update(stage='charger',since=now,enemy=spawn('BP_ChargerEnemy',-400,-2000))
-  elif stage=='charger' and hp<94:
-   assert hp==88 and e.get_editor_property('ChargeVictim')==hostage
-   state['results']['charger_damage']=6;e.destroy_actor()
+  elif stage=='charger' and hp<86.7:
+   assert abs(hp-73.6)<.001 and e.get_editor_property('ChargeVictim')==hostage
+   state['results']['charger_damage']=13.2;e.destroy_actor()
    player.set_actor_location(unreal.Vector(0,-1800,100),False,True)
    state.update(stage='intercept',since=now,enemy=spawn('BP_BaseEnemy',0,-1630))
   elif stage=='intercept' and now-state['since']>1:
    assert e.get_editor_property('CombatTarget')==hostage,'Hostage fixation lost to a closer player'
-   assert hp<=88 and hp>0
+   assert hp<=73.601 and hp>0
    state['results']['hostage_fixation_survives_player_proximity']=True
    unreal.get_default_object(unreal.SystemLibrary.static_class()).call_method('SetDoublePropertyByName',(hostage,'InvulnerableUntil',0.0))
    unreal.GameplayStatics.apply_damage(hostage,200,None,e,None)

@@ -160,27 +160,19 @@ def door():
  damaged=g.both(g.cmp('Greater_DoubleDouble',g.v('Health'),0),g.cmp('Less_DoubleDouble',g.v('Health'),50))
  first=g.br(impact,g.both(damaged,g.neg(g.v('bCracked','bool'))));mark=g.s(first,'bCracked',True,'bool')
  comp=g.v('StaticMeshComponent','object',owner=SM,obj=SMC,native=True,target=(g.selfnode(typ=DOOR),'self'))
- for index in [0,1]:
-  mat=g.call(PRIM,'SetMaterial').pin('ElementIndex','int',default=str(index)).pin('Material','object',obj='/Script/Engine.MaterialInterface',default_obj='/Game/ThirdPerson/Environment/Progression/M_DoorCracked.M_DoorCracked');g.w(comp,mat,'self');g.chain(mark,mat);mark=mat
+ mesh=g.call(SMC,'SetStaticMesh').pin('NewMesh','object',obj='/Script/Engine.StaticMesh').pin('ReturnValue','bool',out=True);g.w(comp,mesh,'self');g.w(g.v('CrackedMesh','object',obj='/Script/Engine.StaticMesh'),mesh,'NewMesh');g.chain(mark,mesh);mark=mesh
  broken=g.br(mark,g.cmp('LessEqual_DoubleDouble',g.v('Health'),0));g.chain(first,broken,'else')
  prev=g.s(broken,'bDestroyed',True,'bool');prev=g.s(prev,'bDoorPending',False,'bool',owner=HERO,target=hero)
  c=g.call(ACTOR,'SetActorEnableCollision').pin('bNewActorEnableCollision','bool',default='false');g.chain(prev,c)
  hide=g.call(ACTOR,'SetActorHiddenInGame').pin('bNewHidden','bool',default='true');g.chain(c,hide)
  prev=g.fx(hide,'NS_DoorBreak');prev=g.sound(prev,'DoorBreak')
- pos=g.location(g.selfnode(typ=DOOR),'self')
- for dx,dz in [(-60,60),(60,60),(-60,170),(60,170)]:
-  offset=g.c(MATH,'Add_VectorVector',[('A','struct',(pos,'ReturnValue')),('B','struct',f'{dx},0,{dz}')],cat='struct',obj=VEC)
-  # Vector pins need explicit struct types in the serialized clipboard.
-  for p in ['A','B']:offset[0].pins[p]['obj']=VEC
-  tr=g.call(MATH,'MakeTransform',pure=True,static=True).pin('Location','struct',obj=VEC).pin('Rotation','struct',obj='/Script/CoreUObject.Rotator',default='0,0,0').pin('Scale','struct',obj=VEC,default='1,1,1').pin('ReturnValue','struct',obj=TRANSFORM,out=True);g.w(offset,tr,'Location')
-  spawn=g.node('K2Node_SpawnActorFromClass').pin('execute').pin('then',out=True).pin('Class','class',obj=ACTOR,default_obj=FRAGMENT).pin('SpawnTransform','struct',obj=TRANSFORM).pin('CollisionHandlingOverride','byte',obj='/Script/Engine.ESpawnActorCollisionHandlingMethod',default='AlwaysSpawn').pin('Owner','object',obj=ACTOR).pin('TransformScaleMethod','byte',obj='/Script/Engine.ESpawnActorScaleMethod',default='MultiplyWithRoot').pin('ReturnValue','object',obj=FRAGMENT,out=True);g.chain(prev,spawn);g.wire(tr,'ReturnValue',spawn,'SpawnTransform');prev=spawn
+ from generate_fracture_graphs import spawn_shards
+ spawn_shards(g,prev,hero)
  g.write('BP_DestructibleDoor')
 
 def fragment():
- g=ProgressGraph();e=g.event(ACTOR,'ReceiveBeginPlay');comp=g.v('StaticMeshComponent','object',owner=SM,obj=SMC,native=True,target=(g.selfnode(typ=SM),'self'))
- n=g.call(PRIM,'SetSimulatePhysics').pin('bSimulate','bool',default='true');g.w(comp,n,'self');g.chain(e,n)
- impulse=g.call(PRIM,'AddImpulse').pin('Impulse','struct',obj=VEC,default='0,-150,250').pin('BoneName','name',default='None').pin('bVelChange','bool',default='true');g.w(comp,impulse,'self');g.chain(n,impulse)
- life=g.call(ACTOR,'SetLifeSpan').pin('InLifespan','real',sub='float',default='4');g.chain(impulse,life);g.write('BP_DoorFragment')
+ from generate_fracture_graphs import fragment as build
+ build()
 
 def beacon():
  g=ProgressGraph();e=g.custom('CompleteActivation').pin('Hostage','object',obj=HOSTAGE,out=True)

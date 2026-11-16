@@ -1,0 +1,269 @@
+{
+  "date": "2026-11-15",
+  "agent_tests_not_owner_acceptance": true,
+  "baseline_enemy_damage": 6,
+  "damage_multiplier": 2.2,
+  "current_enemy_damage": 13.2,
+  "geometry": [
+    {
+      "door": 1,
+      "pieces": 42,
+      "area_before_seams_cm2": 66047.99999999997,
+      "width_cm": 258,
+      "height_cm": 256
+    },
+    {
+      "door": 2,
+      "pieces": 56,
+      "area_before_seams_cm2": 114551.99999999997,
+      "width_cm": 344,
+      "height_cm": 333
+    },
+    {
+      "door": 3,
+      "pieces": 72,
+      "area_before_seams_cm2": 209999.99999999997,
+      "width_cm": 600,
+      "height_cm": 350
+    }
+  ],
+  "seam_cm": 0.7,
+  "reports": {
+    "fracture": {
+      "passed": true,
+      "doors": [
+        {
+          "door": 1,
+          "pieces": 42,
+          "matching_initial_geometry_cm": 0.0,
+          "spawn_cost_ms": 18.52,
+          "first_hit_blocks_navigation": true,
+          "physics_and_pawn_camera_ignore": true,
+          "moving_shards": 42,
+          "spinning_shards": 42,
+          "max_displacement_cm": 74.3,
+          "opens_navigation_with_debris": true,
+          "fragments_expired": true,
+          "opens_navigation": true
+        },
+        {
+          "door": 2,
+          "pieces": 56,
+          "matching_initial_geometry_cm": 0.0,
+          "spawn_cost_ms": 32.1,
+          "first_hit_blocks_navigation": true,
+          "physics_and_pawn_camera_ignore": true,
+          "moving_shards": 56,
+          "spinning_shards": 56,
+          "max_displacement_cm": 117.2,
+          "opens_navigation_with_debris": true,
+          "fragments_expired": true,
+          "opens_navigation": true
+        },
+        {
+          "door": 3,
+          "pieces": 72,
+          "matching_initial_geometry_cm": 0.0,
+          "spawn_cost_ms": 31.04,
+          "first_hit_blocks_navigation": true,
+          "physics_and_pawn_camera_ignore": true,
+          "moving_shards": 72,
+          "spinning_shards": 72,
+          "max_displacement_cm": 114.9,
+          "opens_navigation_with_debris": true,
+          "fragments_expired": true,
+          "opens_navigation": true
+        }
+      ]
+    },
+    "hammer_physical_input": {
+      "passed": true,
+      "real_input_and_hammer_montage": true,
+      "physical_door_hits": 2,
+      "per_hit_damage": 25,
+      "cracked_geometry_after_first_hit": true,
+      "upgrade_particles_active": true,
+      "interrupted_attack_damage": 0,
+      "interruption_clears_attack_and_collision": true,
+      "sword_hitbox_restored": true
+    },
+    "orbiter_player_damage": {
+      "interrupted_damage": 0,
+      "impact_seconds": 0.443,
+      "attack_damage": 13.2,
+      "attack_seconds": 1.296,
+      "death_stops_tree_and_collision": true,
+      "passed": true,
+      "death_cleanup": true
+    },
+    "charger_player_damage": {
+      "seen_tasks": [
+        "BTTask_ChargerCharge_C",
+        "BTTask_ChargerRetreat_C",
+        "BTTask_ChargerWindup_C"
+      ],
+      "max_speed": 900.0,
+      "max_distance": 600.0,
+      "contact_damage_events": [
+        13.199999809265137,
+        13.199999809265137,
+        13.199999809265137,
+        13.199999809265137
+      ],
+      "original_mesh": "SK_SciFiWarrior02",
+      "hand_motion_cm": 94.4,
+      "passed": true
+    },
+    "hostage_damage": {
+      "orbiter_damage": 13.2,
+      "hostage_target": true,
+      "immediate_repeat_damage": 0,
+      "charger_damage": 13.2,
+      "hostage_fixation_survives_player_proximity": true,
+      "hostage_death_ends_mission": true,
+      "passed": true
+    },
+    "mission": {
+      "passed": true,
+      "locked_light_unpowered_damage": 0,
+      "friendly_fire": 0,
+      "zones": [
+        {
+          "beacon": 1,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.01,
+          "horde_enemies": 4
+        },
+        {
+          "beacon": 2,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.0,
+          "horde_enemies": 4
+        },
+        {
+          "beacon": 3,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.0,
+          "horde_enemies": 0
+        }
+      ],
+      "escort_extraction": true
+    },
+    "compile": {
+      "passed": true,
+      "assets": [
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerController",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_LocatePlayer",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_ChargerSense",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Attack",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerWindup",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerCharge",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRetreat",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_FaceCombatTarget",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DoorFragment",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestructibleDoor",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+          "status": "Compiled; status transient in export"
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+          "status": "Compiled; status transient in export"
+        }
+      ]
+    }
+  },
+  "previews": [
+    "fracture-cracks-preview.png",
+    "door-shatter-preview.png",
+    "door-shatter-late-preview.png"
+  ],
+  "package": {
+    "configuration": "Win64 Development",
+    "build": "successful",
+    "exit_code": 0,
+    "cook_errors": 0,
+    "cook_warnings": 21,
+    "warnings": "Existing Landscape/Manny resources; see summarized package log.",
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 739814428,
+    "full_crc": "passed",
+    "native_smoke": [
+      "menu",
+      "Nuevo juego loads Nivel_Entrega",
+      "HUD and E/RB marker visible"
+    ],
+    "detailed_damage_and_fracture_verification": "PIE"
+  }
+}

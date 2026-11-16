@@ -1,5 +1,11 @@
 # AI requirements
 
+## Dificultad y fractura — 2026-11-15
+
+**Stated / Decision:** aumento de daño enemigo del 120% sobre 6: **ContactDamage=13.2**, tanto orbitador como embestidor, contra jugador y rehén. Los valores históricos 6 quedan sustituidos. Mantener las ventanas de ataque, interrupción y gracia del rehén de 0.8 s.
+
+**Decision / Verified en PIE:** primer pesado de martillo energizado contra puerta habilitada: 50→25 y malla con fracturas geométricas. Segundo: las mismas piezas se desprenden y giran; 42/56/72 fragmentos irregulares según puerta, juntas de 0.7 cm, duración 4 s. Ignoran Pawn/Camera y no afectan navegación. El marco permanece. Se conservan los controles de baliza, arma y tipo de ataque. Evidencia y límites en el handoff actual.
+
 ## Señal, fijación y feedback — 2026-11-15
 
 **Stated / Decision:** señal E/RB segura hasta 1200 cm, interacción existente 400; voz sintética propia exclusiva del speaker REHÉN. Ambos enemigos fijan al rehén visible/rescatado/vivo a ≤650 cm y retienen prioridad hasta 1800 cm, incluso con jugador cercano o pérdida temporal de visión. Liberan objetivo inválido/muerto/no rescatado/fuera de límite; carga comprometida no cambia víctima a mitad. Recuperación pesada de espada con corte 1.18/1.05/1.70 s, mezcla 0.12 s. Primer pesado energizado contra puerta habilitada: grietas/25 de vida; segundo: rotura. Valores de daño conservados. Esta prioridad sustituye la intercepción histórica por proximidad.

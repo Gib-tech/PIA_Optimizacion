@@ -12,8 +12,8 @@ MISION
    llevarlo a la baliza 1. Solo el rehen puede activarla: se acerca y tarda 3 s.
    Una amenaza interrumpe el proceso. El jugador no activa balizas con E.
 5. La baliza equipa automaticamente el martillo, que emite particulas de mejora.
-   El primer pesado (clic derecho) deja grietas con bordes energizados;
-   el segundo rompe la puerta habilitada de esa zona.
+   El primer pesado (clic derecho) deja grietas geometricas;
+   el segundo hace trizas la puerta habilitada siguiendo esas mismas divisiones.
    Las otras puertas siguen selladas hasta activar su propia baliza.
 6. Llevar al aliado a la segunda zona. Completar otras dos oleadas de dos
    embestidores, recuperar al aliado, escoltarlo a la baliza 2 y romper su puerta.
@@ -25,7 +25,7 @@ El aliado no vuelve a seguir automaticamente al acercarse. Hay que despejar
 las amenazas cercanas y pulsar E. Las zonas se activan una sola vez por partida.
 El recuadro inferior avisa al acercarse a una zona: entrar con el aliado
 siguiendote a no mas de 6 metros inicia sus oleadas. Los mensajes cambian con
-el combate, el intermedio y la zona despejada. No hay texto flotando en el mundo.
+el combate, el intermedio y la zona despejada. El rehen tiene una senal E / RB.
 Hay unos tres segundos entre sus oleadas. Las primeras dos balizas requieren
 despejar su zona y las tres se activan en orden.
 El rehen tiene 100 de vida, visible en la barra superior izquierda. Ambos tipos
@@ -39,11 +39,13 @@ Orbitador: se mueve alrededor del jugador. Embestidor: prepara una carga,
 avanza en linea, se separa unos metros y vuelve al combate.
 Ambos reciben golpes ligeros y pesados. Aprovechar preparacion y recuperacion.
 Espada ligera: 15 / 15 / 19 / 22. Martillo ligero: 15 / 15.
-Todos los pesados: 25 contra ambos enemigos. Golpe enemigo: 6.
+Todos los pesados: 25 contra ambos enemigos. Golpe enemigo: 13.2 (+120% sobre 6).
 Cada ataque alcanza una sola vez a cada enemigo y requiere linea de vision.
 La recuperacion del pesado de espada cede la pose a locomocion al volver a moverse.
 Recibir dano produce una punzada roja tenue en las esquinas durante 0.38 s.
 El rehen elige refugios cercanos con rutas de hasta 18 metros, sin rodear sectores.
+Las puertas producen 42 / 56 / 72 fragmentos irregulares de su propia malla.
+Los escombros giran y caen, no bloquean al jugador/rehen/camara y duran 4 s.
 Los ataques enemigos pueden interrumpirse al causarles dano. Ambos enemigos
 conservan la malla Warrior y sus materiales originales, sin armadura naranja.
 
@@ -72,4 +74,4 @@ Falta aceptacion del propietario y una partida completa recorrida a mano.
 Las pruebas aisladas del agente usan teletransportes y dano de prueba en PIE.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
-Detalles y evidencia: docs/HANDOFF.md y docs/validation/hostage-feedback-2026-11-15.json.
+Detalles y evidencia: docs/HANDOFF.md y docs/validation/fracture-difficulty-2026-11-15.json.

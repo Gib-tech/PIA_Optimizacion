@@ -8,6 +8,29 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`. Base anterior `af8ddcf`. Commits locales autorizados; sin push solicitado.
+- **Stated:** aumentar un 120% el daño enemigo y hacer trizas las puertas siguiendo sus grietas, sustituyendo los cuadros separados anteriores.
+- **Verified:** Blueprint-only y Behavior Trees/Blackboards conservados. El helper nativo se usa sólo en el editor desde Intermediate; no es dependencia del proyecto/juego.
+
+### Daño y puertas vigentes
+
+- **Stated / Verified:** `BP_BaseEnemy.ContactDamage` y `BP_ChargerEnemy.ContactDamage` = **13.2** (6 × 2.2). Se aplica tanto a jugador como rehén. Este valor sustituye el contacto 6 de todas las entradas históricas. Se conservan ventanas, interrupción y gracia del rehén de 0.8 s.
+- **Verified:** `BP_DestructibleDoor` conserva 50 de salud, baliza habilitadora y dos pesados de martillo energizado de 25. Al primero cambia su panel por `SM_DoorCracked_01/02/03`: fracturas geométricas de 0.7 cm. Al segundo genera **exactamente esas piezas**, con sus centroides y mallas originales: **42 / 56 / 72** fragmentos irregulares. Incluyen los cortes del panel, refuerzos y cerradura. Marco conservado. Ya no usa la máscara M_DoorCracked para el primer impacto ni cuatro cubos genéricos como escombros; recursos anteriores conservados como historia.
+- **Decision / Verified:** piezas con casco convexo de su propio polígono, impulso alejándose del atacante, dispersión radial, velocidad angular inicial aleatoria 180–420 grados/s y vida 4 s. Ignoran Pawn/Camera y no afectan navegación. El paso se abre aun con los escombros presentes. Rejillas de fractura Voronoi con mayor densidad alrededor del impacto; no se modificó el Progression.blend original.
+
+### Evidencia y reproducción
+
+- **Verified:** `docs/validation/fracture-difficulty-2026-11-15.json`: golpes reales de ambos enemigos al jugador/rehén de 13.2, gracia/interrupción/muerte conservadas; dos impactos físicos de martillo; tres puertas con posiciones iniciales coincidentes a 0.0 cm, todas las piezas móviles y con giro, paso abierto durante escombros y limpieza a 4 s; misión completa aislada y compilación de 20 Blueprints. Capturas fracture-cracks-preview.png y door-shatter-late-preview.png.
+- **Verified / límite:** pruebas del agente en PIE con teletransportes y condiciones aisladas, no aceptación del propietario ni recorrido manual completo. La prueba específica de fractura aplica eventos de daño reales; verify_real_hammer.py comprueba por separado entrada física/montaje/solapamiento del martillo.
+- **Continuidad:** `Tools/Blender/build_fractured_doors.py` abre `Tools/ArtSource/Progression/Progression.blend` y genera FBX/manifest/FracturedDoors.blend en `Tools/ArtSource/Fracture`. Luego `generate_progression_graphs.py` → `prepare_fractured_doors.py` → `install_fractured_doors.py`. Preparar agrega variables/ExposeOnSpawn y asigna las tres instancias; instalar sólo reinstala fragmento y puerta. Generador de gráficos compartidos: generate_fracture_graphs.py. Los activos están bajo `/Game/ThirdPerson/Environment/Progression/Fracture`. No reconstruir el mapa ni reinstalar recetas antiguas de IA.
+- **Verified:** fuentes de feedback/IA anteriores siguen vigentes; ver entrada anterior para señal E/RB, voz propia, fijación y recuperación de espada.
+- **Verified:** Win64 Development: BUILD SUCCESSFUL / ExitCode 0, cook 0 errores y 21 advertencias de recursos anteriores. ZIP actualizado `Deliverables/TimeOut_Avance_18Nov2026.zip`, **739814428 bytes**, CRC completo aprobado. Prueba nativa: menú y Nuevo juego cargan Nivel_Entrega, HUD y placa E/RB visibles. Daño/fractura detallados comprobados en PIE. Log: `docs/validation/fracture-difficulty-package-log.txt`. Editor normal restaurado en Nivel_Entrega, sin helper.
+- **Unknown / pendiente:** aceptación del propietario, recorrido manual completo, mando físico, otra PC, guardado/Continuar y modelos definitivos del equipo.
+
+## History
+
+### Estado anterior del 15 de noviembre — antes de dificultad y fractura geométrica
+
 - Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`. Commits locales autorizados; no push solicitado. Base anterior `bbf1f98`. Entrega 18 de noviembre.
 - **Stated:** añadir señal flotante con tecla para llamar al rehén, diferenciar su voz (referencias de estilo: Canelita/Sans), fijación de los enemigos en el rehén detectado, eliminar deslizamiento en recuperación de pesado de espada y agrietar puertas al primer impacto del martillo energizado.
 - **Verified:** continúa Blueprint-only, con los tres Behavior Trees/Blackboards; sin Source ni dependencia del helper nativo en el proyecto/juego.
@@ -29,7 +52,6 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - **Verified:** Win64 Development actualizado: BUILD SUCCESSFUL / ExitCode 0; cook 0 errores y 21 advertencias de recursos anteriores. ZIP `Deliverables/TimeOut_Avance_18Nov2026.zip`, **737914216 bytes**, CRC completo aprobado. Prueba del ejecutable: menú, Nuevo juego, señal E/RB visible y rescate E que la oculta. Las pruebas detalladas de fijación, voz, tres recuperaciones y grietas son de PIE. Log resumido en `docs/validation/hostage-feedback-package-log.txt`.
 - **Unknown / pendiente:** recorrido manual completo, aceptación del propietario, mando físico, otra PC, guardado/Continuar y modelos definitivos del equipo.
 
-## History
 
 ### Estado anterior del 15 de noviembre — antes de señal, voz, fijación y grietas
 

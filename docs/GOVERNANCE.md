@@ -1,5 +1,9 @@
 # Governance
 
+## Dificultad y fractura autorizadas — 2026-11-15
+
+**Stated:** aumentar un 120% el daño enemigo y sustituir los cuadros separados de las puertas por trizas que sigan sus grietas. El daño vigente es 6 × 2.2 = **13.2** para ambos enemigos contra jugador/rehén; sustituye el valor histórico 6. Se autoriza generar la geometría necesaria conservando las mallas originales del equipo, los dos golpes de puerta y la implementación Blueprint-only.
+
 ## Capa de señales y fijación — 2026-11-15
 
 **Stated:** el propietario solicita expresamente la señal flotante de interacción del rehén, voz diferenciada, fijación enemiga, corregir recuperación de espada y grietas de primer golpe. Esta petición permite la placa E/RB sobre el rehén y sustituye el veto histórico a esa señal; permite priorizar al rehén aun con el jugador cerca. Mantener los árboles y registrar ajuste/pruebas.
