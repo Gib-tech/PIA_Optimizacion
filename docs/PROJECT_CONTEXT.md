@@ -4,6 +4,8 @@ Facts below are separated from the assignment brief. Do not merge the two.
 
 ## Estado verificado — 2026-11-15
 
+- FIN-03/04: interfaz Blueprint-only común en menú y misión, P/Esc para pausa/reanudar, opciones persistentes de gráficos/pantalla/volumen y leyenda de teclado/ratón. C alterna primera/tercera persona, Y martillo y T espada. Primera persona a altura de ojos, sigue orientación y oculta la malla propia; tercera conserva brazo y colisión. Mando pendiente por petición del propietario; las pruebas del agente no son aceptación manual.
+
 - Persistencia de entrega añadida mediante `BP_DeliverySave` y `BP_DeliverySaveManager`: puntos de control seguros, F5, Continuar validado y R tras derrota recupera el último punto. Guarda también escolta, zonas, balizas y puertas. Las menciones históricas a Continuar deshabilitado quedan sustituidas; pruebas y límites en el handoff actual.
 - Recorrido automatizado completo sin teletransportes ni modificaciones de vida/daño: victoria, ocho enemigos, tres balizas/puertas y extracción; última muestra a 147.2 s con jugador y rehén en 47.2 de vida. No es aceptación manual del propietario ni un objetivo de tiempo para el jugador.
 

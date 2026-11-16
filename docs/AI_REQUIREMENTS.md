@@ -1,5 +1,13 @@
 # AI requirements
 
+## Pausa, opciones y cámara — 2026-11-15
+
+**Stated:** continuar FIN-03 y FIN-04, hacer commits y dejar el mando pendiente. **Decision / Verified:** interfaz común `BP_DeliveryInterface` en ambos mapas, entrada P/Esc consumida por encima del P heredado, pausa de mundo y bloqueo de movimiento/mirada. Opciones conserva el widget de origen; volver desde opciones durante pausa mantiene el mundo detenido. Reanudar restaura cursor y entrada de juego. Ir al menú descarga la misión. El botón de guardar usa el gestor seguro vigente; E no ejecuta interacción durante la pausa.
+
+**Decision / Verified:** gráficos y pantalla persisten con GameUserSettings; resolución 1280×720, 1600×900, 1920×1080 o 2560×1440; ventana/sin bordes/completa. Volumen general 0/25/50/100% con SoundMix propio y archivo `TimeOut_Options_v1`, separado del checkpoint. Los cambios se aplican al elegirlos. El menú conserva el arte existente y permite consultar los controles en pausa.
+
+**Verified en PIE:** C usa la acción de cámara existente; primera persona en cápsula Z64, FOV90, rotación de control y malla propia oculta; tercera restaura su visibilidad y conserva brazo 350/sonda24. Y equipa martillo y T espada. Pruebas de acciones mediante Enhanced Input sobre fotogramas reales, movimiento/ataque después de reanudar y diez montajes con daño conservado. Árboles/Blackboards y balance 13.2 sin cambios. **Pendiente:** aceptación manual, mando y otra PC.
+
 ## Guardado de misión y reintento — 2026-11-15
 
 **Stated:** comenzar FIN-01 y FIN-02. **Decision de implementación:** puntos de control en momentos seguros, automáticos al rescatar, despejar zona, activar baliza o cambiar salud de puerta; F5 permite un guardado manual seguro. No se sobrescribe el punto anterior durante oleadas/intermedios, ataque, canalización, huida, amenaza cercana, caída o derrota. No se serializa un combate a mitad de una oleada.

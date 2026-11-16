@@ -116,7 +116,9 @@ def legacy_director():
     interact.pins['self']['obj']=hostage_class
     g.wire(hostage,'ReturnValue',interact,'self');g.wire(hostage,'then',interact,'execute');g.wire(interact,'then',switch,'execute')
     for key,y in [('E',0),('Gamepad_RightShoulder',-200)]:
-        n=g.key(key,x=-350,y=y);g.wire(n,'Pressed',hostage,'execute')
+        n=g.key(key,x=-350,y=y)
+        n.props=[p.replace('bExecuteWhenPaused=True','bExecuteWhenPaused=False') for p in n.props]
+        g.wire(n,'Pressed',hostage,'execute')
     for i in range(3):
         y=i*550
         beacon=g.get('Baliza%d'%(i+1),'object',obj=MESH_ACTOR,x=600,y=y+200)

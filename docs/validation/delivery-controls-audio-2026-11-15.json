@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "method": "Master submix WAV recording with repeated SW_Text at volume 1 and 0.25",
+  "normalized_rms": {
+    "full": 0.0027329532377799674,
+    "quarter": 0.000735134919525384
+  },
+  "quarter_to_full_ratio": 0.26898920529007986
+}

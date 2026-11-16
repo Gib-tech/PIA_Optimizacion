@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "agent_test_not_owner_acceptance": true,
+  "method": "UMG bound OnClicked event functions, native getter and disk save readback",
+  "checks": [
+    "viewdistance",
+    "antialiasing",
+    "shadow",
+    "texture",
+    "four_resolutions",
+    "three_display_modes",
+    "four_volume_presets_saved"
+  ],
+  "restart_expected": {
+    "qualities": [
+      1,
+      2,
+      1,
+      2
+    ],
+    "resolution": [
+      1280,
+      720
+    ],
+    "mode": "Windowed",
+    "volume": 0.25
+  }
+}

@@ -1,5 +1,11 @@
 # Work items
 
+## FIN 03 y FIN 04 actuales — 2026-11-15
+
+- **FIN-03 / In progress, Ready para aceptación con teclado/ratón:** pausa total P/Esc, reanudar con foco/cursor correcto, opciones desde ambos menús, regreso a la misma pausa, salida real al menú y guardado seguro integrado. Resolución, calidad, pantalla y volumen aplicados y persistidos. Conserva arte original; corrige textos que interceptaban clics y añade leyenda de controles.
+- **FIN-04 / In progress:** cámara primera/tercera, movimiento, mirada, salto, armas y ataques comprobados con acciones Enhanced Input; teclado/ratón documentado en LEEME y pausa. Falta confirmar C/Y/T físicos: las pulsaciones del automatizador no cambiaron vista/arma, sin causa determinada. **Mando expresamente pendiente:** no se acredita paridad ni navegación de resultados con mando. No marcar Done.
+- **Verified:** informes de opciones, pausa, cámara y regresión de combate en `docs/validation/delivery-controls-2026-11-15.json`; las pruebas del agente no sustituyen aceptación manual del propietario. No se alteran árboles ni daño.
+
 ## FIN 01 y FIN 02 actuales — 2026-11-15
 
 - **FIN-01 / In progress, Ready para aceptación:** recorrido del agente completo en PIE por movimiento, interacción y ataques de gameplay, sin teletransportes ni cambios de salud/daño. Victoria con ambas zonas, tres balizas/puertas y extracción. También observadas derrota del jugador, derrota del rehén, R de recuperación y Enter al menú. Falta el recorrido manual y aceptación del propietario sobre el paquete final.

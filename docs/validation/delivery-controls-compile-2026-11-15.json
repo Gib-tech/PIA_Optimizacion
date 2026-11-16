@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "blueprints": [
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface",
+      "status": "compiled and exported; cook must confirm no errors"
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryOptions",
+      "status": "compiled and exported; cook must confirm no errors"
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
+      "status": "compiled and exported; cook must confirm no errors"
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+      "status": "compiled and exported; cook must confirm no errors"
+    },
+    {
+      "asset": "/Game/Menu/Menu_Inicio",
+      "status": "compiled and exported; cook must confirm no errors"
+    },
+    {
+      "asset": "/Game/Menu/Menu_Pausa",
+      "status": "compiled and exported; cook must confirm no errors"
+    },
+    {
+      "asset": "/Game/Menu/Menu_Opciones",
+      "status": "compiled and exported; cook must confirm no errors"
+    }
+  ],
+  "one_interface_actor_in_each_map": true
+}

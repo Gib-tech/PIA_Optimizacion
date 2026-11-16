@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "agent_test_not_owner_acceptance": true,
+  "method": "Enhanced Input injected actions over real frames; no physical gamepad test",
+  "checks": [
+    "first_person_eye_height_body_hidden",
+    "first_person_follows_pitch_yaw",
+    "third_person_mesh_and_camera_restored",
+    "both_weapon_actions_dispatch",
+    "enhanced_move_after_resume",
+    "light_attack_after_resume",
+    "jump_action_after_resume"
+  ],
+  "Y_action": {
+    "hammer": true,
+    "sword": false
+  },
+  "T_action": {
+    "hammer": false,
+    "sword": true
+  }
+}

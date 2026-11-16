@@ -62,11 +62,26 @@ Las puertas tienen sonido de impacto y rotura; la mejora tiene su propia senal.
 CONTROLES
 WASD / flechas: moverse. Raton: camara. Espacio: saltar.
 Clic izquierdo: ligero. Clic derecho: pesado.
-E: interactuar. Mando: RB/R1 para interactuar; X/cuadrado ligero, Y/triangulo pesado.
+E: interactuar. Y: martillo. T: espada. C: primera / tercera persona.
+P / ESC: pausa y reanudar. En opciones, P / ESC vuelve al menu anterior.
 F5: guardar un punto de control cuando estes a salvo.
 Tras derrota: R recupera el ultimo punto de control; Enter vuelve al menu.
 Tras victoria: R inicia un nuevo intento; Enter vuelve al menu.
-No se ha probado con mando fisico en esta computadora.
+Mando pendiente por indicacion del propietario: los enlaces anteriores se
+conservan, pero no se acredita navegacion completa ni pruebas con mando fisico.
+
+PAUSA Y OPCIONES
+La pausa detiene el mundo. Reanudar devuelve movimiento, mirada y cursor al juego.
+Opciones vuelve a la misma pausa. Ir al menu descarga la partida activa.
+Salvar juego usa el mismo punto seguro que F5; durante combate conserva el anterior.
+La leyenda de controles se puede consultar a la derecha de la pausa.
+Opciones esta disponible tambien desde el menu principal. Se puede usar raton,
+Tab / flechas y Enter. P / ESC vuelve a la pantalla anterior.
+Resolucion: 1280x720, 1600x900, 1920x1080 o 2560x1440.
+Pantalla: ventana, sin bordes o completa. Calidad: distancia, suavizado, sombras
+y texturas. Los cambios se aplican y guardan al elegirlos.
+Volumen general: 0, 25, 50 o 100 por ciento, persistente entre partidas y sesiones.
+Los ajustes de audio se guardan aparte del progreso; Nuevo juego no los elimina.
 
 GUARDADO Y CONTINUAR
 El juego guarda automaticamente al rescatar al rehen, despejar una zona,
@@ -89,4 +104,4 @@ Una prueba automatizada completo el recorrido sin teletransportes ni cambios
 de vida/dano. Las pruebas aisladas de guardado usan estados de prueba en PIE.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
-Detalles y evidencia: docs/HANDOFF.md y docs/validation/fracture-difficulty-2026-11-15.json.
+Detalles y evidencia: docs/HANDOFF.md y docs/validation/delivery-controls-2026-11-15.json.

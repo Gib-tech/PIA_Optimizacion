@@ -1,5 +1,9 @@
 # Governance
 
+## Cierre FIN 03 y FIN 04 autorizado — 2026-11-15
+
+**Stated:** completar pausa, opciones, controles y cambio de cámara, y hacer commits locales. El propietario aclara que el mando queda pendiente: esta intervención valida teclado y ratón; no amplía ni acredita soporte de mando. Se autorizan los cambios necesarios de interfaz, entrada, cámara y persistencia de ajustes, conservando combate, árboles y balance. Sin push solicitado.
+
 ## Cierre FIN 01 y FIN 02 autorizado — 2026-11-15
 
 **Stated:** el propietario solicita empezar FIN-01 y FIN-02 de `PENDIENTES_ENTREGA_FINAL.md`. Se autoriza comprobar el recorrido y completar guardado/Continuar de la misión entregable. Esta petición amplía el alcance de IA a los cambios de persistencia, menú, HUD y reintento necesarios. Conservar el gameplay Blueprint-only y los árboles; una prueba de recorrido del agente no sustituye la aceptación manual del propietario. No se solicita push.

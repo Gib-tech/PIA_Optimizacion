@@ -1,0 +1,70 @@
+{
+  "date_local": "2026-11-15",
+  "scope": "FIN-03 and keyboard/mouse portion of FIN-04",
+  "agent_tests_not_owner_acceptance": true,
+  "gamepad": "Deferred explicitly by owner; existing bindings retained, no gamepad parity claim",
+  "checks": {
+    "options": {
+      "passed": true,
+      "evidence": "delivery-controls-options-2026-11-15.json"
+    },
+    "pause": {
+      "passed": true,
+      "evidence": "delivery-controls-pause-2026-11-15.json"
+    },
+    "camera": {
+      "passed": true,
+      "evidence": "delivery-controls-camera-2026-11-15.json"
+    },
+    "audio": {
+      "passed": true,
+      "evidence": "delivery-controls-audio-2026-11-15.json"
+    },
+    "attacks": {
+      "passed": true,
+      "evidence": "delivery-controls-attacks-2026-11-15.json"
+    },
+    "compile": {
+      "passed": true,
+      "evidence": "delivery-controls-compile-2026-11-15.json"
+    }
+  },
+  "keyboard_mouse_physical_observations": [
+    "Main menu Options and Back",
+    "25 percent volume click and saved readback",
+    "P opens and resumes pause",
+    "Paused E leaves hostage unrescued"
+  ],
+  "input_test_limit": "Camera, weapons, jump and movement regression use Enhanced Input injected actions across real frames. Attack regression uses input delegates and physical hitbox overlaps. Manual owner acceptance remains pending.",
+  "package": {
+    "configuration": "Win64 Development",
+    "build_success": true,
+    "cook_errors": 0,
+    "cook_warnings": 15,
+    "warnings": "Existing Niagara Scale pin and Manny pose assets",
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 549387901,
+    "zip_crc_passed": true,
+    "Saved_excluded": true
+  },
+  "native_observations": [
+    "Main menu Options and Back/Escape",
+    "Windowed mode changed actual game window size/frame",
+    "25 percent volume confirmation and options save file",
+    "AA Low saved to GameUserSettings",
+    "New Game loaded mission",
+    "Escape opened pause; P resumed",
+    "Options returned to same paused mission with Escape",
+    "Save from pause confirmed checkpoint",
+    "Return to main menu unloaded mission (LoadMap verified)",
+    "New process/window after close/reopen retained window mode and AA Low status",
+    "Tab/Enter activated an options control",
+    "Exit button closed game"
+  ],
+  "limitations": [
+    "No owner acceptance or physical gamepad test",
+    "C/Y synthetic window keystrokes produced no visible camera/weapon change; cause undetermined. Equivalent Enhanced Input actions passed in PIE. Owner must verify C/Y/T with actual keyboard.",
+    "Full controls parity and second PC remain pending"
+  ],
+  "passed_with_documented_input_limit": true
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "agent_test_not_owner_acceptance": true,
+  "physical_P_opened_pause": true,
+  "world_time_frozen_for_real_second": true,
+  "move_look_ignored": true,
+  "interaction_and_camera_unchanged_during_physical_keys": true,
+  "safe_save_from_pause": true,
+  "combat_save_rejected": true,
+  "options_returned_to_same_paused_widget": true
+}

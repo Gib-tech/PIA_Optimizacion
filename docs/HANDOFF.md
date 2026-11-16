@@ -8,6 +8,36 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`. Base FIN-01/02 guardada en **cf28f39**. **Stated:** continuar FIN-03/04 y commitear; **el mando queda pendiente** por instrucción del propietario. Commits locales autorizados, sin push.
+- **Verified:** `BP_DeliveryInterface`, actor único `Interfaz_Entrega` en MainMenuLevel y Nivel_Entrega, centraliza pausa y opciones. `BP_DeliveryOptions` y `SM_TimeOutSettings` son recursos propios. Gameplay sigue Blueprint-only, sin dependencia runtime del helper BPB2; árboles, Blackboards y balance 13.2 conservados.
+
+### Pausa, opciones y controles
+
+- **Verified:** P/Esc abre/reanuda pausa; dentro de opciones vuelve al widget de origen. Entrada de interfaz con prioridad 10 consume P/Esc antes del P heredado. SetGamePaused detiene mundo/IA/daño/oleadas; movimiento y mirada se ignoran. Opciones colapsa el menú de origen y lo recupera con foco; desde pausa mantiene el mundo detenido. Reanudar devuelve entrada GameOnly y oculta cursor. Ir al menú usa OpenLevel para descargar la misión. E/RB de interacción ya no ejecuta durante pausa; no se acredita soporte completo de mando.
+- **Verified:** Salvar juego llama al gestor seguro vigente, muestra su confirmación/rechazo y conserva el checkpoint si hay combate. FIN-02 y su ranura `TimeOut_Delivery_v1` siguen vigentes.
+- **Decision / Verified:** resolución 1280×720/1600×900/1920×1080/2560×1440; calidad de distancia, suavizado, sombras y texturas; ventana/sin bordes/completa. GameUserSettings aplica/confirma/guarda al elegir. Volumen 0/25/50/100% mediante SoundMix y archivo `TimeOut_Options_v1`, esquema 1, independiente del progreso. Nuevo juego conserva opciones.
+- **Verified:** se conserva el arte de los menús; textos independientes ahora ignoran hit tests y ya no absorben clics. Creación de widgets usa UMGEditor.K2Node_CreateWidget; el tipo BlueprintGraph del generador antiguo no creaba opciones. Textos nuevos usan Roboto runtime, y la pausa ofrece leyenda de controles.
+- **Decision / Verified:** C conserva IA_Camera. FPC adjunta a cápsula Z64/FOV90, sigue rotación y oculta la malla del propietario; TPC restaura cuerpo visible y conserva brazo350/sonda24. Y equipa martillo y T espada. WASD/flechas, ratón, espacio, clic izquierdo/derecho, E, F5, Enter y resultados R/Enter documentados en LEEME. No se amplió la entrada de mando.
+
+### Evidencia y límites
+
+- **Verified:** `docs/validation/delivery-controls-2026-11-15.json` reúne opciones, pausa, cámara/entrada, audio, diez ataques y compilación. Son pruebas del agente, **no aceptación manual del propietario**. FIN-03 Ready para aceptar con teclado/ratón; FIN-04 sigue In progress hasta aceptación y eventual paridad con mando.
+- **Verified en PIE:** todas las opciones llamadas por sus eventos OnClicked reales y comprobadas con getters nativos/archivo. Pausa abierta por P, tiempo mundial constante durante un segundo real, bloqueo de movimiento/mirada, guardado seguro y rechazo en oleada, regreso al mismo widget pausado. Cámara/armas/movimiento/salto/ataque por acciones Enhanced Input inyectadas durante fotogramas reales; diez montajes conservaron daño y cierre de hitbox. Grabaciones del submix maestro: RMS al 25% / RMS al 100% = **0.269**, confirma efecto real del volumen.
+- **Límite explícito:** el automatizador de ventanas no produjo cambios visibles con sus pulsaciones breves de C/Y en PIE o Win64; sí lo hicieron las acciones Enhanced Input. No atribuir una causa ni afirmar validación física de esos atajos. El propietario debe confirmar C/Y/T con su teclado al aceptar FIN-04. P/Esc y navegación de menús sí se observaron en el ejecutable. Mando y otra PC siguen pendientes.
+- **Verified:** Win64 Development BUILD SUCCESSFUL / ExitCode0, cook **0 errores y 15 advertencias previas** (Scale de Niagara y poses Manny). ZIP `Deliverables/TimeOut_Avance_18Nov2026.zip`, **549387901 bytes**, CRC aprobado, excluye Saved/PDB. Menú/opciones/cambio real a ventana, ajuste de calidad, guardado desde pausa, Escape/P y descarga real de la misión observados en Win64. Evidencia final y límites detallados en el informe y `delivery-controls-package-log.txt`.
+
+### Fuentes y reproducción
+
+- **Verified:** abrir editor con helper BPB2 sólo para instalar gráficos. `prepare_delivery_controls.py` prepara recursos/diseño y coloca gestor en ambos mapas; PIE debe estar detenido. `generate_delivery_controls.py` genera los seis gráficos; `install_delivery_controls.py` los instala en orden interfaz → pausa → opciones → inicio → jugador → director. `validate_delivery_controls.py` compila/exporta y comprueba un gestor por mapa. No reconstruir el mapa ni reinstalar recetas antiguas.
+- **Advertencia de continuidad:** el generador nuevo envuelve las fuentes previas de combate/guardado. Si se regenera menú, director o jugador con scripts anteriores, terminar con esta receta para conservar pausa/opciones/cámara. Las llamadas a eventos propios se comparten por entradas exec antes de que exista su firma reflejada; no reintroducir llamadas que el importador descarte.
+- **Verified:** pruebas `verify_delivery_options.py`, `verify_delivery_pause.py`, `verify_delivery_camera_controls.py`, `verify_delivery_volume.py` y análisis externo `analyze_delivery_volume.py`. La prueba de pausa requiere pausa ya abierta por P; la de cámara requiere TPC y partida reanudada. La de audio exporta full/quarter.wav y necesita varios segundos sin detener PIE; analizar después. Son pruebas aisladas, no un recorrido de aceptación.
+- **Verified:** LEEME actualizado. Guardar/cerrar editor, esperar cierre del proceso, `Tools/Build-Delivery.ps1` → `Tools/Archive-Delivery.py`. Los archivos de QA se respaldan en Intermediate/inspect/fin03-04-backup; el ZIP no contiene Saved. Editor normal debe quedar en Nivel_Entrega, sin PIE ni paquetes sucios.
+- **Siguiente:** aceptación manual de FIN-01/02/03 y teclado/ratón de FIN-04. Reanudar FIN-06 al recibir el modelo final del rehén; baliza/FX y auditorías de rúbrica siguen pendientes. El mando se retoma cuando lo indique el propietario.
+
+## History
+
+### Cierre FIN 01 y FIN 02 anterior a pausa/opciones
+
 - Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`, base de gameplay `c88bafb`. **Stated:** el propietario pide empezar FIN-01 y FIN-02. No se hizo commit ni push en esta intervención.
 - **Verified:** guardado y restauración Blueprint-only mediante `/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave` y `BP_DeliverySaveManager`, actor único `Guardado_Entrega` en `Nivel_Entrega`. Los Behavior Trees, enemigos, combate y balance 13.2 no se modificaron.
 
@@ -36,7 +66,6 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - **Verified al cerrar:** los checkpoints creados por QA se respaldaron en `Intermediate/inspect/fin01-02-backup/test-saves` y se retiraron de las carpetas jugables; se empieza con Nuevo juego. Editor normal reabierto en Nivel_Entrega, sin argumento del helper; ping: sin PIE y DIRTY (none).
 - **Siguiente paso:** aceptar manualmente la versión empaquetada; después continuar las integraciones del equipo de FIN-06/07/08 y la auditoría de rúbrica. Modelos finales del rehén/baliza, mando físico, otra PC y requisitos Unknown conservan su estado pendiente.
 
-## History
 
 ### Estado anterior del 15 de noviembre antes de FIN 01 y FIN 02
 
