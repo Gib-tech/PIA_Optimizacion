@@ -8,6 +8,41 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha: **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`; commits locales autorizados, sin push solicitado. Entrega: 18 de noviembre.
+- **Stated:** el propietario reportó huida excesiva del rehén en la segunda baliza y enemigos que se alejaban caminando de espaldas. Pidió refinar ambas IA, dar daño a todos los ataques y una punzada roja tenue al recibir daño; delegó el balance pendiente.
+- **Verified:** gameplay Blueprint-only; tres Behavior Trees/Blackboards conservados. No se añadió Source ni plugin al proyecto. La herramienta nativa de edición permanece exclusivamente en Intermediate y se carga sólo con un argumento del editor.
+
+### IA y refugios
+
+- **Verified:** `BP_CombatZone` ya no fuerza una huida a `RefugePoint` antes de generar la oleada. `BTService_HostageSense` detecta amenazas y propone al Blackboard un refugio cuya ruta es completa, de hasta **1800 cm**, a ≤1600 cm del rehén y ≤1800 cm del jugador. Prioriza la longitud real de navegación. Si no existe una ruta segura local, espera y vuelve a evaluar; no elige un destino remoto.
+- **Decision:** seguridad mínima del refugio: 600 cm del jugador y 950 cm de cada enemigo vivo. Se conserva visión de amenaza de 800 cm, la espera en refugio y la reanudación manual E/RB.
+- **Verified:** cinco TargetPoints adicionales con tag `RefugioRehen`: `Refugio_Local_01_Izq` (-1000,-1500,0), `Refugio_Local_01_Der` (1000,-1500,0), `Refugio_Local_02_Norte` (-4300,-4322,0), `Refugio_Local_02_Oeste` (-4600,-4500,0), `Refugio_Local_02_Sur` (-4300,-5700,0). El servicio comprueba seguridad/ruta en ejecución; las marcas no son destinos obligatorios.
+- **Verified / Decision:** el embestidor busca retirada mediante un abanico local de 420 cm (0/±45/±90 grados), ruta completa ≤650 cm, separación final ≥300 cm y preferencia por 550 cm del jugador. Camina a 400; termina al llegar a 90 cm o en 1.4 s, restaura velocidad 600 y recupera 0.8 s. Se conserva preparación 0.8 s, carga 900, contacto 6, objetivo comprometido y cooldown 2 s.
+- **Verified:** `BP_ChargerController` inicializa objetivo/distancia antes de iniciar `BT_Charger`. La rama de persecución admite cualquier distancia >0 con objetivo válido para que el cooldown no desemboque en patrulla. La carga limpia el foco; locomoción orientada al movimiento en ambos enemigos, giro 540 grados/s.
+- **Verified:** el orbitador conserva prioridad daño > defensa > ataque > órbita > patrulla y radio 180/banda 150–210. Se corrigió la multiplicación del vector de órbita (`Multiply_VectorFloat`). Dos tareas nativas RotateToFace se sustituyeron por `BTTask_FaceCombatTarget`, acción breve que termina en todos sus caminos; la espera nativa se bloqueaba al orientar la locomoción por movimiento. La tarea también precede la defensa. La orientación de ataque se fija explícitamente. Detección: orbitador 1500, embestidor 1800.
+- **Verified:** `BT_EnemyIA` tiene tanto los NodeInstance del editor como Children de ejecución apuntando a la nueva tarea. Al modificarlo hay que mantener ambas representaciones. `finalize_orbiter_refinement.py` realiza ambas escrituras. No ejecutar las recetas antiguas de reconstrucción del árbol.
+
+### Daño y presentación
+
+- **Decision / Verified:** espada ligera **15/15/19/22**; martillo ligero **15/15**; los tres pesados de espada y el pesado del martillo causan **25 a ambos enemigos**. La inmunidad histórica del orbitador al pesado queda sustituida por esta petición. Salud enemiga 100 y contacto 6 conservados.
+- **Verified:** `BP_PlayerEntrega` vuelve a enlazar WeaponHitbox una vez al iniciar y centraliza el daño en su manejador; el personaje padre y sus montajes/FX no se modificaron. Caché por animación/ataque evita duplicados, incluso ligeros; requiere enemigo vivo, distancia ≤300 cm y visión. Hitbox espada 45×45×90 de semiextensión; martillo conserva 35×45×145. La espada se configura también en el primer BeginPlay.
+- **Decision / Verified:** ventanas suplementarias (segundos de montaje): H_attack_1 0.82–1.05; H_attack_2 0.28–0.75; H_attack_3 0.50–1.25; L_FA_4 0.18–0.65; HA_1 0.55–0.90; HA_2 0.16–0.50. Martillo pesado conserva Attack_3 0.252330–1.183353. Se limpia colisión/estado al interrumpir; los ligeros originales 1–3 mantienen sus notifies.
+- **Verified:** `BP_HUD_Entrega` detecta descenso de vida real y dibuja `FX/T_DamageCorners` rojo tenue con pico alfa 0.30 y caída cuadrática en **0.38 s**. Otro golpe renueva la punzada; curarse no la dispara. El centro permanece transparente y el HUD se dibuja encima. Máscara procedural reproducible con `Tools/generate_damage_overlay.py`; captura `docs/validation/damage-pulse-preview.png`.
+- **Verified:** se conserva misión de tres balizas, dos hordas 2×2, puertas de 50 con dos pesados de martillo mejorado, canalización de rehén 3 s, equipamiento automático, salud del rehén y condiciones de extracción/derrota. Ver historial para el circuito detallado.
+
+### Verificación y continuidad
+
+- **Verified:** evidencia nueva en `docs/validation/refinement-2026-11-15.json`; muestras completas de PIE en `Intermediate/inspect/*_assertions.json`. `verify_ai_refinement.py` observa la segunda zona y varios ciclos; `verify_orbiter_refinement.py` observa cierre de distancia/órbita/ataque; `verify_all_attack_windows.py` ejecuta entradas reales y comprueba 10 montajes contra solapamientos físicos; `verify_combat_damage.py` comprueba cantidades/duplicados; `verify_damage_pulse.py` comprueba golpe, renovación, caída y control negativo de curación.
+- **Verified:** segunda zona: refugio alcanzado con ruta de 1099.7 cm, separación máxima del rehén 1037.3 cm y 12 ciclos de carga observados; enemigos a ≤640.3 cm, fracción de muestras móviles mirando hacia avance 1.0. Orbitador: se acercó hasta 167.3 cm, atacó y orbitó; después de 3 s, distancia máxima 280.7 cm, fracción móvil hacia avance 1.0. Pasaron los 10 montajes físicos, cantidades/duplicados, punzada/curación, regresión de misión y martillo físico/interrupción. Ocho informes del agente aprobados; compilación/cook final sin errores.
+- **Verified:** son pruebas aisladas con teletransportes y controles de daño en memoria, no aceptación del propietario ni recorrido completo a pie. No marcar las pruebas antiguas como aceptación de estos cambios; sus valores de inmunidad eran históricos.
+- **Continuidad:** generar `generate_hostage_graphs.py` → `generate_progression_graphs.py` → `generate_dialogue_hud.py` → `generate_ai_refinement.py`; instalar con `install_ai_refinement.py`, `finalize_orbiter_refinement.py`, `place_local_refuges.py` y `validate_refinement_assets.py`. No instalar el BP_Hostage sencillo emitido por la receta de escolta: la receta de progresión debe generarse después para conservar vida/canalización.
+- **Verified:** Win64 Development reconstruido: BUILD SUCCESSFUL / ExitCode 0; cook 0 errores y 21 advertencias. ZIP actualizado `Deliverables/TimeOut_Avance_18Nov2026.zip`, **737829582 bytes**, CRC completo aprobado. Prueba nativa: menú → Nuevo juego → Nivel_Entrega, rescate E, HUD y descenso de vida con la tecla de depuración existente. Las pruebas detalladas de IA/10 ataques/puertas son de PIE. Resumen del empaquetado en `docs/validation/refinement-package-log.txt`.
+- **Unknown / pendiente:** aceptación manual del propietario, recorrido completo, mando físico, rendimiento en otra PC, guardado completo/Continuar y modelos definitivos del equipo.
+
+## History
+
+### Estado anterior del 15 de noviembre — antes de refugios locales y daño completo
+
 - Fecha: **2026-11-15**, entrega miércoles **18 de noviembre de 2026**. Rama `codex/entrega-18nov-ia-oleadas`. Commits locales autorizados; no push solicitado. Base anterior `065a54d` (diálogo/audio), `6cb95de` (cámara/paredes), `d641200` (enemigos/oleadas).
 - **Stated, petición nueva:** puertas destruibles hechas a medida; sólo el rehén activa balizas después de la horda; vida del rehén visible; equipar automáticamente el martillo con partículas de mejora y habilitar la destrucción de la puerta correspondiente.
 - **Verified:** todo el gameplay sigue en Blueprints. No se añadió módulo nativo ni plugin al proyecto o al ejecutable. Blender generó el kit propio en `Tools/ArtSource/Progression`; el generador está en `Tools/Blender/build_progression_assets.py`.
@@ -45,7 +80,7 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - Para reconstruir: guardar todo, cerrar editor y ejecutar `Tools/Build-Delivery.ps1`; `Tools/Archive-Delivery.py` prepara el ZIP excluyendo símbolos y Saved. Evidencia final en `docs/validation/progression-2026-11-15.json`.
 - **Unknown / pendiente del equipo:** modelo definitivo de baliza y coordinación de partículas de Dany. Las balizas físicas continúan provisionales. Guardado completo/Continuar, mando físico, rendimiento en otra PC y recorrido manual completo siguen pendientes. Nuevo juego y reinicio permiten jugar desde cero.
 
-## History
+
 
 ### Estado anterior del 15 de noviembre — antes de puertas destruibles
 

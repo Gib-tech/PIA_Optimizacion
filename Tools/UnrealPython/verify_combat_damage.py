@@ -13,30 +13,30 @@ def spawn(name,dx):
     statics.call_method('FinishSpawningActor',(actor,transform,unreal.SpawnActorScaleMethod.MULTIPLY_WITH_ROOT))
     actor.get_controller().get_component_by_class(unreal.BehaviorTreeComponent).stop_logic('Isolate damage assertions')
     return actor
-orbiter=spawn('BP_BaseEnemy',-400);charger=spawn('BP_ChargerEnemy',400)
+orbiter=spawn('BP_BaseEnemy',-160);charger=spawn('BP_ChargerEnemy',160)
 def hp(actor):
     component=next(c for c in actor.get_components_by_class(unreal.ActorComponent) if c.get_class().get_name()=='BPC_E_Health_C')
     return component.get_editor_property('E_Health')
 hitbox=player.get_editor_property('WeaponHitbox')
-parent='BndEvt__BP_ThirdPersonCharacter_WeaponHitbox_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature'
 child='BndEvt__BP_PlayerEntrega_HeavyOverlap__DelegateSignature'
 def hit(name,actor):player.call_method(name,(hitbox,actor,actor.capsule_component,0,False,unreal.HitResult()))
 def flag(key,value):lib.call_method('SetBoolPropertyByName',(player,key,value))
 flag('IsAttacking',True);flag('bLightAttackActive',True)
 lib.call_method('SetIntPropertyByName',(player,'LightSwingIndex',0))
 for actor in [orbiter,charger]:
-    hit(parent,actor);hit(child,actor);assert hp(actor)==85.0,(actor.get_name(),hp(actor))
-for index,remaining in [(1,70.0),(2,51.0)]:
+    hit(child,actor);hit(child,actor);assert hp(actor)==85.0,(actor.get_name(),hp(actor))
+for index,remaining in [(1,70.0),(2,51.0),(3,29.0)]:
+    flag('IsAttacking',False);player.call_method('ReceiveTick',(.016,));flag('IsAttacking',True)
     lib.call_method('SetIntPropertyByName',(player,'LightSwingIndex',index))
     for actor in [orbiter,charger]:
-        hit(parent,actor);hit(child,actor);assert hp(actor)==remaining,(actor.get_name(),hp(actor))
+        hit(child,actor);hit(child,actor);assert hp(actor)==remaining,(actor.get_name(),hp(actor))
+flag('IsAttacking',False);player.call_method('ReceiveTick',(.016,));flag('IsAttacking',True)
 flag('bLightAttackActive',False)
-hit(child,charger);assert hp(charger)==26.0,hp(charger)
-hit(child,charger);hit(parent,charger);assert hp(charger)==26.0,hp(charger)
-hit(parent,orbiter);hit(child,orbiter);assert hp(orbiter)==51.0,hp(orbiter)
-flag('IsAttacking',False);hit(child,charger);assert hp(charger)==26.0,hp(charger)
+for actor in [orbiter,charger]:
+    hit(child,actor);hit(child,actor);assert hp(actor)==4.0,(actor.get_name(),hp(actor))
+flag('IsAttacking',False);hit(child,charger);assert hp(charger)==4.0,hp(charger)
 assert charger.get_controller().get_component_by_class(unreal.BlackboardComponent).get_value_as_bool('bReceivingDamage')
-report={'passed':True,'light_combo_both':[15,15,19],'heavy_charger':25,'heavy_orbiter':0,'repeat_heavy_overlap':0,'inactive_heavy_overlap':0,'charger_mesh':charger.mesh.get_skeletal_mesh_asset().get_name(),'charger_anim':charger.mesh.get_anim_instance().get_class().get_name()}
+report={'passed':True,'light_combo_both':[15,15,19,22],'heavy_charger':25,'heavy_orbiter':25,'repeat_heavy_overlap':0,'repeat_light_overlap':0,'inactive_heavy_overlap':0,'charger_mesh':charger.mesh.get_skeletal_mesh_asset().get_name(),'charger_anim':charger.mesh.get_anim_instance().get_class().get_name()}
 assert report['charger_anim']=='ABP_EnemyEntrega_C',report
 for actor in [orbiter,charger]:
     assert actor.mesh.get_skeletal_mesh_asset().get_name()=='SK_SciFiWarrior02'

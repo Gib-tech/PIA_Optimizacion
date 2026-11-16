@@ -32,10 +32,14 @@ de enemigo pueden atacarlo. Si muere, termina el intento; acercarte al enemigo
 permite atraer su atencion. La barra se vuelve roja si queda poca vida.
 
 COMBATE
-Orbitador: se mueve alrededor del jugador; solo recibe golpes ligeros.
-Embestidor: prepara una carga, avanza en linea y se retira.
-Recibe golpes ligeros y pesados. Aprovechar su preparacion y recuperacion.
-Combo ligero: 15 / 15 / 19. Pesado contra embestidor: 25. Golpe enemigo: 6 (antes 10).
+Orbitador: se mueve alrededor del jugador. Embestidor: prepara una carga,
+avanza en linea, se separa unos metros y vuelve al combate.
+Ambos reciben golpes ligeros y pesados. Aprovechar preparacion y recuperacion.
+Espada ligera: 15 / 15 / 19 / 22. Martillo ligero: 15 / 15.
+Todos los pesados: 25 contra ambos enemigos. Golpe enemigo: 6.
+Cada ataque alcanza una sola vez a cada enemigo y requiere linea de vision.
+Recibir dano produce una punzada roja tenue en las esquinas durante 0.38 s.
+El rehen elige refugios cercanos con rutas de hasta 18 metros, sin rodear sectores.
 Los ataques enemigos pueden interrumpirse al causarles dano. Ambos enemigos
 conservan la malla Warrior y sus materiales originales, sin armadura naranja.
 
@@ -62,4 +66,4 @@ Falta aceptacion del propietario y una partida completa recorrida a mano.
 Las pruebas aisladas del agente usan teletransportes y dano de prueba en PIE.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
-Detalles y evidencia: docs/HANDOFF.md y docs/validation/progression-2026-11-15.json.
+Detalles y evidencia: docs/HANDOFF.md y docs/validation/refinement-2026-11-15.json.

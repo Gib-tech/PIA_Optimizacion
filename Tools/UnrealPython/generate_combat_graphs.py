@@ -75,6 +75,13 @@ class CombatGraph(HostageGraph):
         self.wire(pawn,pin,n,'self');return n
     def stop_move(self,event,**pos):
         n=self.call('/Script/Engine.Controller','StopMovement',**pos);self.wire(event,'OwnerController',n,'self');return n
+    def face_target(self,prev,event,target,pin):
+        start=self.location(event,'ControlledPawn');end=self.location(target,pin)
+        look=self.call('/Script/Engine.KismetMathLibrary','FindLookAtRotation',pure=True,static=True).pin('Start','struct',obj=VECTOR).pin('Target','struct',obj=VECTOR).pin('ReturnValue','struct',obj='/Script/CoreUObject.Rotator',out=True)
+        self.wire(start,'ReturnValue',look,'Start');self.wire(end,'ReturnValue',look,'Target')
+        split=self.call('/Script/Engine.KismetMathLibrary','BreakRotator',pure=True,static=True).pin('InRot','struct',obj='/Script/CoreUObject.Rotator').pin('Yaw','real',sub='float',out=True);self.wire(look,'ReturnValue',split,'InRot')
+        make=self.call('/Script/Engine.KismetMathLibrary','MakeRotator',pure=True,static=True).pin('Roll','real',sub='float',default='0').pin('Pitch','real',sub='float',default='0').pin('Yaw','real',sub='float').pin('ReturnValue','struct',obj='/Script/CoreUObject.Rotator',out=True);self.wire(split,'Yaw',make,'Yaw')
+        rotate=self.call(ACTOR,'K2_SetActorRotation').pin('NewRotation','struct',obj='/Script/CoreUObject.Rotator').pin('bTeleportPhysics','bool',default='false').pin('ReturnValue','bool',out=True);self.wire(make,'ReturnValue',rotate,'NewRotation');self.wire(event,'ControlledPawn',rotate,'self');self.chain(prev,rotate);return rotate
     def speed(self,event,value,**pos):
         movement=self.nativeget(CHAR,'CharacterMovement','object',obj=MOVE,x=pos.get('x',0),y=pos.get('y',0)+230)
         self.wire(event,'ControlledPawn',movement,'self')
@@ -169,7 +176,8 @@ def attack_task():
     reset=g.set('Elapsed','real','0',sub='double',x=950,y=0);g.chain(cache,reset)
     hit=g.set('bHit','bool','false',x=1250,y=0);g.chain(reset,hit)
     stop=g.stop_move(e,x=1550,y=0);g.chain(hit,stop)
-    out=g.call('/Script/Engine.KismetSystemLibrary','PrintString',static=True,x=1800,y=-200).pin('InString','string',default='Enemigo: va a atacar').pin('bPrintToScreen','bool',default='true').pin('bPrintToLog','bool',default='true').pin('Duration','real',sub='float',default='1.5');g.chain(stop,out)
+    face=g.face_target(stop,e,target,'CombatTarget')
+    out=g.call('/Script/Engine.KismetSystemLibrary','PrintString',static=True,x=1800,y=-200).pin('InString','string',default='Enemigo: va a atacar').pin('bPrintToScreen','bool',default='true').pin('bPrintToLog','bool',default='true').pin('Duration','real',sub='float',default='1.5');g.chain(face,out)
     call=g.action('Attack',x=2100,y=0).pin('TargetActor','object',obj=ACTOR);g.chain(out,call);g.wire(cache,'Output_Get',call,'self');g.wire(target,'CombatTarget',call,'TargetActor')
     enemy=g.get('Enemy','object',obj=BASE,x=0,y=1800)
     elapsed=g.elapsed(tick,x=0,y=1200)
@@ -199,7 +207,14 @@ def hit_task():
 
 def controller():
     g=CombatGraph();e=g.event('/Script/Engine.Controller','ReceivePossess',x=0,y=0).pin('PossessedPawn','object',obj=PAWN,out=True)
-    run=g.call(CONTROLLER,'RunBehaviorTree',x=350,y=0).pin('BTAsset','object',obj='/Script/AIModule.BehaviorTree',default_obj=ROOT+'/BT_Charger.BT_Charger').pin('ReturnValue','bool',out=True);g.chain(e,run)
+    use=g.call(CONTROLLER,'UseBlackboard').pin('BlackboardAsset','object',obj='/Script/AIModule.BlackboardData',default_obj=ROOT+'/BB_Charger.BB_Charger').pin('BlackboardComponent','object',obj=BB,out=True).pin('ReturnValue','bool',out=True);g.chain(e,use)
+    cast=g.cast(BASE);g.chain(use,cast);g.wire(e,'PossessedPawn',cast,'Object');player=g.player()
+    initial=g.set('CombatTarget','object',None,obj=ACTOR);initial.props=['VariableReference=(MemberParent='+q("/Script/Engine.BlueprintGeneratedClass'"+BASE+"'")+',MemberName="CombatTarget")'];initial.pin('self','object',obj=BASE);g.wire(cast,'AsBP_BaseEnemy',initial,'self');g.wire(player,'ReturnValue',initial,'CombatTarget');g.chain(cast,initial)
+    self=g.selfnode(typ=CONTROLLER);bb=g.blackboard(self,'self')
+    distance=g.dist(e,'PossessedPawn',player,'ReturnValue')
+    ds=g.bbset(bb,'DistanceToTarget','Float');g.wire(distance,'ReturnValue',ds,'FloatValue');g.chain(initial,ds)
+    target=g.bbset(bb,'TargetActor','Object');g.wire(player,'ReturnValue',target,'ObjectValue');g.chain(ds,target)
+    run=g.call(CONTROLLER,'RunBehaviorTree',x=350,y=0).pin('BTAsset','object',obj='/Script/AIModule.BehaviorTree',default_obj=ROOT+'/BT_Charger.BT_Charger').pin('ReturnValue','bool',out=True);g.chain(target,run)
     g.write('BP_ChargerController')
 
 def sense():
@@ -219,7 +234,8 @@ def windup():
     stop=g.stop_move(e,x=300,y=0);g.chain(e,stop)
     reset=g.set('Elapsed','real','0',sub='double',x=600,y=0);g.chain(stop,reset)
     focus=g.call(CONTROLLER,'K2_SetFocus',x=900,y=0).pin('NewFocus','object',obj=ACTOR);g.chain(reset,focus);g.wire(e,'OwnerController',focus,'self');g.wire(target,'CombatTarget',focus,'NewFocus')
-    play=g.montage(e,'ControlledPawn','AM_EnemyAttack_Entrega',rate='1.625',x=1200,y=0);g.chain(focus,play)
+    face=g.face_target(focus,e,target,'CombatTarget')
+    play=g.montage(e,'ControlledPawn','AM_EnemyAttack_Entrega',rate='1.625',x=1200,y=0);g.chain(face,play)
     elapsed=g.elapsed(tick,x=0,y=900)
     compare=g.compare('GreaterEqual_DoubleDouble','real','0.8',sub='double',x=900,y=1300);g.wire(elapsed,'Output_Get',compare,'A')
     b=g.branch(x=1200,y=900);g.chain(elapsed,b);g.wire(compare,'ReturnValue',b,'Condition')
@@ -235,7 +251,8 @@ def charge():
     reset=g.set('Elapsed','real','0',sub='double',x=350,y=0);g.chain(e,reset)
     mark=g.set('bHit','bool','false',x=650,y=0);g.chain(reset,mark)
     speed=g.speed(e,'900',x=950,y=0);g.chain(mark,speed)
-    move=g.move_to(e,goal,'ReturnValue',path=False,radius='40',x=1250,y=0);g.chain(speed,move)
+    clearfocus=g.call(CONTROLLER,'K2_ClearFocus');g.wire(e,'OwnerController',clearfocus,'self');g.chain(speed,clearfocus)
+    move=g.move_to(e,goal,'ReturnValue',path=False,radius='40',x=1250,y=0);g.chain(clearfocus,move)
     elapsed=g.elapsed(tick,x=0,y=1000)
     distance=g.dist(tick,'ControlledPawn',target,'ChargeVictim',x=350,y=1600)
     near=g.compare('LessEqual_DoubleDouble','real','180',sub='double',x=650,y=1600);g.wire(distance,'ReturnValue',near,'A')

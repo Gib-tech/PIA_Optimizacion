@@ -34,13 +34,9 @@ def zone():
     near=g.compare('LessEqual_DoubleDouble','real','600',sub='double',x=1850,y=1000);g.wire(dist,'ReturnValue',near,'A')
     ready=g.boolean('BooleanAND',following,'ReturnValue',near,'ReturnValue',x=2150,y=700)
     eb=g.branch(x=2450,y=0);g.chain(vb,eb);g.wire(ready,'ReturnValue',eb,'Condition')
-    # The hostage flees before the door closes; subsequent waves never require him to return.
-    refuge=g.get('RefugePoint','object',obj=ACTOR,x=2750,y=700);pos=g.location(refuge,'RefugePoint',x=3050,y=700)
-    flee=g.bbset(bb,'FleeLocation','Vector',x=3050,y=0);g.chain(eb,flee);g.wire(pos,'ReturnValue',flee,'VectorValue')
-    previous=flee
-    for i,(key,kind,value) in enumerate([('bAccompanying','Bool','false'),('bWaiting','Bool','false'),('Estado','Int','2'),('bMustFlee','Bool','true')]):
-        n=g.bbset(bb,key,kind,value,x=3350+i*350,y=0);g.chain(previous,n);previous=n
-    escort_ready=previous
+    # The escort service selects a nearby reachable refuge after seeing the spawned
+    # enemies. A fixed zone destination could send him around entire map sectors.
+    escort_ready=eb
     # Count living enemies, including corpses awaiting their death animation cleanup.
     reset=g.set('LivingCount','int','0',x=650,y=1800);g.chain(switch,reset,'1')
     enemies=g.get('EncounterEnemies','object',obj=ACTOR,x=650,y=2200);enemies.pins['EncounterEnemies']['container']='Array'
@@ -96,29 +92,54 @@ def heavy_player():
     g=CombatGraph()
     props=['DelegatePropertyName="OnComponentBeginOverlap"','DelegateOwnerClass='+ref('/Script/Engine.PrimitiveComponent'),'ComponentPropertyName="WeaponHitbox"','EventReference=(MemberParent="/Script/CoreUObject.Package\'/Script/Engine\'",MemberName="ComponentBeginOverlapSignature__DelegateSignature")','bInternalEvent=True','CustomFunctionName="BndEvt__BP_PlayerEntrega_HeavyOverlap__DelegateSignature"']
     event=g.node('K2Node_ComponentBoundEvent',props,x=0,y=0).pin('then',out=True).pin('OverlappedComponent','object',obj='/Script/Engine.PrimitiveComponent',out=True).pin('OtherActor','object',obj=ACTOR,out=True).pin('OtherComp','object',obj='/Script/Engine.PrimitiveComponent',out=True).pin('OtherBodyIndex','int',out=True).pin('bFromSweep','bool',out=True).pin('SweepResult','struct',obj='/Script/Engine.HitResult',out=True)
+    event.kind='BlueprintGraph.K2Node_CustomEvent'
+    event.props=['CustomFunctionName="BndEvt__BP_PlayerEntrega_HeavyOverlap__DelegateSignature"']
+    for name,p in event.pins.items():
+        if p['cat']=='exec':continue
+        typ='PinCategory='+q(p['cat'])
+        if p['obj']:typ+=',PinSubCategoryObject='+ref(p['obj'],'ScriptStruct' if p['cat']=='struct' else 'Class')
+        event.props.append('CustomProperties UserDefinedPin (PinName='+q(name)+',PinType=('+typ+'),DesiredPinDirection=EGPD_Output)')
     active=g.get('IsAttacking','bool',x=0,y=500)
     light=g.get('bLightAttackActive','bool',x=0,y=700)
     heavy=g.boolean('Not_PreBool',light,'bLightAttackActive',x=300,y=700)
-    ok=g.boolean('BooleanAND',active,'IsAttacking',heavy,'ReturnValue',x=600,y=500)
-    branch=g.branch(x=900,y=0);g.chain(event,branch);g.wire(ok,'ReturnValue',branch,'Condition')
-    cast=g.cast(CHARGER,x=1200,y=0);g.chain(branch,cast);g.wire(event,'OtherActor',cast,'Object')
+    ok=active
+    branch=g.branch(x=900,y=0);g.chain(event,branch);g.wire(ok,'IsAttacking',branch,'Condition')
+    cast=g.cast(BASE,x=1200,y=0);g.chain(branch,cast);g.wire(event,'OtherActor',cast,'Object')
     contains=g.array('HeavyHitActors','Array_Contains',item=event,ip='OtherActor',x=1500,y=600)
     fresh=g.boolean('Not_PreBool',contains,'ReturnValue',x=1800,y=600)
-    check=g.branch(x=2100,y=0);g.chain(cast,check);g.wire(fresh,'ReturnValue',check,'Condition')
+    controller=g.call('/Script/Engine.Pawn','GetController',pure=True).pin('ReturnValue','object',obj='/Script/Engine.Controller',out=True)
+    sight=g.sight(controller,'ReturnValue',event,'OtherActor')
+    living=g.get('bIsDead','bool',owner=BASE);g.wire(cast,'AsBP_BaseEnemy',living,'self')
+    alive=g.boolean('Not_PreBool',living,'bIsDead');allowed=g.boolean('BooleanAND',fresh,'ReturnValue',alive,'ReturnValue');allowed=g.boolean('BooleanAND',allowed,'ReturnValue',sight,'ReturnValue')
+    distance=g.call(ACTOR,'GetDistanceTo',pure=True).pin('OtherActor','object',obj=ACTOR).pin('ReturnValue','real',sub='float',out=True);g.wire(event,'OtherActor',distance,'OtherActor')
+    near=g.compare('LessEqual_DoubleDouble','real','300',sub='double');g.wire(distance,'ReturnValue',near,'A');allowed=g.boolean('BooleanAND',allowed,'ReturnValue',near,'ReturnValue')
+    check=g.branch(x=2100,y=0);g.chain(cast,check);g.wire(allowed,'ReturnValue',check,'Condition')
     append=g.array('HeavyHitActors','Array_AddUnique',item=event,ip='OtherActor',x=2400,y=0);g.chain(check,append)
-    health=g.get('BPC_E_Health','object',owner=BASE,obj=HEALTH,x=2400,y=700);g.wire(cast,'AsBP_ChargerEnemy',health,'self')
+    health=g.get('BPC_E_Health','object',owner=BASE,obj=HEALTH,x=2400,y=700);g.wire(cast,'AsBP_BaseEnemy',health,'self')
     amount=g.get('HeavyDamage','real',sub='double',x=2700,y=900)
-    hit=g.action('E_Decrease_Health',owner=HEALTH,x=3000,y=0).pin('Damage','real',sub='double');g.chain(append,hit);g.wire(health,'BPC_E_Health',hit,'self');g.wire(amount,'HeavyDamage',hit,'Damage')
+    index=g.get('LightSwingIndex','int')
+    combo=g.node('K2Node_Select',['NumOptionPins=4','IndexPinType=(PinCategory="int")']).pin('Index','int').pin('ReturnValue','real',sub='double',out=True);g.wire(index,'LightSwingIndex',combo,'Index')
+    for i,value in enumerate([15,15,19,22]):combo.pin('Option '+str(i),'real',sub='double',default=str(value))
+    select=g.call('/Script/Engine.KismetMathLibrary','SelectFloat',pure=True,static=True).pin('A','real',sub='double').pin('B','real',sub='double').pin('bPickA','bool').pin('ReturnValue','real',sub='double',out=True)
+    g.wire(combo,'ReturnValue',select,'A');g.wire(amount,'HeavyDamage',select,'B');g.wire(light,'bLightAttackActive',select,'bPickA')
+    hit=g.action('E_Decrease_Health',owner=HEALTH,x=3000,y=0).pin('Damage','real',sub='double');g.chain(append,hit);g.wire(health,'BPC_E_Health',hit,'self');g.wire(select,'ReturnValue',hit,'Damage')
     tick=g.event(ACTOR,'ReceiveTick',x=0,y=1500).pin('DeltaSeconds','real',sub='float',out=True)
     stop=g.boolean('Not_PreBool',active,'IsAttacking',x=300,y=1800)
-    reset=g.boolean('BooleanOR',stop,'ReturnValue',light,'bLightAttackActive',x=600,y=1800)
+    reset=stop
     b=g.branch(x=900,y=1500);g.chain(tick,b);g.wire(reset,'ReturnValue',b,'Condition')
     clear=g.array('HeavyHitActors','Array_Clear',x=1200,y=1500);g.chain(b,clear)
     begin=g.event(ACTOR,'ReceiveBeginPlay',x=0,y=2600)
     parent=g.call(PLAYER,'ReceiveBeginPlay',x=300,y=2600);parent.kind='BlueprintGraph.K2Node_CallParentFunction';g.chain(begin,parent)
+    # This delivery child owns the weapon's damage binding. Rebind this component
+    # once after parent setup, keeping the original character intact in other maps.
+    event.pin('OutputDelegate','delegate',out=True)
+    delegate_ref='DelegateReference=(MemberParent='+ref('/Script/Engine.PrimitiveComponent')+',MemberName="OnComponentBeginOverlap")'
+    unbind=g.node('K2Node_ClearDelegate',[delegate_ref]).pin('execute').pin('then',out=True).pin('self','object',obj='/Script/Engine.PrimitiveComponent')
+    bind=g.node('K2Node_AddDelegate',[delegate_ref]).pin('execute').pin('then',out=True).pin('self','object',obj='/Script/Engine.PrimitiveComponent').pin('Delegate','delegate')
+    hitbox=g.get('WeaponHitbox','object',obj='/Script/Engine.BoxComponent');g.wire(hitbox,'WeaponHitbox',unbind,'self');g.wire(hitbox,'WeaponHitbox',bind,'self');g.wire(event,'OutputDelegate',bind,'Delegate');g.chain(parent,unbind);g.chain(unbind,bind)
     arm='/Script/Engine.SpringArmComponent'
     boom=g.get('CameraBoom','object',obj=arm,x=0,y=3000)
-    previous=parent
+    previous=bind
     for i,(name,cat,value,sub) in enumerate([('bDoCollisionTest','bool','true',''),('ProbeSize','real','24','float'),('TargetArmLength','real','350','float'),('bEnableCameraLag','bool','false',''),('bEnableCameraRotationLag','bool','true',''),('CameraRotationLagSpeed','real','18','float')]):
         n=g.set(name,cat,value,sub=sub,x=650+i*300,y=2600);n.props=['VariableReference=(MemberParent='+ref(arm)+',MemberName='+q(name)+')'];n.pin('self','object',obj=arm);g.wire(boom,'CameraBoom',n,'self');g.chain(previous,n);previous=n
     pivot=g.call('/Script/Engine.SceneComponent','K2_SetRelativeLocation',x=2600,y=2600).pin('NewLocation','struct',obj='/Script/CoreUObject.Vector',default='0,0,55').pin('bSweep','bool',default='false').pin('SweepHitResult','struct',obj='/Script/Engine.HitResult',out=True).pin('bTeleport','bool',default='true');g.wire(boom,'CameraBoom',pivot,'self');g.chain(previous,pivot)

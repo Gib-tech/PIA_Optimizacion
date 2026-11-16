@@ -1,5 +1,9 @@
 # Governance
 
+## Refinamiento autorizado — 2026-11-15
+
+**Stated:** corregir refugio remoto y retirada errática, completar daño de todos los ataques y añadir punzada roja al recibir daño. El propietario delega el balance pendiente. Esta petición sustituye la inmunidad histórica del orbitador al pesado y permite ajustar recorridos/tiempos necesarios, registrándolos en AI_REQUIREMENTS y HANDOFF. Se conservan los árboles de decisión y la implementación Blueprint-only.
+
 Operating rules for any agent working in this repository. Read this file before changing the project. Then read `PROJECT_CONTEXT.md`, `AI_REQUIREMENTS.md`, `WORK_ITEMS.md`, and `HANDOFF.md`.
 
 ## Actualización de alcance — 2026-11-15

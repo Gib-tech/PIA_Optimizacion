@@ -22,7 +22,7 @@ MESSAGES=[
  ('REHÉN','Todavía hay enemigos cerca. No es seguro salir.','Elimina las amenazas cercanas'),
  ('ALERTA','Estás por entrar en una zona de combate. Entrar con el rehén cerca activa 2 oleadas de 2 enemigos.','Prepárate antes de entrar'),
  ('ALERTA','Esta zona necesita al rehén para activarse. Entra con él siguiéndote a menos de 6 metros.','Recupera al rehén y vuelve con él'),
- ('OLEADA 1 / 2','El rehén busca refugio. Los orbitadores sólo reciben ataques ligeros.','Clic izquierdo: ataque ligero'),
+ ('OLEADA 1 / 2','El rehén busca refugio cerca. Combina golpes rápidos y pesados para despejar la zona.','Clic izquierdo: ligero   Clic derecho: pesado'),
  ('OLEADA 2 / 2','Otro par de orbitadores. Despeja el área para abrir la barrera.','Clic izquierdo: ataque ligero'),
  ('OLEADA 1 / 2','El rehén busca refugio. Los embestidores reciben ataques ligeros y pesados.','Clic izquierdo: ligero   Clic derecho: pesado'),
  ('OLEADA 2 / 2','Cuidado con las cargas. Ataca durante su preparación o su retirada.','Clic izquierdo: ligero   Clic derecho: pesado'),
@@ -52,7 +52,7 @@ class DialogueGraph(CombatGraph):
         i=len(self.nodes);pos.setdefault('x',(i%9)*380);pos.setdefault('y',(i//9)*310)
         return super().node(kind,props,**pos)
 g=DialogueGraph()
-KINDS={**dict.fromkeys(['CurrentDialog','LastDialog','DismissedDialog','VisibleCharacters'],'int'),**dict.fromkeys(['DialogStarted','LastBeepAt','LastHealth','CharactersPerSecond','HoldSeconds','UIAudioVolume'],'real'),**dict.fromkeys(['ForceReveal','DialogueVisible'],'bool'),**dict.fromkeys(['FullText','VisibleText','Speaker','ActionHint'],'string')}
+KINDS={**dict.fromkeys(['CurrentDialog','LastDialog','DismissedDialog','VisibleCharacters'],'int'),**dict.fromkeys(['DialogStarted','LastBeepAt','LastHealth','CharactersPerSecond','HoldSeconds','UIAudioVolume','HurtPulseUntil'],'real'),**dict.fromkeys(['ForceReveal','DialogueVisible'],'bool'),**dict.fromkeys(['FullText','VisibleText','Speaker','ActionHint'],'string')}
 def v(name):
     cat=KINDS[name];return (g.get(name,cat,sub='double' if cat=='real' else ''),name)
 def wire(value,node,pin):
@@ -202,7 +202,8 @@ health=g.call(ACTOR,'GetComponentByClass',pure=True).pin('ComponentClass','class
 hp=g.get('Health','real',owner=HEALTH,sub='double');g.wire(health,'ReturnValue',hp,'self');hp=(hp,'Health')
 hurt=branch(chars,cmp('Less_DoubleDouble',hp,v('LastHealth'),'real'))
 impact=sound(hurt,'PlayerHurt',calc('Multiply_DoubleDouble',v('UIAudioVolume'),2))
-health_save=save(impact,'LastHealth',hp);g.chain(hurt,health_save,'else')
+pulse=save(impact,'HurtPulseUntil',calc('Add_DoubleDouble',now,.38))
+health_save=save(pulse,'LastHealth',hp);g.chain(hurt,health_save,'else')
 # Adaptive 900px frame at 1280; monospaced font, white border, no world-space text.
 width=(draw,'SizeX');height=(draw,'SizeY')
 ratio=calc('Divide_DoubleDouble',width,1280)
@@ -224,7 +225,14 @@ def text(prev,value,x,y,size=1,color='(R=1,G=1,B=1,A=1)'):
     g.chain(prev,n);return n
 chipx=sub(width,mul(270,scale));chipy=mul(22,scale)
 incombat=both(relevant,either(cmp('EqualEqual_IntInt',phase,1),cmp('EqualEqual_IntInt',phase,2)))
-chip=rect(health_save,chipx,chipy,mul(248,scale),mul(pick(incombat,63,32),scale),'(R=0,G=0,B=0,A=.8)')
+# Smooth transparent corners, immediate onset and a short squared fade; center stays clear.
+fade=call(MATH,'FClamp',[('Value','real',calc('Divide_DoubleDouble',sub(v('HurtPulseUntil'),now),.38)),('Min','real',0),('Max','real',1)])
+color=call(MATH,'MakeColor',[('R','real',.8),('G','real',.015),('B','real',.015),('A','real',mul(.3,mul(fade,fade)))],cat='struct',obj='/Script/CoreUObject.LinearColor')
+overlay=g.call(HUD,'DrawTexture').pin('Texture','object',obj='/Script/Engine.Texture',default_obj='/Game/ThirdPerson/Blueprints/Entrega/FX/T_DamageCorners.T_DamageCorners').pin('TintColor','struct',obj='/Script/CoreUObject.LinearColor').pin('BlendMode','byte',obj='/Script/Engine.EBlendMode',default='BLEND_Translucent').pin('bScalePosition','bool',default='false')
+wire(color,overlay,'TintColor')
+for pin,value in [('ScreenX',0),('ScreenY',0),('ScreenW',width),('ScreenH',height),('TextureU',0),('TextureV',0),('TextureUWidth',1),('TextureVHeight',1),('Scale',1),('Rotation',0)]:overlay.pin(pin,'real',sub='float');wire(value,overlay,pin)
+overlay.pin('RotPivot','struct',obj='/Script/CoreUObject.Vector2D',default='(X=0,Y=0)');g.chain(health_save,overlay)
+chip=rect(overlay,chipx,chipy,mul(248,scale),mul(pick(incombat,63,32),scale),'(R=0,G=0,B=0,A=.8)')
 objectives=table(step,['1 / 4   PRIMERA BALIZA','2 / 4   SEGUNDA BALIZA','3 / 4   ÚLTIMA BALIZA','4 / 4   EXTRACCIÓN','REHÉN A SALVO','FIN DEL INTENTO','REHÉN PERDIDO'])
 objectives=table(pick(pending,1,0),[objectives,'MARTILLO: ABRE EL PASO'])
 hpnode=g.get('Health','real',owner=HOSTAGE,sub='double');g.wire(hostage,'CachedHostage',hpnode,'self');host_hp=(hpnode,'Health')

@@ -1,5 +1,14 @@
 # Work items
 
+## Refinamiento actual — 2026-11-15
+
+- **In progress / Ready para aceptación:** refugios locales del rehén con límite de recorrido; retirada breve del embestidor, regreso al combate y orientación por movimiento; corrección de espera de giro del orbitador.
+- **In progress / Ready para aceptación:** daño de los 10 montajes de ataque, incluido cuarto ligero de espada, ligeros de martillo y pesados contra orbitadores; un impacto por enemigo/ataque.
+- **In progress / Ready para aceptación:** punzada roja tenue de esquinas de 0.38 s al perder vida; renovación con cada golpe y control negativo de curación.
+- **Verified:** pruebas del agente en docs/validation/refinement-2026-11-15.json. No equivalen a aceptación del propietario. Los checks históricos de pesado inmune/15-15-19 representan la versión anterior y no son criterios vigentes.
+- **Verified / Ready para aceptación:** Win64/ZIP actualizados (737829582 bytes), CRC completo aprobado, cook 0 errores/21 advertencias; menú, Nuevo juego, rescate y HUD comprobados en el ejecutable.
+- **Pendiente:** recorrido completo manual y aceptación del propietario.
+
 Refinamiento 2026-11-15: aspecto Warrior original restaurado por elección expresa; contacto 6; prismas de colisión en cuatro sectores; cámara con sonda 24; recuadro contextual inspirado en Undertale para rescate/alertas/oleadas y audio propio. El texto flotante fue rechazado y retirado. Pruebas y límites en HANDOFF actual; aceptación del propietario pendiente.
 
 Status values: `Todo`, `In progress`, `Blocked`, `Done`.

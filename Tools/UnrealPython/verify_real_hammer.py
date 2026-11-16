@@ -33,7 +33,7 @@ def observe(delta,world=w,pawn=p,gate=door,state=s,root=project,hit=hit):
      # Return the same hitbox to the sword's authored transform when switching back.
      lib=unreal.get_default_object(unreal.SystemLibrary.static_class());lib.call_method('SetBoolPropertyByName',(pawn,'bIsHammerEquipped',False));lib.call_method('SetBoolPropertyByName',(pawn,'bIsSwordEquipped',True));state.update(stage='sword',since=now)
   elif stage=='sword' and age>.1:
-   assert box.get_attach_parent()==pawn.get_editor_property('Weapon') and box.get_unscaled_box_extent().distance(unreal.Vector(32,32,32))<.001
+   assert box.get_attach_parent()==pawn.get_editor_property('Weapon') and box.get_unscaled_box_extent().distance(unreal.Vector(45,45,90))<.001
    assert box.get_editor_property('relative_location').distance(pawn.get_editor_property('SwordHitboxRelativeTransform').translation)<.001
    unreal.unregister_slate_post_tick_callback(state['handle'])
    with open(os.path.join(root,'Intermediate/inspect/real_hammer_assertions.json'),'w') as f:json.dump({'passed':True,'real_input_and_hammer_montage':True,'physical_door_hits':2,'per_hit_damage':25,'upgrade_particles_active':True,'interrupted_attack_damage':0,'interruption_clears_attack_and_collision':True,'sword_hitbox_restored':True},f,indent=2)

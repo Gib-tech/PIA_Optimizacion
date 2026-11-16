@@ -62,18 +62,18 @@ def capture(fn):
 def player():
  from generate_wave_graphs import heavy_player
  g=capture(heavy_player)
- overlap=next(n for n in g.nodes if n.kind.endswith('K2Node_ComponentBoundEvent'))
+ overlap=next(n for n in g.nodes if 'SweepResult' in n.pins)
  charger=next(n for n in g.nodes if n.kind.endswith('K2Node_DynamicCast'))
  door=g.cast(DOOR);g.chain(charger,door,'CastFailed');g.wire(overlap,'OtherActor',door,'Object')
  fresh=g.neg((g.array('HeavyHitActors','Array_Contains',item=overlap,ip='OtherActor'),'ReturnValue'))
- allowed=g.both(g.v('bHammerUpgraded','bool'),g.v('bIsHammerEquipped','bool'))
+ allowed=g.both(g.neg(g.v('bLightAttackActive','bool')),g.both(g.v('bHammerUpgraded','bool'),g.v('bIsHammerEquipped','bool')))
  b=g.br(door,g.both(allowed,fresh));cache=g.array('HeavyHitActors','Array_AddUnique',item=overlap,ip='OtherActor');g.chain(b,cache)
  dmg=g.call(GS,'ApplyDamage',static=True).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='25').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True);g.chain(cache,dmg);g.wire(overlap,'OtherActor',dmg,'DamagedActor');g.wire(g.selfnode(typ=HERO),'self',dmg,'DamageCauser')
  begin=next(n for n in g.nodes if n.kind.endswith('K2Node_Event') and any('ReceiveBeginPlay' in p for p in n.props));tail=next(n for n in g.nodes if any('K2_SetRelativeLocation' in p for p in n.props))
  hitbox=g.v('WeaponHitbox','object',obj='/Script/Engine.BoxComponent')
  collision=g.call(PRIM,'SetCollisionResponseToChannel').pin('Channel','byte',obj='/Script/Engine.ECollisionChannel',default='ECC_WorldDynamic').pin('NewResponse','byte',obj='/Script/Engine.ECollisionResponse',default='ECR_Overlap');g.w(hitbox,collision,'self');g.chain(tail,collision)
  relative=g.call(SCENE,'GetRelativeTransform',pure=True).pin('ReturnValue','struct',obj=TRANSFORM,out=True);g.w(hitbox,relative,'self')
- g.s(collision,'SwordHitboxRelativeTransform',(relative,'ReturnValue'),'struct',obj=TRANSFORM)
+ sword_transform_saved=g.s(collision,'SwordHitboxRelativeTransform',(relative,'ReturnValue'),'struct',obj=TRANSFORM)
  def attach_hitbox(prev,hammer,prevpin='then'):
   disable=g.call(PRIM,'SetCollisionEnabled').pin('NewType','byte',obj='/Script/Engine.ECollisionEnabled',default='NoCollision');g.w(hitbox,disable,'self');g.chain(prev,disable,prevpin)
   attach=g.call(SCENE,'K2_AttachToComponent').pin('Parent','object',obj=SCENE).pin('SocketName','name',default='None').pin('bWeldSimulatedBodies','bool',default='false').pin('ReturnValue','bool',out=True)
@@ -83,8 +83,9 @@ def player():
   if not hammer:g.w(g.v('SwordHitboxRelativeTransform','struct',obj=TRANSFORM),transform,'NewTransform')
   else:
    make=g.call(MATH,'MakeTransform',pure=True,static=True).pin('Location','struct',obj=VEC,default='0,10,145').pin('Rotation','struct',obj='/Script/CoreUObject.Rotator',default='0,0,0').pin('Scale','struct',obj=VEC,default='1,1,1').pin('ReturnValue','struct',obj=TRANSFORM,out=True);g.wire(make,'ReturnValue',transform,'NewTransform')
-  extent=g.call('/Script/Engine.BoxComponent','SetBoxExtent').pin('InBoxExtent','struct',obj=VEC,default='35,45,145' if hammer else '32,32,32').pin('bUpdateOverlaps','bool',default='false');g.w(hitbox,extent,'self');g.chain(transform,extent)
+  extent=g.call('/Script/Engine.BoxComponent','SetBoxExtent').pin('InBoxExtent','struct',obj=VEC,default='35,45,145' if hammer else '45,45,90').pin('bUpdateOverlaps','bool',default='false');g.w(hitbox,extent,'self');g.chain(transform,extent)
   return g.s(extent,'bHitboxOnHammer',hammer,'bool')
+ attach_hitbox(sword_transform_saved,False)
  cacheclear=next(n for n in g.nodes if any('Array_Clear' in p for p in n.props))
  idle=g.br(cacheclear,g.neg(g.v('IsAttacking','bool')))
  changed=g.cmp('NotEqual_BoolBool',g.v('bIsHammerEquipped','bool'),g.v('bHitboxOnHammer','bool'),'bool');update=g.br(idle,changed);which=g.br(update,g.v('bIsHammerEquipped','bool'));attach_hitbox(which,True)
@@ -100,21 +101,31 @@ def player():
   component=g.v(field,'object',obj='/Script/Engine.SkeletalMeshComponent' if field=='hammer' else SMC)
   n=g.call(SCENE,'SetVisibility').pin('bNewVisibility','bool',default=str(visible).lower()).pin('bPropagateToChildren','bool',default='true');g.w(component,n,'self');g.chain(prev,n);prev=n
  prev=g.s(prev,'bIsHammerEquipped',True,'bool');prev=g.s(prev,'bIsSwordEquipped',False,'bool');prev=attach_hitbox(prev,True);prev=g.fx(prev,'NS_HammerUpgrade',g.v('hammer','object',obj='/Script/Engine.SkeletalMeshComponent'));g.sound(prev,'Upgrade')
- # The inherited heavy montage has Enable/DisableHitbox notifies, but its PlayMontage
- # callback pins are disconnected. Follow that montage's existing notify interval in
- # this child, including interruption cleanup; source montages stay untouched.
+ # Heavy sword and hammer montage callbacks are disconnected in the parent.
+ # Manage their authored hit windows in this child, with interruption cleanup.
  tick=next(n for n in g.nodes if n.kind.endswith('K2Node_Event') and any('ReceiveTick' in p for p in n.props))
  old=list(tick.pins['then']['links']);tick.pins['then']['links']=[]
- seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True);g.chain(tick,seq)
+ seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True).pin('then_2',out=True);g.chain(tick,seq)
  for name,pid in old:
   n=next(n for n in g.nodes if n.name==name);p=next(p for p in n.pins.values() if p['id']==pid);p['links'].remove((tick.name,tick.pins['then']['id']));g.chain(seq,n,'then_0',p['name'])
  current=g.call(CHAR,'GetCurrentMontage',pure=True).pin('ReturnValue','object',obj='/Script/Engine.AnimMontage',out=True)
- same=g.call(MATH,'EqualEqual_ObjectObject',pure=True,static=True).pin('A','object',obj=OBJECT).pin('B','object',obj=OBJECT,default_obj='/Game/ThirdPerson/Animations/Attack_3_Montage.Attack_3_Montage').pin('ReturnValue','bool',out=True);g.wire(current,'ReturnValue',same,'A')
- heavy=g.both(g.v('IsAttacking','bool'),g.both(g.neg(g.v('bLightAttackActive','bool')),g.v('bIsHammerEquipped','bool')))
- managed=g.br(seq,g.both(heavy,(same,'ReturnValue')),'then_1');mark=g.s(managed,'bHeavyWindowManaged',True,'bool')
  anim=g.call('/Script/Engine.SkeletalMeshComponent','GetAnimInstance',pure=True).pin('ReturnValue','object',obj='/Script/Engine.AnimInstance',out=True);g.w(g.v('Mesh','object',obj='/Script/Engine.SkeletalMeshComponent'),anim,'self')
  pos=g.call('/Script/Engine.AnimInstance','Montage_GetPosition',pure=True).pin('Montage','object',obj='/Script/Engine.AnimMontage').pin('ReturnValue','real',sub='float',out=True);g.wire(anim,'ReturnValue',pos,'self');g.wire(current,'ReturnValue',pos,'Montage')
- window=g.br(mark,g.both(g.cmp('GreaterEqual_DoubleDouble',(pos,'ReturnValue'),g.v('HeavyWindowStart')),g.cmp('Less_DoubleDouble',(pos,'ReturnValue'),g.v('HeavyWindowEnd'))))
+ changed=g.cmp('NotEqual_ObjectObject',(current,'ReturnValue'),g.v('LastAttackMontage','object',obj='/Script/Engine.AnimMontage'),'object')
+ rewound=g.cmp('Less_DoubleDouble',g.op('Add_DoubleDouble',(pos,'ReturnValue'),.01),g.v('LastAttackPosition'))
+ reset=g.br(seq,g.c(MATH,'BooleanOR',[('A','bool',changed),('B','bool',rewound)],cat='bool'),'then_1')
+ fresh=g.array('HeavyHitActors','Array_Clear');g.chain(reset,fresh)
+ saved=g.s(fresh,'LastAttackMontage',(current,'ReturnValue'),'object',obj='/Script/Engine.AnimMontage');tail=g.s(saved,'LastAttackPosition',(pos,'ReturnValue'));g.chain(reset,tail,'else')
+ managedmatch=None;inwindow=None
+ # The original assets are preserved. Missing hit windows are defined here.
+ specs=[('Attack_3_Montage',.252330,1.183353),('Heavy_attacks/Sword/H_attack_1_Montage',.82,1.05),('Heavy_attacks/Sword/H_attack_2_Montage',.28,.75),('Heavy_attacks/Sword/H_attack_3_Montage',.50,1.25),('Fast_attacks/sword/L_FA_4_Montage',.18,.65),('Fast_attacks/Hammer/HA_1_Montage',.55,.90),('Fast_attacks/Hammer/HA_2_Montage',.16,.50)]
+ for path,a,b in specs:
+  same=g.call(MATH,'EqualEqual_ObjectObject',pure=True,static=True).pin('A','object',obj=OBJECT).pin('B','object',obj=OBJECT,default_obj='/Game/ThirdPerson/Animations/'+path+'.'+path.rsplit('/',1)[-1]).pin('ReturnValue','bool',out=True);g.wire(current,'ReturnValue',same,'A');match=(same,'ReturnValue')
+  bounds=g.both(g.cmp('GreaterEqual_DoubleDouble',(pos,'ReturnValue'),a),g.cmp('Less_DoubleDouble',(pos,'ReturnValue'),b));bounds=g.both(match,bounds)
+  managedmatch=match if managedmatch is None else g.c(MATH,'BooleanOR',[('A','bool',managedmatch),('B','bool',match)],cat='bool')
+  inwindow=bounds if inwindow is None else g.c(MATH,'BooleanOR',[('A','bool',inwindow),('B','bool',bounds)],cat='bool')
+ managed=g.br(seq,g.both(g.v('IsAttacking','bool'),managedmatch),'then_2');mark=g.s(managed,'bHeavyWindowManaged',True,'bool')
+ window=g.br(mark,inwindow)
  for pin,enabled in [('then','QueryOnly'),('else','NoCollision')]:
   collision=g.call(PRIM,'SetCollisionEnabled').pin('NewType','byte',obj='/Script/Engine.ECollisionEnabled',default=enabled);g.w(hitbox,collision,'self');g.chain(window,collision,pin)
  ended=g.br(managed,g.v('bHeavyWindowManaged','bool'),'else');clear=g.s(ended,'bHeavyWindowManaged',False,'bool')
@@ -267,7 +278,7 @@ def enemy_sense(charger=False):
  use=g.s(choose,'ChosenTarget',h,'object',obj=ACTOR)
  chosen=g.v('ChosenTarget','object',obj=ACTOR);target=g.s(use,'CombatTarget',chosen,'object',owner=BASE,target=pawn,obj=ACTOR);g.chain(choose,target,'else')
  distance=(g.dist(*pawn,*chosen),'ReturnValue');setdist=g.bbset(bb,'DistanceToTarget','Float');g.w(distance,setdist,'FloatValue');g.chain(target,setdist)
- enabled=g.br(setdist,g.cmp('LessEqual_DoubleDouble',distance,1800));setp=g.bbset(bb,'TargetActor','Object');g.w(chosen,setp,'ObjectValue');g.chain(enabled,setp);clear=g.bbset(bb,'TargetActor','Object');g.chain(enabled,clear,'else')
+ enabled=g.br(setdist,g.cmp('LessEqual_DoubleDouble',distance,1800 if charger else 1500));setp=g.bbset(bb,'TargetActor','Object');g.w(chosen,setp,'ObjectValue');g.chain(enabled,setp);clear=g.bbset(bb,'TargetActor','Object');g.chain(enabled,clear,'else')
  if not charger:
   own=g.location(*pawn);goal=g.location(*chosen)
   delta=g.c(MATH,'Subtract_VectorVector',[('A','struct',(own,'ReturnValue')),('B','struct',(goal,'ReturnValue'))],cat='struct',obj=VEC)
@@ -277,15 +288,16 @@ def enemy_sense(charger=False):
   for pin in ['InVect','Axis']:rotate[0].pins[pin]['obj']=VEC
   band=g.both(g.cmp('GreaterEqual_DoubleDouble',distance,150),g.cmp('LessEqual_DoubleDouble',distance,210))
   direction=g.call(MATH,'SelectVector',pure=True,static=True).pin('A','struct',obj=VEC).pin('B','struct',obj=VEC).pin('bPickA','bool').pin('ReturnValue','struct',obj=VEC,out=True);g.w(rotate,direction,'A');g.w(norm,direction,'B');g.w(band,direction,'bPickA')
-  radius=g.c(MATH,'Multiply_VectorDouble',[('A','struct',(direction,'ReturnValue')),('B','real',180)],cat='struct',obj=VEC);radius[0].pins['A']['obj']=VEC
+  radius=g.c(MATH,'Multiply_VectorFloat',[('A','struct',(direction,'ReturnValue')),('B','real',180)],cat='struct',obj=VEC);radius[0].pins['A']['obj']=VEC
   point=g.c(MATH,'Add_VectorVector',[('A','struct',(goal,'ReturnValue')),('B','struct',radius)],cat='struct',obj=VEC)
   for pin in ['A','B']:point[0].pins[pin]['obj']=VEC
   orbit=g.bbset(bb,'OrbitLocation','Vector');g.w(point,orbit,'VectorValue');g.chain(setp,orbit)
  g.write('BTService_ChargerSense' if charger else 'BTService_LocatePlayer')
 
 def enemy_actions():
- from generate_combat_graphs import attack_task,windup,charge,retreat
- attack_task();charge();retreat();g=capture(windup)
+ from generate_combat_graphs import attack_task,windup,charge,controller
+ from generate_ai_refinement import retreat
+ controller();attack_task();charge();retreat();g=capture(windup)
  goal=next(n for n in g.nodes if any('SetValueAsVector' in p for p in n.props))
  links=list(goal.pins['then']['links']);goal.pins['then']['links']=[]
  for name,pid in links:

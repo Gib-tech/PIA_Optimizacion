@@ -1,5 +1,11 @@
 # AI requirements
 
+## Refinamiento de IA y daño completo — 2026-11-15
+
+**Stated:** ambas IA deben mantener el encuentro local; el rehén no debe rodear el mapa y los enemigos no deben abandonar el combate caminando de espaldas. Todos los ataques deben causar daño, con balance delegado.
+
+**Decision:** espada ligera 15/15/19/22, martillo ligero 15/15, todos los pesados 25 contra ambos enemigos; una aplicación por ataque/enemigo, visión y alcance ≤300. Contacto enemigo 6. Refugio con ruta completa ≤1800, distancia al rehén ≤1600, al jugador 600–1800 y a enemigos ≥950. Retirada del embestidor 420 cm, ruta ≤650, timeout 1.4 s y recuperación 0.8 s; prioridades/carga conservadas. Punzada roja de esquinas 0.38 s, pico alfa 0.30. El detalle de ventanas y evidencia está en el handoff actual. Estos ajustes sustituyen los valores históricos incompatibles de este documento; aceptación del propietario pendiente.
+
 ## Actualización del propietario — 2026-11-15
 
 **Stated, progresión posterior:** sólo el rehén activa las balizas tras vencer a la horda. Añadir su indicador de vida, puertas destruibles ajustadas al escenario y mejora del martillo con equipamiento automático y partículas después de cada baliza. Esta petición sustituye la activación directa por E y la apertura automática de barreras al limpiar una zona.
