@@ -1,5 +1,9 @@
 # Governance
 
+## Cierre FIN 01 y FIN 02 autorizado — 2026-11-15
+
+**Stated:** el propietario solicita empezar FIN-01 y FIN-02 de `PENDIENTES_ENTREGA_FINAL.md`. Se autoriza comprobar el recorrido y completar guardado/Continuar de la misión entregable. Esta petición amplía el alcance de IA a los cambios de persistencia, menú, HUD y reintento necesarios. Conservar el gameplay Blueprint-only y los árboles; una prueba de recorrido del agente no sustituye la aceptación manual del propietario. No se solicita push.
+
 ## Dificultad y fractura autorizadas — 2026-11-15
 
 **Stated:** aumentar un 120% el daño enemigo y sustituir los cuadros separados de las puertas por trizas que sigan sus grietas. El daño vigente es 6 × 2.2 = **13.2** para ambos enemigos contra jugador/rehén; sustituye el valor histórico 6. Se autoriza generar la geometría necesaria conservando las mallas originales del equipo, los dos golpes de puerta y la implementación Blueprint-only.

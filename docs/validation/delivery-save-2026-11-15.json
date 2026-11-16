@@ -1,0 +1,10 @@
+{
+  "agent_tests_not_owner_acceptance": true,
+  "isolated_state_setup": true,
+  "initial_autosave": true,
+  "snapshot_health_progress_escort_weapon_cracks": true,
+  "combat_intermission_channel_attack_death_guards": true,
+  "restore_live_state_and_cracked_mesh": true,
+  "destroyed_door_stays_open": true,
+  "passed": true
+}

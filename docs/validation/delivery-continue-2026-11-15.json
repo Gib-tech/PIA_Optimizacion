@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "agent_tests_not_owner_acceptance": true,
+  "restored_step": 3,
+  "player_health": 47.20000076293945,
+  "hostage_health": 47.20000076293945,
+  "fresh_world_restore": true,
+  "no_duplicate_enemies": true,
+  "doors_collision_restored": true
+}

@@ -1,5 +1,17 @@
 # Work items
 
+## FIN 01 y FIN 02 actuales — 2026-11-15
+
+- **FIN-01 / In progress, Ready para aceptación:** recorrido del agente completo en PIE por movimiento, interacción y ataques de gameplay, sin teletransportes ni cambios de salud/daño. Victoria con ambas zonas, tres balizas/puertas y extracción. También observadas derrota del jugador, derrota del rehén, R de recuperación y Enter al menú. Falta el recorrido manual y aceptación del propietario sobre el paquete final.
+- **FIN-02 / In progress, Ready para aceptación:** puntos de control automáticos seguros, F5, restauración de jugador/rehén/arma/escolta/progresión y Continuar condicionado a un archivo compatible. R tras derrota recupera el punto, Nuevo juego comienza de cero. Guardado de mitad de combate sustituido por el último punto seguro. Cerrar/reabrir y Continuar comprobados en el ejecutable.
+- **Verified:** pruebas en `docs/validation/delivery-walk-2026-11-15.json`, `delivery-save-2026-11-15.json`, `delivery-menu-2026-11-15.json` y `delivery-continue-2026-11-15.json`. Recompilación de seis Blueprints; sin cambios en los árboles ni en el balance. Win64/ZIP actualizados, 549384059 bytes, CRC aprobado; cook 0 errores/15 advertencias previas. Informe global en `docs/validation/delivery-checkpoints-2026-11-15.json`.
+
+## Plan de cierre de entrega final — 2026-11-15
+
+- **Verified:** revisión documental y lista consolidada en [PENDIENTES_ENTREGA_FINAL.md](PENDIENTES_ENTREGA_FINAL.md), con prioridades, dependencias y condiciones de cierre. No modifica estados de aceptación ni acredita pruebas nuevas.
+- **Stated:** el propietario confirma que un compañero reemplazará el modelo provisional del rehén. La integración y su regresión están en FIN-06.
+- **Unknown / pendiente:** aceptación de una partida manual completa, modelos definitivos, mando físico, otra PC y requisitos de rúbrica sin evidencia consolidada. Guardado/Continuar quedan actualizados en FIN-02, arriba. Revisar la lista antes de reutilizar las filas históricas siguientes.
+
 ## Dificultad y fractura actuales — 2026-11-15
 
 - **In progress / Ready para aceptación:** daño enemigo 13.2 (+120% sobre 6) y puertas con grietas geométricas que se separan en 42/56/72 piezas irregulares coincidentes.
@@ -33,11 +45,11 @@ Status values: `Todo`, `In progress`, `Blocked`, `Done`.
 
 - **Ready para aceptación del propietario:** nivel nuevo con escenario de Ian, navegación y dos zonas de oleadas; balizas 1 → 2 → 3 y extracción; HUD con objetivos, victoria/derrota y reintento.
 - **Ready para aceptación del propietario:** rehén con árbol propio, seguimiento, detección visual de enemigos, huida a refugio alcanzable y reanudación por E/RB. Pruebas del agente aprobadas en PIE; no equivalen a aceptación del propietario.
-- **Ready:** Nuevo juego abre el nivel nuevo. Continuar está deshabilitado hasta persistir los objetivos y la escolta.
+- **Ready para aceptación:** Nuevo juego abre el nivel nuevo. Continuar restaura un checkpoint compatible de objetivos y escolta; ver FIN-02 actual.
 - **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`, actualizado con puertas/balizas del rehén y martillo mejorado. UAT terminó correctamente (0 errores de cook, 21 advertencias). Ejecutable: canalización, equipamiento automático y dos ataques pesados físicos rompen la puerta correspondiente y mantienen las siguientes intactas. CRC del ZIP de **737832544 bytes** aprobado. Evidencia en `docs/validation/progression-2026-11-15.json`; sigue pendiente una partida completa manual.
 - **Todo / dependencia del equipo:** modelo definitivo de baliza; coordinación de partículas con Dany.
 - **Ready para aceptación:** embestidor con árbol propio, daño ligero/pesado, oleadas 2 × 2 por zona, barreras y animaciones con cancelación. Pruebas automatizadas de PIE aprobadas; ver evidencia en el handoff.
-- **Todo:** guardado completo y recorrido manual de principio a fin.
+- **Ready para aceptación:** guardado por puntos seguros implementado. Pendiente el recorrido manual del propietario de principio a fin.
 
 `Done` requires the acceptance check in `AI_REQUIREMENTS.md`. The owner's board says AI 1 is Done. These rows stay `In progress` or `Todo` until Play In Editor on `ThirdPersonMap` shows the behavior. `In progress` means the saved asset already contains that work.
 

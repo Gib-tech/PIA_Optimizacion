@@ -1,0 +1,13 @@
+Win64 Development final build
+BUILD SUCCESSFUL
+AutomationTool exiting with ExitCode=0
+Cook: 0 errors, 15 warnings (existing Niagara Scale pin and Manny PoseAssets)
+BuildCookRun: 81.42 seconds
+ZIP_BYTES 549384059
+ZIP full CRC: passed
+ZIP excludes local Saved data and test checkpoints.
+Native: menu, Nuevo juego, E rescue, autosave and F5 passed.
+Native: closing/reopening preserved the checkpoint; Continue restored escort.
+F5 no longer changes the debug render mode.
+Final menu existence guard uses its native execution pins; no new cook warning.
+Complete movement/attack traversal: PIE automated; owner manual acceptance pending.

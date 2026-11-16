@@ -8,6 +8,38 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`, base de gameplay `c88bafb`. **Stated:** el propietario pide empezar FIN-01 y FIN-02. No se hizo commit ni push en esta intervención.
+- **Verified:** guardado y restauración Blueprint-only mediante `/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave` y `BP_DeliverySaveManager`, actor único `Guardado_Entrega` en `Nivel_Entrega`. Los Behavior Trees, enemigos, combate y balance 13.2 no se modificaron.
+
+### Persistencia y controles vigentes
+
+- **Decision / Verified:** checkpoints automáticos al rescatar, despejar una zona, activar una baliza o cambiar salud de puerta, una vez seguro. **F5** guarda manualmente. Se exige jugador vivo/en suelo/sin ataque, rehén vivo/sin amenaza/huida/canalización y ambas zonas fuera de oleada o intermedio. El último checkpoint se conserva durante el combate: no se serializa una oleada a mitad.
+- **Verified:** se persisten vida, posición y rotación de jugador/rehén, orientación de cámara, arma y mejora, rescate/seguimiento/espera, Paso, balizas, salud/grietas/desbloqueo/rotura de puertas y estado/oleada/conteo de zonas completadas. No se guardan referencias de actores del mapa ni escombros temporales. Al cargar se reponen mallas y colisión sin ejecutar otra vez recompensas, canalización ni fractura.
+- **Verified:** ranura independiente `TimeOut_Delivery_v1`, esquema 1. El menú conserva su diseño; Continuar se habilita sólo con archivo legible, compatible y personajes vivos. Nuevo juego inicia desde cero y reemplaza el punto. **R tras derrota recupera el último checkpoint; R tras victoria inicia desde cero**. Enter conserva el regreso al menú. HUD muestra guardado/restauración o espera de seguridad.
+- **Verified:** `Config/DefaultInput.ini` elimina sólo el DebugExecBinding de F5 (`viewmode shadercomplexity`), que entraba en conflicto en Win64 Development. No alterar otras teclas de depuración para resolver este caso.
+
+### Pruebas y límites
+
+- **Verified:** recorrido automatizado completo en PIE, mediante movimiento de gameplay, interacción y delegados de entrada de ataques; **sin teletransportes ni modificaciones de salud/daño**. Dos zonas de 2×2, tres balizas y puertas, extracción y victoria. Última muestra a 147.2 s: jugador y rehén en 47.2 de vida. `docs/validation/delivery-walk-2026-11-15.json` y `delivery-walk-victory.png`.
+- **Verified:** `delivery-save-2026-11-15.json`: snapshot/restauración de vida, escolta, arma, progreso, grietas y puerta abierta; bloqueos durante combate/intermedio/canalización/ataque/muerte. Son pruebas aisladas que preparan estados en PIE, distintas del recorrido anterior.
+- **Verified:** `delivery-menu-2026-11-15.json`: archivo válido habilita Continuar; ausente/incompatible/corrupto lo deshabilita; los bytes originales se restauran al terminar la prueba.
+- **Verified:** `delivery-continue-2026-11-15.json`: Continuar carga un mundo nuevo y recupera Paso 3, salud, escolta, zonas y puertas sin duplicar enemigos. Comprobado después de cerrar/reabrir el editor y mediante clic real del menú. Derrota del jugador por daño real + tecla física R recuperó el checkpoint. F5 físico guardó. Muerte del rehén por daño hostil produjo derrota y Enter físico regresó al menú.
+- **Verified:** seis Blueprints de integración compilados/exportados y sin errores activos. Las pruebas del agente no son aceptación del propietario. **FIN-01 y FIN-02 permanecen Ready para aceptación**, con recorrido manual del paquete final, mando físico y otra PC pendientes.
+- **Verified:** Win64 Development final: BUILD SUCCESSFUL / ExitCode 0, cook 0 errores y 15 advertencias anteriores (pin Scale de Niagara del jugador y poses Manny). ZIP `Deliverables/TimeOut_Avance_18Nov2026.zip`, **549384059 bytes**, CRC completo aprobado. Menú/Nuevo juego/E/rescate/checkpoint/F5 comprobados en el ejecutable; cerrar/reabrir conserva la partida y Continuar restaura la escolta. F5 conserva el renderizado normal. El guard de existencia del menú usa sus pines de ejecución nativos y no añade advertencias. Informe global `docs/validation/delivery-checkpoints-2026-11-15.json`, resumen del cook `delivery-checkpoints-package-log.txt`; capturas `delivery-save-native.png` y `delivery-continue-native.png`.
+
+### Fuentes y reproducción
+
+- **Verified:** `delivery_save_schema.py` define campos/ranura. `prepare_delivery_save.py` prepara los dos Blueprints y el campo de GI; exige `Nivel_Entrega` abierto y PIE detenido. `generate_delivery_save.py` genera gestor/menú/director, y `generate_dialogue_hud.py` genera el HUD con estado del guardado. `install_delivery_save.py` instala esos cuatro EventGraphs con el helper local BPB2. `prepare_delivery_menu.py` sólo prepara presentación predeterminada; Construct decide disponibilidad en runtime. `validate_delivery_save_assets.py` compila/exporta y comprueba un único gestor.
+- **Verified:** el helper nativo permanece sólo en `Intermediate/BPB2`, cargado mediante argumento del editor; no es dependencia del juego. En importación inicial, llamadas a un evento propio pueden desaparecer si la firma todavía no existe. El generador comparte entradas de ejecución de las acciones locales en lugar de importar llamadas sin firma.
+- **Verified:** pruebas nuevas en `Tools/UnrealPython/verify_delivery_save.py`, `verify_delivery_menu_states.py`, `verify_delivery_continue.py` y `playthrough_delivery_inputs.py`. Este último requiere Nuevo juego; un archivo `Intermediate/inspect/stop_delivery_walk.flag` detiene su callback. No ejecutar pruebas de estados aislados simultáneamente con el recorrido.
+- **Verified:** fuente de LEEME actualizada en `Tools/Delivery-README.txt`. Guardar/cerrar Unreal antes de `Tools/Build-Delivery.ps1`, luego `Tools/Archive-Delivery.py`. El ZIP excluye Saved y partidas de pruebas.
+- **Verified al cerrar:** los checkpoints creados por QA se respaldaron en `Intermediate/inspect/fin01-02-backup/test-saves` y se retiraron de las carpetas jugables; se empieza con Nuevo juego. Editor normal reabierto en Nivel_Entrega, sin argumento del helper; ping: sin PIE y DIRTY (none).
+- **Siguiente paso:** aceptar manualmente la versión empaquetada; después continuar las integraciones del equipo de FIN-06/07/08 y la auditoría de rúbrica. Modelos finales del rehén/baliza, mando físico, otra PC y requisitos Unknown conservan su estado pendiente.
+
+## History
+
+### Estado anterior del 15 de noviembre antes de FIN 01 y FIN 02
+
 - Fecha **2026-11-15**. Rama `codex/entrega-18nov-ia-oleadas`. Base anterior `af8ddcf`. Commits locales autorizados; sin push solicitado.
 - **Stated:** aumentar un 120% el daño enemigo y hacer trizas las puertas siguiendo sus grietas, sustituyendo los cuadros separados anteriores.
 - **Verified:** Blueprint-only y Behavior Trees/Blackboards conservados. El helper nativo se usa sólo en el editor desde Intermediate; no es dependencia del proyecto/juego.
@@ -27,7 +59,13 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - **Verified:** Win64 Development: BUILD SUCCESSFUL / ExitCode 0, cook 0 errores y 21 advertencias de recursos anteriores. ZIP actualizado `Deliverables/TimeOut_Avance_18Nov2026.zip`, **739814428 bytes**, CRC completo aprobado. Prueba nativa: menú y Nuevo juego cargan Nivel_Entrega, HUD y placa E/RB visibles. Daño/fractura detallados comprobados en PIE. Log: `docs/validation/fracture-difficulty-package-log.txt`. Editor normal restaurado en Nivel_Entrega, sin helper.
 - **Unknown / pendiente:** aceptación del propietario, recorrido manual completo, mando físico, otra PC, guardado/Continuar y modelos definitivos del equipo.
 
-## History
+### Revisión documental de cierre — 2026-11-15
+
+- **Stated:** el propietario pide contexto de gobernanza/documentos y una lista de pendientes; confirma que un compañero entregará el modelo definitivo del rehén.
+- **Verified:** se añadió `docs/PENDIENTES_ENTREGA_FINAL.md` con 23 pendientes priorizados, dependencias del equipo, condiciones de cierre y requisitos de rúbrica separados entre pendientes confirmados y Unknown. Se enlazó desde WORK_ITEMS. No se modificaron assets, mapas, balance ni configuraciones; no se hicieron pruebas nuevas ni commit/push en esta revisión.
+- **Verified documental:** el estado de gameplay y del paquete sigue siendo el descrito arriba. Los informes del agente no equivalen a aceptación del propietario. Los tres modelos de puerta documentados no acreditan por sí solos seis elementos destruibles; tres balizas repetidas tampoco acreditan por sí solas tres objetivos distintos.
+- **Siguiente paso propuesto:** recorrido manual del paquete actual para detectar bloqueos, comenzar guardado completo/Continuar y coordinar la entrega del rehén con esqueleto, materiales y animaciones. Auditar menú/controles y los requisitos Unknown antes de decidir qué contenido adicional falta.
+- **Unknown:** fecha y formato del recurso final del rehén, responsables finales del cierre y cumplimiento en Nivel_Entrega de los requisitos no acreditados (Nanite, World Partition, LODs, cantidades, inventario y segundo NPC).
 
 ### Estado anterior del 15 de noviembre — antes de dificultad y fractura geométrica
 

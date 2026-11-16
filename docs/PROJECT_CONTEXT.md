@@ -4,6 +4,9 @@ Facts below are separated from the assignment brief. Do not merge the two.
 
 ## Estado verificado — 2026-11-15
 
+- Persistencia de entrega añadida mediante `BP_DeliverySave` y `BP_DeliverySaveManager`: puntos de control seguros, F5, Continuar validado y R tras derrota recupera el último punto. Guarda también escolta, zonas, balizas y puertas. Las menciones históricas a Continuar deshabilitado quedan sustituidas; pruebas y límites en el handoff actual.
+- Recorrido automatizado completo sin teletransportes ni modificaciones de vida/daño: victoria, ocho enemigos, tres balizas/puertas y extracción; última muestra a 147.2 s con jugador y rehén en 47.2 de vida. No es aceptación manual del propietario ni un objetivo de tiempo para el jugador.
+
 - Refinamiento de puertas: geometría agrietada y fragmentos comparten las mismas divisiones irregulares (42/56/72 piezas). La primera malla sustituye la máscara de material anterior; los cuatro escombros cuadrados quedan sustituidos por piezas reales de cada panel. Fuentes originales conservadas; generación en Tools/Blender/build_fractured_doors.py y Tools/ArtSource/Fracture.
 
 - Progresión actual: tres puertas destructibles propias con muros visibles; sólo el rehén canaliza las balizas despejadas. Vida del rehén 100 con HUD; enemigos pueden atacarlo. Cada baliza equipa/carga el martillo y habilita su puerta, que requiere dos golpes pesados. El NavMesh se actualiza después de la rotura. Ver pruebas de agente en el handoff actual.

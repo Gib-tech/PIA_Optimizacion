@@ -169,8 +169,18 @@ def legacy_director():
         ended=g.compare('GreaterEqual_IntInt','int','4',x=0,y=y+200);g.wire(step,'Paso',ended,'A')
         b=g.branch(x=300,y=y);g.wire(k,'Pressed',b,'execute');g.wire(ended,'ReturnValue',b,'Condition')
         p=g.pause(x=550,y=y);p.pins['bPaused']['default']='false';g.wire(b,'then',p,'execute')
+        travel=p
+        if key=='R':
+            # Defeat retries the last safe mission checkpoint. Victory starts fresh.
+            gi_type='/Game/LevelMenu/BP_GameInstance.BP_GameInstance_C'
+            gi=g.call('/Script/Engine.GameplayStatics','GetGameInstance',pure=True,static=True).pin('ReturnValue','object',obj='/Script/Engine.GameInstance',out=True)
+            cast=g.cast(gi_type);g.chain(p,cast);g.wire(gi,'ReturnValue',cast,'Object')
+            retry=g.compare('GreaterEqual_IntInt','int','5');g.wire(step,'Paso',retry,'A')
+            flag=g.set('bDeliveryContinue','bool','false')
+            flag.props=['VariableReference=(MemberParent='+q("/Script/Engine.BlueprintGeneratedClass'"+gi_type+"'")+',MemberName="bDeliveryContinue")']
+            flag.pin('self','object',obj=gi_type);g.wire(cast,'AsBP_GameInstance',flag,'self');g.wire(retry,'ReturnValue',flag,'bDeliveryContinue');g.chain(cast,flag);travel=flag
         op=g.call('/Script/Engine.GameplayStatics','OpenLevel',static=True,x=850,y=y).pin('LevelName','name',default=level).pin('bAbsolute','bool',default='true').pin('Options','string',default='')
-        g.wire(p,'then',op,'execute')
+        g.wire(travel,'then',op,'execute')
     g.write('BP_DirectorEntrega')
 
 def legacy_hud():

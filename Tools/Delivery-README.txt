@@ -63,15 +63,30 @@ CONTROLES
 WASD / flechas: moverse. Raton: camara. Espacio: saltar.
 Clic izquierdo: ligero. Clic derecho: pesado.
 E: interactuar. Mando: RB/R1 para interactuar; X/cuadrado ligero, Y/triangulo pesado.
-Tras victoria o derrota: R reinicia; Enter vuelve al menu.
+F5: guardar un punto de control cuando estes a salvo.
+Tras derrota: R recupera el ultimo punto de control; Enter vuelve al menu.
+Tras victoria: R inicia un nuevo intento; Enter vuelve al menu.
 No se ha probado con mando fisico en esta computadora.
+
+GUARDADO Y CONTINUAR
+El juego guarda automaticamente al rescatar al rehen, despejar una zona,
+activar una baliza o cambiar el estado de una puerta, cuando termina el peligro.
+F5 permite guardar manualmente estando a salvo. No guarda durante oleadas,
+intermedios, ataques, canalizacion, huida o derrota: conserva el punto anterior.
+El HUD confirma el guardado o indica que debes esperar a estar a salvo.
+Continuar carga vida y posicion de jugador/rehen, escolta, arma/mejora,
+balizas, puertas y zonas. Los enemigos ya eliminados no reaparecen.
+Cerrar y abrir el juego conserva el punto de control local.
+Nuevo juego inicia desde cero y reemplaza el punto anterior.
+Continuar se deshabilita si no hay un guardado compatible y legible.
+El ZIP no incluye partidas de las pruebas del equipo.
 
 PENDIENTES DEL EQUIPO
 Modelo definitivo de baliza y modelo final del aliado (ambos son provisionales).
 Coordinacion de particulas/notifies con Dany; no se editaron sus efectos.
-Continuar esta deshabilitado: esta mision todavia no persiste objetivos/escolta.
-Falta aceptacion del propietario y una partida completa recorrida a mano.
-Las pruebas aisladas del agente usan teletransportes y dano de prueba en PIE.
+Falta aceptacion del propietario y recorrido manual del paquete definitivo.
+Una prueba automatizada completo el recorrido sin teletransportes ni cambios
+de vida/dano. Las pruebas aisladas de guardado usan estados de prueba en PIE.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
 Detalles y evidencia: docs/HANDOFF.md y docs/validation/fracture-difficulty-2026-11-15.json.

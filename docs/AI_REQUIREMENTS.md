@@ -1,5 +1,13 @@
 # AI requirements
 
+## Guardado de misión y reintento — 2026-11-15
+
+**Stated:** comenzar FIN-01 y FIN-02. **Decision de implementación:** puntos de control en momentos seguros, automáticos al rescatar, despejar zona, activar baliza o cambiar salud de puerta; F5 permite un guardado manual seguro. No se sobrescribe el punto anterior durante oleadas/intermedios, ataque, canalización, huida, amenaza cercana, caída o derrota. No se serializa un combate a mitad de una oleada.
+
+**Verified en PIE:** `BP_DeliverySave` y `BP_DeliverySaveManager` guardan vida/transform del jugador y rehén, cámara, arma/mejora, estado de escolta, paso, balizas, puertas (incluidas grietas/colisión) y zonas/oleadas completadas. Ranura separada `TimeOut_Delivery_v1`, esquema 1; sin referencias a actores del mapa en el archivo. Menú habilita Continuar sólo con datos legibles, compatibles y vivos. Nuevo juego reemplaza el punto por el comienzo; R tras derrota carga el último punto y R tras victoria empieza de cero. Los árboles de IA no se modificaron.
+
+**Verified / límite:** recorrido completo automatizado mediante movimiento y ataques, sin teletransportes ni cambios de salud/daño, terminado en victoria. Pruebas del agente, no aceptación manual del propietario. Evidencia de FIN-01/02 y verificación del paquete en el handoff actual.
+
 ## Dificultad y fractura — 2026-11-15
 
 **Stated / Decision:** aumento de daño enemigo del 120% sobre 6: **ContactDamage=13.2**, tanto orbitador como embestidor, contra jugador y rehén. Los valores históricos 6 quedan sustituidos. Mantener las ventanas de ataque, interrupción y gracia del rehén de 0.8 s.

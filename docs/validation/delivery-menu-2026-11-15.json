@@ -1,0 +1,9 @@
+{
+  "agent_tests_not_owner_acceptance": true,
+  "valid_save_enables_continue": true,
+  "incompatible_save_disables_continue": true,
+  "missing_save_disables_continue": true,
+  "corrupt_save_disables_continue": true,
+  "passed": true,
+  "original_save_restored": true
+}

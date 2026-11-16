@@ -294,4 +294,20 @@ action=text(body,v('ActionHint'),add(x,mul(28,scale)),add(y,mul(150,scale)),1.1)
 end=cmp('Less_IntInt',step,4)
 hint=branch(action,end)
 text(hint,'ENTER: leer / cerrar',sub(add(x,bw),mul(218,scale)),add(y,mul(150,scale)),1.1)
+# A checkpoint status line shares the existing HUD, outside the dialogue box.
+from delivery_save_schema import MANAGER
+old=list(draw.pins['then']['links']);draw.pins['then']['links']=[]
+seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True)
+g.chain(draw,seq)
+for name,pid in old:
+    node=next(n for n in g.nodes if n.name==name)
+    pin=next(p for p in node.pins.values() if p['id']==pid)
+    pin['links'].remove((draw.name,draw.pins['then']['id']))
+    g.chain(seq,node,'then_0',pin['name'])
+manager=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True).pin('ActorClass','class',obj='/Script/Engine.Actor',default_obj=MANAGER).pin('ReturnValue','object',obj='/Script/Engine.Actor',out=True)
+g.chain(seq,manager,'then_1')
+cast=g.cast(MANAGER);g.chain(manager,cast);g.wire(manager,'ReturnValue',cast,'Object')
+status=g.get('StatusText','string',owner=MANAGER);g.wire(cast,'AsBP_DeliverySaveManager',status,'self')
+line=rect(cast,mul(20,scale),mul(154,scale),mul(720,scale),mul(30,scale),'(R=0,G=0,B=0,A=.82)')
+text(line,(status,'StatusText'),mul(28,scale),mul(162,scale),.95)
 g.write('BP_HUD_Entrega')

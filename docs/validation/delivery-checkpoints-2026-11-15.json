@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-15",
+  "passed": true,
+  "owner_acceptance": "pending",
+  "test_checkpoints_backed_up_and_cleared": true,
+  "editor_restored": "Nivel_Entrega, no PIE, no dirty packages, no helper launch argument",
+  "scope": [
+    "FIN-01",
+    "FIN-02"
+  ],
+  "agent_tests_not_owner_acceptance": true,
+  "blueprint_only": true,
+  "behavior_trees_unchanged": true,
+  "enemy_contact_damage": 13.2,
+  "automated_walk": {
+    "passed": true,
+    "no_teleports": true,
+    "no_health_or_damage_overrides": true,
+    "inputs": "AddMovementInput, normal hostage interaction and existing attack input delegates",
+    "zones": 2,
+    "enemies": 8,
+    "beacons": 3,
+    "doors": 3,
+    "outcome": "victory",
+    "last_sample_game_seconds": 147.2,
+    "last_sample_player_health": 47.20000076293945,
+    "last_sample_hostage_health": 47.20000076293945,
+    "source": "delivery-walk-2026-11-15.json"
+  },
+  "persistence": {
+    "slot": "TimeOut_Delivery_v1",
+    "schema_version": 1,
+    "strategy": "safe checkpoints; automatic milestones and manual F5; no mid-combat snapshot",
+    "player": "health, position, rotation, camera, weapon and hammer upgrade",
+    "hostage": "health, position, rotation, rescued, following and waiting",
+    "mission": "step, beacons, door health/cracks/unlock/destruction/collision, completed zone wave/phase/counts"
+  },
+  "tests": {
+    "save_restore_guards": "delivery-save-2026-11-15.json",
+    "menu_invalid_missing_corrupt": "delivery-menu-2026-11-15.json",
+    "fresh_world_continue": "delivery-continue-2026-11-15.json",
+    "physical_R_after_player_death": "passed; restored step 3 and both health values 47.2",
+    "hostage_death_Enter_menu": "passed; hostile damage, defeat and physical Enter",
+    "physical_F5": "passed in PIE and native; F5 debug shader binding removed"
+  },
+  "native_smoke": {
+    "passed": true,
+    "menu": true,
+    "new_game": true,
+    "rescue_E": true,
+    "safe_autosave": true,
+    "F5": true,
+    "close_reopen": true,
+    "continue_enabled_from_disk": true,
+    "continue_restores_escort": true,
+    "F5_keeps_normal_lighting": true,
+    "persisted_save_sha256": "8D8140ED43E39FDD9DDB8227DEB36A5840C24A7E1789BF389B429C083230E93A",
+    "final_menu_guard_fix_checked": true
+  },
+  "package": {
+    "configuration": "Win64 Development",
+    "build": "successful",
+    "exit_code": 0,
+    "cook_errors": 0,
+    "cook_warnings": 15,
+    "remaining_warnings": "Existing player Niagara Scale pin and Manny PoseAssets",
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 549384059,
+    "full_crc": "passed",
+    "excludes_local_test_saves": true
+  },
+  "limitations": [
+    "Owner manual playthrough/acceptance remains pending.",
+    "Full unassisted walk was automated in PIE; packaged smoke covered menu/new/rescue/F5/close/reopen/Continue.",
+    "Physical gamepad and another PC are pending.",
+    "Save returns to the last safe checkpoint during combat; it does not serialize a partial wave."
+  ]
+}
