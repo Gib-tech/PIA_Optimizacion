@@ -1,0 +1,50 @@
+{
+  "isolated_camera_test": true,
+  "partitioned": true,
+  "lights": [
+    {
+      "type": "SpotLightComponent",
+      "forward_z": -0.8191520442889915,
+      "radius": 1100.0,
+      "max_distance": 2400.0,
+      "fade": 350.0,
+      "shadows": false
+    },
+    {
+      "type": "RectLightComponent",
+      "forward_z": -1.0000000000000002,
+      "radius": 1000.0,
+      "max_distance": 2400.0,
+      "fade": 350.0,
+      "shadows": true
+    },
+    {
+      "type": "PointLightComponent",
+      "forward_z": 0.0,
+      "radius": 700.0,
+      "max_distance": 2400.0,
+      "fade": 350.0,
+      "shadows": false
+    }
+  ],
+  "samples": [
+    {
+      "stage": "visible_near",
+      "component_inactive": false
+    },
+    {
+      "stage": "far",
+      "component_inactive": true
+    },
+    {
+      "stage": "visible_again",
+      "component_inactive": false
+    },
+    {
+      "stage": "looking_away",
+      "component_inactive": true
+    }
+  ],
+  "separate_buildings": 10,
+  "passed": true
+}

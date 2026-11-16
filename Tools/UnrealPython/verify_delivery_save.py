@@ -19,7 +19,7 @@ def prop(obj,name):return obj.get_editor_property(name)
 def saved():return unreal.GameplayStatics.load_game_from_slot('TimeOut_Delivery_v1',0)
 result={'agent_tests_not_owner_acceptance':True,'isolated_state_setup':True}
 try:
-    assert prop(saved(),'Version')==1
+    assert prop(saved(),'Version')==2
     result['initial_autosave']=True
     put(health,'Health',73.0);put(h,'Health',61.0)
     p.set_actor_location(unreal.Vector(100,-620,91.15),False,True)

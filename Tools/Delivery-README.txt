@@ -3,22 +3,29 @@ TIME OUT - Entrega del 18 de noviembre de 2026
 Abrir Windows/Terreno.exe. Conservar la carpeta Windows completa; el ejecutable
 necesita los archivos y subcarpetas que lo acompañan.
 
+La primera ejecucion abre en pantalla completa a resolucion del escritorio.
+Opciones conserva despues el modo y la resolucion elegidos. Al entrar a la
+mision o reanudar se recuperan foco y captura permanente del raton.
+
 MISION
 1. Nuevo juego abre el escenario de Ian.
 2. Acercarse al rehen. El recuadro inferior indica [E / RB] Rescatar. Pulsar E.
 3. Entrar con el aliado cerca a la primera zona. Aparecen dos oleadas de dos
    orbitadores. El aliado huye a un refugio; no hace falta traerlo entre oleadas.
-4. Al eliminar al ultimo enemigo, recuperar al aliado con E en el refugio y
-   llevarlo a la baliza 1. Solo el rehen puede activarla: se acerca y tarda 3 s.
-   Una amenaza interrumpe el proceso. El jugador no activa balizas con E.
-5. La baliza equipa automaticamente el martillo, que emite particulas de mejora.
+4. Al eliminar al ultimo enemigo, recuperar al aliado con E en el refugio.
+   Completar las oleadas carga y equipa automaticamente el martillo.
+5. Romper la primera puerta con el martillo, que emite particulas de mejora.
    El primer pesado (clic derecho) deja grietas geometricas;
    el segundo hace trizas la puerta habilitada siguiendo esas mismas divisiones.
-   Las otras puertas siguen selladas hasta activar su propia baliza.
+   La segunda puerta requiere despejar la segunda zona.
 6. Llevar al aliado a la segunda zona. Completar otras dos oleadas de dos
-   embestidores, recuperar al aliado, escoltarlo a la baliza 2 y romper su puerta.
-7. Escoltar al rehen a la baliza 3 y romper la ultima puerta con el martillo.
-   Llevar al aliado a la zona azul de extraccion.
+   embestidores, recuperar al aliado y romper la segunda puerta.
+7. En el patio final estan las balizas A, B y C. Consultar el ORDEN sorteado
+   en pantalla y escoltar al rehen a cada baliza en esa secuencia. La siguiente
+   brilla azul; las activadas, verde. Solo el rehen canaliza: tarda tres segundos
+   y una amenaza lo interrumpe. Las balizas fuera de orden no se activan.
+8. Completar las tres habilita la ultima puerta. Romperla con dos pesados y
+   llevar al aliado a la zona azul de extraccion.
    Llegar solo no completa la mision.
 
 El aliado no vuelve a seguir automaticamente al acercarse. Hay que despejar
@@ -26,8 +33,10 @@ las amenazas cercanas y pulsar E. Las zonas se activan una sola vez por partida.
 El recuadro inferior avisa al acercarse a una zona: entrar con el aliado
 siguiendote a no mas de 6 metros inicia sus oleadas. Los mensajes cambian con
 el combate, el intermedio y la zona despejada. El rehen tiene una senal E / RB.
-Hay unos tres segundos entre sus oleadas. Las primeras dos balizas requieren
-despejar su zona y las tres se activan en orden.
+Hay unos tres segundos entre sus oleadas. Las tres balizas requieren despejar
+ambas zonas. A, B y C conservan sus nombres; cambia el orden real de visita.
+El cronometro de mision comienza al rescatar al rehen, se congela al pausar y
+termina con victoria o derrota. No existe un limite de tiempo impuesto.
 El rehen tiene 100 de vida, visible en la barra superior izquierda. Ambos tipos
 de enemigo pueden atacarlo. Al verlo a menos de 6.5 metros, se fijan en el rehen
 y lo priorizan aunque el jugador este mas cerca. Protege su retirada atacandolos.
@@ -65,8 +74,8 @@ Clic izquierdo: ligero. Clic derecho: pesado.
 E: interactuar. Y: martillo. T: espada. C: primera / tercera persona.
 P / ESC: pausa y reanudar. En opciones, P / ESC vuelve al menu anterior.
 F5: guardar un punto de control cuando estes a salvo.
-Tras derrota: R recupera el ultimo punto de control; Enter vuelve al menu.
-Tras victoria: R inicia un nuevo intento; Enter vuelve al menu.
+Tras victoria o derrota: R inicia desde cero con otra secuencia y cronometro
+reiniciado; Enter vuelve al menu. Para retomar el punto guardado, usar Continuar.
 Mando pendiente por indicacion del propietario: los enlaces anteriores se
 conservan, pero no se acredita navegacion completa ni pruebas con mando fisico.
 
@@ -90,18 +99,36 @@ F5 permite guardar manualmente estando a salvo. No guarda durante oleadas,
 intermedios, ataques, canalizacion, huida o derrota: conserva el punto anterior.
 El HUD confirma el guardado o indica que debes esperar a estar a salvo.
 Continuar carga vida y posicion de jugador/rehen, escolta, arma/mejora,
-balizas, puertas y zonas. Los enemigos ya eliminados no reaparecen.
+balizas, puertas, zonas, secuencia sorteada y tiempo del punto guardado.
+Los enemigos ya eliminados no reaparecen.
 Cerrar y abrir el juego conserva el punto de control local.
 Nuevo juego inicia desde cero y reemplaza el punto anterior.
 Continuar se deshabilita si no hay un guardado compatible y legible.
 El ZIP no incluye partidas de las pruebas del equipo.
 
 PENDIENTES DEL EQUIPO
-Modelo definitivo de baliza y modelo final del aliado (ambos son provisionales).
-Coordinacion de particulas/notifies con Dany; no se editaron sus efectos.
+Modelo final del aliado (provisional). Baliza.glb del equipo ya integrado.
+Escenario revisado: World Partition, Landscape con cuatro texturas distribuidas
+segun caminos/patios/deposito, diez edificios Nanite, rescate y deposito con
+cubierta y luz interior. Objetos agrupados por uso; luces junto a sus fuentes.
+Cinco modelos con cuatro LOD, seis tipos de destruibles Chaos y ocho sistemas
+de particulas distintos integrados. Modelos sin corte brusco por distancia;
+se mantienen LOD, Nanite y descarte por visibilidad/oclusion. Paredes con
+escala uniforme de textura; mipmaps y streaming de superficies revisados.
+efectos ambientales se reanudan al volver y fisica se activa al romper.
+Se reutilizan
+modelos/colecciones/efectos del equipo; los recursos Fab conservan su autoria.
+Los destruibles decorativos reaparecen al cargar; no forman parte de la mision.
+Confirmar con Adame si exige municion/dinero en este combate cuerpo a cuerpo.
+Documentacion academica/cronograma, redes y video dependen del equipo.
 Falta aceptacion del propietario y recorrido manual del paquete definitivo.
-Una prueba automatizada completo el recorrido sin teletransportes ni cambios
-de vida/dano. Las pruebas aisladas de guardado usan estados de prueba en PIE.
+La victoria automatizada anterior corresponde al escenario previo a esta
+revision artistica. El bot de esta revision cruzo accesos y combatio, pero
+perdio en la segunda zona; dificultad y experiencia manual siguen pendientes.
+Se verificaron las seis secuencias con posiciones y encuentros preparados
+en pruebas aisladas de PIE, ademas de destruccion y descarte ambiental.
+Son pruebas del agente; no sustituyen una partida manual del propietario.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
-Detalles y evidencia: docs/HANDOFF.md y docs/validation/delivery-controls-2026-11-15.json.
+Detalles, pruebas y guia: docs/HANDOFF.md,
+docs/ESCENARIO_COMPOUND.md y docs/GUIA_DEMOSTRACION_EVALUACION.md.

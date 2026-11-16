@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "props": [
+    {
+      "name": "GC_Banco",
+      "render_bounds_min_z": 0.0,
+      "simulating_physics": false,
+      "health": 50.0
+    },
+    {
+      "name": "GC_Barril",
+      "render_bounds_min_z": -7.105427357601002e-15,
+      "simulating_physics": false,
+      "health": 50.0
+    },
+    {
+      "name": "GC_fuente",
+      "render_bounds_min_z": -1.4210854715202004e-14,
+      "simulating_physics": false,
+      "health": 50.0
+    },
+    {
+      "name": "GC_Car2",
+      "render_bounds_min_z": -2.842170943040401e-14,
+      "simulating_physics": false,
+      "health": 50.0
+    },
+    {
+      "name": "GC_box",
+      "render_bounds_min_z": 7.105427357601002e-15,
+      "simulating_physics": false,
+      "health": 50.0
+    },
+    {
+      "name": "GC_Trash",
+      "render_bounds_min_z": -7.105427357601002e-15,
+      "simulating_physics": false,
+      "health": 50.0
+    }
+  ]
+}

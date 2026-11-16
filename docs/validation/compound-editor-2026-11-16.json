@@ -1,0 +1,177 @@
+{
+  "buildings": [
+    {
+      "label": "Compound_SM_Walls_PatioNorte",
+      "height": 402.77712225914,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Atrio",
+      "height": 401.3608810901642,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Deposito",
+      "height": 402.2473134994507,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Rescate",
+      "height": 402.2470586299896,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Salida",
+      "height": 405.4806206226349,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_AlaOeste",
+      "height": 403.44864296913147,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Arena",
+      "height": 402.2472221851349,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Servicio",
+      "height": 402.2471339702606,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_AlaEste",
+      "height": 402.24733090400696,
+      "nanite": true,
+      "draw_distance": 18000.0
+    },
+    {
+      "label": "Compound_SM_Walls_Jardin",
+      "height": 402.24694180488586,
+      "nanite": true,
+      "draw_distance": 18000.0
+    }
+  ],
+  "props": [
+    {
+      "label": "LOD_Car",
+      "center": [
+        -4500.0,
+        -7050.0,
+        80.0
+      ],
+      "base_z": 0.0,
+      "draw_distance": 6000.0
+    },
+    {
+      "label": "LOD_fuente",
+      "center": [
+        0.0,
+        -7300.0,
+        80.00000000000001
+      ],
+      "base_z": 1.4210854715202004e-14,
+      "draw_distance": 3800.0
+    },
+    {
+      "label": "LOD_Tree1",
+      "center": [
+        1449.9999999999998,
+        -1749.9999999999986,
+        225.0
+      ],
+      "base_z": 0.0,
+      "draw_distance": 6000.0
+    },
+    {
+      "label": "LOD_Banco",
+      "center": [
+        1100.0000000000002,
+        -1900.0,
+        45.0
+      ],
+      "base_z": 0.0,
+      "draw_distance": 3800.0
+    },
+    {
+      "label": "LOD_Light_Pole",
+      "center": [
+        1899.9999999999993,
+        -8050.000000000001,
+        199.99999999999997
+      ],
+      "base_z": 0.0,
+      "draw_distance": 6000.0
+    },
+    {
+      "label": "Destruible_Banca",
+      "center": [
+        2900.0,
+        -3350.0000000000005,
+        45.0
+      ],
+      "base_z": 0.0,
+      "draw_distance": 3800.0
+    },
+    {
+      "label": "Destruible_Barril",
+      "center": [
+        -4500.0,
+        -5300.0,
+        54.99999999999999
+      ],
+      "base_z": -7.105427357601002e-15,
+      "draw_distance": 3800.0
+    },
+    {
+      "label": "Destruible_Fuente",
+      "center": [
+        3200.0,
+        -3800.0,
+        79.99999999999999
+      ],
+      "base_z": -1.4210854715202004e-14,
+      "draw_distance": 3800.0
+    },
+    {
+      "label": "Destruible_Auto",
+      "center": [
+        -3200.0,
+        -7050.000000000001,
+        80.0
+      ],
+      "base_z": 0.0,
+      "draw_distance": 6000.0
+    },
+    {
+      "label": "Destruible_Caja",
+      "center": [
+        520.0,
+        -900.0,
+        45.00000000000001
+      ],
+      "base_z": 7.105427357601002e-15,
+      "draw_distance": 3800.0
+    },
+    {
+      "label": "Destruible_Basurero",
+      "center": [
+        900.0,
+        -1900.0,
+        49.99999999999999
+      ],
+      "base_z": -7.105427357601002e-15,
+      "draw_distance": 3800.0
+    }
+  ],
+  "passed": true
+}

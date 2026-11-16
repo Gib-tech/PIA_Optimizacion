@@ -1,0 +1,1030 @@
+{
+  "date": "2026-11-16",
+  "scope": "Wall mapping, environment texture budgets, visible model popping; retains prior evaluation/beacon rework",
+  "wall_audit": {
+    "walls": [
+      {
+        "actor": "Limite_Oeste",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_PatioNorte",
+        "materials": [
+          "M_WallMetric_rock_wall_16"
+        ]
+      },
+      {
+        "actor": "Progression_Marco_1",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Atrio",
+        "materials": [
+          "M_WallMetric_rock_wall_16"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Deposito",
+        "materials": [
+          "M_WallMetric_rock_boulder_dry"
+        ]
+      },
+      {
+        "actor": "Progression_Marco_2",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Rescate",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Salida",
+        "materials": [
+          "M_WallMetric_rock_wall_16"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_AlaOeste",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Limite_Sur",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Marco_3",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Arena",
+        "materials": [
+          "M_WallMetric_rock_boulder_dry"
+        ]
+      },
+      {
+        "actor": "Limite_Este",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Servicio",
+        "materials": [
+          "M_WallMetric_rock_boulder_dry",
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_AlaEste",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_Walls_Jardin",
+        "materials": [
+          "M_WallMetric_rock_boulder_dry"
+        ]
+      },
+      {
+        "actor": "Limite_Norte",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_13",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_02",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_10",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_UpperWalls_Rescate",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_08",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_05",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_10",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_01",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_04",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Dintel_2",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_06",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_04",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_07",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_07",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Dintel_3",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_00",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_03",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_09",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_09",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_01",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_03",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_11",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_08",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_10",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_02",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_02",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_13",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Compound_SM_UpperWalls_Deposito",
+        "materials": [
+          "M_WallMetric_rock_boulder_dry"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_06",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_00",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_08",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_04",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_05",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_12",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_12",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_06",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_11",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_00",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Dintel_1",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_11",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_09",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_0_12",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_05",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_07",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_0_03",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_0_01",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_03",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_07",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_00",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_12",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_05",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_00",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_01",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_08",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_08",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_06",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_05",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_10",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_00",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_11",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_10",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_12",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_04",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_07",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_13",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_06",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_09",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_06",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_13",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_09",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_12",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_02",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_05",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_04",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_11",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_02",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_09",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_03",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_11",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_01",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_10",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_02",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_08",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_03",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_3_1_01",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_1_1_04",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      },
+      {
+        "actor": "Progression_Muro_2_1_07",
+        "materials": [
+          "M_WallMetric_wood_inlaid_stone_wall"
+        ]
+      }
+    ],
+    "models": [
+      "Destruible_Banca",
+      "Destruible_Banca",
+      "Destruible_Barril",
+      "Destruible_Barril",
+      "LOD_Car",
+      "LOD_Tree1",
+      "Destruible_Fuente",
+      "Destruible_Fuente",
+      "LOD_fuente",
+      "LOD_Banco",
+      "Destruible_Auto",
+      "Destruible_Auto",
+      "Destruible_Caja",
+      "Destruible_Caja",
+      "LOD_Light_Pole",
+      "Destruible_Basurero",
+      "Destruible_Basurero"
+    ],
+    "passed": true,
+    "four_lod_models": 5,
+    "all_wall_components": 104,
+    "metric_tile_cm": [
+      400,
+      400,
+      400
+    ],
+    "visible_model_distance_culling": false
+  },
+  "texture_budget": [
+    {
+      "texture": "/Game/ThirdPerson/Environment/EscenarioIan/Textures/wood_inlaid_stone_wall_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "2048",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ThirdPerson/Environment/EscenarioIan/Textures/rock_boulder_dry_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ThirdPerson/Environment/EscenarioIan/Textures/rock_wall_16_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/coast_sand_rocks_02_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ganges_river_pebbles_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/mixed_rock_tiles_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "2048",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/rock_boulder_dry_diff_2k",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ThirdPerson/RecursosPropios/Modelos/woodtexture",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "True",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_NO_MIPMAPS: 13>",
+        "compression_settings": "<TextureCompressionSettings.TC_EDITOR_ICON: 7>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "True",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.STRETCH_TO_POWER_OF_TWO: 3>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ThirdPerson/RecursosPropios/Modelos/old_metal_24_diffuse",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "True",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_NO_MIPMAPS: 13>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "True",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.STRETCH_TO_POWER_OF_TWO: 3>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ThirdPerson/RecursosPropios/Modelos/ConcreteBench_ncl1_1",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    },
+    {
+      "texture": "/Game/ThirdPerson/RecursosPropios/Modelos/Light_Pole1",
+      "before": {
+        "max_texture_size": "0",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "False",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "after": {
+        "max_texture_size": "1024",
+        "never_stream": "False",
+        "mip_gen_settings": "<TextureMipGenSettings.TMGS_FROM_TEXTURE_GROUP: 0>",
+        "compression_settings": "<TextureCompressionSettings.TC_DEFAULT: 0>",
+        "compression_no_alpha": "True",
+        "power_of_two_mode": "<TexturePowerOfTwoSetting.NONE: 0>"
+      },
+      "source_pixels_preserved": true
+    }
+  ],
+  "cold_editor_reload_runtime": {
+    "passed": true,
+    "models": [
+      {
+        "asset": "GC_Banco",
+        "actor": "BP_DestruibleEntrega_C_2",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "GC_Barril",
+        "actor": "BP_DestruibleEntrega_C_3",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "SM_LOD_Car",
+        "actor": "StaticMeshActor_10",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "SM_LOD_Tree1",
+        "actor": "StaticMeshActor_11",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "GC_fuente",
+        "actor": "BP_DestruibleEntrega_C_5",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "SM_LOD_fuente",
+        "actor": "StaticMeshActor_14",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "SM_LOD_Banco",
+        "actor": "StaticMeshActor_9",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "GC_Car2",
+        "actor": "BP_DestruibleEntrega_C_4",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "GC_box",
+        "actor": "BP_DestruibleEntrega_C_0",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "SM_LOD_Light_Pole",
+        "actor": "StaticMeshActor_13",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      },
+      {
+        "asset": "GC_Trash",
+        "actor": "BP_DestruibleEntrega_C_1",
+        "ld_max_draw_distance": 0.0,
+        "cached_max_draw_distance": 0.0,
+        "never_distance_cull": true
+      }
+    ]
+  },
+  "car_camera_comparison": {
+    "passed": true,
+    "isolated_runtime_before_after": true,
+    "same_far_camera": [
+      -10500,
+      -13500,
+      3500
+    ],
+    "cars": 2,
+    "old_cutoff_simulated_static_car_only": true,
+    "new_effective_cutoff": 0,
+    "lods_retained": true
+  },
+  "build": {
+    "success": true,
+    "cook_errors": 0,
+    "warning_occurrences": 30,
+    "unique_warnings": 15,
+    "new_material_warnings": 0,
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 622921207,
+    "crc_all_entries_passed": true,
+    "excludes_saved_pdb_editor_helper": true
+  },
+  "native_smoke": {
+    "passed": true,
+    "fresh_process": true,
+    "mode": "1280x720 windowed override for QA",
+    "new_game_loaded": true,
+    "walls_rendered_correctly": true,
+    "screenshot": "walls-native-2026-11-16.png",
+    "exit": "clean",
+    "cars_checked_in_pie_separate": true
+  },
+  "evidence": [
+    "wall-rescate-2026-11-16.png",
+    "wall-arena-2026-11-16.png",
+    "wall-kit-2026-11-16.png",
+    "cars-old-cut-2026-11-16.png",
+    "cars-visible-2026-11-16.png",
+    "walls-native-2026-11-16.png"
+  ],
+  "preserved": {
+    "four_lod_models": 5,
+    "lods_each": 4,
+    "nanite_buildings": 10,
+    "combat_balance_damage": 13.2,
+    "encounter_zones": 2,
+    "enemies_per_zone": "2 x 2",
+    "beacon_sequence_and_save": true,
+    "light_and_ambient_scalability": true
+  },
+  "limitations": [
+    "Agent checks, not owner visual acceptance.",
+    "No comparative FPS claim.",
+    "Native smoke covers initial room; far car comparison uses isolated PIE camera.",
+    "No new natural mission victory; prior compound bot lost in second zone.",
+    "Presentation PC, controller and Adame ammo/currency interpretation remain pending."
+  ],
+  "editor_final": {
+    "map": "Nivel_Entrega",
+    "normal_without_editor_helper": true,
+    "pie": false,
+    "dirty_packages": []
+  }
+}

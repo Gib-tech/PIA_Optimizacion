@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "cars_clear_of_refuge_bounds": 2,
+  "refuges_checked": 26,
+  "new_local_refuge_paths": [
+    {
+      "target": [
+        -2150.0,
+        -4600.0
+      ],
+      "path_cm": 1735.6026817834233
+    },
+    {
+      "target": [
+        -2150.0,
+        -5500.0
+      ],
+      "path_cm": 1285.9910427479213
+    }
+  ]
+}

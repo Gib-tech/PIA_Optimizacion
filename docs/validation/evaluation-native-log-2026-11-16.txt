@@ -1,0 +1,41 @@
+[2026.11.16-18.31.27:817][  0]LogLoad: LoadMap: /Game/LevelMenu/MainMenuLevel?Name=Player
+[2026.11.16-18.31.28:005][  0]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.31.28:005][  0]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.31.39:042][619]LogLoad: LoadMap: /Game/ThirdPerson/Maps/Nivel_Entrega
+[2026.11.16-18.31.39:928][619]LogScript: Warning: Script Msg: The widget 'Health_C_2147482342' was already added to the screen.
+[2026.11.16-18.31.39:928][619]LogViewport: Display: Viewport MouseLockMode Changed, DoNotLock -> LockOnCapture
+[2026.11.16-18.31.39:928][619]LogViewport: Display: Viewport MouseCaptureMode Changed, CaptureDuringMouseDown -> CapturePermanently
+[2026.11.16-18.31.39:928][619]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently -> CapturePermanently_IncludingInitialMouseDown
+[2026.11.16-18.31.58:915][653]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.31.58:915][653]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.32.25:054][ 32]LogViewport: Display: Viewport MouseLockMode Changed, DoNotLock -> LockOnCapture
+[2026.11.16-18.32.25:054][ 32]LogViewport: Display: Viewport MouseCaptureMode Changed, CaptureDuringMouseDown -> CapturePermanently
+[2026.11.16-18.32.25:055][ 32]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently -> CapturePermanently_IncludingInitialMouseDown
+[2026.11.16-18.32.25:056][ 32]LogLoad: LoadMap: /Game/LevelMenu/MainMenuLevel
+[2026.11.16-18.32.25:282][ 32]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.32.25:282][ 32]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.32.30:043][857]LogLoad: LoadMap: /Game/ThirdPerson/Maps/Nivel_Entrega
+[2026.11.16-18.32.30:662][857]LogScript: Warning: Script Msg: The widget 'Health_C_2147482149' was already added to the screen.
+[2026.11.16-18.32.30:663][857]LogViewport: Display: Viewport MouseLockMode Changed, DoNotLock -> LockOnCapture
+[2026.11.16-18.32.30:663][857]LogViewport: Display: Viewport MouseCaptureMode Changed, CaptureDuringMouseDown -> CapturePermanently
+[2026.11.16-18.32.30:663][857]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently -> CapturePermanently_IncludingInitialMouseDown
+[2026.11.16-18.32.52:554][415]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.32.52:554][415]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.32.57:169][977]LogViewport: Display: Viewport MouseLockMode Changed, DoNotLock -> LockOnCapture
+[2026.11.16-18.32.57:169][977]LogViewport: Display: Viewport MouseCaptureMode Changed, CaptureDuringMouseDown -> CapturePermanently
+[2026.11.16-18.32.57:170][977]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently -> CapturePermanently_IncludingInitialMouseDown
+[2026.11.16-18.33.21:038][606]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.33.21:038][606]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.33.36:761][  0]LogLoad: LoadMap: /Game/LevelMenu/MainMenuLevel?Name=Player
+[2026.11.16-18.33.36:998][  0]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.33.36:998][  0]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.33.52:837][650]LogLoad: LoadMap: /Game/ThirdPerson/Maps/Nivel_Entrega
+[2026.11.16-18.33.53:540][650]LogScript: Warning: Script Msg: The widget 'Health_C_2147482341' was already added to the screen.
+[2026.11.16-18.33.53:540][650]LogViewport: Display: Viewport MouseLockMode Changed, DoNotLock -> LockOnCapture
+[2026.11.16-18.33.53:540][650]LogViewport: Display: Viewport MouseCaptureMode Changed, CaptureDuringMouseDown -> CapturePermanently
+[2026.11.16-18.33.53:540][650]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently -> CapturePermanently_IncludingInitialMouseDown
+[2026.11.16-18.34.00:407][406]LogViewport: Display: Viewport MouseLockMode Changed, LockOnCapture -> DoNotLock
+[2026.11.16-18.34.00:407][406]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently_IncludingInitialMouseDown -> CaptureDuringMouseDown
+[2026.11.16-18.34.16:660][365]LogViewport: Display: Viewport MouseLockMode Changed, DoNotLock -> LockOnCapture
+[2026.11.16-18.34.16:660][365]LogViewport: Display: Viewport MouseCaptureMode Changed, CaptureDuringMouseDown -> CapturePermanently
+[2026.11.16-18.34.16:660][365]LogViewport: Display: Viewport MouseCaptureMode Changed, CapturePermanently -> CapturePermanently_IncludingInitialMouseDown

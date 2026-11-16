@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "objects": [
+    {
+      "collection": "GC_Banco",
+      "base_z": 0.0,
+      "height": 90.0,
+      "matching_query_box": true
+    },
+    {
+      "collection": "GC_Barril",
+      "base_z": -7.105427357601002e-15,
+      "height": 110.0,
+      "matching_query_box": true
+    },
+    {
+      "collection": "GC_fuente",
+      "base_z": -1.4210854715202004e-14,
+      "height": 160.0,
+      "matching_query_box": true
+    },
+    {
+      "collection": "GC_Car2",
+      "base_z": 0.0,
+      "height": 160.0,
+      "matching_query_box": true
+    },
+    {
+      "collection": "GC_box",
+      "base_z": 7.105427357601002e-15,
+      "height": 90.0,
+      "matching_query_box": true
+    },
+    {
+      "collection": "GC_Trash",
+      "base_z": -7.105427357601002e-15,
+      "height": 100.0,
+      "matching_query_box": true
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "agent_verification_not_owner_acceptance": true,
+  "date": "2026-11-16",
+  "engine": "5.6",
+  "map": "/Game/ThirdPerson/Maps/Nivel_Entrega",
+  "plan": "docs/PLAN_ADAPTACION_EVALUACION.md",
+  "guide": "docs/GUIA_DEMOSTRACION_EVALUACION.md",
+  "implementation": {
+    "world_partition": true,
+    "landscape_components": 4,
+    "terrain_textures": 5,
+    "nanite_architecture_meshes": 4,
+    "models_with_four_real_lods": 5,
+    "distinct_chaos_destructibles": 6,
+    "distinct_niagara_systems": 8,
+    "level_macros": 2,
+    "level_functions": 2,
+    "level_custom_events": 2,
+    "combat_zones": 2,
+    "enemy_damage_unchanged": 13.2
+  },
+  "evidence": {
+    "runtime": "evaluation-runtime-2026-11-16.json",
+    "world": "evaluation-world-2026-11-16.json",
+    "walk": "evaluation-walk-2026-11-16.json",
+    "sequence": "evaluation-sequence-2026-11-16.json",
+    "interrupt": "evaluation-interrupt-2026-11-16.json",
+    "compile": "evaluation-compile-2026-11-16.json"
+  },
+  "native_ui_observations": {
+    "isolated_fresh_profile_using_UserDir": true,
+    "no_windowed_or_resolution_launch_flags": true,
+    "first_launch_fullscreen_desktop_1920x1080": true,
+    "mouse_changes_camera_without_additional_game_click_fullscreen": true,
+    "mouse_changes_camera_without_additional_game_click_new_game_windowed_1280x720": true,
+    "pause_resume_mouse": true,
+    "alt_tab_return_mouse": true,
+    "windowed_choice_preserved_after_process_restart": true,
+    "E_rescue_F5_checkpoint": true,
+    "continue_after_restart_same_ABC_order_and_saved_time_approximately_23_seconds": true,
+    "mouse_after_continue": true,
+    "borderless_resume_mouse": true,
+    "method": "CUA pointer movement via scroll targeting; no mouse-button click in gameplay after menu transition. Wheel has no gameplay binding.",
+    "runtime_errors_or_accessed_none": [],
+    "known_nonfatal_runtime_warning": "Inherited Health widget already added to screen once on gameplay entry; no duplicate bar observed.",
+    "full_mission_in_packaged_game": false,
+    "game_test_closed": true
+  },
+  "package": {
+    "path": "Deliverables\\TimeOut_Avance_18Nov2026.zip",
+    "bytes": 685046189,
+    "build_success": true,
+    "exit_code": 0,
+    "cook_errors": 0,
+    "cook_warnings": 15,
+    "warning_classes": "Existing Niagara Scale pins and stale Manny poses",
+    "zip_crc_passed_by_Archive_Delivery": true,
+    "excluded_saved_and_pdb": true,
+    "editor_helper_runtime_dependency": false
+  },
+  "limits": [
+    "Owner manual acceptance and Adame approval pending",
+    "Visible LOD transitions and Nanite demonstration before professor pending",
+    "Fifteen model designs and five team-authored models require source/author validation; loaded asset paths include variants",
+    "Performance on another PC and controller pending",
+    "Hostage final model pending",
+    "Academic documentation/schedule, social networks and promotional video remain team deliverables",
+    "Ammo/money applicability awaiting Adame; no economy added",
+    "Decorative Chaos debris/props are not checkpointed",
+    "Day/night, inventory and second dialogue NPC from general brief require applicability review; not implemented by this rework"
+  ],
+  "walk_notes": "Victory C>A>B in 4:37; player73.6, hostage20.8. No teleport/health/damage overrides. Bot direction and pedestal-departure routing were corrected during testing; failed hostage-defeat report retained separately. Not manual acceptance."
+}

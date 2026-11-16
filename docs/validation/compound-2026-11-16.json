@@ -1,0 +1,95 @@
+{
+  "agent_verification_not_owner_acceptance": true,
+  "date": "2026-11-16",
+  "engine": "5.6",
+  "map": "Nivel_Entrega",
+  "design_document": "docs/ESCENARIO_COMPOUND.md",
+  "implementation": {
+    "authored_surface_use_mask": true,
+    "distinct_existing_surface_textures": 4,
+    "nanite_buildings_with_local_bounds": 10,
+    "roofed_rooms": [
+      "rescate",
+      "deposito"
+    ],
+    "wall_scale_preserved_xyz": 2,
+    "ceiling_cm": 420,
+    "geometry_and_visible_prop_bases_verified": true,
+    "local_lights": 3,
+    "local_light_shadow_casters": 1,
+    "local_light_radius_cm": [
+      1000,
+      700,
+      1100
+    ],
+    "light_max_distance_cm": 2400,
+    "light_fade_cm": 350,
+    "small_prop_max_distance_cm": 3800,
+    "large_prop_max_distance_cm": 6000,
+    "architecture_max_distance_cm": 18000,
+    "sky_continuous_recapture": false,
+    "ambient_niagara_cull_resume": true,
+    "intact_destructible_physics_disabled": true,
+    "simulation_enabled_at_break": true,
+    "nearby_refuges_added": 2,
+    "behavior_trees_and_enemy_damage_preserved": true,
+    "cheap_intact_query_proxy_and_real_weapon_overlap": true
+  },
+  "evidence": {
+    "editor": "compound-editor-2026-11-16.json",
+    "renderer": "compound-renderer-2026-11-16.json",
+    "visibility": "compound-visibility-2026-11-16.json",
+    "chaos_and_level_logic": "compound-runtime-2026-11-16.json",
+    "sequence": "compound-sequence-2026-11-16.json",
+    "refuges": "compound-refuges-2026-11-16.json",
+    "prop_bases": "compound-prop-bases-2026-11-16.json",
+    "physical_weapon_contact": "compound-physical-attack-2026-11-16.json",
+    "all_six_fitted_query_colliders": "compound-proxy-shapes-2026-11-16.json"
+  },
+  "package": {
+    "path": "Deliverables\\TimeOut_Avance_18Nov2026.zip",
+    "bytes": 633779230,
+    "build_success": true,
+    "cook_errors": 0,
+    "cook_warnings": 15,
+    "zip_crc_verified_by_Archive_Delivery": true,
+    "no_saved_pdb_or_editor_helper": true
+  },
+  "limits": [
+    "Owner visual/manual acceptance pending",
+    "No before/after FPS comparison; target presentation PC pending",
+    "Natural traversal bot did not win current revision; player defeat in second encounter retained. Subsequent final adjustment moved north refuge to a verified path under18m; no natural victory claimed.",
+    "Directed sequence and extraction tests prepare positions/encounters and do not imply natural victory",
+    "Offscreen AI/mission and lights influencing visible surfaces must remain active",
+    "Teacher acceptance of model authorship and ammo/money applicability pending"
+  ],
+  "natural_walk": "Defeat: player",
+  "native_smoke": {
+    "observed_in_packaged_game": true,
+    "new_fresh_profile_fullscreen": true,
+    "covered_rescue_room_and_authored_floor_visible": true,
+    "props_on_floor_and_intact": true,
+    "camera_without_extra_focus_click": true,
+    "E_rescue": true,
+    "F5_checkpoint_confirmation": true,
+    "pause_and_resume": true,
+    "full_mission_completed": false,
+    "snapshot_only_not_performance_comparison": {
+      "gpu": "NVIDIA GeForce RTX 3060 Ti",
+      "cpu": "AMD Ryzen 5 3600",
+      "display": [
+        1920,
+        1080
+      ],
+      "internal_render": [
+        1400,
+        788
+      ],
+      "fps_approximately": 78,
+      "gpu_ms_approximately": 11.55,
+      "draw_ms_approximately": 12.8
+    },
+    "game_closed_after_test": true,
+    "visual_smoke_precedes_final_collision_only_patch": true
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Rescate",
+    "center": [
+      0,
+      -700,
+      0
+    ],
+    "faces": 130
+  },
+  {
+    "name": "Arena",
+    "center": [
+      0,
+      -3250,
+      0
+    ],
+    "faces": 159
+  },
+  {
+    "name": "Jardin",
+    "center": [
+      3150,
+      -3650,
+      0
+    ],
+    "faces": 118
+  },
+  {
+    "name": "Deposito",
+    "center": [
+      -3700,
+      -5000,
+      0
+    ],
+    "faces": 131
+  },
+  {
+    "name": "Servicio",
+    "center": [
+      2650,
+      -5500,
+      0
+    ],
+    "faces": 153
+  },
+  {
+    "name": "PatioNorte",
+    "center": [
+      0,
+      -5600,
+      0
+    ],
+    "faces": 193
+  },
+  {
+    "name": "Atrio",
+    "center": [
+      0,
+      -7450,
+      0
+    ],
+    "faces": 83
+  },
+  {
+    "name": "AlaOeste",
+    "center": [
+      -3600,
+      -9650,
+      0
+    ],
+    "faces": 127
+  },
+  {
+    "name": "AlaEste",
+    "center": [
+      3600,
+      -9650,
+      0
+    ],
+    "faces": 128
+  },
+  {
+    "name": "Salida",
+    "center": [
+      0,
+      -11000,
+      0
+    ],
+    "faces": 138
+  }
+]

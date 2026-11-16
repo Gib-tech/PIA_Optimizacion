@@ -45,6 +45,8 @@ def manager():
     live = lambda name, kind='real', obj=HERO, target=hero: g.v(name, kind, owner=obj, target=target)
     saved = lambda name, kind='real', obj=None: g.v(name, kind, owner=SAVE, target=data, obj=obj)
     bindings = [
+        ('OrderCode', 'int', DIRECTOR, director, 'OrderCode'),
+        ('MissionElapsed', 'real', DIRECTOR, director, 'MissionElapsed'),
         ('Paso', 'int', DIRECTOR, director, 'Paso'),
         ('PlayerHealth', 'real', HEALTH, health, 'Health'),
         ('HammerUpgraded', 'bool', HERO, hero, 'bHammerUpgraded'),
@@ -141,10 +143,12 @@ def manager():
     valid=g.cmp('EqualEqual_IntInt',saved('Version','int'),VERSION,'int')
     for field in ['PlayerHealth','HostageHealth']:valid=g.both(valid,g.cmp('Greater_DoubleDouble',saved(field),0))
     valid=g.both(valid,g.cmp('Less_IntInt',saved('Paso','int'),4,'int'))
+    valid=g.both(valid,g.both(g.cmp('GreaterEqual_IntInt',saved('OrderCode','int'),0,'int'),g.cmp('Less_IntInt',saved('OrderCode','int'),6,'int')))
     checked=g.br(prev,valid);g.s(checked,'StatusText','Guardado incompatible. Inicia una partida nueva.','string',pin='else')
     prev=checked
     for name,kind,owner,target,prop in bindings:
         prev=g.s(prev,prop,saved(name,kind),kind,owner=owner,target=target)
+    prev=g.s(prev,'LastBeaconOrder',saved('OrderCode','int'),'int',owner=GI,target=instance)
     for label,target in [('Player',hero),('Hostage',host)]:
         n=g.call(ACTOR,'K2_SetActorLocationAndRotation').pin('NewLocation','struct',obj=VEC).pin('NewRotation','struct',obj=ROT).pin('bSweep','bool',default='false').pin('SweepHitResult','struct',obj='/Script/Engine.HitResult',out=True).pin('bTeleport','bool',default='true').pin('ReturnValue','bool',out=True)
         g.w(target,n,'self');g.w(saved(label+'Location','struct',VEC),n,'NewLocation');g.w(saved(label+'Rotation','struct',ROT),n,'NewRotation');g.chain(prev,n);prev=n
@@ -164,7 +168,7 @@ def manager():
     for i,(b,d) in enumerate(zip(beacons,doors),1):
         activated=saved('Beacon%dActivated'%i,'bool');destroyed=saved('Door%dDestroyed'%i,'bool')
         # Visuals are reapplied without executing activation rewards or spawning shards.
-        for target,value in [(b,activated)]:
+        for target,value in []:  # Beacon Tick refreshes its light; preserve all three material regions.
             comp=g.v('StaticMeshComponent','object',owner=SM,target=target,obj=SMC,native=True)
             branch=g.br(prev,value)
             a=g.call(PRIM,'SetMaterial').pin('ElementIndex','int',default='0').pin('Material','object',obj='/Script/Engine.MaterialInterface',default_obj='/Game/ThirdPerson/Environment/EscenarioIan/M_Baliza_Activa.M_Baliza_Activa');g.w(comp,a,'self');g.chain(branch,a)
@@ -228,6 +232,8 @@ def menu():
     valid=g.cmp('EqualEqual_IntInt',g.v('Version','int',owner=SAVE,target=data),VERSION,'int')
     for field in ['PlayerHealth','HostageHealth']:valid=g.both(valid,g.cmp('Greater_DoubleDouble',g.v(field,owner=SAVE,target=data),0))
     valid=g.both(valid,g.cmp('Less_IntInt',g.v('Paso','int',owner=SAVE,target=data),4,'int'))
+    code=g.v('OrderCode','int',owner=SAVE,target=data)
+    valid=g.both(valid,g.both(g.cmp('GreaterEqual_IntInt',code,0,'int'),g.cmp('Less_IntInt',code,6,'int')))
     g.action_on(cast,'/Script/UMG.Widget','SetIsEnabled',button,[('bInIsEnabled','bool',valid,None)])
     for field,index,resume in [('btn_nuevojuego_menu',0,False),('btn_continuar_menu',3,True)]:
         e=clicked(field,index);cast=g.cast(GI);g.chain(e,cast);g.w(gi,cast,'Object')

@@ -1,0 +1,48 @@
+[
+  {
+    "room": "Rescate",
+    "wall_cap_faces_extended": 38,
+    "ceiling_cm": 420,
+    "footprint": [
+      [
+        -1170,
+        60
+      ],
+      [
+        1170,
+        60
+      ],
+      [
+        715,
+        -1470
+      ],
+      [
+        -715,
+        -1470
+      ]
+    ]
+  },
+  {
+    "room": "Deposito",
+    "wall_cap_faces_extended": 39,
+    "ceiling_cm": 420,
+    "footprint": [
+      [
+        -4900,
+        -4160
+      ],
+      [
+        -2500,
+        -4160
+      ],
+      [
+        -2500,
+        -5820
+      ],
+      [
+        -4900,
+        -5820
+      ]
+    ]
+  }
+]

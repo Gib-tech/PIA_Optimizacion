@@ -1,5 +1,36 @@
 # Work items
 
+## Corrección de paredes y desapariciones — 2026-11-16
+
+- **Verified:** 104 componentes de pared usan proyección métrica de 4 m con tres texturas existentes, incluidos límites y marcos escalados. Geometría/colisión conservadas.
+- **Verified:** once texturas de superficie/props con mipmaps, streaming y límites 1024/2048; fuentes conservadas.
+- **Verified:** modelos sin límite duro por distancia y once props no espaciales; se conservan cinco modelos con cuatro LOD y arquitectura Nanite. Evidencia vigente en `validation/walls-visibility-2026-11-16.json`.
+- **Stated:** commit y push a origin al finalizar. La aceptación visual del propietario y PC de presentación siguen pendientes.
+
+## Escenario con función y descarte — 2026-11-16
+
+- **Stated:** el propietario solicita revisar distribución de terreno/objetos, justificar iluminación y optimizar trabajo fuera de vista usando assets existentes.
+- **Verified:** máscara de usos propia con cuatro texturas sustituye las franjas por Y; diez edificios Nanite con pivotes/bounds locales sustituyen cuatro sectores; rescate/depósito cubiertos, props reagrupados y alineados al suelo por bounds de la malla visible. Se preserva escala vertical2 del escenario (muros~4m, pasos transitables) y cubiertas a4.2m.
+- **Verified:** Rect/Point/Spot con fuentes visibles, radios10/7/11m, descarte24m/fade3.5m y una sola sombra local. Cielo sin captura continua, Lumen/exposición del nivel revisados. Revisión posterior: todos los modelos sin corte duro por distancia; once props residentes; LOD/Nanite/oclusión activos. No hay lógica de ocultación que detenga la misión fuera de cámara.
+- **Verified en PIE:** Niagara ambiental activo cerca, inactivo lejos, activo al volver e inactivo al mirar fuera de su esfera de bounds; fuentes y prueba en `compound-visibility-2026-11-16.json`. Seis fracturas por golpes siguen funcionando con física bajo demanda; validación de bases y arquitectura/exportes nativos. Pruebas y paquete finales en handoff.
+- **Pendiente:** aceptación visual del propietario y medición comparativa de rendimiento/PC de presentación. No se deduce mejora de FPS sólo de configurar descarte. Reproducción: `ESCENARIO_COMPOUND.md`.
+
+## Rework de evaluación — 2026-11-16
+
+- **Verified / Ready para demostración:** FIN-12 World Partition convertido oficialmente y funcionando en PIE; FIN-13 cuatro mallas de arquitectura Nanite; FIN-14 cinco modelos con cuatro LOD geométricos cada uno; FIN-16 dos macros, dos funciones y dos eventos del Level Blueprint ejecutados por timers. Guía: `GUIA_DEMOSTRACION_EVALUACION.md`. La demostración visual de transiciones LOD ante Adame sigue pendiente.
+- **Verified:** Landscape real con cinco texturas y mezcla automática/pintable; seis colecciones diferentes con fractura Chaos por arma; ocho sistemas Niagara distintos integrados; iluminación Directional/Sky y tres tipos locales con coste acotado. FIN-15 todavía necesita medición en otra PC. No acreditar sólo por nombre de asset.
+- **Verified:** defaults de primera ejecución a pantalla completa; BeginPlay/reanudar recuperan GameOnly, foco y captura permanente. Corregido el bloqueo de ataque al recibir martillo y la distancia horizontal del canalizado de balizas. Paquete y prueba física se registran en el handoff actual.
+- **Stated / Unknown:** el propietario aún no tiene confirmación de Adame sobre munición/dinero. Guardado conserva datos aplicables, sin economía ficticia. Documentación académica/cronograma, redes, video, autoría/modelos propios, modelo final del rehén y aceptación manual continúan pendientes.
+- Plan ejecutado y pendientes: `PLAN_ADAPTACION_EVALUACION.md`. Las secciones anteriores a este rework se conservan como historial; sus cifras de paquete y estado Unknown no describen esta revisión.
+
+## Baliza definitiva y tercer objetivo — 2026-11-16
+
+- **FIN-05 / In progress, Ready para aceptación:** secuencia real aleatoria A/B/C en patio accesible, orden/siguiente/progreso/cronómetro visibles, activación exclusiva del rehén en su turno. R sortea otro intento; Continuar conserva el checkpoint. Las seis permutaciones y el rechazo fuera de orden pasaron en PIE con preparación aislada; no es una partida manual completa ni aceptación de Adame.
+- **FIN-07 / In progress, Ready para aceptación:** modelo del equipo `Baliza.glb` importado; cuerpo y materiales luminosos separados, nombres fijos y puntos alcanzables. Las primeras dos puertas ahora se cargan por sus oleadas y la última por completar las tres balizas. Sustituye el criterio histórico de una puerta por cada baliza.
+- **Decision:** cronómetro desde rescate, sin límite impuesto; esquema de guardado 2 para secuencia/tiempo y nueva disposición. Se conservan ambas zonas de 2 oleadas × 2 enemigos. La ampliación de encuentros sugerida por el propietario queda por valorar en el recorrido manual.
+- **Pendiente:** aceptación manual del circuito nuevo, valoración de cantidad de combate, modelo final del rehén, mando y otra PC. El recorrido automatizado del 15 de noviembre corresponde a la disposición anterior.
+- **Verified:** Win64 Development y ZIP actualizados: 0 errores / 15 advertencias previas, CRC aprobado. Menú/Nuevo juego, rescate físico E, cronómetro, pausa y Continuar con el mismo orden/tiempo observados en Windows. Informe `docs/validation/beacon-sequence-2026-11-16.json`.
+
 ## FIN 03 y FIN 04 actuales — 2026-11-15
 
 - **FIN-03 / In progress, Ready para aceptación con teclado/ratón:** pausa total P/Esc, reanudar con foco/cursor correcto, opciones desde ambos menús, regreso a la misma pausa, salida real al menú y guardado seguro integrado. Resolución, calidad, pantalla y volumen aplicados y persistidos. Conserva arte original; corrige textos que interceptaban clics y añade leyenda de controles.

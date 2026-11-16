@@ -1,0 +1,21 @@
+{
+  "compiled_exported_assets": [
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconLabel",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryOptions",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+    "/Game/ThirdPerson/Blueprints/Entrega/BP_SenalExtraccion",
+    "/Game/Menu/Menu_Pausa",
+    "/Game/Menu/Menu_Opciones",
+    "/Game/Menu/Menu_Inicio",
+    "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon"
+  ],
+  "level_blueprint": "/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega",
+  "final_cook_is_compilation_gate": true
+}

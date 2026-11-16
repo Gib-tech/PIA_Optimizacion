@@ -4,13 +4,14 @@ SAVE = ROOT + 'BP_DeliverySave.BP_DeliverySave_C'
 MANAGER = ROOT + 'BP_DeliverySaveManager.BP_DeliverySaveManager_C'
 GI = '/Game/LevelMenu/BP_GameInstance.BP_GameInstance_C'
 SLOT = 'TimeOut_Delivery_v1'
-VERSION = 1
+VERSION = 2
 ROT = '/Script/CoreUObject.Rotator'
 VEC = '/Script/CoreUObject.Vector'
 
 # Values are scalars/structs. No level actor pointers are serialized.
 FIELDS = {
     'Version': 'int', 'Paso': 'int', 'PlayerHealth': 'real',
+    'OrderCode': 'int', 'MissionElapsed': 'real',
     'PlayerLocation': 'vector', 'PlayerRotation': 'rotator', 'ControlRotation': 'rotator',
     'HammerUpgraded': 'bool', 'HammerEquipped': 'bool',
     'HostageHealth': 'real', 'HostageLocation': 'vector', 'HostageRotation': 'rotator',

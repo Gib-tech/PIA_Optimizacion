@@ -1,0 +1,274 @@
+{
+  "agent_tests_not_owner_acceptance": true,
+  "no_teleports": true,
+  "no_health_or_damage_overrides": true,
+  "passed": false,
+  "reason": "Defeat: hostage",
+  "stage": "combat",
+  "events": [
+    {
+      "stage": "enter",
+      "time": 0.47
+    },
+    {
+      "stage": "combat",
+      "time": 5.45
+    },
+    {
+      "stage": "recover",
+      "time": 33.66
+    },
+    {
+      "stage": "door",
+      "time": 33.79
+    },
+    {
+      "stage": "enter",
+      "time": 37.38
+    },
+    {
+      "stage": "combat",
+      "time": 48.46
+    }
+  ],
+  "samples": [
+    {
+      "t": 0.0,
+      "stage": "rescue",
+      "player": [
+        0,
+        -560
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        0,
+        0
+      ]
+    },
+    {
+      "t": 3.0,
+      "stage": "enter",
+      "player": [
+        8,
+        -1916
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        0,
+        0
+      ]
+    },
+    {
+      "t": 6.0,
+      "stage": "combat",
+      "player": [
+        -130,
+        -2856
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 9.0,
+      "stage": "combat",
+      "player": [
+        245,
+        -3121
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 12.0,
+      "stage": "combat",
+      "player": [
+        76,
+        -3058
+      ],
+      "player_health": 100.0,
+      "hostage_health": 73.60000038146973,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 15.0,
+      "stage": "combat",
+      "player": [
+        39,
+        -2881
+      ],
+      "player_health": 100.0,
+      "hostage_health": 60.40000057220459,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 18.0,
+      "stage": "combat",
+      "player": [
+        -5,
+        -2807
+      ],
+      "player_health": 100.0,
+      "hostage_health": 60.40000057220459,
+      "zones": [
+        2,
+        0
+      ]
+    },
+    {
+      "t": 21.0,
+      "stage": "combat",
+      "player": [
+        -27,
+        -2796
+      ],
+      "player_health": 100.0,
+      "hostage_health": 60.40000057220459,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 24.1,
+      "stage": "combat",
+      "player": [
+        189,
+        -2970
+      ],
+      "player_health": 100.0,
+      "hostage_health": 60.40000057220459,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 27.1,
+      "stage": "combat",
+      "player": [
+        -76,
+        -3058
+      ],
+      "player_health": 100.0,
+      "hostage_health": 34.000000953674316,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 30.1,
+      "stage": "combat",
+      "player": [
+        -134,
+        -2851
+      ],
+      "player_health": 100.0,
+      "hostage_health": 20.80000114440918,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 33.1,
+      "stage": "combat",
+      "player": [
+        16,
+        -2813
+      ],
+      "player_health": 100.0,
+      "hostage_health": 7.600001335144043,
+      "zones": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 36.1,
+      "stage": "door",
+      "player": [
+        8,
+        -3843
+      ],
+      "player_health": 100.0,
+      "hostage_health": 7.600001335144043,
+      "zones": [
+        3,
+        0
+      ]
+    },
+    {
+      "t": 39.1,
+      "stage": "enter",
+      "player": [
+        -61,
+        -4504
+      ],
+      "player_health": 100.0,
+      "hostage_health": 7.600001335144043,
+      "zones": [
+        3,
+        0
+      ]
+    },
+    {
+      "t": 42.1,
+      "stage": "enter",
+      "player": [
+        -1112,
+        -4741
+      ],
+      "player_health": 100.0,
+      "hostage_health": 7.600001335144043,
+      "zones": [
+        3,
+        0
+      ]
+    },
+    {
+      "t": 45.1,
+      "stage": "enter",
+      "player": [
+        -2489,
+        -5326
+      ],
+      "player_health": 100.0,
+      "hostage_health": 7.600001335144043,
+      "zones": [
+        3,
+        0
+      ]
+    },
+    {
+      "t": 48.1,
+      "stage": "enter",
+      "player": [
+        -3197,
+        -4802
+      ],
+      "player_health": 100.0,
+      "hostage_health": 7.600001335144043,
+      "zones": [
+        3,
+        0
+      ]
+    }
+  ]
+}

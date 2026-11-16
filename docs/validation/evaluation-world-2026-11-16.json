@@ -1,0 +1,146 @@
+{
+  "partitioned": true,
+  "runtime_grid": "Default official converter configuration; no custom cell sizes claimed",
+  "lod_models": [
+    {
+      "name": "Banco",
+      "geometry": [
+        {
+          "vertices": 84726,
+          "triangles": 158592
+        },
+        {
+          "vertices": 48506,
+          "triangles": 87226
+        },
+        {
+          "vertices": 23693,
+          "triangles": 39648
+        },
+        {
+          "vertices": 8835,
+          "triangles": 12687
+        }
+      ],
+      "screen_sizes": [
+        1.0,
+        0.44999998807907104,
+        0.20000000298023224,
+        0.07000000029802322
+      ],
+      "nanite": false
+    },
+    {
+      "name": "Car",
+      "geometry": [
+        {
+          "vertices": 1851,
+          "triangles": 2548
+        },
+        {
+          "vertices": 1170,
+          "triangles": 1402
+        },
+        {
+          "vertices": 668,
+          "triangles": 636
+        },
+        {
+          "vertices": 242,
+          "triangles": 204
+        }
+      ],
+      "screen_sizes": [
+        1.0,
+        0.44999998807907104,
+        0.20000000298023224,
+        0.07000000029802322
+      ],
+      "nanite": false
+    },
+    {
+      "name": "Tree1",
+      "geometry": [
+        {
+          "vertices": 386656,
+          "triangles": 210176
+        },
+        {
+          "vertices": 231183,
+          "triangles": 115597
+        },
+        {
+          "vertices": 105078,
+          "triangles": 52544
+        },
+        {
+          "vertices": 33619,
+          "triangles": 16815
+        }
+      ],
+      "screen_sizes": [
+        1.0,
+        0.44999998807907104,
+        0.20000000298023224,
+        0.07000000029802322
+      ],
+      "nanite": false
+    },
+    {
+      "name": "Light_Pole",
+      "geometry": [
+        {
+          "vertices": 512,
+          "triangles": 708
+        },
+        {
+          "vertices": 327,
+          "triangles": 390
+        },
+        {
+          "vertices": 176,
+          "triangles": 176
+        },
+        {
+          "vertices": 75,
+          "triangles": 64
+        }
+      ],
+      "screen_sizes": [
+        1.0,
+        0.44999998807907104,
+        0.20000000298023224,
+        0.07000000029802322
+      ],
+      "nanite": false
+    },
+    {
+      "name": "fuente",
+      "geometry": [
+        {
+          "vertices": 23040,
+          "triangles": 11644
+        },
+        {
+          "vertices": 14202,
+          "triangles": 6404
+        },
+        {
+          "vertices": 5924,
+          "triangles": 2910
+        },
+        {
+          "vertices": 2166,
+          "triangles": 932
+        }
+      ],
+      "screen_sizes": [
+        1.0,
+        0.44999998807907104,
+        0.20000000298023224,
+        0.07000000029802322
+      ],
+      "nanite": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "mesh": "SM_IanWalls_01",
+    "removed_floor_faces": 42,
+    "remaining_faces": 128
+  },
+  {
+    "mesh": "SM_IanWalls_02",
+    "removed_floor_faces": 66,
+    "remaining_faces": 198
+  },
+  {
+    "mesh": "SM_IanWalls_03",
+    "removed_floor_faces": 42,
+    "remaining_faces": 126
+  },
+  {
+    "mesh": "SM_IanWalls_04",
+    "removed_floor_faces": 73,
+    "remaining_faces": 224
+  }
+]

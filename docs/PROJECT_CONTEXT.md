@@ -1,5 +1,21 @@
 # Project context
 
+**Revisión vigente de paredes/visibilidad (2026-11-16):** 104 componentes con proyección de textura en unidades del mundo, once texturas optimizadas y modelos sin recorte duro por distancia. Once props de evaluación no espaciales evitan descarga visible al cambiar de celda. Cuatro LOD, Nanite y oclusión se conservan. Evidencia: `validation/walls-visibility-2026-11-16.json`. Commit y push autorizados al cerrar.
+
+## Escenario revisado por dirección del propietario — 16 noviembre 2026
+
+**Verified:** distribución de terreno por máscara de usos propia con cuatro texturas existentes, sin franjas por Y. Rescate/depósito cubiertos, diez edificios Nanite separados y props reagrupados. Rect interior, Point interior y Spot del poste tienen fuentes físicas y radios/culling propios; cielo sin captura continua. Física Chaos sólo al romper y Niagara ambiental con culling reanudable. `ESCENARIO_COMPOUND.md` sustituye descripciones anteriores de terreno/luces. Gameplay/árboles/daño13.2 y objetivos se conservan.
+
+## Rework de evaluación — 16 noviembre 2026
+
+**Verified:** `Nivel_Entrega` ahora usa World Partition, Landscape real de cinco texturas, cuatro mallas de arquitectura Nanite, cinco modelos con cuatro LOD, seis tipos de destruibles Chaos y ocho sistemas Niagara integrados. Level Blueprint contiene dos macros, dos funciones y dos eventos propios en uso. Las coordenadas de misión, dos zonas y daño 13.2 se conservan. Fuentes y límites actuales en `HANDOFF.md`, `PLAN_ADAPTACION_EVALUACION.md` y `GUIA_DEMOSTRACION_EVALUACION.md`; las descripciones anteriores de suelo Static Mesh corresponden al escenario previo.
+
+## Estado vigente — 2026-11-16
+
+- **Stated:** el propietario recibió el modelo `Baliza.glb` y pidió atender las condiciones nuevas de Adame. Confirmó una zona accesible con orden aleatorio real; la posible ampliación de zonas enemigas queda como propuesta, sin cantidad nueva definida.
+- **Verified en PIE:** balizas A/B/C fijas en el patio final, modelo del equipo, seis secuencias posibles, luces azul/verde y HUD con orden, siguiente baliza, progreso y cronómetro desde el rescate. Guardado de secuencia/tiempo en esquema 2. R reinicia; Continuar restaura el mismo intento. Las dos primeras puertas dependen de sus oleadas y la tercera de completar la secuencia. Sustituye la ruta fija baliza 1 → 2 → 3 descrita abajo.
+- **Verified:** las dos zonas de combate conservan 2 × 2 enemigos y los mismos árboles/balance. No se añadió otra zona en esta intervención. Evidencia, paquete y límites en el handoff vigente.
+
 Facts below are separated from the assignment brief. Do not merge the two.
 
 ## Estado verificado — 2026-11-15

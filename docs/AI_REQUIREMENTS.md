@@ -1,5 +1,19 @@
 # AI requirements
 
+## Compatibilidad con el rework de evaluación — 2026-11-16
+
+**Verified:** las dos IA y el BT del rehén se conservan en el mapa convertido a World Partition; navegación dinámica convencional reconstruida al cargar. CompleteActivation mide distancia horizontal al pivote de suelo de la baliza, conservando límite220cm y guardas de canalización. GrantHammerUpgrade limpia el ataque y ResetState para evitar un bloqueo al recibir recompensa durante un golpe. Recorrido completo del agente y seis permutaciones aprobados; daño13.2 y zonas2×2 intactos. No sustituye aceptación manual.
+
+## Criterios vigentes de balizas — 2026-11-16
+
+**Stated:** condiciones de Adame transmitidas por el propietario: nombres, orden aleatorio por intento, temporizador y orden/tiempo visibles. El propietario elige orden real aleatorio en una zona accesible.
+
+**Decision / Verified en PIE:** identidades A/B/C estables; permutación de las tres, con exclusión del intento previo en la misma sesión. Se muestran secuencia, siguiente, 0–3 activadas y tiempo de misión MM:SS. El cronómetro comienza al rescatar, se congela durante pausa y al terminar. Sin tiempo máximo impuesto. El rehén canaliza 3 s mediante el árbol existente; una amenaza aborta y una baliza fuera de turno rechaza la activación.
+
+**Decision / Verified en PIE:** completar cada una de las dos zonas carga su puerta y equipa martillo; las tres balizas se encuentran después de la segunda puerta. La tercera puerta requiere completar la secuencia. Se mantienen dos impactos pesados y la extracción con ambos personajes. R inicia desde cero con otra secuencia; Continuar restaura la secuencia y tiempo del checkpoint (esquema 2, incompatible con archivos de esquema 1). Esta actualización sustituye las asociaciones históricas baliza 1/2 → zona 1/2.
+
+**Unknown:** aceptación de Adame/propietario, conveniencia de una zona enemiga adicional y tiempo objetivo de evaluación. Las pruebas del agente no son aceptación manual.
+
 ## Pausa, opciones y cámara — 2026-11-15
 
 **Stated:** continuar FIN-03 y FIN-04, hacer commits y dejar el mando pendiente. **Decision / Verified:** interfaz común `BP_DeliveryInterface` en ambos mapas, entrada P/Esc consumida por encima del P heredado, pausa de mundo y bloqueo de movimiento/mirada. Opciones conserva el widget de origen; volver desde opciones durante pausa mantiene el mundo detenido. Reanudar restaura cursor y entrada de juego. Ir al menú descarga la misión. El botón de guardar usa el gestor seguro vigente; E no ejecuta interacción durante la pausa.

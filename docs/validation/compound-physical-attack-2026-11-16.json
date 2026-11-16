@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "isolated_position_and_hammer_setup": true,
+  "actual_input_action_and_animation_hitbox": true,
+  "no_direct_damage_or_overlap_callback_calls": true,
+  "health_samples": [
+    50.0,
+    25.0,
+    0.0
+  ],
+  "chaos_events": 20,
+  "attempts": 2
+}

@@ -1,0 +1,102 @@
+{
+  "partitioned_runtime": true,
+  "landscape_proxies": [
+    "Landscape_0",
+    "LandscapeStreamingProxy_BPO35383STE7QN3D8DUUQINWN_252_0_0_0"
+  ],
+  "distinct_loaded_models": [
+    "/Game/ThirdPerson/Environment/Baliza/SM_Baliza.SM_Baliza",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_03.SM_DoorPanel_03",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_01.SM_DoorPanel_01",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_02.SM_DoorPanel_02",
+    "/Engine/BasicShapes/Cylinder.Cylinder",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash",
+    "/Game/Characters/Mannequins/Meshes/SKM_Manny.SKM_Manny",
+    "/Engine/EditorMeshes/MatineeCam_SM.MatineeCam_SM",
+    "/Game/Fab/long_sword/longsword.longsword",
+    "/Game/SciFITrooper_Man_03/SkeletalMesh/SK_SciFITrooper_Man_03.SK_SciFITrooper_Man_03",
+    "/Game/ThirdPerson/Bp_Modelos/Decahammer/SkeletalMeshes/Decahammer.Decahammer",
+    "/Game/ThirdPerson/Environment/Progression/SM_BulkheadModule.SM_BulkheadModule",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Jardin.SM_Walls_Jardin",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_AlaEste.SM_Walls_AlaEste",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorFrame_03.SM_DoorFrame_03",
+    "/Engine/BasicShapes/Cube.Cube",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Light_Pole.SM_LOD_Light_Pole",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Banco.SM_LOD_Banco",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_fuente.SM_LOD_fuente",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Roof_Rescate.SM_Roof_Rescate",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Tree1.SM_LOD_Tree1",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Servicio.SM_Walls_Servicio",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Arena.SM_Walls_Arena",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Roof_Deposito.SM_Roof_Deposito",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_UpperWalls_Deposito.SM_UpperWalls_Deposito",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_AlaOeste.SM_Walls_AlaOeste",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Salida.SM_Walls_Salida",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Rescate.SM_Walls_Rescate",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorFrame_02.SM_DoorFrame_02",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Deposito.SM_Walls_Deposito",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Atrio.SM_Walls_Atrio",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Car.SM_LOD_Car",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorFrame_01.SM_DoorFrame_01",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_UpperWalls_Rescate.SM_UpperWalls_Rescate",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_PatioNorte.SM_Walls_PatioNorte"
+  ],
+  "light_types": [
+    "DirectionalLightComponent",
+    "PointLightComponent",
+    "RectLightComponent",
+    "SpotLightComponent"
+  ],
+  "level_functions_macros_and_custom_events_active": true,
+  "mouse_capture_mode": "permanent including initial mouse down",
+  "destructibles": [
+    {
+      "actor": "BP_DestruibleEntrega_C_2",
+      "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco",
+      "pieces": 84,
+      "chaos_break_events": 83,
+      "weapon_overlap_two_heavy_hits": true
+    },
+    {
+      "actor": "BP_DestruibleEntrega_C_3",
+      "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril",
+      "pieces": 20,
+      "chaos_break_events": 19,
+      "weapon_overlap_two_heavy_hits": true
+    },
+    {
+      "actor": "BP_DestruibleEntrega_C_5",
+      "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente",
+      "pieces": 21,
+      "chaos_break_events": 20,
+      "weapon_overlap_two_heavy_hits": true
+    },
+    {
+      "actor": "BP_DestruibleEntrega_C_4",
+      "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2",
+      "pieces": 22,
+      "chaos_break_events": 21,
+      "weapon_overlap_two_heavy_hits": true
+    },
+    {
+      "actor": "BP_DestruibleEntrega_C_0",
+      "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box",
+      "pieces": 21,
+      "chaos_break_events": 20,
+      "weapon_overlap_two_heavy_hits": true
+    },
+    {
+      "actor": "BP_DestruibleEntrega_C_1",
+      "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash",
+      "pieces": 52,
+      "chaos_break_events": 51,
+      "weapon_overlap_two_heavy_hits": true
+    }
+  ],
+  "passed": true
+}

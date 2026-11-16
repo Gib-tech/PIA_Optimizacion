@@ -1,0 +1,40 @@
+{
+  "cvars": {
+    "r.AllowOcclusionQueries": 1,
+    "r.Nanite.Culling.Frustum": 1,
+    "r.Nanite.Culling.HZB": 1
+  },
+  "props": [
+    {
+      "mesh": "SM_LOD_Car",
+      "desired": 6000.0,
+      "effective": 6000.0,
+      "never_distance_cull": false
+    },
+    {
+      "mesh": "SM_LOD_Tree1",
+      "desired": 6000.0,
+      "effective": 6000.0,
+      "never_distance_cull": false
+    },
+    {
+      "mesh": "SM_LOD_fuente",
+      "desired": 3800.0,
+      "effective": 3800.0,
+      "never_distance_cull": false
+    },
+    {
+      "mesh": "SM_LOD_Banco",
+      "desired": 3800.0,
+      "effective": 3800.0,
+      "never_distance_cull": false
+    },
+    {
+      "mesh": "SM_LOD_Light_Pole",
+      "desired": 6000.0,
+      "effective": 6000.0,
+      "never_distance_cull": false
+    }
+  ],
+  "passed": true
+}

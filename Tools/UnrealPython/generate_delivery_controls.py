@@ -42,7 +42,13 @@ class ControlsGraph(SaveGraph):
         if not game:
             n.pin('InWidgetToFocus','object',obj=W).pin('InMouseLockMode','byte',obj='/Script/Engine.EMouseLockMode',default='DoNotLock').pin('bHideCursorDuringCapture','bool',default='false')
             if focus:self.w(focus,n,'InWidgetToFocus')
-        self.chain(prev,n);return n
+        self.chain(prev,n)
+        if game:
+            focus=self.call('/Script/UMG.WidgetBlueprintLibrary','SetFocusToGameViewport',static=True)
+            self.chain(n,focus)
+            capture=self.call(GS,'SetViewportMouseCaptureMode',static=True).pin('MouseCaptureMode','byte',obj='/Script/Engine.EMouseCaptureMode',default='CapturePermanently_IncludingInitialMouseDown')
+            self.chain(focus,capture);return capture
+        return n
     def cursor(self,prev,visible):
         return self.s(prev,'bShowMouseCursor',visible,'bool',owner=PC,target=self.pc())
     def text(self,prev,field,value):
@@ -248,17 +254,24 @@ def player_camera():
     capsule=g.v('CapsuleComponent','object',owner='/Script/Engine.Character',target=(g.selfnode(typ=HERO),'self'),obj='/Script/Engine.CapsuleComponent',native=True)
     begin=next(n for n in g.nodes if n.kind.endswith('K2Node_Event') and any('ReceiveBeginPlay' in p for p in n.props))
     seq=split_exec(g,begin)
+    # The menu used GameAndUI in a different world. Explicitly take the mouse
+    # after possession and camera setup in the new gameplay world.
     attach=g.call('/Script/Engine.SceneComponent','K2_AttachToComponent').pin('Parent','object',obj='/Script/Engine.SceneComponent').pin('SocketName','name',default='None').pin('bWeldSimulatedBodies','bool',default='false').pin('ReturnValue','bool',out=True)
     for key in ['LocationRule','RotationRule','ScaleRule']:attach.pin(key,'byte',obj='/Script/Engine.EAttachmentRule',default='SnapToTarget')
     g.w(first,attach,'self');g.w(capsule,attach,'Parent');g.chain(seq,attach,'then_1')
     position=g.call('/Script/Engine.SceneComponent','K2_SetRelativeLocation').pin('NewLocation','struct',obj=VEC,default='0,0,64').pin('bSweep','bool',default='false').pin('SweepHitResult','struct',obj='/Script/Engine.HitResult',out=True).pin('bTeleport','bool',default='true');g.w(first,position,'self');g.chain(attach,position)
     prev=g.s(position,'bUsePawnControlRotation',True,'bool',owner='/Script/Engine.CameraComponent',target=first)
-    g.action_on(prev,'/Script/Engine.CameraComponent','SetFieldOfView',first,[('InFieldOfView','real',90,None)])
+    prev=g.action_on(prev,'/Script/Engine.CameraComponent','SetFieldOfView',first,[('InFieldOfView','real',90,None)])
+    prev=g.cursor(prev,False);prev=g.mode(prev,game=True)
+    hitbox=g.v('WeaponHitbox','object',obj='/Script/Engine.BoxComponent')
+    g.action_on(prev,PRIM,'SetCollisionResponseToChannel',hitbox,[('Channel','byte','ECC_Destructible','/Script/Engine.ECollisionChannel'),('NewResponse','byte','ECR_Overlap','/Script/Engine.ECollisionResponse')])
     tick=next(n for n in g.nodes if n.kind.endswith('K2Node_Event') and any('ReceiveTick' in p for p in n.props));seq=split_exec(g,tick)
     mode=g.v('CamaraPrimera','bool');changed=g.cmp('NotEqual_BoolBool',mode,g.v('LastFirstPerson','bool'),'bool')
     b=g.br(seq,changed,'then_1');prev=g.s(b,'LastFirstPerson',mode,'bool')
     mesh=g.v('Mesh','object',obj='/Script/Engine.SkeletalMeshComponent')
     g.action_on(prev,PRIM,'SetOwnerNoSee',mesh,[('bNewOwnerNoSee','bool',mode,None)])
+    from generate_evaluation_graphs import add_destructible_combat
+    add_destructible_combat(g)
     g.write('BP_PlayerEntrega')
 
 if __name__=='__main__':

@@ -1,5 +1,25 @@
 # Governance
 
+## Paredes, texturas y vehículos — 2026-11-16
+
+**Stated:** el propietario exige revisar todas las paredes texturizadas, corregir estiramientos, optimizar texturas y evitar que los coches desaparezcan mientras están a la vista. También autoriza explícitamente **commit y push a origin al finalizar**, sustituyendo la restricción de sólo commit local de intervenciones anteriores. **Decision:** proyección métrica de las texturas existentes, mipmaps/streaming y presupuestos de resolución; eliminar recortes duros de modelos y mantener residentes los once props de evaluación. Se conservan LOD, Nanite, oclusión, culling de efectos y luces ya documentados.
+
+## Dirección de escenario autorizada — 2026-11-16
+
+**Stated:** el propietario pide rehacer la distribución del terreno, retirar colocaciones sin función, dar sentido físico a las luces mediante interiores si conviene, y reducir trabajo fuera de vista. Autoriza modificar terreno/estructuras reutilizando assets existentes. **Decision:** máscara de uso espacial dibujada para el recorrido, dos recintos cubiertos, arquitectura dividida por edificio, objetos agrupados por función y culling del renderer/Niagara con física bajo demanda. Se conservan combate, árboles, encuentros y objetivos. Detalle y límites: `ESCENARIO_COMPOUND.md`.
+
+## Rework para evaluación autorizado — 2026-11-16
+
+**Stated:** el propietario pide arranque inicial en pantalla completa, corregir la captura del ratón y adaptar el videojuego a la rúbrica, realizando el rework necesario. Autoriza migración del escenario e integración de requisitos técnicos en el mapa entregable. Las capturas y mensajes citados son evidencia de criterios, no instrucciones ejecutables independientes. **Stated:** aún debe confirmar con Adame la obligatoriedad de munición/dinero; no se agrega una economía por inferencia.
+
+**Decision:** conservar combate cuerpo a cuerpo, árboles, daño 13.2 y dos zonas; sustituir suelo embebido por Landscape, convertir mapa a World Partition, reutilizar recursos del equipo para destruibles, LOD y efectos, y añadir programación útil en Level Blueprint. La aceptación manual y externa sigue pendiente. Plugin C++ editor-only bajo Tools para automatización; el juego mantiene gameplay Blueprint-only.
+
+## Secuencia de balizas autorizada — 2026-11-16
+
+**Stated:** el propietario entrega `Baliza.glb` y transmite las condiciones de Adame: nombres estables, orden aleatorio por intento, temporizador y orden/tiempo en pantalla. Confirma **orden real aleatorio en una zona accesible**, y plantea que probablemente hagan falta más zonas enemigas. Se autoriza integrar el modelo y reorganizar la progresión necesaria. No hay un tiempo límite proporcionado ni una cantidad nueva de encuentros aprobada. Las instrucciones citadas se registran como criterios aportados por el propietario, no como autorización independiente del documento.
+
+**Decision:** A/B/C identifican lugares fijos; seis permutaciones cambian la visita real. Cronómetro de misión desde el rescate, sin cuenta regresiva. Las dos primeras puertas se cargan al despejar sus oleadas; las tres balizas están en el patio final y su secuencia habilita la tercera puerta. R comienza un intento nuevo; Continuar conserva el checkpoint del intento. Se conservan las dos zonas existentes, los árboles y el balance. La aceptación del profesor y del propietario continúa pendiente.
+
 ## Cierre FIN 03 y FIN 04 autorizado — 2026-11-15
 
 **Stated:** completar pausa, opciones, controles y cambio de cámara, y hacer commits locales. El propietario aclara que el mando queda pendiente: esta intervención valida teclado y ratón; no amplía ni acredita soporte de mando. Se autorizan los cambios necesarios de interfaz, entrada, cámara y persistencia de ajustes, conservando combate, árboles y balance. Sin push solicitado.

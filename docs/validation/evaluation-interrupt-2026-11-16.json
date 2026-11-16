@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "visible_enemy_aborts_channel": true,
+  "progress_resets": true,
+  "beacon_and_door_stay_locked": true,
+  "manual_resume_required": true
+}

@@ -96,6 +96,10 @@ def player():
  now=g.c(GS,'GetTimeSeconds');prev=g.s(prev,'UpgradeUntil',g.op('Add_DoubleDouble',now,6))
  prev=g.s(prev,'IsAttacking',False,'bool');prev=g.s(prev,'bLightAttackActive',False,'bool')
  stop=g.call(CHAR,'StopAnimMontage').pin('AnimMontage','object',obj='/Script/Engine.AnimMontage');g.chain(prev,stop);prev=stop
+ # A wave can now charge the hammer while the killing attack still owns State.
+ # Clear the original input buffer/state after interrupting that montage.
+ prev=g.s(prev,'bSaveLightAttack',False,'bool')
+ reset=g.action('ResetState',owner=PLAYER);g.chain(prev,reset);prev=reset
  disable=g.call(PRIM,'SetCollisionEnabled').pin('NewType','byte',obj='/Script/Engine.ECollisionEnabled',default='NoCollision');g.w(hitbox,disable,'self');g.chain(prev,disable);prev=disable
  for field,visible in [('hammer',True),('Weapon',False)]:
   component=g.v(field,'object',obj='/Script/Engine.SkeletalMeshComponent' if field=='hammer' else SMC)
@@ -174,7 +178,7 @@ def fragment():
  from generate_fracture_graphs import fragment as build
  build()
 
-def beacon():
+def legacy_beacon():
  g=ProgressGraph();e=g.custom('CompleteActivation').pin('Hostage','object',obj=HOSTAGE,out=True)
  e.props.append('CustomProperties UserDefinedPin (PinName="Hostage",PinType=(PinCategory="object",PinSubCategoryObject='+q("/Script/Engine.BlueprintGeneratedClass'"+HOSTAGE+"'")+'),DesiredPinDirection=EGPD_Output)')
  bb=g.blackboard(e,'Hostage');rescued=(g.bbget(bb,'bRescued'),'ReturnValue')
@@ -232,7 +236,7 @@ def activate_task():
  from generate_delivery_graphs import Graph
  Graph.write(g,'BTTask_ActivateBeacon')
 
-def director():
+def legacy_progression_director():
  from generate_delivery_graphs import legacy_director as original
  g=capture(original)
  # Remove direct player activation completely, leaving E / RB solely for escort commands.
@@ -326,5 +330,13 @@ def combat_zone():
  old=waves.gate;waves.gate=lambda g,prev,*args,**kwargs:prev
  try:waves.zone()
  finally:waves.gate=old
+
+def beacon():
+ from generate_beacon_sequence import beacon as build
+ build()
+
+def director():
+ from generate_beacon_sequence import director as build
+ build()
 
 if __name__=='__main__':door();fragment();player();beacon();hostage();activate_task();director();enemy_sense();enemy_sense(True);enemy_actions();combat_zone()
