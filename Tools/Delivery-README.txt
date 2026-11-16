@@ -106,6 +106,13 @@ Nuevo juego inicia desde cero y reemplaza el punto anterior.
 Continuar se deshabilita si no hay un guardado compatible y legible.
 El ZIP no incluye partidas de las pruebas del equipo.
 
+COMBATE Y AVISOS
+El embestidor se prepara, corre y da el golpe al llegar; no golpea desde lejos.
+El impacto ocurre durante la animacion y se pierde si esquivas o se interrumpe.
+Al recibir dano el rehen muestra una alerta y suena un aviso.
+Al danar a un rival suena un impacto y aparecen X y dano junto al centro.
+El volumen sigue el ajuste de opciones.
+
 PENDIENTES DEL EQUIPO
 Modelo final del aliado (provisional). Baliza.glb del equipo ya integrado.
 Escenario revisado: World Partition, Landscape con cuatro texturas distribuidas

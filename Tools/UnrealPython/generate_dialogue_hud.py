@@ -59,7 +59,7 @@ class DialogueGraph(CombatGraph):
         i=len(self.nodes);pos.setdefault('x',(i%9)*380);pos.setdefault('y',(i//9)*310)
         return super().node(kind,props,**pos)
 g=DialogueGraph()
-KINDS={**dict.fromkeys(['CurrentDialog','LastDialog','DismissedDialog','VisibleCharacters'],'int'),**dict.fromkeys(['DialogStarted','LastBeepAt','LastHealth','CharactersPerSecond','HoldSeconds','UIAudioVolume','HurtPulseUntil'],'real'),**dict.fromkeys(['ForceReveal','DialogueVisible','HostageSpeaking','HostagePromptVisible','HostagePromptInRange'],'bool'),**dict.fromkeys(['FullText','VisibleText','Speaker','ActionHint'],'string')}
+KINDS={**dict.fromkeys(['CurrentDialog','LastDialog','DismissedDialog','VisibleCharacters','LastHostageHitSerial'],'int'),**dict.fromkeys(['DialogStarted','LastBeepAt','LastHealth','CharactersPerSecond','HoldSeconds','UIAudioVolume','HurtPulseUntil','HostageHurtUntil','HostageAlertCooldown','EnemyHitUntil','LastEnemyDamage'],'real'),**dict.fromkeys(['ForceReveal','DialogueVisible','HostageSpeaking','HostagePromptVisible','HostagePromptInRange'],'bool'),**dict.fromkeys(['FullText','VisibleText','Speaker','ActionHint'],'string')}
 def v(name):
     cat=KINDS[name];return (g.get(name,cat,sub='double' if cat=='real' else ''),name)
 def wire(value,node,pin):
@@ -110,6 +110,8 @@ begin=g.event(ACTOR,'ReceiveBeginPlay');prev=begin
 for name,cls in [('CachedDirector',DIRECTOR),('CachedHostage',HOSTAGE)]:
     n=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True).pin('ActorClass','class',obj=ACTOR,default_obj=cls).pin('ReturnValue','object',obj=cls,out=True);g.chain(prev,n)
     s=g.set(name,'object',None,obj=cls);g.chain(n,s);g.wire(n,'ReturnValue',s,name);prev=s
+initial_host_hit=g.get('DamageNoticeSerial','int',owner=HOSTAGE);g.wire(s,'Output_Get',initial_host_hit,'self')
+prev=save(prev,'LastHostageHitSerial',(initial_host_hit,'DamageNoticeSerial'))
 ambient=sound(prev,'Ambience',.18,spawn=True)
 cache=g.set('AmbientAudio','object',None,obj='/Script/Engine.AudioComponent');g.chain(ambient,cache);g.wire(ambient,'ReturnValue',cache,'AmbientAudio')
 # Enter reveals the sentence immediately; a second press dismisses this context.
@@ -220,6 +222,15 @@ hurt=branch(chars,cmp('Less_DoubleDouble',hp,v('LastHealth'),'real'))
 impact=sound(hurt,'PlayerHurt',calc('Multiply_DoubleDouble',v('UIAudioVolume'),2))
 pulse=save(impact,'HurtPulseUntil',calc('Add_DoubleDouble',now,.38))
 health_save=save(pulse,'LastHealth',hp);g.chain(hurt,health_save,'else')
+# Actual hostage damage renews the warning; the audible alert has its own cooldown.
+host_damage_hp=g.get('Health','real',owner=HOSTAGE,sub='double');g.wire(hostage,'CachedHostage',host_damage_hp,'self');host_damage_hp=(host_damage_hp,'Health')
+host_hit_serial=g.get('DamageNoticeSerial','int',owner=HOSTAGE);g.wire(hostage,'CachedHostage',host_hit_serial,'self');host_hit_serial=(host_hit_serial,'DamageNoticeSerial')
+host_hurt=branch(health_save,cmp('Greater_IntInt',host_hit_serial,v('LastHostageHitSerial')))
+host_pulse=save(host_hurt,'HostageHurtUntil',calc('Add_DoubleDouble',now,2.4))
+host_sound_ready=branch(host_pulse,cmp('GreaterEqual_DoubleDouble',now,v('HostageAlertCooldown'),'real'))
+host_alarm=sound(host_sound_ready,'Alert',calc('Multiply_DoubleDouble',v('UIAudioVolume'),.8))
+host_cooldown=save(host_alarm,'HostageAlertCooldown',calc('Add_DoubleDouble',now,1.2))
+host_health_save=save(host_cooldown,'LastHostageHitSerial',host_hit_serial);g.chain(host_sound_ready,host_health_save,'else');g.chain(host_hurt,host_health_save,'else')
 # Adaptive 900px frame at 1280; monospaced font, white border, no world-space text.
 width=(draw,'SizeX');height=(draw,'SizeY')
 ratio=calc('Divide_DoubleDouble',width,1280)
@@ -247,7 +258,7 @@ color=call(MATH,'MakeColor',[('R','real',.8),('G','real',.015),('B','real',.015)
 overlay=g.call(HUD,'DrawTexture').pin('Texture','object',obj='/Script/Engine.Texture',default_obj='/Game/ThirdPerson/Blueprints/Entrega/FX/T_DamageCorners.T_DamageCorners').pin('TintColor','struct',obj='/Script/CoreUObject.LinearColor').pin('BlendMode','byte',obj='/Script/Engine.EBlendMode',default='BLEND_Translucent').pin('bScalePosition','bool',default='false')
 wire(color,overlay,'TintColor')
 for pin,value in [('ScreenX',0),('ScreenY',0),('ScreenW',width),('ScreenH',height),('TextureU',0),('TextureV',0),('TextureUWidth',1),('TextureVHeight',1),('Scale',1),('Rotation',0)]:overlay.pin(pin,'real',sub='float');wire(value,overlay,pin)
-overlay.pin('RotPivot','struct',obj='/Script/CoreUObject.Vector2D',default='(X=0,Y=0)');g.chain(health_save,overlay)
+overlay.pin('RotPivot','struct',obj='/Script/CoreUObject.Vector2D',default='(X=0,Y=0)');g.chain(host_health_save,overlay)
 chip=rect(overlay,chipx,chipy,mul(418,scale),mul(pick(incombat,142,112),scale),'(R=0,G=0,B=0,A=.8)')
 objectives=table(pick(both(*cleared),1,0),['DESPEJA LAS DOS ZONAS','ACTIVA LA SECUENCIA DE BALIZAS'])
 objectives=table(pick(cmp('GreaterEqual_IntInt',step,3),1,0),[objectives,table(step,['','','','ESCOLTA A LA EXTRACCIÓN','REHÉN A SALVO','FIN DEL INTENTO','REHÉN PERDIDO'])])
@@ -325,7 +336,7 @@ text(hint,'ENTER: leer / cerrar',sub(add(x,bw),mul(218,scale)),add(y,mul(150,sca
 # A checkpoint status line shares the existing HUD, outside the dialogue box.
 from delivery_save_schema import MANAGER
 old=list(draw.pins['then']['links']);draw.pins['then']['links']=[]
-seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True)
+seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True).pin('then_2',out=True).pin('then_3',out=True)
 g.chain(draw,seq)
 for name,pid in old:
     node=next(n for n in g.nodes if n.name==name)
@@ -334,8 +345,16 @@ for name,pid in old:
     g.chain(seq,node,'then_0',pin['name'])
 manager=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True).pin('ActorClass','class',obj='/Script/Engine.Actor',default_obj=MANAGER).pin('ReturnValue','object',obj='/Script/Engine.Actor',out=True)
 g.chain(seq,manager,'then_1')
-cast=g.cast(MANAGER);g.chain(manager,cast);g.wire(manager,'ReturnValue',cast,'Object')
-status=g.get('StatusText','string',owner=MANAGER);g.wire(cast,'AsBP_DeliverySaveManager',status,'self')
+cast=manager
+status=g.get('StatusText','string',owner=MANAGER);g.wire(manager,'ReturnValue',status,'self')
 line=rect(cast,mul(20,scale),mul(154,scale),mul(720,scale),mul(30,scale),'(R=0,G=0,B=0,A=.82)')
 text(line,(status,'StatusText'),mul(28,scale),mul(162,scale),.95)
+hit_visible=branch(seq,cmp('Greater_DoubleDouble',v('EnemyHitUntil'),now,'real'),'then_2')
+hit_marker=text(hit_visible,'X',sub(mul(width,.5),mul(5,scale)),sub(mul(height,.5),mul(8,scale)),1.2,'(R=1,G=.65,B=.2,A=1)')
+hit_damage=call(STRING,'Conv_IntToString',[('InInt','int',call(MATH,'FFloor',[('A','real',v('LastEnemyDamage'))],cat='int'))],cat='string')
+text(hit_marker,concat('-',hit_damage),add(mul(width,.5),mul(12,scale)),add(mul(height,.5),mul(8,scale)),.95,'(R=1,G=.8,B=.45,A=1)')
+host_warning=branch(seq,both(cmp('Greater_DoubleDouble',v('HostageHurtUntil'),now,'real'),cmp('Greater_DoubleDouble',host_damage_hp,0,'real')),'then_3')
+warning=rect(host_warning,mul(20,scale),mul(194,scale),mul(430,scale),mul(53,scale),'(R=.36,G=.025,B=.015,A=.94)')
+warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',mul(30,scale),mul(203,scale),1.15,'(R=1,G=.85,B=.4,A=1)')
+text(warning,'¡Ayúdame! Protege mi retirada.',mul(30,scale),mul(224,scale),1.05)
 g.write('BP_HUD_Entrega')

@@ -211,6 +211,7 @@ def hostage():
  ok=g.both(g.neg(g.v('bIsDead','bool')),g.both(g.cmp('Greater_DoubleDouble',(e,'Damage'),0),g.cmp('GreaterEqual_DoubleDouble',now,g.v('InvulnerableUntil'))))
  bb=g.blackboard(g.selfnode(typ=HOSTAGE),'self');ok=g.both(ok,(g.bbget(bb,'bRescued'),'ReturnValue'));hit=g.br(cast,ok)
  prev=g.s(hit,'Health',g.c(MATH,'FMax',[('A','real',g.op('Subtract_DoubleDouble',g.v('Health'),(e,'Damage'))),('B','real',0)]));prev=g.s(prev,'InvulnerableUntil',g.op('Add_DoubleDouble',now,.8))
+ prev=g.s(prev,'DamageNoticeSerial',g.op('Add_IntInt',g.v('DamageNoticeSerial','int'),1,'int'),'int')
  dead=g.br(prev,g.cmp('LessEqual_DoubleDouble',g.v('Health'),0));prev=g.s(dead,'bIsDead',True,'bool');prev=g.s(prev,'bUsingBeacon',False,'bool')
  move=g.v('CharacterMovement','object',owner=CHAR,obj=MOVE,native=True,target=(g.selfnode(typ=HOSTAGE),'self'));stop=g.call(MOVE,'DisableMovement');g.w(move,stop,'self');g.chain(prev,stop)
  director=g.find(stop,DIRECTOR);prev=g.s(director,'Paso',6,'int',owner=DIRECTOR,target=(director,'ReturnValue'));g.chain(prev,g.pause());g.write('BP_Hostage')
@@ -315,15 +316,8 @@ def enemy_sense(charger=False):
 def enemy_actions():
  from generate_combat_graphs import attack_task,windup,charge,controller
  from generate_ai_refinement import retreat
- controller();attack_task();charge();retreat();g=capture(windup)
- goal=next(n for n in g.nodes if any('SetValueAsVector' in p for p in n.props))
- links=list(goal.pins['then']['links']);goal.pins['then']['links']=[]
- for name,pid in links:
-  n=next(n for n in g.nodes if n.name==name);p=next(p for p in n.pins.values() if p['id']==pid);p['links'].remove((goal.name,goal.pins['then']['id']))
- prev=g.s(goal,'ChargeVictim',g.v('CombatTarget','object',owner=BASE,obj=ACTOR,target=g.v('CachedPawn','object',obj=BASE)),'object',owner=BASE,target=g.v('CachedPawn','object',obj=BASE),obj=ACTOR)
- for name,pid in links:
-  n=next(n for n in g.nodes if n.name==name);p=next(p for p in n.pins.values() if p['id']==pid);g.chain(prev,n,nextpin=p['name'])
- CombatGraph.write(g,'BTTask_ChargerWindup')
+ # The arrival-first windup now snapshots ChargeVictim itself.
+ controller();attack_task();charge();retreat();windup()
 
 def combat_zone():
  import generate_wave_graphs as waves

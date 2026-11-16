@@ -1,5 +1,12 @@
 # Work items
 
+## Ataque, avisos y auditoría vigente — 2026-11-16
+
+- **Verified:** cuatro casos de IA real (dos rivales × jugador/rehén), daño13.2 durante el montaje y sin deslizamiento; solicitudes lejanas rechazadas. Esquiva y cancelación no producen golpe tardío. Regresión de daño ligero/pesado y contactos duplicados aprobada.
+- **Verified:** aviso visual/sonoro del rehén por daño aceptado; confirmación visual/sonora de daño a rivales, incluso letal. Curación, restauración y gracia de daño no generan falsas confirmaciones. Audio de impacto renderizado con RMS no cero.
+- **Verified:** dieciséis diseños visuales conservadores cargados, cinco modelos con4LOD y transiciones reales por distancia, seis fracturas Chaos y lógica del Level BP ejecutada. Extracción marcada residente para corregir referencia desde director no espacial.
+- **Pendiente:** aceptación del propietario/Adame, documentación/cronograma, evidencia de redes y video, interpretación de guardado, PC de presentación y alcance del texto general. Auditoría completa en `PLAN_ADAPTACION_EVALUACION.md`.
+
 ## Corrección de paredes y desapariciones — 2026-11-16
 
 - **Verified:** 104 componentes de pared usan proyección métrica de 4 m con tres texturas existentes, incluidos límites y marcos escalados. Geometría/colisión conservadas.

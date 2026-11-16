@@ -4,6 +4,52 @@ Plan del 16 de noviembre de 2026. Autoriza el propietario adaptar el videojuego 
 
 **Revisión posterior de escenario, autorizada por el propietario:** `ESCENARIO_COMPOUND.md` sustituye la mezcla en franjas por distribución dibujada según usos (cuatro texturas existentes), añade cubiertas a rescate/depósito y reorganiza luces/props. Diez edificios Nanite sustituyen los cuatro sectores; distancias de descarte y Niagara por frustum/distancia, física al romper. Las pruebas y paquete de esta revisión constan en el handoff vigente. Los detalles de la primera implementación que siguen se conservan como historial del plan, no como configuración actual de terreno/luz.
 
+
+## Auditoría vigente tras correcciones de combate — 16 noviembre 2026
+
+**Stated:** el propietario solicita verificar los puntos restantes al acabar el combate. Fuente principal: las dos capturas de evaluación aportadas en este chat. La fecha objetivo es el18/11/2026. Se revisaron el mapa entregable, sus gráficos exportados, los resultados de PIE y el paquete actual. Los colores de la hoja no se toman como aceptación académica. Esta sección sustituye las conclusiones iniciales que siguen; las implementaciones antiguas se conservan como historia.
+
+### Lo implementado y comprobado en el juego
+
+**Verified, pruebas del agente y gráficos actuales:**
+
+- **Interfaz funcional y acorde al juego:** HUD/diálogos/vida/objetivos, pausa y opciones, ahora también señales distintas de daño a jugador, rehén y rivales. Captura `validation/combat-feedback-2026-11-16.png`; validaciones de controles previas y compilación actual.
+- **Al menos dos ataques:** ligeros y pesados, espada/martillo; regresión actual confirma ligeros15/15/19/22 y pesado25 contra ambos enemigos, sin daño duplicado.
+- **Muerte y retorno al menú:** derrota por jugador/rehén, reintento y menú implementados; pruebas previas de ejecutable y gráficos actuales conservados. Falta la partida manual final, no implementación de este flujo.
+- **World Partition:** mapa particionado y actores esenciales residentes. Se corrigió además Salida_Extraccion para que el director persistente no apuntara a un trigger descargable. Auditoría runtime actual aprobada y cook sin errores de MapCheck.
+- **Iluminación diferente y optimizada:** Directional/Sky/Rect/Point/Spot, fuentes físicas, radios y límites locales, una sombra local y cielo sin captura continua. Los modelos conservan LOD/Nanite/oclusión sin corte visible por distancia. Falta medir el recorrido en la PC de presentación.
+- **Cinco modelos con cuatro LOD:** banco, auto, árbol, poste y fuente. Conteos nativos diferentes en los cuatro niveles, Nanite desactivado sólo en estos cinco. Veinte capturas de LOD Coloration en PIE muestran blanco/rojo/verde/azul al cambiar la distancia, sin forzar LOD. Evidencia: `validation/lod-demo-2026-11-16/observations.json`. La demostración del agente no es aceptación de Adame.
+- **Nanite en el nivel:** diez edificios con Nanite, derivados del escenario de Ian. No se cuentan sus subdivisiones como diez diseños nuevos para el renglón de modelos.
+- **Tres objetivos para ganar:** rescate/escolta, encuentros y secuencia aleatoria A/B/C con nombres/orden/reloj en HUD, seguida de extracción conjunta. Se conservan las seis permutaciones. Implementación y pruebas aisladas aprobadas; la aceptación del tercer objetivo sigue correspondiendo a Adame.
+- **Dos macros, dos eventos y dos funciones propios:** AmbosAliadosVivos/SecuenciaResuelta; InicializarSenales/SincronizarExtraccion; ConsultarAliados/ConsultarSecuencia. Exportados y ejecutados por la lógica real del nivel en la revisión actual.
+- **Quince modelos diferentes cargados:** la auditoría actual acredita **16 diseños visuales** agrupando copias LOD/Chaos, puertas y edificios para evitar inflar el número. Incluye ocho props, tres personajes, dos armas, baliza, puerta y arquitectura. Aun excluyendo el Manny provisional quedan15. Las rutas cargadas se registran en `validation/requirements-runtime-2026-11-16.json`. Esto acredita cantidad, no autoría.
+- **Dos enemigos con IA avanzada diferente:** orbitador y embestidor con árboles distintos. Cuatro pruebas actuales de árboles reales contra jugador/rehén muestran animación cercana, impacto temporal correcto y daño13.2. Esquivar/cancelar no deja daño pendiente.
+- **Guardado local:** vida/posición/cámara, armas/mejora, escolta, encuentros, puertas, balizas, orden y tiempo; F5/Continuar y bloqueos de combate implementados. **Con reserva académica:** no existen munición ni dinero; su obligatoriedad está pendiente de confirmación con Adame según indicó el propietario.
+- **Seis destruibles diferentes:** caja, basurero, banca, barril, auto y fuente. Prueba actual de dos pesados por binding real del arma produjo fractura Chaos en los seis; la prueba física con montaje/contacto del escenario anterior también está conservada. No se cuentan las tres puertas para completar los seis.
+- **Ocho sistemas de partículas diferentes:** hojas, polvo, luces, explosión, chispa, mejora de martillo, rotura de puerta y fuegos artificiales. Disparadores y fuentes conservados; no se cuenta dos veces la señal de luces. Deben mostrarse al profesor en los contextos correctos.
+- **Opciones gráficas funcionales:** resolución/modo de pantalla, calidad/distancia/sombras/texturas, volumen y persistencia; pausa y captura de ratón implementadas y probadas. El primer arranque usa pantalla completa, respetando preferencias posteriores.
+
+### Pendientes de cierre de la lista de las capturas
+
+**Unknown fuera del repositorio / pendiente de aceptación:** los entregables externos pueden existir en poder del equipo; se indica lo acreditado en los materiales revisados.
+
+1. **Documentación académica completa y cronograma actualizado.** Hay documentación técnica de desarrollo y pruebas, pero no se encontró en el repositorio el paquete académico final ni un cronograma del equipo con responsables/fechas reales. Reunirlo y alinearlo al juego actual.
+2. **Video promocional de tres minutos como mínimo, explicando proyecto y desarrollo.** No hay un archivo o enlace acreditado entre los materiales del repositorio revisados. El equipo debe aportar el video final; una captura de gameplay no acredita el criterio.
+3. **Evidencia de tres redes públicas y quince publicaciones en cada una.** La hoja del equipo lo marca en verde, pero no hay enlaces/conteos verificables aquí. Solicitar/verificar evidencia; no se afirma que falten publicaciones ni se publica nada desde este encargo.
+4. **Confirmar con Adame el alcance de guardado de munición/dinero.** El propietario ya indicó que está pendiente. No se inventa una economía para cubrir ejemplos sin esa aclaración.
+5. **Preparar la demostración y las respuestas del equipo.** Mostrar LOD/Nanite, macros/eventos/funciones, los ocho efectos, seis destruibles, dos IA y guardado; acordar quién explica cada parte. La rúbrica advierte descuento de10por respuesta incorrecta/no contestada.
+6. **Partida manual completa y PC de presentación.** Verificar dificultad, victoria real, derrota/menú, guardado/Continuar y rendimiento durante combate/fractura en el paquete final. El bot del escenario actual perdió en zona2; las pruebas aisladas posteriores no sustituyen una partida de aceptación. Mando sigue aplazado por el propietario.
+
+**Agua:** aparece REQ No en la segunda captura; no se considera bloqueo obligatorio.
+
+### Alcance adicional mencionado por los documentos del proyecto
+
+Los documentos anteriores también mencionan inventario/obtención de ítems, dos NPC con diálogo, ciclo día/noche y autoría de cinco modelos propios. No aparecen como filas independientes en las dos capturas actuales. **No hay implementación acreditada del inventario, segundo NPC dialogante o ciclo día/noche en esta entrega**; confirmar si el texto general sigue siendo exigible antes de darlos por descartados o añadirlos. La carpeta RecursosPropios no demuestra autoría: el equipo debe identificar autores/fuentes de al menos cinco modelos si ese requisito se mantiene.
+
+El modelo definitivo del rehén sigue pendiente del compañero; la baliza final ya está integrada. Es un pendiente del proyecto, aunque las capturas no exigen por sí solas sustituir el maniquí. No confundirlo con que falten modelos para la cantidad mínima.
+
+**Conclusión técnica:** no faltan las cantidades mínimas de modelos/LOD/destruibles/partículas ni los sistemas de IA, Nanite, World Partition o programación del nivel. Los cierres principales son evidencia externa, aceptación/demostración, validación en la máquina de entrega y las aclaraciones de alcance indicadas. No se asigna una nota ni se declara aceptación del profesor.
+
 ## Criterio de entrega
 
 Todos los requisitos técnicos deben existir y poder demostrarse en el mapa que abre Nuevo juego y en el ejecutable. Tener un recurso en Content Browser o en un mapa antiguo no acredita que funcione en la entrega. Los indicadores de colores de las capturas son anotaciones del equipo, no resultados de una auditoría del agente.

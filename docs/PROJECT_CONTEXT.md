@@ -1,5 +1,7 @@
 # Project context
 
+**Combate y rúbrica, revisión posterior del16/11:** el embestidor ya no ejecuta el golpe antes de acercarse; la animación y el daño coinciden al llegar. HUD avisa de daño real al rehén y confirma daño a rivales con sonido y marca/cifra. Vida/daño y árboles conservados. Auditoría runtime confirma16diseños visuales agrupando variantes, seis destruibles y cinco modelos con cuatro LOD; veinte capturas sin LOD forzado acreditan transiciones por distancia. Pendientes vigentes y alcance académico en `PLAN_ADAPTACION_EVALUACION.md`.
+
 **Revisión vigente de paredes/visibilidad (2026-11-16):** 104 componentes con proyección de textura en unidades del mundo, once texturas optimizadas y modelos sin recorte duro por distancia. Once props de evaluación no espaciales evitan descarga visible al cambiar de celda. Cuatro LOD, Nanite y oclusión se conservan. Evidencia: `validation/walls-visibility-2026-11-16.json`. Commit y push autorizados al cerrar.
 
 ## Escenario revisado por dirección del propietario — 16 noviembre 2026

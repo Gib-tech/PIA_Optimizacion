@@ -18,7 +18,7 @@ Abrir World Settings/World Partition y mostrar celdas/actores externos. Actores 
 
 ## Cinco modelos con cuatro LOD
 
-Recursos en `/Game/ThirdPerson/Environment/Evaluation/`. Son copias de modelos existentes del equipo, con cuatro LOD reales y Nanite desactivado. Screen sizes: 1, .45, .20, .07. En Static Mesh Editor mostrar LOD0..3; en gameplay acercarse/alejarse y usar la visualización LOD Coloration de PIE para acreditar cambios por distancia. La comprobación geométrica por sí sola no sustituye esa demostración visual ante el profesor.
+Recursos en `/Game/ThirdPerson/Environment/Evaluation/`. Son copias de modelos existentes del equipo, con cuatro LOD reales y Nanite desactivado. Screen sizes: 1, .45, .20, .07. En Static Mesh Editor mostrar LOD0..3; en gameplay acercarse/alejarse y usar la visualización LOD Coloration de PIE para acreditar cambios por distancia. La comprobación geométrica se complementó con veinte capturas actuales de LOD Coloration en PIE (cuatro distancias por modelo, sin forzar LOD): `validation/lod-demo-2026-11-16/observations.json`. Falta presentarlas/demostrarlo ante el profesor.
 
 - `SM_LOD_Banco`, (1100,-1900): 158592 / 87226 / 39648 / 12687 triángulos.
 - `SM_LOD_Car`, (-4500,-7050): 2548 / 1402 / 636 / 204.
@@ -47,6 +47,6 @@ DirectionalLight y SkyLight móviles, cielo sin captura continua; Rect en rescat
 
 ## Inventario y pendientes
 
-El inventario de la primera auditoría enumeró30 rutas geométricas; la división posterior por edificios añade recursos derivados del mismo escenario. No contar esas divisiones, primitivas o mallas auxiliares como diseños nuevos para inflar la rúbrica. Los recursos usados incluyen arquitectura de Ian, puertas/marcos, baliza, cinco modelos LOD, seis colecciones, jugador, enemigo, espada y martillo. Varios derivan de un mismo modelo: el equipo debe confirmar con Adame el criterio de quince modelos distintos y acreditar autoría de los cinco propios; no atribuir modelos Fab al equipo. El informe `compound-runtime-2026-11-16.json` conserva las rutas cargadas actuales.
+La auditoría actual agrupa16 diseños visuales cargados (15si se excluye al Manny provisional), sin contar variantes como diseños adicionales: `validation/requirements-runtime-2026-11-16.json`. Esto acredita cantidad, no autoría. El inventario de la primera auditoría enumeró30 rutas geométricas; la división posterior por edificios añade recursos derivados del mismo escenario. No contar esas divisiones, primitivas o mallas auxiliares como diseños nuevos para inflar la rúbrica. Los recursos usados incluyen arquitectura de Ian, puertas/marcos, baliza, cinco modelos LOD, seis colecciones, jugador, enemigo, espada y martillo. Varios derivan de un mismo modelo: el equipo debe confirmar con Adame el criterio de quince modelos distintos y acreditar autoría de los cinco propios; no atribuir modelos Fab al equipo. El informe `compound-runtime-2026-11-16.json` es histórico; el inventario vigente está en `requirements-runtime-2026-11-16.json`.
 
 Pendientes externos: documentación académica y cronograma actualizado, redes, video de tres minutos, modelo final del rehén, aceptación manual, otra PC y mando. Agua marcada REQ No en la captura. No dar por aceptados los colores de la rúbrica ni las pruebas automáticas.

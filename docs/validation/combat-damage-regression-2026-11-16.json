@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "light_combo_both": [
+    15,
+    15,
+    19,
+    22
+  ],
+  "heavy_charger": 25,
+  "heavy_orbiter": 25,
+  "repeat_heavy_overlap": 0,
+  "repeat_light_overlap": 0,
+  "inactive_heavy_overlap": 0,
+  "charger_mesh": "SK_SciFiWarrior02",
+  "charger_anim": "ABP_EnemyEntrega_C"
+}

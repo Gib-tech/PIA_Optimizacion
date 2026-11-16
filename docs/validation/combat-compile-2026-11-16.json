@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "assets": [
+    "BP_BaseEnemy",
+    "BP_ChargerEnemy",
+    "BTTask_Attack",
+    "BTTask_ChargerWindup",
+    "BTTask_ChargerCharge",
+    "BP_Hostage",
+    "BTTask_ActivateBeacon",
+    "BP_DirectorEntrega",
+    "BP_DeliverySaveManager",
+    "BP_HUD_Entrega"
+  ]
+}

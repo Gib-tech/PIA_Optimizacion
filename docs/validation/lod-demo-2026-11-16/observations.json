@@ -1,0 +1,309 @@
+{
+  "camera_test_not_manual_playthrough": true,
+  "viewmode": "lodcoloration",
+  "no_forced_lods": true,
+  "rows": [
+    {
+      "model": "SM_LOD_Car",
+      "distance_cm": 982.3193359375,
+      "radius_cm": 245.579833984375,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Car-0",
+      "actual_lod_color": "white/grayscale",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Car-LOD0.png"
+    },
+    {
+      "model": "SM_LOD_Car",
+      "distance_cm": 3929.27734375,
+      "radius_cm": 245.579833984375,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Car-1",
+      "actual_lod_color": "red",
+      "center_color_pixel_counts": {
+        "red": 1680,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Car-LOD1.png"
+    },
+    {
+      "model": "SM_LOD_Car",
+      "distance_cm": 5893.916015625,
+      "radius_cm": 245.579833984375,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Car-2",
+      "actual_lod_color": "green",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 1341,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Car-LOD2.png"
+    },
+    {
+      "model": "SM_LOD_Car",
+      "distance_cm": 19646.38671875,
+      "radius_cm": 245.579833984375,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Car-3",
+      "actual_lod_color": "blue",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 136
+      },
+      "capture": "SM_LOD_Car-LOD3.png"
+    },
+    {
+      "model": "SM_LOD_Tree1",
+      "distance_cm": 906.7910766601562,
+      "radius_cm": 226.69776916503906,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Tree1-0",
+      "actual_lod_color": "white/grayscale",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Tree1-LOD0.png"
+    },
+    {
+      "model": "SM_LOD_Tree1",
+      "distance_cm": 3627.164306640625,
+      "radius_cm": 226.69776916503906,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Tree1-1",
+      "actual_lod_color": "red",
+      "center_color_pixel_counts": {
+        "red": 816,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Tree1-LOD1.png"
+    },
+    {
+      "model": "SM_LOD_Tree1",
+      "distance_cm": 5440.7464599609375,
+      "radius_cm": 226.69776916503906,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Tree1-2",
+      "actual_lod_color": "green",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 314,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Tree1-LOD2.png"
+    },
+    {
+      "model": "SM_LOD_Tree1",
+      "distance_cm": 18135.821533203125,
+      "radius_cm": 226.69776916503906,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Tree1-3",
+      "actual_lod_color": "blue",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 16
+      },
+      "capture": "SM_LOD_Tree1-LOD3.png"
+    },
+    {
+      "model": "SM_LOD_fuente",
+      "distance_cm": 571.4802856445312,
+      "radius_cm": 142.8700714111328,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_fuente-0",
+      "actual_lod_color": "white/grayscale",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_fuente-LOD0.png"
+    },
+    {
+      "model": "SM_LOD_fuente",
+      "distance_cm": 2285.921142578125,
+      "radius_cm": 142.8700714111328,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_fuente-1",
+      "actual_lod_color": "red",
+      "center_color_pixel_counts": {
+        "red": 1477,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_fuente-LOD1.png"
+    },
+    {
+      "model": "SM_LOD_fuente",
+      "distance_cm": 3428.8817138671875,
+      "radius_cm": 142.8700714111328,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_fuente-2",
+      "actual_lod_color": "green",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 1242,
+        "blue": 0
+      },
+      "capture": "SM_LOD_fuente-LOD2.png"
+    },
+    {
+      "model": "SM_LOD_fuente",
+      "distance_cm": 11429.605712890625,
+      "radius_cm": 142.8700714111328,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_fuente-3",
+      "actual_lod_color": "blue",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 225
+      },
+      "capture": "SM_LOD_fuente-LOD3.png"
+    },
+    {
+      "model": "SM_LOD_Banco",
+      "distance_cm": 466.0600280761719,
+      "radius_cm": 116.51500701904297,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Banco-0",
+      "actual_lod_color": "white/grayscale",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Banco-LOD0.png"
+    },
+    {
+      "model": "SM_LOD_Banco",
+      "distance_cm": 1864.2401123046875,
+      "radius_cm": 116.51500701904297,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Banco-1",
+      "actual_lod_color": "red",
+      "center_color_pixel_counts": {
+        "red": 504,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Banco-LOD1.png"
+    },
+    {
+      "model": "SM_LOD_Banco",
+      "distance_cm": 2796.3601684570312,
+      "radius_cm": 116.51500701904297,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Banco-2",
+      "actual_lod_color": "green",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 336,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Banco-LOD2.png"
+    },
+    {
+      "model": "SM_LOD_Banco",
+      "distance_cm": 9321.200561523438,
+      "radius_cm": 116.51500701904297,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Banco-3",
+      "actual_lod_color": "blue",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 74
+      },
+      "capture": "SM_LOD_Banco-LOD3.png"
+    },
+    {
+      "model": "SM_LOD_Light_Pole",
+      "distance_cm": 841.3621215820312,
+      "radius_cm": 210.3405303955078,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Light_Pole-0",
+      "actual_lod_color": "white/grayscale",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Light_Pole-LOD0.png"
+    },
+    {
+      "model": "SM_LOD_Light_Pole",
+      "distance_cm": 3365.448486328125,
+      "radius_cm": 210.3405303955078,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Light_Pole-1",
+      "actual_lod_color": "red",
+      "center_color_pixel_counts": {
+        "red": 158,
+        "green": 0,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Light_Pole-LOD1.png"
+    },
+    {
+      "model": "SM_LOD_Light_Pole",
+      "distance_cm": 5048.1727294921875,
+      "radius_cm": 210.3405303955078,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Light_Pole-2",
+      "actual_lod_color": "green",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 84,
+        "blue": 0
+      },
+      "capture": "SM_LOD_Light_Pole-LOD2.png"
+    },
+    {
+      "model": "SM_LOD_Light_Pole",
+      "distance_cm": 16827.242431640625,
+      "radius_cm": 210.3405303955078,
+      "camera_fov": 60,
+      "forced_lod": false,
+      "file_prefix": "SM_LOD_Light_Pole-3",
+      "actual_lod_color": "blue",
+      "center_color_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 4
+      },
+      "capture": "SM_LOD_Light_Pole-LOD3.png"
+    }
+  ],
+  "passed": true,
+  "limitation": "Agent camera and native LOD Coloration in PIE; not owner manual acceptance. White/gray near views inspected alongside native LOD count/geometry."
+}

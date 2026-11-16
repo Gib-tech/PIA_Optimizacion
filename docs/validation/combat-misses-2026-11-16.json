@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "dodge_consumes_impact": true,
+  "return_after_window_causes_no_damage": true,
+  "cancelled_montage_causes_no_damage": true,
+  "health_unchanged": 100.0
+}

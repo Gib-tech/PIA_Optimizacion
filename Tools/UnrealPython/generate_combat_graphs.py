@@ -113,6 +113,11 @@ class CombatGraph(HostageGraph):
         return n
 
 def base_enemy():
+    from generate_combat_feedback import base_enemy as build
+    build()
+
+
+def legacy_base_enemy():
     g=CombatGraph();self=g.selfnode(x=0,y=500);bb=g.blackboard(self,'self',x=300,y=500)
     health=g.get('BPC_E_Health','object',obj=HEALTH,x=0,y=750)
     begin=g.event(ACTOR,'ReceiveBeginPlay',x=0,y=0)
@@ -229,53 +234,14 @@ def sense():
     g.write('BTService_ChargerSense')
 
 def windup():
-    g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=900);abort=g.task_event('ReceiveAbortAI',x=0,y=2200)
-    bb=g.blackboard(e,'OwnerController',x=0,y=400);target=g.target_actor(x=300,y=400)
-    stop=g.stop_move(e,x=300,y=0);g.chain(e,stop)
-    reset=g.set('Elapsed','real','0',sub='double',x=600,y=0);g.chain(stop,reset)
-    focus=g.call(CONTROLLER,'K2_SetFocus',x=900,y=0).pin('NewFocus','object',obj=ACTOR);g.chain(reset,focus);g.wire(e,'OwnerController',focus,'self');g.wire(target,'CombatTarget',focus,'NewFocus')
-    face=g.face_target(focus,e,target,'CombatTarget')
-    play=g.montage(e,'ControlledPawn','AM_EnemyAttack_Entrega',rate='1.625',x=1200,y=0);g.chain(face,play)
-    elapsed=g.elapsed(tick,x=0,y=900)
-    compare=g.compare('GreaterEqual_DoubleDouble','real','0.8',sub='double',x=900,y=1300);g.wire(elapsed,'Output_Get',compare,'A')
-    b=g.branch(x=1200,y=900);g.chain(elapsed,b);g.wire(compare,'ReturnValue',b,'Condition')
-    pos=g.location(target,'CombatTarget',x=1200,y=1500)
-    goal=g.bbset(bb,'ChargeGoal','Vector',x=1500,y=900);g.chain(b,goal);g.wire(pos,'ReturnValue',goal,'VectorValue')
-    charging=g.bbset(bb,'bCharging','Bool','true',x=1800,y=900);g.chain(goal,charging);g.finish(charging,x=2100,y=900)
-    stopanim=g.stop_montage(abort,'ControlledPawn','AM_EnemyAttack_Entrega',x=350,y=2200);g.chain(abort,stopanim);g.finish(stopanim,abort=True,x=700,y=2200)
-    g.write('BTTask_ChargerWindup')
+    from generate_combat_feedback import windup as build
+    build()
+
 
 def charge():
-    g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=1000);abort=g.task_event('ReceiveAbortAI',x=0,y=3000)
-    bb=g.blackboard(e,'OwnerController',x=0,y=450);target=g.target_actor('ChargeVictim',x=350,y=450);goal=g.bbget(bb,'ChargeGoal','Vector',x=650,y=450)
-    reset=g.set('Elapsed','real','0',sub='double',x=350,y=0);g.chain(e,reset)
-    mark=g.set('bHit','bool','false',x=650,y=0);g.chain(reset,mark)
-    speed=g.speed(e,'900',x=950,y=0);g.chain(mark,speed)
-    clearfocus=g.call(CONTROLLER,'K2_ClearFocus');g.wire(e,'OwnerController',clearfocus,'self');g.chain(speed,clearfocus)
-    move=g.move_to(e,goal,'ReturnValue',path=False,radius='40',x=1250,y=0);g.chain(clearfocus,move)
-    elapsed=g.elapsed(tick,x=0,y=1000)
-    distance=g.dist(tick,'ControlledPawn',target,'ChargeVictim',x=350,y=1600)
-    near=g.compare('LessEqual_DoubleDouble','real','180',sub='double',x=650,y=1600);g.wire(distance,'ReturnValue',near,'A')
-    hit=g.get('bHit','bool',x=650,y=1900);notyet=g.boolean('Not_PreBool',hit,'bHit',x=950,y=1900)
-    fresh=g.boolean('BooleanAND',near,'ReturnValue',notyet,'ReturnValue',x=1250,y=1800)
-    sight=g.sight(tick,'OwnerController',target,'ChargeVictim',x=1250,y=2100)
-    valid=g.boolean('BooleanAND',fresh,'ReturnValue',sight,'ReturnValue',x=1550,y=1800)
-    b=g.branch(x=1850,y=1000);g.chain(elapsed,b);g.wire(valid,'ReturnValue',b,'Condition')
-    flag=g.set('bHit','bool','true',x=2150,y=1000);g.chain(b,flag)
-    damage=g.call('/Script/Engine.GameplayStatics','ApplyDamage',static=True,x=2450,y=1000).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='6').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
-    g.chain(flag,damage);g.wire(target,'ChargeVictim',damage,'DamagedActor');g.wire(tick,'OwnerController',damage,'EventInstigator');g.wire(tick,'ControlledPawn',damage,'DamageCauser')
-    expired=g.compare('GreaterEqual_DoubleDouble','real','1.0',sub='double',x=2150,y=2300);g.wire(elapsed,'Output_Get',expired,'A')
-    donecond=g.boolean('BooleanOR',near,'ReturnValue',expired,'ReturnValue',x=2450,y=2300)
-    done=g.branch(x=2800,y=1700);g.chain(damage,done);g.chain(b,done,'else');g.wire(donecond,'ReturnValue',done,'Condition')
-    for previous,prevpin,event,y,isabort in [(done,'then',tick,1700,False),(abort,'then',abort,3000,True)]:
-        stop=g.stop_move(event,x=3150 if not isabort else 350,y=y);g.chain(previous,stop,prevpin)
-        speed=g.speed(event,'600',x=3500 if not isabort else 700,y=y);g.chain(stop,speed)
-        clear=g.bbset(bb,'bCharging','Bool','false',x=3850 if not isabort else 1050,y=y);g.chain(speed,clear)
-        retreat=g.bbset(bb,'bRetreat','Bool','true',x=4200 if not isabort else 1400,y=y);g.chain(clear,retreat)
-        g.finish(retreat,abort=isabort,x=4550 if not isabort else 1750,y=y)
-    pawn=g.get('CachedPawn','object',obj=BASE,x=2150,y=2700)
-    amount=g.get('ContactDamage','real',owner=BASE,sub='double',x=2450,y=2700);g.wire(pawn,'CachedPawn',amount,'self');g.wire(amount,'ContactDamage',damage,'BaseDamage')
-    g.write('BTTask_ChargerCharge')
+    from generate_combat_feedback import charge as build
+    build()
+
 
 def retreat():
     g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=3500);abort=g.task_event('ReceiveAbortAI',x=0,y=4700)

@@ -1,5 +1,11 @@
 # AI requirements
 
+## Corrección vigente de ataque y señales — 16 noviembre 2026
+
+**Stated:** corregir el golpe lejano seguido de carrera, avisar del daño al rehén y confirmar daño a rivales. **Verified:** Attack rechaza solicitudes sin objetivo visible a220cm o menos. El embestidor sostiene preparación0.8s sin ejecutar el golpe, corre a900 hasta1s y al alcanzar180cm se detiene y ejecuta el montaje1.3s; impacto a0.45s. ResolveAttack exige montaje activo y posición0.30..0.70s y consume un único intento, aunque se falle por distancia/visibilidad. Abort/interrupción cancela el golpe. Se conservan ambos árboles, daño13.2 y daño del jugador15/15/19/22 y pesado25.
+
+**Verified:** el rehén incrementa DamageNoticeSerial sólo al aceptar daño hostil; HUD renueva un aviso2.4s, con alerta sonora separada por1.2s. El serial no se guarda, evitando avisos al restaurar salud/checkpoint. Enemigos confirman pérdida real de vida (incluida letal) con impacto2D del audio existente y X/cifra central0.18s; curación y contactos repetidos sin daño no confirman golpe. Pruebas actuales: `validation/combat-timing-2026-11-16.json`, `combat-misses-2026-11-16.json`, `combat-feedback-2026-11-16.json`. Son pruebas del agente, no aceptación manual.
+
 ## Compatibilidad con el rework de evaluación — 2026-11-16
 
 **Verified:** las dos IA y el BT del rehén se conservan en el mapa convertido a World Partition; navegación dinámica convencional reconstruida al cargar. CompleteActivation mide distancia horizontal al pivote de suelo de la baliza, conservando límite220cm y guardas de canalización. GrantHammerUpgrade limpia el ataque y ResetState para evitar un bloqueo al recibir recompensa durante un golpe. Recorrido completo del agente y seis permutaciones aprobados; daño13.2 y zonas2×2 intactos. No sustituye aceptación manual.
@@ -191,7 +197,7 @@ It does not orbit. It takes both light and heavy damage, so the player's two att
 
 `BT_Charger`, highest priority first:
 
-1. Charge, while `bCharging` is true. Move at 900 units per second for at most 1 second, or until within 180 units. Then clear the charge and set retreat.
+1. Charge, while `bCharging` is true. Move at 900 units per second for at most 1 second, or until within 180 units. On arrival stop and execute the 1.3-second close strike, resolving its single impact at 0.45 seconds, then clear the charge and set retreat. A missed approach retreats without a remote strike.
 2. Windup, when the player is between 250 and 700 units and the 2 second cooldown is ready. Face the player and wait 0.8 seconds, then set `bCharging`.
 3. Retreat, while `bRetreat` is true. Move away until the player is at least 1000 units away, then clear retreat and wait 2 seconds before another chase.
 4. Chase, when the player is detected inside 1800 units and farther than 700 units. Run straight at the player. No strafe orbit.

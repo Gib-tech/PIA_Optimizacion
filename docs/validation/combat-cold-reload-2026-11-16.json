@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "normal_editor_without_helper": true,
+  "damage_notice_serial_zero": true,
+  "no_false_initial_feedback": true,
+  "enemy_damage": 13.2,
+  "all_11_model_distances_revalidated": true
+}

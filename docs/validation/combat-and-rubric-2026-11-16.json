@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-16",
+  "agent_checks_not_owner_acceptance": true,
+  "implementation": {
+    "charger": "windup 0.8s without remote punch; 900cm/s approach up to1s; arrival within180cm then stationary1.3s attack",
+    "common_attack": "start within220cm with LOS; impact at0.45s, consumed once in montage window0.30..0.70s; cancel/miss does not defer damage",
+    "hostage_notice": "accepted damage serial, 2.4s banner, 1.2s audible alert cooldown; notice not serialized",
+    "enemy_feedback": "actual health loss including lethal; 0.18s center marker/damage and existing impact sound; healing does not trigger",
+    "damage_values_and_trees": "13.2, both original behavior trees preserved",
+    "partition_reference_fix": "Extraction trigger resident, canonical preparation updated"
+  },
+  "evidence": [
+    "combat-timing-2026-11-16.json",
+    "combat-misses-2026-11-16.json",
+    "combat-feedback-2026-11-16.json",
+    "combat-feedback-2026-11-16.png",
+    "combat-audio-2026-11-16.json",
+    "combat-enemy-impact-2026-11-16.wav",
+    "combat-damage-regression-2026-11-16.json",
+    "combat-compile-2026-11-16.json",
+    "combat-cold-reload-2026-11-16.json",
+    "requirements-runtime-2026-11-16.json",
+    "lod-demo-2026-11-16/observations.json"
+  ],
+  "package": {
+    "configuration": "Win64 Development",
+    "build_success": true,
+    "cook_errors": 0,
+    "warnings": 15,
+    "unique_warnings": 15,
+    "map_check_errors": 0,
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 622936009,
+    "crc_all_entries_passed": true,
+    "excludes_saved_pdb_editor_helper": true
+  },
+  "native_smoke": {
+    "passed": true,
+    "scope": "New game, physical E rescue, mission clock/HUD, no false initial damage notices, clean exit",
+    "runtime_error_lines": 0,
+    "screenshot": "combat-native-2026-11-16.png",
+    "not_full_combat_playthrough": true
+  },
+  "rubric": {
+    "review": "docs/PLAN_ADAPTACION_EVALUACION.md",
+    "conservative_loaded_designs": 16,
+    "five_models_four_real_distance_lods": true,
+    "six_chaos_fractures_retested": true,
+    "pending": [
+      "Academic documentation and actual team schedule",
+      "Evidence for3public social networks,15posts each",
+      "Promotional video >=3minutes",
+      "Adame interpretation of ammo/currency saving and broader design criteria",
+      "Manual final mission, presentation PC/performance and team explanations"
+    ],
+    "broader_unimplemented_or_unaccredited": [
+      "Inventory/items UI",
+      "Second dialogue NPC",
+      "Day/night cycle"
+    ],
+    "authorship_requires_team_evidence": true,
+    "water_marked_not_required": true
+  },
+  "limits": [
+    "Real-tree strike tests use isolated placements; not a natural full mission victory.",
+    "Feedback callback tests isolate health changes, not physical input.",
+    "LOD proof uses native debug coloration with an isolated camera, not forced levels.",
+    "No comparative FPS claim or academic acceptance."
+  ],
+  "editor_final": {
+    "map": "Nivel_Entrega",
+    "helper_loaded": false,
+    "pie": false,
+    "dirty_packages": []
+  }
+}

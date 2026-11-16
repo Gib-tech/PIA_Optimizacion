@@ -1,5 +1,9 @@
 # Governance
 
+## Ataque y avisos de combate; revisión de rúbrica — 2026-11-16
+
+**Stated:** el propietario observa que el enemigo golpea desde lejos y hace daño después de acercarse. Pide corregir esa presentación, añadir un aviso del rehén al ser atacado y una respuesta cuando un rival recibe daño. Después solicita revisar qué falta para la entrega. **Decision:** separar preparación/carrera/golpe cercano, consumir un único impacto durante el montaje y dar señales sólo por daño real. Mantener Behavior Trees y valores de vida/daño; el ciclo de carga ahora incluye ejecución cercana de1.3s. La autorización vigente de commit y push persiste. La auditoría se basa en las dos capturas aportadas y en evidencia del mapa; el texto general referido por docs se distingue como alcance a confirmar. No se publica en redes ni se atribuye aceptación académica.
+
 ## Paredes, texturas y vehículos — 2026-11-16
 
 **Stated:** el propietario exige revisar todas las paredes texturizadas, corregir estiramientos, optimizar texturas y evitar que los coches desaparezcan mientras están a la vista. También autoriza explícitamente **commit y push a origin al finalizar**, sustituyendo la restricción de sólo commit local de intervenciones anteriores. **Decision:** proyección métrica de las texturas existentes, mipmaps/streaming y presupuestos de resolución; eliminar recortes duros de modelos y mantener residentes los once props de evaluación. Se conservan LOD, Nanite, oclusión, culling de efectos y luces ya documentados.
