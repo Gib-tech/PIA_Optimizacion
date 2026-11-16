@@ -2,6 +2,10 @@
 
 ## Actualización del propietario — 2026-11-15
 
+**Stated, progresión posterior:** sólo el rehén activa las balizas tras vencer a la horda. Añadir su indicador de vida, puertas destruibles ajustadas al escenario y mejora del martillo con equipamiento automático y partículas después de cada baliza. Esta petición sustituye la activación directa por E y la apertura automática de barreras al limpiar una zona.
+
+**Decision de implementación:** vida del rehén 100, gracia de daño 0.8 s; canalización de baliza 3 s. Cada puerta tiene 50 de vida, recibe 25 por golpe pesado del martillo mejorado y sólo se habilita con su baliza. La tercera baliza sigue a las dos hordas existentes. Detalles y pruebas en el handoff actual; aceptación del propietario pendiente.
+
 **Stated:** para la entrega del miércoles 18 se prioriza el nuevo nivel con el escenario de Ian y la IA del rehén: seguir al jugador, huir al ver enemigos hacia una zona segura lejos del jugador y esperar una nueva interacción para seguirlo. El propietario pidió implementación autónoma. La reanudación automática descrita más abajo es histórica y queda sustituida por interacción manual.
 
 **Stated, ampliación del 2026-11-15:** el propietario pidió priorizar el segundo enemigo y las oleadas, refinar las IA y las animaciones, y guardar el trabajo en una rama nueva mediante commits.
@@ -12,7 +16,7 @@
 
 **Verified:** escolta en `BT_Hostage`/`BB_Hostage`; segundo enemigo en `BT_Charger`/`BB_Charger`; encuentros finitos en `BP_CombatZone`, colocados en `Nivel_Entrega`. Pruebas del agente y límites en el handoff actual. La aceptación del propietario sigue pendiente.
 
-**Decision de implementación:** una misma zona combina la condición de escolta y el control de oleadas: no se crea un segundo volumen `BP_HostageSpawnZone` superpuesto. Cada zona activa dos oleadas de dos enemigos, con intermedio de 3 s; vuelve a abrir la barrera al morir el último enemigo y no repite al reentrar. La primera y segunda baliza exigen despejar sus respectivas zonas. No es la supervivencia posterior a la extracción descrita en el documento histórico.
+**Decision de implementación:** una misma zona combina la condición de escolta y el control de oleadas: no se crea un segundo volumen `BP_HostageSpawnZone` superpuesto. Cada zona activa dos oleadas de dos enemigos, con intermedio de 3 s, y no repite al reentrar. La primera y segunda baliza exigen despejar sus respectivas zonas; la puerta permanece cerrada hasta su destrucción con martillo. No es la supervivencia posterior a la extracción descrita en el documento histórico.
 
 **Decision de ajuste:** pesado del embestidor 25; ligero conserva 15/15/19 y el orbitador mantiene inmunidad al pesado. El ataque del orbitador aplica 6 a los 0.45 s y finaliza a los 1.3 s; recibir daño lo interrumpe. En el embestidor la preparación dura 0.8 s, la carga hasta 1 s, la retirada tiene límite de 4 s si la navegación se atasca y después espera 2 s. Persecución con aceptación 450 cm para entrar con margen en su rango 250–700. Las decisiones de cada personaje siguen en su árbol.
 

@@ -4,11 +4,13 @@ Facts below are separated from the assignment brief. Do not merge the two.
 
 ## Estado verificado — 2026-11-15
 
+- Progresión actual: tres puertas destructibles propias con muros visibles; sólo el rehén canaliza las balizas despejadas. Vida del rehén 100 con HUD; enemigos pueden atacarlo. Cada baliza equipa/carga el martillo y habilita su puerta, que requiere dos golpes pesados. El NavMesh se actualiza después de la rotura. Ver pruebas de agente en el handoff actual.
+
 - Entrega indicada por el propietario: miércoles 18 de noviembre de 2026.
 - `Nivel_Entrega` incorpora el FBX de `Escenario.zip` de Ian, dos zonas con dos oleadas de dos enemigos cada una, tres balizas provisionales, extracción y rehén con Behavior Tree propio. La primera zona genera orbitadores; la segunda, embestidores con `BT_Charger` propio.
 - Inicio del editor: `/Game/ThirdPerson/Maps/Nivel_Entrega`. Inicio del juego: `/Game/LevelMenu/MainMenuLevel`. Nuevo juego del menú abre el nivel nuevo.
 - Sistemas nuevos bajo `Content/ThirdPerson/Blueprints/Entrega/` y `Content/ThirdPerson/Blueprints/Aliado/`; importación bajo `Content/ThirdPerson/Environment/EscenarioIan/`.
-- `BP_PlayerEntrega` hereda del personaje original y añade daño pesado sólo al embestidor. `ABP_EnemyEntrega` conserva la locomoción del pack mediante un gráfico enlazado y añade un Slot para los montajes propios. Los originales del equipo se conservan.
+- `BP_PlayerEntrega` hereda del personaje original y añade pesado al embestidor/puertas habilitadas, mejora del martillo y alineación/ventana de su hitbox. `ABP_EnemyEntrega` conserva la locomoción del pack mediante un gráfico enlazado y añade un Slot para los montajes propios. Los originales del equipo se conservan.
 - Refinamiento: malla original `SK_SciFiWarrior02`, materiales originales y escala 1 en ambos enemigos; `ContactDamage=6`. Camara con sonda de 24 cm, brazo 350 cm y pivote Z55. Sectores de Ian con prismas convexos por cara que conservan sus puertas. Presentacion actual: recuadro contextual negro/blanco con texto progresivo y audio propio; se retiraron todos los TextRender del nivel.
 - El proyecto sigue sin módulo C++ de gameplay. UAT puede generar targets temporales dentro de `Intermediate` por los plugins habilitados.
 - Consultar `HANDOFF.md` actual para pruebas, controles y límites. La sección de hechos de octubre que sigue se conserva como historia y no define los mapas actuales.

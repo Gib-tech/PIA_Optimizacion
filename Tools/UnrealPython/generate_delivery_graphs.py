@@ -100,7 +100,7 @@ class Graph:
         with open(path,'w',encoding='utf-8') as f:f.write('\n'.join(n.render() for n in self.nodes))
         print(name,len(self.nodes),'nodes',path)
 
-def director():
+def legacy_director():
     from generate_hostage_graphs import HostageGraph
     g=HostageGraph()
     step=g.get('Paso','int',x=0,y=250)
@@ -233,6 +233,10 @@ def legacy_hud():
 def hud():
     # The current HUD uses contextual dialogue; keep the original source above for history.
     import generate_dialogue_hud
+
+def director():
+    from generate_progression_graphs import director as current_director
+    current_director()
 
 if __name__=='__main__':
     director()

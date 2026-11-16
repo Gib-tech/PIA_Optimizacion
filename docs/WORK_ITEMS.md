@@ -6,10 +6,12 @@ Status values: `Todo`, `In progress`, `Blocked`, `Done`.
 
 ## Prioridad actual — entrega 2026-11-18
 
+- **Ready para aceptación del propietario:** puertas a medida, vida/daño del rehén, balizas exclusivas del rehén después de hordas, mejora automática del martillo con FX/audio y dos impactos físicos para romper cada puerta. Árbol de escolta con canalización interrumpible y navegación dinámica. Pruebas del agente en `docs/validation/progression-2026-11-15.json`.
+
 - **Ready para aceptación del propietario:** nivel nuevo con escenario de Ian, navegación y dos zonas de oleadas; balizas 1 → 2 → 3 y extracción; HUD con objetivos, victoria/derrota y reintento.
 - **Ready para aceptación del propietario:** rehén con árbol propio, seguimiento, detección visual de enemigos, huida a refugio alcanzable y reanudación por E/RB. Pruebas del agente aprobadas en PIE; no equivalen a aceptación del propietario.
 - **Ready:** Nuevo juego abre el nivel nuevo. Continuar está deshabilitado hasta persistir los objetivos y la escolta.
-- **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`. UAT terminó correctamente (0 errores de cook, 20 advertencias de recursos anteriores). Paquete actualizado con embestidor/oleadas. Prueba del ejecutable aprobó menú/nivel/HUD/interacción y la iluminación; CRC del ZIP de 647494072 bytes aprobado. Sigue pendiente una partida completa manual.
+- **Ready para aceptación del propietario:** paquete Win64 Development y ZIP en `Deliverables`, actualizado con puertas/balizas del rehén y martillo mejorado. UAT terminó correctamente (0 errores de cook, 21 advertencias). Ejecutable: canalización, equipamiento automático y dos ataques pesados físicos rompen la puerta correspondiente y mantienen las siguientes intactas. CRC del ZIP de **737832544 bytes** aprobado. Evidencia en `docs/validation/progression-2026-11-15.json`; sigue pendiente una partida completa manual.
 - **Todo / dependencia del equipo:** modelo definitivo de baliza; coordinación de partículas con Dany.
 - **Ready para aceptación:** embestidor con árbol propio, daño ligero/pesado, oleadas 2 × 2 por zona, barreras y animaciones con cancelación. Pruebas automatizadas de PIE aprobadas; ver evidencia en el handoff.
 - **Todo:** guardado completo y recorrido manual de principio a fin.
@@ -60,8 +62,8 @@ Required by the course rubric. Different tree from the orbiter. Not a second mes
 
 | ID | Status | Item |
 | --- | --- | --- |
-| LOOP-01 | Not scheduled | Hammer as the required second weapon. |
-| LOOP-02 | Not scheduled | Character progression during the level. |
+| LOOP-01 | In progress | Martillo equipado automáticamente por baliza y necesario para romper puertas. Ready para aceptación. |
+| LOOP-02 | In progress | Mejora del martillo con FX/audio y habilitación por puerta; no es un sistema general de estadísticas. Ready para aceptación. |
 | LOOP-03 | Not scheduled | Post-escape survival waves and time limit. |
 | RUBRIC-01 | Not scheduled | Non-AI course rows: menus, save, dialogue NPCs, objectives, camera, gamepad parity, Nanite, World Partition, LODs, particles, destructibles. |
 

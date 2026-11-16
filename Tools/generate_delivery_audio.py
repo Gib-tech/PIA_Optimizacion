@@ -20,8 +20,12 @@ notes('SW_Open',[(294,.055),(440,.07)],.18)
 notes('SW_Rescue',[(330,.10),(440,.10),(554,.18)])
 notes('SW_Alert',[(220,.12),(0,.05),(294,.15)],.21)
 notes('SW_Clear',[(440,.09),(554,.09),(659,.22)])
+notes('SW_Upgrade',[(330,.07),(440,.07),(659,.08),(880,.12),(1320,.27)],.26)
 notes('SW_Victory',[(330,.12),(440,.12),(554,.12),(659,.35)])
 notes('SW_Defeat',[(294,.18),(247,.18),(165,.32)],.22)
+random.seed(18)
+for name,length,gain in [('SW_DoorHit',.3,.4),('SW_DoorBreak',.85,.48)]:
+ save(name,[gain*(random.uniform(-1,1)*.4+sum(math.sin(2*math.pi*f*i/RATE) for f in [85,137,221,367])*.15)*min(1,i/45)*math.exp(-i/RATE*(12 if length<.5 else 5)) for i in range(round(length*RATE))])
 random.seed(18)
 save('SW_PlayerHurt',[(random.uniform(-1,1)*.18*math.exp(-i/RATE*24)+.19*math.sin(2*math.pi*(130-i/RATE*180)*i/RATE))*min(1,i/80)*math.exp(-i/RATE*10) for i in range(round(.22*RATE))])
 seconds=12

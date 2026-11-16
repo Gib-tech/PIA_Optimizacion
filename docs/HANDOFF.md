@@ -8,6 +8,47 @@ This file is written so a smaller model can continue without re-auditing. Every 
 
 ## Current handoff
 
+- Fecha: **2026-11-15**, entrega miércoles **18 de noviembre de 2026**. Rama `codex/entrega-18nov-ia-oleadas`. Commits locales autorizados; no push solicitado. Base anterior `065a54d` (diálogo/audio), `6cb95de` (cámara/paredes), `d641200` (enemigos/oleadas).
+- **Stated, petición nueva:** puertas destruibles hechas a medida; sólo el rehén activa balizas después de la horda; vida del rehén visible; equipar automáticamente el martillo con partículas de mejora y habilitar la destrucción de la puerta correspondiente.
+- **Verified:** todo el gameplay sigue en Blueprints. No se añadió módulo nativo ni plugin al proyecto o al ejecutable. Blender generó el kit propio en `Tools/ArtSource/Progression`; el generador está en `Tools/Blender/build_progression_assets.py`.
+
+### Circuito actual de la misión
+
+1. E / RB rescata al rehén o lo vuelve a llamar desde el refugio. El jugador ya no activa balizas directamente.
+2. Entrar en una zona con el rehén siguiéndolo a ≤600 cm genera dos oleadas de dos enemigos. Zona 1: orbitadores. Zona 2: embestidores. Intermedio 3 s; las zonas no repiten.
+3. Al despejar, recuperar al rehén con E / RB y llevarlo cerca de la baliza. Dentro de 650 cm, el director escribe disponibilidad en Blackboard. `BT_Hostage` decide ir al punto de aproximación y canalizar durante 3 s. Prioridad: huir > baliza > esperar > seguir > idle.
+4. Amenaza visible interrumpe la canalización, reinicia su progreso y mantiene baliza/puerta bloqueadas. La huida y reanudación manual se conservan.
+5. `BP_BeaconEntrega.CompleteActivation` comprueba orden, horda despejada, rehén vivo/rescatado, proximidad y canalización completa. Incrementa Paso una sola vez, enciende la baliza y desbloquea sólo su puerta.
+6. `BP_PlayerEntrega.GrantHammerUpgrade` cancela el ataque activo, apaga colisión, equipa martillo (`bIsHammerEquipped=true`, `bIsSwordEquipped=false`), ajusta su caja de impacto y emite `NS_HammerUpgrade`/`SW_Upgrade`.
+7. Cada puerta tiene 50 de vida y recibe 25 por golpe pesado del martillo mejorado, una vez por ataque. Ligero, espada, martillo sin mejora y puertas aún selladas reciben 0. Al segundo golpe desaparece el panel, aparecen cuatro escombros físicos, partículas y sonido; el marco permanece. Los escombros ignoran Pawn/cámara/navegación y duran 4 s.
+8. La tercera baliza exige haber despejado ambas hordas mediante el orden de Paso; no se inventó una tercera horda. Romper la última puerta permite llegar a la extracción azul con el rehén. Paso 4 gana; 5 es muerte del jugador y 6, muerte del rehén. R reintenta; Enter vuelve al menú.
+
+### Puertas, navegación y presentación
+
+- **Verified:** paneles ajustados a 258×256, 344×333 y 600×350 cm; centros aproximados `(0,-4021,0)`, `(-21,-6261,0)` y `(0,-10200,0)`. Muros visibles de piedra/refuerzo metálico cruzan las rutas laterales del suelo, dejando sólo la abertura de la puerta. `BP_CombatZone` ya no abre ni oculta barreras.
+- **Verified:** NavMesh Dynamic. Las pruebas contrastan las rutas con cada puerta cerrada y después de romperla. Las balizas tienen `ApproachPoint` a 180 cm hacia +Y: pedir un MoveTo al centro sólido del cilindro daba una ruta inválida. `BeaconTarget` es el punto alcanzable; `ActiveBeacon` es la baliza que usa la tarea.
+- **Verified:** HUD negro/blanco de texto progresivo conservado, sin TextRender. Añade vida numérica/barra del rehén (roja al ≤30%), progreso de canalización y explicación de la mejora/puerta. Sonidos propios de golpe, rotura y mejora, además de los nueve anteriores. Los FX del equipo de ataque/daño no se modificaron.
+- Se conserva el aspecto Warrior original de ambos enemigos, materiales/escala 1, salud 100, ligero 15/15/19, pesado 25 sólo al embestidor y contacto 6. Cámara: sonda 24, brazo 350, pivote Z55, sin lag de posición; colisiones por prismas de las paredes originales.
+
+### Vida, objetivos y ciclos de ataque
+
+- **Verified:** rehén con 100 de vida, sin fuego amigo y gracia compartida de 0.8 s entre impactos. Ambos enemigos pueden elegirlo si está rescatado/vivo/visible, a ≤650 cm y al menos 150 cm más cerca que el jugador. El jugador dentro de 220 cm tiene prioridad para poder interceptarlos.
+- El servicio escribe `CombatTarget`; el árbol conserva la decisión de orbitar/atacar/embestir. La carga fija `ChargeVictim` al terminar la preparación, sin retargetear el contacto a otro actor a mitad del movimiento.
+- **Verified:** se corrigió en el hijo `BP_PlayerEntrega` un problema heredado: el pesado no tenía conectados los callbacks Enable/DisableHitbox y el hitbox permanecía sobre la espada guardada. Ahora sigue el arma equipada; conserva/restaura el transform original de la espada. Para el pesado del martillo usa la ventana existente de `Attack_3_Montage` (0.252330–1.183353 s) y limpia colisión/estado al interrumpirse. Los montajes originales del equipo no se editaron.
+
+### Pruebas del agente y continuidad
+
+- Evidencia de esta entrega en `docs/validation/progression-2026-11-15.json`. Pruebas: `verify_progression.py`, `verify_hostage_combat.py`, `verify_beacon_interrupt.py`, `verify_real_hammer.py`. Se usan teletransportes/daño de prueba sólo en PIE para aislar condiciones; no equivalen a una partida completa a pie ni a aceptación del propietario.
+- `generate_progression_graphs.py` es la fuente actual de los gráficos. Genera T3D para revisar/pegar en los EventGraphs. Orden: puerta/escombros → jugador → baliza → rehén/tarea → director/HUD → servicios/tareas enemigas. `prepare_progression.py` prepara campos/arte; `finalize_progression_tree.py` resuelve claves y puntos de aproximación; `place_progression.py` coloca el kit. No volver a ejecutar las recetas iniciales que recrean todo el proyecto.
+- La utilidad nativa usada localmente para editar está exclusivamente bajo `Intermediate` (ignorado); no es una dependencia de los assets ni del juego. No añadirla a `Terreno.uproject`.
+- **Verified:** reconstrucción Win64 Development terminada, BUILD SUCCESSFUL / ExitCode 0; cook con 0 errores y 21 advertencias. ZIP actualizado: `Deliverables/TimeOut_Avance_18Nov2026.zip`, **737832544 bytes**, CRC completo aprobado. En el ejecutable se comprobó canalización real del rehén, Paso 1, martillo equipado/espada desactivada y dos entradas de ataque pesado mediante Enhanced Input: puerta 50 → 25 → 0 y destruida; las otras permanecieron en 50/sin destruir. La prueba aisló la primera baliza marcando hordas despejadas sólo en memoria y teletransportando actores; no sustituye el recorrido completo. Captura nativa en `docs/validation/progression-preview.png`.
+- Para reconstruir: guardar todo, cerrar editor y ejecutar `Tools/Build-Delivery.ps1`; `Tools/Archive-Delivery.py` prepara el ZIP excluyendo símbolos y Saved. Evidencia final en `docs/validation/progression-2026-11-15.json`.
+- **Unknown / pendiente del equipo:** modelo definitivo de baliza y coordinación de partículas de Dany. Las balizas físicas continúan provisionales. Guardado completo/Continuar, mando físico, rendimiento en otra PC y recorrido manual completo siguen pendientes. Nuevo juego y reinicio permiten jugar desde cero.
+
+## History
+
+### Estado anterior del 15 de noviembre — antes de puertas destruibles
+
 - Fecha: **2026-11-15**. Entrega: **miércoles 18 de noviembre de 2026**.
 - **Stated:** el propietario autorizó trabajo autónomo, priorizó segundo enemigo y oleadas, pidió refinar IA/animaciones, rama nueva y commits. Rama: `codex/entrega-18nov-ia-oleadas`. El avance anterior quedó en `3383b43`; IA, oleadas y animaciones en `d641200`; el refinamiento posterior de cámara/paredes, aspecto y señales corresponde al commit actual. No se pidió push. `origin/main` seguía en `68eb221` tras fetch al comenzar este avance.
 - **Verified:** `/Game/ThirdPerson/Maps/Nivel_Entrega` contiene los cuatro sectores de Ian de `Escenario.zip`, suelo, límites, navegación, rehén, tres balizas y extracción. Los sectores usan escala 2 por el tamaño original de sus puertas. Las cuatro instancias enemigas fijas se sustituyeron por encuentros de oleadas.
@@ -79,7 +120,6 @@ This file is written so a smaller model can continue without re-auditing. Every 
 - Pruebas: `verify_combat_damage.py`, `verify_charger_cycle.py`, `verify_delivery_waves.py`, `verify_enemy_animation_lifecycle.py`, `verify_wall_camera.py`, siempre en PIE; la de oleadas requiere zonas recién iniciadas. `playtest_combat_waves.py` es diagnóstico, no código de gameplay.
 - Para empaquetar, guardar todo, detener PIE y cerrar Unreal (Live Coding bloquea UAT). Ejecutar `Tools/Build-Delivery.ps1` y después `python Tools/Archive-Delivery.py`. Deliverables e Intermediate están ignorados por Git.
 
-## History
 
 ### Avance anterior del 15 de noviembre — antes del segundo enemigo
 

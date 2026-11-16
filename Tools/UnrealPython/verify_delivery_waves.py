@@ -28,7 +28,7 @@ def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,roo
         elif s['stage'] in ['first','second'] and phase==1:
             expected=1 if s['stage']=='first' else 2
             assert wave==expected and count==expected*2,(wave,count,expected)
-            assert zone.get_editor_property('Blocker').get_actor_enable_collision()
+            assert mission.get_editor_property('Baliza'+str(s['index']+1)).get_editor_property('Door').get_actor_enable_collision()
             enemies=zone.get_editor_property('EncounterEnemies');assert len(enemies)==2
             expected_class='BP_BaseEnemy_C' if s['index']==0 else 'BP_ChargerEnemy_C'
             assert all(e.get_class().get_name()==expected_class for e in enemies)
@@ -43,12 +43,12 @@ def verify_waves_tick(delta,world=w,player=p,hostage=h,bb=b,zones=zs,s=state,roo
             s.update(stage='intermission' if expected==1 else 'clearing',since=now)
         elif s['stage']=='intermission' and phase==2:
             assert zone.get_editor_property('LivingCount')==0
-            assert zone.get_editor_property('Blocker').get_actor_enable_collision()
+            assert mission.get_editor_property('Baliza'+str(s['index']+1)).get_editor_property('Door').get_actor_enable_collision()
             s.update(stage='second',since=now,intermission_at=now)
         elif s['stage']=='clearing' and phase==3:
-            assert zone.get_editor_property('bCleared') and not zone.get_editor_property('Blocker').get_actor_enable_collision()
+            assert zone.get_editor_property('bCleared') and mission.get_editor_property('Baliza'+str(s['index']+1)).get_editor_property('Door').get_actor_enable_collision()
             assert count==4 and wave==2
-            s['results'].append({'zone':zone.get_actor_label(),'enter_alone':0,'waves':2,'total_enemies':4,'intermission_seconds':round(s['interval'],3),'death_stops_tree':True,'gate_opens':True})
+            s['results'].append({'zone':zone.get_actor_label(),'enter_alone':0,'waves':2,'total_enemies':4,'intermission_seconds':round(s['interval'],3),'death_stops_tree':True,'gate_stays_locked_until_hostage_beacon':True})
             s.update(stage='reentry',since=now)
             player.set_actor_location(zone.get_actor_location()+unreal.Vector(0,1500,0),False,True)
         elif s['stage']=='reentry' and now-s['since']>.4:

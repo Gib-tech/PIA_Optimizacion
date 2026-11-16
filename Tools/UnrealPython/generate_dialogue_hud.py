@@ -37,7 +37,16 @@ MESSAGES=[
  ('EXTRACCIÓN','Las tres balizas responden. Llega a la salida azul junto con el rehén.','Llegar solo no completa la misión'),
  ('FALTA ALGUIEN','No puedes dejarlo atrás. Reúnete con el rehén y entra con él a la salida.','[E / RB] Recuperar al rehén'),
  ('A SALVO','Lo lograron. El rehén está a salvo.','[R] Reintentar    [ENTER] Menú'),
- ('OTRA OPORTUNIDAD','Esta vez no pudo ser. Todavía puedes volver a intentarlo.','[R] Reintentar    [ENTER] Menú')]
+ ('OTRA OPORTUNIDAD','Esta vez no pudo ser. Todavía puedes volver a intentarlo.','[R] Reintentar    [ENTER] Menú'),
+ ('REHÉN PERDIDO','El rehén no sobrevivió. Mantente cerca y protege su retirada.','[R] Reintentar    [ENTER] Menú'),
+ ('REHÉN','Estoy activando la baliza. Dame tres segundos y cuida mi espalda.','Activación en curso'),
+ ('MARTILLO MEJORADO','La baliza cargó tu martillo. Ya está equipado: úsalo para destruir la puerta de esta zona.','Clic derecho: golpear la puerta'),
+ ('PUERTA SELLADA','Sólo el rehén puede cargar la baliza. Primero despeja sus oleadas y luego llévalo hasta ella.','Recupera al rehén y escolta su avance'),
+ ('ABRE EL CAMINO','El sello está debilitado. Dos golpes pesados con el martillo abrirán el paso.','Clic derecho: destruir la puerta')]
+MESSAGES[11]=('OLEADA 2 / 2','Otro par de orbitadores. Despeja el área para que el rehén pueda usar la baliza.','Clic izquierdo: ataque ligero')
+for i in [15,16]:MESSAGES[i]=('ZONA DESPEJADA','No quedan enemigos. Recupera al rehén y llévalo a la baliza; él la activará al acercarse.','[E / RB] Llamar al rehén cerca')
+for i in [17,18,19]:MESSAGES[i]=('BALIZA','Sólo el rehén puede usarla. Acércalo después de despejar la horda y espera tres segundos.','Escolta al rehén hasta la baliza')
+for i in [20,21,22]:MESSAGES[i]=('SIGUE AVANZANDO','Protege al rehén y acompáñalo hasta la siguiente baliza. Las puertas requieren su carga.','Continúa con el rehén')
 class DialogueGraph(CombatGraph):
     def node(self,kind,props=(),**pos):
         i=len(self.nodes);pos.setdefault('x',(i%9)*380);pos.setdefault('y',(i//9)*310)
@@ -124,7 +133,7 @@ zdist=(g.dist(zone[0],zone[1],player,'ReturnValue'),'ReturnValue')
 nearzone=cmp('LessEqual_DoubleDouble',zdist,1700,'real')
 overlap=g.call(ACTOR,'IsOverlappingActor',pure=True).pin('Other','object',obj=ACTOR).pin('ReturnValue','bool',out=True);wire(zone,overlap,'self');g.wire(player,'ReturnValue',overlap,'Other')
 # Context priorities: escort, nearby entry, wave, clear, safe interaction, beacon, outcome.
-default=table(step,[3,20,21,22,24,25],'int')
+default=table(step,[3,20,21,22,24,25,26],'int')
 context=pick(following,default,pick(rescued,pick(nearhostage,6,5),pick(nearhostage,2,1)))
 context=pick(both(unsafe,rescued),4,context)
 idlezone=both(relevant,cmp('EqualEqual_IntInt',phase,0))
@@ -147,8 +156,18 @@ exit=g.get('Salida','object',owner=DIRECTOR,obj='/Script/Engine.StaticMeshActor'
 edist=(g.dist(exit,'Salida',player,'ReturnValue'),'ReturnValue')
 alone=both(cmp('EqualEqual_IntInt',step,3),both(cmp('LessEqual_DoubleDouble',edist,300,'real'),either(neg(following),cmp('Greater_DoubleDouble',hdist,600,'real'))))
 context=pick(alone,23,context)
+hero_class='/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega_C'
+hero=g.cast(hero_class);g.chain(valid,hero)
+g.wire(player,'ReturnValue',hero,'Object')
+pending=g.get('bDoorPending','bool',owner=hero_class);g.wire(hero,'AsBP_PlayerEntrega',pending,'self');pending=(pending,'bDoorPending')
+upuntil=g.get('UpgradeUntil','real',owner=hero_class,sub='double');g.wire(hero,'AsBP_PlayerEntrega',upuntil,'self')
+game_now=call('/Script/Engine.GameplayStatics','GetTimeSeconds',[])
+context=pick(pending,30,context)
+context=pick(cmp('Greater_DoubleDouble',(upuntil,'UpgradeUntil'),game_now,'real'),28,context)
+using=g.get('bUsingBeacon','bool',owner=HOSTAGE);g.wire(hostage,'CachedHostage',using,'self')
+context=pick((using,'bUsingBeacon'),27,context)
 context=pick(cmp('GreaterEqual_IntInt',step,4),calc('Add_IntInt',20,step,'int'),context)
-current=save(valid,'CurrentDialog',context)
+current=save(hero,'CurrentDialog',context)
 texts=['\n'.join('* '+line for line in textwrap.wrap(m[1],width=58)) for m in MESSAGES]
 prev=current
 for name,values in [('FullText',texts),('Speaker',[m[0] for m in MESSAGES]),('ActionHint',[m[2] for m in MESSAGES])]:prev=save(prev,name,table(v('CurrentDialog'),values))
@@ -169,7 +188,7 @@ count=pick(v('ForceReveal'),length,calc('Min',length,count,'int'))
 substring=call(STRING,'Left',[('SourceString','string',v('FullText')),('Count','int',count)],cat='string')
 update=save(played,'VisibleText',substring);g.chain(changed,update,'else')
 duration=calc('Add_DoubleDouble',calc('Divide_DoubleDouble',length,rate),v('HoldSeconds'))
-pers=table(v('CurrentDialog'),[i in [2,6,17,18,19,23,24,25] for i in range(len(MESSAGES))],'bool')
+pers=table(v('CurrentDialog'),[i in [2,6,17,18,19,23,24,25,26,27,28,30] for i in range(len(MESSAGES))],'bool')
 visible=both(cmp('NotEqual_IntInt',v('DismissedDialog'),v('CurrentDialog')),either(pers,cmp('Less_DoubleDouble',age,duration,'real')))
 visible_set=save(update,'DialogueVisible',visible)
 typing=both(v('DialogueVisible'),both(neg(v('ForceReveal')),both(cmp('Greater_IntInt',count,v('VisibleCharacters')),cmp('Greater_DoubleDouble',calc('Subtract_DoubleDouble',now,v('LastBeepAt')),.07,'real'))))
@@ -194,7 +213,8 @@ def sub(a,b):return calc('Subtract_DoubleDouble',a,b)
 bw=call(MATH,'FMin',[('A','real',mul(900,scale)),('B','real',sub(width,40))]);bh=mul(180,scale)
 x=mul(sub(width,bw),.5);y=sub(sub(height,bh),mul(24,scale))
 def rect(prev,x,y,w,h,color):
-    n=g.call(HUD,'DrawRect').pin('RectColor','struct',obj='/Script/CoreUObject.LinearColor',default=color)
+    n=g.call(HUD,'DrawRect').pin('RectColor','struct',obj='/Script/CoreUObject.LinearColor')
+    wire(color,n,'RectColor')
     for pin,value in [('ScreenX',x),('ScreenY',y),('ScreenW',w),('ScreenH',h)]:n.pin(pin,'real',sub='float');wire(value,n,pin)
     g.chain(prev,n);return n
 def text(prev,value,x,y,size=1,color='(R=1,G=1,B=1,A=1)'):
@@ -205,8 +225,27 @@ def text(prev,value,x,y,size=1,color='(R=1,G=1,B=1,A=1)'):
 chipx=sub(width,mul(270,scale));chipy=mul(22,scale)
 incombat=both(relevant,either(cmp('EqualEqual_IntInt',phase,1),cmp('EqualEqual_IntInt',phase,2)))
 chip=rect(health_save,chipx,chipy,mul(248,scale),mul(pick(incombat,63,32),scale),'(R=0,G=0,B=0,A=.8)')
-objectives=table(step,['1 / 4   PRIMERA BALIZA','2 / 4   SEGUNDA BALIZA','3 / 4   ÚLTIMA BALIZA','4 / 4   EXTRACCIÓN','REHÉN A SALVO','FIN DEL INTENTO'])
-title=text(chip,objectives,add(chipx,mul(12,scale)),add(chipy,mul(9,scale)),1.05)
+objectives=table(step,['1 / 4   PRIMERA BALIZA','2 / 4   SEGUNDA BALIZA','3 / 4   ÚLTIMA BALIZA','4 / 4   EXTRACCIÓN','REHÉN A SALVO','FIN DEL INTENTO','REHÉN PERDIDO'])
+objectives=table(pick(pending,1,0),[objectives,'MARTILLO: ABRE EL PASO'])
+hpnode=g.get('Health','real',owner=HOSTAGE,sub='double');g.wire(hostage,'CachedHostage',hpnode,'self');host_hp=(hpnode,'Health')
+maxnode=g.get('MaxHealth','real',owner=HOSTAGE,sub='double');g.wire(hostage,'CachedHostage',maxnode,'self');maxhp=(maxnode,'MaxHealth')
+ratiohp=call(MATH,'FClamp',[('Value','real',calc('Divide_DoubleDouble',host_hp,call(MATH,'FMax',[('A','real',maxhp),('B','real',1)]))),('Min','real',0),('Max','real',1)])
+bar=rect(chip,mul(24,scale),mul(78,scale),mul(224,scale),mul(49,scale),'(R=0,G=0,B=0,A=.8)')
+bar=rect(bar,mul(34,scale),mul(108,scale),mul(204,scale),mul(9,scale),'(R=.12,G=.12,B=.12,A=1)')
+hpcolor=call(MATH,'SelectColor',[('A','struct','(R=1,G=.15,B=.1,A=1)'),('B','struct','(R=.1,G=.75,B=.9,A=1)'),('bPickA','bool',cmp('LessEqual_DoubleDouble',ratiohp,.3,'real'))],cat='struct',obj='/Script/CoreUObject.LinearColor')
+for pin in ['A','B']:hpcolor[0].pins[pin]['obj']='/Script/CoreUObject.LinearColor'
+bar=rect(bar,mul(34,scale),mul(108,scale),mul(calc('Multiply_DoubleDouble',204,ratiohp),scale),mul(9,scale),hpcolor)
+hpstr=call(STRING,'Conv_IntToString',[('InInt','int',call(MATH,'FFloor',[('A','real',host_hp)],cat='int'))],cat='string')
+maxstr=call(STRING,'Conv_IntToString',[('InInt','int',call(MATH,'FFloor',[('A','real',maxhp)],cat='int'))],cat='string')
+label=call(STRING,'Concat_StrStr',[('A','string','REHÉN   '),('B','string',hpstr)],cat='string')
+label=call(STRING,'Concat_StrStr',[('A','string',label),('B','string',' / ')],cat='string')
+label=call(STRING,'Concat_StrStr',[('A','string',label),('B','string',maxstr)],cat='string')
+bar=text(bar,label,mul(34,scale),mul(85,scale),1.1)
+channel=branch(bar,(using,'bUsingBeacon'))
+channelvalue=g.get('ActivationProgress','real',owner=HOSTAGE,sub='double');g.wire(hostage,'CachedHostage',channelvalue,'self')
+channelbar=rect(channel,mul(24,scale),mul(134,scale),mul(224,scale),mul(7,scale),'(R=.12,G=.12,B=.12,A=1)')
+channelbar=rect(channelbar,mul(24,scale),mul(134,scale),mul(calc('Multiply_DoubleDouble',224,(channelvalue,'ActivationProgress')),scale),mul(7,scale),'(R=.9,G=.7,B=.15,A=1)')
+title=text(channelbar,objectives,add(chipx,mul(12,scale)),add(chipy,mul(9,scale)),1.05);g.chain(channel,title,'else')
 active=branch(title,incombat)
 wc=call(STRING,'Conv_IntToString',[('InInt','int',wave)],cat='string');lc=call(STRING,'Conv_IntToString',[('InInt','int',living)],cat='string')
 def concat(a,b):return call(STRING,'Concat_StrStr',[('A','string',a),('B','string',b)],cat='string')

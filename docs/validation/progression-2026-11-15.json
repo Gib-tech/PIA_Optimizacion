@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-15",
+  "branch": "codex/entrega-18nov-ia-oleadas",
+  "source": "Agent verification; owner acceptance pending",
+  "pie": {
+    "progression_assertions": {
+      "passed": true,
+      "locked_light_unpowered_damage": 0,
+      "friendly_fire": 0,
+      "zones": [
+        {
+          "beacon": 1,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.0,
+          "horde_enemies": 4
+        },
+        {
+          "beacon": 2,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.01,
+          "horde_enemies": 4
+        },
+        {
+          "beacon": 3,
+          "hostage_channel": true,
+          "automatic_hammer": true,
+          "two_heavy_hits": true,
+          "dynamic_route": true,
+          "route_seconds": 2.0,
+          "horde_enemies": 0
+        }
+      ],
+      "escort_extraction": true
+    },
+    "hostage_combat_assertions": {
+      "orbiter_damage": 6,
+      "hostage_target": true,
+      "immediate_repeat_damage": 0,
+      "charger_damage": 6,
+      "player_intercepts_target": true,
+      "hostage_death_ends_mission": true,
+      "passed": true
+    },
+    "beacon_interrupt_assertions": {
+      "passed": true,
+      "visible_enemy_aborts_channel": true,
+      "progress_resets": true,
+      "beacon_and_door_stay_locked": true,
+      "manual_resume_required": true
+    },
+    "real_hammer_assertions": {
+      "passed": true,
+      "real_input_and_hammer_montage": true,
+      "physical_door_hits": 2,
+      "per_hit_damage": 25,
+      "upgrade_particles_active": true,
+      "interrupted_attack_damage": 0,
+      "interruption_clears_attack_and_collision": true,
+      "sword_hitbox_restored": true
+    },
+    "damage_assertions": {
+      "passed": true,
+      "light_combo_both": [
+        15,
+        15,
+        19
+      ],
+      "heavy_charger": 25,
+      "heavy_orbiter": 0,
+      "repeat_heavy_overlap": 0,
+      "inactive_heavy_overlap": 0,
+      "charger_mesh": "SK_SciFiWarrior02",
+      "charger_anim": "ABP_EnemyEntrega_C"
+    },
+    "dialogue_assertions": {
+      "no_world_text": true,
+      "progressive_text": true,
+      "ambient_playing": true,
+      "does_not_pause": true,
+      "enter_reveals": true,
+      "enter_dismisses": true,
+      "rescue_changes_dialogue": true,
+      "type_audio_ticks": true,
+      "auto_hides": true,
+      "manual_resume_prompt": true,
+      "passed": true
+    },
+    "progression_defaults": {
+      "passed": true,
+      "fresh_level_locked_and_reset": true,
+      "hostage_full_health": 100,
+      "no_floating_text": true,
+      "no_power_on_new_game": true,
+      "debris_does_not_affect_navigation": true
+    }
+  },
+  "packaged_smoke": {
+    "passed": true,
+    "build": "Win64 Development UE 5.6",
+    "cook_errors": 0,
+    "cook_warnings": 21,
+    "uat_exit_code": 0,
+    "hostage_channel_advances_step": 1,
+    "hammer_equipped": true,
+    "sword_equipped": false,
+    "hostage_health_hud_sample": 24,
+    "door_health_after_first_heavy_hit": 25,
+    "door_health_after_second_heavy_hit": 0,
+    "door_destroyed": true,
+    "other_doors_unchanged": true,
+    "input": "Input.+action IA_Heavy_Attack true, followed by Input.-action; normal Enhanced Input/montage/physical overlaps",
+    "fixture": "First zone cleared in memory and actors teleported for isolation. BugItGo was followed by Walk to restore collision; fixtures are not saved or shipped.",
+    "log": "progression-package-log.txt",
+    "screenshot": "progression-preview.png"
+  },
+  "archive": {
+    "path": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "bytes": 737832544,
+    "crc_all_entries_passed": true,
+    "excludes": [
+      "PDB",
+      "Saved"
+    ]
+  },
+  "limitations": [
+    "Tests isolate conditions with teleports and test damage; full manual playthrough remains pending.",
+    "Final hostage/beacon models are team dependencies.",
+    "Physical controller and performance on another computer remain untested.",
+    "Continue/save persistence is not implemented.",
+    "Editor navigation-query test emitted a handled engine ensure; gameplay assertions passed."
+  ]
+}

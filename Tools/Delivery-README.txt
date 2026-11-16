@@ -8,11 +8,16 @@ MISION
 2. Acercarse al rehen. El recuadro inferior indica [E / RB] Rescatar. Pulsar E.
 3. Entrar con el aliado cerca a la primera zona. Aparecen dos oleadas de dos
    orbitadores. El aliado huye a un refugio; no hace falta traerlo entre oleadas.
-4. Al eliminar al ultimo enemigo, la barrera se abre. Recuperar al aliado con E
-   en el refugio y activar la baliza 1 con E cerca.
-5. Llevar al aliado a la segunda zona, junto a la baliza 2. Completar otras dos
-   oleadas de dos embestidores. Recuperar al aliado y activar la baliza 2.
-6. Activar la baliza 3. Llevar al aliado a la zona azul de extraccion.
+4. Al eliminar al ultimo enemigo, recuperar al aliado con E en el refugio y
+   llevarlo a la baliza 1. Solo el rehen puede activarla: se acerca y tarda 3 s.
+   Una amenaza interrumpe el proceso. El jugador no activa balizas con E.
+5. La baliza equipa automaticamente el martillo, que emite particulas de mejora.
+   Dos golpes pesados (clic derecho) rompen la puerta habilitada de esa zona.
+   Las otras puertas siguen selladas hasta activar su propia baliza.
+6. Llevar al aliado a la segunda zona. Completar otras dos oleadas de dos
+   embestidores, recuperar al aliado, escoltarlo a la baliza 2 y romper su puerta.
+7. Escoltar al rehen a la baliza 3 y romper la ultima puerta con el martillo.
+   Llevar al aliado a la zona azul de extraccion.
    Llegar solo no completa la mision.
 
 El aliado no vuelve a seguir automaticamente al acercarse. Hay que despejar
@@ -22,6 +27,9 @@ siguiendote a no mas de 6 metros inicia sus oleadas. Los mensajes cambian con
 el combate, el intermedio y la zona despejada. No hay texto flotando en el mundo.
 Hay unos tres segundos entre sus oleadas. Las primeras dos balizas requieren
 despejar su zona y las tres se activan en orden.
+El rehen tiene 100 de vida, visible en la barra superior izquierda. Ambos tipos
+de enemigo pueden atacarlo. Si muere, termina el intento; acercarte al enemigo
+permite atraer su atencion. La barra se vuelve roja si queda poca vida.
 
 COMBATE
 Orbitador: se mueve alrededor del jugador; solo recibe golpes ligeros.
@@ -37,6 +45,7 @@ un segundo ENTER cierra ese mensaje. Los avisos informativos se ocultan solos.
 No pausan el juego. Las interacciones siguen siendo E / RB.
 Audio propio para texto, avisos, rescate, zona despejada, dano, victoria y derrota;
 ambiente tenue en bucle. El audio se limpia al reiniciar o volver al menu.
+Las puertas tienen sonido de impacto y rotura; la mejora tiene su propia senal.
 
 CONTROLES
 WASD / flechas: moverse. Raton: camara. Espacio: saltar.
@@ -53,4 +62,4 @@ Falta aceptacion del propietario y una partida completa recorrida a mano.
 Las pruebas aisladas del agente usan teletransportes y dano de prueba en PIE.
 
 Proyecto fuente: Terreno.uproject, Unreal Engine 5.6.
-Detalles y evidencia: docs/HANDOFF.md y docs/validation/combat-2026-11-15.json.
+Detalles y evidencia: docs/HANDOFF.md y docs/validation/progression-2026-11-15.json.

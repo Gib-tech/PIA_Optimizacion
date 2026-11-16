@@ -1,0 +1,18 @@
+[2026.11.16-01.03.40:034][550]0) BP_DirectorEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DirectorEntrega_C_0.Paso = 1
+[2026.11.16-01.03.40:035][550]0) BP_PlayerEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_PlayerEntrega_C_2147482434.bIsHammerEquipped = True
+[2026.11.16-01.03.40:036][550]0) BP_PlayerEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_PlayerEntrega_C_2147482434.bIsSwordEquipped = False
+[2026.11.16-01.03.40:037][550]0) BP_BeaconEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_BeaconEntrega_C_0.bActivated = True
+[2026.11.16-01.03.40:037][550]1) BP_BeaconEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_BeaconEntrega_C_1.bActivated = False
+[2026.11.16-01.03.40:037][550]2) BP_BeaconEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_BeaconEntrega_C_2.bActivated = False
+[2026.11.16-01.03.42:892][720]0) BP_PlayerEntrega_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_PlayerEntrega_C_2147482434.IsAttacking = True
+[2026.11.16-01.03.44:058][790]0) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_1.Health = 25.000000
+[2026.11.16-01.03.44:059][790]1) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_2.Health = 50.000000
+[2026.11.16-01.03.44:059][790]2) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_3.Health = 50.000000
+[2026.11.16-01.03.46:392][930]0) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_1.Health = 0.000000
+[2026.11.16-01.03.46:393][930]1) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_2.Health = 50.000000
+[2026.11.16-01.03.46:393][930]2) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_3.Health = 50.000000
+[2026.11.16-01.03.46:393][930]0) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_1.bDestroyed = True
+[2026.11.16-01.03.46:393][930]1) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_2.bDestroyed = False
+[2026.11.16-01.03.46:393][930]2) BP_DestructibleDoor_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_DestructibleDoor_C_3.bDestroyed = False
+[2026.11.16-01.03.46:393][930]0) BP_Hostage_C /Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.BP_Hostage_C_0.Health = 24.000000
+[2026.11.16-01.03.49:886][101]LogExit: Exiting.

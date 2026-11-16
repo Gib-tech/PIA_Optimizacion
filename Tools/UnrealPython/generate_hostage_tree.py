@@ -33,7 +33,7 @@ class TreeGraph(Graph):
         return node
 
 g=TreeGraph()
-selector=g.tree_node('Composite','BTComposite_Selector',['NodeName="Prioridad: huir > esperar > seguir > idle"'],x=0,y=0,index=1)
+selector=g.tree_node('Composite','BTComposite_Selector',['NodeName="Prioridad: huir > baliza > esperar > seguir > idle"'],x=0,y=0,index=1)
 service=g.tree_node('Service',ROOT+'/BTService_HostageSense.BTService_HostageSense_C',index=1)
 service.props+=['bIsSubNode=True']
 flee=g.tree_node('Composite','BTComposite_Sequence',['NodeName="Huir a refugio seguro"'],x=-700,y=300,index=2)
@@ -46,7 +46,12 @@ follow=g.tree_node('Composite','BTComposite_Sequence',['NodeName="Seguir al juga
 g.decorator(follow,'bAccompanying');g.decorator(follow,'DistanceToPlayer',True)
 followmove=g.tree_node('Task','BTTask_MoveTo',['BlackboardKey=(SelectedKeyName="PlayerActor")','AcceptableRadius=(DefaultValue=300.0)','bObserveBlackboardValue=True','bReachTestIncludesAgentRadius=(DefaultValue=False)','bReachTestIncludesGoalRadius=(DefaultValue=False)','bAllowPartialPath=(DefaultValue=False)'],x=400,y=650,index=7)
 idle=g.tree_node('Task','BTTask_Wait',['WaitTime=(DefaultValue=0.5)','RandomDeviation=(DefaultValue=0.0)','NodeName="Idle junto al jugador"'],x=950,y=300,index=8)
-for child in [flee,wait,follow,idle]:g.wire(selector,'Out',child,'In')
+activate=g.tree_node('Composite','BTComposite_Sequence',['NodeName="Activar baliza segura (3 segundos)"'],x=-350,y=300,index=9)
+g.decorator(activate,'bActivateBeacon')
+beaconmove=g.tree_node('Task','BTTask_MoveTo',['BlackboardKey=(SelectedKeyName="BeaconTarget")','AcceptableRadius=(DefaultValue=25.0)','bAllowPartialPath=(DefaultValue=False)','bReachTestIncludesAgentRadius=(DefaultValue=False)'],x=-350,y=950,index=10)
+channel=g.tree_node('Task',ROOT+'/BTTask_ActivateBeacon.BTTask_ActivateBeacon_C',x=0,y=950,index=11)
+for child in [flee,activate,wait,follow,idle]:g.wire(selector,'Out',child,'In')
+for child in [beaconmove,channel]:g.wire(activate,'Out',child,'In')
 for child in [move,arrive]:g.wire(flee,'Out',child,'In')
 g.wire(follow,'Out',followmove,'In')
 g.write('BT_Hostage_Subtree')

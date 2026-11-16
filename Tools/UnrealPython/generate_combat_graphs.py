@@ -11,6 +11,10 @@ MOVE='/Script/Engine.CharacterMovementComponent'
 MONTAGE='/Script/Engine.AnimMontage'
 
 class CombatGraph(HostageGraph):
+    def target_actor(self,field='CombatTarget',**pos):
+        pawn=self.get('CachedPawn','object',obj=BASE,**pos)
+        target=self.get(field,'object',owner=BASE,obj=ACTOR,**pos);self.wire(pawn,'CachedPawn',target,'self')
+        return target
     def write(self,name):
         if name.startswith('BTTask_'):
             events=[n for n in self.nodes if n.kind.endswith('K2Node_Event')]
@@ -159,14 +163,14 @@ def base_enemy():
 
 def attack_task():
     g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=1200);abort=g.task_event('ReceiveAbortAI',x=0,y=3000)
-    bb=g.blackboard(e,'OwnerController',x=0,y=500);target=g.player(x=300,y=500)
+    bb=g.blackboard(e,'OwnerController',x=0,y=500);target=g.target_actor(x=300,y=500)
     cast=g.cast(BASE,x=300,y=0);g.chain(e,cast);g.wire(e,'ControlledPawn',cast,'Object');g.finish(cast,'CastFailed',success=False,x=650,y=-200)
     cache=g.set('Enemy','object',None,obj=BASE,x=650,y=0);g.chain(cast,cache);g.wire(cast,'AsBP_BaseEnemy',cache,'Enemy')
     reset=g.set('Elapsed','real','0',sub='double',x=950,y=0);g.chain(cache,reset)
     hit=g.set('bHit','bool','false',x=1250,y=0);g.chain(reset,hit)
     stop=g.stop_move(e,x=1550,y=0);g.chain(hit,stop)
     out=g.call('/Script/Engine.KismetSystemLibrary','PrintString',static=True,x=1800,y=-200).pin('InString','string',default='Enemigo: va a atacar').pin('bPrintToScreen','bool',default='true').pin('bPrintToLog','bool',default='true').pin('Duration','real',sub='float',default='1.5');g.chain(stop,out)
-    call=g.action('Attack',x=2100,y=0).pin('TargetActor','object',obj=ACTOR);g.chain(out,call);g.wire(cache,'Output_Get',call,'self');g.wire(target,'ReturnValue',call,'TargetActor')
+    call=g.action('Attack',x=2100,y=0).pin('TargetActor','object',obj=ACTOR);g.chain(out,call);g.wire(cache,'Output_Get',call,'self');g.wire(target,'CombatTarget',call,'TargetActor')
     enemy=g.get('Enemy','object',obj=BASE,x=0,y=1800)
     elapsed=g.elapsed(tick,x=0,y=1200)
     crossed=g.compare('GreaterEqual_DoubleDouble','real','0.45',sub='double',x=900,y=1550);g.wire(elapsed,'Output_Get',crossed,'A')
@@ -211,15 +215,15 @@ def sense():
 
 def windup():
     g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=900);abort=g.task_event('ReceiveAbortAI',x=0,y=2200)
-    bb=g.blackboard(e,'OwnerController',x=0,y=400);target=g.player(x=300,y=400)
+    bb=g.blackboard(e,'OwnerController',x=0,y=400);target=g.target_actor(x=300,y=400)
     stop=g.stop_move(e,x=300,y=0);g.chain(e,stop)
     reset=g.set('Elapsed','real','0',sub='double',x=600,y=0);g.chain(stop,reset)
-    focus=g.call(CONTROLLER,'K2_SetFocus',x=900,y=0).pin('NewFocus','object',obj=ACTOR);g.chain(reset,focus);g.wire(e,'OwnerController',focus,'self');g.wire(target,'ReturnValue',focus,'NewFocus')
+    focus=g.call(CONTROLLER,'K2_SetFocus',x=900,y=0).pin('NewFocus','object',obj=ACTOR);g.chain(reset,focus);g.wire(e,'OwnerController',focus,'self');g.wire(target,'CombatTarget',focus,'NewFocus')
     play=g.montage(e,'ControlledPawn','AM_EnemyAttack_Entrega',rate='1.625',x=1200,y=0);g.chain(focus,play)
     elapsed=g.elapsed(tick,x=0,y=900)
     compare=g.compare('GreaterEqual_DoubleDouble','real','0.8',sub='double',x=900,y=1300);g.wire(elapsed,'Output_Get',compare,'A')
     b=g.branch(x=1200,y=900);g.chain(elapsed,b);g.wire(compare,'ReturnValue',b,'Condition')
-    pos=g.location(target,'ReturnValue',x=1200,y=1500)
+    pos=g.location(target,'CombatTarget',x=1200,y=1500)
     goal=g.bbset(bb,'ChargeGoal','Vector',x=1500,y=900);g.chain(b,goal);g.wire(pos,'ReturnValue',goal,'VectorValue')
     charging=g.bbset(bb,'bCharging','Bool','true',x=1800,y=900);g.chain(goal,charging);g.finish(charging,x=2100,y=900)
     stopanim=g.stop_montage(abort,'ControlledPawn','AM_EnemyAttack_Entrega',x=350,y=2200);g.chain(abort,stopanim);g.finish(stopanim,abort=True,x=700,y=2200)
@@ -227,22 +231,22 @@ def windup():
 
 def charge():
     g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=1000);abort=g.task_event('ReceiveAbortAI',x=0,y=3000)
-    bb=g.blackboard(e,'OwnerController',x=0,y=450);target=g.player(x=350,y=450);goal=g.bbget(bb,'ChargeGoal','Vector',x=650,y=450)
+    bb=g.blackboard(e,'OwnerController',x=0,y=450);target=g.target_actor('ChargeVictim',x=350,y=450);goal=g.bbget(bb,'ChargeGoal','Vector',x=650,y=450)
     reset=g.set('Elapsed','real','0',sub='double',x=350,y=0);g.chain(e,reset)
     mark=g.set('bHit','bool','false',x=650,y=0);g.chain(reset,mark)
     speed=g.speed(e,'900',x=950,y=0);g.chain(mark,speed)
     move=g.move_to(e,goal,'ReturnValue',path=False,radius='40',x=1250,y=0);g.chain(speed,move)
     elapsed=g.elapsed(tick,x=0,y=1000)
-    distance=g.dist(tick,'ControlledPawn',target,'ReturnValue',x=350,y=1600)
+    distance=g.dist(tick,'ControlledPawn',target,'ChargeVictim',x=350,y=1600)
     near=g.compare('LessEqual_DoubleDouble','real','180',sub='double',x=650,y=1600);g.wire(distance,'ReturnValue',near,'A')
     hit=g.get('bHit','bool',x=650,y=1900);notyet=g.boolean('Not_PreBool',hit,'bHit',x=950,y=1900)
     fresh=g.boolean('BooleanAND',near,'ReturnValue',notyet,'ReturnValue',x=1250,y=1800)
-    sight=g.sight(tick,'OwnerController',target,'ReturnValue',x=1250,y=2100)
+    sight=g.sight(tick,'OwnerController',target,'ChargeVictim',x=1250,y=2100)
     valid=g.boolean('BooleanAND',fresh,'ReturnValue',sight,'ReturnValue',x=1550,y=1800)
     b=g.branch(x=1850,y=1000);g.chain(elapsed,b);g.wire(valid,'ReturnValue',b,'Condition')
     flag=g.set('bHit','bool','true',x=2150,y=1000);g.chain(b,flag)
     damage=g.call('/Script/Engine.GameplayStatics','ApplyDamage',static=True,x=2450,y=1000).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='6').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
-    g.chain(flag,damage);g.wire(target,'ReturnValue',damage,'DamagedActor');g.wire(tick,'OwnerController',damage,'EventInstigator');g.wire(tick,'ControlledPawn',damage,'DamageCauser')
+    g.chain(flag,damage);g.wire(target,'ChargeVictim',damage,'DamagedActor');g.wire(tick,'OwnerController',damage,'EventInstigator');g.wire(tick,'ControlledPawn',damage,'DamageCauser')
     expired=g.compare('GreaterEqual_DoubleDouble','real','1.0',sub='double',x=2150,y=2300);g.wire(elapsed,'Output_Get',expired,'A')
     donecond=g.boolean('BooleanOR',near,'ReturnValue',expired,'ReturnValue',x=2450,y=2300)
     done=g.branch(x=2800,y=1700);g.chain(damage,done);g.chain(b,done,'else');g.wire(donecond,'ReturnValue',done,'Condition')
@@ -264,8 +268,8 @@ def retreat():
     points=g.call('/Script/Engine.GameplayStatics','GetAllActorsWithTag',static=True,x=1250,y=0).pin('Tag','name',default='RefugioRehen').pin('OutActors','object',obj=ACTOR,out=True)
     points.pins['OutActors']['container']='Array';g.chain(clear,points)
     loop=g.foreach(points,'OutActors',x=1550,y=0);g.chain(points,loop,nextpin='Exec')
-    player=g.player(x=1550,y=700)
-    far=g.dist(loop,'Array Element',player,'ReturnValue',x=1850,y=700)
+    player=g.target_actor(x=1550,y=700)
+    far=g.dist(loop,'Array Element',player,'CombatTarget',x=1850,y=700)
     enough=g.compare('GreaterEqual_DoubleDouble','real','1100',sub='double',x=2150,y=700);g.wire(far,'ReturnValue',enough,'A')
     distance=g.dist(loop,'Array Element',e,'ControlledPawn',x=1850,y=1000)
     bestget=g.get('BestDistance','real',sub='double',x=1850,y=1200)
@@ -273,7 +277,7 @@ def retreat():
     candidate=g.boolean('BooleanAND',enough,'ReturnValue',closer,'ReturnValue',x=2450,y=800)
     b=g.branch(x=2750,y=0);g.chain(loop,b,'LoopBody');g.wire(candidate,'ReturnValue',b,'Condition')
     start=g.location(e,'ControlledPawn',x=2450,y=1200);end=g.location(loop,'Array Element',x=2750,y=1200)
-    playerpos=g.location(player,'ReturnValue',x=2450,y=1550)
+    playerpos=g.location(player,'CombatTarget',x=2450,y=1550)
     def difference(a,ap,b,bp,x,y):
         n=g.call('/Script/Engine.KismetMathLibrary','Subtract_VectorVector',pure=True,static=True,x=x,y=y).pin('A','struct',obj=VECTOR).pin('B','struct',obj=VECTOR).pin('ReturnValue','struct',obj=VECTOR,out=True);g.wire(a,ap,n,'A');g.wire(b,bp,n,'B');return n
     away=difference(start,'ReturnValue',playerpos,'ReturnValue',2750,1550)
@@ -297,7 +301,7 @@ def retreat():
     move=g.move_to(e,goal,'ReturnValue',radius='80',x=3050,y=1800);g.chain(choose,move)
     g.finish(choose,'else',x=2750,y=2700)
     elapsed=g.elapsed(tick,x=0,y=3500)
-    currentdist=g.dist(tick,'ControlledPawn',player,'ReturnValue',x=650,y=4000)
+    currentdist=g.dist(tick,'ControlledPawn',player,'CombatTarget',x=650,y=4000)
     safe=g.compare('GreaterEqual_DoubleDouble','real','1000',sub='double',x=950,y=4000);g.wire(currentdist,'ReturnValue',safe,'A')
     expired=g.compare('GreaterEqual_DoubleDouble','real','4.0',sub='double',x=950,y=4300);g.wire(elapsed,'Output_Get',expired,'A')
     done=g.boolean('BooleanOR',safe,'ReturnValue',expired,'ReturnValue',x=1250,y=4100)
