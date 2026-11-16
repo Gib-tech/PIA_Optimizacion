@@ -174,29 +174,9 @@ def legacy_base_enemy():
     g.write('BP_BaseEnemy')
 
 def attack_task():
-    g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);tick=g.task_event('ReceiveTickAI',x=0,y=1200);abort=g.task_event('ReceiveAbortAI',x=0,y=3000)
-    bb=g.blackboard(e,'OwnerController',x=0,y=500);target=g.target_actor(x=300,y=500)
-    cast=g.cast(BASE,x=300,y=0);g.chain(e,cast);g.wire(e,'ControlledPawn',cast,'Object');g.finish(cast,'CastFailed',success=False,x=650,y=-200)
-    cache=g.set('Enemy','object',None,obj=BASE,x=650,y=0);g.chain(cast,cache);g.wire(cast,'AsBP_BaseEnemy',cache,'Enemy')
-    reset=g.set('Elapsed','real','0',sub='double',x=950,y=0);g.chain(cache,reset)
-    hit=g.set('bHit','bool','false',x=1250,y=0);g.chain(reset,hit)
-    stop=g.stop_move(e,x=1550,y=0);g.chain(hit,stop)
-    face=g.face_target(stop,e,target,'CombatTarget')
-    out=g.call('/Script/Engine.KismetSystemLibrary','PrintString',static=True,x=1800,y=-200).pin('InString','string',default='Enemigo: va a atacar').pin('bPrintToScreen','bool',default='true').pin('bPrintToLog','bool',default='true').pin('Duration','real',sub='float',default='1.5');g.chain(face,out)
-    call=g.action('Attack',x=2100,y=0).pin('TargetActor','object',obj=ACTOR);g.chain(out,call);g.wire(cache,'Output_Get',call,'self');g.wire(target,'CombatTarget',call,'TargetActor')
-    enemy=g.get('Enemy','object',obj=BASE,x=0,y=1800)
-    elapsed=g.elapsed(tick,x=0,y=1200)
-    crossed=g.compare('GreaterEqual_DoubleDouble','real','0.45',sub='double',x=900,y=1550);g.wire(elapsed,'Output_Get',crossed,'A')
-    was=g.get('bHit','bool',x=900,y=1800);notyet=g.boolean('Not_PreBool',was,'bHit',x=1150,y=1800)
-    impact=g.boolean('BooleanAND',crossed,'ReturnValue',notyet,'ReturnValue',x=1450,y=1550)
-    b=g.branch(x=1750,y=1200);g.chain(elapsed,b);g.wire(impact,'ReturnValue',b,'Condition')
-    mark=g.set('bHit','bool','true',x=2050,y=1100);g.chain(b,mark)
-    strike=g.action('ResolveAttack',x=2350,y=1100);g.chain(mark,strike);g.wire(enemy,'Enemy',strike,'self')
-    expired=g.compare('GreaterEqual_DoubleDouble','real','1.3',sub='double',x=2050,y=2000);g.wire(elapsed,'Output_Get',expired,'A')
-    done=g.branch(x=2650,y=1600);g.chain(strike,done);g.chain(b,done,'else');g.wire(expired,'ReturnValue',done,'Condition')
-    end=g.action('EndAttack',x=2950,y=1600);g.chain(done,end);g.wire(enemy,'Enemy',end,'self');g.finish(end,x=3250,y=1600)
-    cancel=g.action('EndAttack',x=650,y=3000);g.chain(abort,cancel);g.wire(enemy,'Enemy',cancel,'self');g.finish(cancel,abort=True,x=950,y=3000)
-    g.write('BTTask_Attack')
+    from generate_combat_motion import melee_task
+    melee_task()
+
 
 def hit_task():
     g=CombatGraph();e=g.task_event('ReceiveExecuteAI',x=0,y=0);abort=g.task_event('ReceiveAbortAI',x=0,y=800)
@@ -206,7 +186,8 @@ def hit_task():
     clear=g.bbset(bb,'bReceivingDamage','Bool','false',x=1000,y=0);g.chain(delay,clear)
     out=g.call('/Script/Engine.KismetSystemLibrary','PrintString',static=True,x=1350,y=0).pin('InString','string',default='Enemigo: ya no recibe daño').pin('bPrintToScreen','bool',default='true').pin('bPrintToLog','bool',default='true').pin('Duration','real',sub='float',default='1.5');g.chain(clear,out);g.finish(out,x=1650,y=0)
     tag=g.call(ACTOR,'ActorHasTag',pure=True,x=1000,y=650).pin('Tag','name',default='Enemy.Charger').pin('ReturnValue','bool',out=True);g.wire(e,'ControlledPawn',tag,'self')
-    orbiter=g.boolean('Not_PreBool',tag,'ReturnValue',x=1350,y=650);g.wire(orbiter,'ReturnValue',out,'bPrintToScreen');g.wire(orbiter,'ReturnValue',out,'bPrintToLog')
+    orbiter=g.boolean('Not_PreBool',tag,'ReturnValue',x=1350,y=650);g.wire(orbiter,'ReturnValue',out,'bPrintToLog')
+    silent=g.call('/Script/Engine.KismetMathLibrary','Not_PreBool',pure=True,static=True).pin('A','bool',default='true').pin('ReturnValue','bool',out=True);g.wire(silent,'ReturnValue',out,'bPrintToScreen')
     stop=g.stop_montage(abort,'ControlledPawn','AM_EnemyHit_Entrega',x=350,y=800);g.chain(abort,stop);g.finish(stop,abort=True,x=700,y=800)
     g.write('BTTask_HitSun')
 

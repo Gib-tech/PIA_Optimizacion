@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "read_only_in_normal_mission": true,
+  "allied_move_ignores_bidirectional": true,
+  "beacons_cached": 3,
+  "enemies": [
+    {
+      "enemy": "BP_BaseEnemy",
+      "actor_tick_enabled": false,
+      "contact_damage": 13.2,
+      "rotation_rate": 360,
+      "stagger_cooldown": 1.0
+    },
+    {
+      "enemy": "BP_ChargerEnemy",
+      "actor_tick_enabled": false,
+      "contact_damage": 13.2,
+      "rotation_rate": 360,
+      "stagger_cooldown": 1.2
+    }
+  ]
+}

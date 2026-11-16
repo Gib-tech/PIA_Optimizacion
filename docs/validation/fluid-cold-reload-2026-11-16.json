@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "normal_editor_without_helper": true,
+  "no_pie": true,
+  "no_dirty_packages": true,
+  "enemies": [
+    "BP_BaseEnemy",
+    "BP_ChargerEnemy"
+  ],
+  "fountain_geometry_collection_usage": true,
+  "original_material_parameters_match": true,
+  "level": "Nivel_Entrega"
+}

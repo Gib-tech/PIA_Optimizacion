@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "isolated_callbacks_not_physical_input": true,
+  "orbiter_damage_marker": true,
+  "healing_does_not_confirm_hit": true,
+  "lethal_hit_confirmed": true,
+  "charger_damage_marker": true,
+  "hostage_warning": true,
+  "restore_does_not_increment_hit_notice": true,
+  "invulnerable_hit_does_not_repeat_notice": true
+}

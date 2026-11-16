@@ -43,7 +43,7 @@ MESSAGES=[
  ('MARTILLO MEJORADO','La baliza cargó tu martillo. Ya está equipado: úsalo para destruir la puerta de esta zona.','Clic derecho: golpear la puerta'),
  ('PUERTA SELLADA','Sólo el rehén puede cargar la baliza. Primero despeja sus oleadas y luego llévalo hasta ella.','Recupera al rehén y escolta su avance'),
  ('ABRE EL CAMINO','El sello está debilitado. Dos golpes pesados con el martillo abrirán el paso.','Clic derecho: destruir la puerta')]
-MESSAGES[11]=('OLEADA 2 / 2','Otro par de orbitadores. Despeja el área para que el rehén pueda usar la baliza.','Clic izquierdo: ataque ligero')
+MESSAGES[11]=('OLEADA 2 / 2','Otro par de orbitadores. Despeja el área para cargar el martillo y abrir la puerta.','Clic izquierdo: ligero   Clic derecho: pesado')
 for i in [15,16]:MESSAGES[i]=('ZONA DESPEJADA','No quedan enemigos. Recupera al rehén y llévalo a la baliza; él la activará al acercarse.','[E / RB] Llamar al rehén cerca')
 for i in [17,18,19]:MESSAGES[i]=('BALIZA','Sólo el rehén puede usarla. Acércalo después de despejar la horda y espera tres segundos.','Escolta al rehén hasta la baliza')
 for i in [20,21,22]:MESSAGES[i]=('SIGUE AVANZANDO','Protege al rehén y acompáñalo hasta la siguiente baliza. Las puertas requieren su carga.','Continúa con el rehén')
@@ -112,6 +112,11 @@ for name,cls in [('CachedDirector',DIRECTOR),('CachedHostage',HOSTAGE)]:
     s=g.set(name,'object',None,obj=cls);g.chain(n,s);g.wire(n,'ReturnValue',s,name);prev=s
 initial_host_hit=g.get('DamageNoticeSerial','int',owner=HOSTAGE);g.wire(s,'Output_Get',initial_host_hit,'self')
 prev=save(prev,'LastHostageHitSerial',(initial_host_hit,'DamageNoticeSerial'))
+for beacon_i in [1,2,3]:
+    beacon_class='/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega_C'
+    raw_beacon=g.get('Baliza'+str(beacon_i),'object',owner=DIRECTOR,obj='/Script/Engine.StaticMeshActor');director_cache=g.get('CachedDirector','object',obj=DIRECTOR);g.wire(director_cache,'CachedDirector',raw_beacon,'self')
+    cast_beacon=g.cast(beacon_class);g.chain(prev,cast_beacon);g.wire(raw_beacon,'Baliza'+str(beacon_i),cast_beacon,'Object')
+    cache_beacon=g.set('CachedBeacon'+str(beacon_i),'object',None,obj=beacon_class);g.chain(cast_beacon,cache_beacon);g.wire(cast_beacon,'AsBP_BeaconEntrega',cache_beacon,'CachedBeacon'+str(beacon_i));prev=cache_beacon
 ambient=sound(prev,'Ambience',.18,spawn=True)
 cache=g.set('AmbientAudio','object',None,obj='/Script/Engine.AudioComponent');g.chain(ambient,cache);g.wire(ambient,'ReturnValue',cache,'AmbientAudio')
 # Enter reveals the sentence immediately; a second press dismisses this context.
@@ -315,9 +320,16 @@ def padtime(value):
     return table(pick(cmp('Less_IntInt',value,10),1,0),[s,catstr('0',s)])
 clock=catstr('TIEMPO DE MISIÓN: ',catstr(padtime(minutes),catstr(':',padtime(remainder))))
 clockline=text(orderline,clock,add(chipx,mul(12,scale)),add(chipy,mul(60,scale)),1.1)
-countstr=call(STRING,'Conv_IntToString',[('InInt','int',calc('Min',step,3,'int'))],cat='string')
-nextname=table(calc('Min',step,2,'int'),[table(order_code,['ABC'[p[i]] for p in ORDERS]) for i in range(3)])
-nextstr=table(pick(cmp('Less_IntInt',step,3),1,0),['SECUENCIA COMPLETA',catstr('SIGUIENTE: ',nextname)])
+beacon_count=0
+for beacon_i in [1,2,3]:
+    beacon_class='/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega_C'
+    beacon_node=g.get('CachedBeacon'+str(beacon_i),'object',obj=beacon_class)
+    active_node=g.get('bActivated','bool',owner=beacon_class);g.wire(beacon_node,'CachedBeacon'+str(beacon_i),active_node,'self')
+    active_int=call(MATH,'Conv_BoolToInt',[('InBool','bool',(active_node,'bActivated'))],cat='int')
+    beacon_count=calc('Add_IntInt',beacon_count,active_int,'int')
+countstr=call(STRING,'Conv_IntToString',[('InInt','int',beacon_count)],cat='string')
+nextname=table(calc('Min',beacon_count,2,'int'),[table(order_code,['ABC'[p[i]] for p in ORDERS]) for i in range(3)])
+nextstr=table(pick(cmp('Less_IntInt',beacon_count,3),1,0),['SECUENCIA COMPLETA',catstr('SIGUIENTE: ',nextname)])
 nextline=text(clockline,catstr(catstr(catstr('BALIZAS: ',countstr),' / 3   |   '),nextstr),add(chipx,mul(12,scale)),add(chipy,mul(87,scale)),1.05)
 active=branch(nextline,incombat)
 wc=call(STRING,'Conv_IntToString',[('InInt','int',wave)],cat='string');lc=call(STRING,'Conv_IntToString',[('InInt','int',living)],cat='string')
@@ -353,7 +365,8 @@ hit_visible=branch(seq,cmp('Greater_DoubleDouble',v('EnemyHitUntil'),now,'real')
 hit_marker=text(hit_visible,'X',sub(mul(width,.5),mul(5,scale)),sub(mul(height,.5),mul(8,scale)),1.2,'(R=1,G=.65,B=.2,A=1)')
 hit_damage=call(STRING,'Conv_IntToString',[('InInt','int',call(MATH,'FFloor',[('A','real',v('LastEnemyDamage'))],cat='int'))],cat='string')
 text(hit_marker,concat('-',hit_damage),add(mul(width,.5),mul(12,scale)),add(mul(height,.5),mul(8,scale)),.95,'(R=1,G=.8,B=.45,A=1)')
-host_warning=branch(seq,both(cmp('Greater_DoubleDouble',v('HostageHurtUntil'),now,'real'),cmp('Greater_DoubleDouble',host_damage_hp,0,'real')),'then_3')
+host_warning_ready=branch(seq,(g.valid(hostage,'CachedHostage'),'ReturnValue'),'then_3')
+host_warning=branch(host_warning_ready,both(cmp('Greater_DoubleDouble',v('HostageHurtUntil'),now,'real'),cmp('Greater_DoubleDouble',host_damage_hp,0,'real')))
 warning=rect(host_warning,mul(20,scale),mul(194,scale),mul(430,scale),mul(53,scale),'(R=.36,G=.025,B=.015,A=.94)')
 warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',mul(30,scale),mul(203,scale),1.15,'(R=1,G=.85,B=.4,A=1)')
 text(warning,'¡Ayúdame! Protege mi retirada.',mul(30,scale),mul(224,scale),1.05)

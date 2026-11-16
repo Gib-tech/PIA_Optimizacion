@@ -1,5 +1,9 @@
 # Governance
 
+## Refinamiento de combate y partida real autorizados — 2026-11-16
+
+**Stated:** el propietario indica que cuesta acertar golpes, observa movimientos poco fluidos y solicita mejorar la IA, tomar control en tiempo real y jugar un recorrido normal para detectar problemas de flujo. **Decision:** ajustar acercamiento, giro, ventanas de contacto y recuperación manteniendo dos Behavior Trees distintos y daño13.2; corregir bloqueos de escolta e información engañosa encontrada durante la partida. Se autorizan pruebas en PIE mediante movimiento físico y acciones de ataque reales; no acreditar una victoria con teletransportes, invulnerabilidad ni cambios de salud/daño. Las pruebas del agente no sustituyen aceptación manual. Commit y push a origin siguen autorizados.
+
 ## Ataque y avisos de combate; revisión de rúbrica — 2026-11-16
 
 **Stated:** el propietario observa que el enemigo golpea desde lejos y hace daño después de acercarse. Pide corregir esa presentación, añadir un aviso del rehén al ser atacado y una respuesta cuando un rival recibe daño. Después solicita revisar qué falta para la entrega. **Decision:** separar preparación/carrera/golpe cercano, consumir un único impacto durante el montaje y dar señales sólo por daño real. Mantener Behavior Trees y valores de vida/daño; el ciclo de carga ahora incluye ejecución cercana de1.3s. La autorización vigente de commit y push persiste. La auditoría se basa en las dos capturas aportadas y en evidencia del mapa; el texto general referido por docs se distingue como alcance a confirmar. No se publica en redes ni se atribuye aceptación académica.

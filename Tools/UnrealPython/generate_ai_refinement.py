@@ -4,19 +4,16 @@ from generate_combat_graphs import CombatGraph, BASE, CONTROLLER
 
 
 def face_target():
-    g=CombatGraph();e=g.task_event('ReceiveExecuteAI');abort=g.task_event('ReceiveAbortAI')
-    target=g.target_actor();valid=g.valid(target,'CombatTarget');b=g.branch();g.wire(valid,'ReturnValue',b,'Condition');g.chain(e,b)
-    face=g.face_target(b,e,target,'CombatTarget');g.finish(face)
-    g.finish(b,'else',success=False);g.finish(abort,abort=True)
-    g.write('BTTask_FaceCombatTarget')
+    from generate_combat_motion import face_target as build
+    build()
+
 
 def retreat():
     g=ProgressGraph()
     e=g.task_event('ReceiveExecuteAI');tick=g.task_event('ReceiveTickAI');abort=g.task_event('ReceiveAbortAI')
     pawn=g.v('CachedPawn','object',obj=BASE)
-    # Retreat remains local to the player, including the first service interval
-    # before CombatTarget has been populated.
-    player=g.player();target=(player,'ReturnValue')
+    # Retreat remains local to the actual combat target, including the hostage.
+    target=g.v('CombatTarget','object',owner=BASE,obj=ACTOR,target=pawn)
     start=(g.location(e,'ControlledPawn'),'ReturnValue')
     end=(g.location(*target),'ReturnValue')
     def vector(fn,a,b):
@@ -27,14 +24,14 @@ def retreat():
     prev=g.s(e,'Elapsed',0)
     # Focus from windup must not make the recovery walk run backwards.
     clear=g.call(CONTROLLER,'K2_ClearFocus');g.wire(e,'OwnerController',clear,'self');g.chain(prev,clear)
-    prev=g.speed(e,'400');g.chain(clear,prev)
+    prev=g.speed(e,'320');g.chain(clear,prev)
     prev=g.s(prev,'BestDistance',100000)
     prev=g.s(prev,'RetreatGoal',start,'struct',obj=VEC)
     # A small local fan, full paths <=650 cm, never remote hostage refuge actors.
     for angle in [0,45,-45,90,-90]:
         rotated=g.c(MATH,'RotateAngleAxis',[('InVect','struct',direction),('AngleDeg','real',angle),('Axis','struct','0,0,1')],cat='struct',obj=VEC)
         for p in ['InVect','Axis']:rotated[0].pins[p]['obj']=VEC
-        offset=g.c(MATH,'Multiply_VectorFloat',[('A','struct',rotated),('B','real',420)],cat='struct',obj=VEC);offset[0].pins['A']['obj']=VEC
+        offset=g.c(MATH,'Multiply_VectorFloat',[('A','struct',rotated),('B','real',240)],cat='struct',obj=VEC);offset[0].pins['A']['obj']=VEC
         goal=vector('Add_VectorVector',start,offset)
         path=g.call('/Script/NavigationSystem.NavigationSystemV1','FindPathToLocationSynchronously',static=True).pin('WorldContextObject','object',obj='/Script/CoreUObject.Object',hidden=True).pin('PathStart','struct',obj=VEC).pin('PathEnd','struct',obj=VEC).pin('PathfindingContext','object',obj=ACTOR).pin('FilterClass','class',obj='/Script/NavigationSystem.NavigationQueryFilter').pin('ReturnValue','object',obj='/Script/NavigationSystem.NavigationPath',out=True)
         g.wire(e,'OwnerController',path,'WorldContextObject')
@@ -44,10 +41,10 @@ def retreat():
         length=g.call('/Script/NavigationSystem.NavigationPath','GetPathLength',pure=True).pin('ReturnValue','real',sub='float',out=True);g.wire(path,'ReturnValue',length,'self')
         distance=g.c(MATH,'Vector_Distance2D',[('V1','struct',goal),('V2','struct',end)])
         for p in ['V1','V2']:distance[0].pins[p]['obj']=VEC
-        score=g.c(MATH,'Abs',[('A','real',g.op('Subtract_DoubleDouble',distance,550))])
+        score=g.c(MATH,'Abs',[('A','real',g.op('Subtract_DoubleDouble',distance,380))])
         ok=g.both((valid,'ReturnValue'),g.neg((partial,'ReturnValue')))
         ok=g.both(ok,g.cmp('LessEqual_DoubleDouble',(length,'ReturnValue'),650))
-        ok=g.both(ok,g.both(g.cmp('GreaterEqual_DoubleDouble',distance,300),g.cmp('Less_DoubleDouble',score,g.v('BestDistance'))))
+        ok=g.both(ok,g.both(g.cmp('GreaterEqual_DoubleDouble',distance,220),g.cmp('Less_DoubleDouble',score,g.v('BestDistance'))))
         b=g.br(path,ok);save=g.s(b,'RetreatGoal',goal,'struct',obj=VEC);save=g.s(save,'BestDistance',score)
         merge=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True)
         g.chain(save,merge);g.chain(b,merge,'else');prev=merge
@@ -59,7 +56,7 @@ def retreat():
     distance=g.c(MATH,'Vector_Distance2D',[('V1','struct',(g.location(tick,'ControlledPawn'),'ReturnValue')),('V2','struct',goal)])
     for p in ['V1','V2']:distance[0].pins[p]['obj']=VEC
     finish=g.br(elapsed,g.both(g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),.2),g.both(g.cmp('LessEqual_DoubleDouble',distance,90),g.cmp('Less_DoubleDouble',g.v('BestDistance'),100000))))
-    expired=g.br(finish,g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),1.4),'else')
+    expired=g.br(finish,g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),1.0),'else')
     stop=g.stop_move(tick);g.chain(finish,stop);g.chain(expired,stop)
     normal=g.speed(tick,'600');g.chain(stop,normal);g.finish(normal)
     stop=g.stop_move(abort);g.chain(abort,stop);normal=g.speed(abort,'600');g.chain(stop,normal);g.finish(normal,abort=True)

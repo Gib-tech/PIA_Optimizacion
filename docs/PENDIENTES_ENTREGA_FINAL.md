@@ -1,5 +1,7 @@
 # Pendientes para la entrega final de Time Out
 
+**Refinamiento de fluidez del16/11:** el agente completó el recorrido actual con ocho enemigos, tres balizas/puertas y extracción (02:43; vida7.6/20.8), mediante movimiento físico y ataques reales, sin teletransportes ni cambios de vida/daño. Ver `validation/fluid-combat-2026-11-16.json`. FIN-01 sigue abierto para aceptación manual del propietario y PC de presentación; los ensayos anteriores que perdieron son históricos.
+
 **Auditoría vigente del16/11 tras combate:** consultar primero `PLAN_ADAPTACION_EVALUACION.md`, sección Auditoría vigente. FIN-10 cantidad acreditada con16diseños conservadores; autoría pendiente. FIN-14 cuatro LOD y transiciones reales comprobadas en los cinco modelos; falta presentación/aceptación. FIN-13 ahora son diez edificios Nanite. Los pendientes principales son documentación/cronograma, evidencia de redes/video, interpretación de guardado, alcance del texto general y aceptación/PC de presentación. Las menciones históricas de versiones/cantidades siguientes no sustituyen esta revisión.
 
 Revisión actualizada el 16 de noviembre de 2026 para la entrega indicada del 18 de noviembre. La prioridad es validar manualmente el circuito nuevo de balizas, el guardado y los controles, integrar el rehén definitivo y comprobar los requisitos de evaluación en el ejecutable.

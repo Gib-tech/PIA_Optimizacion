@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "description": "Agent controlled realtime PIE playthrough with physical movement and actual attack handlers; UI new-game/retry/dialogue through computer use. Not owner acceptance.",
+  "normal_playthrough": "fluid-gameplay-2026-11-16.json",
+  "enemy_count": 8,
+  "motion_samples": 1945,
+  "largest_yaw_step_under_200ms": {
+    "angle": 39.3,
+    "seconds": 0.09,
+    "enemy": "BP_BaseEnemy_C_3",
+    "at": 34.04
+  },
+  "baseline_largest_observed_yaw_step_degrees": 171.9,
+  "baseline_note": "Earlier baseline observation, not an FPS or statistical benchmark.",
+  "attack_starts_observed": 18,
+  "isolated_real_tree_cases": 4,
+  "isolated_timing": "fluid-combat-timing-2026-11-16.json",
+  "isolated_misses": "fluid-combat-misses-2026-11-16.json",
+  "read_only_runtime": "fluid-combat-runtime-2026-11-16.json",
+  "damage_unchanged": 13.2,
+  "runtime_is_blueprint_only": true,
+  "editor_helper_is_not_packaged": true,
+  "limits": [
+    "Owner difficulty/visual acceptance pending",
+    "Presentation PC performance pending",
+    "Earlier exploratory defeats and invalid Tick test were not credited as wins",
+    "Brief initial streaming/exposure transition visible at mission entry; no functional blocker found"
+  ],
+  "feedback_regression_after_startup_guard": "fluid-combat-feedback-2026-11-16.json",
+  "fountain_shader_compatibility": "fluid-fountain-material-2026-11-16.json",
+  "startup_hud_warning_guarded": true,
+  "package": {
+    "platform": "Win64 Development",
+    "build_success": true,
+    "cook_errors": 0,
+    "cook_reported_warnings": 30,
+    "unique_warning_messages": 15,
+    "warnings": "Existing player obsolete Scale pin and14 Manny pose assets; no new material warnings",
+    "zip_bytes": 622958549,
+    "zip_crc_verified": true,
+    "zip_excludes_saved_debug_symbols_and_helper": true,
+    "native_smoke": [
+      "Nuevo juego",
+      "E rescue",
+      "mission clock",
+      "pause",
+      "return to menu",
+      "clean exit0"
+    ],
+    "native_log_no_accessed_none": true,
+    "native_log_no_fountain_usage_warning": true,
+    "full_native_combat_playthrough": false
+  },
+  "cold_reload": "fluid-cold-reload-2026-11-16.json",
+  "cold_walls_and_11_models_revalidated": true
+}

@@ -51,7 +51,7 @@ def timing_tick(dt,s=timing_state):
         if playing:assert sample['distance']<=225,('Remote attack montage',sample)
         if sample['hp']<s['start_hp'] and s['impact_seen_at'] is None:
             assert abs(s['start_hp']-sample['hp']-13.2)<.001,sample
-            assert playing and .30<=sample['position']<=.73,('Damage outside montage impact',sample)
+            assert playing and .26<=sample['position']<=.69,('Damage outside montage impact',sample)
             assert sample['speed']<10,('Sliding strike',sample)
             s['impact_seen_at']=now
             if victim==timing_hostage:

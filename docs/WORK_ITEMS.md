@@ -1,5 +1,9 @@
 # Work items
 
+## Revisión activa de fluidez — 2026-11-16
+
+**Stated:** mejorar ataque/movimiento enemigo y jugar un recorrido normal en tiempo real. **Implemented / pruebas del agente:** actualización de golpe desde tareas activas, giro progresivo, aproximación/carga/recuperación revisadas, aturdimiento limitado, colisión suave entre aliados y contador real de balizas. Mantener pendiente la aceptación del propietario de AI1-T5/FIN-01; no usar las pruebas del agente para cambiarla a Passed. Resultados finales y pendientes de evaluación en HANDOFF.md y PLAN_ADAPTACION_EVALUACION.md.
+
 ## Ataque, avisos y auditoría vigente — 2026-11-16
 
 - **Verified:** cuatro casos de IA real (dos rivales × jugador/rehén), daño13.2 durante el montaje y sin deslizamiento; solicitudes lejanas rechazadas. Esquiva y cancelación no producen golpe tardío. Regresión de daño ligero/pesado y contactos duplicados aprobada.

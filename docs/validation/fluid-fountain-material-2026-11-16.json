@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "asset": "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente",
+  "original_instance": "/Game/Fab/Megascans/Surfaces/Plush_Carpet_umonbbqdy/Medium/MI_umonbbqdy.MI_umonbbqdy",
+  "compatible_instance": "/Game/ThirdPerson/Environment/Atmosphere/MI_FuenteChaos.MI_FuenteChaos",
+  "owned_parent": "/Game/ThirdPerson/Environment/Atmosphere/M_FuenteChaos.M_FuenteChaos",
+  "geometry_collection_usage": true,
+  "original_textures_parameters_preserved": true,
+  "plugin_material_unchanged_on_disk": true
+}

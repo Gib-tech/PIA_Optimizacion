@@ -1,6 +1,10 @@
 # Project context
 
+**Revisión vigente de fluidez (16/11):** acercamiento y alineación progresiva, contacto durante una ventana corta de montaje, recuperación mínima3s, cargas con anticipación y retirada más breve; Actor Tick enemigo permanece desactivado. Se corrigieron el bloqueo físico entre aliados en puertas y el contador de balizas durante derrota. El último recorrido del agente desde Nuevo juego terminó en victoria02:43, jugador7.6/rehén20.8, sin teletransportes ni cambios de vida/daño. Detalle y evidencia final en HANDOFF.md; los tiempos de ataques anteriores quedan como historial.
+
 **Combate y rúbrica, revisión posterior del16/11:** el embestidor ya no ejecuta el golpe antes de acercarse; la animación y el daño coinciden al llegar. HUD avisa de daño real al rehén y confirma daño a rivales con sonido y marca/cifra. Vida/daño y árboles conservados. Auditoría runtime confirma16diseños visuales agrupando variantes, seis destruibles y cinco modelos con cuatro LOD; veinte capturas sin LOD forzado acreditan transiciones por distancia. Pendientes vigentes y alcance académico en `PLAN_ADAPTACION_EVALUACION.md`.
+
+**Carga del paquete,16/11:** se protege el aviso del rehén hasta que exista su referencia; la Geometry Collection de la fuente usa una copia compatible del material existente, evitando caer al material por defecto. Padres/instancia propiedad del proyecto; plugin Fab intacto.
 
 **Revisión vigente de paredes/visibilidad (2026-11-16):** 104 componentes con proyección de textura en unidades del mundo, once texturas optimizadas y modelos sin recorte duro por distancia. Once props de evaluación no espaciales evitan descarga visible al cambiar de celda. Cuatro LOD, Nanite y oclusión se conservan. Evidencia: `validation/walls-visibility-2026-11-16.json`. Commit y push autorizados al cerrar.
 

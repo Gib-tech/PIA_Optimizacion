@@ -214,7 +214,16 @@ def hostage():
  prev=g.s(prev,'DamageNoticeSerial',g.op('Add_IntInt',g.v('DamageNoticeSerial','int'),1,'int'),'int')
  dead=g.br(prev,g.cmp('LessEqual_DoubleDouble',g.v('Health'),0));prev=g.s(dead,'bIsDead',True,'bool');prev=g.s(prev,'bUsingBeacon',False,'bool')
  move=g.v('CharacterMovement','object',owner=CHAR,obj=MOVE,native=True,target=(g.selfnode(typ=HOSTAGE),'self'));stop=g.call(MOVE,'DisableMovement');g.w(move,stop,'self');g.chain(prev,stop)
- director=g.find(stop,DIRECTOR);prev=g.s(director,'Paso',6,'int',owner=DIRECTOR,target=(director,'ReturnValue'));g.chain(prev,g.pause());g.write('BP_Hostage')
+ director=g.find(stop,DIRECTOR);prev=g.s(director,'Paso',6,'int',owner=DIRECTOR,target=(director,'ReturnValue'));g.chain(prev,g.pause())
+ # Allied movement is soft: the escort cannot pin the player against a doorway.
+ begin=g.event(ACTOR,'ReceiveBeginPlay');own=(g.selfnode(typ=HOSTAGE),'self');player_pawn=(g.player(),'ReturnValue')
+ player_cast=g.nativecast(CHAR);g.chain(begin,player_cast);g.w(player_pawn,player_cast,'Object');player=(player_cast,'AsCharacter')
+ capsule=g.v('CapsuleComponent','object',owner=CHAR,obj='/Script/Engine.CapsuleComponent',target=own,native=True)
+ player_capsule=g.v('CapsuleComponent','object',owner=CHAR,obj='/Script/Engine.CapsuleComponent',target=player,native=True)
+ prev=player_cast
+ for component,other in [(capsule,player),(player_capsule,own)]:
+  ignore=g.call(PRIM,'IgnoreActorWhenMoving').pin('Actor','object',obj=ACTOR).pin('bShouldIgnore','bool',default='true');g.w(component,ignore,'self');g.w(other,ignore,'Actor');g.chain(prev,ignore);prev=ignore
+ g.write('BP_Hostage')
 
 def activate_task():
  g=ProgressGraph();TASK='/Script/AIModule.BTTask_BlueprintBase'
@@ -303,7 +312,7 @@ def enemy_sense(charger=False):
   delta=g.c(MATH,'Subtract_VectorVector',[('A','struct',(own,'ReturnValue')),('B','struct',(goal,'ReturnValue'))],cat='struct',obj=VEC)
   for pin in ['A','B']:delta[0].pins[pin]['obj']=VEC
   norm=g.c(MATH,'Normal',[('A','struct',delta),('Tolerance','real',.0001)],cat='struct',obj=VEC);norm[0].pins['A']['obj']=VEC
-  rotate=g.c(MATH,'RotateAngleAxis',[('InVect','struct',norm),('AngleDeg','real',40),('Axis','struct','0,0,1')],cat='struct',obj=VEC)
+  rotate=g.c(MATH,'RotateAngleAxis',[('InVect','struct',norm),('AngleDeg','real',28),('Axis','struct','0,0,1')],cat='struct',obj=VEC)
   for pin in ['InVect','Axis']:rotate[0].pins[pin]['obj']=VEC
   band=g.both(g.cmp('GreaterEqual_DoubleDouble',distance,150),g.cmp('LessEqual_DoubleDouble',distance,210))
   direction=g.call(MATH,'SelectVector',pure=True,static=True).pin('A','struct',obj=VEC).pin('B','struct',obj=VEC).pin('bPickA','bool').pin('ReturnValue','struct',obj=VEC,out=True);g.w(rotate,direction,'A');g.w(norm,direction,'B');g.w(band,direction,'bPickA')
@@ -311,6 +320,9 @@ def enemy_sense(charger=False):
   point=g.c(MATH,'Add_VectorVector',[('A','struct',(goal,'ReturnValue')),('B','struct',radius)],cat='struct',obj=VEC)
   for pin in ['A','B']:point[0].pins[pin]['obj']=VEC
   orbit=g.bbset(bb,'OrbitLocation','Vector');g.w(point,orbit,'VectorValue');g.chain(setp,orbit)
+  near_speed=g.c(MATH,'SelectFloat',[('A','real',230),('B','real',560),('bPickA','bool',g.cmp('LessEqual_DoubleDouble',distance,300))])
+  movement=g.v('CharacterMovement','object',owner=CHAR,obj=MOVE,target=pawn,native=True)
+  g.s(orbit,'MaxWalkSpeed',near_speed,owner=MOVE,target=movement)
  g.write('BTService_ChargerSense' if charger else 'BTService_LocatePlayer')
 
 def enemy_actions():

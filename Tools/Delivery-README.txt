@@ -45,7 +45,9 @@ La fijacion se libera si deja de ser un objetivo valido o se aleja mas de 18 m.
 
 COMBATE
 Orbitador: se mueve alrededor del jugador. Embestidor: prepara una carga,
-avanza en linea, se separa unos metros y vuelve al combate.
+anticipa brevemente la trayectoria, se detiene para golpear y se recoloca.
+Los golpes cercanos tienen al menos tres segundos entre inicios. El enemigo
+orienta el golpe antes del contacto; puedes esquivarlo durante la ejecucion.
 Ambos reciben golpes ligeros y pesados. Aprovechar preparacion y recuperacion.
 Espada ligera: 15 / 15 / 19 / 22. Martillo ligero: 15 / 15.
 Todos los pesados: 25 contra ambos enemigos. Golpe enemigo: 13.2 (+120% sobre 6).
@@ -55,7 +57,8 @@ Recibir dano produce una punzada roja tenue en las esquinas durante 0.38 s.
 El rehen elige refugios cercanos con rutas de hasta 18 metros, sin rodear sectores.
 Las puertas producen 42 / 56 / 72 fragmentos irregulares de su propia malla.
 Los escombros giran y caen, no bloquean al jugador/rehen/camara y duran 4 s.
-Los ataques enemigos pueden interrumpirse al causarles dano. Ambos enemigos
+Los pesados siempre interrumpen. Los ligeros danan y pueden aturdir con una
+breve recuperacion entre reacciones, evitando dejar inmovil al rival. Ambos enemigos
 conservan la malla Warrior y sus materiales originales, sin armadura naranja.
 
 DIALOGO Y AUDIO

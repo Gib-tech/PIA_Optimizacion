@@ -32,13 +32,16 @@ def base_enemy():
     source_pin=next(p for p in source.pins.values() if p['id']==source_id)
     source_pin['links'].remove((gate.name,gate.pins['Condition']['id']));gate.pins['Condition']['links']=[]
     target=(attack,'TargetActor');ctrl=(g.ctrl(*own),'ReturnValue')
-    near=g.cmp('LessEqual_DoubleDouble',(g.dist(*own,*target),'ReturnValue'),220)
-    allowed=g.both((source,source_pin['name']),g.both((g.valid(*target),'ReturnValue'),g.both(near,(g.sight(*ctrl,*target),'ReturnValue'))))
+    near=g.cmp('LessEqual_DoubleDouble',(g.dist(*own,*target),'ReturnValue'),160)
+    now=g.c(GS,'GetTimeSeconds')
+    recovered=g.cmp('GreaterEqual_DoubleDouble',now,g.v('NextAttackAt'))
+    allowed=g.both(recovered,g.both((source,source_pin['name']),g.both((g.valid(*target),'ReturnValue'),g.both(near,(g.sight(*ctrl,*target),'ReturnValue')))))
     g.w(allowed,gate,'Condition')
     flag=next(n for n in g.nodes if n.kind.endswith('K2Node_VariableSet') and 'bAttackInProgress' in n.pins and n.pins['bAttackInProgress']['default']=='true')
     links=detach(g,flag);prev=g.s(flag,'bAttackResolved',False,'bool')
+    prev=g.s(prev,'NextAttackAt',g.op('Add_DoubleDouble',now,3.0))
     stop=g.call('/Script/Engine.Controller','StopMovement');g.w(ctrl,stop,'self');g.chain(prev,stop);reconnect(g,stop,links)
-    # Consume exactly one attempt, including a dodge/miss. Never defer a hit until approach.
+    # Contact is possible only inside the active portion of this montage.
     resolve=next(n for n in g.nodes if any('CustomFunctionName="ResolveAttack"' in p for p in n.props))
     links=detach(g,resolve)
     mesh=g.v('Mesh','object',owner=CHAR,obj='/Script/Engine.SkeletalMeshComponent',target=own,native=True)
@@ -46,13 +49,38 @@ def base_enemy():
     montage='/Game/ThirdPerson/Blueprints/EnemigoIA/AM_EnemyAttack_Entrega.AM_EnemyAttack_Entrega'
     position=g.call(ANIM,'Montage_GetPosition',pure=True).pin('Montage','object',obj='/Script/Engine.AnimMontage',default_obj=montage).pin('ReturnValue','real',sub='float',out=True);g.w((anim,'ReturnValue'),position,'self')
     playing=g.call(ANIM,'Montage_IsPlaying',pure=True).pin('Montage','object',obj='/Script/Engine.AnimMontage',default_obj=montage).pin('ReturnValue','bool',out=True);g.w((anim,'ReturnValue'),playing,'self')
-    window=g.both(g.cmp('GreaterEqual_DoubleDouble',(position,'ReturnValue'),.30),g.cmp('LessEqual_DoubleDouble',(position,'ReturnValue'),.70))
+    window=g.both(g.cmp('GreaterEqual_DoubleDouble',(position,'ReturnValue'),.28),g.cmp('LessEqual_DoubleDouble',(position,'ReturnValue'),.64))
     check=g.br(resolve,g.both(g.neg(g.v('bAttackResolved','bool')),g.both((playing,'ReturnValue'),window)))
-    used=g.s(check,'bAttackResolved',True,'bool');reconnect(g,used,links)
+    reconnect(g,check,links)
+    # Mark a real contact, not the first empty frame of the active punch.
+    from generate_combat_motion import facing_dot, turn_toward
+    contact_gate=next(n for n in g.nodes if n.kind.endswith('K2Node_IfThenElse') and n.x==2100 and n.y==4200)
+    condition_name,condition_id=contact_gate.pins['Condition']['links'][0]
+    condition_node=next(n for n in g.nodes if n.name==condition_name)
+    condition_pin=next(p for p in condition_node.pins.values() if p['id']==condition_id)
+    condition_pin['links'].remove((contact_gate.name,contact_gate.pins['Condition']['id']));contact_gate.pins['Condition']['links']=[]
+    victim=g.v('AttackVictim','object',obj=ACTOR)
+    cone=g.cmp('GreaterEqual_DoubleDouble',facing_dot(g,own,victim),.4)
+    g.w(g.both((condition_node,condition_pin['name']),cone),contact_gate,'Condition')
+    links=detach(g,contact_gate);reconnect(g,g.s(contact_gate,'bAttackResolved',True,'bool'),links)
+    # Animation owns timing; movement remains planted. Tracking ends before contact.
+    for node in g.nodes:
+        if 'InPlayRate' in node.pins and 'AnimMontage' in node.pins and 'AM_EnemyAttack_' in str(node.pins['AnimMontage'].get('default_obj')):node.pins['InPlayRate']['default']='1.25'
+    legacy_range=next(n for n in g.nodes if n.x==1500 and n.y==4800 and 'B' in n.pins);legacy_range.pins['B']['default']='210'
+    # Enemy Actor Tick stays disabled. The active behavior task owns this update.
+    tick=g.custom('UpdateStrike').pin('DeltaSeconds','real',sub='float',out=True)
+    tick.props.append('CustomProperties UserDefinedPin (PinName="DeltaSeconds",PinType=(PinCategory="real",PinSubCategory="float"),DesiredPinDirection=EGPD_Output)')
+    active=g.br(tick,g.v('bAttackInProgress','bool'))
+    track=g.br(active,g.cmp('Less_DoubleDouble',(position,'ReturnValue'),.26))
+    turned=turn_toward(g,track,own,victim,(tick,'DeltaSeconds'),480)
+    # Reuse the resolve branch directly: importing a self-call to another event in
+    # the same cleared graph can silently discard that call before skeleton rebuild.
+    g.chain(turned,check);g.chain(track,check,'else')
     # OnHealthChanged runs for both damage and healing; confirm only actual loss.
     changed=next(n for n in g.nodes if any('CustomFunctionName="OnHealthChanged"' in p for p in n.props))
     links=detach(g,changed)
-    lost=g.br(changed,g.cmp('Less_DoubleDouble',hp,g.v('LastFeedbackHealth')))
+    delta=g.s(changed,'LastDamageAmount',g.op('Subtract_DoubleDouble',g.v('LastFeedbackHealth'),hp))
+    lost=g.br(delta,g.cmp('Greater_DoubleDouble',g.v('LastDamageAmount'),0))
     pc=g.call(GS,'GetPlayerController',pure=True,static=True).pin('PlayerIndex','int',default='0').pin('ReturnValue','object',obj='/Script/Engine.PlayerController',out=True)
     hud=g.call('/Script/Engine.PlayerController','GetHUD',pure=True).pin('ReturnValue','object',obj='/Script/Engine.HUD',out=True);g.w((pc,'ReturnValue'),hud,'self')
     cast=g.cast(HUD);g.chain(lost,cast);g.w((hud,'ReturnValue'),cast,'Object');hudtarget=(cast,'AsBP_HUD_Entrega')
@@ -61,50 +89,23 @@ def base_enemy():
     prev=g.s(prev,'LastEnemyDamage',g.op('Subtract_DoubleDouble',g.v('LastFeedbackHealth'),hp),owner=HUD,target=hudtarget)
     impact=g.sound(prev,'DoorHit');impact.pins['VolumeMultiplier']['default']='.3';impact.pins['PitchMultiplier']['default']='1.3'
     saved=g.s(impact,'LastFeedbackHealth',hp);g.chain(lost,saved,'else');g.chain(cast,saved,'CastFailed');reconnect(g,saved,links)
+    # Light hits retain damage/feedback but cannot restart a perpetual stun loop.
+    react=next(n for n in g.nodes if any('SetValueAsBool' in p for p in n.props) and n.x==1250 and n.y==2100)
+    previous_name,previous_id=react.pins['execute']['links'][0]
+    previous=next(n for n in g.nodes if n.name==previous_name);previous_pin=next(p for p in previous.pins.values() if p['id']==previous_id)
+    previous_pin['links'].remove((react.name,react.pins['execute']['id']));react.pins['execute']['links']=[]
+    time=g.c(GS,'GetTimeSeconds')
+    poise=g.c(MATH,'BooleanOR',[('A','bool',g.cmp('GreaterEqual_DoubleDouble',time,g.v('NextStaggerAt'))),('B','bool',g.cmp('GreaterEqual_DoubleDouble',g.v('LastDamageAmount'),25))],cat='bool')
+    stagger=g.br(previous,g.both(g.cmp('Greater_DoubleDouble',g.v('LastDamageAmount'),0),poise),previous_pin['name'])
+    recovery=g.s(stagger,'NextStaggerAt',g.op('Add_DoubleDouble',time,g.v('StaggerCooldown')));g.chain(recovery,react)
     g.write('BP_BaseEnemy')
 
 def windup():
-    g=ProgressGraph();e=g.task_event('ReceiveExecuteAI');tick=g.task_event('ReceiveTickAI');abort=g.task_event('ReceiveAbortAI')
-    bb=g.blackboard(e,'OwnerController');target=g.target_actor()
-    stop=g.stop_move(e);g.chain(e,stop);prev=g.s(stop,'Elapsed',0)
-    focus=g.call(CONTROLLER,'K2_SetFocus').pin('NewFocus','object',obj=ACTOR);g.wire(e,'OwnerController',focus,'self');g.wire(target,'CombatTarget',focus,'NewFocus');g.chain(prev,focus)
-    face=g.face_target(focus,e,target,'CombatTarget')
-    # Hold facing for the telegraph. Locomotion remains idle; no remote punch montage.
-    cue=g.sound(face,'Alert');cue.pins['VolumeMultiplier']['default']='.12'
-    elapsed=g.elapsed(tick);ready=g.br(elapsed,g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),.8))
-    valid=g.br(ready,(g.valid(target,'CombatTarget'),'ReturnValue'));g.finish(valid,'else',success=False)
-    goal=g.bbset(bb,'ChargeGoal','Vector');g.w((g.location(target,'CombatTarget'),'ReturnValue'),goal,'VectorValue');g.chain(valid,goal)
-    prev=g.s(goal,'ChargeVictim',(target,'CombatTarget'),'object',owner=BASE,target=g.v('CachedPawn','object',obj=BASE),obj=ACTOR)
-    charging=g.bbset(bb,'bCharging','Bool','true');g.chain(prev,charging);g.finish(charging)
-    g.finish(abort,abort=True);g.write('BTTask_ChargerWindup')
+    from generate_combat_motion import windup_task
+    windup_task()
 
 def charge():
-    g=ProgressGraph();e=g.task_event('ReceiveExecuteAI');tick=g.task_event('ReceiveTickAI');abort=g.task_event('ReceiveAbortAI')
-    pawn=g.v('CachedPawn','object',obj=BASE);target=g.v('ChargeVictim','object',owner=BASE,obj=ACTOR,target=pawn)
-    bb=g.blackboard(e,'OwnerController');goal=g.bbget(bb,'ChargeGoal','Vector')
-    prev=g.s(e,'Elapsed',0);prev=g.s(prev,'bHit',False,'bool');prev=g.s(prev,'bAttackStarted',False,'bool')
-    speed=g.speed(e,'900');g.chain(prev,speed)
-    clear=g.call(CONTROLLER,'K2_ClearFocus');g.wire(e,'OwnerController',clear,'self');g.chain(speed,clear)
-    move=g.move_to(e,goal,'ReturnValue',path=False,radius='40');g.chain(clear,move)
-    elapsed=g.elapsed(tick);started=g.br(elapsed,g.v('bAttackStarted','bool'))
-    live=g.both((g.valid(*target),'ReturnValue'),g.neg(g.v('bIsDead','bool',owner=BASE,target=pawn)))
-    distance=(g.dist(*pawn,*target),'ReturnValue')
-    contact=g.both(live,g.both(g.cmp('LessEqual_DoubleDouble',distance,180),(g.sight(tick,'OwnerController',*target),'ReturnValue')))
-    arrival=g.br(started,contact,'else')
-    stop=g.stop_move(tick);g.chain(arrival,stop)
-    face=g.face_target(stop,tick,target[0],target[1])
-    attack=g.action('Attack').pin('TargetActor','object',obj=ACTOR);g.w(pawn,attack,'self');g.w(target,attack,'TargetActor');g.chain(face,attack)
-    prev=g.s(attack,'bAttackStarted',True,'bool');g.s(prev,'Elapsed',0)
-    timeout=g.br(arrival,g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),1.0),'else')
-    strike=g.br(started,g.both(g.neg(g.v('bHit','bool')),g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),.45)))
-    used=g.s(strike,'bHit',True,'bool');resolve=g.action('ResolveAttack');g.w(pawn,resolve,'self');g.chain(used,resolve)
-    finished=g.br(resolve,g.cmp('GreaterEqual_DoubleDouble',(elapsed,'Output_Get'),1.3));g.chain(strike,finished,'else')
-    for start,event,isabort in [(finished,tick,False),(timeout,tick,False),(abort,abort,True)]:
-        stop=g.stop_move(event);g.chain(start,stop)
-        end=g.action('EndAttack');g.w(pawn,end,'self');g.chain(stop,end)
-        speed=g.speed(event,'600');g.chain(end,speed)
-        clear=g.bbset(bb,'bCharging','Bool','false');g.chain(speed,clear)
-        retreat=g.bbset(bb,'bRetreat','Bool','true');g.chain(clear,retreat);g.finish(retreat,abort=isabort)
-    g.write('BTTask_ChargerCharge')
+    from generate_combat_motion import charge_task
+    charge_task()
 
 if __name__=='__main__':base_enemy();windup();charge()

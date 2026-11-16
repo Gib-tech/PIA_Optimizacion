@@ -1,5 +1,15 @@
 # AI requirements
 
+## Refinamiento vigente de fluidez — 16 noviembre 2026
+
+Esta sección sustituye los tiempos/distancias de ataque de la revisión anterior. **Decision / Verified en gráficos:** el melee se aproxima hasta150cm, alinea progresivamente y solicita Attack, que exige objetivo válido, LOS, <=160cm y recuperación cumplida. Cada enemigo espera al menos3s entre inicios de golpes. El montaje1.3s se reproduce a1.25; contacto único en posiciones0.28..0.64, distancia<=210cm, LOS y cono frontal (dot>=0.4). Sigue al objetivo sólo antes de0.26; después el jugador puede esquivar. Se evalúa en el Tick de la tarea activa mediante UpdateStrike, conservando Actor Tick desactivado. EndAttack/Abort cancelan el golpe.
+
+**Decision / Verified en gráficos:** giro limitado420–480grados/s y DeltaTime<=0.033 por paso para evitar el salto de entrada por tiempo acumulado del BT. Orbitador: desplazamiento cercano230, aproximación560, arco28grados, defensa con reposición0.65s. Embestidor: preparación0.65s, carrera900, predicción0.18s y correcciones sólo durante sus primeros0.45s; al llegar se planta y golpea. Aproximación/carga cancelan a1.5s si no alcanzan su objetivo. La rama cercana del segundo árbol ahora golpea y recupera en lugar de huir continuamente; retirada más corta y dirigida a su CombatTarget real.
+
+**Decision / Verified en gráficos:** los ligeros no pueden reiniciar indefinidamente el aturdimiento (cooldown1s orbitador /1.2s embestidor); un pesado25 siempre interrumpe. Conservan daño del jugador15/15/19/22 y25, audio/confirmación de pérdida real y aviso de daño al rehén. Las cápsulas jugador/rehén se ignoran mutuamente sólo al moverse para evitar un atasco entre aliado y marco de puerta; mantienen colisión con mundo/enemigos. HUD cuenta bActivated de las tres balizas, evitando mostrar3/3 al perder antes de activarlas.
+
+La evidencia de esta revisión se documenta en el handoff vigente. Pruebas aisladas y partidas del agente se distinguen de la aceptación del propietario.
+
 ## Corrección vigente de ataque y señales — 16 noviembre 2026
 
 **Stated:** corregir el golpe lejano seguido de carrera, avisar del daño al rehén y confirmar daño a rivales. **Verified:** Attack rechaza solicitudes sin objetivo visible a220cm o menos. El embestidor sostiene preparación0.8s sin ejecutar el golpe, corre a900 hasta1s y al alcanzar180cm se detiene y ejecuta el montaje1.3s; impacto a0.45s. ResolveAttack exige montaje activo y posición0.30..0.70s y consume un único intento, aunque se falle por distancia/visibilidad. Abort/interrupción cancela el golpe. Se conservan ambos árboles, daño13.2 y daño del jugador15/15/19/22 y pesado25.

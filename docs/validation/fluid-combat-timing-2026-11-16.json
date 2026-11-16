@@ -1,0 +1,5808 @@
+{
+  "passed": true,
+  "isolated_real_tree_test": true,
+  "cases": [
+    {
+      "enemy": "BP_BaseEnemy",
+      "victim": "player",
+      "distant_request_rejected": true,
+      "damage": 13.2,
+      "samples": [
+        {
+          "t": 0.018,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.034,
+          "distance": 499.8,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.051,
+          "distance": 499.38,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.068,
+          "distance": 498.76,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.084,
+          "distance": 497.94,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.101,
+          "distance": 496.91,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.118,
+          "distance": 495.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.134,
+          "distance": 494.24,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.151,
+          "distance": 492.6,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.168,
+          "distance": 490.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.184,
+          "distance": 488.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.201,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.218,
+          "distance": 484.08,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.234,
+          "distance": 481.47,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.251,
+          "distance": 478.64,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.57,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.268,
+          "distance": 475.66,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.24,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.284,
+          "distance": 472.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.9,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.301,
+          "distance": 469.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.57,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.318,
+          "distance": 465.66,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.24,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.334,
+          "distance": 461.99,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.91,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.351,
+          "distance": 458.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 333.57,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.368,
+          "distance": 454.18,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 350.24,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.384,
+          "distance": 450.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 366.91,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.401,
+          "distance": 445.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 383.58,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.418,
+          "distance": 441.4,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 400.24,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.434,
+          "distance": 436.88,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 416.91,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.451,
+          "distance": 432.25,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 433.58,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.468,
+          "distance": 427.52,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 450.24,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.484,
+          "distance": 422.7,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 466.91,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.501,
+          "distance": 417.8,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 483.58,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.518,
+          "distance": 412.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 500.25,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.534,
+          "distance": 407.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 516.91,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.551,
+          "distance": 402.78,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 533.58,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.568,
+          "distance": 398.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 525.63,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.585,
+          "distance": 395.53,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 522.43,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.601,
+          "distance": 393.2,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 519.97,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.618,
+          "distance": 393.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.635,
+          "distance": 392.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 189.83,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.651,
+          "distance": 391.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 163.53,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.668,
+          "distance": 390.18,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 148.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.685,
+          "distance": 388.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 143.09,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.701,
+          "distance": 386.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 144.69,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.718,
+          "distance": 383.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 151.47,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.735,
+          "distance": 381.19,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 161.78,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.751,
+          "distance": 378.3,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 174.4,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.768,
+          "distance": 375.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 188.48,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.785,
+          "distance": 371.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 203.49,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.801,
+          "distance": 368.12,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 219.07,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.818,
+          "distance": 364.3,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.835,
+          "distance": 360.47,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.851,
+          "distance": 356.64,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.868,
+          "distance": 352.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.885,
+          "distance": 348.97,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.901,
+          "distance": 345.14,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.918,
+          "distance": 341.32,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.935,
+          "distance": 337.49,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.951,
+          "distance": 333.66,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.968,
+          "distance": 329.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.985,
+          "distance": 326.01,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.001,
+          "distance": 322.19,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.018,
+          "distance": 318.36,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.035,
+          "distance": 314.54,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.051,
+          "distance": 310.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.068,
+          "distance": 306.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.085,
+          "distance": 303.07,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.101,
+          "distance": 299.24,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.118,
+          "distance": 295.42,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.135,
+          "distance": 291.6,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.151,
+          "distance": 287.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.168,
+          "distance": 283.95,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.185,
+          "distance": 280.13,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.201,
+          "distance": 276.31,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.218,
+          "distance": 272.49,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.235,
+          "distance": 268.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.251,
+          "distance": 268.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.268,
+          "distance": 268.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.285,
+          "distance": 268.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.301,
+          "distance": 268.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.318,
+          "distance": 267.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.335,
+          "distance": 267.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.351,
+          "distance": 265.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.368,
+          "distance": 264.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.385,
+          "distance": 262.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.401,
+          "distance": 260.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.418,
+          "distance": 258.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.435,
+          "distance": 256.17,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.451,
+          "distance": 253.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.468,
+          "distance": 250.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.485,
+          "distance": 247.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.501,
+          "distance": 243.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.518,
+          "distance": 239.55,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.535,
+          "distance": 235.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.551,
+          "distance": 231.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.568,
+          "distance": 228.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.585,
+          "distance": 224.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.601,
+          "distance": 220.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.618,
+          "distance": 216.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.635,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.651,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.668,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.685,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.701,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.718,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.735,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.751,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.768,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.785,
+          "distance": 212.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.801,
+          "distance": 212.44,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.818,
+          "distance": 211.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.835,
+          "distance": 211.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.851,
+          "distance": 209.94,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.868,
+          "distance": 208.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.885,
+          "distance": 206.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.901,
+          "distance": 204.94,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.918,
+          "distance": 202.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.935,
+          "distance": 200.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.951,
+          "distance": 197.44,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.968,
+          "distance": 194.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.985,
+          "distance": 191.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.001,
+          "distance": 187.44,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.018,
+          "distance": 183.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.035,
+          "distance": 179.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.051,
+          "distance": 174.94,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.068,
+          "distance": 170.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.085,
+          "distance": 165.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.101,
+          "distance": 159.94,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.118,
+          "distance": 154.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 333.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.135,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.151,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.021,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.168,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.042,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.185,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.063,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.201,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.083,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.218,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.104,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.235,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.125,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.251,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.146,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.268,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.167,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.285,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.188,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.301,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.208,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.318,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.229,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.335,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.25,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.351,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.271,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.368,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.292,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.385,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.313,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.401,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.333,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.418,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.354,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.435,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.375,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.451,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.396,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.468,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.417,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.485,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.438,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.501,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.458,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 2.518,
+          "distance": 148.56,
+          "attacking": true,
+          "montage": true,
+          "position": 0.479,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        }
+      ]
+    },
+    {
+      "enemy": "BP_ChargerEnemy",
+      "victim": "player",
+      "distant_request_rejected": true,
+      "damage": 13.2,
+      "samples": [
+        {
+          "t": 0.017,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.033,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.05,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.067,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.083,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.1,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.117,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.133,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.15,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.167,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.183,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.2,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.217,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.233,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.25,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.267,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.283,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.3,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.317,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.333,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.35,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.367,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.383,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.4,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.417,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.433,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.45,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.467,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.483,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.5,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.517,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.533,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.55,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.567,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.583,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.6,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.617,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.633,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 0.65,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.667,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.683,
+          "distance": 499.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.7,
+          "distance": 499.17,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.717,
+          "distance": 498.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.733,
+          "distance": 497.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.75,
+          "distance": 495.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.767,
+          "distance": 494.17,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.783,
+          "distance": 492.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.8,
+          "distance": 490.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.817,
+          "distance": 487.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.833,
+          "distance": 484.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.85,
+          "distance": 481.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.867,
+          "distance": 478.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.01,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.883,
+          "distance": 474.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.9,
+          "distance": 470.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.34,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.917,
+          "distance": 466.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.01,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.933,
+          "distance": 462.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.67,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.95,
+          "distance": 457.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.34,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.967,
+          "distance": 452.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.01,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 0.983,
+          "distance": 447.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.68,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.0,
+          "distance": 441.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 333.34,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.017,
+          "distance": 435.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 350.01,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.033,
+          "distance": 429.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 366.68,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.05,
+          "distance": 423.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 383.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.067,
+          "distance": 416.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 400.01,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.083,
+          "distance": 409.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 416.68,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.1,
+          "distance": 402.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 433.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.117,
+          "distance": 395.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 450.01,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.133,
+          "distance": 387.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 466.68,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.15,
+          "distance": 379.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 483.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.167,
+          "distance": 370.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 500.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.183,
+          "distance": 362.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 516.68,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.2,
+          "distance": 353.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 533.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.217,
+          "distance": 344.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 550.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.233,
+          "distance": 334.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 566.68,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.25,
+          "distance": 325.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 583.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.267,
+          "distance": 315.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 600.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.283,
+          "distance": 304.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 616.69,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.3,
+          "distance": 294.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 633.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.317,
+          "distance": 283.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 650.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.333,
+          "distance": 272.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 666.69,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.35,
+          "distance": 260.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 683.35,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.367,
+          "distance": 249.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 700.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.383,
+          "distance": 237.21,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 716.69,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.4,
+          "distance": 224.99,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 733.36,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.417,
+          "distance": 212.49,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 750.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.433,
+          "distance": 199.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 766.69,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.45,
+          "distance": 186.66,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 783.36,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.467,
+          "distance": 173.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 800.02,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.483,
+          "distance": 159.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 816.69,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.5,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.517,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.021,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.533,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.042,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.55,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.063,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.567,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.083,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.583,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.104,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.6,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.125,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.617,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.146,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.633,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.167,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.65,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.188,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.667,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.208,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.683,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.229,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.7,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.25,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.717,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.271,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.733,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.292,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.75,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.313,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.767,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.333,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.783,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.354,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.8,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.375,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.817,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.396,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.833,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.417,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.85,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.438,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.867,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.458,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        },
+        {
+          "t": 1.883,
+          "distance": 145.83,
+          "attacking": true,
+          "montage": true,
+          "position": 0.479,
+          "speed": 0.0,
+          "hp": 73.60000038146973,
+          "charging": true
+        }
+      ]
+    },
+    {
+      "enemy": "BP_BaseEnemy",
+      "victim": "hostage",
+      "distant_request_rejected": true,
+      "damage": 13.2,
+      "samples": [
+        {
+          "t": 0.017,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.033,
+          "distance": 500.24,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.05,
+          "distance": 500.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.067,
+          "distance": 501.44,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.083,
+          "distance": 502.4,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.1,
+          "distance": 503.59,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.117,
+          "distance": 505.03,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.133,
+          "distance": 506.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.15,
+          "distance": 508.64,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.167,
+          "distance": 510.81,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.183,
+          "distance": 513.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.2,
+          "distance": 515.88,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.217,
+          "distance": 518.78,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.233,
+          "distance": 521.94,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.25,
+          "distance": 525.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.267,
+          "distance": 528.99,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.283,
+          "distance": 532.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.3,
+          "distance": 537.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.317,
+          "distance": 541.46,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.333,
+          "distance": 546.13,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.35,
+          "distance": 551.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 333.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.367,
+          "distance": 556.24,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 350.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.383,
+          "distance": 561.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 366.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.4,
+          "distance": 567.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 383.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.417,
+          "distance": 573.36,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 400.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.433,
+          "distance": 579.59,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 416.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.45,
+          "distance": 586.1,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 433.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.467,
+          "distance": 592.87,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 450.02,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.483,
+          "distance": 599.91,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 466.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.5,
+          "distance": 607.21,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 483.35,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.517,
+          "distance": 614.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 500.02,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.533,
+          "distance": 622.65,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 516.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.55,
+          "distance": 630.78,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 533.35,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.567,
+          "distance": 639.18,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 550.02,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.583,
+          "distance": 647.86,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 566.69,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.6,
+          "distance": 656.45,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.617,
+          "distance": 665.07,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.633,
+          "distance": 671.04,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 401.08,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.65,
+          "distance": 675.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 285.03,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.667,
+          "distance": 677.64,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.92,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.683,
+          "distance": 679.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 141.08,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.7,
+          "distance": 679.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.45,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.717,
+          "distance": 680.04,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 76.13,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.733,
+          "distance": 679.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.19,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.75,
+          "distance": 679.02,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 67.54,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.767,
+          "distance": 677.99,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 76.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.783,
+          "distance": 676.65,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 88.31,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.8,
+          "distance": 675.02,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 102.57,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.817,
+          "distance": 673.1,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 117.88,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.833,
+          "distance": 670.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.74,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.85,
+          "distance": 668.41,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 149.93,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.867,
+          "distance": 665.65,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.3,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.883,
+          "distance": 662.61,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 182.78,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.9,
+          "distance": 659.29,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 199.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.917,
+          "distance": 655.69,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 215.92,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.933,
+          "distance": 651.82,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 232.54,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.95,
+          "distance": 647.66,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 249.18,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.967,
+          "distance": 643.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 265.82,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.983,
+          "distance": 638.53,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 282.48,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.0,
+          "distance": 633.54,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 299.13,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.017,
+          "distance": 628.28,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 315.79,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.033,
+          "distance": 622.74,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 332.46,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.05,
+          "distance": 616.92,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 349.12,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.067,
+          "distance": 610.82,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 365.79,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.083,
+          "distance": 604.45,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 382.45,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.1,
+          "distance": 597.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.117,
+          "distance": 597.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.133,
+          "distance": 597.52,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.15,
+          "distance": 596.96,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.167,
+          "distance": 596.13,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.183,
+          "distance": 595.02,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.2,
+          "distance": 593.63,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.217,
+          "distance": 591.96,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.233,
+          "distance": 590.02,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.25,
+          "distance": 587.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.267,
+          "distance": 585.29,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.283,
+          "distance": 582.52,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.3,
+          "distance": 579.46,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.317,
+          "distance": 576.13,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.333,
+          "distance": 572.51,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.35,
+          "distance": 568.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.367,
+          "distance": 564.85,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.383,
+          "distance": 561.01,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.4,
+          "distance": 557.18,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.417,
+          "distance": 553.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.433,
+          "distance": 549.51,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.45,
+          "distance": 545.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.467,
+          "distance": 541.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.483,
+          "distance": 538.01,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.5,
+          "distance": 534.18,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.517,
+          "distance": 530.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.533,
+          "distance": 526.51,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.55,
+          "distance": 522.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.567,
+          "distance": 518.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.583,
+          "distance": 515.01,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.6,
+          "distance": 511.18,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.617,
+          "distance": 507.34,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.633,
+          "distance": 503.51,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.65,
+          "distance": 499.68,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.667,
+          "distance": 495.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.683,
+          "distance": 492.01,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 230.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.7,
+          "distance": 487.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 246.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.717,
+          "distance": 483.51,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 263.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.733,
+          "distance": 478.84,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 280.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.75,
+          "distance": 473.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.767,
+          "distance": 473.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.783,
+          "distance": 473.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.8,
+          "distance": 473.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.817,
+          "distance": 473.62,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.833,
+          "distance": 473.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.85,
+          "distance": 472.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.867,
+          "distance": 471.12,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.883,
+          "distance": 469.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.9,
+          "distance": 468.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.917,
+          "distance": 466.12,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.933,
+          "distance": 463.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.95,
+          "distance": 461.4,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.967,
+          "distance": 458.62,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 1.983,
+          "distance": 455.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.0,
+          "distance": 452.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.017,
+          "distance": 448.62,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.033,
+          "distance": 444.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.05,
+          "distance": 440.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.067,
+          "distance": 436.12,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.083,
+          "distance": 431.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.1,
+          "distance": 426.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.117,
+          "distance": 421.12,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.133,
+          "distance": 415.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 333.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.15,
+          "distance": 409.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 350.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.167,
+          "distance": 403.61,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 366.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.183,
+          "distance": 397.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 383.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.2,
+          "distance": 390.56,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 400.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.217,
+          "distance": 383.61,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 416.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.233,
+          "distance": 376.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 433.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.25,
+          "distance": 368.89,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 450.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.267,
+          "distance": 361.11,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 466.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.283,
+          "distance": 353.06,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 483.35,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.3,
+          "distance": 344.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 500.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.317,
+          "distance": 336.11,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 516.68,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.333,
+          "distance": 327.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 533.35,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.35,
+          "distance": 318.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 550.02,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.367,
+          "distance": 308.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.383,
+          "distance": 299.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.4,
+          "distance": 290.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.417,
+          "distance": 280.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.433,
+          "distance": 271.39,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.45,
+          "distance": 262.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.467,
+          "distance": 252.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.483,
+          "distance": 243.38,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.5,
+          "distance": 234.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.517,
+          "distance": 224.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.533,
+          "distance": 215.38,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 560.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.55,
+          "distance": 206.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.567,
+          "distance": 206.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.583,
+          "distance": 206.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.6,
+          "distance": 206.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.617,
+          "distance": 206.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.633,
+          "distance": 205.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.65,
+          "distance": 205.21,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.667,
+          "distance": 204.38,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.683,
+          "distance": 203.27,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.7,
+          "distance": 201.88,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.717,
+          "distance": 200.21,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.733,
+          "distance": 198.27,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.75,
+          "distance": 196.05,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.767,
+          "distance": 193.55,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.783,
+          "distance": 190.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.8,
+          "distance": 187.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.817,
+          "distance": 184.38,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.833,
+          "distance": 180.77,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.85,
+          "distance": 176.88,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.867,
+          "distance": 172.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.883,
+          "distance": 168.27,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.9,
+          "distance": 163.55,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.917,
+          "distance": 158.55,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.01,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.933,
+          "distance": 153.27,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.95,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.967,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.021,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 2.983,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.042,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.0,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.063,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.017,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.083,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.033,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.104,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.05,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.125,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.067,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.146,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.083,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.167,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.1,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.188,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.117,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.208,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.133,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.229,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.15,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.25,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.167,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.271,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 3.183,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.292,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.2,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.313,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.217,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.333,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.233,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.354,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.25,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.375,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.267,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.396,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.283,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.417,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.3,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.438,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.317,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.458,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        },
+        {
+          "t": 3.333,
+          "distance": 147.71,
+          "attacking": true,
+          "montage": true,
+          "position": 0.479,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": false
+        }
+      ]
+    },
+    {
+      "enemy": "BP_ChargerEnemy",
+      "victim": "hostage",
+      "distant_request_rejected": true,
+      "damage": 13.2,
+      "samples": [
+        {
+          "t": 0.017,
+          "distance": 500.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.033,
+          "distance": 499.79,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.05,
+          "distance": 499.38,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.067,
+          "distance": 498.76,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.083,
+          "distance": 497.93,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.1,
+          "distance": 496.9,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.33,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.117,
+          "distance": 495.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.133,
+          "distance": 494.23,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.15,
+          "distance": 492.6,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.167,
+          "distance": 490.76,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.183,
+          "distance": 488.73,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.67,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.2,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.217,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.233,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.25,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.267,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.283,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.3,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.317,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.333,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.35,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.367,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.383,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.4,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.417,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.433,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.45,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.467,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.483,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.5,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.517,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.533,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.55,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.567,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.583,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.6,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.617,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.633,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.65,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": false
+        },
+        {
+          "t": 0.667,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.683,
+          "distance": 486.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.7,
+          "distance": 486.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 16.67,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.717,
+          "distance": 485.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 33.33,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.733,
+          "distance": 484.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 50.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.75,
+          "distance": 483.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 66.68,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.767,
+          "distance": 482.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 83.34,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.783,
+          "distance": 480.67,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 100.01,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.8,
+          "distance": 478.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 116.68,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.817,
+          "distance": 476.5,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 133.34,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.833,
+          "distance": 474.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 150.01,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.85,
+          "distance": 471.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 166.68,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.867,
+          "distance": 468.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 183.35,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.883,
+          "distance": 464.83,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 200.01,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.9,
+          "distance": 461.22,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 216.68,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.917,
+          "distance": 457.33,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 233.35,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.933,
+          "distance": 453.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 250.01,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.95,
+          "distance": 448.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 266.68,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.967,
+          "distance": 444.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 283.35,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 0.983,
+          "distance": 439.0,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 300.01,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.0,
+          "distance": 433.72,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 316.68,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.017,
+          "distance": 428.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 333.36,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.033,
+          "distance": 422.32,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 350.03,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.05,
+          "distance": 416.21,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 366.69,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.067,
+          "distance": 409.82,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 383.36,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.083,
+          "distance": 403.16,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 400.03,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.1,
+          "distance": 396.21,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 416.7,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.117,
+          "distance": 388.99,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 433.36,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.133,
+          "distance": 381.49,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 450.03,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.15,
+          "distance": 373.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 466.7,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.167,
+          "distance": 365.65,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 483.37,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.183,
+          "distance": 357.32,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 500.03,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.2,
+          "distance": 348.71,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 516.7,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.217,
+          "distance": 339.82,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 533.37,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.233,
+          "distance": 330.65,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 550.03,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.25,
+          "distance": 321.2,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 566.7,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.267,
+          "distance": 311.48,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 583.37,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.283,
+          "distance": 301.48,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 600.04,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.3,
+          "distance": 291.2,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 616.7,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.317,
+          "distance": 280.64,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 633.37,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.333,
+          "distance": 269.81,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 650.04,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.35,
+          "distance": 258.7,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 666.7,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.367,
+          "distance": 247.31,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 683.37,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.383,
+          "distance": 235.64,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 700.04,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.4,
+          "distance": 223.69,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 716.71,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.417,
+          "distance": 211.47,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 733.38,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.433,
+          "distance": 198.97,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 750.05,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.45,
+          "distance": 186.19,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 766.71,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.467,
+          "distance": 173.13,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 783.38,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.483,
+          "distance": 159.8,
+          "attacking": false,
+          "montage": false,
+          "position": 0.0,
+          "speed": 800.05,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.5,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.0,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.517,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.021,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.533,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.042,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.55,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.063,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.567,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.083,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.584,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.104,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.6,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.125,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.617,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.146,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.634,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.167,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.65,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.188,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.667,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.208,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.684,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.229,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.7,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.25,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.717,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.271,
+          "speed": 0.0,
+          "hp": 100.0,
+          "charging": true
+        },
+        {
+          "t": 1.734,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.292,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.75,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.313,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.767,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.333,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.784,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.354,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.8,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.375,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.817,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.396,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.834,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.417,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.85,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.438,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.867,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.458,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        },
+        {
+          "t": 1.884,
+          "distance": 146.1,
+          "attacking": true,
+          "montage": true,
+          "position": 0.479,
+          "speed": 0.0,
+          "hp": 86.80000019073486,
+          "charging": true
+        }
+      ]
+    }
+  ]
+}
