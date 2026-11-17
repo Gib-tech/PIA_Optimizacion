@@ -1,5 +1,7 @@
 # Guía del equipo · Time Out
 
+El HUD de partida agrupa los recursos en columna y se oculta durante las cinemáticas. El estanque está junto al refugio de rescate. [Controles, cambios y pruebas](REVISION_JUGABLE.md).
+
 > **Versión actual.** Ciclo de 8 min desde la tarde, BRUNO por proximidad y diez objetos rompibles de un golpe. La revisión de jugabilidad reúne los valores y pruebas actuales. [Ver controles y cambios](REVISION_JUGABLE.md).
 
 > **Revisión anterior, 17/11 — cielo, luces y ataques.** El ciclo dura 20 minutos, con mezcla gradual de sol/luna/ambiente. Se añaden 41 luminarias de pared. Los seis props aceptan ligero/pesado con espada o martillo y pulso, sin mejora obligatoria. Las puertas conservan sus reglas de misión. Ver [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md); prevalece sobre los valores históricos siguientes.

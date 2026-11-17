@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "metodo": "PIE con posiciones, daño de prueba y fase nocturna preparados.",
+  "hud": "Oculto en introducción, subtítulos y omisión visibles. La interfaz de juego vuelve al terminar.",
+  "vida_antes_y_despues_de_1": [
+    100.0,
+    100.0
+  ],
+  "distancia_al_bloquear_capsulas_cm": 70.35,
+  "luces": {
+    "pared_a_65_m": 41,
+    "interiores_sin_corte": 2
+  },
+  "texturas_y_agua": "Ambos materiales aplicados al árbol colocado. Contacto de pies en la cubeta y parámetro de onda actualizado.",
+  "limite_rafaga_s": 0.65,
+  "fractura": {
+    "eventos": 20,
+    "atraveso_restos": true,
+    "efecto_retirado": true
+  },
+  "perfil_puertas": "RestosEscenario",
+  "alerta_rehen": "Daño de enemigo de 13,2 aceptado. Se ejecutaron la rama de sonido y el aviso visual."
+}

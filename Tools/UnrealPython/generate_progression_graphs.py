@@ -169,7 +169,9 @@ def door():
  prev=g.s(broken,'bDestroyed',True,'bool');prev=g.s(prev,'bDoorPending',False,'bool',owner=HERO,target=hero)
  c=g.call(ACTOR,'SetActorEnableCollision').pin('bNewActorEnableCollision','bool',default='false');g.chain(prev,c)
  hide=g.call(ACTOR,'SetActorHiddenInGame').pin('bNewHidden','bool',default='true');g.chain(c,hide)
- prev=g.fx(hide,'NS_DoorBreak');prev=g.sound(prev,'DoorBreak')
+ from generate_break_effect import burst
+ position=(g.location(g.selfnode(typ=ACTOR),'self'),'ReturnValue')
+ prev=burst(g,hide,position,R+'FX/NS_DoorBreak.NS_DoorBreak');prev=g.sound(prev,'DoorBreak')
  from generate_fracture_graphs import spawn_shards
  spawn_shards(g,prev,hero)
  g.write('BP_DestructibleDoor')
@@ -217,14 +219,6 @@ def hostage():
  director=g.find(stop,DIRECTOR);prev=g.s(director,'Paso',6,'int',owner=DIRECTOR,target=(director,'ReturnValue'));g.chain(prev,g.pause())
  from generate_cinematic_graphs import terminal_hooks
  terminal_hooks(g)
- # Allied movement is soft: the escort cannot pin the player against a doorway.
- begin=g.event(ACTOR,'ReceiveBeginPlay');own=(g.selfnode(typ=HOSTAGE),'self');player_pawn=(g.player(),'ReturnValue')
- player_cast=g.nativecast(CHAR);g.chain(begin,player_cast);g.w(player_pawn,player_cast,'Object');player=(player_cast,'AsCharacter')
- capsule=g.v('CapsuleComponent','object',owner=CHAR,obj='/Script/Engine.CapsuleComponent',target=own,native=True)
- player_capsule=g.v('CapsuleComponent','object',owner=CHAR,obj='/Script/Engine.CapsuleComponent',target=player,native=True)
- prev=player_cast
- for component,other in [(capsule,player),(player_capsule,own)]:
-  ignore=g.call(PRIM,'IgnoreActorWhenMoving').pin('Actor','object',obj=ACTOR).pin('bShouldIgnore','bool',default='true');g.w(component,ignore,'self');g.w(other,ignore,'Actor');g.chain(prev,ignore);prev=ignore
  g.write('BP_Hostage')
 
 def activate_task():

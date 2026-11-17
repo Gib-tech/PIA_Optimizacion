@@ -143,6 +143,14 @@ def beacon():
 def label():
     from generate_guidance_graphs import setup,message
     g,prev,component=setup();g.__class__=ControlsGraph
+    from generate_cinematic_graphs import CINEMA
+    begin=g.event(ACTOR,'ReceiveBeginPlay')
+    found=g.find(begin,CINEMA);g.s(found,'DirectorDeCine',(found,'ReturnValue'),'object',obj=CINEMA)
+    cinema=g.local('DirectorDeCine',CINEMA)
+    valid=g.br(prev,(g.valid(*cinema),'ReturnValue'))
+    hidden=g.call(ACTOR,'SetActorHiddenInGame').pin('bNewHidden','bool')
+    g.w(g.v('bActive','bool',owner=CINEMA,target=cinema),hidden,'bNewHidden');g.chain(valid,hidden)
+    prev=hidden
     b=g.v('Beacon','object',obj=BEACON)
     index=g.op('Subtract_IntInt',g.v('Index','int',owner=BEACON,target=b),1,'int')
     name=table(g,index,['BALIZA A','BALIZA B','BALIZA C'],'string')

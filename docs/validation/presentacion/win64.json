@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "plataforma": "Win64 Development, Unreal Engine 5.6",
+  "build_s": 147.3,
+  "errores_cook": 0,
+  "avisos_cook": [
+    "BP_PlayerEntrega: pin Scale anterior en Spawn System Attached."
+  ],
+  "mapa": "/Game/ThirdPerson/Maps/Nivel_Entrega",
+  "cortes_intro_ejecutable": 3,
+  "perfil": "Directorio de guardado aislado",
+  "salida_ejecutable": 0,
+  "aviso_arranque": "El personaje intenta agregar por segunda vez el mismo widget de salud. Unreal ignora la segunda solicitud."
+}

@@ -5,17 +5,15 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.Character'"`.
 
-Aliado escoltado con salud propia. Interactuar rescata o reanuda seguimiento sólo si está a salvo; percepción y movimiento pertenecen a BT_Hostage. Recibir daño actualiza salud/aviso; morir termina la misión. La apariencia usa el sobreviviente existente, con copia propia de malla/esqueleto/AnimBlueprint.
+Aliado escoltado con salud propia y cápsula que bloquea al protagonista. Interactuar rescata o reanuda seguimiento sólo si está a salvo; percepción y movimiento pertenecen a BT_Hostage. Recibir daño actualiza salud/aviso; morir termina la misión. La apariencia usa el sobreviviente existente, con copia propia de malla/esqueleto/AnimBlueprint.
 
 ## Entradas y responsabilidades del grafo
 
-- **`Interactuar`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `SetValueAsBool`, `SetValueAsBool`, `SetValueAsBool`, `SetValueAsInt`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAnyDamage`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Condición`, `Asignar Health`, `Asignar InvulnerableUntil`, `Asignar DamageNoticeSerial`, `Condición`, `Asignar bIsDead`, `Asignar bUsingBeacon`, `DisableMovement`, `GetActorOfClass`, `Asignar Paso`, `GetActorOfClass`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `IgnoreActorWhenMoving`, `IgnoreActorWhenMoving`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Interactuar`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `SetValueAsBool`, `SetValueAsBool`, `SetValueAsBool`, `SetValueAsInt`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveAnyDamage`** en `ReceiveAnyDamage`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Interactuar`** en `Interactuar`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveAnyDamage`** en `ReceiveAnyDamage`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -31,7 +29,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 85 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_IntInt`, `BooleanAND`, `BooleanOR`, `DisableMovement`, `FMax`, `GetActorOfClass`, `GetBlackboard`, `GetController`, `GetDistanceTo`, `GetPlayerPawn`, `GetTimeSeconds`, `GetValueAsBool`, `GreaterEqual_DoubleDouble`, `Greater_DoubleDouble`, `IgnoreActorWhenMoving`, `Interactuar`, `IsValid`, `LessEqual_DoubleDouble`, `MakeLiteralName`, `Not_PreBool`, `ReceiveAnyDamage`, `ReceiveBeginPlay`, `SetGamePaused`, `SetValueAsBool`, `SetValueAsInt`, `StartOutcome`, `Subtract_DoubleDouble`, `UserConstructionScript`.
+La exportación contiene 75 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_IntInt`, `BooleanAND`, `BooleanOR`, `DisableMovement`, `FMax`, `GetActorOfClass`, `GetBlackboard`, `GetController`, `GetDistanceTo`, `GetPlayerPawn`, `GetTimeSeconds`, `GetValueAsBool`, `GreaterEqual_DoubleDouble`, `Greater_DoubleDouble`, `Interactuar`, `IsValid`, `LessEqual_DoubleDouble`, `MakeLiteralName`, `Not_PreBool`, `ReceiveAnyDamage`, `SetGamePaused`, `SetValueAsBool`, `SetValueAsInt`, `StartOutcome`, `Subtract_DoubleDouble`, `UserConstructionScript`.
 
 - `/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy.BP_BaseEnemy_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega.BP_DirectorEntrega_C`
@@ -44,4 +42,4 @@ La exportación contiene 85 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `f49c826384c668eeedfa001966a7c98ea31f89966944658e0b37f6fe9ad5001d`.
+**Huella de exportación:** `f435ca8a5c37f66f02168733f5a485b43b3fe557155b05fc0ce735570bbf2fe8`.

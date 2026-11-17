@@ -247,7 +247,7 @@ host_hit_serial=g.get('DamageNoticeSerial','int',owner=HOSTAGE);g.wire(hostage,'
 host_hurt=branch(health_save,cmp('Greater_IntInt',host_hit_serial,v('LastHostageHitSerial')))
 host_pulse=save(host_hurt,'HostageHurtUntil',calc('Add_DoubleDouble',now,2.4))
 host_sound_ready=branch(host_pulse,cmp('GreaterEqual_DoubleDouble',now,v('HostageAlertCooldown'),'real'))
-host_alarm=sound(host_sound_ready,'Alert',calc('Multiply_DoubleDouble',v('UIAudioVolume'),.8))
+host_alarm=sound(host_sound_ready,'HostageAlarm',v('UIAudioVolume'))
 host_cooldown=save(host_alarm,'HostageAlertCooldown',calc('Add_DoubleDouble',now,1.2))
 host_health_save=save(host_cooldown,'LastHostageHitSerial',host_hit_serial);g.chain(host_sound_ready,host_health_save,'else');g.chain(host_hurt,host_health_save,'else')
 # Adaptive 900px frame at 1280; monospaced font, white border, no world-space text.
@@ -399,8 +399,9 @@ warn_x=sub(width,mul(450,scale))
 warning=rect(host_warning,warn_x,mul(217,scale),mul(430,scale),mul(53,scale),'(R=.36,G=.025,B=.015,A=.94)')
 warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',add(warn_x,mul(10,scale)),mul(225,scale),1.15,'(R=1,G=.85,B=.4,A=1)')
 text(warning,'¡Ayúdame! Protege mi retirada.',add(warn_x,mul(10,scale)),mul(246,scale),1.05)
-from generate_cinematic_graphs import hud_hook
-hud_hook(g)
 from generate_extra_hud import add_extra_hud
 add_extra_hud(g,draw,width,height,scale,rect,text)
+# El filtro debe envolver todas las salidas de DrawHUD, incluida la mira.
+from generate_cinematic_graphs import hud_hook
+hud_hook(g)
 g.write('BP_HUD_Entrega')

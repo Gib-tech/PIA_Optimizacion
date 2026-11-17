@@ -2,7 +2,7 @@
   "passed": true,
   "focos": 41,
   "radio_cm": 1450,
-  "distancia_dibujo_cm": 2300,
+  "distancia_dibujo_cm": 6500,
   "escala_sombra": 0.35,
   "dispersion_volumetrica": 0,
   "modelos": [
@@ -35,8 +35,17 @@
       "actor": "LOD_Tree1",
       "lods": 4,
       "materiales": [
-        "Leaves_001",
-        "Material_001"
+        "M_FollajeAcceso",
+        "M_CortezaAcceso"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "LOD_Banco",
+      "lods": 4,
+      "materiales": [
+        "lambert2SG",
+        "blinn1SG"
       ],
       "distancia_dibujo_cm": 0.0
     },
@@ -49,11 +58,10 @@
       "distancia_dibujo_cm": 0.0
     },
     {
-      "actor": "LOD_Banco",
-      "lods": 4,
+      "actor": "Equipo_Auto_Abandonado",
+      "lods": 1,
       "materiales": [
-        "lambert2SG",
-        "blinn1SG"
+        "M_AutoDestruido_0"
       ],
       "distancia_dibujo_cm": 0.0
     },
@@ -106,14 +114,6 @@
       "materiales": [
         "M_ArbolFab_0",
         "M_ArbolFab_1"
-      ],
-      "distancia_dibujo_cm": 0.0
-    },
-    {
-      "actor": "Equipo_Auto_Abandonado",
-      "lods": 1,
-      "materiales": [
-        "M_AutoDestruido_0"
       ],
       "distancia_dibujo_cm": 0.0
     },

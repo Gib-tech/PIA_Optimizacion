@@ -8,8 +8,8 @@ bridge.load_editor_region(world,unreal.Vector(-6500,-12500,-1000),unreal.Vector(
 actors=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 placed={a.get_actor_label():a for a in actors.get_all_level_actors()}
 surface=placed['Lago_Retencion_Agua'];rim=placed['Lago_Retencion_Borde']
-origin=surface.get_actor_location()
-cx,cy=origin.x,origin.y
+# Exterior este de Rescate: el alero de la cubierta cruza (950,-680,442).
+cx,cy=1370.,-680.
 for a,z in [(surface,23.),(rim,20.)]:
     a.modify();a.set_actor_location(unreal.Vector(cx,cy,z),False,True)
 # La colisión convexa del FBX tapaba toda la boca. Usar el borde y el fondo reales.
@@ -49,9 +49,11 @@ float age = max(0, GameTime - StartTime);
 float r = distance(PositionWS.xy, Foot.xy);
 float front = r - 115 * age;
 float stepWave = exp(-0.003 * front * front) * (0.5 + 0.5*cos(front*.48)) * saturate(1-age/1.7);
-float inletDist = distance(PositionWS.xy, Center.xy + float2(225,0));
+float inletDist = distance(PositionWS.xy, Center.xy - float2(225,0));
 float inlet = exp(-inletDist*.025) * pow(.5 + .5*cos(inletDist*.27-GameTime*5), 3);
-return lerp(float3(.014,.095,.112), float3(.25,.55,.53), saturate(stepWave + .65*inlet));
+float shore = smoothstep(195,282,distance(PositionWS.xy,Center.xy));
+float3 water = lerp(float3(.012,.068,.075),float3(.055,.14,.115),shore);
+return lerp(water, float3(.25,.55,.53), saturate(stepWave + .65*inlet));
 """)
 for i,(name,cls,out) in enumerate(inputs):
     n=node(cls,-910,330+i*160)
@@ -73,9 +75,24 @@ def pipe(label,x,z,length,diameter,horizontal=False,mat=metal):
     c=a.static_mesh_component;c.modify();c.set_static_mesh(cylinder);c.set_material(0,mat)
     c.set_collision_profile_name('NoCollision');c.set_editor_property('can_ever_affect_navigation',False)
     c.set_editor_property('ld_max_draw_distance',5000.);c.set_cast_shadow(mat==metal)
-pipe('Bajante',725,292,450,16)
-pipe('Colector',475,74,500,16,True)
-pipe('Boquilla',225,63,23,18)
+    return a
+pipe('Bajante',-410,256,372,16)
+pipe('Colector',-317.5,74,185,16,True)
+pipe('Boquilla',-225,63,23,18)
+# Canalón alineado con el canto inclinado de la cubierta. El extremo
+# inferior descarga en la bajante, fuera del paso de rescate.
+gutter=pipe('Canalon',-410,442,1,18)
+start=unreal.Vector(1156,-15,451);end=unreal.Vector(960,-680,440)
+direction=start-end
+gutter.set_actor_location((start+end)*.5,False,True)
+gutter.set_actor_rotation(unreal.MathLibrary.make_rot_from_z(direction),False)
+gutter.set_actor_scale3d(unreal.Vector(.18,.18,direction.length()/100))
+# La bomba al pie del canalón recircula agua incluso en tiempo seco.
+# Toma sumergida -> aspiración baja -> bomba -> colector -> boquilla.
+pipe('Toma',-196,9,12,29)
+pipe('Aspiracion',-270,9,148,10,True)
+pipe('Bomba',-344,37,66,34)
+pipe('BridaBomba',-344,69,9,23)
 # Material independiente para que el chorro no repita las ondas horizontales.
 stream=unreal.load_asset(folder+'/M_Retorno')
 if not stream:
@@ -86,7 +103,7 @@ if not stream:
     alpha=edit.create_material_expression(stream,unreal.MaterialExpressionConstant,-240,130);alpha.r=.43
     edit.connect_material_property(alpha,'',unreal.MaterialProperty.MP_OPACITY)
     edit.recompile_material(stream);assert assets.save_loaded_asset(stream,False)
-pipe('Retorno',225,38,32,8,mat=stream)
+pipe('Retorno',-225,38,32,8,mat=stream)
 unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
 dirty=unreal.EditorLoadingAndSavingUtils.get_dirty_content_packages()+unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages()
 if dirty:assert unreal.EditorLoadingAndSavingUtils.save_packages(dirty,True)

@@ -2,7 +2,7 @@
 
 Fuente: exportación de todos los Blueprints de `/Game` mediante el editor. Las fichas describen responsabilidades y muestran evidencia de conexiones; no sustituyen las pruebas de juego. Los assets de ejemplo/proveedor se distinguen por ruta.
 
-Cobertura: **103 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y Control Rigs. Los Behavior Trees/Blackboards se explican en la guía de flujo.
+Cobertura: **104 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y Control Rigs. Los Behavior Trees/Blackboards se explican en la guía de flujo.
 
 - [/Game/Characters/Mannequins/Animations/ABP_Manny](blueprints/Characters__Mannequins__Animations__ABP_Manny.md) — AnimBlueprint del protagonista usado con la malla del viajero.
 - [/Game/Characters/Mannequins/Animations/ABP_Quinn](blueprints/Characters__Mannequins__Animations__ABP_Quinn.md) — Recurso de animación/rig del personaje.
@@ -48,7 +48,7 @@ Cobertura: **103 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y C
 - [/Game/ThirdPerson/Blueprints/Aliado/ABP_Aliado](blueprints/ThirdPerson__Blueprints__Aliado__ABP_Aliado.md) — AnimBlueprint de referencia del aliado original.
 - [/Game/ThirdPerson/Blueprints/Aliado/ABP_Hostage](blueprints/ThirdPerson__Blueprints__Aliado__ABP_Hostage.md) — AnimBlueprint original de la escolta con locomoción por velocidad y presentación de muerte.
 - [/Game/ThirdPerson/Blueprints/Aliado/ABP_RehenSuperviviente](blueprints/ThirdPerson__Blueprints__Aliado__ABP_RehenSuperviviente.md) — Copia propia del AnimBlueprint de escolta compatible con el esqueleto del sobreviviente.
-- [/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage](blueprints/ThirdPerson__Blueprints__Aliado__BP_Hostage.md) — Aliado escoltado con salud propia.
+- [/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage](blueprints/ThirdPerson__Blueprints__Aliado__BP_Hostage.md) — Aliado escoltado con salud propia y cápsula que bloquea al protagonista.
 - [/Game/ThirdPerson/Blueprints/Aliado/BP_HostageController](blueprints/ThirdPerson__Blueprints__Aliado__BP_HostageController.md) — Posee al aliado e inicia BT_Hostage/BB_Hostage.
 - [/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense](blueprints/ThirdPerson__Blueprints__Aliado__BTService_HostageSense.md) — Evalúa amenazas, seguimiento y refugios locales con ruta completa.
 - [/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon](blueprints/ThirdPerson__Blueprints__Aliado__BTTask_ActivateBeacon.md) — Canalización de tres segundos mediante el árbol del aliado.
@@ -62,6 +62,7 @@ Cobertura: **103 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y C
 - [/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter](blueprints/ThirdPerson__Blueprints__BP_ThirdPersonCharacter.md) — Personaje base del equipo.
 - [/Game/ThirdPerson/Blueprints/BP_ThirdPersonGameMode](blueprints/ThirdPerson__Blueprints__BP_ThirdPersonGameMode.md) — Modo base/histórico del equipo.
 - [/Game/ThirdPerson/Blueprints/DañoDes](blueprints/ThirdPerson__Blueprints__DañoDes.md) — Campo Chaos del equipo que apoya destrucción física.
+- [/Game/ThirdPerson/Blueprints/Entrega/FX/BP_RafagaRotura](blueprints/ThirdPerson__Blueprints__Entrega__FX__BP_RafagaRotura.md) — Efecto de rotura de vida limitada a 0,65 s.
 - [/Game/ThirdPerson/Blueprints/EnemigoIA/ABP_EnemyEntrega](blueprints/ThirdPerson__Blueprints__EnemigoIA__ABP_EnemyEntrega.md) — Envuelve la locomoción original del pack y añade DefaultSlot para montajes de combate.
 - [/Game/ThirdPerson/Blueprints/EnemigoIA/BPI_Enemy](blueprints/ThirdPerson__Blueprints__EnemigoIA__BPI_Enemy.md) — Contrato de acciones de enemigo utilizado desde tareas del árbol.
 - [/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy](blueprints/ThirdPerson__Blueprints__EnemigoIA__BP_BaseEnemy.md) — Enemigo orbitador y base común de combate.

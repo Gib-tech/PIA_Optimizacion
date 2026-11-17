@@ -11,7 +11,7 @@ for a in actors:
     label=a.get_actor_label()
     if label.startswith('Luminaria_Pared_'):
         c=a.get_component_by_class(unreal.SpotLightComponent)
-        assert c.get_editor_property('max_draw_distance')==2300 and abs(c.get_editor_property('shadow_resolution_scale')-.35)<.001 and c.get_editor_property('volumetric_scattering_intensity')==0
+        assert c.get_editor_property('max_draw_distance')==6500 and abs(c.get_editor_property('shadow_resolution_scale')-.35)<.001 and c.get_editor_property('volumetric_scattering_intensity')==0
         lights.append(label)
     if label.startswith(('Equipo_','LOD_')):
         c=a.static_mesh_component
@@ -26,5 +26,5 @@ for path,limit in [('/Game/ThirdPerson/RecursosPropios/Modelos/ConcreteBench',10
     t=unreal.load_asset(path);assert t.get_editor_property('max_texture_size')==limit and not t.get_editor_property('never_stream')
     textures.append({'recurso':path,'max_px':limit,'streaming':True})
 assert len(lights)==41 and len(models)>=12 and len(effects)==2
-data={'passed':True,'focos':len(lights),'radio_cm':1450,'distancia_dibujo_cm':2300,'escala_sombra':.35,'dispersion_volumetrica':0,'modelos':models,'texturas':textures,'particulas':effects}
+data={'passed':True,'focos':len(lights),'radio_cm':1450,'distancia_dibujo_cm':6500,'escala_sombra':.35,'dispersion_volumetrica':0,'modelos':models,'texturas':textures,'particulas':effects}
 (Path(unreal.Paths.project_dir()).resolve()/'docs/validation/revision-jugable/recursos.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf8')

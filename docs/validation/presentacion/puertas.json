@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "doors": [
+    {
+      "door": 1,
+      "pieces": 42,
+      "matching_initial_geometry_cm": 0.0,
+      "spawn_cost_ms": 32.64,
+      "first_hit_blocks_navigation": true,
+      "physics_and_pawn_camera_ignore": true,
+      "moving_shards": 42,
+      "spinning_shards": 42,
+      "max_displacement_cm": 97.6,
+      "opens_navigation_with_debris": true,
+      "fragments_expired": true,
+      "opens_navigation": true
+    },
+    {
+      "door": 2,
+      "pieces": 56,
+      "matching_initial_geometry_cm": 0.0,
+      "spawn_cost_ms": 32.2,
+      "first_hit_blocks_navigation": true,
+      "physics_and_pawn_camera_ignore": true,
+      "moving_shards": 56,
+      "spinning_shards": 56,
+      "max_displacement_cm": 114.8,
+      "opens_navigation_with_debris": true,
+      "fragments_expired": true,
+      "opens_navigation": true
+    },
+    {
+      "door": 3,
+      "pieces": 72,
+      "matching_initial_geometry_cm": 0.0,
+      "spawn_cost_ms": 45.57,
+      "first_hit_blocks_navigation": true,
+      "physics_and_pawn_camera_ignore": true,
+      "moving_shards": 72,
+      "spinning_shards": 72,
+      "max_displacement_cm": 116.2,
+      "opens_navigation_with_debris": true,
+      "fragments_expired": true,
+      "opens_navigation": true
+    }
+  ]
+}

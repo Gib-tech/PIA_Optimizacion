@@ -10,6 +10,9 @@ with ZipFile(path) as z:
  assert sum(n.startswith('docs/blueprints/') and n.endswith('.md') for n in names)==expected_fiches
  assert all(n in names for n in ['Windows/Terreno.exe','docs/LEEME_EQUIPO.md','docs/IA_Y_COMBATE.md','docs/validation/robot-cielo-inventario/energia-runtime.json','docs/validation/cinematic-layout.json'])
  assert 'docs/REVISION_JUGABLE.md' in names
+ for name in ['pruebas','puertas']:
+  assert json.loads(z.read('docs/validation/presentacion/'+name+'.json'))['passed']
+ assert all('docs/validation/presentacion/'+name+'.png' in names for name in ['cinematica','juego','rotura-nocturna','arbol','estanque'])
  revision='docs/validation/revision-jugable/'
  ataques=[json.loads(z.read(n)) for n in names if n.startswith(revision) and n.endswith('.json')]
  assert all(r['passed'] for r in ataques)

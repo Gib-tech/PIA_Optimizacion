@@ -29,13 +29,14 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 79 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_VectorVector`, `BooleanAND`, `BreakVector`, `FMax`, `FMin`, `GetTransform`, `Greater_DoubleDouble`, `K2_GetActorLocation`, `K2_GetActorRotation`, `LessEqual_DoubleDouble`, `Less_DoubleDouble`, `MakeTransform`, `MakeVector`, `Multiply_DoubleDouble`, `Multiply_VectorFloat`, `Not_PreBool`, `PlaySound2D`, `ReceiveAnyDamage`, `SetActorEnableCollision`, `SetActorHiddenInGame`, `SetStaticMesh`, `SpawnSystemAtLocation`, `Subtract_DoubleDouble`, `Subtract_VectorVector`, `TransformDirection`, `TransformLocation`, `UserConstructionScript`, `Vector_Normal2D`.
+La exportación contiene 83 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_VectorVector`, `BooleanAND`, `BreakVector`, `FMax`, `FMin`, `GetTransform`, `Greater_DoubleDouble`, `K2_GetActorLocation`, `K2_GetActorRotation`, `LessEqual_DoubleDouble`, `Less_DoubleDouble`, `MakeTransform`, `MakeVector`, `Multiply_DoubleDouble`, `Multiply_VectorFloat`, `Not_PreBool`, `PlaySound2D`, `ReceiveAnyDamage`, `SetActorEnableCollision`, `SetActorHiddenInGame`, `SetAsset`, `SetLifeSpan`, `SetStaticMesh`, `Subtract_DoubleDouble`, `Subtract_VectorVector`, `TransformDirection`, `TransformLocation`, `UserConstructionScript`, `Vector_Normal2D`.
 
 - `/Game/ThirdPerson/Audio/SW_DoorBreak.SW_DoorBreak`
 - `/Game/ThirdPerson/Audio/SW_DoorHit.SW_DoorHit`
 - `/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_DoorFragment.BP_DoorFragment_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega_C`
+- `/Game/ThirdPerson/Blueprints/Entrega/FX/BP_RafagaRotura.BP_RafagaRotura_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/FX/NS_DoorBreak.NS_DoorBreak`
 
 ## Cómo modificarlo sin romper el flujo
@@ -45,4 +46,4 @@ La exportación contiene 79 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `24855ef359e610a4f20380ef35b5e1e85da3e3fe73b17cdd0829b0c0bbf64102`.
+**Huella de exportación:** `19f3295de6b6f04401bbd49b8692c1842f5e330c4f2f476040589eb543c1d9a5`.

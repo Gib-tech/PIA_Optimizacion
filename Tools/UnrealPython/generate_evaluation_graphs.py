@@ -28,15 +28,13 @@ def destructible():
  show=g.action_on(hidden,'/Script/Engine.SceneComponent','SetVisibility',collection,[('bNewVisibility','bool',True,None),('bPropagateToChildren','bool',False,None)])
  prev=g.action_on(show,PRIM,'SetCollisionEnabled',box,[('NewType','byte','NoCollision','/Script/Engine.ECollisionEnabled')])
  g.chain(has_display,prev,'else')
- prev=g.action_on(prev,PRIM,'SetCollisionEnabled',collection,[('NewType','byte','QueryAndPhysics','/Script/Engine.ECollisionEnabled')])
+ prev=g.action_on(prev,PRIM,'SetCollisionProfileName',collection,[('InCollisionProfileName','name','RestosEscenario',None),('bUpdateOverlaps','bool',False,None)])
  prev=g.action_on(prev,PRIM,'SetSimulatePhysics',collection,[('bSimulate','bool',True,None)])
  prev=g.action_on(prev,GC,'CrumbleActiveClusters',collection)
  pos=g.call('/Script/Engine.SceneComponent','K2_GetComponentLocation',pure=True).pin('ReturnValue','struct',obj=VEC,out=True);g.w(box,pos,'self')
  prev=g.action_on(prev,PRIM,'AddRadialImpulse',collection,[('Origin','struct',(pos,'ReturnValue'),VEC),('Radius','real',500,None),('Strength','real',180,None),('Falloff','byte','RIF_Linear','/Script/Engine.ERadialImpulseFalloff'),('bVelChange','bool',True,None)])
- for channel in ['ECC_Pawn','ECC_Camera']:
-  prev=g.action_on(prev,PRIM,'SetCollisionResponseToChannel',collection,[('Channel','byte',channel,'/Script/Engine.ECollisionChannel'),('NewResponse','byte','ECR_Ignore','/Script/Engine.ECollisionResponse')])
- fx=g.call('/Script/Niagara.NiagaraFunctionLibrary','SpawnSystemAtLocation',static=True).pin('SystemTemplate','object',obj='/Script/Niagara.NiagaraSystem').pin('Location','struct',obj=VEC).pin('Rotation','struct',obj='/Script/CoreUObject.Rotator',default='0,0,0').pin('Scale','struct',obj=VEC,default='.4,.4,.4').pin('bAutoDestroy','bool',default='true').pin('bAutoActivate','bool',default='true').pin('PoolingMethod','byte',obj='/Script/Niagara.ENCPoolMethod',default='AutoRelease').pin('bPreCullCheck','bool',default='true')
- g.w(g.v('BreakFX','object',obj='/Script/Niagara.NiagaraSystem'),fx,'SystemTemplate');g.w((pos,'ReturnValue'),fx,'Location');g.chain(prev,fx)
+ from generate_break_effect import burst
+ fx=burst(g,prev,(pos,'ReturnValue'),g.v('BreakFX','object',obj='/Script/Niagara.NiagaraSystem'))
  life=g.call(ACTOR,'SetLifeSpan').pin('InLifespan','real',sub='float',default='8');g.chain(fx,life)
  event=g.node('K2Node_ComponentBoundEvent',[
   'DelegatePropertyName="OnChaosBreakEvent"','DelegateOwnerClass='+ref(GC),'ComponentPropertyName="Destruible"',

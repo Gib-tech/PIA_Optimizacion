@@ -45,10 +45,10 @@ Curación sincronizada con barra. Robot y mesa bloquean al personaje.
 Objetos apoyados en el tablero. Apunta con la mira a menos de 8 m y pulsa la rueda o RT. Cada disparo consume una celda, hace 20 de daño al enemigo o rompe un objeto.
 Animaciones sincronizadas con brazos/armas y recuperación en primera persona.
 Sobreviviente del proyecto integrado con locomoción y desenlace.
-Inventario rediseñado; menús con su diseño existente. Robot BRUNO original.
+Los objetos del HUD aparecen en columna. En las cinemáticas se conservan los subtítulos y el control para omitir la escena. Robot BRUNO original.
 Sol corregido en lux, luna, estrellas y captura continua del cielo.
 Ciclo solar suave de 8 minutos. En partida nueva el sol se pone a los 47 s y sale a los 4 min 47 s de juego activo. Continuar recupera la fase guardada.
-41 luminarias de pared con sombras iluminan el recorrido nocturno. El estanque recoge el retorno del edificio y responde a las pisadas.
+41 luminarias de pared con sombras iluminan el recorrido nocturno. El estanque recoge agua del techo del refugio y responde a las pisadas con ondas y sonido.
 Se conservan dos IA diferentes, World Partition, Landscape multitextura,
 Nanite, modelos de cuatro LOD, seis tipos de destruibles y efectos Niagara.
 BP_CinematicDirector reorganizado visualmente sin alterar su lógica.

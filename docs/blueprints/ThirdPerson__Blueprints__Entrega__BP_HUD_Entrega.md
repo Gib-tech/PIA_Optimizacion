@@ -5,21 +5,19 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.HUD'"`.
 
-Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, señales del rehén, daño real e inventario. Lee datos de actores; no concede objetivos ni aplica daño por dibujar.
-
-Tres recuadros horizontales alinean icono y cantidad xN. La mira aparece en ambas cámaras. El aviso de daño al rehén usa un margen de 20 px escalados desde la derecha. [Revisión de jugabilidad](../REVISION_JUGABLE.md).
+Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, señales del rehén, daño real e inventario. El filtro de cinemáticas gobierna el dibujo de juego completo. En partida muestra los recursos en columna, las acciones sobre fondo oscuro y una alarma propia al recibir daño el rehén.
 
 ## Entradas y responsabilidades del grafo
 
-- **`ReceiveDrawHUD`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `Condición`, `Condición`, `Condición`, `Secuencia`, `Secuencia`, `DrawRect`, `Condición`, `GetActorOfClass`, `Condición`, `Condición`, `Condición`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Tecla Gamepad_DPad_Up`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Tecla Enter`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `GetActorOfClass`, `GetActorOfClass`, `Asignar CachedDirector`, `Asignar CachedCinema`, `GetActorOfClass`, `Asignar CachedExtras`, `GetActorOfClass`, `Asignar CachedHostage`, `Asignar LastHostageHitSerial`, `K2Node_DynamicCast`, `Asignar CachedBeacon1`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Enter_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveDrawHUD`** en `ReceiveDrawHUD`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveDrawHUD`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `Secuencia`, `DrawRect`, `Secuencia`, `Condición`, `DrawRect`, `Condición`, `GetActorOfClass`, `Condición`, `Condición`, `Secuencia`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Gamepad_DPad_Up`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Enter`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `GetActorOfClass`, `GetActorOfClass`, `Asignar CachedDirector`, `Asignar CachedCinema`, `GetActorOfClass`, `Asignar CachedExtras`, `GetActorOfClass`, `Asignar CachedHostage`, `Asignar LastHostageHitSerial`, `K2Node_DynamicCast`, `Asignar CachedBeacon1`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 
 ## Campos propios declarados
 
@@ -67,12 +65,13 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 1166 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_IntInt`, `Add_VectorVector`, `BooleanAND`, `BooleanOR`, `BreakVector`, `Concat_StrStr`, `Conv_BoolToInt`, `Conv_IntToDouble`, `Conv_IntToString`, `Divide_DoubleDouble`, `Divide_IntInt`, `DrawRect`, `DrawText`, `DrawTexture`, `EqualEqual_IntInt`, `EqualEqual_StrStr`, `FClamp`, `FFloor`, `FMax`, `FMin`, `GetActorOfClass`, `GetBlackboard`, `GetComponentByClass`, `GetDistanceTo`, `GetPlayerController`, `GetPlayerPawn`, `GetRealTimeSeconds`, `GetTimeSeconds`, `GetValueAsBool`, `GreaterEqual_DoubleDouble`, `GreaterEqual_IntInt`, `Greater_DoubleDouble`, `Greater_IntInt`, `InputActionHandlerDynamicSignature__DelegateSignature`, `IsOverlappingActor`, `IsValid`, `K2_GetActorLocation`, `Left`, `Len`, `LessEqual_DoubleDouble`, `Less_DoubleDouble`, `Less_IntInt`, `LineOfSightTo`, `MakeColor`, `MakeLiteralName`, `Min`, `Multiply_DoubleDouble`, `Multiply_IntInt`, `NotEqual_IntInt`, `NotEqual_StrStr`, `Not_PreBool`, `Percent_IntInt`, `PlaySound2D`, `Project`, `RandomFloatInRange`, `ReceiveBeginPlay`, `ReceiveDrawHUD`, `SelectColor`, `SelectFloat`, `SelectInt`, `SpawnSound2D`, `Subtract_DoubleDouble`, `Subtract_IntInt`, `UserConstructionScript`.
+La exportación contiene 1236 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_IntInt`, `Add_VectorVector`, `BooleanAND`, `BooleanOR`, `BreakVector`, `Concat_StrStr`, `Conv_BoolToInt`, `Conv_IntToDouble`, `Conv_IntToString`, `Divide_DoubleDouble`, `Divide_IntInt`, `DrawRect`, `DrawText`, `DrawTexture`, `EqualEqual_IntInt`, `EqualEqual_StrStr`, `FClamp`, `FFloor`, `FMax`, `FMin`, `GetActorOfClass`, `GetBlackboard`, `GetComponentByClass`, `GetDistanceTo`, `GetPlayerController`, `GetPlayerPawn`, `GetRealTimeSeconds`, `GetTimeSeconds`, `GetValueAsBool`, `GreaterEqual_DoubleDouble`, `GreaterEqual_IntInt`, `Greater_DoubleDouble`, `Greater_IntInt`, `InputActionHandlerDynamicSignature__DelegateSignature`, `IsOverlappingActor`, `IsValid`, `K2_GetActorLocation`, `Left`, `Len`, `LessEqual_DoubleDouble`, `Less_DoubleDouble`, `Less_IntInt`, `LineOfSightTo`, `MakeColor`, `MakeLiteralName`, `Min`, `Multiply_DoubleDouble`, `Multiply_IntInt`, `NotEqual_IntInt`, `NotEqual_StrStr`, `Not_PreBool`, `Percent_IntInt`, `PlaySound2D`, `Project`, `RandomFloatInRange`, `ReceiveBeginPlay`, `ReceiveDrawHUD`, `SelectColor`, `SelectFloat`, `SelectInt`, `SpawnSound2D`, `Subtract_DoubleDouble`, `Subtract_IntInt`, `UserConstructionScript`.
 
 - `/Game/ThirdPerson/Audio/SW_Alert.SW_Alert`
 - `/Game/ThirdPerson/Audio/SW_Ambience.SW_Ambience`
 - `/Game/ThirdPerson/Audio/SW_Clear.SW_Clear`
 - `/Game/ThirdPerson/Audio/SW_Defeat.SW_Defeat`
+- `/Game/ThirdPerson/Audio/SW_HostageAlarm.SW_HostageAlarm`
 - `/Game/ThirdPerson/Audio/SW_HostageVoice_1.SW_HostageVoice_1`
 - `/Game/ThirdPerson/Audio/SW_HostageVoice_2.SW_HostageVoice_2`
 - `/Game/ThirdPerson/Audio/SW_HostageVoice_3.SW_HostageVoice_3`
@@ -83,7 +82,6 @@ La exportación contiene 1166 nodos con pines. Funciones referenciadas: `Add_Dou
 - `/Game/ThirdPerson/Audio/SW_Victory.SW_Victory`
 - `/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage_C`
 - `/Game/ThirdPerson/Blueprints/AnimNotifies/BPC_Health.BPC_Health_C`
-- `/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone.BP_CombatZone_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager_C`
@@ -108,4 +106,4 @@ La exportación contiene 1166 nodos con pines. Funciones referenciadas: `Add_Dou
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `faa6009d03d469349165af7213521672003cd89663479d36b341257a23d49aa1`.
+**Huella de exportación:** `3e2283ea42ff1c3cc24a2e4e30e3d52c7cef54b2d1f5d080493547d6789171f4`.

@@ -1,5 +1,7 @@
 # Relevo del proyecto
 
+> **Presentación y colisiones, 17/11.** La revisión más reciente cubre el HUD vertical, las cinemáticas, la tecla 1, las alertas, los restos, el rehén, las luces y el aljibe del refugio. [Cambios y pruebas](REVISION_JUGABLE.md#presentación-y-colisiones).
+
 > **Versión actual.** Ciclo de 8 min desde la tarde, BRUNO por proximidad y diez objetos rompibles de un golpe. La revisión de jugabilidad reúne los valores y pruebas actuales. [Ver controles y cambios](REVISION_JUGABLE.md).
 
 > **Actualización posterior, 17/11 — ciclo, luces y ataques:** periodo solar de 1200 s con smoothstep, luna/ambiente legibles y 41 luminarias de pared reutilizables. Los seis props aceptan ligero/pesado de espada/martillo y pulso. Barrido corto durante la ventana activa corrige impactos sobre props bajos; comparte deduplicación con el contacto físico. Puertas conservan progresión. Compilación, matriz de 30 combinaciones, ciclo completo, pausa, checkpoint y negativos del pulso comprobados en PIE. Fuentes, documentación interna y evidencia: [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md). Los textos siguientes conservan historial.

@@ -42,4 +42,8 @@ def add_water_contact(g, seq, hero, now):
     color = g.c(MATH,'Conv_VectorToLinearColor',[('InVec','struct',feet)],cat='struct',obj='/Script/CoreUObject.LinearColor')
     color[0].pins['InVec']['obj']=VEC
     prev = g.action_on(prev,mid_type,'SetVectorParameterValue',mid,[('ParameterName','name','Origen',None),('Value','struct',color,'/Script/CoreUObject.LinearColor')])
-    g.action_on(prev,mid_type,'SetScalarParameterValue',mid,[('ParameterName','name','Inicio',None),('Value','real',now,None)])
+    prev=g.action_on(prev,mid_type,'SetScalarParameterValue',mid,[('ParameterName','name','Inicio',None),('Value','real',now,None)])
+    splash=g.call('/Script/Engine.GameplayStatics','PlaySoundAtLocation',static=True)
+    splash.pin('Sound','object',obj='/Script/Engine.SoundBase',default_obj='/Game/ThirdPerson/Audio/SW_PasoAgua.SW_PasoAgua')
+    splash.pin('Location','struct',obj=VEC).pin('VolumeMultiplier','real',sub='float',default='.48')
+    g.w(feet,splash,'Location');g.chain(prev,splash)
