@@ -395,9 +395,10 @@ hit_damage=call(STRING,'Conv_IntToString',[('InInt','int',call(MATH,'FFloor',[('
 text(hit_marker,concat('-',hit_damage),add(mul(width,.5),mul(12,scale)),add(mul(height,.5),mul(8,scale)),.95,'(R=1,G=.8,B=.45,A=1)')
 host_warning_ready=branch(seq,(g.valid(hostage,'CachedHostage'),'ReturnValue'),'then_3')
 host_warning=branch(host_warning_ready,both(cmp('Greater_DoubleDouble',v('HostageHurtUntil'),now,'real'),cmp('Greater_DoubleDouble',host_damage_hp,0,'real')))
-warning=rect(host_warning,mul(20,scale),mul(194,scale),mul(430,scale),mul(53,scale),'(R=.36,G=.025,B=.015,A=.94)')
-warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',mul(30,scale),mul(203,scale),1.15,'(R=1,G=.85,B=.4,A=1)')
-text(warning,'¡Ayúdame! Protege mi retirada.',mul(30,scale),mul(224,scale),1.05)
+warn_x=sub(width,mul(450,scale))
+warning=rect(host_warning,warn_x,mul(217,scale),mul(430,scale),mul(53,scale),'(R=.36,G=.025,B=.015,A=.94)')
+warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',add(warn_x,mul(10,scale)),mul(225,scale),1.15,'(R=1,G=.85,B=.4,A=1)')
+text(warning,'¡Ayúdame! Protege mi retirada.',add(warn_x,mul(10,scale)),mul(246,scale),1.05)
 from generate_cinematic_graphs import hud_hook
 hud_hook(g)
 from generate_extra_hud import add_extra_hud

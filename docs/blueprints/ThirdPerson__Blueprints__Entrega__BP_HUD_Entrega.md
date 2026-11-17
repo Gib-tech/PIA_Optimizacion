@@ -7,6 +7,8 @@
 
 Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, señales del rehén, daño real e inventario. Lee datos de actores; no concede objetivos ni aplica daño por dibujar.
 
+Tres recuadros horizontales alinean icono y cantidad xN. La mira aparece en ambas cámaras. El aviso de daño al rehén usa un margen de 20 px escalados desde la derecha. [Revisión de jugabilidad](../REVISION_JUGABLE.md).
+
 ## Entradas y responsabilidades del grafo
 
 - **`ReceiveDrawHUD`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `Condición`, `Condición`, `Condición`, `Secuencia`, `Secuencia`, `DrawRect`, `Condición`, `GetActorOfClass`, `Condición`, `Condición`, `Condición`. Las condiciones del grafo deciden qué rama se ejecuta.

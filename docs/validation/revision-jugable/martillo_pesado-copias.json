@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "attack": "martillo_pesado",
+  "third_person": true,
+  "hammer_upgrade": false,
+  "input": "RightMouseButton",
+  "fixture": "Posición, equipo y munición preparados. Una pulsación por objetivo, sin aplicar daño ni invocar callbacks del arma.",
+  "objects": [
+    {
+      "actor": "Impacto_Equipo_Auto_Abandonado",
+      "modelo": "Equipo_Auto_Abandonado",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 21
+    },
+    {
+      "actor": "Impacto_LOD_Banco",
+      "modelo": "LOD_Banco",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 83
+    },
+    {
+      "actor": "Impacto_LOD_Car",
+      "modelo": "LOD_Car",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 21
+    },
+    {
+      "actor": "Impacto_LOD_fuente",
+      "modelo": "LOD_fuente",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 20
+    }
+  ]
+}

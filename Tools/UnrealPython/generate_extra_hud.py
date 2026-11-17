@@ -25,9 +25,9 @@ def add_extra_hud(g,draw,width,height,scale,rect,text):
   g.w(value,n,'Text')
   for pin,val in [('ScreenX',atx(x)),('ScreenY',aty(y)),('Scale',mul(size*(.375 if size>2 else .75),scale))]:n.pin(pin,'real',sub='float');g.w(val,n,pin)
   g.chain(prev,n);return n
- def icon(prev,name,x,y,size=142):
+ def icon(prev,name,x,y,size=142,screen=False):
   n=g.call('/Script/Engine.HUD','DrawTexture').pin('Texture','object',obj='/Script/Engine.Texture',default_obj='/Game/ThirdPerson/Blueprints/Entrega/Inventario/T_Inv_'+name+'.T_Inv_'+name).pin('TintColor','struct',obj='/Script/CoreUObject.LinearColor',default='(R=1,G=1,B=1,A=1)').pin('BlendMode','byte',obj='/Script/Engine.EBlendMode',default='BLEND_Translucent').pin('bScalePosition','bool',default='false').pin('RotPivot','struct',obj='/Script/CoreUObject.Vector2D',default='(X=0,Y=0)')
-  for pin,val in [('ScreenX',atx(x)),('ScreenY',aty(y)),('ScreenW',mul(size,scale)),('ScreenH',mul(size,scale)),('TextureU',0),('TextureV',0),('TextureUWidth',1),('TextureVHeight',1),('Scale',1),('Rotation',0)]:n.pin(pin,'real',sub='float');g.w(val,n,pin)
+  for pin,val in [('ScreenX',mul(x,scale) if screen else atx(x)),('ScreenY',mul(y,scale) if screen else aty(y)),('ScreenW',mul(size,scale)),('ScreenH',mul(size,scale)),('TextureU',0),('TextureV',0),('TextureUWidth',1),('TextureVHeight',1),('Scale',1),('Rotation',0)]:n.pin(pin,'real',sub='float');g.w(val,n,pin)
   g.chain(prev,n);return n
  # Panel de equipo: tres recursos reales, sin capacidades ni estadísticas ficticias.
  prev=rect(inventory,0,0,width,height,'(R=.002,G=.008,B=.013,A=.35)')
@@ -38,14 +38,14 @@ def add_extra_hud(g,draw,width,height,scale,rect,text):
  prev=label(prev,'INVENTARIO  /  VIAJERO TEMPORAL',25,49,.68,'(R=.3,G=.68,B=.78,A=1)')
  prev=panel(prev,758,21,130,29,'(R=.04,G=.11,B=.14,A=1)')
  prev=label(prev,'I / SELECT   CERRAR',768,29,.69)
- cards=[('BOTIQUINES','Botiquines','BotiquinTemporal','(R=.28,G=.82,B=.62,A=1)','Recupera hasta 35 de vida.','H / LB   UTILIZAR'),('CARGAS DE PULSO','Cargas','CeldaTemporal','(R=.16,G=.73,B=1,A=1)','Pulso a distancia · 20 de daño.','CLIC CENTRAL / RT   DISPARAR'),('CRÉDITOS DE ENERGÍA','Creditos','CreditoCronal','(R=1,G=.64,B=.22,A=1)','3 créditos → energía → 1 botiquín.','E / RB   CONVERTIR CON BRUNO')]
+ cards=[('BOTIQUINES','Botiquines','BotiquinTemporal','(R=.28,G=.82,B=.62,A=1)','Recupera hasta 35 de vida.','H / LB   UTILIZAR'),('CARGAS DE PULSO','Cargas','CeldaTemporal','(R=.16,G=.73,B=1,A=1)','Apunta a la mira · 8 m · 1 celda.','CLIC CENTRAL / RT   DISPARAR'),('CRÉDITOS DE ENERGÍA','Creditos','CreditoCronal','(R=1,G=.64,B=.22,A=1)','3 créditos → energía → 1 botiquín.','E / RB   CONVERTIR CON BRUNO')]
  for i,(title,field,img,color,desc,hint) in enumerate(cards):
   x=24+i*292
   prev=panel(prev,x,80,280,207,'(R=.025,G=.048,B=.06,A=1)')
   prev=panel(prev,x,80,280,2,color)
   prev=label(prev,title,x+14,94,.78,color)
   amount=g.c('/Script/Engine.KismetStringLibrary','Conv_IntToString',[('InInt','int',v(field))],cat='string')
-  prev=label(prev,amount,x+167,128,3.2)
+  prev=label(prev,cat('x',amount),x+167,128,3.2)
   available=g.c(MATH,'SelectInt',[('A','int',1),('B','int',0),('bPickA','bool',g.cmp('Greater_IntInt',v(field),0,'int'))],cat='int')
   status=g.node('K2Node_Select',['NumOptionPins=2','IndexPinType=(PinCategory="int")']).pin('Index','int').pin('ReturnValue','string',out=True).pin('Option 0','string',default='AGOTADO').pin('Option 1','string',default='DISPONIBLE');g.w(available,status,'Index')
   prev=label(prev,(status,'ReturnValue'),x+161,205,.6,'(R=.45,G=.6,B=.66,A=1)')
@@ -61,14 +61,21 @@ def add_extra_hud(g,draw,width,height,scale,rect,text):
  prev=rect(notice,mul(20,scale),mul(183,scale),mul(760,scale),mul(32,scale),'(R=.01,G=.05,B=.08,A=.92)')
  text(prev,v('Notice','string'),mul(30,scale),mul(192,scale),.92,'(R=.4,G=.9,B=1,A=1)')
  line=g.br(output,g.neg(v('InventoryOpen','bool')),'then_2')
- value=cat(cat(count('BOTIQUINES ','Botiquines'),'  ·  '),count('PULSO ','Cargas'))
- value=cat(cat(value,'  ·  '),count('CRÉDITOS ','Creditos'))
- text(line,cat(value,'  [I / SELECT]'),mul(22,scale),mul(233,scale),.79)
+ for i,(_,field,img,color,_,_) in enumerate(cards):
+  x=22+i*93
+  line=rect(line,mul(x,scale),mul(219,scale),mul(86,scale),mul(36,scale),'(R=.008,G=.022,B=.032,A=.94)')
+  line=icon(line,img,x+2,220,34,screen=True)
+  line=text(line,count('x',field),mul(x+40,scale),mul(228,scale),.88,color)
+ phase=g.node('K2Node_Select',['NumOptionPins=4','IndexPinType=(PinCategory="int")']).pin('Index','int').pin('ReturnValue','string',out=True)
+ for i,name in enumerate(['Día','Atardecer','Noche','Amanecer']):phase.pin('Option '+str(i),'string',default=name)
+ g.w(v('FaseSolar'),phase,'Index')
+ line=text(line,(phase,'ReturnValue'),mul(22,scale),mul(286,scale),.76,'(R=1,G=.85,B=.62,A=1)')
+ line=text(line,'[I] Equipo    Pulso: apunta y pulsa rueda / RT · 8 m',mul(306,scale),mul(230,scale),.76)
  tech=g.v('Tecnico','object',owner=EXTRAS,target=extras,obj=ACTOR)
  hero=g.v('Hero','object',owner=EXTRAS,target=extras,obj=HERO)
  hint=g.br(output,(g.valid(*tech),'ReturnValue'),'then_3')
  hint=g.br(hint,(g.valid(*hero),'ReturnValue'));hint=g.br(hint,g.neg(v('InventoryOpen','bool')));hint=g.br(hint,g.cmp('EqualEqual_IntInt',v('ObjetoEnMira'),0,'int'))
- near=g.br(hint,g.both(g.cmp('LessEqual_DoubleDouble',(g.dist(*hero,*tech),'ReturnValue'),270),v('bRobotEnMira','bool')))
+ near=g.br(hint,v('bRobotEnMira','bool'))
  text(near,'ROBOT BRUNO  [E / RB]  Hablar / convertir energía',mul(22,scale),mul(261,scale),.87,'(R=.4,G=.9,B=1,A=1)')
  pickup=g.br(output,g.cmp('Greater_IntInt',v('ObjetoEnMira'),0,'int'),'then_6');pickup=g.br(pickup,g.neg(v('InventoryOpen','bool')))
  prompt=g.node('K2Node_Select',['NumOptionPins=4','IndexPinType=(PinCategory="int")']).pin('Index','int').pin('ReturnValue','string',out=True)
@@ -88,7 +95,6 @@ def add_extra_hud(g,draw,width,height,scale,rect,text):
  rect(prev,g.op('Add_DoubleDouble',fab_x,mul(12,scale)),mul(197,scale),mul(mul(396,progress),scale),mul(5,scale),'(R=.15,G=.8,B=1,A=1)')
  aim=g.br(output,(g.valid(*hero),'ReturnValue'),'then_4')
  aim=g.br(aim,g.neg(v('InventoryOpen','bool')))
- aim=g.br(aim,g.v('CamaraPrimera','bool',owner=HERO,target=hero))
  x=mul(width,.5);y=mul(height,.5)
  prev=rect(aim,g.op('Subtract_DoubleDouble',x,5),g.op('Subtract_DoubleDouble',y,1),10,2,'(R=.6,G=.9,B=1,A=.7)')
  rect(prev,g.op('Subtract_DoubleDouble',x,1),g.op('Subtract_DoubleDouble',y,5),2,10,'(R=.6,G=.9,B=1,A=.7)')

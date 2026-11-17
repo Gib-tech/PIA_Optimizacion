@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "attack": "pulso",
+  "third_person": true,
+  "hammer_upgrade": false,
+  "input": "MiddleMouseButton",
+  "fixture": "Posición, equipo y munición preparados. Una pulsación por objetivo, sin aplicar daño ni invocar callbacks del arma.",
+  "objects": [
+    {
+      "actor": "Destruible_Auto",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 21
+    },
+    {
+      "actor": "Destruible_Banca",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 83
+    },
+    {
+      "actor": "Destruible_Barril",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 19
+    },
+    {
+      "actor": "Destruible_Basurero",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 51
+    },
+    {
+      "actor": "Destruible_Caja",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 20
+    },
+    {
+      "actor": "Destruible_Fuente",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 20
+    },
+    {
+      "actor": "Impacto_Equipo_Auto_Abandonado",
+      "modelo": "Equipo_Auto_Abandonado",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 21
+    },
+    {
+      "actor": "Impacto_LOD_Banco",
+      "modelo": "LOD_Banco",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 83
+    },
+    {
+      "actor": "Impacto_LOD_Car",
+      "modelo": "LOD_Car",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 21
+    },
+    {
+      "actor": "Impacto_LOD_fuente",
+      "modelo": "LOD_fuente",
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 20
+    }
+  ]
+}

@@ -9,6 +9,13 @@ with ZipFile(path) as z:
  expected_fiches=len(list((root/'docs/blueprints').glob('*.md')))
  assert sum(n.startswith('docs/blueprints/') and n.endswith('.md') for n in names)==expected_fiches
  assert all(n in names for n in ['Windows/Terreno.exe','docs/LEEME_EQUIPO.md','docs/IA_Y_COMBATE.md','docs/validation/robot-cielo-inventario/energia-runtime.json','docs/validation/cinematic-layout.json'])
+ assert 'docs/REVISION_JUGABLE.md' in names
+ revision='docs/validation/revision-jugable/'
+ ataques=[json.loads(z.read(n)) for n in names if n.startswith(revision) and n.endswith('.json')]
+ assert all(r['passed'] for r in ataques)
+ combinaciones={(r['attack'],obj['actor']) for r in ataques if 'attack' in r for obj in r['objects'] if obj['vida_final']==0 and obj['fracturas']>0}
+ assert len(combinaciones)==50
+ assert all(revision+f in names for f in ['ejecutable.json','recursos.json','sistemas.json','paquete-alerta-derecha.png'])
  assert 'docs/ITEMS_Y_DESTRUIBLES.md' in names
  assert 'docs/CICLO_LUCES_Y_ATAQUES.md' in names
  for report in ['destruibles-espada_ligero','destruibles-espada_pesado','destruibles-martillo_ligero','destruibles-martillo_pesado','destruibles-pulso','ciclo-runtime','guardado-y-guardas','compilacion','partida-nocturna','recarga-fria','paquete-final','datos-usuario-restaurados']:

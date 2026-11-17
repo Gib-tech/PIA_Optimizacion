@@ -1,0 +1,28 @@
+{
+  "stage": 10,
+  "rows": [
+    "E en tercera persona con la cámara orientada fuera del robot: diálogo, segundo E y conversión de tres créditos en un botiquín.",
+    "La cubeta permite entrar y caminar. El MID renueva origen y tiempo de onda en los pies.",
+    "Fuera de la superficie cesan las pisadas de agua.",
+    "F5 escribe un checkpoint desde la entrada real y deja el aviso vacío.",
+    "Día, atardecer y noche visibles durante los primeros 65 segundos sin mover el reloj ni acelerar el mundo."
+  ],
+  "phases": [
+    {
+      "fase": 0,
+      "segundos": 0.02,
+      "lux": 25949.89
+    },
+    {
+      "fase": 1,
+      "segundos": 31.3,
+      "lux": 9140.1
+    },
+    {
+      "fase": 2,
+      "segundos": 62.12,
+      "lux": 0.0
+    }
+  ],
+  "passed": true
+}

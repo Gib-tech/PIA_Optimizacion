@@ -5,7 +5,9 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_LuminariaPared`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.Actor'"`.
 
-Luminaria reutilizable colocada sobre paredes mediante trazas. Soporte, carcasa, difusor cálido y foco inclinado de 3200 lúmenes, radio 1450 cm y sombras. Sin Tick ni colisión/navegación; luces limitadas a 2700 cm con desvanecimiento de 500 cm. Hay 41 instancias en los diez sectores del mapa. Ver CICLO_LUCES_Y_ATAQUES.md y prepare_daynight_wall_lights.py.
+Luminaria reutilizable colocada sobre paredes mediante trazas. Soporte, carcasa, difusor cálido y foco inclinado de 3200 lúmenes, radio 1450 cm y sombras. Sin Tick ni colisión/navegación; luces limitadas a 2300 cm con desvanecimiento de 500 cm. Hay 41 instancias en los diez sectores del mapa. Ver REVISION_JUGABLE.md y prepare_daynight_wall_lights.py.
+
+Corte a 2300 cm, sombra a escala 0,35 y dispersión volumétrica local desactivada. [Revisión de jugabilidad](../REVISION_JUGABLE.md).
 
 ## Entradas y responsabilidades del grafo
 

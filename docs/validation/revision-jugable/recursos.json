@@ -1,0 +1,155 @@
+{
+  "passed": true,
+  "focos": 41,
+  "radio_cm": 1450,
+  "distancia_dibujo_cm": 2300,
+  "escala_sombra": 0.35,
+  "dispersion_volumetrica": 0,
+  "modelos": [
+    {
+      "actor": "Equipo_Farol_Jardin",
+      "lods": 4,
+      "materiales": [
+        "M_Farol_0",
+        "M_Farol_1",
+        "M_Farol_2"
+      ],
+      "distancia_dibujo_cm": 6500.0
+    },
+    {
+      "actor": "LOD_Car",
+      "lods": 4,
+      "materiales": [
+        "Body",
+        "Black",
+        "Window",
+        "Bumpers",
+        "Lights",
+        "Bottom",
+        "Tires",
+        "Wheels"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "LOD_Tree1",
+      "lods": 4,
+      "materiales": [
+        "Leaves_001",
+        "Material_001"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "LOD_fuente",
+      "lods": 4,
+      "materiales": [
+        "MI_FuenteChaos"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "LOD_Banco",
+      "lods": 4,
+      "materiales": [
+        "lambert2SG",
+        "blinn1SG"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "Equipo_Escombros_Servicio",
+      "lods": 4,
+      "materiales": [
+        "M_Escombros_0"
+      ],
+      "distancia_dibujo_cm": 6500.0
+    },
+    {
+      "actor": "Equipo_Arbol_Jardin",
+      "lods": 4,
+      "materiales": [
+        "M_ArbolFab_0",
+        "M_ArbolFab_1"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "Equipo_Escombros_Jardin",
+      "lods": 4,
+      "materiales": [
+        "M_Escombros_0"
+      ],
+      "distancia_dibujo_cm": 6500.0
+    },
+    {
+      "actor": "Equipo_Farol_Deposito",
+      "lods": 4,
+      "materiales": [
+        "M_Farol_0",
+        "M_Farol_1",
+        "M_Farol_2"
+      ],
+      "distancia_dibujo_cm": 6500.0
+    },
+    {
+      "actor": "LOD_Light_Pole",
+      "lods": 4,
+      "materiales": [
+        "Material"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "Equipo_Arbol_Acceso",
+      "lods": 4,
+      "materiales": [
+        "M_ArbolFab_0",
+        "M_ArbolFab_1"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "Equipo_Auto_Abandonado",
+      "lods": 1,
+      "materiales": [
+        "M_AutoDestruido_0"
+      ],
+      "distancia_dibujo_cm": 0.0
+    },
+    {
+      "actor": "Equipo_Edificio_Control",
+      "lods": 4,
+      "materiales": [
+        "M_Edificio_0",
+        "M_Edificio_1",
+        "M_Edificio_2"
+      ],
+      "distancia_dibujo_cm": 0.0
+    }
+  ],
+  "texturas": [
+    {
+      "recurso": "/Game/ThirdPerson/RecursosPropios/Modelos/ConcreteBench",
+      "max_px": 1024,
+      "streaming": true
+    },
+    {
+      "recurso": "/Game/ThirdPerson/Environment/TeamModels/Textures/T_Escombros_0_BaseColor",
+      "max_px": 512,
+      "streaming": true
+    }
+  ],
+  "particulas": [
+    {
+      "actor": "FX_NS_Polvo",
+      "sistema": "NS_Compound_Polvo",
+      "distancia_cm": 1400.0
+    },
+    {
+      "actor": "FX_NS_Hojas",
+      "sistema": "NS_Compound_Hojas",
+      "distancia_cm": 1800.0
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Revisión de BRUNO, cielo e inventario · 17/11/2026
 
+> **Versión actual.** Ciclo de 8 min desde la tarde, BRUNO por proximidad y diez objetos rompibles de un golpe. La revisión de jugabilidad reúne los valores y pruebas actuales. [Ver controles y cambios](REVISION_JUGABLE.md).
+
 > **Actualización posterior:** el periodo actual es 1200 s, con smoothstep, luna de 1,2 lux y 41 luminarias de pared. Las cifras de 480 s/0,12 lux descritas abajo documentan la revisión anterior. Ver [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md).
 
 Esta revisión conserva el historial del robot y el cielo. Los cambios posteriores de recogida, curación y colisiones están en [ITEMS_Y_DESTRUIBLES.md](ITEMS_Y_DESTRUIBLES.md). Se conservan el diseño y los flujos de los menús. El propietario limitó el alcance a Unreal y documentación técnica: redes, campaña y promoción están fuera. Las capturas de requisitos son criterios que revisar, no instrucciones independientes ni prueba de cumplimiento.

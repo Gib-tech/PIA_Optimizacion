@@ -28,7 +28,7 @@ Resultado: R/A nuevo intento. Enter/cruceta abajo menú.
 BRUNO Y RECURSOS
 Cuatro cajas conceden una sola vez +1 botiquín, +3 cargas y +3 créditos.
 BRUNO es un robot anclado a la red: no puede salir con los viajeros.
-Apuntar a BRUNO y usar E/RB abre su diálogo; repetir convierte 3 créditos en energía y fabrica
+Acercarse a BRUNO a menos de 3,2 m y usar E/RB abre su diálogo; repetir convierte 3 créditos en energía y fabrica
 1 botiquín en 3 segundos. No es un pago. No consume dos veces mientras
 trabaja. Pausa detiene el proceso; checkpoint conserva energía y progreso.
 
@@ -37,20 +37,20 @@ Apuntar y usar E/RB recoge una pieza una sola vez; se conserva al continuar.
 
 DESTRUIBLES
 Caja, basurero, banca, barril, auto y fuente. Seis tipos distintos.
-Aceptan ligero, pesado y pulso, con espada o martillo; no exigen mejora.
+Sus diez instancias se rompen con un ligero, un pesado o un pulso, con cualquier arma.
 Los sellos de misión son adicionales. Nombre visible al apuntar de cerca.
 
 NOVEDADES
 Curación sincronizada con barra. Robot y mesa bloquean al personaje.
-Objetos apoyados en el tablero. Pulso con trazo visual y consumo real.
+Objetos apoyados en el tablero. Apunta con la mira a menos de 8 m y pulsa la rueda o RT. Cada disparo consume una celda, hace 20 de daño al enemigo o rompe un objeto.
 Animaciones sincronizadas con brazos/armas y recuperación en primera persona.
 Sobreviviente del proyecto integrado con locomoción y desenlace.
 Inventario rediseñado; menús con su diseño existente. Robot BRUNO original.
 Sol corregido en lux, luna, estrellas y captura continua del cielo.
-Ciclo solar suave de 20 minutos, guardado y detenido en pausa.
-41 luminarias de pared con sombras iluminan el recorrido nocturno. Estanque animado.
+Ciclo solar suave de 8 minutos. En partida nueva el sol se pone a los 47 s y sale a los 4 min 47 s de juego activo. Continuar recupera la fase guardada.
+41 luminarias de pared con sombras iluminan el recorrido nocturno. El estanque recoge el retorno del edificio y responde a las pisadas.
 Se conservan dos IA diferentes, World Partition, Landscape multitextura,
-Nanite, modelos de cuatro LOD, seis destruibles y ocho partículas.
+Nanite, modelos de cuatro LOD, seis tipos de destruibles y efectos Niagara.
 BP_CinematicDirector reorganizado visualmente sin alterar su lógica.
 
 GUARDADO Y OPCIONES

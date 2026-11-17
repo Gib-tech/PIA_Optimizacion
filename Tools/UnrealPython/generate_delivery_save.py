@@ -142,8 +142,8 @@ def manager():
     prev=g.s(prev,'bHasCheckpoint',(write,'ReturnValue'),'bool');ok=g.br(prev,g.v('bSaveSucceeded','bool'))
     prev=g.s(ok,'bHasCheckpoint',True,'bool')
     prev=g.s(prev,'StatusSerial',g.op('Add_IntInt',g.v('StatusSerial','int'),1,'int'),'int')
-    g.s(prev,'StatusText','Punto de control guardado. F5 guarda cuando estes a salvo.','string')
-    g.s(ok,'StatusText','No se pudo guardar la partida. Intenta F5 de nuevo.','string',pin='else')
+    g.s(prev,'StatusText','','string')
+    g.s(ok,'StatusText','No se pudo guardar la partida.','string',pin='else')
 
     # Load is gated by schema and health before any live-world values are changed.
     event=g.custom('RestoreCheckpoint');load=g.slot('LoadGameFromSlot').pin('ReturnValue','object',obj='/Script/Engine.SaveGame',out=True);g.chain(event,load)
@@ -215,7 +215,7 @@ def manager():
         prev=g.s(setdoor,'bRestoring',True,'bool');g.chain(branch,prev,'else')
     prev=g.s(prev,'bDoorPending',pending,'bool',owner=HERO,target=hero)
     prev=g.s(prev,'bRestoring',False,'bool');prev=g.s(prev,'bHasCheckpoint',True,'bool')
-    g.s(prev,'StatusText','Partida restaurada. F5 guarda cuando estes a salvo.','string')
+    g.s(prev,'StatusText','','string')
     # Importing a new custom event and its call in one clipboard pass can drop
     # the call before the event signature exists. Share the action's exec entry
     # directly; keep the named events available for diagnostics and F5.

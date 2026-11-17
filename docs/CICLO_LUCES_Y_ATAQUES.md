@@ -1,5 +1,7 @@
 # Ciclo suave, luminarias y ataques a destruibles · 17/11/2026
 
+> **Versión actual.** Ciclo de 8 min desde la tarde, BRUNO por proximidad y diez objetos rompibles de un golpe. La revisión de jugabilidad reúne los valores y pruebas actuales. [Ver controles y cambios](REVISION_JUGABLE.md).
+
 Revisión vigente de `Nivel_Entrega`. Sustituye los valores históricos del cielo de ocho minutos y la indicación de usar sólo el pesado en props. El juego sigue ejecutando Blueprints; las herramientas de Python y el helper C++ se usan exclusivamente en el editor.
 
 ## Cielo y continuidad

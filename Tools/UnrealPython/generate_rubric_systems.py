@@ -38,7 +38,7 @@ def systems():
   return trace,(hit,'HitActor')
  tick=g.event(ACTOR,'ReceiveTick').pin('DeltaSeconds','real',sub='float',out=True)
  seq=g.node('K2Node_ExecutionSequence').pin('execute')
- for i in range(7):seq.pin('then_'+str(i),out=True)
+ for i in range(8):seq.pin('then_'+str(i),out=True)
  g.chain(tick,seq)
  start=g.br(seq,g.neg(g.v('bInitialized','bool')),'then_0')
  prev=start
@@ -57,20 +57,26 @@ def systems():
  ready=g.br(seq,g.v('bInitialized','bool'),'then_1');ready=g.br(ready,allowed())
  updates=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True);g.chain(ready,updates)
  age=g.s(updates,'WorldSeconds',g.op('Add_DoubleDouble',g.v('WorldSeconds'),(tick,'DeltaSeconds')),pin='then_0')
- # Veinte minutos por defecto. El reloj persistido conserva su unidad (segundos).
+ # Ocho minutos por defecto. El reloj persistido conserva su unidad (segundos).
  # Se acota el periodo para que una instancia mal configurada no acelere el cielo.
  duration=g.c(MATH,'FMax',[('A','real',g.v('DayCycleDuration')),('B','real',300)])
  phase=g.op('Multiply_DoubleDouble',g.v('WorldSeconds'),g.op('Divide_DoubleDouble',360,duration))
- angle=g.op('Add_DoubleDouble',phase,35)
+ angle=g.op('Add_DoubleDouble',phase,145)
  elevation=g.c(MATH,'DegSin',[('A','real',angle)])
  def smooth(a,b):
   t=g.c(MATH,'FClamp',[('Value','real',g.op('Divide_DoubleDouble',g.op('Subtract_DoubleDouble',elevation,a),b-a)),('Min','real',0),('Max','real',1)])
   return g.op('Multiply_DoubleDouble',g.op('Multiply_DoubleDouble',t,t),g.op('Subtract_DoubleDouble',3,g.op('Multiply_DoubleDouble',2,t)))
  daylight=smooth(-.06,.59)
  night=g.op('Subtract_DoubleDouble',1,smooth(-.20,.20))
- age.props.append('NodeComment='+q('Ciclo solar: 1200 s por vuelta (DayCycleDuration, mínimo 300). Smoothstep suaviza amanecer/atardecer sin cortes de intensidad. WorldSeconds se guarda y sólo avanza con juego permitido. docs/CICLO_LUCES_Y_ATAQUES.md'))
+ age.props.append('NodeComment='+q('Ciclo solar: 480 s por vuelta (DayCycleDuration, mínimo 300). Smoothstep suaviza amanecer/atardecer sin cortes de intensidad. WorldSeconds se guarda y sólo avanza con juego permitido. docs/REVISION_JUGABLE.md'))
+ render=g.br(age,g.cmp('GreaterEqual_DoubleDouble',now,g.v('SiguienteLuz')))
+ render=g.s(render,'SiguienteLuz',g.op('Add_DoubleDouble',now,.12))
+ def pick(test,a,b):return g.c(MATH,'SelectInt',[('A','int',a),('B','int',b),('bPickA','bool',test)],cat='int')
+ twilight=pick(g.cmp('Less_DoubleDouble',g.c(MATH,'DegCos',[('A','real',angle)]),0),1,3)
+ phase_id=pick(g.cmp('Greater_DoubleDouble',elevation,.2),0,pick(g.cmp('Less_DoubleDouble',elevation,-.2),2,twilight))
+ render=g.s(render,'FaseSolar',phase_id,'int')
  rot=g.c(MATH,'MakeRotator',[('Pitch','real',g.op('Multiply_DoubleDouble',angle,-1)),('Yaw','real',-35),('Roll','real',0)],cat='struct',obj=ROT)
- sun=g.local('Sun','/Script/Engine.DirectionalLight');valid=g.br(age,(g.valid(*sun),'ReturnValue'))
+ sun=g.local('Sun','/Script/Engine.DirectionalLight');valid=g.br(render,(g.valid(*sun),'ReturnValue'))
  prev=g.action_on(valid,ACTOR,'K2_SetActorRotation',sun,[('NewRotation','struct',rot,ROT),('bTeleportPhysics','bool',False,None)])
  light=g.v('LightComponent','object',owner='/Script/Engine.Light',target=sun,obj='/Script/Engine.LightComponent',native=True)
  intensity=g.op('Multiply_DoubleDouble',daylight,26000)
@@ -86,6 +92,9 @@ def systems():
  prev=g.action_on(sky_ok,'/Script/Engine.SkyLightComponent','SetIntensity',sky_component,[('NewIntensity','real',ambience,None)])
  sky_mid=g.local('SkyMID','/Script/Engine.MaterialInstanceDynamic');mid_ok=g.br(prev,(g.valid(*sky_mid),'ReturnValue'));g.chain(sky_ok,mid_ok,'else')
  g.action_on(mid_ok,'/Script/Engine.MaterialInstanceDynamic','SetScalarParameterValue',sky_mid,[('ParameterName','name','NightAmount',None),('Value','real',night,None)])
+ # Superficie de retención: la onda nace en los pies y se desvanece sola.
+ from generate_retention_water import add_water_contact
+ add_water_contact(g,seq,hero,now)
  # Proceso real de conversión, en tiempo de juego. Una orden produce un kit.
  working=g.br(updates,g.v('bFabricating','bool'),'then_1')
  prev=g.s(working,'FabricationProgress',g.op('Add_DoubleDouble',g.v('FabricationProgress'),(tick,'DeltaSeconds')))
@@ -107,8 +116,16 @@ def systems():
  # Los objetos de la mesa ya no son muestras decorativas. Sólo se ofrecen
  # cuando la traza de cámara los alcanza, sin atravesar robot/mesa/paredes.
  target=g.br(seq,g.v('bInitialized','bool'),'then_6');target=g.br(target,allowed());target=g.s(target,'ObjetoEnMira',0,'int');target=g.s(target,'DestruibleEnMira',None,'object',obj=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C');trace,hit_actor=item_trace(target)
- robot_look=g.s(trace,'bRobotEnMira',g.both((g.valid(*tech),'ReturnValue'),g.cmp('EqualEqual_ObjectObject',hit_actor,tech,'object')),'bool')
- cast,destructible=g.cast_after(robot_look,hit_actor,R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C');selected_destructible=g.s(cast,'DestruibleEnMira',destructible,'object',obj=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C')
+ # La cámara de tercera persona puede estar varios metros detrás del héroe.
+ # Proximidad + línea de visión del controlador permiten acercarse y usar E.
+ robot_reset=g.s(trace,'bRobotEnMira',False,'bool')
+ robot_seq=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True);g.chain(robot_reset,robot_seq)
+ nearby=g.br(robot_seq,(g.valid(*tech),'ReturnValue'),'then_0')
+ nearby=g.br(nearby,g.cmp('LessEqual_DoubleDouble',(g.dist(*hero,*tech),'ReturnValue'),320))
+ sight=g.call('/Script/Engine.Controller','LineOfSightTo',pure=True).pin('Other','object',obj=ACTOR).pin('ViewPoint','struct',obj=VEC).pin('bAlternateChecks','bool',default='false').pin('ReturnValue','bool',out=True)
+ g.w(g.pc(),sight,'self');g.w(tech,sight,'Other')
+ g.s(nearby,'bRobotEnMira',(sight,'ReturnValue'),'bool')
+ cast,destructible=g.cast_after(robot_seq,hit_actor,R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C',pin='then_1');selected_destructible=g.s(cast,'DestruibleEnMira',destructible,'object',obj=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C')
  items=g.node('K2Node_ExecutionSequence').pin('execute')
  for i in range(3):items.pin('then_'+str(i),out=True)
  g.chain(selected_destructible,items);g.chain(cast,items,'CastFailed')
@@ -142,7 +159,7 @@ def systems():
    fallthrough=pick;fallpin='else'
   # Si no se apuntó a un objeto recogible, la interacción sigue con BRUNO.
   valid_tech=g.br(fallthrough,(g.valid(*tech),'ReturnValue'),fallpin)
-  guard=g.br(valid_tech,g.both(g.cmp('LessEqual_DoubleDouble',(g.dist(*hero,*tech),'ReturnValue'),270),g.cmp('EqualEqual_ObjectObject',hit_actor,tech,'object')))
+  guard=g.br(valid_tech,g.v('bRobotEnMira','bool'))
   # Una pulsación produce una sola acción. Sin objeto ni robot cercano,
   # reenviar la orden de escolta que antes atendía E/RB en el director.
   found_host=g.call(GS,'GetActorOfClass',static=True).pin('ActorClass','class',obj=ACTOR,default_obj=HOSTAGE).pin('ReturnValue','object',obj=HOSTAGE,out=True);g.chain(guard,found_host,'else');g.chain(valid_tech,found_host,'else')
@@ -159,14 +176,16 @@ def systems():
  # Tercer ataque opcional: munición real y traza de visibilidad con alcance 8m.
  for e in [entry(['MiddleMouseButton','Gamepad_RightTrigger'],'DispararPulso')]:
   guard=g.br(e,g.v('bInitialized','bool'));guard=g.br(guard,allowed())
-  can=g.both(g.cmp('Greater_IntInt',g.v('Cargas','int'),0,'int'),g.cmp('Greater_DoubleDouble',g.op('Subtract_DoubleDouble',now,g.v('LastPulseAt')),.8))
+  ammo=g.br(guard,g.cmp('Greater_IntInt',g.v('Cargas','int'),0,'int'));notice(ammo,'Sin celdas. Recoge la celda cian de la mesa o abre suministros.',pin='else')
+  can=g.cmp('Greater_DoubleDouble',g.op('Subtract_DoubleDouble',now,g.v('LastPulseAt')),.8)
   can=g.both(can,g.neg(g.v('IsAttacking','bool',owner=HERO,target=hero)))
-  prev=g.s(g.br(guard,can),'LastPulseAt',now);prev=g.s(prev,'Cargas',g.op('Subtract_IntInt',g.v('Cargas','int'),1,'int'),'int')
+  prev=g.s(g.br(ammo,can),'LastPulseAt',now);prev=g.s(prev,'Cargas',g.op('Subtract_IntInt',g.v('Cargas','int'),1,'int'),'int')
   pc=g.pc();cm=g.c(GS,'GetPlayerCameraManager',[('PlayerIndex','int',0)],cat='object',obj='/Script/Engine.PlayerCameraManager')
   loc=g.c('/Script/Engine.PlayerCameraManager','GetCameraLocation',cat='struct',obj=VEC,static=False);g.w(cm,loc[0],'self')
   rotation=g.c('/Script/Engine.PlayerCameraManager','GetCameraRotation',cat='struct',obj=ROT,static=False);g.w(cm,rotation[0],'self')
   forward=g.c(MATH,'GetForwardVector',[('InRot','struct',rotation)],cat='struct',obj=VEC);forward[0].pins['InRot']['obj']=ROT
-  reach=g.c(MATH,'Multiply_VectorFloat',[('A','struct',forward),('B','real',800)],cat='struct',obj=VEC);reach[0].pins['A']['obj']=VEC
+  eye=g.location(*hero);camera_gap=g.c(MATH,'Vector_Distance',[('V1','struct',loc),('V2','struct',(eye,'ReturnValue'))]);camera_gap[0].pins['V1']['obj']=camera_gap[0].pins['V2']['obj']=VEC
+  reach=g.c(MATH,'Multiply_VectorFloat',[('A','struct',forward),('B','real',g.op('Add_DoubleDouble',800,camera_gap))],cat='struct',obj=VEC);reach[0].pins['A']['obj']=VEC
   end=g.c(MATH,'Add_VectorVector',[('A','struct',loc),('B','struct',reach)],cat='struct',obj=VEC)
   for p in ['A','B']:end[0].pins[p]['obj']=VEC
   trace=g.call('/Script/Engine.KismetSystemLibrary','SphereTraceSingle',static=True).pin('Start','struct',obj=VEC).pin('End','struct',obj=VEC).pin('Radius','real',sub='float',default='18').pin('TraceChannel','byte',obj='/Script/Engine.ETraceTypeQuery',default='TraceTypeQuery1').pin('bTraceComplex','bool',default='false').pin('ActorsToIgnore','object',obj=ACTOR).pin('DrawDebugType','byte',obj='/Script/Engine.EDrawDebugTrace',default='None').pin('bIgnoreSelf','bool',default='true').pin('OutHit','struct',obj='/Script/Engine.HitResult',out=True).pin('ReturnValue','bool',out=True)
@@ -175,11 +194,15 @@ def systems():
   g.w(loc,trace,'Start');g.w(end,trace,'End');g.chain(prev,trace)
   hit=g.call(GS,'BreakHitResult',pure=True,static=True).pin('Hit','struct',obj='/Script/Engine.HitResult').pin('HitActor','object',obj=ACTOR,out=True).pin('bBlockingHit','bool',out=True).pin('ImpactPoint','struct',obj=VEC,out=True);g.w((trace,'OutHit'),hit,'Hit')
   post=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True).pin('then_2',out=True);g.chain(trace,post)
-  cast,val=g.cast_after(post,(hit,'HitActor'),BASE,pin='then_0')
+  distance_to_hit=g.c(MATH,'Vector_Distance',[('V1','struct',(eye,'ReturnValue')),('V2','struct',(hit,'ImpactPoint'))]);distance_to_hit[0].pins['V1']['obj']=distance_to_hit[0].pins['V2']['obj']=VEC
+  feedback=g.sound(notice(post,'Pulso sin objetivo · -1 celda. Acerca la mira a 8 m.','then_0'),'Upgrade')
+  in_range=g.br(feedback,g.cmp('LessEqual_DoubleDouble',distance_to_hit,800))
+  cast,val=g.cast_after(in_range,(hit,'HitActor'),BASE)
   living=g.br(cast,g.neg(g.v('bIsDead','bool',owner=BASE,target=val)))
   enemy_health_class='/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health.BPC_E_Health_C'
   enemy_health=g.v('BPC_E_Health','object',owner=BASE,target=val,obj=enemy_health_class)
   prev=g.action_on(living,enemy_health_class,'E_Decrease_Health',enemy_health,[('Damage','real',20,None)])
+  notice(prev,'Pulso acertado · 20 de daño al enemigo.')
   # La misma traza visible puede impactar un prop. El protagonista es el origen;
   # no se finge un ataque cuerpo a cuerpo para franquear ReceiveAnyDamage.
   prop_cls=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C'
@@ -187,15 +210,18 @@ def systems():
   dmg=g.call(GS,'ApplyDamage',static=True).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='20').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
   g.w(prop,dmg,'DamagedActor');g.w(hero,dmg,'DamageCauser');g.w(pc,dmg,'EventInstigator');g.chain(prop_cast,dmg)
   dmg.props.append('NodeComment='+q('Pulso: 20 de daño al primer destruible visible. Comparte alcance 800 cm, carga y recuperación; la traza no atraviesa paredes. El rayo es sólo visual.'))
-  g.sound(notice(post,'Pulso temporal: -1 carga.',pin='then_1'),'Upgrade')
+  notice(dmg,'Pulso acertado · impacto en destruible.')
   # Rayo visible, sin colisión/daño: la única autoridad sigue siendo la traza.
   chosen=g.call(MATH,'SelectVector',pure=True,static=True).pin('A','struct',obj=VEC).pin('B','struct',obj=VEC).pin('bPickA','bool').pin('ReturnValue','struct',obj=VEC,out=True);g.w((hit,'bBlockingHit'),chosen,'bPickA');g.w(end,chosen,'B');g.w((hit,'ImpactPoint'),chosen,'A');endpoint=(chosen,'ReturnValue')
-  midpoint=g.c(MATH,'Add_VectorVector',[('A','struct',loc),('B','struct',endpoint)],cat='struct',obj=VEC)
+  # El origen visible queda debajo de la mira, incluso en primera persona.
+  muzzle=g.c(MATH,'Add_VectorVector',[('A','struct',(eye,'ReturnValue')),('B','struct','0,0,30')],cat='struct',obj=VEC)
+  muzzle[0].pins['A']['obj']=muzzle[0].pins['B']['obj']=VEC
+  midpoint=g.c(MATH,'Add_VectorVector',[('A','struct',muzzle),('B','struct',endpoint)],cat='struct',obj=VEC)
   for pin in ['A','B']:midpoint[0].pins[pin]['obj']=VEC
   midpoint=g.c(MATH,'Multiply_VectorFloat',[('A','struct',midpoint),('B','real',.5)],cat='struct',obj=VEC);midpoint[0].pins['A']['obj']=VEC
-  look=g.c(MATH,'FindLookAtRotation',[('Start','struct',loc),('Target','struct',endpoint)],cat='struct',obj=ROT)
+  look=g.c(MATH,'FindLookAtRotation',[('Start','struct',muzzle),('Target','struct',endpoint)],cat='struct',obj=ROT)
   for pin in ['Start','Target']:look[0].pins[pin]['obj']=VEC
-  distance=g.c(MATH,'Vector_Distance',[('V1','struct',loc),('V2','struct',endpoint)])
+  distance=g.c(MATH,'Vector_Distance',[('V1','struct',muzzle),('V2','struct',endpoint)])
   for pin in ['V1','V2']:distance[0].pins[pin]['obj']=VEC
   beam_scale=g.c(MATH,'MakeVector',[('X','real',g.op('Divide_DoubleDouble',distance,100)),('Y','real',.025),('Z','real',.025)],cat='struct',obj=VEC)
   transform=g.c(MATH,'MakeTransform',[('Location','struct',midpoint),('Rotation','struct',look),('Scale','struct',beam_scale)],cat='struct',obj='/Script/CoreUObject.Transform')

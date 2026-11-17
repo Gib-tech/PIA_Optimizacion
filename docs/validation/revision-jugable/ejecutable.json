@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "configuracion": "Win64 Development, 1280×720, DX12, Ryzen 5 3600, RTX 3060 Ti. Inicio de Nivel_Entrega, cámara de aparición. Sin límite de FPS. Un perfil de esta escena.",
+  "captura_completa": {
+    "fotogramas": 1201,
+    "mediana_ms": 13.92,
+    "p95_ms": 17.06,
+    "media_ms": 14.62
+  },
+  "ultimos_600": {
+    "fotogramas": 600,
+    "mediana_ms": 14.07,
+    "p95_ms": 16.63,
+    "media_ms": 14.28
+  },
+  "cocinado": {
+    "segundos_build": 178.29,
+    "errores": 0,
+    "advertencias": 1,
+    "detalle": "Pin Scale heredado en Spawn System Attached del jugador."
+  },
+  "checkpoint_leido": {
+    "WorldSeconds": 27.43039420247078,
+    "Botiquines": 2,
+    "Cargas": 2,
+    "Creditos": 0
+  },
+  "prueba": "Continuar desde un checkpoint preparado junto a BRUNO en tercera persona, tres celdas y tres créditos. Dos pulsaciones de E, clic central, F5, progresión del día a la noche sin cambiar la hora. Segunda sesión para perfil y captura de la alerta con el temporizador visual preparado."
+}

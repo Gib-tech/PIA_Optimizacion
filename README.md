@@ -2,7 +2,7 @@
 
 Juego de acción y rescate temporal, desarrollado con Blueprints. Abrir `Terreno.uproject`. El editor inicia en `Nivel_Entrega`; el ejecutable inicia en el menú principal.
 
-Revisión del 17/11: ciclo de día/noche de 20 minutos con transiciones suaves, 41 luminarias de pared y seis props destruibles con espada, martillo y pulso. [Funcionamiento, Blueprints y pruebas](docs/CICLO_LUCES_Y_ATAQUES.md).
+En una partida nueva el primer ocaso cruza el horizonte a los 47 segundos. BRUNO responde a E/RB por proximidad, el HUD muestra los objetos en fila y los diez objetos rompibles aceptan cualquier ataque. [Mecánicas, controles y pruebas](docs/REVISION_JUGABLE.md).
 
 La documentación vigente para todo el equipo está en [LEEME_EQUIPO](docs/LEEME_EQUIPO.md). Contiene el flujo de la misión, responsabilidades, controles, guardado, animaciones, pruebas y orden recomendado de lectura.
 

@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "attack": "martillo_pesado",
+  "third_person": true,
+  "hammer_upgrade": false,
+  "input": "RightMouseButton",
+  "fixture": "Posición, equipo y munición preparados. Una pulsación por objetivo, sin aplicar daño ni invocar callbacks del arma.",
+  "objects": [
+    {
+      "actor": "Destruible_Auto",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 21
+    },
+    {
+      "actor": "Destruible_Banca",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 83
+    },
+    {
+      "actor": "Destruible_Barril",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 19
+    },
+    {
+      "actor": "Destruible_Basurero",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 51
+    },
+    {
+      "actor": "Destruible_Caja",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 20
+    },
+    {
+      "actor": "Destruible_Fuente",
+      "modelo": null,
+      "vida_inicial": 15.0,
+      "vida_final": 0.0,
+      "fracturas": 20
+    }
+  ]
+}

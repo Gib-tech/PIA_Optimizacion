@@ -5,7 +5,9 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/Engine.BlueprintGeneratedClass'/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C'"`.
 
-Personaje jugable de la entrega. Añade ventanas de impacto, control de recuperación, daño a puertas/Chaos y brazos de primera persona. Los seis props aceptan ligero/pesado de espada o martillo sin mejora; un barrido cercano durante la ventana de WeaponHitbox permite alcanzar props bajos y comparte HeavyHitActors para deduplicar el swing. Las puertas conservan su progresión. BrazosFP muestrea copias sin notifies: guardia en reposo y posición sincronizada del ataque real. EspadaFP y MartilloFP son presentación; las armas y montajes originales conservan la autoridad de daño. Ver CICLO_LUCES_Y_ATAQUES.md.
+Personaje jugable de la entrega. Añade ventanas de impacto, control de recuperación, daño a puertas/Chaos y brazos de primera persona. Los diez props aceptan ligero/pesado de espada o martillo sin mejora; un barrido cercano durante la ventana de WeaponHitbox permite alcanzar props bajos y comparte HeavyHitActors para deduplicar el swing. Las puertas conservan su progresión. BrazosFP muestrea copias sin notifies: guardia en reposo y posición sincronizada del ataque real. EspadaFP y MartilloFP son presentación; las armas y montajes originales conservan la autoridad de daño. Ver REVISION_JUGABLE.md.
+
+Diez objetos admiten cualquier ataque. El barrido complementario mide 220 cm y usa un radio de 52 cm. La ventana de golpe y la deduplicación siguen en el personaje. [Revisión de jugabilidad](../REVISION_JUGABLE.md).
 
 ## Entradas y responsabilidades del grafo
 

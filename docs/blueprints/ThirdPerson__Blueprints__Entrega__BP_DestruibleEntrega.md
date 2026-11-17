@@ -5,7 +5,9 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.Actor'"`.
 
-Copia funcional del destruible del equipo para caja, basurero, banca, barril, auto y fuente. Acepta daño positivo del protagonista: espada/martillo ligero (15), pesado (25) y pulso visible (20), sin exigir mejora del martillo ni IsAttacking en el receptor. El jugador valida ventanas y deduplicación; SistemasComplementarios valida la traza y munición. bBroken activa Chaos una sola vez y los restos expiran en ocho segundos. La decoración se restablece al cargar; las puertas de misión sí se guardan. Ver CICLO_LUCES_Y_ATAQUES.md.
+Copia funcional del destruible del equipo para caja, basurero, banca, barril, auto y fuente. Acepta daño positivo del protagonista: espada/martillo ligero (15), pesado (25) y pulso visible (20), sin exigir mejora del martillo ni IsAttacking en el receptor. El jugador valida ventanas y deduplicación; SistemasComplementarios valida la traza y munición. bBroken activa Chaos una sola vez y los restos expiran en ocho segundos. La decoración se restablece al cargar; las puertas de misión sí se guardan. Ver REVISION_JUGABLE.md.
+
+Vida inicial de 15. La malla estática asociada se oculta al revelar los fragmentos de Chaos. Hay diez objetivos rompibles y seis familias. [Revisión de jugabilidad](../REVISION_JUGABLE.md).
 
 ## Entradas y responsabilidades del grafo
 

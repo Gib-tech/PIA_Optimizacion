@@ -7,6 +7,8 @@
 
 Valida momentos seguros, serializa checkpoint y restaura mundo/aliados/cámara. Reintenta hitos pendientes cuando termina el peligro. No sobrescribe un checkpoint seguro en mitad de una oleada, ataque, huida, canalización o desenlace.
 
+F5 conserva su acción de guardado. Guardar y restaurar correctamente dejan vacío StatusText. [Revisión de jugabilidad](../REVISION_JUGABLE.md).
+
 ## Entradas y responsabilidades del grafo
 
 - **`ReceiveTick`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `GetActorOfClass`, `Condición`, `Asignar bSaveSucceeded`, `K2Node_DynamicCast`, `Condición`, `Asignar Hero`, `CreateSaveGameObject`, `Asignar StatusText`, `GetActorOfClass`, `K2Node_DynamicCast`. Las condiciones del grafo deciden qué rama se ejecuta.
