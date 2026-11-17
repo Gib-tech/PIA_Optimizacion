@@ -1,0 +1,70 @@
+{
+  "method": "PIE; cámaras/hora preparadas. 5 s de adaptación por captura. Comparación sin/con focos nuevos en el mismo punto; no es una partida natural.",
+  "verified_light_count": 41,
+  "all_meshes_and_lights_follow_actor": true,
+  "samples": [
+    {
+      "name": "rescate-sin-luminarias",
+      "clock": 788.0002553984523,
+      "sun_lux": 0.0,
+      "moon_lux": 1.2000000476837158,
+      "new_lights": false
+    },
+    {
+      "name": "rescate-noche",
+      "clock": 788.2120483964682,
+      "sun_lux": 0.0,
+      "moon_lux": 1.2000000476837158,
+      "new_lights": true
+    },
+    {
+      "name": "arena-noche",
+      "clock": 788.2054555974901,
+      "sun_lux": 0.0,
+      "moon_lux": 1.2000000476837158,
+      "new_lights": true
+    },
+    {
+      "name": "jardin-noche",
+      "clock": 788.2519739046693,
+      "sun_lux": 0.0,
+      "moon_lux": 1.2000000476837158,
+      "new_lights": true
+    },
+    {
+      "name": "atrio-noche",
+      "clock": 788.2276920937002,
+      "sun_lux": 0.0,
+      "moon_lux": 1.2000000476837158,
+      "new_lights": true
+    },
+    {
+      "name": "patio-noche",
+      "clock": 788.2169151976705,
+      "sun_lux": 0.0,
+      "moon_lux": 1.2000000476837158,
+      "new_lights": true
+    },
+    {
+      "name": "dia",
+      "clock": 5.21664809063077,
+      "sun_lux": 26000.0,
+      "moon_lux": 0.0,
+      "new_lights": true
+    },
+    {
+      "name": "atardecer",
+      "clock": 480.2500249110162,
+      "sun_lux": 986.7767333984375,
+      "moon_lux": 0.5275121927261353,
+      "new_lights": true
+    },
+    {
+      "name": "amanecer",
+      "clock": 1080.2001521997154,
+      "sun_lux": 335.184326171875,
+      "moon_lux": 0.6736549735069275,
+      "new_lights": true
+    }
+  ]
+}

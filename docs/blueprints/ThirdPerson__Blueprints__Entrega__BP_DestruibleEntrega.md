@@ -5,17 +5,17 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.Actor'"`.
 
-Copia funcional del destruible del equipo para caja, basurero, banca, barril, auto y fuente. Recibe impactos válidos, activa Chaos bajo demanda, dispara efecto y limpia restos. La decoración se restablece al cargar; las puertas de misión sí se guardan.
+Copia funcional del destruible del equipo para caja, basurero, banca, barril, auto y fuente. Acepta daño positivo del protagonista: espada/martillo ligero (15), pesado (25) y pulso visible (20), sin exigir mejora del martillo ni IsAttacking en el receptor. El jugador valida ventanas y deduplicación; SistemasComplementarios valida la traza y munición. bBroken activa Chaos una sola vez y los restos expiran en ocho segundos. La decoración se restablece al cargar; las puertas de misión sí se guardan. Ver CICLO_LUCES_Y_ATAQUES.md.
 
 ## Entradas y responsabilidades del grafo
 
-- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `SetCollisionEnabled`, `SetSimulatePhysics`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveAnyDamage`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Condición`, `Asignar Health`, `Condición`, `Asignar bBroken`, `SetCollisionEnabled`, `SetCollisionEnabled`, `SetSimulatePhysics`, `CrumbleActiveClusters`, `AddRadialImpulse`, `SetCollisionResponseToChannel`, `SetCollisionResponseToChannel`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Botón Destruible`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar ChaosBreakCount`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`UserConstructionScript`** en `UserConstructionScript`. Operaciones alcanzables desde `then`: `SetRestCollection`, `SetStaticMesh`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DestruibleEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAnyDamage`** en `ReceiveAnyDamage`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruibleEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`OnChaosBreakEvent__DelegateSignature`** en `Evaluation_ChaosBreak`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruibleEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón Destruible`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar ChaosBreakCount`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveAnyDamage`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Condición`, `Asignar Health`, `Condición`, `Asignar bBroken`, `SetCollisionEnabled`, `SetCollisionEnabled`, `SetSimulatePhysics`, `CrumbleActiveClusters`, `AddRadialImpulse`, `SetCollisionResponseToChannel`, `SetCollisionResponseToChannel`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `SetCollisionEnabled`, `SetSimulatePhysics`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UserConstructionScript`** en `UserConstructionScript`. Operaciones alcanzables desde `then`: `SetRestCollection`, `SetStaticMesh`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -35,7 +35,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 54 nodos con pines. Funciones referenciadas: `AddRadialImpulse`, `Add_IntInt`, `BooleanAND`, `CrumbleActiveClusters`, `Evaluation_ChaosBreak`, `FMax`, `Greater_DoubleDouble`, `K2_GetActorLocation`, `LessEqual_DoubleDouble`, `Not_PreBool`, `OnChaosBreakEvent__DelegateSignature`, `ReceiveAnyDamage`, `ReceiveBeginPlay`, `SetCollisionEnabled`, `SetCollisionResponseToChannel`, `SetLifeSpan`, `SetRestCollection`, `SetSimulatePhysics`, `SetStaticMesh`, `SpawnSystemAtLocation`, `Subtract_DoubleDouble`, `UserConstructionScript`.
+La exportación contiene 52 nodos con pines. Funciones referenciadas: `AddRadialImpulse`, `Add_IntInt`, `BooleanAND`, `CrumbleActiveClusters`, `Evaluation_ChaosBreak`, `FMax`, `Greater_DoubleDouble`, `K2_GetActorLocation`, `LessEqual_DoubleDouble`, `Not_PreBool`, `OnChaosBreakEvent__DelegateSignature`, `ReceiveAnyDamage`, `ReceiveBeginPlay`, `SetCollisionEnabled`, `SetCollisionResponseToChannel`, `SetLifeSpan`, `SetRestCollection`, `SetSimulatePhysics`, `SetStaticMesh`, `SpawnSystemAtLocation`, `Subtract_DoubleDouble`, `UserConstructionScript`.
 
 - `/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C`
 - `/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega_C`
@@ -48,4 +48,4 @@ La exportación contiene 54 nodos con pines. Funciones referenciadas: `AddRadial
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `faade0a854381103672d8427de4cb5243469a636640a648f1b599351aa55c6fa`.
+**Huella de exportación:** `d534a1dedb3dec68f6ca92459a28b9ab6e0621ed485916b0adfdbae7fa3577a5`.

@@ -10,6 +10,9 @@ with ZipFile(path) as z:
  assert sum(n.startswith('docs/blueprints/') and n.endswith('.md') for n in names)==expected_fiches
  assert all(n in names for n in ['Windows/Terreno.exe','docs/LEEME_EQUIPO.md','docs/IA_Y_COMBATE.md','docs/validation/robot-cielo-inventario/energia-runtime.json','docs/validation/cinematic-layout.json'])
  assert 'docs/ITEMS_Y_DESTRUIBLES.md' in names
+ assert 'docs/CICLO_LUCES_Y_ATAQUES.md' in names
+ for report in ['destruibles-espada_ligero','destruibles-espada_pesado','destruibles-martillo_ligero','destruibles-martillo_pesado','destruibles-pulso','ciclo-runtime','guardado-y-guardas','compilacion','partida-nocturna','recarga-fria','paquete-final','datos-usuario-restaurados']:
+  assert json.loads(z.read('docs/validation/ciclo-luces-ataques/'+report+'.json'))['passed'],report
  for report in ['efectos-runtime','seis-destruibles','energia-runtime','paquete-final','recarga-fria','datos-usuario-restaurados']:
   assert json.loads(z.read('docs/validation/items-colisiones/'+report+'.json'))['passed'],report
  assert not any(n.startswith(('Promocional/','docs/academica/')) for n in names)

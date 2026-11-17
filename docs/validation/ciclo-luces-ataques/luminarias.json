@@ -1,0 +1,584 @@
+{
+  "cycle_seconds": 1200,
+  "lamp_count": 41,
+  "lumens": 3200,
+  "radius_cm": 1450,
+  "max_draw_distance_cm": 2700,
+  "cast_shadows": true,
+  "actors": [
+    {
+      "label": "Luminaria_Pared_Rescate_1",
+      "wall": "Compound_SM_Walls_Rescate",
+      "position_cm": [
+        886.42,
+        -698.38,
+        275.0
+      ],
+      "normal": [
+        -0.9457218963795004,
+        0.32497706797301956,
+        1.4430565286197893e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Rescate_2",
+      "wall": "Compound_SM_Walls_Rescate",
+      "position_cm": [
+        0.0,
+        -29.81,
+        275.0
+      ],
+      "normal": [
+        7.549500973158744e-05,
+        -0.9999999971502519,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Rescate_3",
+      "wall": "Compound_SM_Walls_Rescate",
+      "position_cm": [
+        -887.42,
+        -698.32,
+        275.0
+      ],
+      "normal": [
+        0.9416244060454946,
+        0.3366415788885243,
+        -0.00399065194062219
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Rescate_4",
+      "wall": "Compound_SM_Walls_Rescate",
+      "position_cm": [
+        -0.0,
+        -1428.3,
+        275.0
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Arena_1",
+      "wall": "Compound_SM_Walls_Arena",
+      "position_cm": [
+        1101.16,
+        -3249.99,
+        275.0
+      ],
+      "normal": [
+        -0.9999993049308072,
+        0.0011790410945444513,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Arena_2",
+      "wall": "Compound_SM_Walls_Arena",
+      "position_cm": [
+        752.24,
+        -2502.65,
+        275.0
+      ],
+      "normal": [
+        -0.023410442764847057,
+        -0.9997259234103909,
+        -0.00017097015897626485
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Arena_3",
+      "wall": "Compound_SM_Walls_Arena",
+      "position_cm": [
+        -757.47,
+        -2497.45,
+        275.0
+      ],
+      "normal": [
+        0.01538137813855648,
+        -0.9998816996057878,
+        -2.34701099447322e-09
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Arena_4",
+      "wall": "Compound_SM_Walls_Arena",
+      "position_cm": [
+        -1120.42,
+        -3250.01,
+        275.0
+      ],
+      "normal": [
+        0.9999895704472587,
+        -0.0017024394362447973,
+        -0.004238006214369559
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Jardin_1",
+      "wall": "Compound_SM_Walls_Jardin",
+      "position_cm": [
+        4277.6,
+        -3649.99,
+        275.0
+      ],
+      "normal": [
+        -0.999997064343174,
+        0.0011727268177811818,
+        -0.0021203812970798197
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Jardin_2",
+      "wall": "Compound_SM_Walls_Jardin",
+      "position_cm": [
+        3865.84,
+        -2939.14,
+        275.0
+      ],
+      "normal": [
+        -0.003419828366481276,
+        -0.9999941523698284,
+        -3.0413160990335177e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Jardin_3",
+      "wall": "Compound_SM_Walls_Jardin",
+      "position_cm": [
+        2429.21,
+        -2934.23,
+        275.0
+      ],
+      "normal": [
+        -0.003419898193881994,
+        -0.9999941521310731,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Jardin_4",
+      "wall": "Compound_SM_Walls_Jardin",
+      "position_cm": [
+        2055.87,
+        -3650.01,
+        275.0
+      ],
+      "normal": [
+        0.9999893314962062,
+        -0.0018367411760597608,
+        -0.004238310467981262
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Deposito_1",
+      "wall": "Compound_SM_Walls_Deposito",
+      "position_cm": [
+        -2559.93,
+        -4999.99,
+        275.0
+      ],
+      "normal": [
+        -0.999996626861584,
+        0.001502667269084718,
+        -0.002118550573478562
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Deposito_2",
+      "wall": "Compound_SM_Walls_Deposito",
+      "position_cm": [
+        -2962.16,
+        -4267.14,
+        275.0
+      ],
+      "normal": [
+        -0.00341983318195004,
+        -0.9999941523529902,
+        -9.124553417293119e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Deposito_3",
+      "wall": "Compound_SM_Walls_Deposito",
+      "position_cm": [
+        -4442.94,
+        -4262.08,
+        275.0
+      ],
+      "normal": [
+        -0.003420042678285014,
+        -0.9999941516369377,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Deposito_4",
+      "wall": "Compound_SM_Walls_Deposito",
+      "position_cm": [
+        -4781.89,
+        -5000.01,
+        275.0
+      ],
+      "normal": [
+        0.9999903248042089,
+        -0.0011820884930756896,
+        -0.004237093905870605
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Deposito_5",
+      "wall": "Compound_SM_Walls_Deposito",
+      "position_cm": [
+        -4468.57,
+        -5763.57,
+        275.0
+      ],
+      "normal": [
+        2.807301686499757e-07,
+        0.9999999999999606,
+        -2.3800565551755093e-09
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Servicio_1",
+      "wall": "Compound_SM_Walls_Servicio",
+      "position_cm": [
+        3121.25,
+        -5500.02,
+        275.0
+      ],
+      "normal": [
+        -0.9999823653372208,
+        -0.004161352245451405,
+        -0.004236999181749361
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Servicio_2",
+      "wall": "Compound_SM_Walls_Servicio",
+      "position_cm": [
+        2269.52,
+        -5120.07,
+        275.0
+      ],
+      "normal": [
+        0.6499871671021844,
+        -0.7599451839458403,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Servicio_3",
+      "wall": "Compound_SM_Walls_Servicio",
+      "position_cm": [
+        2202.93,
+        -5921.18,
+        275.0
+      ],
+      "normal": [
+        0.58678943520211,
+        0.8097395622885106,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_PatioNorte_1",
+      "wall": "Compound_SM_Walls_PatioNorte",
+      "position_cm": [
+        680.85,
+        -5600.67,
+        275.0
+      ],
+      "normal": [
+        -0.9910122240974165,
+        -0.1337054735408897,
+        -0.004197384268648603
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_PatioNorte_2",
+      "wall": "Compound_SM_Walls_PatioNorte",
+      "position_cm": [
+        -0.02,
+        -4856.52,
+        275.0
+      ],
+      "normal": [
+        -0.0035853932807472467,
+        -0.9999935724568544,
+        -2.5505941155277565e-08
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_PatioNorte_3",
+      "wall": "Compound_SM_Walls_PatioNorte",
+      "position_cm": [
+        -721.13,
+        -5600.67,
+        275.0
+      ],
+      "normal": [
+        0.9909549959343049,
+        -0.1341894854191364,
+        0.0011738976912313368
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Atrio_1",
+      "wall": "Compound_SM_Walls_Atrio",
+      "position_cm": [
+        673.54,
+        -7450.39,
+        275.0
+      ],
+      "normal": [
+        -0.9969927429402391,
+        -0.07737979603322752,
+        -0.004223468995304967
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Atrio_2",
+      "wall": "Compound_SM_Walls_Atrio",
+      "position_cm": [
+        -659.07,
+        -6786.37,
+        275.0
+      ],
+      "normal": [
+        0.9963719778168764,
+        -0.08510512217994431,
+        -1.5203422768975658e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Atrio_3",
+      "wall": "Compound_SM_Walls_Atrio",
+      "position_cm": [
+        -783.01,
+        -8238.42,
+        275.0
+      ],
+      "normal": [
+        0.9963892235194881,
+        -0.08490195836052572,
+        -0.0004155968952624413
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Atrio_4",
+      "wall": "Compound_SM_Walls_Atrio",
+      "position_cm": [
+        0.03,
+        -8528.71,
+        275.0
+      ],
+      "normal": [
+        0.00505111772245737,
+        0.9998240199058864,
+        0.018066970664386537
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Atrio_5",
+      "wall": "Compound_SM_Walls_Atrio",
+      "position_cm": [
+        610.27,
+        -6635.13,
+        275.0
+      ],
+      "normal": [
+        -0.9969927429402391,
+        -0.07737979603322752,
+        -0.004223468995304967
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaOeste_1",
+      "wall": "Compound_SM_Walls_AlaOeste",
+      "position_cm": [
+        -2552.31,
+        -9647.54,
+        275.0
+      ],
+      "normal": [
+        -0.8707294626090994,
+        0.4917623439672731,
+        5.314508374536666e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaOeste_2",
+      "wall": "Compound_SM_Walls_AlaOeste",
+      "position_cm": [
+        -2791.93,
+        -8843.82,
+        275.0
+      ],
+      "normal": [
+        -0.492781771413208,
+        -0.8701529323057967,
+        1.2746946091901354e-05
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaOeste_3",
+      "wall": "Compound_SM_Walls_AlaOeste",
+      "position_cm": [
+        -3596.96,
+        -8501.18,
+        275.0
+      ],
+      "normal": [
+        0.6081927317921989,
+        -0.7937825491666016,
+        -0.0032963060710963494
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaOeste_4",
+      "wall": "Compound_SM_Walls_AlaOeste",
+      "position_cm": [
+        -4030.31,
+        -9217.82,
+        275.0
+      ],
+      "normal": [
+        0.869043328192186,
+        -0.49473598385871315,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaEste_1",
+      "wall": "Compound_SM_Walls_AlaEste",
+      "position_cm": [
+        4252.15,
+        -9652.58,
+        275.0
+      ],
+      "normal": [
+        -0.8568939746007902,
+        -0.515492692755553,
+        -2.91366435379614e-06
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaEste_2",
+      "wall": "Compound_SM_Walls_AlaEste",
+      "position_cm": [
+        3595.99,
+        -8570.37,
+        275.0
+      ],
+      "normal": [
+        -0.8027875412264069,
+        -0.5962651789696092,
+        0.0
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaEste_3",
+      "wall": "Compound_SM_Walls_AlaEste",
+      "position_cm": [
+        2782.22,
+        -8833.91,
+        275.0
+      ],
+      "normal": [
+        0.5174097698081188,
+        -0.8557377694743039,
+        1.5009530472766786e-06
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_AlaEste_4",
+      "wall": "Compound_SM_Walls_AlaEste",
+      "position_cm": [
+        2497.63,
+        -9647.41,
+        275.0
+      ],
+      "normal": [
+        0.8551263006887523,
+        0.5184197236508159,
+        4.2628476234993953e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Salida_1",
+      "wall": "Compound_SM_Walls_Salida",
+      "position_cm": [
+        -0.0,
+        -9581.23,
+        275.0
+      ],
+      "normal": [
+        -0.0009463029681766925,
+        -0.9999933532157915,
+        -0.0035210843400410954
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Salida_2",
+      "wall": "Compound_SM_Walls_Salida",
+      "position_cm": [
+        -911.11,
+        -11908.17,
+        275.0
+      ],
+      "normal": [
+        0.34794095032486755,
+        0.9375164505687489,
+        -5.309155200164628e-08
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Salida_3",
+      "wall": "Compound_SM_Walls_Salida",
+      "position_cm": [
+        -0.18,
+        -12026.74,
+        275.0
+      ],
+      "normal": [
+        -0.03659261630925664,
+        0.9993302659439688,
+        5.670831060677878e-09
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Salida_4",
+      "wall": "Compound_SM_Walls_Salida",
+      "position_cm": [
+        896.02,
+        -11892.96,
+        275.0
+      ],
+      "normal": [
+        -0.3308944696131841,
+        0.9436677646181413,
+        1.0098092819799067e-07
+      ]
+    },
+    {
+      "label": "Luminaria_Pared_Salida_5",
+      "wall": "Compound_SM_Walls_Salida",
+      "position_cm": [
+        -1369.04,
+        -10328.66,
+        275.0
+      ],
+      "normal": [
+        0.898929421604899,
+        -0.4380934774372725,
+        0.0
+      ]
+    }
+  ]
+}

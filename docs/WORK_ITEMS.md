@@ -1,5 +1,7 @@
 # Work items
 
+> **Revisión posterior, 17/11:** ciclo de 20 min con transiciones suaves; 41 luminarias de pared; seis props con espada/martillo ligero/pesado y pulso. Matriz de 30 combinaciones, ciclo completo, pausa, guardado y guardas del pulso comprobados. El catálogo incluye BP_LuminariaPared (103 fichas). Ver [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md) y su evidencia; el texto inferior conserva el historial.
+
 > **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
 
 ## Revisión actual — 17 de noviembre de 2026

@@ -1,0 +1,13 @@
+{
+  "prepared_for_qa": true,
+  "world_seconds": 783.0,
+  "checkpoint_step": 0,
+  "position_cm": [
+    520,
+    -1120,
+    95
+  ],
+  "first_person": true,
+  "pulse_charges": 3,
+  "method": "Checkpoint seguro de PIE junto a caja del inicio. Hora, posición, cámara y cargas preparadas para teclas reales del ejecutable; no es partida natural. Datos del usuario respaldados por separado."
+}

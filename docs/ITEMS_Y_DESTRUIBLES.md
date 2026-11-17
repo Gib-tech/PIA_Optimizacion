@@ -1,5 +1,7 @@
 # Ítems, mesa, BRUNO y destruibles · 17/11/2026
 
+> **Actualización posterior:** caja, basurero, banca, barril, auto y fuente aceptan espada/martillo ligero o pesado y pulso. No requieren mejora del martillo. La leyenda de pesado y la prueba exclusiva de pesados que figuran abajo son históricas. Ver [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md).
+
 Referencia vigente para esta revisión de `Nivel_Entrega`. Los menús y la lógica de `BP_CinematicDirector` se conservan.
 
 ## Curación y recursos

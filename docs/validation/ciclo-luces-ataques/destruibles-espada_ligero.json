@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "attack": "espada_ligero",
+  "method": "PIE: posiciones y equipamiento preparados, sin mejora del martillo. Entrada Enhanced Input para melee y evento normal del pulso; montajes, ventanas y overlap reales. Nunca ApplyDamage ni callbacks de contacto a mano.",
+  "objects": [
+    {
+      "label": "Destruible_Auto",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2",
+      "initial_health": 50.0,
+      "health_samples": [
+        50.0,
+        35.0,
+        20.0,
+        5.0,
+        0.0
+      ],
+      "chaos_break_events": 21,
+      "attack_attempts": 4,
+      "montages": [
+        "FA_1_Montage"
+      ],
+      "hammer_upgraded": false
+    },
+    {
+      "label": "Destruible_Banca",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco",
+      "initial_health": 50.0,
+      "health_samples": [
+        50.0,
+        35.0,
+        20.0,
+        5.0,
+        0.0
+      ],
+      "chaos_break_events": 83,
+      "attack_attempts": 4,
+      "montages": [
+        "FA_1_Montage"
+      ],
+      "hammer_upgraded": false
+    },
+    {
+      "label": "Destruible_Barril",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril",
+      "initial_health": 50.0,
+      "health_samples": [
+        50.0,
+        35.0,
+        20.0,
+        5.0,
+        0.0
+      ],
+      "chaos_break_events": 19,
+      "attack_attempts": 4,
+      "montages": [
+        "FA_1_Montage"
+      ],
+      "hammer_upgraded": false
+    },
+    {
+      "label": "Destruible_Basurero",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash",
+      "initial_health": 50.0,
+      "health_samples": [
+        50.0,
+        35.0,
+        20.0,
+        5.0,
+        0.0
+      ],
+      "chaos_break_events": 51,
+      "attack_attempts": 4,
+      "montages": [
+        "FA_1_Montage"
+      ],
+      "hammer_upgraded": false
+    },
+    {
+      "label": "Destruible_Caja",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box",
+      "initial_health": 50.0,
+      "health_samples": [
+        50.0,
+        35.0,
+        20.0,
+        5.0,
+        0.0
+      ],
+      "chaos_break_events": 20,
+      "attack_attempts": 4,
+      "montages": [
+        "FA_1_Montage"
+      ],
+      "hammer_upgraded": false
+    },
+    {
+      "label": "Destruible_Fuente",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente",
+      "initial_health": 50.0,
+      "health_samples": [
+        50.0,
+        35.0,
+        20.0,
+        5.0,
+        0.0
+      ],
+      "chaos_break_events": 20,
+      "attack_attempts": 4,
+      "montages": [
+        "FA_1_Montage"
+      ],
+      "hammer_upgraded": false
+    }
+  ]
+}

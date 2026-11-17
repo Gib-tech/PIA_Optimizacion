@@ -1,5 +1,7 @@
 # Guía del equipo · Time Out
 
+> **Actualización vigente, 17/11 — cielo, luces y ataques.** El ciclo dura 20 minutos, con mezcla gradual de sol/luna/ambiente. Se añaden 41 luminarias de pared. Los seis props aceptan ligero/pesado con espada o martillo y pulso, sin mejora obligatoria. Las puertas conservan sus reglas de misión. Ver [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md); prevalece sobre los valores históricos siguientes.
+
 > **Estado vigente, 17/11 — ítems, colisiones y seis destruibles comprobados.** Ver [ITEMS_Y_DESTRUIBLES.md](ITEMS_Y_DESTRUIBLES.md). La curación actualiza salud y barra; los tres objetos de la mesa son recogibles persistentes. Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
 
 Esta es la entrada a la documentación técnica vigente en español. Las notas de `HANDOFF`, `PROJECT_CONTEXT`, `GOVERNANCE` y `WORK_ITEMS` conservan decisiones e historial; cuando una sección antigua contradiga una actualización fechada, prevalece la actualización y su evidencia. La petición actual amplía el trabajo a todos los requisitos de las seis imágenes, al rehén, a primera persona y a documentar los Blueprints.

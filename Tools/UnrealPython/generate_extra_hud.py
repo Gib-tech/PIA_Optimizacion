@@ -76,7 +76,7 @@ def add_extra_hud(g,draw,width,height,scale,rect,text):
  g.w(v('ObjetoEnMira'),prompt,'Index');text(pickup,(prompt,'ReturnValue'),mul(22,scale),mul(261,scale),.95,'(R=.35,G=1,B=.68,A=1)')
  cls='/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega.BP_DestruibleEntrega_C';obj=g.v('DestruibleEnMira','object',owner=EXTRAS,target=extras,obj=cls)
  destructible=g.br(output,(g.valid(*obj),'ReturnValue'),'then_7');destructible=g.br(destructible,g.neg(v('InventoryOpen','bool')));destructible=g.br(destructible,g.neg(g.v('bBroken','bool',owner=cls,target=obj)))
- message=cat(cat('DESTRUIBLE: ',g.v('NombreDestruible','string',owner=cls,target=obj)),'  ·  Pesado: clic der. / Y')
+ message=cat(cat('DESTRUIBLE: ',g.v('NombreDestruible','string',owner=cls,target=obj)),'  ·  Ligero / pesado / pulso')
  text(destructible,message,mul(22,scale),mul(261,scale),.95,'(R=1,G=.76,B=.35,A=1)')
  manufacturing=g.br(output,v('bFabricating','bool'),'then_5')
  progress=g.c(MATH,'FClamp',[('Value','real',g.op('Divide_DoubleDouble',v('FabricationProgress','real'),3)),('Min','real',0),('Max','real',1)])

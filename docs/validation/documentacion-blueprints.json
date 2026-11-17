@@ -145,11 +145,6 @@
     "descripcion_espanola": true
   },
   {
-    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
-    "entradas_comentadas": 8,
-    "descripcion_espanola": true
-  },
-  {
     "blueprint": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector",
     "entradas_comentadas": 17,
     "descripcion_espanola": true
@@ -350,13 +345,13 @@
     "descripcion_espanola": true
   },
   {
-    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega",
-    "entradas_comentadas": 7,
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal",
+    "entradas_comentadas": 3,
     "descripcion_espanola": true
   },
   {
-    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
-    "entradas_comentadas": 7,
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PulsoTemporalVisual",
+    "entradas_comentadas": 4,
     "descripcion_espanola": true
   },
   {
@@ -365,12 +360,22 @@
     "descripcion_espanola": true
   },
   {
-    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal",
-    "entradas_comentadas": 3,
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega",
+    "entradas_comentadas": 7,
     "descripcion_espanola": true
   },
   {
-    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PulsoTemporalVisual",
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
+    "entradas_comentadas": 8,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+    "entradas_comentadas": 7,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_LuminariaPared",
     "entradas_comentadas": 4,
     "descripcion_espanola": true
   }

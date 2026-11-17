@@ -1,0 +1,4 @@
+LogInit: Display: Success - 0 error(s), 1 warning(s)
+BuildCookRun time: 84.32 s
+BUILD SUCCESSFUL
+AutomationTool exiting with ExitCode=0 (Success)

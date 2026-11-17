@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "path": "Saved/SaveGames/TimeOut_Delivery_v1.sav",
+      "sha256": "bcf1d48c70186a5740a7b8d185c87f12e774bd833eb6190ec5abd4d403f471a4"
+    },
+    {
+      "path": "Saved/Config/WindowsEditor/GameUserSettings.ini",
+      "sha256": "30209dbf96e09fd7efb4ecbbdfdd01b3376805eb1bb5f4662555c5ea3a07be42"
+    }
+  ]
+}

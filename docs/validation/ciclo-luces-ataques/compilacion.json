@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "method": "Instalación compilada por InstallGraph, dependencias recompiladas, cook y recarga fría. Exportación del asset recién cargado sin nodos huérfanos de ediciones previas.",
+  "blueprints": [
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios.BP_SistemasComplementarios",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": [
+        "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+        "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega ."
+      ]
+    },
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": [
+        "El pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\\nEl pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin."
+      ]
+    },
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega.BP_DestruibleEntrega",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": []
+    },
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega.BP_HUD_Entrega",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": []
+    },
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_LuminariaPared.BP_LuminariaPared",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": []
+    },
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega.BP_DirectorEntrega",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": []
+    },
+    {
+      "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager",
+      "cold_reload": true,
+      "active_error_nodes": 0,
+      "diagnostics": [
+        "\\'ReturnValue\\' ya es un \\'BP Delivery Save\\', no necesitas  Cast To BP_DeliverySave .",
+        "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+        "\\'ReturnValue\\' ya es un \\'BP Hostage\\', no necesitas  Cast To BP_Hostage .",
+        "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .",
+        "\\'ReturnValue\\' ya es un \\'BP Sistemas Complementarios\\', no necesitas  Cast To BP_SistemasComplementarios ."
+      ]
+    }
+  ]
+}

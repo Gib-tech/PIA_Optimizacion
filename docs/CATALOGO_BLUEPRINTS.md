@@ -2,7 +2,7 @@
 
 Fuente: exportación de todos los Blueprints de `/Game` mediante el editor. Las fichas describen responsabilidades y muestran evidencia de conexiones; no sustituyen las pruebas de juego. Los assets de ejemplo/proveedor se distinguen por ruta.
 
-Cobertura: **102 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y Control Rigs. Los Behavior Trees/Blackboards se explican en la guía de flujo.
+Cobertura: **103 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y Control Rigs. Los Behavior Trees/Blackboards se explican en la guía de flujo.
 
 - [/Game/Characters/Mannequins/Animations/ABP_Manny](blueprints/Characters__Mannequins__Animations__ABP_Manny.md) — AnimBlueprint del protagonista usado con la malla del viajero.
 - [/Game/Characters/Mannequins/Animations/ABP_Quinn](blueprints/Characters__Mannequins__Animations__ABP_Quinn.md) — Recurso de animación/rig del personaje.
@@ -93,6 +93,7 @@ Cobertura: **102 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y C
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Entrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_GameMode_Entrega.md) — Selecciona Pawn y HUD de la misión entregable.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Menu](blueprints/ThirdPerson__Blueprints__Entrega__BP_GameMode_Menu.md) — Modo del menú, sin generar un personaje de combate.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_HUD_Entrega.md) — Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, señales del rehén, daño real e inventario.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_LuminariaPared](blueprints/ThirdPerson__Blueprints__Entrega__BP_LuminariaPared.md) — Luminaria reutilizable colocada sobre paredes mediante trazas.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_PlayerEntrega.md) — Personaje jugable de la entrega.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_PulsoTemporalVisual](blueprints/ThirdPerson__Blueprints__Entrega__BP_PulsoTemporalVisual.md) — Trazo visual cian del pulso: cubo alargado entre cámara e impacto, sin colisión, navegación ni daño.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_RehenIndicador](blueprints/ThirdPerson__Blueprints__Entrega__BP_RehenIndicador.md) — Indicador histórico de texto flotante.

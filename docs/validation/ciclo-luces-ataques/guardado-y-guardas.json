@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "method": "PIE; posición, cámara, munición, hora y pared preparados. Pulso normal, guardado nativo y restauración por SaveManager.",
+  "checks": [
+    "checkpoint_nativo_restaura_fase_nocturna_con_periodo_1200",
+    "pared_bloquea_prop_y_consume_una_carga",
+    "fuera_de_ocho_metros_no_dana",
+    "sin_cargas_no_dispara",
+    "un_impacto_20_y_recuperacion_impide_duplicado"
+  ]
+}

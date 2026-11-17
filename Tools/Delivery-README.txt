@@ -37,7 +37,7 @@ Apuntar y usar E/RB recoge una pieza una sola vez; se conserva al continuar.
 
 DESTRUIBLES
 Caja, basurero, banca, barril, auto y fuente. Seis tipos distintos.
-Atacar con clic derecho/Y; el martillo mejorado llega con el primer encuentro.
+Aceptan ligero, pesado y pulso, con espada o martillo; no exigen mejora.
 Los sellos de misión son adicionales. Nombre visible al apuntar de cerca.
 
 NOVEDADES
@@ -47,7 +47,8 @@ Animaciones sincronizadas con brazos/armas y recuperación en primera persona.
 Sobreviviente del proyecto integrado con locomoción y desenlace.
 Inventario rediseñado; menús con su diseño existente. Robot BRUNO original.
 Sol corregido en lux, luna, estrellas y captura continua del cielo.
-Ciclo solar de 8 minutos, guardado y detenido en pausa. Estanque animado.
+Ciclo solar suave de 20 minutos, guardado y detenido en pausa.
+41 luminarias de pared con sombras iluminan el recorrido nocturno. Estanque animado.
 Se conservan dos IA diferentes, World Partition, Landscape multitextura,
 Nanite, modelos de cuatro LOD, seis destruibles y ocho partículas.
 BP_CinematicDirector reorganizado visualmente sin alterar su lógica.
@@ -62,7 +63,8 @@ Las preferencias son independientes del progreso. No se incluyen saves de QA.
 
 DOCUMENTACIÓN EN ESPAÑOL
 README.md y docs/LEEME_EQUIPO.md: flujo, controles y lectura por área.
-docs/CATALOGO_BLUEPRINTS.md: 102 fichas, incluido el Blueprint del nivel.
+docs/CATALOGO_BLUEPRINTS.md: 103 fichas, incluido el Blueprint del nivel.
+docs/CICLO_LUCES_Y_ATAQUES.md: ciclo, luminarias y ataques a los seis props.
 docs/ITEMS_Y_DESTRUIBLES.md: efectos, recogida, colisiones y ubicación de los seis.
 docs/ROBOT_CIELO_INVENTARIO.md: explicación y reproducción de esta revisión.
 docs/REVISION_REQUISITOS_2026-11-16.md: seis capturas, alcance sólo Unreal.

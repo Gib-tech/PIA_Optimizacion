@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "build_cook_run_seconds": 84.32,
+  "cook_errors": 0,
+  "cook_warnings": 1,
+  "existing_warning": "Pin Scale de SpawnSystemAttached, previo a esta revisión.",
+  "method": "Win64 Development, UserDir aislado y checkpoint nocturno preparado. Continuar por clic; clic central, dos clics izquierdos, Enter, F5 y P por teclado/ratón reales. Sin comandos de daño ni helper. No es otra partida natural ni prueba con mando físico.",
+  "observed": {
+    "continue_restores_prepared_night": true,
+    "floor_walls_and_characters_visible": true,
+    "pulse_charges": [
+      3,
+      2
+    ],
+    "crate_fractured_after_pulse_and_two_light_sword_attacks": true,
+    "pause_and_resume_work": true,
+    "F5_save_read_in_cold_editor": {
+      "Version": 2,
+      "WorldSeconds": 835.99418829754,
+      "FirstPerson": true,
+      "Cargas": 2,
+      "Paso": 0
+    }
+  },
+  "isolated_user_dir": "Intermediate/inspect/daynight-attacks/native-user",
+  "game_closed_cleanly": true
+}

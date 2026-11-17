@@ -57,12 +57,18 @@ def systems():
  ready=g.br(seq,g.v('bInitialized','bool'),'then_1');ready=g.br(ready,allowed())
  updates=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True);g.chain(ready,updates)
  age=g.s(updates,'WorldSeconds',g.op('Add_DoubleDouble',g.v('WorldSeconds'),(tick,'DeltaSeconds')),pin='then_0')
- # Ocho minutos reales por vuelta. Arranque matinal y pausa real del reloj.
- phase=g.op('Multiply_DoubleDouble',g.v('WorldSeconds'),.75)
+ # Veinte minutos por defecto. El reloj persistido conserva su unidad (segundos).
+ # Se acota el periodo para que una instancia mal configurada no acelere el cielo.
+ duration=g.c(MATH,'FMax',[('A','real',g.v('DayCycleDuration')),('B','real',300)])
+ phase=g.op('Multiply_DoubleDouble',g.v('WorldSeconds'),g.op('Divide_DoubleDouble',360,duration))
  angle=g.op('Add_DoubleDouble',phase,35)
  elevation=g.c(MATH,'DegSin',[('A','real',angle)])
- daylight=g.c(MATH,'FMax',[('A','real',elevation),('B','real',0)])
- night=g.c(MATH,'FClamp',[('Value','real',g.op('Divide_DoubleDouble',g.op('Subtract_DoubleDouble',.03,elevation),.23)),('Min','real',0),('Max','real',1)])
+ def smooth(a,b):
+  t=g.c(MATH,'FClamp',[('Value','real',g.op('Divide_DoubleDouble',g.op('Subtract_DoubleDouble',elevation,a),b-a)),('Min','real',0),('Max','real',1)])
+  return g.op('Multiply_DoubleDouble',g.op('Multiply_DoubleDouble',t,t),g.op('Subtract_DoubleDouble',3,g.op('Multiply_DoubleDouble',2,t)))
+ daylight=smooth(-.06,.59)
+ night=g.op('Subtract_DoubleDouble',1,smooth(-.20,.20))
+ age.props.append('NodeComment='+q('Ciclo solar: 1200 s por vuelta (DayCycleDuration, mínimo 300). Smoothstep suaviza amanecer/atardecer sin cortes de intensidad. WorldSeconds se guarda y sólo avanza con juego permitido. docs/CICLO_LUCES_Y_ATAQUES.md'))
  rot=g.c(MATH,'MakeRotator',[('Pitch','real',g.op('Multiply_DoubleDouble',angle,-1)),('Yaw','real',-35),('Roll','real',0)],cat='struct',obj=ROT)
  sun=g.local('Sun','/Script/Engine.DirectionalLight');valid=g.br(age,(g.valid(*sun),'ReturnValue'))
  prev=g.action_on(valid,ACTOR,'K2_SetActorRotation',sun,[('NewRotation','struct',rot,ROT),('bTeleportPhysics','bool',False,None)])
@@ -73,10 +79,10 @@ def systems():
  moon_rot=g.c(MATH,'MakeRotator',[('Pitch','real',g.op('Subtract_DoubleDouble',180,angle)),('Yaw','real',-35),('Roll','real',0)],cat='struct',obj=ROT)
  prev=g.action_on(moon_ok,ACTOR,'K2_SetActorRotation',moon,[('NewRotation','struct',moon_rot,ROT),('bTeleportPhysics','bool',False,None)])
  moon_light=g.v('LightComponent','object',owner='/Script/Engine.Light',target=moon,obj='/Script/Engine.LightComponent',native=True)
- prev=g.action_on(prev,'/Script/Engine.LightComponent','SetIntensity',moon_light,[('NewIntensity','real',g.op('Multiply_DoubleDouble',night,.12),None)])
+ prev=g.action_on(prev,'/Script/Engine.LightComponent','SetIntensity',moon_light,[('NewIntensity','real',g.op('Multiply_DoubleDouble',night,1.2),None)])
  sky=g.local('Sky','/Script/Engine.SkyLight');sky_ok=g.br(prev,(g.valid(*sky),'ReturnValue'));g.chain(moon_ok,sky_ok,'else')
  sky_component=g.v('LightComponent','object',owner='/Script/Engine.SkyLight',target=sky,obj='/Script/Engine.SkyLightComponent',native=True)
- ambience=g.op('Subtract_DoubleDouble',.65,g.op('Multiply_DoubleDouble',night,.35))
+ ambience=g.op('Add_DoubleDouble',.65,g.op('Multiply_DoubleDouble',night,.10))
  prev=g.action_on(sky_ok,'/Script/Engine.SkyLightComponent','SetIntensity',sky_component,[('NewIntensity','real',ambience,None)])
  sky_mid=g.local('SkyMID','/Script/Engine.MaterialInstanceDynamic');mid_ok=g.br(prev,(g.valid(*sky_mid),'ReturnValue'));g.chain(sky_ok,mid_ok,'else')
  g.action_on(mid_ok,'/Script/Engine.MaterialInstanceDynamic','SetScalarParameterValue',sky_mid,[('ParameterName','name','NightAmount',None),('Value','real',night,None)])
@@ -174,6 +180,13 @@ def systems():
   enemy_health_class='/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health.BPC_E_Health_C'
   enemy_health=g.v('BPC_E_Health','object',owner=BASE,target=val,obj=enemy_health_class)
   prev=g.action_on(living,enemy_health_class,'E_Decrease_Health',enemy_health,[('Damage','real',20,None)])
+  # La misma traza visible puede impactar un prop. El protagonista es el origen;
+  # no se finge un ataque cuerpo a cuerpo para franquear ReceiveAnyDamage.
+  prop_cls=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C'
+  prop_cast,prop=g.cast_after(cast,(hit,'HitActor'),prop_cls,pin='CastFailed')
+  dmg=g.call(GS,'ApplyDamage',static=True).pin('DamagedActor','object',obj=ACTOR).pin('BaseDamage','real',sub='float',default='20').pin('EventInstigator','object',obj='/Script/Engine.Controller').pin('DamageCauser','object',obj=ACTOR).pin('DamageTypeClass','class',obj='/Script/Engine.DamageType').pin('ReturnValue','real',sub='float',out=True)
+  g.w(prop,dmg,'DamagedActor');g.w(hero,dmg,'DamageCauser');g.w(pc,dmg,'EventInstigator');g.chain(prop_cast,dmg)
+  dmg.props.append('NodeComment='+q('Pulso: 20 de daño al primer destruible visible. Comparte alcance 800 cm, carga y recuperación; la traza no atraviesa paredes. El rayo es sólo visual.'))
   g.sound(notice(post,'Pulso temporal: -1 carga.',pin='then_1'),'Upgrade')
   # Rayo visible, sin colisión/daño: la única autoridad sigue siendo la traza.
   chosen=g.call(MATH,'SelectVector',pure=True,static=True).pin('A','struct',obj=VEC).pin('B','struct',obj=VEC).pin('bPickA','bool').pin('ReturnValue','struct',obj=VEC,out=True);g.w((hit,'bBlockingHit'),chosen,'bPickA');g.w(end,chosen,'B');g.w((hit,'ImpactPoint'),chosen,'A');endpoint=(chosen,'ReturnValue')

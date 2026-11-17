@@ -1,5 +1,7 @@
 # Relevo del proyecto
 
+> **Actualización posterior, 17/11 — ciclo, luces y ataques:** periodo solar de 1200 s con smoothstep, luna/ambiente legibles y 41 luminarias de pared reutilizables. Los seis props aceptan ligero/pesado de espada/martillo y pulso. Barrido corto durante la ventana activa corrige impactos sobre props bajos; comparte deduplicación con el contacto físico. Puertas conservan progresión. Compilación, matriz de 30 combinaciones, ciclo completo, pausa, checkpoint y negativos del pulso comprobados en PIE. Fuentes, documentación interna y evidencia: [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md). Los textos siguientes conservan historial.
+
 > **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
 
 La lectura vigente del equipo es README.md, LEEME_EQUIPO.md, IA_Y_COMBATE.md, CATALOGO_BLUEPRINTS.md y REVISION_REQUISITOS_2026-11-16.md. El historial se conserva al final; sus instrucciones, estados y cantidades anteriores no sustituyen la petición vigente ni constituyen aprobación del propietario.

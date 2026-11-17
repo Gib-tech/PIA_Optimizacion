@@ -1,5 +1,7 @@
 # Governance
 
+> **Petición vigente, 17/11 — ciclo, destruibles e iluminación.** El propietario solicita ralentizar/suavizar el día/noche, permitir todos los ataques del protagonista contra los destruibles, añadir luminarias de pared, documentar también dentro de Blueprints y probar antes de commit/push. Se implementa sobre `Nivel_Entrega`; las puertas mantienen el contrato de misión. Ver [CICLO_LUCES_Y_ATAQUES.md](CICLO_LUCES_Y_ATAQUES.md). Las notas anteriores sobre 480 s y pesado exclusivo en props son históricas.
+
 > **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
 
 ## Alcance vigente — revisión del 16–17 de noviembre de 2026

@@ -16,7 +16,7 @@ translated={'ReceiveBeginPlay':'Inicio del actor: inicializa referencias y estad
  'ReceiveTickAI':'Actualiza la acción o percepción del árbol según el tipo de Blueprint.',
  'Construct':'Construcción de la pantalla: estado y foco de entrada.',
  'UsarBotiquin':'Consume una unidad sólo si puede restaurar vida; Increase_Health suma hasta 35, limita a 100 y emite Updated_Heatlh para actualizar la barra.',
- 'DispararPulso':'Valida carga/recuperación y aplica daño sólo al enemigo visible alcanzado.',
+ 'DispararPulso':'Valida carga/recuperación y aplica 20 de daño sólo al primer enemigo o destruible visible alcanzado, hasta 800 cm. El rayo es presentación sin colisión/daño adicional.',
  'HablarConTecnico':'E/RB resuelve una sola acción: recoge el objeto apuntado, conversa/convierte con BRUNO apuntado y cercano, o reenvía Interactuar al rehén. La recogida se guarda; una fabricación activa no vuelve a consumir.',
  'SaveCheckpoint':'Guardar únicamente en una situación segura; no sobrescribir con combate parcial.',
  'RestoreCheckpoint':'Validar esquema y reconstruir estado sin volver a conceder recompensas.',

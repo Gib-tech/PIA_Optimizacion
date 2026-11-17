@@ -9,15 +9,15 @@ Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, s
 
 ## Entradas y responsabilidades del grafo
 
-- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `GetActorOfClass`, `GetActorOfClass`, `Asignar CachedDirector`, `Asignar CachedCinema`, `GetActorOfClass`, `Asignar CachedExtras`, `GetActorOfClass`, `Asignar CachedHostage`, `Asignar LastHostageHitSerial`, `K2Node_DynamicCast`, `Asignar CachedBeacon1`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Tecla Enter`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Tecla Gamepad_DPad_Up`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveDrawHUD`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `Condición`, `Condición`, `Condición`, `Secuencia`, `Secuencia`, `DrawRect`, `Condición`, `GetActorOfClass`, `Condición`, `Condición`, `Condición`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Gamepad_DPad_Up`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Enter`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Asignar ForceReveal`, `Asignar DismissedDialog`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `GetActorOfClass`, `GetActorOfClass`, `Asignar CachedDirector`, `Asignar CachedCinema`, `GetActorOfClass`, `Asignar CachedExtras`, `GetActorOfClass`, `Asignar CachedHostage`, `Asignar LastHostageHitSerial`, `K2Node_DynamicCast`, `Asignar CachedBeacon1`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveDrawHUD`** en `ReceiveDrawHUD`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Enter_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveDrawHUD`** en `ReceiveDrawHUD`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_HUD_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -106,4 +106,4 @@ La exportación contiene 1166 nodos con pines. Funciones referenciadas: `Add_Dou
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `873df7c2d0c40befb373e4515934fd5a2252ba4aa0375c36cf62bbe2ee39955b`.
+**Huella de exportación:** `faa6009d03d469349165af7213521672003cd89663479d36b341257a23d49aa1`.
