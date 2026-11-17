@@ -20,11 +20,15 @@ MISION
    La segunda puerta requiere despejar la segunda zona.
 6. Llevar al aliado a la segunda zona. Completar otras dos oleadas de dos
    embestidores, recuperar al aliado y romper la segunda puerta.
-7. En el patio final estan las balizas A, B y C. Consultar el ORDEN sorteado
+7. Tras la segunda puerta, vencer a la guardia final: dos oleadas mixtas de
+   un orbitador y un embestidor. El ultimo enemigo revela el orden de las balizas
+   en una cinematica de 12 segundos antes de morir. ESPACIO permite omitirla;
+   el orden queda visible igualmente. Recuperar al aliado con E en su refugio.
+8. En el patio final estan las balizas A, B y C. Consultar el ORDEN sorteado
    en pantalla y escoltar al rehen a cada baliza en esa secuencia. La siguiente
    brilla azul; las activadas, verde. Solo el rehen canaliza: tarda tres segundos
    y una amenaza lo interrumpe. Las balizas fuera de orden no se activan.
-8. Completar las tres habilita la ultima puerta. Romperla con dos pesados y
+9. Completar las tres habilita la ultima puerta. Romperla con dos pesados y
    llevar al aliado a la zona azul de extraccion.
    Llegar solo no completa la mision.
 
@@ -34,7 +38,8 @@ El recuadro inferior avisa al acercarse a una zona: entrar con el aliado
 siguiendote a no mas de 6 metros inicia sus oleadas. Los mensajes cambian con
 el combate, el intermedio y la zona despejada. El rehen tiene una senal E / RB.
 Hay unos tres segundos entre sus oleadas. Las tres balizas requieren despejar
-ambas zonas. A, B y C conservan sus nombres; cambia el orden real de visita.
+las tres zonas. A, B y C conservan sus nombres; cambia el orden real de visita.
+El orden permanece desconocido hasta la revelacion del ultimo guardian.
 El cronometro de mision comienza al rescatar al rehen, se congela al pausar y
 termina con victoria o derrota. No existe un limite de tiempo impuesto.
 El rehen tiene 100 de vida, visible en la barra superior izquierda. Ambos tipos
@@ -47,7 +52,9 @@ CINEMATICAS
 Nuevo juego muestra una introduccion de 18 segundos. Continuar carga directamente
 el checkpoint. La derrota reproduce una escena de 8 segundos diferente segun
 caiga el viajero o el rehen. La extraccion conjunta reproduce la victoria de
-14 segundos. Todas tienen subtitulos y musica propia; ESPACIO permite omitir.
+14 segundos. La nueva revelacion dura 12 segundos. Todas tienen subtitulos y
+musica propia; ESPACIO permite omitir. El aviso de guardado desaparece tras
+cuatro segundos; F5 lo renueva al guardar de nuevo correctamente.
 Durante las escenas se bloquean acciones y pausa. Al terminar se recuperan
 la camara elegida y el control; los desenlaces conservan R / ENTER.
 El volumen de las escenas sigue el ajuste general de Opciones.

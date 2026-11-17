@@ -1,0 +1,337 @@
+{
+  "date": "2026-11-16",
+  "passed": true,
+  "agent_prepared_tests_not_owner_acceptance": true,
+  "new_natural_full_playthrough": false,
+  "implementation": "Blueprint-only runtime; editor helper only for authoring",
+  "proof": {
+    "integration": {
+      "stage": 11,
+      "since": 28.644795432686806,
+      "passed": true,
+      "checks": [
+        "no_spawn_without_escort",
+        "no_spawn_before_previous_horde",
+        "mixed_wave_two_distinct_running_trees",
+        "order_and_next_beacon_hidden",
+        "only_final_enemy_of_final_wave_starts_scene",
+        "spoken_order_matches_actual_attempt",
+        "speaker_held_beyond_original_lifespan",
+        "clock_and_checkpoint_suspended",
+        "walking_tree_and_camera_restored",
+        "safe_checkpoint_persists_horde_and_revelation",
+        "four_second_notice_hides_and_same_text_save_refreshes",
+        "six_order_variants_and_skip_cleanup",
+        "notice_expires_after_repeated_dialogue_and_save"
+      ],
+      "prepared_state_not_natural_playthrough": true,
+      "orders": [
+        "A > B > C",
+        "A > C > B",
+        "B > A > C",
+        "B > C > A",
+        "C > A > B",
+        "C > B > A"
+      ],
+      "spoken_sequence": "B > C > A",
+      "clock": 3.8000707626342773,
+      "photographed": true,
+      "order_index": 5
+    },
+    "modern": {
+      "passed": true,
+      "case": "modern",
+      "prepared_state_not_natural_playthrough": true,
+      "order_revealed": true,
+      "zone3_phase": 3,
+      "zone3_spawned": 4,
+      "same_order_restored": true,
+      "continue_omits_intro_and_revelation": true,
+      "input_restored": true
+    },
+    "legacy-started": {
+      "passed": true,
+      "case": "legacy-started",
+      "prepared_state_not_natural_playthrough": true,
+      "order_revealed": true,
+      "zone3_phase": 3,
+      "zone3_spawned": 4,
+      "same_order_restored": true,
+      "continue_omits_intro_and_revelation": true,
+      "input_restored": true
+    },
+    "legacy-unstarted": {
+      "passed": true,
+      "case": "legacy-unstarted",
+      "prepared_state_not_natural_playthrough": true,
+      "order_revealed": false,
+      "zone3_phase": 0,
+      "zone3_spawned": 0,
+      "same_order_restored": true,
+      "continue_omits_intro_and_revelation": true,
+      "input_restored": true
+    },
+    "physical-skip": {
+      "passed": true,
+      "physical_space_skip": true,
+      "age": 8.30017289891839,
+      "order_revealed_and_input_restored": true,
+      "prepared_state_not_natural_playthrough": true
+    },
+    "interruption": {
+      "stage": 2,
+      "start": 123.39930920675397,
+      "prepared_state_not_natural_playthrough": true,
+      "passed": true
+    },
+    "qa-restored": {
+      "passed": true,
+      "original_save_sha256": {
+        "TimeOut_Delivery_v1.sav": "a6b4627332526709fc7f0769a6af8aba6f660831097536da3de47c846665ccd6"
+      },
+      "preferences_restored": true
+    },
+    "beacon_channels": {
+      "agent_test_not_owner_acceptance": true,
+      "isolated_state_setup": true,
+      "all_six_directed_paths": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "encounters_unlock_first_two_doors_and_two_hits": true,
+      "complete_channel_rejected_before_revelation": true,
+      "pause_freezes_mission_clock": true,
+      "checkpoint_restores_order_time_and_activations": true,
+      "new_attempt_initialization_24_draws_no_adjacent_repeat": [
+        4,
+        1,
+        3,
+        2,
+        3,
+        5,
+        0,
+        4,
+        1,
+        4,
+        1,
+        5,
+        2,
+        4,
+        1,
+        0,
+        2,
+        0,
+        3,
+        2,
+        0,
+        2,
+        3,
+        0
+      ],
+      "final_door_two_hits_extraction_and_clock_stop": true,
+      "orders": [
+        {
+          "code": 0,
+          "order": [
+            "A",
+            "B",
+            "C"
+          ],
+          "three_real_channels": true
+        },
+        {
+          "code": 1,
+          "order": [
+            "A",
+            "C",
+            "B"
+          ],
+          "three_real_channels": true
+        },
+        {
+          "code": 2,
+          "order": [
+            "B",
+            "A",
+            "C"
+          ],
+          "three_real_channels": true
+        },
+        {
+          "code": 3,
+          "order": [
+            "B",
+            "C",
+            "A"
+          ],
+          "three_real_channels": true
+        },
+        {
+          "code": 4,
+          "order": [
+            "C",
+            "A",
+            "B"
+          ],
+          "three_real_channels": true
+        },
+        {
+          "code": 5,
+          "order": [
+            "C",
+            "B",
+            "A"
+          ],
+          "three_real_channels": true
+        }
+      ],
+      "out_of_order_rejected_all_six": true,
+      "passed": true
+    },
+    "assets": {
+      "passed": true,
+      "blueprints": [
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon",
+          "compiled_exported": true
+        }
+      ],
+      "sequences": [
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Intro.LS_Intro",
+          "seconds": 18,
+          "camera_cuts": 3,
+          "animated_bindings": 3,
+          "audio_and_fade": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Derrota.LS_Derrota",
+          "seconds": 8,
+          "camera_cuts": 1,
+          "animated_bindings": 1,
+          "audio_and_fade": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Victoria.LS_Victoria",
+          "seconds": 14,
+          "camera_cuts": 3,
+          "animated_bindings": 4,
+          "audio_and_fade": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Revelacion.LS_Revelacion",
+          "seconds": 12,
+          "camera_cuts": 3,
+          "animated_bindings": 3,
+          "audio_and_fade": true
+        }
+      ],
+      "one_resident_controller": true,
+      "enemy_damage_13_2_and_distinct_trees_preserved": true,
+      "gameplay_runtime": "Blueprint-only; no editor helper required",
+      "dirty_packages": []
+    },
+    "cold_reload": {
+      "passed": true,
+      "normal_editor_without_helper": true,
+      "sequences": [
+        "LS_Intro",
+        "LS_Derrota",
+        "LS_Victoria",
+        "LS_Revelacion"
+      ],
+      "one_resident_cinematic_director": true,
+      "enemy_damage_13_2_preserved": true,
+      "no_pie": true,
+      "dirty_packages": []
+    }
+  },
+  "package": {
+    "platform": "Win64 Development",
+    "build_success": true,
+    "cook_errors": 0,
+    "cook_warnings": 15,
+    "zip": "Deliverables\\TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 623346988,
+    "crc_verified_by": "Tools/Archive-Delivery.py"
+  },
+  "pending_owner_acceptance": [
+    "Visual direction and difficulty of final horde",
+    "Performance on presentation PC"
+  ],
+  "screenshots": [
+    "Intermediate/inspect/final-words/revelation.png",
+    "Intermediate/inspect/final-words/notice-expired.png"
+  ],
+  "native_smoke": {
+    "passed": true,
+    "new_game_menu_and_intro_observed": true,
+    "mission_hud_order_unknown": true,
+    "physical_f5_notice_shown_then_disappeared": true,
+    "pause_with_p_after_cinematic": true,
+    "isolated_user_dir": "Intermediate/inspect/final-words/native-user",
+    "clean_exit": true,
+    "script_errors_or_accessed_none": 0,
+    "existing_warning": "Health widget already added to screen",
+    "native_horde_or_revelation_full_playthrough": false,
+    "revelation_and_six_channel_orders_tested_in": "prepared PIE fixtures"
+  }
+}

@@ -39,7 +39,7 @@ def manager():
     pc = g.c(GS, 'GetPlayerController', [('PlayerIndex', 'int', 0)], cat='object', obj='/Script/Engine.PlayerController')
     health = g.v('BPC_Health', 'object', owner=HERO, target=hero, obj=HEALTH)
     bb = g.blackboard(*host)
-    zones = [g.v('Zona'+str(i), 'object', owner=DIRECTOR, target=director, obj=ZONE) for i in (1,2)]
+    zones = [g.v('Zona'+str(i), 'object', owner=DIRECTOR, target=director, obj=ZONE) for i in (1,2,3)]
     beacons = [g.local('Beacon'+str(i), BEACON) for i in (1,2,3)]
     doors = [g.v('Door', 'object', owner=BEACON, target=b, obj=DOOR) for b in beacons]
     live = lambda name, kind='real', obj=HERO, target=hero: g.v(name, kind, owner=obj, target=target)
@@ -47,6 +47,7 @@ def manager():
     bindings = [
         ('OrderCode', 'int', DIRECTOR, director, 'OrderCode'),
         ('MissionElapsed', 'real', DIRECTOR, director, 'MissionElapsed'),
+        ('OrderRevealed', 'bool', DIRECTOR, director, 'bOrderRevealed'),
         ('Paso', 'int', DIRECTOR, director, 'Paso'),
         ('PlayerHealth', 'real', HEALTH, health, 'Health'),
         ('HammerUpgraded', 'bool', HERO, hero, 'bHammerUpgraded'),
@@ -85,7 +86,7 @@ def manager():
 
     # Checkpoint writes are forbidden during either wave/intermission or transient actions.
     def safe():
-        good=g.cmp('Less_IntInt',live('Paso','int',DIRECTOR,director),4,'int')
+        good=g.both(g.cmp('Less_IntInt',live('Paso','int',DIRECTOR,director),4,'int'),g.neg(live('bNarrativePaused','bool',DIRECTOR,director)))
         for value in [live('Health','real',HEALTH,health),live('Health','real',HOSTAGE,host)]:
             good=g.both(good,g.cmp('Greater_DoubleDouble',value,0))
         for z in zones:
@@ -100,7 +101,7 @@ def manager():
 
     # A changed milestone is retried each Tick until it is safe, without timed polling.
     changed=g.neg(g.v('bHasCheckpoint','bool'))
-    tracked=[b for b in bindings if b[0]=='Paso' or 'Cleared' in b[0] or ('Door' in b[0] and 'Health' in b[0])]
+    tracked=[b for b in bindings if b[0] in ['Paso','OrderRevealed'] or 'Cleared' in b[0] or ('Door' in b[0] and 'Health' in b[0])]
     for name,kind,owner,target,prop in tracked:
         fn={'bool':'NotEqual_BoolBool','int':'NotEqual_IntInt','real':'NotEqual_DoubleDouble'}[kind]
         diff=g.cmp(fn,live(prop,kind,owner,target),saved(name,kind),kind)
@@ -119,6 +120,7 @@ def manager():
     cast=g.cast(SAVE);g.chain(make,cast);g.wire(make,'ReturnValue',cast,'Object')
     prev=g.s(cast,'SaveData',(cast,'AsBP_DeliverySave'),'object',obj=SAVE)
     prev=g.s(prev,'Version',VERSION,'int',owner=SAVE,target=data)
+    prev=g.s(prev,'FinalStandRevision',1,'int',owner=SAVE,target=data)
     for name,kind,owner,target,prop in bindings:
         prev=g.s(prev,name,live(prop,kind,owner,target),kind,owner=SAVE,target=data)
     for label,target in [('Player',hero),('Hostage',host)]:
@@ -132,7 +134,9 @@ def manager():
     write=g.slot('SaveGameToSlot').pin('SaveGameObject','object',obj='/Script/Engine.SaveGame').pin('ReturnValue','bool',out=True);g.w(data,write,'SaveGameObject');g.chain(prev,write)
     prev=g.s(write,'bSaveSucceeded',(write,'ReturnValue'),'bool')
     prev=g.s(prev,'bHasCheckpoint',(write,'ReturnValue'),'bool');ok=g.br(prev,g.v('bSaveSucceeded','bool'))
-    prev=g.s(ok,'bHasCheckpoint',True,'bool');g.s(prev,'StatusText','Punto de control guardado. F5 guarda cuando estes a salvo.','string')
+    prev=g.s(ok,'bHasCheckpoint',True,'bool')
+    prev=g.s(prev,'StatusSerial',g.op('Add_IntInt',g.v('StatusSerial','int'),1,'int'),'int')
+    g.s(prev,'StatusText','Punto de control guardado. F5 guarda cuando estes a salvo.','string')
     g.s(ok,'StatusText','No se pudo guardar la partida. Intenta F5 de nuevo.','string',pin='else')
 
     # Load is gated by schema and health before any live-world values are changed.
@@ -148,6 +152,17 @@ def manager():
     prev=checked
     for name,kind,owner,target,prop in bindings:
         prev=g.s(prev,prop,saved(name,kind),kind,owner=owner,target=target)
+    # Additive revision preserves schema-2 checkpoints. A legacy attempt already
+    # activating beacons keeps its progress; earlier attempts face the new horde.
+    legacy=g.br(prev,g.cmp('Less_IntInt',saved('FinalStandRevision','int'),1,'int'))
+    known=g.cmp('Greater_IntInt',saved('Paso','int'),0,'int')
+    migrate=g.s(legacy,'bOrderRevealed',known,'bool',owner=DIRECTOR,target=director)
+    migrate=g.s(migrate,'bCleared',known,'bool',owner=ZONE,target=zones[2])
+    for field,yes in [('CurrentWave',2),('Phase',3),('SpawnedCount',4)]:
+        value=g.c(MATH,'SelectInt',[('A','int',yes),('B','int',0),('bPickA','bool',known)],cat='int')
+        migrate=g.s(migrate,field,value,'int',owner=ZONE,target=zones[2])
+    prev=g.s(migrate,'bNarrativePaused',False,'bool',owner=DIRECTOR,target=director);g.chain(legacy,prev,'else')
+    prev=g.s(prev,'bRevelationStarted',live('bOrderRevealed','bool',DIRECTOR,director),'bool',owner=ZONE,target=zones[2])
     prev=g.s(prev,'LastBeaconOrder',saved('OrderCode','int'),'int',owner=GI,target=instance)
     for label,target in [('Player',hero),('Hostage',host)]:
         n=g.call(ACTOR,'K2_SetActorLocationAndRotation').pin('NewLocation','struct',obj=VEC).pin('NewRotation','struct',obj=ROT).pin('bSweep','bool',default='false').pin('SweepHitResult','struct',obj='/Script/Engine.HitResult',out=True).pin('bTeleport','bool',default='true').pin('ReturnValue','bool',out=True)

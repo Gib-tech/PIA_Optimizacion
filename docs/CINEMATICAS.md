@@ -2,6 +2,24 @@
 
 Fecha: 16 de noviembre de 2026.
 
+## Ampliación: «El último guardián» (12 s)
+
+**Stated:** el propietario añade una horda y solicita que su último enemigo revele el orden de las balizas antes de morir. Esta petición amplía el diseño original de tres escenas y dos encuentros descrito abajo.
+
+**Decision:** tercer encuentro antes del patio, dos oleadas con un orbitador y un embestidor cada una. Tras vencer al cuarto enemigo, éste interrumpe su caída en una pose agonizante. Tres planos relativos a su posición/orientación permiten que la escena funcione donde caiga:
+
+1. 0–4s. Acercamiento: «Espera... aún queda una salida de este bucle.» / «Las balizas sólo responden a una secuencia.»
+2. 4–9s. Plano cercano: «El orden es: [secuencia real]». / «No lo olvides. Es la clave del último sello.»
+3. 9–12s. Retirada: «Rompe el sello... y saca al cautivo de aquí.» Finaliza la muerte y vuelve el control.
+
+`LS_Revelacion` incluye cámaras, cortes, fundido y una partitura propia. El HUD presenta el diálogo subtitulado; no se ha añadido voz grabada. El orden aleatorio permanece desconocido hasta terminar u omitir con Espacio; entonces se conserva en pantalla y se habilita la siguiente baliza. El cronómetro, guardado y escolta se suspenden durante el diálogo. La escena no termina la partida. La muerte de jugador/rehén conserva prioridad de derrota.
+
+Regeneración adicional, con PIE detenido y helper editor-only: `prepare_final_words.py`, generación local `generate_final_words_integration.py`, instalación `install_final_words.py`. `prepare_cinematic_sequences.py` permite limitar la generación a `LS_Revelacion` mediante `Intermediate/inspect/cinematics/sequence_selection.txt` (quitarlo después). La referencia al encuentro se guarda en `EncounterZone`: la posesión de un Pawn cambia su Owner al controlador. Reinstalar también `BTTask_ActivateBeacon` después de cambiar la firma del Blueprint de baliza.
+
+Prueba preparada: `start_final_words_test.py` y `verify_final_words.py`, esperar `FINAL_WORDS_FIXTURE_COMPLETE`. Restaurar al final la copia de SaveGames de esta intervención, `Intermediate/inspect/final-words/save-backup`, no el respaldo histórico de la implementación original.
+
+**Verified / cierre de la ampliación:** disparo desde muerte real del cuarto enemigo, seis órdenes, reproducción completa/omisión física, restauración de entrada/escolta/reloj, prioridad de derrota, checkpoints modernos y migración anterior aprobados en PIE preparado. Regresión de18canalizaciones reales por BT y victoria aprobada. Paquete Win64 cook0errores/15advertencias previas; ZIP623346988bytes con CRC aprobado. AvisoF5 visible→desaparece y HUD con orden desconocido observados en ejecutable; cuarta escena/zona confirmadas en recarga fría sin helper. Evidencia `validation/final-words-2026-11-16.json`. No se acredita nueva partida natural completa ni aceptación visual del propietario.
+
 **Stated:** el propietario encarga planear y realizar introducción, derrota y victoria, con libertad creativa basada en las mecánicas. La captura del equipo aporta el pendiente de tres cinemáticas; los demás puntos no amplían esta tarea.
 
 **Verified (contexto previo):** protagonista viajero temporal; rescate y escolta, dos encuentros, martillo cargado, puertas con dos golpes pesados, tres balizas en orden aleatorio y extracción conjunta. El cronómetro empieza al rescatar y no tiene límite impuesto.

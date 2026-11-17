@@ -3,7 +3,7 @@ import unreal,os,json,re
 assert not unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_game_world()
 root=unreal.Paths.convert_relative_path_to_full(unreal.Paths.project_dir());out=os.path.join(root,'Intermediate/inspect/cinematics')
 rows=[]
-for path in ['/Game/ThirdPerson/Cinematics/BP_CinematicDirector','/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage','/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega','/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega','/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager']:
+for path in ['/Game/ThirdPerson/Cinematics/BP_CinematicDirector','/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage','/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega','/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega','/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager','/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone','/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega','/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy','/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy','/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon']:
     bp=unreal.load_asset(path);unreal.BlueprintEditorLibrary.compile_blueprint(bp)
     unreal.EditorAssetLibrary.save_loaded_asset(bp,only_if_is_dirty=False)
     task=unreal.AssetExportTask();task.object=bp;task.filename=os.path.join(root,'Intermediate/inspect/live',bp.get_name()+'.t3d');task.automated=True;task.prompt=False;task.replace_identical=True;assert unreal.Exporter.run_asset_export_task(task)
@@ -11,7 +11,7 @@ for path in ['/Game/ThirdPerson/Cinematics/BP_CinematicDirector','/Game/ThirdPer
     assert 'Status=BS_Error' not in txt,path
     rows.append({'asset':path,'compiled_exported':True})
 sequences=[]
-for name,seconds,cuts in [('LS_Intro',18,3),('LS_Derrota',8,1),('LS_Victoria',14,3)]:
+for name,seconds,cuts in [('LS_Intro',18,3),('LS_Derrota',8,1),('LS_Victoria',14,3),('LS_Revelacion',12,3)]:
     seq=unreal.load_asset('/Game/ThirdPerson/Cinematics/'+name);tracks=seq.get_tracks()
     cut=next(t for t in tracks if isinstance(t,unreal.MovieSceneCameraCutTrack))
     assert len(cut.get_sections())==cuts

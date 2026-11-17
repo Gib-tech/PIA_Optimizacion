@@ -86,8 +86,15 @@ specs=[
 ('LS_Victoria',14,'SW_CinemaVictory',[
  (0,5,(390,-10900,310),(310,-10970,245),(0,-11400,110),28),
  (5,10,(-460,-11100,360),(-700,-10950,640),(0,-11400,170),26),
- (10,14,(0,-10500,920),(0,-10300,1250),(0,-11400,60),26)])]
+ (10,14,(0,-10500,920),(0,-10300,1250),(0,-11400,60),26)]),
+('LS_Revelacion',12,'SW_CinemaRevelation',[
+ (0,4,(260,100,90),(220,80,80),(0,0,50),32),
+ (4,9,(180,-80,75),(150,-50,70),(0,0,50),38),
+ (9,12,(230,100,105),(310,160,150),(0,0,45),30)])]
+selection=os.path.join(root,'Intermediate/inspect/cinematics/sequence_selection.txt')
+selected=set(open(selection,encoding='utf-8-sig').read().split()) if os.path.exists(selection) else None
 for name,duration,sound,shots in specs:
+    if selected is not None and name not in selected:continue
     task=unreal.AssetImportTask();task.filename=os.path.join(root,'Tools/ArtSource/Cinematics',sound+'.wav');task.destination_path=folder+'/Audio';task.automated=True;task.save=True;task.replace_existing=True;tools.import_asset_tasks([task])
     audio=unreal.load_asset(folder+'/Audio/'+sound);assert audio
     audio.set_editor_property('sound_class_object',unreal.load_asset('/Engine/EngineSounds/Master.Master'))
@@ -106,7 +113,7 @@ for name,duration,sound,shots in specs:
     fade=seq.add_track(unreal.MovieSceneFadeTrack).add_section();fade.set_range(0,frames(duration));fade.set_completion_mode(unreal.MovieSceneCompletionMode.RESTORE_STATE)
     animate(fade,[(0,[1]),(.7,[0]),(duration-1,[0]),(duration,[1])])
     track=seq.add_track(unreal.MovieSceneAudioTrack);section=track.add_section();section.set_sound(audio);section.set_range(0,frames(duration));section.set_looping(False)
-    unreal.EditorAssetLibrary.set_metadata_tag(seq,'TimeOut.Story',{'LS_Intro':'Una señal entre épocas','LS_Derrota':'La señal se apaga','LS_Victoria':'Volver juntos'}[name])
+    unreal.EditorAssetLibrary.set_metadata_tag(seq,'TimeOut.Story',{'LS_Intro':'Una señal entre épocas','LS_Derrota':'La señal se apaga','LS_Victoria':'Volver juntos','LS_Revelacion':'El último guardián'}[name])
     unreal.EditorAssetLibrary.save_loaded_asset(seq,only_if_is_dirty=False)
     manifest.append({'asset':path,'duration':duration,'fps':30,'shots':shotinfo,'audio':audio.get_path_name()})
     unreal.log('CINEMA_SEQUENCE_READY '+name)

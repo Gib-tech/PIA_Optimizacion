@@ -54,12 +54,17 @@ MESSAGES[22]=('EXTRACCIÓN','Secuencia completada. Rompe la última puerta y lle
 MESSAGES[25]=('OTRA OPORTUNIDAD','Esta vez no pudo ser. Un nuevo intento sortea otra secuencia y reinicia el cronómetro.','[R] Nuevo intento    [ENTER] Menú')
 MESSAGES[26]=('REHÉN PERDIDO','El rehén no sobrevivió. Mantente cerca y protege su retirada.','[R] Nuevo intento    [ENTER] Menú')
 MESSAGES[28]=('MARTILLO CARGADO','Tu martillo está equipado. Dos golpes pesados abren la puerta habilitada.','Clic derecho: golpear la puerta')
+MESSAGES.extend([
+ ('GUARDIA FINAL · OLEADA 1 / 2','Orbitadores y embestidores protegen la secuencia. Despeja esta última zona antes de usar las balizas.','Protege la retirada del rehén'),
+ ('GUARDIA FINAL · OLEADA 2 / 2','Es la última resistencia. Uno de ellos conoce el orden de las balizas.','Vence al último guardián'),
+ ('SECUENCIA REVELADA','El último guardián reveló la clave. Recupera al rehén y sigue el orden de la pantalla.','[E / RB] Recuperar al rehén')])
 class DialogueGraph(CombatGraph):
     def node(self,kind,props=(),**pos):
         i=len(self.nodes);pos.setdefault('x',(i%9)*380);pos.setdefault('y',(i//9)*310)
         return super().node(kind,props,**pos)
 g=DialogueGraph()
 KINDS={**dict.fromkeys(['CurrentDialog','LastDialog','DismissedDialog','VisibleCharacters','LastHostageHitSerial'],'int'),**dict.fromkeys(['DialogStarted','LastBeepAt','LastHealth','CharactersPerSecond','HoldSeconds','UIAudioVolume','HurtPulseUntil','HostageHurtUntil','HostageAlertCooldown','EnemyHitUntil','LastEnemyDamage'],'real'),**dict.fromkeys(['ForceReveal','DialogueVisible','HostageSpeaking','HostagePromptVisible','HostagePromptInRange'],'bool'),**dict.fromkeys(['FullText','VisibleText','Speaker','ActionHint'],'string')}
+KINDS.update(LastStatusText='string',LastStatusSerial='int',StatusUntil='real',StatusNoticeVisible='bool',DisplayedOrder='string')
 def v(name):
     cat=KINDS[name];return (g.get(name,cat,sub='double' if cat=='real' else ''),name)
 def wire(value,node,pin):
@@ -134,18 +139,20 @@ following=(g.bbget(bb,'bAccompanying'),'ReturnValue');rescued=(g.bbget(bb,'bResc
 unsafe=either((g.bbget(bb,'bMustFlee'),'ReturnValue'),(g.bbget(bb,'bEnemyNear'),'ReturnValue'))
 hdist=(g.dist(hostage,'CachedHostage',player,'ReturnValue'),'ReturnValue');nearhostage=cmp('LessEqual_DoubleDouble',hdist,400,'real')
 zones=[]
-for i in [1,2]:
+for i in [1,2,3]:
     z=g.get('Zona'+str(i),'object',owner=DIRECTOR,obj=ZONE);g.wire(director,'CachedDirector',z,'self');zones.append((z,'Zona'+str(i)))
 cleared=[]
 for z in zones:
     n=g.get('bCleared','bool',owner=ZONE);wire(z,n,'self');cleared.append((n,'bCleared'))
-zoneindex=pick(cleared[0],1,0)
-zone=table(zoneindex,[None,None],'object',ZONE)
+allcleared=both(both(cleared[0],cleared[1]),cleared[2])
+revealed_node=g.get('bOrderRevealed','bool',owner=DIRECTOR);g.wire(director,'CachedDirector',revealed_node,'self');revealed=(revealed_node,'bOrderRevealed')
+zoneindex=pick(cleared[0],pick(cleared[1],2,1),0)
+zone=table(zoneindex,[None,None,None],'object',ZONE)
 for i,z in enumerate(zones):wire(z,zone[0],'Option '+str(i))
 def zget(name):
     n=g.get(name,'int',owner=ZONE);wire(zone,n,'self');return n,name
 phase=zget('Phase');wave=zget('CurrentWave');living=zget('LivingCount')
-relevant=both(cmp('Less_IntInt',step,4),neg(both(*cleared)))
+relevant=both(cmp('Less_IntInt',step,4),neg(allcleared))
 zdist=(g.dist(zone[0],zone[1],player,'ReturnValue'),'ReturnValue')
 nearzone=cmp('LessEqual_DoubleDouble',zdist,1700,'real')
 overlap=g.call(ACTOR,'IsOverlappingActor',pure=True).pin('Other','object',obj=ACTOR).pin('ReturnValue','bool',out=True);wire(zone,overlap,'self');g.wire(player,'ReturnValue',overlap,'Other')
@@ -157,9 +164,10 @@ idlezone=both(relevant,cmp('EqualEqual_IntInt',phase,0))
 context=pick(both(idlezone,both(following,nearzone)),8,context)
 context=pick(both(idlezone,both((overlap,'ReturnValue'),neg(following))),9,context)
 waveid=calc('Add_IntInt',10,calc('Add_IntInt',calc('Multiply_IntInt',zoneindex,2,'int'),calc('Subtract_IntInt',wave,1,'int'),'int'),'int')
+waveid=pick(cmp('EqualEqual_IntInt',zoneindex,2),calc('Add_IntInt',31,calc('Subtract_IntInt',wave,1,'int'),'int'),waveid)
 context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,1)),waveid,context)
 context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,2)),14,context)
-context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,3)),calc('Add_IntInt',15,zoneindex,'int'),context)
+context=pick(both(relevant,cmp('EqualEqual_IntInt',phase,3)),pick(cmp('EqualEqual_IntInt',zoneindex,2),33,calc('Add_IntInt',15,zoneindex,'int')),context)
 context=pick(both(nearhostage,both(neg(following),neg(unsafe))),pick(rescued,6,2),context)
 beacons=[]
 for i in [1,2,3]:
@@ -167,7 +175,7 @@ for i in [1,2,3]:
 beacon_node=g.get('CurrentBeacon','object',owner=DIRECTOR,obj='/Script/Engine.StaticMeshActor');g.wire(director,'CachedDirector',beacon_node,'self')
 beacon=(beacon_node,'CurrentBeacon')
 bdist=(g.dist(beacon[0],beacon[1],player,'ReturnValue'),'ReturnValue')
-beaconready=both(cmp('Less_IntInt',step,3),both(*cleared))
+beaconready=both(cmp('Less_IntInt',step,3),both(allcleared,revealed))
 context=pick(both(beaconready,cmp('LessEqual_DoubleDouble',bdist,250,'real')),calc('Add_IntInt',17,step,'int'),context)
 exit=g.get('Salida','object',owner=DIRECTOR,obj='/Script/Engine.StaticMeshActor');g.wire(director,'CachedDirector',exit,'self')
 edist=(g.dist(exit,'Salida',player,'ReturnValue'),'ReturnValue')
@@ -265,7 +273,8 @@ wire(color,overlay,'TintColor')
 for pin,value in [('ScreenX',0),('ScreenY',0),('ScreenW',width),('ScreenH',height),('TextureU',0),('TextureV',0),('TextureUWidth',1),('TextureVHeight',1),('Scale',1),('Rotation',0)]:overlay.pin(pin,'real',sub='float');wire(value,overlay,pin)
 overlay.pin('RotPivot','struct',obj='/Script/CoreUObject.Vector2D',default='(X=0,Y=0)');g.chain(host_health_save,overlay)
 chip=rect(overlay,chipx,chipy,mul(418,scale),mul(pick(incombat,142,112),scale),'(R=0,G=0,B=0,A=.8)')
-objectives=table(pick(both(*cleared),1,0),['DESPEJA LAS DOS ZONAS','ACTIVA LA SECUENCIA DE BALIZAS'])
+combat_objective=table(pick(both(cleared[0],cleared[1]),1,0),['DESPEJA LAS ZONAS DE COMBATE','VENCE A LA GUARDIA FINAL'])
+objectives=table(pick(allcleared,1,0),[combat_objective,'ACTIVA LA SECUENCIA DE BALIZAS'])
 objectives=table(pick(cmp('GreaterEqual_IntInt',step,3),1,0),[objectives,table(step,['','','','ESCOLTA A LA EXTRACCIÓN','REHÉN A SALVO','FIN DEL INTENTO','REHÉN PERDIDO'])])
 objectives=table(pick(pending,1,0),[objectives,'MARTILLO: ABRE EL PASO'])
 hpnode=g.get('Health','real',owner=HOSTAGE,sub='double');g.wire(hostage,'CachedHostage',hpnode,'self');host_hp=(hpnode,'Health')
@@ -310,7 +319,9 @@ title=text(channelbar,objectives,add(chipx,mul(12,scale)),add(chipy,mul(9,scale)
 from generate_beacon_sequence import ORDERS
 order_node=g.get('OrderCode','int',owner=DIRECTOR);g.wire(director,'CachedDirector',order_node,'self');order_code=(order_node,'OrderCode')
 order_string=table(order_code,['ORDEN: '+' > '.join('ABC'[i] for i in p) for p in ORDERS])
-orderline=text(title,order_string,add(chipx,mul(12,scale)),add(chipy,mul(34,scale)),1.2,'(R=.35,G=.85,B=1,A=1)')
+order_string=table(pick(revealed,1,0),['ORDEN: DESCONOCIDO',order_string])
+order_saved=save(title,'DisplayedOrder',order_string)
+orderline=text(order_saved,v('DisplayedOrder'),add(chipx,mul(12,scale)),add(chipy,mul(34,scale)),1.2,'(R=.35,G=.85,B=1,A=1)')
 elapsed_node=g.get('MissionElapsed','real',owner=DIRECTOR,sub='double');g.wire(director,'CachedDirector',elapsed_node,'self')
 seconds=call(MATH,'FFloor',[('A','real',(elapsed_node,'MissionElapsed'))],cat='int')
 minutes=calc('Divide_IntInt',seconds,60,'int');remainder=calc('Percent_IntInt',seconds,60,'int')
@@ -330,6 +341,7 @@ for beacon_i in [1,2,3]:
 countstr=call(STRING,'Conv_IntToString',[('InInt','int',beacon_count)],cat='string')
 nextname=table(calc('Min',beacon_count,2,'int'),[table(order_code,['ABC'[p[i]] for p in ORDERS]) for i in range(3)])
 nextstr=table(pick(cmp('Less_IntInt',beacon_count,3),1,0),['SECUENCIA COMPLETA',catstr('SIGUIENTE: ',nextname)])
+nextstr=table(pick(revealed,1,0),['DERROTA A LA GUARDIA',nextstr])
 nextline=text(clockline,catstr(catstr(catstr('BALIZAS: ',countstr),' / 3   |   '),nextstr),add(chipx,mul(12,scale)),add(chipy,mul(87,scale)),1.05)
 active=branch(nextline,incombat)
 wc=call(STRING,'Conv_IntToString',[('InInt','int',wave)],cat='string');lc=call(STRING,'Conv_IntToString',[('InInt','int',living)],cat='string')
@@ -359,7 +371,16 @@ manager=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True).p
 g.chain(seq,manager,'then_1')
 cast=manager
 status=g.get('StatusText','string',owner=MANAGER);g.wire(manager,'ReturnValue',status,'self')
-line=rect(cast,mul(20,scale),mul(154,scale),mul(720,scale),mul(30,scale),'(R=0,G=0,B=0,A=.82)')
+serial=g.get('StatusSerial','int',owner=MANAGER);g.wire(manager,'ReturnValue',serial,'self')
+changed=either(call(STRING,'NotEqual_StrStr',[('A','string',v('LastStatusText')),('B','string',(status,'StatusText'))],cat='bool'),cmp('NotEqual_IntInt',v('LastStatusSerial'),(serial,'StatusSerial')))
+notice=branch(cast,changed)
+notice_saved=save(notice,'LastStatusText',(status,'StatusText'))
+notice_saved=save(notice_saved,'LastStatusSerial',(serial,'StatusSerial'))
+notice_saved=save(notice_saved,'StatusUntil',add(game_now,4))
+visible=both(cmp('Greater_DoubleDouble',v('StatusUntil'),game_now,'real'),call(STRING,'NotEqual_StrStr',[('A','string',(status,'StatusText')),('B','string','')],cat='bool'))
+notice_visible=save(notice_saved,'StatusNoticeVisible',visible);g.chain(notice,notice_visible,'else')
+notice_draw=branch(notice_visible,v('StatusNoticeVisible'))
+line=rect(notice_draw,mul(20,scale),mul(154,scale),mul(720,scale),mul(30,scale),'(R=0,G=0,B=0,A=.82)')
 text(line,(status,'StatusText'),mul(28,scale),mul(162,scale),.95)
 hit_visible=branch(seq,cmp('Greater_DoubleDouble',v('EnemyHitUntil'),now,'real'),'then_2')
 hit_marker=text(hit_visible,'X',sub(mul(width,.5),mul(5,scale)),sub(mul(height,.5),mul(8,scale)),1.2,'(R=1,G=.65,B=.2,A=1)')

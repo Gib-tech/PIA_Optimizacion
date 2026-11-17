@@ -281,7 +281,7 @@ def legacy_progression_director():
   n=next(n for n in g.nodes if n.name==name);p=next(p for p in n.pins.values() if p['id']==pid);g.chain(seq,n,'then_0',p['name'])
  current=g.v('Paso','int');active=g.br(seq,g.cmp('Less_IntInt',current,3,'int'),'then_1');host=g.find(active,HOSTAGE);bb=g.blackboard(host,'ReturnValue')
  safe=g.neg(g.c(MATH,'BooleanOR',[('A','bool',(g.bbget(bb,'bMustFlee'),'ReturnValue')),('B','bool',(g.bbget(bb,'bEnemyNear'),'ReturnValue'))],cat='bool'))
- following=(g.bbget(bb,'bAccompanying'),'ReturnValue');ready=g.br(host,g.both(following,safe))
+ following=(g.bbget(bb,'bAccompanying'),'ReturnValue');ready=g.br(host,g.both(g.both(following,safe),g.v('bOrderRevealed','bool')))
  sw=g.node('K2Node_SwitchInteger',['PinNames(0)="0"','PinNames(1)="1"','PinNames(2)="2"']).pin('execute').pin('Selection','int').pin('Default',out=True)
  for i in range(3):sw.pin(str(i),out=True)
  g.w(current,sw,'Selection');g.chain(ready,sw)

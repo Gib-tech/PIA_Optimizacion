@@ -1,7 +1,7 @@
 """Blueprint presentation controller and small hooks into existing mission sources."""
 from generate_delivery_controls import ControlsGraph, flatten, split_exec, PC
 from generate_progression_graphs import ACTOR, OBJECT, GS, MATH, HERO, HOSTAGE, DIRECTOR, PRIM, VEC
-from generate_combat_graphs import CHAR, MOVE
+from generate_combat_graphs import CHAR, MOVE, BASE
 from generate_delivery_graphs import q
 from delivery_save_schema import GI
 
@@ -85,8 +85,18 @@ def controller():
     running=g.br(ready,active)
     over=g.br(running,g.cmp('GreaterEqual_DoubleDouble',now,g.v('EndsAt')));owncall(over,'FinishCinema')
     e=g.custom('StartIntro');guard=g.br(e,g.neg(active));prev=g.s(guard,'Kind',0,'int');owncall(prev,'PlayCinema')
+    from generate_final_words import reveal_event,complete_revelation
+    reveal_event(g,own,hero,host,director,now)
     e=g.custom('StartOutcome');guard=g.br(e,g.neg(g.v('bOutcomeStarted','bool')))
-    prev=g.s(guard,'bOutcomeStarted',True,'bool')
+    # Terminal outcomes take priority if damage races the nonterminal dialogue.
+    interrupt=g.br(guard,active)
+    stopped=g.action_on(interrupt,MSPLAYER,'Stop',player)
+    stopped=cinematic(stopped,False)
+    old_enemy=g.local('RevealEnemy',BASE);enemy_valid=g.br(stopped,(g.valid(*old_enemy),'ReturnValue'))
+    released=g.action_on(enemy_valid,BASE,'FinishFinalWords',old_enemy)
+    prev=g.s(released,'bNarrativePaused',False,'bool',owner=DIRECTOR,target=director)
+    g.chain(enemy_valid,prev,'else');g.chain(interrupt,prev,'else')
+    prev=g.s(prev,'bOutcomeStarted',True,'bool')
     step=g.v('Paso','int',owner=DIRECTOR,target=director)
     choice=g.c(MATH,'SelectInt',[('A','int',3),('B','int',g.c(MATH,'SelectInt',[('A','int',2),('B','int',1),('bPickA','bool',g.cmp('EqualEqual_IntInt',step,6,'int'))],cat='int')),('bPickA','bool',g.cmp('EqualEqual_IntInt',step,4,'int'))],cat='int')
     prev=g.s(prev,'Kind',choice,'int')
@@ -116,7 +126,7 @@ def controller():
     g.s(stop,'bCanBeDamaged',False,'bool',owner=ACTOR,target=char)
     owncall(chars,'PlayCinema','Completed')
     e=g.custom('PlayCinema');prev=g.s(e,'bActive',True,'bool')
-    prev=g.s(prev,'StartedAt',now);duration=select(g,kind,[18,8,8,14],'real');prev=g.s(prev,'Duration',duration)
+    prev=g.s(prev,'StartedAt',now);duration=select(g,kind,[18,8,8,14,12],'real');prev=g.s(prev,'Duration',duration)
     prev=g.s(prev,'EndsAt',g.op('Add_DoubleDouble',now,duration))
     target=g.call(PC,'GetViewTarget',pure=True).pin('ReturnValue','object',obj=ACTOR,out=True);g.w(pc,target,'self')
     prev=g.s(prev,'SavedViewTarget',(target,'ReturnValue'),'object',obj=ACTOR)
@@ -124,14 +134,19 @@ def controller():
     for value in [hero,director,ui,hud]:prev=input_to(prev,value,False)
     prev=input_to(prev,own,True);prev=g.cursor(prev,False);prev=g.mode(prev,game=True)
     make=g.call(LSPLAYER,'CreateLevelSequencePlayer',static=True).pin('WorldContextObject','object',obj=OBJECT,hidden=True).pin('LevelSequence','object',obj='/Script/LevelSequence.LevelSequence').pin('Settings','struct',obj='/Script/MovieScene.MovieSceneSequencePlaybackSettings',default='(bAutoPlay=False,PlayRate=1.000000,bHidePlayer=False,bHideHud=False,bDisableMovementInput=False,bDisableLookAtInput=False,bDisableCameraCuts=False,bPauseAtEnd=False,FinishCompletionStateOverride=ForceRestoreState)').pin('OutActor','object',obj=LSACTOR,out=True).pin('ReturnValue','object',obj=LSPLAYER,out=True)
-    sequence=select(g,kind,[ROOT+'LS_Intro.LS_Intro',ROOT+'LS_Derrota.LS_Derrota',ROOT+'LS_Derrota.LS_Derrota',ROOT+'LS_Victoria.LS_Victoria'],'object','/Script/LevelSequence.LevelSequence');g.w(sequence,make,'LevelSequence');g.chain(prev,make)
+    sequence=select(g,kind,[ROOT+'LS_Intro.LS_Intro',ROOT+'LS_Derrota.LS_Derrota',ROOT+'LS_Derrota.LS_Derrota',ROOT+'LS_Victoria.LS_Victoria',ROOT+'LS_Revelacion.LS_Revelacion'],'object','/Script/LevelSequence.LevelSequence');g.w(sequence,make,'LevelSequence');g.chain(prev,make)
     prev=g.s(make,'SequencePlayer',(make,'ReturnValue'),'object',obj=LSPLAYER)
     prev=g.s(prev,'SequenceActor',(make,'OutActor'),'object',obj=LSACTOR)
-    death=g.both(g.cmp('Greater_IntInt',kind,0,'int'),g.cmp('Less_IntInt',kind,3,'int'))
+    reveal=g.cmp('EqualEqual_IntInt',kind,4,'int')
+    death=g.c(MATH,'BooleanOR',[('A','bool',g.both(g.cmp('Greater_IntInt',kind,0,'int'),g.cmp('Less_IntInt',kind,3,'int'))),('B','bool',reveal)],cat='bool')
     prev=g.s(prev,'bOverrideInstanceData',death,'bool',owner=LSACTOR,target=actor)
-    victim=select(g,kind,[hero,hero,host,hero],'object',ACTOR)
+    victim=select(g,kind,[hero,hero,host,hero,g.local('RevealEnemy',BASE)],'object',ACTOR)
     pos=g.location(*victim)
     prev=g.action_on(prev,ACTOR,'K2_SetActorLocation',own,[('NewLocation','struct',(pos,'ReturnValue'),VEC),('bSweep','bool',False,None),('bTeleport','bool',True,None)])
+    rot=g.c(ACTOR,'K2_GetActorRotation',cat='struct',obj='/Script/CoreUObject.Rotator',pure=True,static=False);g.w(victim,rot[0],'self')
+    chosen_rot=g.c(MATH,'SelectRotator',[('A','struct',rot),('B','struct','0,0,0'),('bPickA','bool',reveal)],cat='struct',obj='/Script/CoreUObject.Rotator')
+    for pin in ['A','B']:chosen_rot[0].pins[pin]['obj']='/Script/CoreUObject.Rotator'
+    prev=g.action_on(prev,ACTOR,'K2_SetActorRotation',own,[('NewRotation','struct',chosen_rot,'/Script/CoreUObject.Rotator'),('bTeleportPhysics','bool',False,None)])
     data=g.v('DefaultInstanceData','object',owner=LSACTOR,target=actor,obj=OBJECT,native=True)
     cast=g.nativecast(INSTANCE);g.chain(prev,cast);g.w(data,cast,'Object')
     prev=g.s(cast,'TransformOriginActor',own,'object',owner=INSTANCE,target=(cast,'AsDefaultLevelSequenceInstanceData'),obj=ACTOR)
@@ -147,8 +162,12 @@ def controller():
     prev=mesh_owner(prev,firstperson);prev=health_widget(prev,False)
     view=g.action_on(prev,PC,'SetViewTargetWithBlend',pc,[('NewViewTarget','object',g.local('SavedViewTarget',ACTOR),ACTOR),('BlendTime','real',0,None),('BlendFunc','byte','VTBlend_Linear','/Script/Engine.EViewTargetBlendFunction'),('BlendExp','real',0,None),('bLockOutgoing','bool',False,None)])
     prev=input_to(view,director,True);prev=input_to(prev,hud,True);prev=input_to(prev,own,False)
-    intro=g.br(prev,g.cmp('EqualEqual_IntInt',kind,0,'int'))
-    prev=input_to(intro,hero,True);prev=input_to(prev,ui,True);g.mode(prev,game=True)
+    story=g.br(prev,reveal)
+    complete,extra=complete_revelation(g,story,host,director)
+    intro=g.br(story,g.cmp('EqualEqual_IntInt',kind,0,'int'),'else')
+    prev=input_to(intro,hero,True);g.chain(complete,prev)
+    for node,pin in extra:g.chain(node,prev,pin)
+    prev=input_to(prev,ui,True);g.mode(prev,game=True)
     paused=g.call(GS,'SetGamePaused',static=True).pin('bPaused','bool',default='true').pin('ReturnValue','bool',out=True);g.chain(intro,paused,'else')
     flatten(g,CINEMA);g.write('BP_CinematicDirector')
 
@@ -189,19 +208,22 @@ def hud_hook(g):
     kind=g.v('Kind','int',owner=CINEMA,target=movie)
     age=sub(g.c(GS,'GetTimeSeconds'),g.v('StartedAt',owner=CINEMA,target=movie))
     def segment(first,second):return g.c(MATH,'SelectInt',[('A','int',2),('B','int',g.c(MATH,'SelectInt',[('A','int',1),('B','int',0),('bPickA','bool',g.cmp('GreaterEqual_DoubleDouble',age,first))],cat='int')),('bPickA','bool',g.cmp('GreaterEqual_DoubleDouble',age,second))],cat='int')
-    part=select(g,kind,[segment(6,12),segment(3,6),segment(3,6),segment(5,10)],'int')
+    part=select(g,kind,[segment(6,12),segment(3,6),segment(3,6),segment(5,10),segment(4,9)],'int')
     def line(sets):return select(g,kind,[select(g,part,lines) for lines in sets])
-    speaker=line([['CONTROL','REHÉN','CONTROL'],['CONTROL','CONTROL','TIME OUT'],['CONTROL','CONTROL','TIME OUT'],['REHÉN','REHÉN','CONTROL']])
+    speaker=line([['CONTROL','REHÉN','CONTROL'],['CONTROL','CONTROL','TIME OUT'],['CONTROL','CONTROL','TIME OUT'],['REHÉN','REHÉN','CONTROL'],['GUARDIÁN','GUARDIÁN','GUARDIÁN']])
+    spoken_order=g.c('/Script/Engine.KismetStringLibrary','Concat_StrStr',[('A','string','El orden es: '),('B','string',g.v('RevealedSequence','string',owner=CINEMA,target=movie))],cat='string')
     first=line([
       ['El salto te ha dejado en un recinto fuera del tiempo.','Sólo yo puedo sincronizar las balizas.','Despeja las zonas. Carga el martillo.'],
       ['Hemos perdido tu señal.','El salto quedó incompleto.','El tiempo permite otro intento.'],
       ['Su señal se ha apagado.','Sin él, no hay camino de vuelta.','El tiempo permite otro intento.'],
-      ['Las tres señales coinciden.','Esta vez volvemos juntos.','Extracción confirmada. Dos viajeros.']])
+      ['Las tres señales coinciden.','Esta vez volvemos juntos.','Extracción confirmada. Dos viajeros.'],
+      ['Espera... aún queda una salida de este bucle.',spoken_order,'Rompe el sello... y saca al cautivo de aquí.']])
     second=line([
       ['Encuentra al cautivo. Su señal es nuestra salida.','Ayúdame a salir. No puedo hacerlo solo.','Escolta su señal hasta la salida.'],
       ['','Protege al rehén y vuelve a intentarlo.',''],['','No dejes que lo alcancen.',''],
-      ['Ya no tenemos que huir.','','Una misma línea temporal.']])
-    chapter=select(g,kind,['UNA SEÑAL ENTRE ÉPOCAS','LA SEÑAL SE APAGA','LA SEÑAL SE APAGA','VOLVER JUNTOS'])
+      ['Ya no tenemos que huir.','','Una misma línea temporal.'],
+      ['Las balizas sólo responden a una secuencia.','No lo olvides. Es la clave del último sello.','']])
+    chapter=select(g,kind,['UNA SEÑAL ENTRE ÉPOCAS','LA SEÑAL SE APAGA','LA SEÑAL SE APAGA','VOLVER JUNTOS','EL ÚLTIMO GUARDIÁN'])
     prev=rect(active,0,0,width,bar,black);prev=rect(prev,0,sub(height,bar),width,bar,black)
     prev=rect(prev,mul(46,scale),sub(bar,mul(13,scale)),mul(80,scale),mul(2,scale),cyan)
     prev=text(prev,'TIME OUT',mul(46,scale),mul(19,scale),1.55)

@@ -12,12 +12,13 @@ VEC = '/Script/CoreUObject.Vector'
 FIELDS = {
     'Version': 'int', 'Paso': 'int', 'PlayerHealth': 'real',
     'OrderCode': 'int', 'MissionElapsed': 'real',
+    'FinalStandRevision': 'int', 'OrderRevealed': 'bool',
     'PlayerLocation': 'vector', 'PlayerRotation': 'rotator', 'ControlRotation': 'rotator',
     'HammerUpgraded': 'bool', 'HammerEquipped': 'bool',
     'HostageHealth': 'real', 'HostageLocation': 'vector', 'HostageRotation': 'rotator',
     'Rescued': 'bool', 'Accompanying': 'bool', 'Waiting': 'bool',
 }
-for i in (1, 2):
+for i in (1, 2, 3):
     for name, kind in [('Cleared', 'bool'), ('Wave', 'int'), ('Phase', 'int'), ('Spawned', 'int')]:
         FIELDS['Zone%d%s' % (i, name)] = kind
 for i in (1, 2, 3):

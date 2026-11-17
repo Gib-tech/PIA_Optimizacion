@@ -7,13 +7,18 @@ actors=unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_ac
 cinemas=[a for a in actors if a.get_class().get_name()=='BP_CinematicDirector_C']
 assert len(cinemas)==1 and not cinemas[0].get_editor_property('is_spatially_loaded')
 rows=[]
-for name,seconds,cuts in [('LS_Intro',18,3),('LS_Derrota',8,1),('LS_Victoria',14,3)]:
+for name,seconds,cuts in [('LS_Intro',18,3),('LS_Derrota',8,1),('LS_Victoria',14,3),('LS_Revelacion',12,3)]:
     seq=unreal.load_asset('/Game/ThirdPerson/Cinematics/'+name);assert seq
     assert seq.get_playback_end()==seconds*30
     cut=next(t for t in seq.get_tracks() if isinstance(t,unreal.MovieSceneCameraCutTrack));assert len(cut.get_sections())==cuts
     audio=next(t for t in seq.get_tracks() if isinstance(t,unreal.MovieSceneAudioTrack))
     assert audio.get_sections()[0].get_sound()
     rows.append(name)
+director=next(a for a in actors if a.get_class().get_name()=='BP_DirectorEntrega_C')
+zone=director.get_editor_property('Zona3');assert zone and not zone.get_editor_property('is_spatially_loaded')
+assert zone.get_editor_property('bFinalStand') and zone.get_editor_property('bMixedEnemies') and zone.get_editor_property('WaveCount')==2
+assert zone.get_editor_property('RequiredZone')==director.get_editor_property('Zona2')
+for i in [1,2]:assert not director.get_editor_property('Zona'+str(i)).get_editor_property('bFinalStand')
 for name in ['BP_BaseEnemy','BP_ChargerEnemy']:
     cdo=unreal.get_default_object(unreal.load_class(None,'/Game/ThirdPerson/Blueprints/EnemigoIA/'+name+'.'+name+'_C'))
     assert abs(cdo.get_editor_property('ContactDamage')-13.2)<.001 and not cdo.is_actor_tick_enabled()

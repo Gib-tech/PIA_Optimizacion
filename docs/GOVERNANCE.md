@@ -1,5 +1,9 @@
 # Governance
 
+## Guardia final y revelación autorizadas — 2026-11-16
+
+**Stated:** el propietario pide quitar el recuadro persistente de checkpoint, añadir una horda y una cinematográfica donde el último enemigo revele el orden de las balizas al ser vencido. También autoriza commit y push de los cambios anteriores. **Decision:** avisos de guardado de4s; tercer encuentro antes del patio, dos oleadas mixtas de un orbitador y un embestidor; escena de12s con el guardián agonizante y la secuencia real del intento. Ocultar orden y señal de siguiente baliza hasta terminar u omitir la revelación. Conservar árboles, daño13.2, las dos zonas originales y guardados anteriores. La nueva petición amplía expresamente el número de encuentros y cinemáticas. Commit y push autorizados para mantener origin actualizado; las pruebas preparadas no sustituyen una partida natural ni aceptación del propietario.
+
 ## Tres cinemáticas autorizadas — 2026-11-16
 
 **Stated:** el propietario encarga leer la gobernanza, planear y realizar introducción, derrota y victoria, con libertad creativa basada en las mecánicas. La captura del equipo es evidencia del pendiente de tres cinemáticas; sus otros puntos no son nuevas instrucciones de esta intervención. **Decision:** relato de rescate temporal, tres Level Sequences editables de18/8/14s, subtítulos, partituras propias y omisión con Espacio. La derrota distingue jugador/rehén. Integrar en Nuevo juego y resultados; Continuar omite la introducción. Conservar árboles, daño13.2, checkpoints, secuencia y condiciones de extracción. No atribuir aceptación del propietario a las pruebas del agente. Diseño y reproducción: `CINEMATICAS.md`.

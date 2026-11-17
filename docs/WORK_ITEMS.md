@@ -1,5 +1,12 @@
 # Work items
 
+## Guardia final, revelación y aviso breve — 2026-11-16
+
+- **Stated:** añadir una horda; el último enemigo anuncia el orden de balizas antes de morir; quitar el aviso de checkpoint persistente. Commit/push de cambios anteriores también solicitados.
+- **Implemented / Ready para aceptación:** tercer encuentro residente,2×2enemigos mixtos; `LS_Revelacion`12s con tres planos y partitura propia. Disparo por muerte real del último enemigo, orden real subtitulado, finalización normal de muerte tras el diálogo. Orden/HUD/luz de siguiente baliza aparecen al terminar u omitir con Espacio. Avisos de guardado duran4s.
+- **Verified en fixtures PIE:** requisito de escolta/zona2, dos árboles ejecutándose, ausencia de disparo en muertes anteriores, seis permutaciones, reloj/checkpoint suspendidos y control restaurado; guardado posterior/Continuar; migración de checkpoints previos con/sin balizas iniciadas; Espacio físico y prioridad de derrota durante el diálogo. Guardados del usuario se restauran al terminar QA. No es una nueva partida natural ni aceptación manual.
+- **Pendiente de aceptación:** estética y dificultad de la horda en PC de presentación. No marcar Passed por las pruebas del agente. Diseño y reproducción en `CINEMATICAS.md`; evidencia/paquete en handoff vigente.
+
 ## Cinemáticas de introducción, derrota y victoria — 2026-11-16
 
 - **Stated:** encargo actual de planear y hacer las tres escenas con libertad narrativa basada en las mecánicas; los otros pendientes de la captura no amplían esta tarea.

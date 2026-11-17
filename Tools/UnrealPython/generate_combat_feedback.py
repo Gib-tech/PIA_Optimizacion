@@ -98,6 +98,8 @@ def base_enemy():
     poise=g.c(MATH,'BooleanOR',[('A','bool',g.cmp('GreaterEqual_DoubleDouble',time,g.v('NextStaggerAt'))),('B','bool',g.cmp('GreaterEqual_DoubleDouble',g.v('LastDamageAmount'),25))],cat='bool')
     stagger=g.br(previous,g.both(g.cmp('Greater_DoubleDouble',g.v('LastDamageAmount'),0),poise),previous_pin['name'])
     recovery=g.s(stagger,'NextStaggerAt',g.op('Add_DoubleDouble',time,g.v('StaggerCooldown')));g.chain(recovery,react)
+    from generate_final_words import enemy_final_words
+    enemy_final_words(g)
     g.write('BP_BaseEnemy')
 
 def windup():

@@ -11,7 +11,7 @@ p=m.get_editor_property('Hero');h=m.get_editor_property('Hostage')
 bb=h.get_controller().get_component_by_class(unreal.BlackboardComponent)
 bs=[d.get_editor_property('Baliza'+str(i)) for i in (1,2,3)]
 ds=[b.get_editor_property('Door') for b in bs]
-zs=[d.get_editor_property('Zona'+str(i)) for i in (1,2)]
+zs=[d.get_editor_property('Zona'+str(i)) for i in (1,2,3)]
 sys=unreal.get_default_object(unreal.SystemLibrary.static_class())
 prop=lambda o,k:o.get_editor_property(k)
 def put(o,k,v):
@@ -21,6 +21,8 @@ def put(o,k,v):
 assert prop(d,'MissionElapsed')==0,'Timer ran before rescue'
 assert all(not prop(b,'bActivated') for b in bs)
 assert all(not prop(door,'bUnlocked') for door in ds)
+cinema=gs.get_actor_of_class(w,unreal.load_class(None,'/Game/ThirdPerson/Cinematics/BP_CinematicDirector.BP_CinematicDirector_C'))
+if prop(cinema,'bActive'):cinema.call_method('FinishCinema')
 # All six directed paths must be reachable without opening the final bulkhead.
 paths=[]
 for a in bs:
@@ -51,6 +53,14 @@ def observe(dt,world=w,mission=d,manager=m,player=p,hostage=h,board=bb,beacons=b
     gs.apply_damage(door,25,None,player,None);assert prop(door,'bDestroyed')
    put(player,'IsAttacking',False)
    s['result']['encounters_unlock_first_two_doors_and_two_hits']=True
+   # Even a complete valid channel cannot bypass the final guardian revelation.
+   correct=beacons[orders[prop(mission,'OrderCode')][0]]
+   hostage.set_actor_location(prop(correct,'ApproachPoint').get_actor_location()+unreal.Vector(0,-30,100),False,True)
+   put(hostage,'bUsingBeacon',True);put(hostage,'ActivationProgress',1.0)
+   correct.call_method('CompleteActivation',(hostage,))
+   assert not prop(correct,'bActivated') and prop(mission,'Paso')==0
+   s['result']['complete_channel_rejected_before_revelation']=True
+   put(mission,'bOrderRevealed',True)
    s.update(stage='reset',since=now)
   elif stage=='reset':
    hostage.get_controller().get_component_by_class(unreal.BrainComponent).stop_logic('Isolated permutation setup')
@@ -122,8 +132,12 @@ def observe(dt,world=w,mission=d,manager=m,player=p,hostage=h,board=bb,beacons=b
    hostage.set_actor_location(end+unreal.Vector(150,0,100),False,True)
    board.set_value_as_bool('bAccompanying',True)
    finaltime=prop(mission,'MissionElapsed');mission.call_method('ReceiveTick',(.016,))
-   assert prop(mission,'Paso')==4 and gs.is_game_paused(world)
+   assert prop(mission,'Paso')==4
    assert prop(mission,'MissionElapsed')==finaltime
+   s.update(stage='cinematic',since=now,finaltime=finaltime)
+  elif stage=='cinematic':
+   if not gs.is_game_paused(world):return
+   assert prop(mission,'MissionElapsed')==s['finaltime']
    s['result']['final_door_two_hits_extraction_and_clock_stop']=True
    s['result']['orders']=s['orders'];s['result']['out_of_order_rejected_all_six']=True
    s['result']['passed']=True

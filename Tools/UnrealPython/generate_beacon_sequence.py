@@ -69,7 +69,7 @@ def director():
     g.chain(cache,work)
     h=g.call(GS,'GetActorOfClass',static=True).pin('ActorClass','class',obj=ACTOR,default_obj=HOSTAGE).pin('ReturnValue','object',obj=HOSTAGE,out=True)
     g.chain(work,h,'then_0');bb=g.blackboard(h,'ReturnValue')
-    running=g.both(g.cmp('Less_IntInt',step,4,'int'),(g.bbget(bb,'bRescued'),'ReturnValue'))
+    running=g.both(g.both(g.cmp('Less_IntInt',step,4,'int'),(g.bbget(bb,'bRescued'),'ReturnValue')),g.neg(g.v('bNarrativePaused','bool')))
     timer=g.br(h,running)
     g.s(timer,'MissionElapsed',g.op('Add_DoubleDouble',g.v('MissionElapsed'),(tick,'DeltaSeconds')))
     # The first two doors now reward completed encounters, making the entire
@@ -97,9 +97,10 @@ def beacon():
     h=(e,'Hostage');bb=g.blackboard(*h)
     okay=g.both(g.cmp('Less_IntInt',step,3,'int'),g.neg(g.v('bActivated','bool')))
     okay=g.both(okay,g.cmp('EqualEqual_IntInt',g.v('Index','int'),g.op('Add_IntInt',identity(g,code,step),1,'int'),'int'))
-    for i in (1,2):
+    for i in (1,2,3):
         z=g.v('Zona'+str(i),'object',owner=DIRECTOR,target=d,obj=ZONE)
         okay=g.both(okay,g.v('bCleared','bool',owner=ZONE,target=z))
+    okay=g.both(okay,g.v('bOrderRevealed','bool',owner=DIRECTOR,target=d))
     for key in ['bRescued','bAccompanying']:
         okay=g.both(okay,(g.bbget(bb,key),'ReturnValue'))
     for key in ['bEnemyNear','bMustFlee']:
@@ -128,7 +129,7 @@ def beacon():
     tick=g.event(ACTOR,'ReceiveTick').pin('DeltaSeconds','real',sub='float',out=True)
     f=g.find(tick,DIRECTOR);dc,d=g.cast_after(f,(f,'ReturnValue'),DIRECTOR)
     current=g.v('CurrentBeacon','object',owner=DIRECTOR,target=d,obj=SM)
-    nextone=g.cmp('EqualEqual_ObjectObject',current,(g.selfnode(typ=BEACON),'self'),'object')
+    nextone=g.both(g.v('bOrderRevealed','bool',owner=DIRECTOR,target=d),g.cmp('EqualEqual_ObjectObject',current,(g.selfnode(typ=BEACON),'self'),'object'))
     state=table(g,g.c(MATH,'SelectInt',[('A','int',2),('B','int',g.c(MATH,'SelectInt',[('A','int',1),('B','int',0),('bPickA','bool',nextone)],cat='int')),('bPickA','bool',g.v('bActivated','bool'))],cat='int'),[0,1,2])
     mats=g.node('K2Node_Select',['NumOptionPins=3','IndexPinType=(PinCategory="int")']).pin('Index','int').pin('ReturnValue','object',obj='/Script/Engine.MaterialInterface',out=True)
     g.w(state,mats,'Index')

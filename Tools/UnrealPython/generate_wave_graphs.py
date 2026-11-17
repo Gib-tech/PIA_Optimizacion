@@ -34,6 +34,10 @@ def zone():
     near=g.compare('LessEqual_DoubleDouble','real','600',sub='double',x=1850,y=1000);g.wire(dist,'ReturnValue',near,'A')
     ready=g.boolean('BooleanAND',following,'ReturnValue',near,'ReturnValue',x=2150,y=700)
     eb=g.branch(x=2450,y=0);g.chain(vb,eb);g.wire(ready,'ReturnValue',eb,'Condition')
+    # Optional prerequisite applies only to the added final encounter. Old zones
+    # keep their previous behavior when RequiredZone is unset.
+    from generate_final_words import zone_prerequisite
+    zone_prerequisite(g,eb)
     # The escort service selects a nearby reachable refuge after seeing the spawned
     # enemies. A fixed zone destination could send him around entire map sectors.
     escort_ready=eb
@@ -79,8 +83,14 @@ def zone():
         loc=g.location(point,'SpawnPoint'+str(i),x=x+200,y=6900)
         transform=g.call('/Script/Engine.KismetMathLibrary','MakeTransform',pure=True,static=True,x=x+300,y=6500).pin('Location','struct',obj='/Script/CoreUObject.Vector').pin('Rotation','struct',obj='/Script/CoreUObject.Rotator',default='0,0,0').pin('Scale','struct',obj='/Script/CoreUObject.Vector',default='1,1,1').pin('ReturnValue','struct',obj=TRANSFORM,out=True);g.wire(loc,'ReturnValue',transform,'Location')
         spawn=g.node('K2Node_SpawnActorFromClass',x=x,y=5700).pin('execute').pin('then',out=True).pin('Class','class',obj=ACTOR).pin('SpawnTransform','struct',obj=TRANSFORM).pin('CollisionHandlingOverride','byte',obj='/Script/Engine.ESpawnActorCollisionHandlingMethod',default='AdjustIfPossibleButAlwaysSpawn').pin('Owner','object',obj=ACTOR).pin('TransformScaleMethod','byte',obj='/Script/Engine.ESpawnActorScaleMethod',default='MultiplyWithRoot').pin('ReturnValue','object',obj=BASE,out=True)
-        g.chain(previous,spawn);g.wire(enemyclass,'EnemyClass',spawn,'Class');g.wire(transform,'ReturnValue',spawn,'SpawnTransform');g.wire(self,'self',spawn,'Owner')
-        append=g.array('EncounterEnemies','Array_AddUnique',item=spawn,ip='ReturnValue',x=x+900,y=5700);g.chain(spawn,append);previous=append
+        g.chain(previous,spawn)
+        if i==2:
+            from generate_final_words import mixed_enemy_class
+            chosen=mixed_enemy_class(g,(enemyclass,'EnemyClass'));g.wire(*chosen,spawn,'Class')
+        else:g.wire(enemyclass,'EnemyClass',spawn,'Class')
+        g.wire(transform,'ReturnValue',spawn,'SpawnTransform');g.wire(self,'self',spawn,'Owner')
+        assigned=g.s(spawn,'EncounterZone',(self,'self'),'object',owner=BASE,target=(spawn,'ReturnValue'),obj=ZONE)
+        append=g.array('EncounterEnemies','Array_AddUnique',item=spawn,ip='ReturnValue',x=x+900,y=5700);g.chain(assigned,append);previous=append
     previous=seq(g,previous,[('Phase','int','1'),('LivingCount','int','2')],x=3950,y=5700)
     spawned=g.get('SpawnedCount','int',x=3950,y=6400)
     plus=g.call('/Script/Engine.KismetMathLibrary','Add_IntInt',pure=True,static=True,x=4250,y=6400).pin('A','int').pin('B','int',default='2').pin('ReturnValue','int',out=True);g.wire(spawned,'SpawnedCount',plus,'A')

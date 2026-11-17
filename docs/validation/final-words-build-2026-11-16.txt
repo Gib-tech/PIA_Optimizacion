@@ -1,0 +1,11 @@
+LogInit: Display: Success - 0 error(s), 15 warning(s)
+BuildCookRun time: 77.94 s
+BUILD SUCCESSFUL
+AutomationTool exiting with ExitCode=0 (Success)
+ZIP_BYTES 623346988
+ZIP_CRC_PASS; no Saved/PDB/editor helper
+Native isolated-user smoke: menu/new game/intro, unknown order, F5 notice shown then hidden, P pause, clean exit
+Native final horde/revelation not played through; real encounter/death events and all six orders tested in prepared PIE
+18 real BT beacon channels, extraction/victory cinematic and final pause passed
+Normal cold reload: helper absent, four sequences, resident final encounter, no PIE/dirty packages
+Original SaveGames restored with matching SHA-256; editor preferences restored
