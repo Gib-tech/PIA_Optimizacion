@@ -1,0 +1,9 @@
+LogInit: Display: Success - 0 error(s), 15 warning(s)
+BuildCookRun time: 68.32 s
+BUILD SUCCESSFUL
+AutomationTool exiting with ExitCode=0 (Success)
+ZIP_BYTES 623284496
+ZIP_CRC_PASS; no Saved/PDB/editor helper
+Native intro 3 camera cuts, subtitles, HUD/checkpoint and pause observed; clean exit
+Native endpoints not played through; prepared PIE endpoint fixtures passed
+Normal cold reload: helper absent, one resident controller, 3 sequences, no PIE/dirty packages

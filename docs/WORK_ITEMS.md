@@ -1,5 +1,12 @@
 # Work items
 
+## Cinemáticas de introducción, derrota y victoria — 2026-11-16
+
+- **Stated:** encargo actual de planear y hacer las tres escenas con libertad narrativa basada en las mecánicas; los otros pendientes de la captura no amplían esta tarea.
+- **Implemented / Ready para aceptación visual:** `LS_Intro`18s, `LS_Derrota`8s y `LS_Victoria`14s, cámaras animadas, cortes, fundidos, subtítulos y tres partituras propias. `BP_CinematicDirector` enlaza comienzo y resultados; no requiere Python/helper en el juego.
+- **Verified en PIE:** reproducción, retorno de cámara/posición y HUD; omisión física con Espacio en primera persona; R tras derrota; Continuar sin introducción; derrota por jugador/rehén y condición de extracción conjunta. Pruebas aisladas con estados preparados, no una nueva partida completa ni aceptación manual. La evidencia final y el paquete quedan en el handoff vigente.
+- **Pendiente:** aceptación estética del propietario y PC de presentación. Guion, assets y reproducción en `CINEMATICAS.md`.
+
 ## Revisión activa de fluidez — 2026-11-16
 
 **Stated:** mejorar ataque/movimiento enemigo y jugar un recorrido normal en tiempo real. **Implemented / pruebas del agente:** actualización de golpe desde tareas activas, giro progresivo, aproximación/carga/recuperación revisadas, aturdimiento limitado, colisión suave entre aliados y contador real de balizas. Mantener pendiente la aceptación del propietario de AI1-T5/FIN-01; no usar las pruebas del agente para cambiarla a Passed. Resultados finales y pendientes de evaluación en HANDOFF.md y PLAN_ADAPTACION_EVALUACION.md.

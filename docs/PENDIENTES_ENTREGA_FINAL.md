@@ -1,5 +1,7 @@
 # Pendientes para la entrega final de Time Out
 
+**Cinemáticas del16/11 — FIN-24:** encargo explícito del propietario. Implementadas introducción18s, derrota8s (jugador/rehén) y victoria14s; tres Level Sequences editables, música propia, subtítulos, fundidos y Espacio para omitir. Integración de comienzo/resultados y Continuar comprobada en PIE; **Ready para aceptación visual**, no aceptación manual. Guion en `CINEMATICAS.md`; evidencia y paquete en handoff vigente. Los demás pendientes de la captura del equipo conservan su alcance previo.
+
 **Refinamiento de fluidez del16/11:** el agente completó el recorrido actual con ocho enemigos, tres balizas/puertas y extracción (02:43; vida7.6/20.8), mediante movimiento físico y ataques reales, sin teletransportes ni cambios de vida/daño. Ver `validation/fluid-combat-2026-11-16.json`. FIN-01 sigue abierto para aceptación manual del propietario y PC de presentación; los ensayos anteriores que perdieron son históricos.
 
 **Auditoría vigente del16/11 tras combate:** consultar primero `PLAN_ADAPTACION_EVALUACION.md`, sección Auditoría vigente. FIN-10 cantidad acreditada con16diseños conservadores; autoría pendiente. FIN-14 cuatro LOD y transiciones reales comprobadas en los cinco modelos; falta presentación/aceptación. FIN-13 ahora son diez edificios Nanite. Los pendientes principales son documentación/cronograma, evidencia de redes/video, interpretación de guardado, alcance del texto general y aceptación/PC de presentación. Las menciones históricas de versiones/cantidades siguientes no sustituyen esta revisión.

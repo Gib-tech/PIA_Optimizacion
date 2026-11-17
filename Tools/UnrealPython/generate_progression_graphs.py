@@ -215,6 +215,8 @@ def hostage():
  dead=g.br(prev,g.cmp('LessEqual_DoubleDouble',g.v('Health'),0));prev=g.s(dead,'bIsDead',True,'bool');prev=g.s(prev,'bUsingBeacon',False,'bool')
  move=g.v('CharacterMovement','object',owner=CHAR,obj=MOVE,native=True,target=(g.selfnode(typ=HOSTAGE),'self'));stop=g.call(MOVE,'DisableMovement');g.w(move,stop,'self');g.chain(prev,stop)
  director=g.find(stop,DIRECTOR);prev=g.s(director,'Paso',6,'int',owner=DIRECTOR,target=(director,'ReturnValue'));g.chain(prev,g.pause())
+ from generate_cinematic_graphs import terminal_hooks
+ terminal_hooks(g)
  # Allied movement is soft: the escort cannot pin the player against a doorway.
  begin=g.event(ACTOR,'ReceiveBeginPlay');own=(g.selfnode(typ=HOSTAGE),'self');player_pawn=(g.player(),'ReturnValue')
  player_cast=g.nativecast(CHAR);g.chain(begin,player_cast);g.w(player_pawn,player_cast,'Object');player=(player_cast,'AsCharacter')

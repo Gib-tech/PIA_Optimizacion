@@ -370,4 +370,6 @@ host_warning=branch(host_warning_ready,both(cmp('Greater_DoubleDouble',v('Hostag
 warning=rect(host_warning,mul(20,scale),mul(194,scale),mul(430,scale),mul(53,scale),'(R=.36,G=.025,B=.015,A=.94)')
 warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',mul(30,scale),mul(203,scale),1.15,'(R=1,G=.85,B=.4,A=1)')
 text(warning,'¡Ayúdame! Protege mi retirada.',mul(30,scale),mul(224,scale),1.05)
+from generate_cinematic_graphs import hud_hook
+hud_hook(g)
 g.write('BP_HUD_Entrega')

@@ -1,0 +1,24 @@
+{
+  "authorship": "Original procedural synthesis for TIME OUT",
+  "sample_rate": 48000,
+  "scores": [
+    {
+      "name": "SW_CinemaIntro",
+      "duration": 18,
+      "rms": 0.046181397914661755,
+      "peak": 0.17148138958364284
+    },
+    {
+      "name": "SW_CinemaDefeat",
+      "duration": 8,
+      "rms": 0.0465415081579544,
+      "peak": 0.16441021196067782
+    },
+    {
+      "name": "SW_CinemaVictory",
+      "duration": 14,
+      "rms": 0.053209731484443606,
+      "peak": 0.24881819331584387
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 # Governance
 
+## Tres cinemáticas autorizadas — 2026-11-16
+
+**Stated:** el propietario encarga leer la gobernanza, planear y realizar introducción, derrota y victoria, con libertad creativa basada en las mecánicas. La captura del equipo es evidencia del pendiente de tres cinemáticas; sus otros puntos no son nuevas instrucciones de esta intervención. **Decision:** relato de rescate temporal, tres Level Sequences editables de18/8/14s, subtítulos, partituras propias y omisión con Espacio. La derrota distingue jugador/rehén. Integrar en Nuevo juego y resultados; Continuar omite la introducción. Conservar árboles, daño13.2, checkpoints, secuencia y condiciones de extracción. No atribuir aceptación del propietario a las pruebas del agente. Diseño y reproducción: `CINEMATICAS.md`.
+
 ## Refinamiento de combate y partida real autorizados — 2026-11-16
 
 **Stated:** el propietario indica que cuesta acertar golpes, observa movimientos poco fluidos y solicita mejorar la IA, tomar control en tiempo real y jugar un recorrido normal para detectar problemas de flujo. **Decision:** ajustar acercamiento, giro, ventanas de contacto y recuperación manteniendo dos Behavior Trees distintos y daño13.2; corregir bloqueos de escolta e información engañosa encontrada durante la partida. Se autorizan pruebas en PIE mediante movimiento físico y acciones de ataque reales; no acreditar una victoria con teletransportes, invulnerabilidad ni cambios de salud/daño. Las pruebas del agente no sustituyen aceptación manual. Commit y push a origin siguen autorizados.

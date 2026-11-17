@@ -85,6 +85,8 @@ def director():
         prev=power_door(g,prev,door);prev.pins['Material']['default_obj']=POWERED
         hero=g.player();hc,hp=g.cast_after(prev,(hero,'ReturnValue'),HERO)
         g.action_on(hc,HERO,'GrantHammerUpgrade',hp,[('Door','object',door,DOOR)])
+    from generate_cinematic_graphs import terminal_hooks
+    terminal_hooks(g)
     g.write('BP_DirectorEntrega')
 
 def beacon():

@@ -43,6 +43,15 @@ y lo priorizan aunque el jugador este mas cerca. Protege su retirada atacandolos
 Si muere, termina el intento. La barra se vuelve roja si queda poca vida.
 La fijacion se libera si deja de ser un objetivo valido o se aleja mas de 18 m.
 
+CINEMATICAS
+Nuevo juego muestra una introduccion de 18 segundos. Continuar carga directamente
+el checkpoint. La derrota reproduce una escena de 8 segundos diferente segun
+caiga el viajero o el rehen. La extraccion conjunta reproduce la victoria de
+14 segundos. Todas tienen subtitulos y musica propia; ESPACIO permite omitir.
+Durante las escenas se bloquean acciones y pausa. Al terminar se recuperan
+la camara elegida y el control; los desenlaces conservan R / ENTER.
+El volumen de las escenas sigue el ajuste general de Opciones.
+
 COMBATE
 Orbitador: se mueve alrededor del jugador. Embestidor: prepara una carga,
 anticipa brevemente la trayectoria, se detiene para golpear y se recoloca.

@@ -1,5 +1,9 @@
 # AI requirements
 
+## Compatibilidad con cinemáticas — 16 noviembre 2026
+
+**Stated / Decision:** introducción18s, derrota8s y victoria14s por libertad creativa del propietario; son tiempos de presentación, no de combate. Durante la introducción se bloquean las entradas y la pausa; no avanza el cronómetro previo al rescate. Al terminar u omitir se restituyen vista, cámara elegida, visibilidad y entrada. Continuar omite la escena. Sólo después del resultado existente se detienen árboles/movimiento y daño tardío para presentar el desenlace; al cerrar queda pausado con R/Enter. Se conservan los Behavior Trees, sus decisiones y ContactDamage13.2. La pose física del rehén muerto y el ajuste visual de la malla del jugador caído pertenecen al desenlace, sin alterar salud ni combate. Diseño y evidencia: `CINEMATICAS.md` y handoff vigente.
+
 ## Refinamiento vigente de fluidez — 16 noviembre 2026
 
 Esta sección sustituye los tiempos/distancias de ataque de la revisión anterior. **Decision / Verified en gráficos:** el melee se aproxima hasta150cm, alinea progresivamente y solicita Attack, que exige objetivo válido, LOS, <=160cm y recuperación cumplida. Cada enemigo espera al menos3s entre inicios de golpes. El montaje1.3s se reproduce a1.25; contacto único en posiciones0.28..0.64, distancia<=210cm, LOS y cono frontal (dot>=0.4). Sigue al objetivo sólo antes de0.26; después el jugador puede esquivar. Se evalúa en el Tick de la tarea activa mediante UpdateStrike, conservando Actor Tick desactivado. EndAttack/Abort cancelan el golpe.

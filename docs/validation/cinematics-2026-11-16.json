@@ -1,0 +1,263 @@
+{
+  "date": "2026-11-16",
+  "passed": true,
+  "agent_verification_not_owner_acceptance": true,
+  "scope": "Three in-engine cinematics; isolated terminal fixtures are not a natural playthrough",
+  "reports": {
+    "intro": {
+      "stage": 1,
+      "photos": [
+        "intro-01",
+        "intro-02",
+        "intro-03",
+        "intro-gameplay"
+      ],
+      "samples": [
+        {
+          "at": 3.010239403694868,
+          "camera": "<Struct 'Vector' (0x000001A55BE1E590) {x: 499.488024, y: -1999.658683, z: 224.948802}>",
+          "rotation": "<Struct 'Rotator' (0x000001A55BE1E590) {pitch: -4.887545, yaw: 130.390418, roll: 0.000000}>",
+          "view_target": "Cine Camera Actor UAID 9C6B001967A7811503 1525801749_0"
+        },
+        {
+          "at": 9.020875506103039,
+          "camera": "<Struct 'Vector' (0x000001A55BE1E590) {x: -59.373732, y: -430.278341, z: 174.930415}>",
+          "rotation": "<Struct 'Rotator' (0x000001A55BE1E590) {pitch: -0.934289, yaw: -46.552930, roll: -0.000000}>",
+          "view_target": "Cine Camera Actor UAID 9C6B001967A7811503 1525819750_0"
+        },
+        {
+          "at": 15.01600020751357,
+          "camera": "<Struct 'Vector' (0x000001A55BE1E590) {x: 299.733326, y: -1004.759994, z: 172.459999}>",
+          "rotation": "<Struct 'Rotator' (0x000001A55BE1E590) {pitch: -2.874798, yaw: 123.762114, roll: 0.000000}>",
+          "view_target": "Cine Camera Actor UAID 9C6B001967A7811503 1525838751_0"
+        }
+      ],
+      "mode": "intro",
+      "passed": true,
+      "initial_position": [
+        0.0,
+        -560.0,
+        90.15000742713312
+      ],
+      "initial_camera_mode": false,
+      "final_position": [
+        0.0,
+        -560.0,
+        90.15000742713312
+      ]
+    },
+    "defeat-player": {
+      "stage": 3,
+      "photos": [
+        "defeat-player-01",
+        "defeat-player-02",
+        "defeat-player-result"
+      ],
+      "samples": [
+        {
+          "at": 2.000043798238039,
+          "camera": "<Struct 'Vector' (0x0000024763A9C420) {x: -310.000658, y: -282.499397, z: 257.650610}>",
+          "rotation": "<Struct 'Rotator' (0x0000024763A9C420) {pitch: -32.831654, yaw: -21.665280, roll: -0.000000}>"
+        },
+        {
+          "at": 6.51879770681262,
+          "camera": "<Struct 'Vector' (0x0000024763A9D0A0) {x: -377.781968, y: -220.366529, z: 319.783478}>",
+          "rotation": "<Struct 'Rotator' (0x0000024763A9D0A0) {pitch: -33.399841, yaw: -26.209818, roll: -0.000000}>"
+        }
+      ],
+      "mode": "defeat-player",
+      "passed": true,
+      "initial_position": [
+        0.0,
+        -560.0,
+        90.15000685010985
+      ],
+      "initial_camera_mode": false,
+      "waiting_since": 1.0353243052959442
+    },
+    "defeat-hostage": {
+      "stage": 3,
+      "photos": [
+        "defeat-hostage-01",
+        "defeat-hostage-02",
+        "defeat-hostage-result"
+      ],
+      "samples": [
+        {
+          "at": 2.000095199793577,
+          "camera": "<Struct 'Vector' (0x0000024763A9CC90) {x: -10.001429, y: -522.498690, z: 255.651308}>",
+          "rotation": "<Struct 'Rotator' (0x0000024763A9CC90) {pitch: -32.831661, yaw: -21.665332, roll: -0.000000}>"
+        },
+        {
+          "at": 6.525978408753872,
+          "camera": "<Struct 'Vector' (0x0000024763A9D410) {x: -77.889677, y: -460.267796, z: 317.882202}>",
+          "rotation": "<Struct 'Rotator' (0x0000024763A9D410) {pitch: -33.400743, yaw: -26.217040, roll: -0.000000}>"
+        }
+      ],
+      "mode": "defeat-hostage",
+      "passed": true,
+      "initial_position": [
+        0.0,
+        -560.0,
+        90.15000748516825
+      ],
+      "initial_camera_mode": false,
+      "waiting_since": 0.9911299869418144
+    },
+    "victory": {
+      "stage": 3,
+      "photos": [
+        "victory-01",
+        "victory-02",
+        "victory-03",
+        "victory-result"
+      ],
+      "samples": [
+        {
+          "at": 2.000092800706625,
+          "camera": "<Struct 'Vector' (0x000001A55BEE31C0) {x: 357.998514, y: -10928.001300, z: 283.998793}>",
+          "rotation": "<Struct 'Rotator' (0x000001A55BEE31C0) {pitch: -16.218289, yaw: -127.088087, roll: -0.000000}>"
+        },
+        {
+          "at": 7.028153412044048,
+          "camera": "<Struct 'Vector' (0x000001A55BEE3580) {x: -557.351370, y: -11039.155394, z: 473.576598}>",
+          "rotation": "<Struct 'Rotator' (0x000001A55BEE3580) {pitch: -23.291801, yaw: -32.958778, roll: -0.000000}>"
+        },
+        {
+          "at": 11.026425614953041,
+          "camera": "<Struct 'Vector' (0x000001A55BEE3580) {x: 0.000000, y: -10448.678726, z: 1004.680102}>",
+          "rotation": "<Struct 'Rotator' (0x000001A55BEE3580) {pitch: -44.609666, yaw: -90.000000, roll: -0.000000}>"
+        }
+      ],
+      "mode": "victory",
+      "passed": true,
+      "initial_position": [
+        0.0,
+        -560.0,
+        90.1500063192622
+      ],
+      "initial_camera_mode": false,
+      "waiting_since": 1.5976983979344368,
+      "solo_extraction_rejected": true,
+      "timer_frozen": true
+    },
+    "skip-first-person": {
+      "stage": 1,
+      "passed": true,
+      "position": "<Struct 'Vector' (0x000002486BEFBC10) {x: 0.000000, y: -560.000000, z: 90.150008}>",
+      "rotation": "<Struct 'Rotator' (0x000002486BEFBC10) {pitch: 0.000000, yaw: -90.000000, roll: 0.000000}>",
+      "skip_age": 14.16696560010314
+    },
+    "continue": {
+      "passed": true,
+      "continue_omits_intro": true,
+      "checkpoint_restored": "Partida restaurada. F5 guarda cuando estes a salvo.",
+      "input_restored": true
+    },
+    "assets": {
+      "passed": true,
+      "blueprints": [
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+          "compiled_exported": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager",
+          "compiled_exported": true
+        }
+      ],
+      "sequences": [
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Intro.LS_Intro",
+          "seconds": 18,
+          "camera_cuts": 3,
+          "animated_bindings": 3,
+          "audio_and_fade": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Derrota.LS_Derrota",
+          "seconds": 8,
+          "camera_cuts": 1,
+          "animated_bindings": 1,
+          "audio_and_fade": true
+        },
+        {
+          "asset": "/Game/ThirdPerson/Cinematics/LS_Victoria.LS_Victoria",
+          "seconds": 14,
+          "camera_cuts": 3,
+          "animated_bindings": 4,
+          "audio_and_fade": true
+        }
+      ],
+      "one_resident_controller": true,
+      "enemy_damage_13_2_and_distinct_trees_preserved": true,
+      "gameplay_runtime": "Blueprint-only; no editor helper required",
+      "dirty_packages": []
+    }
+  },
+  "screenshots": [
+    "cinematics-2026-11-16/defeat-hostage-01.png",
+    "cinematics-2026-11-16/defeat-player-01.png",
+    "cinematics-2026-11-16/intro-02.png",
+    "cinematics-2026-11-16/victory-02.png"
+  ],
+  "preserved": [
+    "Distinct Behavior Trees",
+    "ContactDamage 13.2",
+    "Existing extraction checks",
+    "Checkpoint schema 2",
+    "World Partition/Nanite/LOD"
+  ],
+  "pending": [
+    "Owner visual acceptance",
+    "Presentation PC"
+  ],
+  "package": {
+    "status": "verified",
+    "configuration": "Win64 Development",
+    "build_exit_code": 0,
+    "cook_errors": 0,
+    "cook_warnings": 15,
+    "warnings": "Existing SpawnSystemAttached Scale pin and 14 Manny pose warnings",
+    "zip": "Deliverables/TimeOut_Avance_18Nov2026.zip",
+    "zip_bytes": 623284496,
+    "zip_crc_verified_by_archive_script": true,
+    "zip_excludes_saved_pdb_editor_helper": true,
+    "native_smoke": {
+      "fresh_isolated_user_dir": true,
+      "intro_camera_cuts": 3,
+      "spanish_subtitles_observed": true,
+      "normal_hud_and_checkpoint_observed_after_intro": true,
+      "pause_after_intro_observed": true,
+      "clean_exit": true,
+      "accessed_none_or_script_errors": false,
+      "limit": "Intro/menu/return smoke; endings verified in isolated PIE fixtures",
+      "runtime_notice": "Original player startup reports Health widget already added; no cinematic script error"
+    },
+    "cold_reload": {
+      "passed": true,
+      "normal_editor_without_helper": true,
+      "sequences": [
+        "LS_Intro",
+        "LS_Derrota",
+        "LS_Victoria"
+      ],
+      "one_resident_cinematic_director": true,
+      "enemy_damage_13_2_preserved": true,
+      "no_pie": true,
+      "dirty_packages": []
+    }
+  }
+}
