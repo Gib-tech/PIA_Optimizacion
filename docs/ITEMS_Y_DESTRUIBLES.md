@@ -13,7 +13,7 @@ El error visible de curación se reproducía con 60 de vida: el botiquín escrib
 Los objetos sobre la mesa eran muestras decorativas. Ahora apuntar a una pieza situada a menos de 350 cm y pulsar E/RB produce una única recogida:
 
 - Botiquín: suma 1 unidad. H/LB recupera hasta 35 puntos.
-- Celda: suma 3 cargas de pulso. Clic central/RT consume una y aplica 20 de daño al enemigo visible alcanzado, con alcance máximo de 800 cm y recuperación de 0,8 s. Un trazo cian de 0,18 s confirma el disparo; no colisiona ni aplica daño adicional.
+- Celda: suma 3 cargas de pulso. Clic central/RT consume una y aplica 20 de daño al enemigo visible alcanzado, con alcance máximo de 800 cm y recuperación de 0,8 s. Un núcleo cian recorre la estela en 0,18 s y se abre en dos anillos al final del alcance. El efecto dura 0,52 s.
 - Crédito: suma 3 créditos de energía. Apuntar a BRUNO a menos de 270 cm y usar E/RB abre su explicación; repetir convierte esos 3 créditos en energía y fabrica 1 botiquín durante 3 segundos de juego.
 
 Las piezas recogidas desaparecen y dejan de participar en trazas inmediatamente. `MesaRecogido1..3` y las cantidades se guardan con `ExtrasRevision=3`; continuar no vuelve a concederlas. Las cuatro cajas de suministros anteriores siguen funcionando por contacto y no comparten estos flags. Un archivo anterior, sin flags de mesa, permite recoger las piezas una vez.

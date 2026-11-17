@@ -213,9 +213,20 @@ def systems():
   notice(dmg,'Pulso acertado · impacto en destruible.')
   # Rayo visible, sin colisión/daño: la única autoridad sigue siendo la traza.
   chosen=g.call(MATH,'SelectVector',pure=True,static=True).pin('A','struct',obj=VEC).pin('B','struct',obj=VEC).pin('bPickA','bool').pin('ReturnValue','struct',obj=VEC,out=True);g.w((hit,'bBlockingHit'),chosen,'bPickA');g.w(end,chosen,'B');g.w((hit,'ImpactPoint'),chosen,'A');endpoint=(chosen,'ReturnValue')
-  # El origen visible queda debajo de la mira, incluso en primera persona.
-  muzzle=g.c(MATH,'Add_VectorVector',[('A','struct',(eye,'ReturnValue')),('B','struct','0,0,30')],cat='struct',obj=VEC)
-  muzzle[0].pins['A']['obj']=muzzle[0].pins['B']['obj']=VEC
+  # La mano derecha queda junto a la silueta de tercera persona y debajo de la mira en primera.
+  def vec(fn,inputs):
+   result=g.c(MATH,fn,inputs,cat='struct',obj=VEC)
+   for name,kind,_ in inputs:
+    if kind=='struct':result[0].pins[name]['obj']=VEC
+   return result
+  right=g.c(ACTOR,'GetActorRightVector',cat='struct',obj=VEC,static=False);g.w(hero,right[0],'self')
+  hand=vec('Multiply_VectorFloat',[('A','struct',right),('B','real',54)])
+  hand=vec('Add_VectorVector',[('A','struct',hand),('B','struct','0,0,30')])
+  muzzle=vec('Add_VectorVector',[('A','struct',(eye,'ReturnValue')),('B','struct',hand)])
+  # La cámara de persecución puede estar a varios metros del héroe. Limitar también el efecto en un fallo lejano.
+  from_hero=vec('Subtract_VectorVector',[('A','struct',endpoint),('B','struct',(eye,'ReturnValue'))])
+  limited=vec('Vector_ClampSizeMax',[('A','struct',from_hero),('Max','real',800)])
+  endpoint=vec('Add_VectorVector',[('A','struct',(eye,'ReturnValue')),('B','struct',limited)])
   midpoint=g.c(MATH,'Add_VectorVector',[('A','struct',muzzle),('B','struct',endpoint)],cat='struct',obj=VEC)
   for pin in ['A','B']:midpoint[0].pins[pin]['obj']=VEC
   midpoint=g.c(MATH,'Multiply_VectorFloat',[('A','struct',midpoint),('B','real',.5)],cat='struct',obj=VEC);midpoint[0].pins['A']['obj']=VEC

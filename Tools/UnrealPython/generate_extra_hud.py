@@ -104,4 +104,22 @@ def add_extra_hud(g,draw,width,height,scale,rect,text):
  aim=g.br(aim,g.neg(v('InventoryOpen','bool')))
  x=mul(width,.5);y=mul(height,.5)
  prev=rect(aim,g.op('Subtract_DoubleDouble',x,5),g.op('Subtract_DoubleDouble',y,1),10,2,'(R=.6,G=.9,B=1,A=.7)')
- rect(prev,g.op('Subtract_DoubleDouble',x,1),g.op('Subtract_DoubleDouble',y,5),2,10,'(R=.6,G=.9,B=1,A=.7)')
+ prev=rect(prev,g.op('Subtract_DoubleDouble',x,1),g.op('Subtract_DoubleDouble',y,5),2,10,'(R=.6,G=.9,B=1,A=.7)')
+
+ # Retroceso breve de la mira en tercera persona si la silueta tapa el proyectil.
+ last_pulse=v('LastPulseAt','real')
+ elapsed=g.op('Subtract_DoubleDouble',g.c(GS,'GetTimeSeconds'),last_pulse)
+ recent=g.both(g.cmp('Greater_DoubleDouble',last_pulse,0),g.cmp('Less_DoubleDouble',elapsed,.42))
+ third=g.neg(g.v('CamaraPrimera','bool',owner=HERO,target=hero))
+ kick=g.br(prev,g.both(recent,third))
+ remaining=g.op('Subtract_DoubleDouble',.42,elapsed)
+ spread=mul(g.op('Add_DoubleDouble',9,mul(44,remaining)),scale)
+ length=mul(g.op('Add_DoubleDouble',2,mul(11,remaining)),scale)
+ thickness=mul(2.4,scale)
+ tint='(R=.14,G=.88,B=1,A=.94)'
+ left=g.op('Subtract_DoubleDouble',g.op('Subtract_DoubleDouble',x,spread),length)
+ top=g.op('Subtract_DoubleDouble',g.op('Subtract_DoubleDouble',y,spread),length)
+ kick=rect(kick,left,y,length,thickness,tint)
+ kick=rect(kick,g.op('Add_DoubleDouble',x,spread),y,length,thickness,tint)
+ kick=rect(kick,x,top,thickness,length,tint)
+ rect(kick,x,g.op('Add_DoubleDouble',y,spread),thickness,length,tint)

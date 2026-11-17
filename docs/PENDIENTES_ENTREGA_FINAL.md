@@ -2,6 +2,8 @@
 
 > **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
 
+La revisión de los puntos aún abiertos en Unreal está en [Qué queda para evaluar en Unreal](REVISION_REQUISITOS_2026-11-16.md#qué-queda-para-evaluar-en-unreal--17-de-noviembre).
+
 ## Actualización vigente — 17 de noviembre de 2026
 
 La petición actual retoma la cobertura de GamePad de las seis capturas y reemplaza la dependencia de recibir otro modelo: el sobreviviente existente ya está integrado como rehén. Hay brazos/armas de primera persona, inventario funcional, munición/créditos guardados, segundo NPC con compra, día/noche, agua y seis diseños de apoyo con fuentes. Las comprobaciones técnicas actuales están en docs/validation y REVISION_REQUISITOS_2026-11-16.md.

@@ -49,13 +49,12 @@ for i,(label,x,scale) in enumerate([('Muestra_Botiquin',-43,.75),('Muestra_Celda
  # Añadir colisión simple si el modelo antiguo carecía de ella.
  item_mesh=c.get_editor_property('static_mesh')
  if sm.get_simple_collision_count(item_mesh)+sm.get_convex_collision_count(item_mesh)==0:sm.add_simple_collisions(item_mesh,unreal.ScriptingCollisionShapeType.BOX);assets.save_loaded_asset(item_mesh,only_if_is_dirty=False)
-# Pulso visible: actor de presentación de 0,18 s, sin colisión ni daño propio.
-beam=unreal.load_asset(R+'BP_PulsoTemporalVisual')
-if not beam:
- factory=unreal.BlueprintFactory();factory.set_editor_property('parent_class',unreal.StaticMeshActor);beam=tools.create_asset('BP_PulsoTemporalVisual',R.rstrip('/'),unreal.Blueprint,factory)
-material_path=ART+'/Materials/M_PulsoEnergia';material=unreal.load_asset(material_path) or tools.create_asset('M_PulsoEnergia',ART+'/Materials',unreal.Material,unreal.MaterialFactoryNew());edit=unreal.MaterialEditingLibrary;edit.delete_all_material_expressions(material);material.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT)
-color=edit.create_material_expression(material,unreal.MaterialExpressionConstant3Vector,-200,0);color.constant=unreal.LinearColor(.08,3,6,1);edit.connect_material_property(color,'',unreal.MaterialProperty.MP_EMISSIVE_COLOR);edit.recompile_material(material);assets.save_loaded_asset(material,only_if_is_dirty=False)
-lib.compile_blueprint(beam);cdo=unreal.get_default_object(beam.generated_class());cdo.set_editor_property('initial_life_span',.18);cdo.static_mesh_component.set_static_mesh(unreal.load_asset('/Engine/BasicShapes/Cube'));cdo.static_mesh_component.set_material(0,material);cdo.static_mesh_component.set_collision_profile_name('NoCollision');cdo.static_mesh_component.set_cast_shadow(False);cdo.static_mesh_component.set_editor_property('can_ever_affect_navigation',False);assets.save_loaded_asset(beam,only_if_is_dirty=False)
+# Respetar el efecto existente al reconstruir los objetos de la mesa.
+if not assets.does_asset_exist(R+'BP_PulsoTemporalVisual'):
+ import sys
+ sys.path.insert(0,os.path.join(root,'Tools','UnrealPython'))
+ from prepare_pulse_visual import prepare as prepare_pulse
+ prepare_pulse()
 unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
 folder=os.path.join(root,'docs/validation/items-colisiones');os.makedirs(folder,exist_ok=True)
 assert sm.get_convex_collision_count(mesh)==11,'La mesa debe importar sus once colisiones UCX'

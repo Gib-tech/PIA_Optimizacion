@@ -10,7 +10,7 @@ En `BP_SistemasComplementarios`, el ángulo es `145 + WorldSeconds × 360 / max(
 
 ## Controles y señales
 
-- **Pulso.** Apunta la mira al enemigo o al objeto a menos de 8 m y pulsa la rueda del ratón o RT. Consume una celda cian por disparo, tiene 0,8 s de recuperación y causa 20 de daño. La mira sirve en ambas cámaras. El HUD indica impacto, fallo o falta de celdas. Puedes recogerlas en la mesa del inicio o en las cajas de suministros.
+- **Pulso.** Apunta la mira al enemigo o al objeto a menos de 8 m y pulsa la rueda del ratón o RT. Consume una celda cian por disparo, tiene 0,8 s de recuperación y causa 20 de daño. La descarga deja una estela, el núcleo viaja durante 0,18 s y al llegar se abre en dos anillos. La mira se abre brevemente en tercera persona para que se perciba el disparo aunque la espalda tape el objetivo. El efecto desaparece a los 0,52 s. El HUD indica impacto, fallo o falta de celdas. Puedes recogerlas en la mesa del inicio o en las cajas de suministros. [Ver ambas cámaras](validation/pulso/pulso.gif) · [Prueba del alcance, daño y consumo](validation/pulso/prueba.json).
 - **BRUNO.** Acércate a menos de 3,2 m con línea de visión. Pulsa E/RB para hablar y vuelve a pulsar mientras está abierto el diálogo para convertir tres créditos en un botiquín. Tarda 3 s. Si estás apuntando directamente a un objeto recogible de la mesa, E recoge primero ese objeto.
 - **HUD.** Botiquines, celdas y créditos comparten una columna lateral con sus iconos y cantidades `xN`. I/SELECT abre las fichas. F5 mantiene el guardado seguro en silencio cuando tiene éxito. El HUD conserva la indicación de guardado pendiente o fallido. La alerta de daño del rehén aparece junto al margen derecho, debajo del panel de misión.
 

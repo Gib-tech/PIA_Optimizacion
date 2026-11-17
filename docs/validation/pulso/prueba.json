@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "metodo": "PIE con munición, posiciones e IA inmóvil preparadas. Se inyectan botones de Unreal y se ralentiza el mundo para muestrear la animación en tiempo de juego.",
+  "shots": [
+    {
+      "camara": "tercera",
+      "entrada": "MiddleMouseButton",
+      "objetivo": "enemigo",
+      "vida_enemigo": 80.0,
+      "cargas_restantes": 1,
+      "distancia_final_cm": 456.82,
+      "frente_tiempo_s_y_x_local_cm": [
+        [
+          0.0,
+          -46.82
+        ],
+        [
+          0.046,
+          -22.17
+        ],
+        [
+          0.09,
+          1.7
+        ],
+        [
+          0.136,
+          26.65
+        ],
+        [
+          0.18,
+          49.0
+        ],
+        [
+          0.226,
+          49.0
+        ],
+        [
+          0.271,
+          49.0
+        ],
+        [
+          0.315,
+          49.0
+        ],
+        [
+          0.362,
+          49.0
+        ],
+        [
+          0.407,
+          49.0
+        ],
+        [
+          0.451,
+          49.0
+        ]
+      ],
+      "efecto_retirado": true
+    },
+    {
+      "camara": "primera",
+      "entrada": "Gamepad_RightTrigger",
+      "objetivo": "cielo",
+      "vida_enemigo": 80.0,
+      "cargas_restantes": 0,
+      "distancia_final_cm": 800.0,
+      "frente_tiempo_s_y_x_local_cm": [
+        [
+          0.003,
+          -45.58
+        ],
+        [
+          0.047,
+          -21.91
+        ],
+        [
+          0.09,
+          1.41
+        ],
+        [
+          0.136,
+          26.06
+        ],
+        [
+          0.181,
+          49.0
+        ],
+        [
+          0.226,
+          49.0
+        ],
+        [
+          0.27,
+          49.0
+        ],
+        [
+          0.317,
+          49.0
+        ],
+        [
+          0.36,
+          49.0
+        ],
+        [
+          0.405,
+          49.0
+        ],
+        [
+          0.452,
+          49.0
+        ]
+      ],
+      "efecto_retirado": true
+    }
+  ]
+}

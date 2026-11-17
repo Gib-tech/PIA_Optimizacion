@@ -96,7 +96,7 @@ Cobertura: **104 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y C
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_HUD_Entrega.md) — Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, señales del rehén, daño real e inventario.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_LuminariaPared](blueprints/ThirdPerson__Blueprints__Entrega__BP_LuminariaPared.md) — Luminaria reutilizable colocada sobre paredes mediante trazas.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_PlayerEntrega.md) — Personaje jugable de la entrega.
-- [/Game/ThirdPerson/Blueprints/Entrega/BP_PulsoTemporalVisual](blueprints/ThirdPerson__Blueprints__Entrega__BP_PulsoTemporalVisual.md) — Trazo visual cian del pulso: cubo alargado entre cámara e impacto, sin colisión, navegación ni daño.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_PulsoTemporalVisual](blueprints/ThirdPerson__Blueprints__Entrega__BP_PulsoTemporalVisual.md) — Frente cian que viaja desde el lado derecho del protagonista hasta el final del disparo.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_RehenIndicador](blueprints/ThirdPerson__Blueprints__Entrega__BP_RehenIndicador.md) — Indicador histórico de texto flotante.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_SenalExtraccion](blueprints/ThirdPerson__Blueprints__Entrega__BP_SenalExtraccion.md) — Señal del área de extracción.
 - [/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios](blueprints/ThirdPerson__Blueprints__Entrega__BP_SistemasComplementarios.md) — Inventario, suministros únicos, curación, pulso y ciclo solar.
