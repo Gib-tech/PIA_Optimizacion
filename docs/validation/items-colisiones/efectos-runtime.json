@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "method": "PIE. Daño por ApplyDamage, funciones reales de ítems, barrido físico de cápsula y recogida por traza de cámara. Posiciones y saldos iniciales preparados. No callbacks de solapamiento ni daño directo al enemigo.",
+  "checks": [
+    "dano_40_cura_35_y_5_barra_sincronizada_no_sobrepasa_100",
+    "capsula_jugador_bloqueada_por_robot_y_mesa",
+    "mesa_objeto_1_efecto_real_recogida_unica_oculta_y_sin_colision",
+    "mesa_objeto_2_efecto_real_recogida_unica_oculta_y_sin_colision",
+    "mesa_objeto_3_efecto_real_recogida_unica_oculta_y_sin_colision",
+    "checkpoint_restaura_objetos_y_cantidades_sin_reaparicion",
+    "golpe_real_IA_reduce_vida_y_botiquin_restaura_vida_y_barra",
+    "pulso_visible_sin_dano_duplicado_20_dano_una_carga_cooldown"
+  ],
+  "healing": [
+    {
+      "health": 60.0,
+      "bar": 0.6000000238418579,
+      "kits": 2
+    },
+    {
+      "health": 95.0,
+      "bar": 0.949999988079071,
+      "kits": 1
+    },
+    {
+      "health": 100.0,
+      "bar": 1.0,
+      "kits": 0
+    },
+    {
+      "health": 86.80000019073486,
+      "bar": 0.8680000305175781,
+      "kits": 1
+    },
+    {
+      "health": 100.0,
+      "bar": 1.0,
+      "kits": 0
+    }
+  ],
+  "blocking": {
+    "robot_stop": "<Struct 'Vector' (0x00000228F779B1C0) {x: -326.780007, y: -850.000000, z: 95.000000}>",
+    "table_stop": "<Struct 'Vector' (0x00000228F777FCB0) {x: -520.000000, y: -1035.219991, z: 92.000000}>"
+  },
+  "beam": {
+    "scale": "<Struct 'Vector' (0x00000228F779B1C0) {x: 1.163712, y: 0.025000, z: 0.025000}>",
+    "enemy_health": 80.0,
+    "bounded_to_eight_meters": true
+  }
+}

@@ -15,10 +15,10 @@ Prototipo de destruible del equipo conservado como fuente. El mapa entregable us
 - **`Botón Colision`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `AddToViewport`, `AddToViewport`, `Asignar Text`, `Asignar Text`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Botón Destruible`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar Destruible?`, `PlaySound2D`, `Asignar Text`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Operaciones alcanzables desde `then`: `SetRestCollection`, `SetStaticMesh`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ComponentBeginOverlapSignature__DelegateSignature`** en `BndEvt__BP_DestruiblePick_Colision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ComponentEndOverlapSignature__DelegateSignature`** en `BndEvt__BP_DestruiblePick_Colision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`OnChaosBreakEvent__DelegateSignature`** en `BndEvt__BP_DestruiblePick_Destruible_K2Node_ComponentBoundEvent_2_OnChaosBreakEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ComponentEndOverlapSignature__DelegateSignature`** en `BndEvt__BP_DestruiblePick_Colision_K2Node_ComponentBoundEvent_1_ComponentEndOverlapSignature__DelegateSignature`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ComponentBeginOverlapSignature__DelegateSignature`** en `BndEvt__BP_DestruiblePick_Colision_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DestruiblePick`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -45,4 +45,4 @@ La exportación contiene 45 nodos con pines. Funciones referenciadas: `AddToView
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `840d5a58e7a5b735416a3c32edda8c67d68899f9c9106f3c08f92267995a76c9`.
+**Huella de exportación:** `06277b0fb0533e773b2404f49ac70e20799d227c76b9bb6d1d7b699705578462`.

@@ -12,3 +12,5 @@ La documentación vigente para todo el equipo está en [LEEME_EQUIPO](docs/LEEME
 El código de `Tools/UnrealPython` y `Tools/Blender` sirve para crear, inspeccionar y verificar assets. El juego empaquetado ejecuta Blueprints; no necesita Python ni el helper de editor.
 
 La revisión actual conserva los menús y mejora el inventario. BRUNO es un robot original con conversión de energía y fabricación persistente. El ciclo solar corrige las unidades de intensidad y añade noche estrellada/luna. [Cambios, flujo y pruebas](docs/ROBOT_CIELO_INVENTARIO.md). Los requisitos ajenos a Unreal quedan fuera del alcance solicitado.
+
+La revisión de [ítems, colisiones y destruibles](docs/ITEMS_Y_DESTRUIBLES.md) corrige la barra de curación, convierte las piezas de la mesa en recursos recogibles persistentes, bloquea el paso por robot/mesa y comprueba los seis tipos mediante ataques físicos.

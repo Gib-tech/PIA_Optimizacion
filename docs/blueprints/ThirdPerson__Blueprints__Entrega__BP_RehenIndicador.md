@@ -9,9 +9,11 @@ Indicador histórico de texto flotante. El HUD actual dibuja la placa E/RB; cons
 
 ## Entradas y responsabilidades del grafo
 
-- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_RehenIndicador`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveTick`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2_SetActorRotation`, `Condición`, `K2_SetActorLocation`, `Condición`, `K2_SetText`, `Condición`, `K2_SetText`, `Condición`, `Condición`, `K2_SetText`, `K2_SetText`, `K2_SetText`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
+- **`ReceiveTick`** en `ExecuteUbergraph_BP_RehenIndicador`. Operaciones alcanzables desde `then`: `K2_SetActorRotation`, `Condición`, `K2_SetActorLocation`, `Condición`, `K2_SetText`, `Condición`, `K2_SetText`, `Condición`, `Condición`, `K2_SetText`, `K2_SetText`, `K2_SetText`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_RehenIndicador`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UserConstructionScript`** en `UserConstructionScript_MERGED`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 
 ## Campos propios declarados
 
@@ -21,7 +23,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 45 nodos con pines. Funciones referenciadas: `Add_VectorVector`, `BooleanOR`, `Conv_StringToText`, `FindLookAtRotation`, `GetBlackboard`, `GetCameraLocation`, `GetDistanceTo`, `GetPlayerCameraManager`, `GetPlayerPawn`, `GetValueAsBool`, `IsValid`, `K2_GetActorLocation`, `K2_SetActorLocation`, `K2_SetActorRotation`, `K2_SetText`, `LessEqual_DoubleDouble`, `MakeLiteralName`, `ReceiveTick`, `UserConstructionScript`.
+La exportación contiene 88 nodos con pines. Funciones referenciadas: `Add_VectorVector`, `BooleanOR`, `Conv_StringToText`, `FindLookAtRotation`, `GetBlackboard`, `GetCameraLocation`, `GetDistanceTo`, `GetPlayerCameraManager`, `GetPlayerPawn`, `GetValueAsBool`, `IsValid`, `K2_GetActorLocation`, `K2_SetActorLocation`, `K2_SetActorRotation`, `K2_SetText`, `LessEqual_DoubleDouble`, `MakeLiteralName`, `ReceiveTick`, `UserConstructionScript`.
 
 
 ## Cómo modificarlo sin romper el flujo
@@ -31,4 +33,4 @@ La exportación contiene 45 nodos con pines. Funciones referenciadas: `Add_Vecto
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `a421ca8f20d002d7a8599b22f2e958b371e7038a425e7f5ada68b3b8f824503f`.
+**Huella de exportación:** `109b17f286fb1f667207dfc46243750cd6ed76f8cb5ccf5c84f00bbb06cf0543`.

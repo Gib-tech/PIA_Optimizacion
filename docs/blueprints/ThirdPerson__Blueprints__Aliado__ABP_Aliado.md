@@ -10,6 +10,8 @@ AnimBlueprint de referencia del aliado original. Se conserva como fuente histór
 ## Entradas y responsabilidades del grafo
 
 - **`BlueprintUpdateAnimation`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
+- **`AnimGraph__AnimFunc`** en `AnimGraph__AnimFunc`. Operaciones alcanzables desde `then`: `K2Node_FunctionResult`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`AnimGraph__AnimFunc_MERGED`** en `AnimGraph__AnimFunc_MERGED`. Operaciones alcanzables desde `then`: `K2Node_FunctionResult`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -20,7 +22,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 13 nodos con pines. Funciones referenciadas: `BlueprintUpdateAnimation`, `TryGetPawnOwner`.
+La exportación contiene 32 nodos con pines. Funciones referenciadas: `BlueprintUpdateAnimation`, `TryGetPawnOwner`.
 
 - `/Game/Characters/Mannequins/Animations/Manny/Unarmed_Idle_Anim1.Unarmed_Idle_Anim1`
 - `/Game/Characters/Mannequins/Meshes/SK_Mannequin.SK_Mannequin`
@@ -33,4 +35,4 @@ La exportación contiene 13 nodos con pines. Funciones referenciadas: `Blueprint
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `c28c72b8569e63f239f303d0c412fa9952b022f7120ba78815f887c1b86f1f6e`.
+**Huella de exportación:** `3a449ea385cb913970f39b14f183813319a79fe6bd0ed6e1a7fc1900ebf34e5b`.

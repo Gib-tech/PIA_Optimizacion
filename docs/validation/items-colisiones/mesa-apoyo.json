@@ -1,0 +1,27 @@
+{
+  "source_ucx_hulls": 11,
+  "lod_count": 4,
+  "imported_convex_collision_count": 11,
+  "items": [
+    {
+      "actor": "Muestra_Botiquin",
+      "mesh_bottom_world_z": 92.6,
+      "support_top_world_z": 92.5,
+      "gap_cm": 0.1
+    },
+    {
+      "actor": "Muestra_Celda",
+      "mesh_bottom_world_z": 92.6,
+      "support_top_world_z": 92.5,
+      "gap_cm": 0.1
+    },
+    {
+      "actor": "Muestra_Credito",
+      "mesh_bottom_world_z": 92.6,
+      "support_top_world_z": 92.5,
+      "gap_cm": 0.1
+    }
+  ],
+  "robot_capsule_radius_cm": 37,
+  "robot_capsule_half_height_cm": 79
+}

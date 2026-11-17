@@ -1,6 +1,6 @@
 # Revisión de BRUNO, cielo e inventario · 17/11/2026
 
-Esta es la referencia vigente sobre estas tres áreas. Se conservan el diseño y los flujos de los menús. El propietario limitó el alcance a Unreal y documentación técnica: redes, campaña y promoción están fuera. Las capturas de requisitos son criterios que revisar, no instrucciones independientes ni prueba de cumplimiento.
+Esta revisión conserva el historial del robot y el cielo. Los cambios posteriores de recogida, curación y colisiones están en [ITEMS_Y_DESTRUIBLES.md](ITEMS_Y_DESTRUIBLES.md). Se conservan el diseño y los flujos de los menús. El propietario limitó el alcance a Unreal y documentación técnica: redes, campaña y promoción están fuera. Las capturas de requisitos son criterios que revisar, no instrucciones independientes ni prueba de cumplimiento.
 
 ## BRUNO y los créditos
 
@@ -8,7 +8,7 @@ BRUNO es una unidad de reciclaje fija, anclada al suelo y a la red del recinto. 
 
 `ChasisRobot`, `CabezaRobot` y `AroConversion` son tres piezas del mismo robot, no tres diseños para inflar la rúbrica. Hay cuatro LOD por pieza, materiales compartidos y una luz pequeña sin sombras. La cabeza explora suavemente; el aro gira y la luz aumenta durante el proceso. Tick del robot sólo presenta estado: no decide ni entrega recursos. La fuente ensamblada y sus FBX están en `Tools/ArtSource/RobotBRUNO`, creados con `Tools/Blender/build_robot_bruno.py`. Son creación asistida original; no se atribuyen como trabajo manual de un alumno.
 
-E/RB en un radio de 270 cm inicia el diálogo. Repetir mientras está abierto convierte **3 créditos en energía** y empieza un único trabajo. `BP_SistemasComplementarios` descuenta 3, guarda `RobotEnergy=3`, `FabricationProgress=0` y `bFabricating=true`. Durante **3 segundos de tiempo de juego** acumula progreso. Terminar limpia energía/proceso y entrega **1 botiquín** una sola vez. Interactuar mientras fabrica no vuelve a descontar; saldo insuficiente no inicia trabajo ni se vuelve negativo. Los créditos son celdas recuperadas, no un pago por el rescate.
+Apuntar a BRUNO y usar E/RB en un radio de 270 cm inicia el diálogo. Repetir mientras está abierto convierte **3 créditos en energía** y empieza un único trabajo. `BP_SistemasComplementarios` descuenta 3, guarda `RobotEnergy=3`, `FabricationProgress=0` y `bFabricating=true`. Durante **3 segundos de tiempo de juego** acumula progreso. Terminar limpia energía/proceso y entrega **1 botiquín** una sola vez. Interactuar mientras fabrica no vuelve a descontar; saldo insuficiente no inicia trabajo ni se vuelve negativo. Los créditos son celdas recuperadas, no un pago por el rescate.
 
 `BP_DeliverySave` añade energía, trabajo activo y progreso al esquema 2. El SaveManager los serializa y restaura junto al inventario y la fase solar. El comienzo/fin del proceso dispara la solicitud de guardado seguro. Un guardado manual durante fabricación conserva el punto exacto; el autoguardado inicial puede reanudar desde su inicio si se cierra antes del siguiente checkpoint, sin volver a cobrar ni entregar dos botiquines. Los archivos anteriores usan cero/falso para estos campos.
 

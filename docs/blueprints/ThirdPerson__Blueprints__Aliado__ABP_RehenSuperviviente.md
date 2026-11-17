@@ -34,4 +34,4 @@ La exportación contiene 21 nodos con pines. Funciones referenciadas: `Blueprint
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `9801e95c49272a59012e446620c89bdd0e905037776dce6227e4b93c13292677`.
+**Huella de exportación:** `040b4540916475b86718ac03df5e37b0852c39d0e41d2eebd0d83e064d906881`.

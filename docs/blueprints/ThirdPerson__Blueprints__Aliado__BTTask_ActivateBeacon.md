@@ -12,8 +12,8 @@ Canalización de tres segundos mediante el árbol del aliado. Sólo continúa co
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar CachedPawn`, `FinishExecute`, `K2Node_DynamicCast`, `Asignar Beacon`, `FinishExecute`, `Asignar Elapsed`, `Asignar bUsingBeacon`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveTickAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar Elapsed`, `Asignar ActivationProgress`, `Condición`, `CompleteActivation`, `Asignar bUsingBeacon`, `Asignar ActivationProgress`, `SetValueAsBool`, `FinishExecute`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar bUsingBeacon`, `Asignar ActivationProgress`, `SetValueAsBool`, `FinishAbort`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ActivateBeacon`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `ReceiveAbortAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ActivateBeacon`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ActivateBeacon`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ActivateBeacon`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
@@ -38,4 +38,4 @@ La exportación contiene 46 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `278885f98c233edbf24bfc742e437031b0ac6a790d6e5a5f89d111bacdf69d1b`.
+**Huella de exportación:** `1ab9003529de995f20507b8c9b7e532580d3f5707f0b681417ce39db6cee32fd`.

@@ -12,9 +12,9 @@ Anticipación visible de la embestida. Orienta al rival, comprueba visión y cal
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar CachedPawn`, `FinishExecute`, `StopMovement`, `Asignar Elapsed`, `K2_SetFocus`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveTickAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar Elapsed`, `K2_SetActorRotation`, `Condición`, `Condición`, `SetValueAsVector`, `FinishExecute`, `Asignar ChargeVictim`, `SetValueAsBool`, `FinishExecute`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `FinishAbort`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerWindup`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerWindup`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `ReceiveAbortAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerWindup`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerWindup`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerWindup`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -36,4 +36,4 @@ La exportación contiene 53 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `cf4142c9cd43519c66e5351a2a476b1fd2f677fee966778149259885ee605ffa`.
+**Huella de exportación:** `36cba809f5402e852f55bfbb032422c32404ad8270dc61c169ae9c20828623c3`.

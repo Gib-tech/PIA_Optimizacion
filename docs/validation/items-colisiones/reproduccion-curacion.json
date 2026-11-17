@@ -1,0 +1,14 @@
+{
+  "damage_event": 40,
+  "before": {
+    "health": 60.0,
+    "bar": 0.6000000238418579,
+    "kits": 2
+  },
+  "after": {
+    "health": 95.0,
+    "bar": 0.6000000238418579,
+    "kits": 1
+  },
+  "ui_mismatch_reproduced": true
+}

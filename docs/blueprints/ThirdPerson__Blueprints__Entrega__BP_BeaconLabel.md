@@ -32,4 +32,4 @@ La exportación contiene 18 nodos con pines. Funciones referenciadas: `Conv_Stri
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `c42d72aae30f0d720b06b343025910f3f8c10270864873452b26a5011da99b87`.
+**Huella de exportación:** `a2480756b9d39398738650f9204edd9424ec72018a50f5af0f872d1a6848bbcb`.

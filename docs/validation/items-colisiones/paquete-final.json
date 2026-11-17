@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "build_cook_run_seconds": 91.95,
+  "cook_errors": 0,
+  "cook_warnings": 1,
+  "existing_warning": "Pin Scale del nodo SpawnSystemAttached en partículas",
+  "method": "Ejecutable Win64 Development con UserDir aislado. Continuar; H, E, H, clic central, I y F5 mediante teclado/ratón reales. Checkpoint inicial preparado, sin recorrido natural ni mando físico.",
+  "observed": {
+    "health_sequence": [
+      60,
+      95,
+      100
+    ],
+    "healing_bar_updated": true,
+    "table_medkit_removed": true,
+    "kits_sequence": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "pulse_charges_sequence": [
+      3,
+      2
+    ],
+    "inventory_final": [
+      0,
+      2,
+      3
+    ]
+  },
+  "cold_save_confirmation": "recarga-fria.json",
+  "geometry_note": "Geometría definitiva inspeccionada en el ejecutable después de la segunda compilación. Teclado, tira y patas apoyados. Mismo guardado: 100 de vida, 0 botiquines, 2 cargas, 3 créditos y botiquín de mesa ausente.",
+  "initial_functional_build_seconds": 129.19,
+  "final_geometry_and_cold_native_reload": true,
+  "native_log_accessed_none_or_blueprint_errors": false
+}

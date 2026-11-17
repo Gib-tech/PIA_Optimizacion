@@ -35,4 +35,4 @@ La exportación contiene 16 nodos con pines. Funciones referenciadas: `E_Dead`, 
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `1dd1adf648469ae5fd5d290f5855386be877a21daeabcfb5f4de8615f98ae3de`.
+**Huella de exportación:** `ea009ae072b7868abb295078ff7f597af7b2745853a1b195087cfae2646e4702`.

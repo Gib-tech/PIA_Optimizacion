@@ -22,18 +22,18 @@ Orquesta menú de pausa y opciones en ambos mapas. Conserva widget/foco de orige
 - **`OpenOptions`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar ReturnWidget`, `Asignar ReturnFocus`, `SetVisibility`, `K2Node_CreateWidget`, `Asignar OptionsWidget`, `AddToViewport`, `Asignar bOptionsOpen`, `K2Node_DynamicCast`, `SetInputMode_GameAndUIEx`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`CloseOptions`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `RemoveFromParent`, `SetVisibility`, `Asignar bOptionsOpen`, `SetInputMode_GameAndUIEx`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_P_K2Node_InputKeyEvent_3`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Escape_K2Node_InputKeyEvent_2`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_Special_Right_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_FaceButton_Right_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ApplyVolume`** en `ApplyVolume`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`SaveVolume`** en `SaveVolume`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`TogglePause`** en `TogglePause`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OpenPause`** en `OpenPause`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ClosePause`** en `ClosePause`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OpenOptions`** en `OpenOptions`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`CloseOptions`** en `CloseOptions`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OpenOptions`** en `OpenOptions`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ClosePause`** en `ClosePause`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OpenPause`** en `OpenPause`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`TogglePause`** en `TogglePause`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`SaveVolume`** en `SaveVolume`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ApplyVolume`** en `ApplyVolume`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_FaceButton_Right_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_Special_Right_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Escape_K2Node_InputKeyEvent_2`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_P_K2Node_InputKeyEvent_3`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DeliveryInterface`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -66,4 +66,4 @@ La exportación contiene 128 nodos con pines. Funciones referenciadas: `AddToVie
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `2de704852bf98748a16c6c657709a0c35b5a0eb3fdff6d83e8953c7fdb05d0c0`.
+**Huella de exportación:** `c68fc525a6a50b44f2791250e9af8c613d396b22f6e50c0b1893b99bc091f37e`.

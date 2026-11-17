@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "sha256": {
+    "Saved/SaveGames/TimeOut_Delivery_v1.sav": "60db472a45821f4c067d7ba125950191c14c409f71ee244136ead308caac2f2b",
+    "Saved/Config/WindowsEditor/GameUserSettings.ini": "30209dbf96e09fd7efb4ecbbdfdd01b3376805eb1bb5f4662555c5ea3a07be42"
+  },
+  "isolated_native_user_dir": "Intermediate/inspect/items-native-user"
+}

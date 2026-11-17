@@ -16,13 +16,13 @@ Persiste intención de Nuevo juego/Continuar y datos entre cambios de mapa. El d
 - **`LoadGame`** en `EventGraph`. Operaciones alcanzables desde `then`: `DoesSaveGameExist`, `Condición`, `Condición`, `K2Node_AsyncAction`, `LoadGameFromSlot`, `K2Node_DynamicCast`, `K2Node_DynamicCast`, `Asignar SaveGameVar`, `Asignar SaveGameVar`, `K2Node_CallDelegate`, `K2Node_CallDelegate`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`GameSaved`** en `GameSaved`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`GameLoaded`** en `GameLoaded`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`Completed_0FF322BE40C6B7256B2DEEBF69ED6B45`** en `Completed_0FF322BE40C6B7256B2DEEBF69ED6B45`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Completed_FADCE93345AD81DE8189588E3467B3F8`** en `Completed_FADCE93345AD81DE8189588E3467B3F8`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`SaveGame`** en `SaveGame`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`RequestSave`** en `RequestSave`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`CreateSaveGame`** en `CreateSaveGame`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`RequestLoad`** en `RequestLoad`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`LoadGame`** en `LoadGame`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`RequestLoad`** en `RequestLoad`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`CreateSaveGame`** en `CreateSaveGame`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`RequestSave`** en `RequestSave`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`SaveGame`** en `SaveGame`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Completed_FADCE93345AD81DE8189588E3467B3F8`** en `Completed_FADCE93345AD81DE8189588E3467B3F8`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Completed_0FF322BE40C6B7256B2DEEBF69ED6B45`** en `Completed_0FF322BE40C6B7256B2DEEBF69ED6B45`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_GameInstance`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -51,4 +51,4 @@ La exportación contiene 56 nodos con pines. Funciones referenciadas: `CreateSav
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `5f05a46251999a86106771e52eff4d3f8439474d366fc16ac1f1e7e3a3f3ad1f`.
+**Huella de exportación:** `b2e493a7face3e331abc27276f25a22761a46059ca2405d35b932b37730ad8c2`.

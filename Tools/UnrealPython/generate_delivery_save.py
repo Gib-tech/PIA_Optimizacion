@@ -57,7 +57,7 @@ def manager():
         ('HostageHealth', 'real', HOSTAGE, host, 'Health'),
         ('FirstPerson', 'bool', HERO, hero, 'CamaraPrimera'),
     ]
-    for name,kind in [('Botiquines','int'),('Cargas','int'),('Creditos','int'),('WorldSeconds','real'),('RobotEnergy','int'),('bFabricating','bool'),('FabricationProgress','real')]+[('Recogido'+str(i),'bool') for i in range(1,5)]:
+    for name,kind in [('Botiquines','int'),('Cargas','int'),('Creditos','int'),('WorldSeconds','real'),('RobotEnergy','int'),('bFabricating','bool'),('FabricationProgress','real')]+[('Recogido'+str(i),'bool') for i in range(1,5)]+[('MesaRecogido'+str(i),'bool') for i in range(1,4)]:
         bindings.append((name,kind,EXTRAS,extras,name))
     for i, z in enumerate(zones,1):
         for key, kind, prop in [('Cleared','bool','bCleared'),('Wave','int','CurrentWave'),('Phase','int','Phase'),('Spawned','int','SpawnedCount')]:
@@ -106,7 +106,7 @@ def manager():
 
     # A changed milestone is retried each Tick until it is safe, without timed polling.
     changed=g.neg(g.v('bHasCheckpoint','bool'))
-    tracked=[b for b in bindings if b[0] in ['Paso','OrderRevealed','Botiquines','Cargas','Creditos','RobotEnergy','bFabricating'] or b[0].startswith('Recogido') or 'Cleared' in b[0] or ('Door' in b[0] and 'Health' in b[0])]
+    tracked=[b for b in bindings if b[0] in ['Paso','OrderRevealed','Botiquines','Cargas','Creditos','RobotEnergy','bFabricating'] or b[0].startswith(('Recogido','MesaRecogido')) or 'Cleared' in b[0] or ('Door' in b[0] and 'Health' in b[0])]
     for name,kind,owner,target,prop in tracked:
         fn={'bool':'NotEqual_BoolBool','int':'NotEqual_IntInt','real':'NotEqual_DoubleDouble'}[kind]
         diff=g.cmp(fn,live(prop,kind,owner,target),saved(name,kind),kind)
@@ -126,7 +126,7 @@ def manager():
     prev=g.s(cast,'SaveData',(cast,'AsBP_DeliverySave'),'object',obj=SAVE)
     prev=g.s(prev,'Version',VERSION,'int',owner=SAVE,target=data)
     prev=g.s(prev,'FinalStandRevision',1,'int',owner=SAVE,target=data)
-    prev=g.s(prev,'ExtrasRevision',2,'int',owner=SAVE,target=data)
+    prev=g.s(prev,'ExtrasRevision',3,'int',owner=SAVE,target=data)
     for name,kind,owner,target,prop in bindings:
         prev=g.s(prev,name,live(prop,kind,owner,target),kind,owner=SAVE,target=data)
     for label,target in [('Player',hero),('Hostage',host)]:

@@ -38,4 +38,4 @@ La exportación contiene 60 nodos con pines. Funciones referenciadas: `Add_Vecto
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `fea95493cbb6f0931d1b20e8dc88d8a9b207a9790ce9adf78011690886c23102`.
+**Huella de exportación:** `142d73a8190fa04ff3dd1d47e205c8a34dad954ddc244c3323debdb48a99f212`.

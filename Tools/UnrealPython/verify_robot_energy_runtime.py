@@ -23,8 +23,15 @@ def tick(dt,state=s):
    assert robot.skeletal_mesh_component.get_skeletal_mesh_asset() is None
    assert len(robot.get_components_by_class(unreal.StaticMeshComponent))==3
    state['checks'].append('robot_original_en_tres_piezas_sin_modelo_humano')
-   p.set_actor_location(robot.get_actor_location()+unreal.Vector(150,100,95),False,True);extra.call_method('HablarConTecnico')
+   p.set_actor_location(robot.get_actor_location()+unreal.Vector(150,100,95),False,True)
+   setp(p,'CamaraPrimera',True);p.get_editor_property('TPC').deactivate();p.get_editor_property('FPC').activate()
+   pc.set_control_rotation(unreal.MathLibrary.find_look_at_rotation(p.get_editor_property('FPC').get_world_location(),robot.get_actor_location()+unreal.Vector(0,0,90)))
   elif stage==1:
+   if not state.get('spoke'):
+    pc.set_control_rotation(unreal.MathLibrary.find_look_at_rotation(p.get_editor_property('FPC').get_world_location(),robot.get_actor_location()+unreal.Vector(0,0,90)))
+    state['spoke']=True;state['at']=time.monotonic();return
+   if not state.get('interaction_sent'):
+    extra.call_method('HablarConTecnico');state['interaction_sent']=True;state['at']=time.monotonic();return
    assert 'robot' in prop('DialogText') and prop('DialogUntil')>gs.get_time_seconds(w)
    assert pc.get_hud().get_editor_property('CurrentDialog')==34
    state['head']=str(robot.get_editor_property('CabezaRobot').relative_rotation)

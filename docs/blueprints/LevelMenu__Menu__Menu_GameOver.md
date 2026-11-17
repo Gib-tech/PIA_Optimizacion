@@ -14,12 +14,14 @@ Pantalla original de fin de partida. El desenlace de entrega usa director, cinem
 - **`Tick`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`Botón Button`** en `EventGraph`. Operaciones alcanzables desde `then`: `RemoveFromParent`, `K2Node_CreateWidget`, `AddToViewport`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Botón btn_reintentar_gameover`** en `EventGraph`. Operaciones alcanzables desde `then`: `OpenLevel`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_GameOver_Button_K2Node_ComponentBoundEvent_0_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_GameOver`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón Button`** en `ExecuteUbergraph_Menu_GameOver`. Operaciones alcanzables desde `then`: `RemoveFromParent`, `Create`, `AddToViewport`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón btn_reintentar_gameover`** en `ExecuteUbergraph_Menu_GameOver`. Operaciones alcanzables desde `then`: `OpenLevel`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_GameOver_btn_reintentar_gameover_K2Node_ComponentBoundEvent_1_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_GameOver`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_GameOver_Button_K2Node_ComponentBoundEvent_0_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_GameOver`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 13 nodos con pines. Funciones referenciadas: `AddToViewport`, `Construct`, `OnButtonClickedEvent__DelegateSignature`, `OpenLevel`, `PreConstruct`, `RemoveFromParent`, `Tick`.
+La exportación contiene 20 nodos con pines. Funciones referenciadas: `AddToViewport`, `Construct`, `Create`, `OnButtonClickedEvent__DelegateSignature`, `OpenLevel`, `PreConstruct`, `RemoveFromParent`, `Tick`.
 
 - `/Game/LevelMenu/Menu/G_reintentar_OV.G_reintentar_OV`
 - `/Game/LevelMenu/Menu/Gameover_pantalla_OV.Gameover_pantalla_OV`
@@ -33,4 +35,4 @@ La exportación contiene 13 nodos con pines. Funciones referenciadas: `AddToView
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `73fd5255308ddbc664bb6aaf77d89e55cf5962bc92a8c94e6f834d8532775020`.
+**Huella de exportación:** `5a0602a0c0f9b8e230677037fb685ddb3adb58ab1bb5d2c1d1382f8b445dc9dd`.

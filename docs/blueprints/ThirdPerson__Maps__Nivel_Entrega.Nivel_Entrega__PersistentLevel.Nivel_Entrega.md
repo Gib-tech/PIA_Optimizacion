@@ -14,9 +14,9 @@ Blueprint del nivel entregable. Inicializa referencias de jugador, rehén, direc
 - **`SincronizarExtraccion`** en `PersistentLevel.Nivel_Entrega.EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Asignar Sincronizaciones`, `ConsultarAliados`, `ConsultarSecuencia`, `Condición`, `SetActorHiddenInGame`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ConsultarAliados`** en `PersistentLevel.Nivel_Entrega.ConsultarAliados`. Operaciones alcanzables desde `then`: `ConsultarAliados`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ConsultarSecuencia`** en `PersistentLevel.Nivel_Entrega.ConsultarSecuencia`. Operaciones alcanzables desde `then`: `ConsultarSecuencia`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveBeginPlay`** en `PersistentLevel.Nivel_Entrega.ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Nivel_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`PersistentLevel.Nivel_Entrega.InicializarSenales`** en `PersistentLevel.Nivel_Entrega.InicializarSenales`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Nivel_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`PersistentLevel.Nivel_Entrega.SincronizarExtraccion`** en `PersistentLevel.Nivel_Entrega.SincronizarExtraccion`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Nivel_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`PersistentLevel.Nivel_Entrega.InicializarSenales`** en `PersistentLevel.Nivel_Entrega.InicializarSenales`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Nivel_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `PersistentLevel.Nivel_Entrega.ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Nivel_Entrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -50,4 +50,4 @@ La exportación contiene 62 nodos con pines. Funciones referenciadas: `Add_IntIn
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `fda11b991df34b88946b54947a889ef455fbca72a252a532350b7219024ac335`.
+**Huella de exportación:** `a02d767e57411058e9aa332d533ee906d5f37064c38de447a9f82f21c7abca3d`.

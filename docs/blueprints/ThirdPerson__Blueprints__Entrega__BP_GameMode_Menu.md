@@ -25,4 +25,4 @@ La exportación contiene 3 nodos con pines. Funciones referenciadas: `ReceiveBeg
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `6c4a3b5f726658632b683925972ef725c29bd3172c1e10089666ae12e6e6904b`.
+**Huella de exportación:** `ff72af8e8c97785694980f9a1fcd08ec8c8e77892a30f05f67005fc5c482bc1f`.

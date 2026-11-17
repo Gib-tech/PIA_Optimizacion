@@ -13,10 +13,11 @@ Recurso del proveedor o ejemplo del pack. Se documentan sus grafos y referencias
 - **`PreConstruct`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`Construct`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`Tick`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
+- **`-UpdateDebugTrace`** en `-UpdateDebugTrace_MERGED`. Operaciones alcanzables desde `then`: `SetText`, `SetColorAndOpacity`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 10 nodos con pines. Funciones referenciadas: `-UpdateDebugTrace`, `Construct`, `PreConstruct`, `SetColorAndOpacity`, `SetText`, `Tick`.
+La exportación contiene 29 nodos con pines. Funciones referenciadas: `-UpdateDebugTrace`, `Construct`, `PreConstruct`, `SetColorAndOpacity`, `SetText`, `Tick`.
 
 
 ## Cómo modificarlo sin romper el flujo
@@ -26,4 +27,4 @@ La exportación contiene 10 nodos con pines. Funciones referenciadas: `-UpdateDe
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `57d41a9cb1a56e1807564122f31b80a05421de4f152f878369c01b1141ca367f`.
+**Huella de exportación:** `8b4346c036377e1eddfc8f84f8830d6fc6e247ad1872f7a74dc4d05eeffb6ea8`.

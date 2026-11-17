@@ -11,8 +11,8 @@ Acción de aturdimiento; el nombre histórico HitSun se conserva para no romper 
 
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar CachedPawn`, `FinishExecute`, `PlayAnimMontage`, `Delay`, `SetValueAsBool`, `PrintString`, `FinishExecute`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `StopAnimMontage`, `FinishAbort`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_HitSun`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `ReceiveAbortAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_HitSun`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_HitSun`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -34,4 +34,4 @@ La exportación contiene 24 nodos con pines. Funciones referenciadas: `ActorHasT
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `822a970ae6cfd710c30df5ec91247699ba01ba6b73981a63ecc039480ee49154`.
+**Huella de exportación:** `d12f13f028994c8566e00971266d8c9b042543b1139969786f836765707e5ad1`.

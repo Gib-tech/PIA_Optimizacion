@@ -32,4 +32,4 @@ La exportación contiene 43 nodos con pines. Funciones referenciadas: `BooleanAN
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `b3ba5c03d8b6a3666d8b909f8f31a9b027d097e68b3321ec7659bb7ecc7ff98b`.
+**Huella de exportación:** `5635a9ec7d28b1b65383b54ab722f1f4b9e8a05d0dc998a7ce5c99dd92c59921`.

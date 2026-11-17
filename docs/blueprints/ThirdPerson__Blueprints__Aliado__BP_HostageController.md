@@ -26,4 +26,4 @@ La exportación contiene 9 nodos con pines. Funciones referenciadas: `GetBlackbo
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `3a547a43fb28b3696705c0517a3450e5d54ef80d1f9bdf5d84985e7b09ab4f8a`.
+**Huella de exportación:** `2eccc152cbc01c2ea7fc4a3fc4d3187e9651a22d76f3f578641aff631ca74f5c`.

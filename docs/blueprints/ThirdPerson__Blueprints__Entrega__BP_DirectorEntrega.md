@@ -18,14 +18,14 @@ Coordina rescate, tres encuentros, orden aleatorio de balizas y extracción conj
 - **`Tecla Gamepad_FaceButton_Bottom`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `SetGamePaused`, `K2Node_DynamicCast`, `Asignar bDeliveryContinue`, `OpenLevel`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Tecla Gamepad_DPad_Down`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `SetGamePaused`, `OpenLevel`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_E_K2Node_InputKeyEvent_5`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent_4`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Enter_K2Node_InputKeyEvent_3`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_R_K2Node_InputKeyEvent_2`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_R_K2Node_InputKeyEvent_2`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Enter_K2Node_InputKeyEvent_3`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent_4`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_E_K2Node_InputKeyEvent_5`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_DirectorEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -71,4 +71,4 @@ La exportación contiene 219 nodos con pines. Funciones referenciadas: `Add_Doub
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `1207b30fa8fbec11c5c2affc48be3bd337b9ec29eff499dd7bdf4f52306d5954`.
+**Huella de exportación:** `413781a4554fbccedc62aafef527fd825fd0b878355bad0af2ea9c40d2a6f3c6`.

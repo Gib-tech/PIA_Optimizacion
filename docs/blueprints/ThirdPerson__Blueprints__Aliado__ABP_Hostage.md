@@ -10,7 +10,10 @@ AnimBlueprint original de la escolta con locomoción por velocidad y presentaci�
 ## Entradas y responsabilidades del grafo
 
 - **`BlueprintUpdateAnimation`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Asignar speed`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`AnimGraph__AnimFunc`** en `AnimGraph__AnimFunc`. Operaciones alcanzables desde `then`: `K2Node_FunctionResult`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`BlueprintUpdateAnimation`** en `ExecuteUbergraph_ABP_Hostage`. Operaciones alcanzables desde `then`: `Condición`, `Asignar speed`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`BlueprintUpdateAnimation`** en `BlueprintUpdateAnimation`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_ABP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`AnimGraph__AnimFunc_MERGED`** en `AnimGraph__AnimFunc_MERGED`. Operaciones alcanzables desde `then`: `K2Node_FunctionResult`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -21,7 +24,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 21 nodos con pines. Funciones referenciadas: `BlueprintUpdateAnimation`, `GetVelocity`, `IsValid`, `TryGetPawnOwner`, `VSizeXY`.
+La exportación contiene 46 nodos con pines. Funciones referenciadas: `BlueprintUpdateAnimation`, `GetVelocity`, `IsValid`, `TryGetPawnOwner`, `VSizeXY`.
 
 - `/Game/Characters/Mannequins/Animations/Manny/Unarmed_Idle_Anim1.Unarmed_Idle_Anim1`
 - `/Game/Characters/Mannequins/Meshes/SK_Mannequin.SK_Mannequin`
@@ -34,4 +37,4 @@ La exportación contiene 21 nodos con pines. Funciones referenciadas: `Blueprint
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `1aeac7d72de4e7559ee4918f7448f4a93864cf348bb2cf9b933555a89ffc6cfb`.
+**Huella de exportación:** `7199779ec9cfba87c65bae6b8f41e7c83edd9d5d0429a6d2f6adfc1ae1ff5859`.

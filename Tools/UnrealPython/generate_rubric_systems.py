@@ -24,9 +24,21 @@ def systems():
  def entry(keys,name,consume=True):
   for k in keys:g.action_on(key(k,consume),EXTRAS,name,pin='Pressed')
   return g.custom(name)
+ def item_trace(prev):
+  cm=g.c(GS,'GetPlayerCameraManager',[('PlayerIndex','int',0)],cat='object',obj='/Script/Engine.PlayerCameraManager')
+  start=g.c('/Script/Engine.PlayerCameraManager','GetCameraLocation',cat='struct',obj=VEC,static=False);g.w(cm,start[0],'self')
+  rotation=g.c('/Script/Engine.PlayerCameraManager','GetCameraRotation',cat='struct',obj=ROT,static=False);g.w(cm,rotation[0],'self')
+  forward=g.c(MATH,'GetForwardVector',[('InRot','struct',rotation)],cat='struct',obj=VEC);forward[0].pins['InRot']['obj']=ROT
+  reach=g.c(MATH,'Multiply_VectorFloat',[('A','struct',forward),('B','real',350)],cat='struct',obj=VEC);reach[0].pins['A']['obj']=VEC
+  end=g.c(MATH,'Add_VectorVector',[('A','struct',start),('B','struct',reach)],cat='struct',obj=VEC)
+  for pin in ['A','B']:end[0].pins[pin]['obj']=VEC
+  trace=g.call('/Script/Engine.KismetSystemLibrary','LineTraceSingle',static=True).pin('Start','struct',obj=VEC).pin('End','struct',obj=VEC).pin('TraceChannel','byte',obj='/Script/Engine.ETraceTypeQuery',default='TraceTypeQuery1').pin('bTraceComplex','bool',default='false').pin('ActorsToIgnore','object',obj=ACTOR).pin('DrawDebugType','byte',obj='/Script/Engine.EDrawDebugTrace',default='None').pin('bIgnoreSelf','bool',default='true').pin('OutHit','struct',obj='/Script/Engine.HitResult',out=True).pin('ReturnValue','bool',out=True)
+  trace.pins['ActorsToIgnore']['container']='Array';array=g.node('K2Node_MakeArray',['NumInputs=1']).pin('[0]','object',obj=ACTOR).pin('Array','object',obj=ACTOR,out=True);array.pins['Array']['container']='Array';g.w(hero,array,'[0]');g.w((array,'Array'),trace,'ActorsToIgnore');g.w(start,trace,'Start');g.w(end,trace,'End');g.chain(prev,trace)
+  hit=g.call(GS,'BreakHitResult',pure=True,static=True).pin('Hit','struct',obj='/Script/Engine.HitResult').pin('HitActor','object',obj=ACTOR,out=True);g.w((trace,'OutHit'),hit,'Hit')
+  return trace,(hit,'HitActor')
  tick=g.event(ACTOR,'ReceiveTick').pin('DeltaSeconds','real',sub='float',out=True)
  seq=g.node('K2Node_ExecutionSequence').pin('execute')
- for i in range(6):seq.pin('then_'+str(i),out=True)
+ for i in range(7):seq.pin('then_'+str(i),out=True)
  g.chain(tick,seq)
  start=g.br(seq,g.neg(g.v('bInitialized','bool')),'then_0')
  prev=start
@@ -86,18 +98,49 @@ def systems():
   prev=g.s(pickup,'Recogido'+str(i),True,'bool')
   for field,amount in [('Botiquines',1),('Cargas',3),('Creditos',3)]:prev=g.s(prev,field,g.op('Add_IntInt',g.v(field,'int'),amount,'int'),'int')
   notice(g.sound(prev,'Rescue'),'Suministros: +1 botiquín, +3 cargas, +3 créditos.')
+ # Los objetos de la mesa ya no son muestras decorativas. Sólo se ofrecen
+ # cuando la traza de cámara los alcanza, sin atravesar robot/mesa/paredes.
+ target=g.br(seq,g.v('bInitialized','bool'),'then_6');target=g.br(target,allowed());target=g.s(target,'ObjetoEnMira',0,'int');target=g.s(target,'DestruibleEnMira',None,'object',obj=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C');trace,hit_actor=item_trace(target)
+ robot_look=g.s(trace,'bRobotEnMira',g.both((g.valid(*tech),'ReturnValue'),g.cmp('EqualEqual_ObjectObject',hit_actor,tech,'object')),'bool')
+ cast,destructible=g.cast_after(robot_look,hit_actor,R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C');selected_destructible=g.s(cast,'DestruibleEnMira',destructible,'object',obj=R+'BP_DestruibleEntrega.BP_DestruibleEntrega_C')
+ items=g.node('K2Node_ExecutionSequence').pin('execute')
+ for i in range(3):items.pin('then_'+str(i),out=True)
+ g.chain(selected_destructible,items);g.chain(cast,items,'CastFailed')
+ for i in range(1,4):
+  obj=g.local('ItemMesa'+str(i),SM);ready_item=g.br(items,(g.valid(*obj),'ReturnValue'),'then_'+str(i-1))
+  hidden=g.action_on(ready_item,ACTOR,'SetActorHiddenInGame',obj,[('bNewHidden','bool',g.v('MesaRecogido'+str(i),'bool'),None)])
+  collision=g.action_on(hidden,ACTOR,'SetActorEnableCollision',obj,[('bNewActorEnableCollision','bool',g.neg(g.v('MesaRecogido'+str(i),'bool')),None)])
+  selected=g.br(collision,g.both(g.neg(g.v('MesaRecogido'+str(i),'bool')),g.cmp('EqualEqual_ObjectObject',hit_actor,obj,'object')));g.s(selected,'ObjetoEnMira',i,'int')
  for e in [entry(['I','Gamepad_Special_Left'],'AlternarInventario')]:
   guard=g.br(e,g.v('bInitialized','bool'));guard=g.br(guard,allowed());g.s(guard,'InventoryOpen',g.neg(g.v('InventoryOpen','bool')),'bool')
  for e in [entry(['H','Gamepad_LeftShoulder'],'UsarBotiquin')]:
   guard=g.br(e,g.v('bInitialized','bool'));guard=g.br(guard,allowed())
   condition=g.both(g.cmp('Greater_IntInt',g.v('Botiquines','int'),0,'int'),g.both(g.cmp('Greater_DoubleDouble',hp,0),g.cmp('Less_DoubleDouble',hp,100)))
   use=g.br(guard,condition);prev=g.s(use,'Botiquines',g.op('Subtract_IntInt',g.v('Botiquines','int'),1,'int'),'int')
-  prev=g.s(prev,'Health',g.c(MATH,'FMin',[('A','real',g.op('Add_DoubleDouble',hp,35)),('B','real',100)]),owner=HEALTH,target=health)
-  notice(g.sound(prev,'Rescue'),'Botiquín utilizado: +35 de vida.');notice(use,'No necesitas curarte o no tienes botiquines.',pin='else')
+  # El componente limita a 100 y emite Updated_Heatlh, al que está enlazada
+  # la barra. Asignar Health directamente curaba sin refrescar la interfaz.
+  prev=g.action_on(prev,HEALTH,'Increase_Health',health,[('Amount','real',35,None)])
+  current=g.c('/Script/Engine.KismetStringLibrary','Conv_IntToString',[('InInt','int',g.c(MATH,'FFloor',[('A','real',hp)],cat='int'))],cat='string')
+  message=g.c('/Script/Engine.KismetStringLibrary','Concat_StrStr',[('A','string','Botiquín utilizado. Vida: '),('B','string',current)],cat='string')
+  message=g.c('/Script/Engine.KismetStringLibrary','Concat_StrStr',[('A','string',message),('B','string',' / 100.')],cat='string')
+  notice(g.sound(prev,'Rescue'),message);notice(use,'No necesitas curarte o no tienes botiquines.',pin='else')
  # BRUNO no cobra: convierte celdas recuperadas en energía de fabricación.
- for e in [entry(['E','Gamepad_RightShoulder'],'HablarConTecnico',False)]:
+ for e in [entry(['E','Gamepad_RightShoulder'],'HablarConTecnico')]:
   guard=g.br(e,g.v('bInitialized','bool'));guard=g.br(guard,allowed())
-  guard=g.br(guard,(g.valid(*tech),'ReturnValue'));guard=g.br(guard,g.cmp('LessEqual_DoubleDouble',(g.dist(*hero,*tech),'ReturnValue'),270))
+  trace,hit_actor=item_trace(guard);fallthrough=trace;fallpin='then'
+  for i,field,amount in [(1,'Botiquines',1),(2,'Cargas',3),(3,'Creditos',3)]:
+   obj=g.local('ItemMesa'+str(i),SM);eligible=g.both((g.valid(*obj),'ReturnValue'),g.neg(g.v('MesaRecogido'+str(i),'bool')));eligible=g.both(eligible,g.cmp('EqualEqual_ObjectObject',hit_actor,obj,'object'))
+   pick=g.br(fallthrough,eligible,fallpin);prev=g.s(pick,'MesaRecogido'+str(i),True,'bool');prev=g.s(prev,field,g.op('Add_IntInt',g.v(field,'int'),amount,'int'),'int')
+   prev=g.action_on(prev,ACTOR,'SetActorHiddenInGame',obj,[('bNewHidden','bool',True,None)]);prev=g.action_on(prev,ACTOR,'SetActorEnableCollision',obj,[('bNewActorEnableCollision','bool',False,None)]);prev=g.s(prev,'ObjetoEnMira',0,'int')
+   notice(g.sound(prev,'Rescue'),['','Botiquín recogido (+1). H / LB: curar.','Celdas de pulso recogidas (+3). Clic central / RT: disparar.','Créditos de energía recogidos (+3). E / RB con BRUNO: convertir.'][i])
+   fallthrough=pick;fallpin='else'
+  # Si no se apuntó a un objeto recogible, la interacción sigue con BRUNO.
+  valid_tech=g.br(fallthrough,(g.valid(*tech),'ReturnValue'),fallpin)
+  guard=g.br(valid_tech,g.both(g.cmp('LessEqual_DoubleDouble',(g.dist(*hero,*tech),'ReturnValue'),270),g.cmp('EqualEqual_ObjectObject',hit_actor,tech,'object')))
+  # Una pulsación produce una sola acción. Sin objeto ni robot cercano,
+  # reenviar la orden de escolta que antes atendía E/RB en el director.
+  found_host=g.call(GS,'GetActorOfClass',static=True).pin('ActorClass','class',obj=ACTOR,default_obj=HOSTAGE).pin('ReturnValue','object',obj=HOSTAGE,out=True);g.chain(guard,found_host,'else');g.chain(valid_tech,found_host,'else')
+  valid_host=g.br(found_host,(g.valid(found_host,'ReturnValue'),'ReturnValue'));g.action_on(valid_host,HOSTAGE,'Interactuar',(found_host,'ReturnValue'))
   busy=g.br(guard,g.v('bFabricating','bool'))
   notice(busy,'BRUNO: estoy convirtiendo energía. No se consumen más créditos.')
   shopping=g.br(busy,g.cmp('Greater_DoubleDouble',g.v('DialogUntil'),now),'else')
@@ -124,14 +167,28 @@ def systems():
   trace.pins['ActorsToIgnore']['container']='Array'
   array=g.node('K2Node_MakeArray',['NumInputs=1']).pin('[0]','object',obj=ACTOR).pin('Array','object',obj=ACTOR,out=True);array.pins['Array']['container']='Array';g.w(hero,array,'[0]');g.w((array,'Array'),trace,'ActorsToIgnore')
   g.w(loc,trace,'Start');g.w(end,trace,'End');g.chain(prev,trace)
-  hit=g.call(GS,'BreakHitResult',pure=True,static=True).pin('Hit','struct',obj='/Script/Engine.HitResult').pin('HitActor','object',obj=ACTOR,out=True);g.w((trace,'OutHit'),hit,'Hit')
-  post=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True);g.chain(trace,post)
+  hit=g.call(GS,'BreakHitResult',pure=True,static=True).pin('Hit','struct',obj='/Script/Engine.HitResult').pin('HitActor','object',obj=ACTOR,out=True).pin('bBlockingHit','bool',out=True).pin('ImpactPoint','struct',obj=VEC,out=True);g.w((trace,'OutHit'),hit,'Hit')
+  post=g.node('K2Node_ExecutionSequence').pin('execute').pin('then_0',out=True).pin('then_1',out=True).pin('then_2',out=True);g.chain(trace,post)
   cast,val=g.cast_after(post,(hit,'HitActor'),BASE,pin='then_0')
   living=g.br(cast,g.neg(g.v('bIsDead','bool',owner=BASE,target=val)))
   enemy_health_class='/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health.BPC_E_Health_C'
   enemy_health=g.v('BPC_E_Health','object',owner=BASE,target=val,obj=enemy_health_class)
   prev=g.action_on(living,enemy_health_class,'E_Decrease_Health',enemy_health,[('Damage','real',20,None)])
   g.sound(notice(post,'Pulso temporal: -1 carga.',pin='then_1'),'Upgrade')
+  # Rayo visible, sin colisión/daño: la única autoridad sigue siendo la traza.
+  chosen=g.call(MATH,'SelectVector',pure=True,static=True).pin('A','struct',obj=VEC).pin('B','struct',obj=VEC).pin('bPickA','bool').pin('ReturnValue','struct',obj=VEC,out=True);g.w((hit,'bBlockingHit'),chosen,'bPickA');g.w(end,chosen,'B');g.w((hit,'ImpactPoint'),chosen,'A');endpoint=(chosen,'ReturnValue')
+  midpoint=g.c(MATH,'Add_VectorVector',[('A','struct',loc),('B','struct',endpoint)],cat='struct',obj=VEC)
+  for pin in ['A','B']:midpoint[0].pins[pin]['obj']=VEC
+  midpoint=g.c(MATH,'Multiply_VectorFloat',[('A','struct',midpoint),('B','real',.5)],cat='struct',obj=VEC);midpoint[0].pins['A']['obj']=VEC
+  look=g.c(MATH,'FindLookAtRotation',[('Start','struct',loc),('Target','struct',endpoint)],cat='struct',obj=ROT)
+  for pin in ['Start','Target']:look[0].pins[pin]['obj']=VEC
+  distance=g.c(MATH,'Vector_Distance',[('V1','struct',loc),('V2','struct',endpoint)])
+  for pin in ['V1','V2']:distance[0].pins[pin]['obj']=VEC
+  beam_scale=g.c(MATH,'MakeVector',[('X','real',g.op('Divide_DoubleDouble',distance,100)),('Y','real',.025),('Z','real',.025)],cat='struct',obj=VEC)
+  transform=g.c(MATH,'MakeTransform',[('Location','struct',midpoint),('Rotation','struct',look),('Scale','struct',beam_scale)],cat='struct',obj='/Script/CoreUObject.Transform')
+  for pin,obj in [('Location',VEC),('Rotation',ROT),('Scale',VEC)]:transform[0].pins[pin]['obj']=obj
+  beam_cls=R+'BP_PulsoTemporalVisual.BP_PulsoTemporalVisual_C'
+  spawn=g.node('K2Node_SpawnActorFromClass').pin('execute').pin('then',out=True).pin('Class','class',obj=ACTOR,default_obj=beam_cls).pin('SpawnTransform','struct',obj='/Script/CoreUObject.Transform').pin('CollisionHandlingOverride','byte',obj='/Script/Engine.ESpawnActorCollisionHandlingMethod',default='AlwaysSpawn').pin('Owner','object',obj=ACTOR).pin('TransformScaleMethod','byte',obj='/Script/Engine.ESpawnActorScaleMethod',default='MultiplyWithRoot').pin('ReturnValue','object',obj=beam_cls,out=True);g.w(transform,spawn,'SpawnTransform');g.chain(post,spawn,'then_2')
  flatten(g,EXTRAS);g.write('BP_SistemasComplementarios')
 
 if __name__=='__main__':systems()

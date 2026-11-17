@@ -9,8 +9,8 @@ Evalúa amenazas, seguimiento y refugios locales con ruta completa. Escribe bMus
 
 ## Entradas y responsabilidades del grafo
 
-- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTService_HostageSense`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveTickAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `SetValueAsObject`, `SetValueAsFloat`, `Asignar ThreatActor`, `GetAllActorsOfClass`, `K2Node_MacroInstance`, `Condición`, `SetValueAsBool`, `Asignar ThreatActor`, `Condición`, `Asignar SafeCandidate`, `Asignar BestDistance`, `GetAllActorsWithTag`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTService_HostageSense`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -38,4 +38,4 @@ La exportación contiene 101 nodos con pines. Funciones referenciadas: `BooleanA
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `a3d8cc147ab3d860b8829883ea52d4a74cbc7aca00341c5f501c81cd4c9436cb`.
+**Huella de exportación:** `839b614c1de5c4389ba5da01d16d8e3fc293375724418751766c588f146c0cd2`.

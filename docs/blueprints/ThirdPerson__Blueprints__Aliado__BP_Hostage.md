@@ -13,9 +13,9 @@ Aliado escoltado con salud propia. Interactuar rescata o reanuda seguimiento só
 - **`ReceiveAnyDamage`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Condición`, `Asignar Health`, `Asignar InvulnerableUntil`, `Asignar DamageNoticeSerial`, `Condición`, `Asignar bIsDead`, `Asignar bUsingBeacon`, `DisableMovement`, `GetActorOfClass`, `Asignar Paso`, `GetActorOfClass`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `IgnoreActorWhenMoving`, `IgnoreActorWhenMoving`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`Interactuar`** en `Interactuar`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveAnyDamage`** en `ReceiveAnyDamage`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveAnyDamage`** en `ReceiveAnyDamage`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Interactuar`** en `Interactuar`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Hostage`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -44,4 +44,4 @@ La exportación contiene 85 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `ebcd06704242ad6f99ddc6d3fb907ea0889dff89d2a569d99b0d4fe1ed9cceaf`.
+**Huella de exportación:** `f49c826384c668eeedfa001966a7c98ea31f89966944658e0b37f6fe9ad5001d`.

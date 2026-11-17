@@ -45,4 +45,4 @@ La exportación contiene 79 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `b6817020d745a8e3dfe79c472e42ca8d2d8528209a68142dd9c145a1f52a4b4d`.
+**Huella de exportación:** `24855ef359e610a4f20380ef35b5e1e85da3e3fe73b17cdd0829b0c0bbf64102`.

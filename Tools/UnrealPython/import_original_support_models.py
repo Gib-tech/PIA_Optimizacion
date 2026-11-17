@@ -44,10 +44,11 @@ def prop(label,name,loc,scale=1):
  a.static_mesh_component.modify();a.static_mesh_component.set_static_mesh(unreal.load_asset(ART+'/'+name));a.set_actor_scale3d(unreal.Vector(scale,scale,scale));a.static_mesh_component.set_collision_profile_name('NoCollision');return a
 for i in range(1,5):
  a=placed['Suministro_Temporal_'+str(i)];a.modify();a.static_mesh_component.modify();a.static_mesh_component.set_static_mesh(unreal.load_asset(ART+'/SM_CajaSuministros'));a.static_mesh_component.set_collision_profile_name('NoCollision');a.set_actor_scale3d(unreal.Vector(1,1,1));pos=a.get_actor_location();a.set_actor_location(unreal.Vector(pos.x,pos.y,2),False,True)
-prop('Consola_Bruno','SM_ConsolaTecnico',(-520,-960,2))
-prop('Muestra_Botiquin','SM_BotiquinTemporal',(-510,-960,108),.75)
-prop('Muestra_Celda','SM_CeldaTemporal',(-555,-955,108),.65)
-prop('Muestra_Credito','SM_CreditoCronal',(-485,-960,109),.6)
+table=prop('Consola_Bruno','SM_ConsolaTecnico',(-520,-960,0));table.static_mesh_component.set_collision_profile_name('BlockAll')
+for label,name,x,scale in [('Muestra_Botiquin','SM_BotiquinTemporal',-43,.75),('Muestra_Celda','SM_CeldaTemporal',0,.65),('Muestra_Credito','SM_CreditoCronal',43,.6)]:
+ a=prop(label,name,(-520+x,-942,95),scale);bounds=a.static_mesh_component.get_editor_property('static_mesh').get_bounds();bottom=bounds.origin.z-bounds.box_extent.z
+ a.set_actor_location(unreal.Vector(-520+x,-942,92.6-bottom*scale),False,True)
+ a.static_mesh_component.set_collision_enabled(unreal.CollisionEnabled.QUERY_ONLY);a.static_mesh_component.set_collision_response_to_all_channels(unreal.CollisionResponseType.ECR_IGNORE);a.static_mesh_component.set_collision_response_to_channel(unreal.CollisionChannel.ECC_VISIBILITY,unreal.CollisionResponseType.ECR_BLOCK)
 pond=prop('Lago_Retencion_Borde','SM_EstanqueRetencion',(3000,-1850,2))
 pond.static_mesh_component.set_collision_profile_name('BlockAll')
 surface=placed.get('Lago_Retencion_Agua') or actors.spawn_actor_from_class(unreal.StaticMeshActor,unreal.Vector(3000,-1850,5))

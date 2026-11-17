@@ -10,9 +10,9 @@ Una acción de patrulla. Escoge destino navegable y termina o aborta para devolv
 ## Entradas y responsabilidades del grafo
 
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_AIMoveTo`, `FinishExecute`, `FinishExecute`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnFail_9928681640477A1A6E9FE4BC4FE9C57C`** en `OnFail_9928681640477A1A6E9FE4BC4FE9C57C`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_Roam`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnSuccess_9928681640477A1A6E9FE4BC4FE9C57C`** en `OnSuccess_9928681640477A1A6E9FE4BC4FE9C57C`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_Roam`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_Roam`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnSuccess_9928681640477A1A6E9FE4BC4FE9C57C`** en `OnSuccess_9928681640477A1A6E9FE4BC4FE9C57C`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_Roam`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnFail_9928681640477A1A6E9FE4BC4FE9C57C`** en `OnFail_9928681640477A1A6E9FE4BC4FE9C57C`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_Roam`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -33,4 +33,4 @@ La exportación contiene 17 nodos con pines. Funciones referenciadas: `FinishExe
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `7519b98ec139fc9cc2b6e28e9adecaf7355e78a2447878e85f460bcb98d22799`.
+**Huella de exportación:** `744b98adf213350d23107a33eb55579d3864f0c1dcb95be0d1a5b5303017d472`.

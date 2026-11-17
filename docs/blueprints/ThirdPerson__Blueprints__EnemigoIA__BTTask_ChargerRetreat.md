@@ -12,9 +12,9 @@ Retirada local navegable respecto al objetivo de combate real. Limita longitud y
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar CachedPawn`, `FinishExecute`, `Asignar Elapsed`, `K2_ClearFocus`, `Asignar MaxWalkSpeed`, `Asignar BestDistance`, `Asignar RetreatGoal`, `FindPathToLocationSynchronously`, `Condición`, `Asignar RetreatGoal`, `Secuencia`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveTickAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar Elapsed`, `Condición`, `StopMovement`, `Condición`, `Asignar MaxWalkSpeed`, `FinishExecute`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `StopMovement`, `Asignar MaxWalkSpeed`, `FinishAbort`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerRetreat`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerRetreat`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `ReceiveAbortAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerRetreat`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerRetreat`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerRetreat`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -38,4 +38,4 @@ La exportación contiene 167 nodos con pines. Funciones referenciadas: `Abs`, `A
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `40e92c1e67ba6483b257100f668dfd2f901511d25c4e65001c6cf1666e7262ff`.
+**Huella de exportación:** `caeedc69e476f3f619d1d8f4ac4c06683c6fd5246bd47d6bfd12f8fb98c998ee`.

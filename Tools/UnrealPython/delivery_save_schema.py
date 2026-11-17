@@ -22,6 +22,7 @@ FIELDS = {
     'Rescued': 'bool', 'Accompanying': 'bool', 'Waiting': 'bool',
 }
 for i in (1,2,3,4):FIELDS['Recogido'+str(i)]='bool'
+for i in (1,2,3):FIELDS['MesaRecogido'+str(i)]='bool'
 for i in (1, 2, 3):
     for name, kind in [('Cleared', 'bool'), ('Wave', 'int'), ('Phase', 'int'), ('Spawned', 'int')]:
         FIELDS['Zone%d%s' % (i, name)] = kind

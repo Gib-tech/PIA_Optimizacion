@@ -43,7 +43,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 562 nodos con pines. Funciones referenciadas: `Add_IntInt`, `BooleanAND`, `BooleanOR`, `CreateSaveGameObject`, `EnableInput`, `EqualEqual_IntInt`, `GetActorOfClass`, `GetBlackboard`, `GetControlRotation`, `GetGameInstance`, `GetPlayerController`, `GetValueAsBool`, `GreaterEqual_IntInt`, `Greater_DoubleDouble`, `Greater_IntInt`, `Increase_Health`, `InitializeCheckpoint`, `InputActionHandlerDynamicSignature__DelegateSignature`, `IsMovingOnGround`, `K2_GetActorLocation`, `K2_GetActorRotation`, `K2_SetActorLocationAndRotation`, `Less_IntInt`, `LoadGameFromSlot`, `MakeLiteralName`, `NotEqual_BoolBool`, `NotEqual_DoubleDouble`, `NotEqual_IntInt`, `Not_PreBool`, `ReceiveTick`, `RestoreCheckpoint`, `SaveCheckpoint`, `SaveGameToSlot`, `SelectInt`, `SetActive`, `SetActorEnableCollision`, `SetActorHiddenInGame`, `SetControlRotation`, `SetMaterial`, `SetStaticMesh`, `SetValueAsBool`, `SetVisibility`, `UserConstructionScript`.
+La exportación contiene 586 nodos con pines. Funciones referenciadas: `Add_IntInt`, `BooleanAND`, `BooleanOR`, `CreateSaveGameObject`, `EnableInput`, `EqualEqual_IntInt`, `GetActorOfClass`, `GetBlackboard`, `GetControlRotation`, `GetGameInstance`, `GetPlayerController`, `GetValueAsBool`, `GreaterEqual_IntInt`, `Greater_DoubleDouble`, `Greater_IntInt`, `Increase_Health`, `InitializeCheckpoint`, `InputActionHandlerDynamicSignature__DelegateSignature`, `IsMovingOnGround`, `K2_GetActorLocation`, `K2_GetActorRotation`, `K2_SetActorLocationAndRotation`, `Less_IntInt`, `LoadGameFromSlot`, `MakeLiteralName`, `NotEqual_BoolBool`, `NotEqual_DoubleDouble`, `NotEqual_IntInt`, `Not_PreBool`, `ReceiveTick`, `RestoreCheckpoint`, `SaveCheckpoint`, `SaveGameToSlot`, `SelectInt`, `SetActive`, `SetActorEnableCollision`, `SetActorHiddenInGame`, `SetControlRotation`, `SetMaterial`, `SetStaticMesh`, `SetValueAsBool`, `SetVisibility`, `UserConstructionScript`.
 
 - `/Game/LevelMenu/BP_GameInstance.BP_GameInstance_C`
 - `/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage_C`
@@ -65,4 +65,4 @@ La exportación contiene 562 nodos con pines. Funciones referenciadas: `Add_IntI
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `2cb1606f35046155c408851a6f7b143cb197bf13ef6182738e2e88738de3c7cd`.
+**Huella de exportación:** `9f83719eb3aa796bef9005d6a94d6c8ce0e169c72e330aceb8cf03a85efa8305`.

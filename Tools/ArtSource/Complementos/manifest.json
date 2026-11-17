@@ -94,8 +94,10 @@
         "M_Apoyo_Cian",
         "M_Apoyo_Blanco"
       ],
-      "polygons": 1666,
-      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+      "polygons": 2744,
+      "authoring": "Mesa original asistida, build_support_workbench.py; reemplaza el kiosco anterior.",
+      "support_top_cm": 92.5,
+      "ucx_hulls": 11
     },
     {
       "name": "SM_EstanqueRetencion",

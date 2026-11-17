@@ -27,4 +27,4 @@ La exportación contiene 6 nodos con pines. Funciones referenciadas: `ReceiveAct
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `04b5adb5762293191550157ecbcbeb49fa3932befa9f785094a2b7e963ea050d`.
+**Huella de exportación:** `ffc3bf1065eec9018ffb0e76e037637f7ab7927fbb132595e26f6060bd503e5a`.

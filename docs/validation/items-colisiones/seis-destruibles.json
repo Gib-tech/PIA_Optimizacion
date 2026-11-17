@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "required_distinct_types": 6,
+  "tested_distinct_collections": 6,
+  "method": "PIE. Posición ante cada objeto y mejora del martillo preparadas. Entradas Enhanced Input, montajes y solapamiento físico real. Sin ApplyDamage ni invocación de callbacks de overlap.",
+  "objects": [
+    {
+      "label": "Destruible_Auto",
+      "name": "Auto",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2",
+      "proxy_center_cm": [
+        -3200.0,
+        -7050.000000000001,
+        79.99999999999997
+      ],
+      "initial_piece_count": 22,
+      "health_samples": [
+        50.0,
+        25.0,
+        0.0
+      ],
+      "chaos_break_events": 21,
+      "heavy_attack_attempts": 2
+    },
+    {
+      "label": "Destruible_Banca",
+      "name": "Banca",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco",
+      "proxy_center_cm": [
+        2900.0,
+        -3350.0000000000005,
+        45.0
+      ],
+      "initial_piece_count": 84,
+      "health_samples": [
+        25.0,
+        0.0
+      ],
+      "chaos_break_events": 83,
+      "heavy_attack_attempts": 1
+    },
+    {
+      "label": "Destruible_Barril",
+      "name": "Barril",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril",
+      "proxy_center_cm": [
+        -4500.0,
+        -5300.0,
+        54.99999999999999
+      ],
+      "initial_piece_count": 20,
+      "health_samples": [
+        25.0,
+        0.0
+      ],
+      "chaos_break_events": 19,
+      "heavy_attack_attempts": 1
+    },
+    {
+      "label": "Destruible_Basurero",
+      "name": "Basurero",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash",
+      "proxy_center_cm": [
+        900.0,
+        -1900.0,
+        50.00000000000001
+      ],
+      "initial_piece_count": 52,
+      "health_samples": [
+        25.0,
+        0.0
+      ],
+      "chaos_break_events": 51,
+      "heavy_attack_attempts": 1
+    },
+    {
+      "label": "Destruible_Caja",
+      "name": "Caja",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box",
+      "proxy_center_cm": [
+        520.0,
+        -900.0,
+        45.00000000000001
+      ],
+      "initial_piece_count": 21,
+      "health_samples": [
+        25.0,
+        0.0
+      ],
+      "chaos_break_events": 20,
+      "heavy_attack_attempts": 1
+    },
+    {
+      "label": "Destruible_Fuente",
+      "name": "Fuente",
+      "collection": "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente",
+      "proxy_center_cm": [
+        3200.0,
+        -3800.0,
+        79.99999999999999
+      ],
+      "initial_piece_count": 21,
+      "health_samples": [
+        25.0,
+        0.0
+      ],
+      "chaos_break_events": 20,
+      "heavy_attack_attempts": 1
+    }
+  ]
+}

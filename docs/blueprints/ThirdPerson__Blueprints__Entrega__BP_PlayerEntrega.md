@@ -14,8 +14,8 @@ Personaje jugable de la entrega. Añade ventanas de impacto, control de recupera
 - **`GrantHammerUpgrade`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar bHammerUpgraded`, `Asignar bDoorPending`, `Asignar RequiredDoor`, `Asignar UpgradeUntil`, `Asignar IsAttacking`, `Asignar bLightAttackActive`, `StopAnimMontage`, `Asignar bSaveLightAttack`, `ResetState`, `SetCollisionEnabled`, `SetVisibility`, `SetVisibility`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Operaciones alcanzables desde `then`: `UserConstructionScript`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`GrantHammerUpgrade`** en `GrantHammerUpgrade`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_PlayerEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_PlayerEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_PlayerEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_PlayerEntrega`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -96,4 +96,4 @@ La exportación contiene 415 nodos con pines. Funciones referenciadas: `Add_Doub
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `dac2114e2804beda1fc5e8a6c0316e51607273d618b85c798a7199b4f93e3bd0`.
+**Huella de exportación:** `45dad7779a95cdecd6c1cea881e0957ef72905eceb58e8312fbd65c8136b8b56`.

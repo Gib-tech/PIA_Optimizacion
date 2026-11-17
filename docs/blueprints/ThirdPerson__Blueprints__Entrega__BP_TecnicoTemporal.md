@@ -5,7 +5,7 @@
 **Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal`. **Tipo:** Blueprint.
 **Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.SkeletalMeshActor'"`.
 
-BRUNO es un robot de apoyo original fijado al suelo y a la red del recinto: no puede salir con los viajeros. ChasisRobot, CabezaRobot y AroConversion sustituyen por completo la malla humana heredada; el nombre de clase se conserva para compatibilidad. Tick sólo anima cabeza/aro/luz según bFabricating. BP_SistemasComplementarios decide conversación, energía y fabricación; este actor nunca concede recursos.
+BRUNO es un robot de apoyo original fijado al suelo y a la red del recinto: no puede salir con los viajeros. ChasisRobot, CabezaRobot y AroConversion sustituyen por completo la malla humana heredada; el nombre de clase se conserva para compatibilidad. ColisionRobot es una cápsula bloqueante de radio 37 y semialtura 79 cm; las piezas visuales no colisionan. Tick sólo anima cabeza/aro/luz según bFabricating. BP_SistemasComplementarios decide conversación, energía y fabricación; este actor nunca concede recursos.
 
 ## Entradas y responsabilidades del grafo
 
@@ -33,4 +33,4 @@ La exportación contiene 35 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `521481fc51d2785edb35cc10187ab169da87f7f691f93c52cf4e35a7e40a1dd5`.
+**Huella de exportación:** `48d62a4078b34e451ecfca3b1f47e292cd41e94ba65e41e0d76958bc2dc03996`.

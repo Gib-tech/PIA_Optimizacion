@@ -11,8 +11,8 @@ Fija el foco del controlador en el objetivo de combate y devuelve el control al 
 
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar CachedPawn`, `FinishExecute`, `Condición`, `K2_SetFocus`, `FinishExecute`, `FinishExecute`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `FinishAbort`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_FaceCombatTarget`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `ReceiveAbortAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_FaceCombatTarget`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_FaceCombatTarget`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -33,4 +33,4 @@ La exportación contiene 20 nodos con pines. Funciones referenciadas: `FinishAbo
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `4dfaea4caf22d5c3d412f9b36f34480307129189bbcae70a6bc0af436244aa33`.
+**Huella de exportación:** `71a7d6e9b390d847993b4424ffb3624285e7a4c1da8f02ec8c4b828968ac153f`.

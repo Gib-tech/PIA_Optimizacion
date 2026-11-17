@@ -13,10 +13,10 @@ Interfaz de pausa con reanudar, guardar, opciones y regreso al menú. Los botone
 - **`Botón btn_opciones_pausa`** en `EventGraph`. Operaciones alcanzables desde `then`: `GetActorOfClass`, `K2Node_DynamicCast`, `OpenOptions`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Botón btn_irmenu_pausa`** en `EventGraph`. Operaciones alcanzables desde `then`: `GetActorOfClass`, `K2Node_DynamicCast`, `ClosePause`, `OpenLevel`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Botón btn_salvarjuego_pausa`** en `EventGraph`. Operaciones alcanzables desde `then`: `GetActorOfClass`, `K2Node_DynamicCast`, `SaveCheckpoint`, `SetText`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_reanudar_pausa_Control_0_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_opciones_pausa_Control_1_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_irmenu_pausa_Control_2_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_salvarjuego_pausa_Control_3_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_irmenu_pausa_Control_2_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_opciones_pausa_Control_1_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Pausa_btn_reanudar_pausa_Control_0_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Pausa`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Operaciones y dependencias verificadas
 
@@ -38,4 +38,4 @@ La exportación contiene 31 nodos con pines. Funciones referenciadas: `ClosePaus
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `e2daf9e93b8ee35fc8431d7ab57b4cb2d45f2ef8384bb5f47d4436d06810d74d`.
+**Huella de exportación:** `4c28238b8c54933dc131b7b60e14989381f21a873862ee01052b68b2988baa92`.

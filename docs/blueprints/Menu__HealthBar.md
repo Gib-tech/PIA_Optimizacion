@@ -26,4 +26,4 @@ La exportación contiene 3 nodos con pines. Funciones referenciadas: `Construct`
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `7e2dc8c9edfe97c1ab602b73cb772a9257c8eaa3139a989c52a104b0acd695d2`.
+**Huella de exportación:** `d5c7c5ba078d9db97e3873eee539de3166e58f6692bfade83867ff7a4671a145`.

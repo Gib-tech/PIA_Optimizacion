@@ -30,6 +30,8 @@ Recursos en `/Game/ThirdPerson/Environment/Evaluation/`. Son copias de modelos e
 
 ## Seis destruibles y ocho efectos
 
+Ver [ITEMS_Y_DESTRUIBLES.md](ITEMS_Y_DESTRUIBLES.md) para la prueba actual de los seis tipos, etiquetas del Outliner, recogida de mesa y colisiones.
+
 `BP_DestruibleEntrega` adapta el Blueprint del equipo, conserva sus colecciones y recibe daño desde el overlap real del arma. Salud 50: dos pesados o varios ligeros. La fractura usa CrumbleActiveClusters e impulso; el contador ChaosBreakCount recibe los eventos físicos. Restos sin bloquear personajes/cámara, vida 8 s. Los objetos decorativos no se guardan en el checkpoint.
 
 - Caja: (520,-900), `GC_box`.
@@ -45,7 +47,7 @@ Ocho sistemas diferentes: `NS_Hojas` junto al árbol; `NS_Polvo` en la primera z
 
 Level Blueprint contiene macros `AmbosAliadosVivos`, `SecuenciaResuelta`; funciones `ConsultarAliados`, `ConsultarSecuencia`; eventos `InicializarSenales`, `SincronizarExtraccion`. BeginPlay agenda inicialización una vez y sincronización cada .2 s mediante delegados de timer. Las funciones llaman a las macros y deciden la visibilidad de `FX_Extraccion`. Contadores Inicializaciones/Sincronizaciones permiten inspeccionar su ejecución.
 
-DirectionalLight y SkyLight móviles, cielo sin captura continua; Rect en rescate, Point en depósito y Spot junto al poste de acceso al patio, con fuentes visibles. Radios10/7/11m, máximo24m y fade3.5m, sólo Rect con sombras locales. Niagara ambiental se suspende por distancia/frustum y vuelve al entrar; física de destruibles sólo al romper. Ver `ESCENARIO_COMPOUND.md`. Esto no acredita una ganancia de FPS ni rendimiento en otra PC.
+DirectionalLight y SkyLight móviles, captura continua del cielo a 128; Rect en rescate, Point en depósito y Spot junto al poste de acceso al patio, con fuentes visibles. Radios10/7/11m, máximo24m y fade3.5m, sólo Rect con sombras locales. Niagara ambiental se suspende por distancia/frustum y vuelve al entrar; física de destruibles sólo al romper. Ver `ESCENARIO_COMPOUND.md`. Esto no acredita una ganancia de FPS ni rendimiento en otra PC.
 
 ## Inventario y pendientes
 

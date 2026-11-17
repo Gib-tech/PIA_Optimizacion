@@ -13,7 +13,7 @@ Recurso de animación/rig del personaje. Sus grafos forman parte de la cadena de
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 3 nodos con pines. Funciones referenciadas: `BlueprintUpdateAnimation`, `TryGetPawnOwner`.
+La exportación contiene 4 nodos con pines. Funciones referenciadas: `BlueprintUpdateAnimation`, `TryGetPawnOwner`.
 
 - `/Game/Characters/Mannequins/Animations/ABP_Manny.ABP_Manny_C`
 - `/Game/Characters/Mannequins/Animations/Quinn/BS_MF_Unarmed_WalkRun.BS_MF_Unarmed_WalkRun`
@@ -27,4 +27,4 @@ La exportación contiene 3 nodos con pines. Funciones referenciadas: `BlueprintU
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `01645f54735c8e5c995d0570604ac36ae898a0e9bec50886243247956f3cab2c`.
+**Huella de exportación:** `0af475e119b9e0622789e8d160906a6a9406eabd739430dd9c48d9208f41d47a`.

@@ -75,6 +75,9 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 - `RobotEnergy` — tipo `int`.
 - `bFabricating` — tipo `bool`.
 - `FabricationProgress` — tipo `real`.
+- `MesaRecogido1` — tipo `bool`.
+- `MesaRecogido2` — tipo `bool`.
+- `MesaRecogido3` — tipo `bool`.
 
 ## Operaciones y dependencias verificadas
 
@@ -88,4 +91,4 @@ La exportación contiene 0 nodos con pines. Funciones referenciadas: .
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `4d72a0a9100093808af514d5fcf23d529af7b5f99c9714adad01e66d4409a2a3`.
+**Huella de exportación:** `de045ce7e8a5cd9e8f766d226cbb05bc1280cdd88f69d01a1232539e40abb310`.

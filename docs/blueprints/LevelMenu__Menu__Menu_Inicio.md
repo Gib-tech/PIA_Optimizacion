@@ -17,12 +17,18 @@ Menú de entrada con Nuevo juego, Continuar validado, opciones y salida. Nuevo j
 - **`Botón btn_opciones_menu`** en `EventGraph`. Operaciones alcanzables desde `then`: `RemoveFromParent`, `K2Node_CreateWidget`, `AddToViewport`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`Botón btn_continuar_menu`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_AddDelegate`, `LoadGame`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`GameLoadCompleted`** en `EventGraph`. Operaciones alcanzables desde `then`: `OpenLevelBySoftObjectPtr`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Construct`** en `Construct`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_nuevojuego_menu_K2Node_ComponentBoundEvent_0_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_salir_menu_K2Node_ComponentBoundEvent_1_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_opciones_menu_K2Node_ComponentBoundEvent_2_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_continuar_menu_K2Node_ComponentBoundEvent_3_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Construct`** en `ExecuteUbergraph_Menu_Inicio`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar Game Instance`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón btn_nuevojuego_menu`** en `ExecuteUbergraph_Menu_Inicio`. Operaciones alcanzables desde `then`: `CreateSaveGame`, `OpenLevel`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón btn_salir_menu`** en `ExecuteUbergraph_Menu_Inicio`. Operaciones alcanzables desde `then`: `QuitGame`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón btn_opciones_menu`** en `ExecuteUbergraph_Menu_Inicio`. Operaciones alcanzables desde `then`: `RemoveFromParent`, `Create`, `AddToViewport`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Botón btn_continuar_menu`** en `ExecuteUbergraph_Menu_Inicio`. Operaciones alcanzables desde `then`: `K2Node_AddDelegate`, `LoadGame`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`GameLoadCompleted`** en `ExecuteUbergraph_Menu_Inicio`. Operaciones alcanzables desde `then`: `OpenLevelBySoftObjectPtr`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`GameLoadCompleted`** en `GameLoadCompleted`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_continuar_menu_K2Node_ComponentBoundEvent_3_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_opciones_menu_K2Node_ComponentBoundEvent_2_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_salir_menu_K2Node_ComponentBoundEvent_1_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnButtonClickedEvent__DelegateSignature`** en `BndEvt__Menu_Inicio_btn_nuevojuego_menu_K2Node_ComponentBoundEvent_0_OnButtonClickedEvent__DelegateSignature`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Construct`** en `Construct`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_Menu_Inicio`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -32,7 +38,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 34 nodos con pines. Funciones referenciadas: `AddToViewport`, `Construct`, `CreateSaveGame`, `GameLoadCompleted`, `GetGameInstance`, `LoadGame`, `OnButtonClickedEvent__DelegateSignature`, `OpenLevel`, `OpenLevelBySoftObjectPtr`, `PreConstruct`, `QuitGame`, `RemoveFromParent`, `Tick`.
+La exportación contiene 56 nodos con pines. Funciones referenciadas: `AddToViewport`, `Construct`, `Create`, `CreateSaveGame`, `GameLoadCompleted`, `GetGameInstance`, `LoadGame`, `OnButtonClickedEvent__DelegateSignature`, `OpenLevel`, `OpenLevelBySoftObjectPtr`, `PreConstruct`, `QuitGame`, `RemoveFromParent`, `Tick`.
 
 - `/Game/LevelMenu/BP_GameInstance.BP_GameInstance_C`
 - `/Game/LevelMenu/BP_SaveGame.BP_SaveGame_C`
@@ -52,4 +58,4 @@ La exportación contiene 34 nodos con pines. Funciones referenciadas: `AddToView
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `d93fceb22db23512336f932b78923ed657ccfd28ac7d5ce8ce045fa0aba762ff`.
+**Huella de exportación:** `c947469ad663d9969757296ed22db72b86147fb925fe4c0c114ffb849ec5991c`.

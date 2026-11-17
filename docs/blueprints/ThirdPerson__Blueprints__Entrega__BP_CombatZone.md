@@ -12,8 +12,8 @@ Encuentro con dos oleadas de dos enemigos. Requiere rehén siguiendo y requisito
 - **`ReceiveTick`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_SwitchInteger`, `Condición`, `Asignar LivingCount`, `Condición`, `GetActorOfClass`, `K2Node_MacroInstance`, `Array_Clear`, `Condición`, `Condición`, `Condición`, `Asignar CurrentWave`, `Condición`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`StartWave`** en `EventGraph`. Operaciones alcanzables desde `then`: `Array_Clear`, `Asignar CurrentWave`, `K2Node_SpawnActorFromClass`, `Asignar EncounterZone`, `Array_AddUnique`, `K2Node_SpawnActorFromClass`, `Asignar EncounterZone`, `Array_AddUnique`, `Asignar Phase`, `Asignar LivingCount`, `Asignar SpawnedCount`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_CombatZone`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`StartWave`** en `StartWave`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_CombatZone`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_CombatZone`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -52,4 +52,4 @@ La exportación contiene 84 nodos con pines. Funciones referenciadas: `Add_Doubl
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `3e5481ab908d37fb0ab958d36b7324fe49237ebb0df9b9d21e0007360a9829f0`.
+**Huella de exportación:** `964562f7ab4db9cdc85dbad3682770c37387697b6eac9b6f27c467e1f9c58d1f`.

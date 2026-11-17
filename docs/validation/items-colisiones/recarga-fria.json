@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "normal_editor_without_helper": true,
+  "robot_blocks": true,
+  "table_blocks_with_eleven_ucx": true,
+  "native_save": {
+    "PlayerHealth": 100.0,
+    "ExtrasRevision": 3,
+    "Botiquines": 0,
+    "Cargas": 2,
+    "Creditos": 3,
+    "MesaRecogido1": true,
+    "MesaRecogido2": false,
+    "MesaRecogido3": false
+  },
+  "temporary_slot_removed": true,
+  "dirty_packages": []
+}

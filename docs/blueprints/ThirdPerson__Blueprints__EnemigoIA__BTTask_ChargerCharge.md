@@ -12,9 +12,9 @@ Desplazamiento rápido hacia el punto comprometido. Al llegar se detiene y solic
 - **`ReceiveExecuteAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar CachedPawn`, `FinishExecute`, `Asignar Elapsed`, `Asignar RepathAt`, `Asignar bAttackStarted`, `Asignar GlobalAnimRateScale`, `Asignar MaxWalkSpeed`, `MoveToLocation`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveTickAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `Asignar Elapsed`, `Condición`, `UpdateStrike`, `Condición`, `Condición`, `StopMovement`, `Condición`, `StopMovement`, `Asignar GlobalAnimRateScale`, `StopMovement`, `Condición`, `Asignar GlobalAnimRateScale`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `EventGraph`. Operaciones alcanzables desde `then`: `StopMovement`, `Asignar GlobalAnimRateScale`, `EndAttack`, `Asignar MaxWalkSpeed`, `SetValueAsBool`, `SetValueAsBool`, `FinishAbort`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerCharge`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerCharge`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveAbortAI`** en `ReceiveAbortAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerCharge`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTickAI`** en `ReceiveTickAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerCharge`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveExecuteAI`** en `ReceiveExecuteAI`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BTTask_ChargerCharge`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -39,4 +39,4 @@ La exportación contiene 110 nodos con pines. Funciones referenciadas: `Add_Doub
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `b7daca6889e53222d432ca971ebf69ef99765243095dec58be876e331eef2f06`.
+**Huella de exportación:** `7870475a0760270a687150bfb2eb356e58f54a84fed23acd0cee2e7b0c67852c`.

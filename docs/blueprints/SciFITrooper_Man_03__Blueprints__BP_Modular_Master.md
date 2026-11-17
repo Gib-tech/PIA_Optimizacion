@@ -9,9 +9,11 @@ Recurso del proveedor o ejemplo del pack. Se documentan sus grafos y referencias
 
 ## Entradas y responsabilidades del grafo
 
-- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Modular_Master`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`ReceiveBeginPlay`** en `EventGraph`. Operaciones alcanzables desde `then`: `ReceiveBeginPlay`, `K2Node_DynamicCast`, `Asignar IsModular`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Operaciones alcanzables desde `then`: `UserConstructionScript`, `SetLeaderPoseComponent`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `ExecuteUbergraph_BP_Modular_Master`. Operaciones alcanzables desde `then`: `ReceiveBeginPlay`, `K2Node_DynamicCast`, `Asignar IsModular`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_Modular_Master`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UserConstructionScript`** en `UserConstructionScript_MERGED`. Operaciones alcanzables desde `then`: `UserConstructionScript`, `SetLeaderPoseComponent`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -23,7 +25,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 18 nodos con pines. Funciones referenciadas: `GetAnimInstance`, `ReceiveBeginPlay`, `SetLeaderPoseComponent`, `UserConstructionScript`.
+La exportación contiene 35 nodos con pines. Funciones referenciadas: `GetAnimInstance`, `ReceiveBeginPlay`, `SetLeaderPoseComponent`, `UserConstructionScript`.
 
 - `/Game/SciFITrooper_Man_03/Blueprints/AnimBP/ABP_SciFiTrooperManV3.ABP_SciFiTrooperManV3_C`
 - `/Game/SciFITrooper_Man_03/Blueprints/BP_Character_Master.BP_Character_Master_C`
@@ -35,4 +37,4 @@ La exportación contiene 18 nodos con pines. Funciones referenciadas: `GetAnimIn
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `868cfb189719ed8bb86a96b360301f2361db6796c6e007d2e98519b8064d4f1c`.
+**Huella de exportación:** `3fb455a1d29d5d8eb81008420c54980ecca90c47ed70083cd90fea130ef44b92`.

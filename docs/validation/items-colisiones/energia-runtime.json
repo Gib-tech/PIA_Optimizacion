@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "method": "PIE en tiempo real. Posición y saldos iniciales preparados; recogida, diálogo, conversión y SaveCheckpoint/RestoreCheckpoint reales. No recorrido natural ni mando físico.",
+  "checks": [
+    "caja_real_recogida_una_vez_1_3_3",
+    "robot_original_en_tres_piezas_sin_modelo_humano",
+    "dialogo_explica_anclaje_y_conversion_tres_creditos_una_orden",
+    "pausa_real_detiene_cielo_fabricacion_y_animacion",
+    "checkpoint_en_proceso_restaura_energia_progreso_y_fase_sin_duplicar",
+    "finalizacion_despues_de_tres_segundos_un_solo_botiquin",
+    "sin_saldo_no_inicia_no_negativos_no_recompensa_extra",
+    "guardado_revision_anterior_conserva_inventario_sin_trabajo_fantasma"
+  ],
+  "fabrication_seconds": 3,
+  "pause_wall_seconds": 1,
+  "saved_progress": 0.3666722998023033,
+  "saved_world_seconds": 151.48154919967055
+}

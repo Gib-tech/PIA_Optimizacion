@@ -150,11 +150,6 @@
     "descripcion_espanola": true
   },
   {
-    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega",
-    "entradas_comentadas": 7,
-    "descripcion_espanola": true
-  },
-  {
     "blueprint": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector",
     "entradas_comentadas": 17,
     "descripcion_espanola": true
@@ -355,6 +350,11 @@
     "descripcion_espanola": true
   },
   {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega",
+    "entradas_comentadas": 7,
+    "descripcion_espanola": true
+  },
+  {
     "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
     "entradas_comentadas": 7,
     "descripcion_espanola": true
@@ -367,6 +367,11 @@
   {
     "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal",
     "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PulsoTemporalVisual",
+    "entradas_comentadas": 4,
     "descripcion_espanola": true
   }
 ]

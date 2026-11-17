@@ -31,6 +31,7 @@ Los identificadores se conservan como aparecen en Unreal para que el equipo pued
 - `bBroken` — tipo `bool`.
 - `ChaosBreakCount` — tipo `int`.
 - `BreakFX` — tipo `object`.
+- `NombreDestruible` — tipo `string`.
 
 ## Operaciones y dependencias verificadas
 
@@ -47,4 +48,4 @@ La exportación contiene 54 nodos con pines. Funciones referenciadas: `AddRadial
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `db4fcb8d4a9d5842b926c390cab05db2c05f42a3c6871e4436ba0cd4a1a602f9`.
+**Huella de exportación:** `faade0a854381103672d8427de4cb5243469a636640a648f1b599351aa55c6fa`.

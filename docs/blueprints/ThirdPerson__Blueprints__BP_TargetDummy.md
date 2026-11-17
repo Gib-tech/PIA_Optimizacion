@@ -13,10 +13,11 @@ Actor de práctica original. Útil para depurar contactos; no sustituye pruebas 
 - **`ReceiveActorBeginOverlap`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`ReceiveTick`** en `EventGraph`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
+- **`UserConstructionScript`** en `UserConstructionScript_MERGED`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
 
 ## Operaciones y dependencias verificadas
 
-La exportación contiene 4 nodos con pines. Funciones referenciadas: `ReceiveActorBeginOverlap`, `ReceiveBeginPlay`, `ReceiveTick`, `UserConstructionScript`.
+La exportación contiene 5 nodos con pines. Funciones referenciadas: `ReceiveActorBeginOverlap`, `ReceiveBeginPlay`, `ReceiveTick`, `UserConstructionScript`.
 
 
 ## Cómo modificarlo sin romper el flujo
@@ -26,4 +27,4 @@ La exportación contiene 4 nodos con pines. Funciones referenciadas: `ReceiveAct
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `15128642aac5060cc40fb029b7c3bda1b817cbda61cdd007a0d60eddaacb5af5`.
+**Huella de exportación:** `3ca271aecfde4ce75b6f685198ddb6aad5df5472c6341975f18edc77bd3a7288`.

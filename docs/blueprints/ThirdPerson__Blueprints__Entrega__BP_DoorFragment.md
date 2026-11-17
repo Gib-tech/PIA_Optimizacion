@@ -32,4 +32,4 @@ La exportación contiene 16 nodos con pines. Funciones referenciadas: `AddImpuls
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `6ec4df8de90a83e69866b1d572dcc2a6babb87e34bca8cf36c415420add9c07e`.
+**Huella de exportación:** `2617cf51603eddd4545a52826787b6c6282e8bfa758d4f4f5e318d7c2cf49a30`.

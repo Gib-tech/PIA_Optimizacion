@@ -18,14 +18,14 @@ Enemigo orbitador y base común de combate. Expone acciones que invocan las tare
 - **`UpdateStrike`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `K2_SetActorRotation`, `Condición`, `Condición`, `Condición`, `Asignar bAttackResolved`, `ApplyDamage`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`FinishFinalWords`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Asignar bFinalWordsPending`, `PlayAnimMontage`, `SetLifeSpan`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
-- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Enemy_Death`** en `Enemy_Death`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`OnHealthChanged`** en `OnHealthChanged`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`Attack`** en `Attack`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`ResolveAttack`** en `ResolveAttack`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`EndAttack`** en `EndAttack`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`UpdateStrike`** en `UpdateStrike`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`FinishFinalWords`** en `FinishFinalWords`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UpdateStrike`** en `UpdateStrike`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`EndAttack`** en `EndAttack`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ResolveAttack`** en `ResolveAttack`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Attack`** en `Attack`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`OnHealthChanged`** en `OnHealthChanged`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Enemy_Death`** en `Enemy_Death`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveBeginPlay`** en `ReceiveBeginPlay`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_BaseEnemy`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -72,4 +72,4 @@ La exportación contiene 225 nodos con pines. Funciones referenciadas: `Add_Doub
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `514108159c1798428ee69f3034d2b768eace0f59a1839e2c26ef70b3afb7fda5`.
+**Huella de exportación:** `5ba1f48a03b1c0d6abb28042d12c5de9109aeefeca0942475b7b56cd06573836`.

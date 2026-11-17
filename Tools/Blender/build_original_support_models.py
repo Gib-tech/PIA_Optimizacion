@@ -61,3 +61,6 @@ mesh=bpy.data.meshes.new('Cubeta');mesh.from_pydata(verts,[],faces);obj=bpy.data
 finish('EstanqueRetencion')
 (OUT/'manifest.json').write_text(json.dumps({'palette':palette,'models':rows},indent=2,ensure_ascii=False),encoding='utf-8')
 print('ORIGINAL_SUPPORT_MODELS_READY',len(rows))
+# La mesa revisada reemplaza el kiosco anterior también al regenerar todo.
+import runpy
+runpy.run_path(str(Path(__file__).with_name('build_support_workbench.py')),run_name='__main__')

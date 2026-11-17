@@ -23,4 +23,4 @@ La exportación contiene 1 nodos con pines. Funciones referenciadas: `UserConstr
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `2dcba3720efade29b7a5d31ed43b602abe70508a7eb378ae2964bd1b8d74cbd1`.
+**Huella de exportación:** `8e555c45c4dae2fb08b9dc431abcbe9b59fba1f736e370ec06f01d7e0dc3000f`.

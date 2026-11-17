@@ -12,10 +12,10 @@ AnimBlueprint del protagonista usado con la malla del viajero. Mezcla locomoció
 - **`BlueprintUpdateAnimation`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_VariableGet`, `Secuencia`, `K2Node_Knot`, `K2Node_Knot`, `K2Node_Knot`, `Asignar Velocity`, `Asignar ShouldMove`, `Asignar IsFalling`, `Asignar GroundSpeed`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`BlueprintInitializeAnimation`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar Character`, `Asignar MovementComponent`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`AnimNotify_canAttack`** en `EventGraph`. Operaciones alcanzables desde `then`: `K2Node_DynamicCast`, `Asignar IsAttacking`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`BlueprintUpdateAnimation`** en `BlueprintUpdateAnimation`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`BlueprintInitializeAnimation`** en `BlueprintInitializeAnimation`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
-- **`EvaluateGraphExposedInputs_ExecuteUbergraph_ABP_Manny_AnimGraphNode_TransitionResult_305F37BB4A5AD886760B8E99A5C561E1`** en `EvaluateGraphExposedInputs_ExecuteUbergraph_ABP_Manny_AnimGraphNode_TransitionResult_305F37BB4A5AD886760B8E99A5C561E1`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
 - **`AnimNotify_canAttack`** en `AnimNotify_canAttack`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`EvaluateGraphExposedInputs_ExecuteUbergraph_ABP_Manny_AnimGraphNode_TransitionResult_305F37BB4A5AD886760B8E99A5C561E1`** en `EvaluateGraphExposedInputs_ExecuteUbergraph_ABP_Manny_AnimGraphNode_TransitionResult_305F37BB4A5AD886760B8E99A5C561E1`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`BlueprintInitializeAnimation`** en `BlueprintInitializeAnimation`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`BlueprintUpdateAnimation`** en `BlueprintUpdateAnimation`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_ABP_Manny`. Las condiciones del grafo deciden qué rama se ejecuta.
 
 ## Campos propios declarados
 
@@ -56,4 +56,4 @@ La exportación contiene 113 nodos con pines. Funciones referenciadas: `AnimNoti
 3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
 4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
 
-**Huella de exportación:** `db629682bcab46be46637b405a8e33f5ab1a72ec2c44ae7ad6233ea794c00e99`.
+**Huella de exportación:** `c75b6dd14da59d8d9b935e4f72e79cc3587f9b6de15026fe6652c493ff670ddf`.
