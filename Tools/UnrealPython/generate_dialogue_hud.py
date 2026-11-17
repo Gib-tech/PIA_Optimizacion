@@ -36,9 +36,9 @@ MESSAGES=[
  ('BALIZA ACTIVADA','Segunda baliza activada. Encuentra la última baliza y mantén al rehén contigo.','Continúa con el rehén'),
  ('EXTRACCIÓN','Las tres balizas responden. Llega a la salida azul junto con el rehén.','Llegar solo no completa la misión'),
  ('FALTA ALGUIEN','No puedes dejarlo atrás. Reúnete con el rehén y entra con él a la salida.','[E / RB] Recuperar al rehén'),
- ('A SALVO','Lo lograron. El rehén está a salvo.','[R] Reintentar    [ENTER] Menú'),
- ('OTRA OPORTUNIDAD','Esta vez no pudo ser. Todavía puedes volver a intentarlo.','[R] Reintentar    [ENTER] Menú'),
- ('REHÉN PERDIDO','El rehén no sobrevivió. Mantente cerca y protege su retirada.','[R] Reintentar    [ENTER] Menú'),
+ ('A SALVO','Lo lograron. El rehén está a salvo.','[R / A] Reintentar    [ENTER / cruceta abajo] Menú'),
+ ('OTRA OPORTUNIDAD','Esta vez no pudo ser. Todavía puedes volver a intentarlo.','[R / A] Reintentar    [ENTER / cruceta abajo] Menú'),
+ ('REHÉN PERDIDO','El rehén no sobrevivió. Mantente cerca y protege su retirada.','[R / A] Reintentar    [ENTER / cruceta abajo] Menú'),
  ('REHÉN','Estoy activando la baliza. Dame tres segundos y cuida mi espalda.','Activación en curso'),
  ('MARTILLO MEJORADO','La baliza cargó tu martillo. Ya está equipado: úsalo para destruir la puerta de esta zona.','Clic derecho: golpear la puerta'),
  ('PUERTA SELLADA','Sólo el rehén puede cargar la baliza. Primero despeja sus oleadas y luego llévalo hasta ella.','Recupera al rehén y escolta su avance'),
@@ -51,13 +51,14 @@ for i in [15,16]:MESSAGES[i]=('ZONA DESPEJADA','El martillo está cargado. Rompe
 for i in [17,18,19]:MESSAGES[i]=('SECUENCIA DE BALIZAS','Sigue el orden de la pantalla. Sólo la baliza indicada acepta la canalización del rehén.','Llévalo a la señal azul y espera tres segundos')
 for i in [20,21]:MESSAGES[i]=('BALIZA ACTIVADA','Sigue la secuencia indicada en pantalla. Lleva al rehén hasta la siguiente señal azul.','Las balizas verdes ya están activadas')
 MESSAGES[22]=('EXTRACCIÓN','Secuencia completada. Rompe la última puerta y llega a la salida azul con el rehén.','Clic derecho: romper la puerta final')
-MESSAGES[25]=('OTRA OPORTUNIDAD','Esta vez no pudo ser. Un nuevo intento sortea otra secuencia y reinicia el cronómetro.','[R] Nuevo intento    [ENTER] Menú')
-MESSAGES[26]=('REHÉN PERDIDO','El rehén no sobrevivió. Mantente cerca y protege su retirada.','[R] Nuevo intento    [ENTER] Menú')
+MESSAGES[25]=('OTRA OPORTUNIDAD','Esta vez no pudo ser. Un nuevo intento sortea otra secuencia y reinicia el cronómetro.','[R / A] Nuevo intento    [ENTER / cruceta abajo] Menú')
+MESSAGES[26]=('REHÉN PERDIDO','El rehén no sobrevivió. Mantente cerca y protege su retirada.','[R / A] Nuevo intento    [ENTER / cruceta abajo] Menú')
 MESSAGES[28]=('MARTILLO CARGADO','Tu martillo está equipado. Dos golpes pesados abren la puerta habilitada.','Clic derecho: golpear la puerta')
 MESSAGES.extend([
  ('GUARDIA FINAL · OLEADA 1 / 2','Orbitadores y embestidores protegen la secuencia. Despeja esta última zona antes de usar las balizas.','Protege la retirada del rehén'),
  ('GUARDIA FINAL · OLEADA 2 / 2','Es la última resistencia. Uno de ellos conoce el orden de las balizas.','Vence al último guardián'),
  ('SECUENCIA REVELADA','El último guardián reveló la clave. Recupera al rehén y sigue el orden de la pantalla.','[E / RB] Recuperar al rehén')])
+MESSAGES.append(('BRUNO · ROBOT DE APOYO','Estoy anclado a esta red: no puedo cruzar la extracción. Los créditos son celdas recuperadas. Convierto 3 en energía y fabrico un botiquín; no es un pago. Mi misión es ayudarlos a salir.','[E / RB] de nuevo: convertir 3 créditos · fabricar en 3 s'))
 class DialogueGraph(CombatGraph):
     def node(self,kind,props=(),**pos):
         i=len(self.nodes);pos.setdefault('x',(i%9)*380);pos.setdefault('y',(i//9)*310)
@@ -112,7 +113,8 @@ def sound(prev,name,volume=None,pin='then',spawn=False):
     g.chain(prev,n,pin);return n
 # Cache actors once; gameplay remains entirely in existing director and behavior trees.
 begin=g.event(ACTOR,'ReceiveBeginPlay');prev=begin
-for name,cls in [('CachedDirector',DIRECTOR),('CachedHostage',HOSTAGE)]:
+from generate_rubric_systems import EXTRAS
+for name,cls in [('CachedDirector',DIRECTOR),('CachedExtras',EXTRAS),('CachedHostage',HOSTAGE)]:
     n=g.call('/Script/Engine.GameplayStatics','GetActorOfClass',static=True).pin('ActorClass','class',obj=ACTOR,default_obj=cls).pin('ReturnValue','object',obj=cls,out=True);g.chain(prev,n)
     s=g.set(name,'object',None,obj=cls);g.chain(n,s);g.wire(n,'ReturnValue',s,name);prev=s
 initial_host_hit=g.get('DamageNoticeSerial','int',owner=HOSTAGE);g.wire(s,'Output_Get',initial_host_hit,'self')
@@ -127,6 +129,7 @@ cache=g.set('AmbientAudio','object',None,obj='/Script/Engine.AudioComponent');g.
 # Enter reveals the sentence immediately; a second press dismisses this context.
 key=g.key('Enter');length=call(STRING,'Len',[('S','string',v('FullText'))],cat='int')
 reading=branch(key,cmp('Less_IntInt',v('VisibleCharacters'),length),'Pressed')
+pad=g.key('Gamepad_DPad_Up');g.chain(pad,reading,'Pressed')
 save(reading,'ForceReveal',True)
 save(reading,'DismissedDialog',v('CurrentDialog'),'else')
 draw=g.event(HUD,'ReceiveDrawHUD').pin('SizeX','int',out=True).pin('SizeY','int',out=True)
@@ -192,6 +195,9 @@ context=pick(cmp('Greater_DoubleDouble',(upuntil,'UpgradeUntil'),game_now,'real'
 using=g.get('bUsingBeacon','bool',owner=HOSTAGE);g.wire(hostage,'CachedHostage',using,'self')
 context=pick((using,'bUsingBeacon'),27,context)
 context=pick(cmp('GreaterEqual_IntInt',step,4),calc('Add_IntInt',20,step,'int'),context)
+extras=g.get('CachedExtras','object',obj=EXTRAS)
+tech_until=g.get('DialogUntil','real',owner=EXTRAS,sub='double');g.wire(extras,'CachedExtras',tech_until,'self')
+context=pick(both(cmp('Less_IntInt',step,4),cmp('Greater_DoubleDouble',(tech_until,'DialogUntil'),game_now,'real')),34,context)
 current=save(hero,'CurrentDialog',context)
 texts=['\n'.join('* '+line for line in textwrap.wrap(m[1],width=58)) for m in MESSAGES]
 prev=current
@@ -348,7 +354,8 @@ wc=call(STRING,'Conv_IntToString',[('InInt','int',wave)],cat='string');lc=call(S
 def concat(a,b):return call(STRING,'Concat_StrStr',[('A','string',a),('B','string',b)],cat='string')
 counters=concat(concat(concat('OLEADA ',wc),' / 2    VIVOS '),lc)
 counter=text(active,counters,add(chipx,mul(12,scale)),add(chipy,mul(119,scale)),1.0)
-box=branch(counter,v('DialogueVisible'));g.chain(active,box,'else')
+inventory_open=g.get('InventoryOpen','bool',owner=EXTRAS);g.wire(extras,'CachedExtras',inventory_open,'self')
+box=branch(counter,both(v('DialogueVisible'),neg((inventory_open,'InventoryOpen'))));g.chain(active,box,'else')
 outer=rect(box,x,y,bw,bh,'(R=1,G=1,B=1,A=1)')
 inner=rect(outer,add(x,mul(3,scale)),add(y,mul(3,scale)),sub(bw,mul(6,scale)),sub(bh,mul(6,scale)),'(R=0,G=0,B=0,A=1)')
 speaker=text(inner,v('Speaker'),add(x,mul(28,scale)),add(y,mul(15,scale)),1.1)
@@ -356,7 +363,7 @@ body=text(speaker,v('VisibleText'),add(x,mul(28,scale)),add(y,mul(43,scale)),1.8
 action=text(body,v('ActionHint'),add(x,mul(28,scale)),add(y,mul(150,scale)),1.1)
 end=cmp('Less_IntInt',step,4)
 hint=branch(action,end)
-text(hint,'ENTER: leer / cerrar',sub(add(x,bw),mul(218,scale)),add(y,mul(150,scale)),1.1)
+text(hint,'ENTER / MANDO: leer / cerrar',sub(add(x,bw),mul(255,scale)),add(y,mul(150,scale)),1.1)
 # A checkpoint status line shares the existing HUD, outside the dialogue box.
 from delivery_save_schema import MANAGER
 old=list(draw.pins['then']['links']);draw.pins['then']['links']=[]
@@ -393,4 +400,6 @@ warning=text(warning,'REHÉN: ¡ME ESTÁN ATACANDO!',mul(30,scale),mul(203,scale
 text(warning,'¡Ayúdame! Protege mi retirada.',mul(30,scale),mul(224,scale),1.05)
 from generate_cinematic_graphs import hud_hook
 hud_hook(g)
+from generate_extra_hud import add_extra_hud
+add_extra_hud(g,draw,width,height,scale,rect,text)
 g.write('BP_HUD_Entrega')

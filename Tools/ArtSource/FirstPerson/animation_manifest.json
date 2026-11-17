@@ -1,0 +1,62 @@
+[
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_1_Montage.HA_1_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_HA_1.AFP_HA_1"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_2_Montage.HA_2_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_HA_2.AFP_HA_2"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_2_Montage.FA_2_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_FA_2.AFP_FA_2"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/L_FA_3_Montage.L_FA_3_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_L_FA_3.AFP_L_FA_3"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/L_FA_4_Montage.L_FA_4_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_L_FA_4.AFP_L_FA_4"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Heavy_attacks/Sword/H_attack_1_Montage.H_attack_1_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_H_attack_1.AFP_H_attack_1"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Heavy_attacks/Sword/H_attack_2_Montage.H_attack_2_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_H_attack_2.AFP_H_attack_2"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Heavy_attacks/Sword/H_attack_3_Montage.H_attack_3_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_H_attack_3.AFP_H_attack_3"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1_Montage.FA_1_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_FA_1.AFP_FA_1"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Attack_3_Montage.Attack_3_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_Attack_3.AFP_Attack_3"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Attack_1_Montage.Attack_1_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_Attack_1.AFP_Attack_1"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Attack_2_Montage.Attack_2_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_Attack_2.AFP_Attack_2"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/ataque_rapido_1_Montage.ataque_rapido_1_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_ataque_rapido_1.AFP_ataque_rapido_1"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/ataque_rapido_2_Montage.ataque_rapido_2_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_ataque_rapido_2.AFP_ataque_rapido_2"
+  },
+  {
+    "montage": "/Game/ThirdPerson/Animations/Fast_attacks/sword/L_FA_1_Montage.L_FA_1_Montage",
+    "sequence": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_L_FA_1.AFP_L_FA_1"
+  }
+]

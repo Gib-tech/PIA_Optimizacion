@@ -1,0 +1,444 @@
+[
+  {
+    "path": "/Game/ThirdPerson/Blueprints/AnimNotifies/BPC_Health.BPC_Health",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health.BPC_E_Health",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/AnimNotifies/Health.Health",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/RecursosPropios/Interfaz/Interfaz.Interfaz",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BPI_Enemy.BPI_Enemy",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/ABP_Hostage.ABP_Hostage",
+    "status": "sin campo serializado",
+    "errors": [
+      "Entry node  Cicle  is not connected to state"
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Bp_Modelos/BP_DestruiblePick.BP_DestruiblePick",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DoorFragment.BP_DoorFragment",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_HostageArrive.BTTask_HostageArrive",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryOptions.BP_DeliveryOptions",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave.BP_DeliverySave",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Roam.BTTask_Roam",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/DañoDes.DañoDes",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/ABP_EnemyEntrega.ABP_EnemyEntrega",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_FaceCombatTarget.BTTask_FaceCombatTarget",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy.BP_BaseEnemy",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone.BP_CombatZone",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega.BP_DirectorEntrega",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega ."
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestructibleDoor.BP_DestructibleDoor",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface.BP_DeliveryInterface",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Options\\', no necesitas  Cast To BP_DeliveryOptions .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'Menu Pausa\\', no necesitas  Cast To Menu_Pausa .",
+      "\\'ReturnValue\\' ya es un \\'Menu Opciones\\', no necesitas  Cast To Menu_Opciones .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Options\\', no necesitas  Cast To BP_DeliveryOptions .",
+      "\\'ReturnValue\\' ya es un \\'Menu Opciones\\', no necesitas  Cast To Menu_Opciones .",
+      "\\'ReturnValue\\' ya es un \\'Menu Pausa\\', no necesitas  Cast To Menu_Pausa .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Options\\', no necesitas  Cast To BP_DeliveryOptions ."
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Save\\', no necesitas  Cast To BP_DeliverySave .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Hostage\\', no necesitas  Cast To BP_Hostage .",
+      "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Hostage\\', no necesitas  Cast To BP_Hostage .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Save\\', no necesitas  Cast To BP_DeliverySave .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Save\\', no necesitas  Cast To BP_DeliverySave .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Hostage\\', no necesitas  Cast To BP_Hostage .",
+      "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega ."
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega",
+    "status": "sin campo serializado",
+    "errors": [
+      "El pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\\nEl pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.",
+      "El pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\\nEl pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.",
+      "El pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\\nEl pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.",
+      "El pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\\nEl pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin."
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega.BP_DestruibleEntrega",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega.BP_HUD_Entrega",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector.BP_CinematicDirector",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/AnimNotifies/SaveLightAttack_AN.SaveLightAttack_AN",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/AnimNotifies/ResetState_AN.ResetState_AN",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/BP_HostageController.BP_HostageController",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy.BP_ChargerEnemy",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_IAController.BP_IAController",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerController.BP_ChargerController",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal.BP_TecnicoTemporal",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios.BP_SistemasComplementarios",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .",
+      "El pin de salida de ejecución  <Unnamed>  no puede tener más de una conexión",
+      "El pin de salida de ejecución  <Unnamed>  no puede tener más de una conexión",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .",
+      "El pin de salida de ejecución  <Unnamed>  no puede tener más de una conexión",
+      "El pin de salida de ejecución  <Unnamed>  no puede tener más de una conexión",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .",
+      "\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega ."
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/ABP_RehenSuperviviente.ABP_RehenSuperviviente",
+    "status": "sin campo serializado",
+    "errors": [
+      "Entry node  Cicle  is not connected to state"
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Defend.BTTask_Defend",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_LocatePlayer.BTService_LocatePlayer",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Attack.BTTask_Attack",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_HitSun.BTTask_HitSun",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerWindup.BTTask_ChargerWindup",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRetreat.BTTask_ChargerRetreat",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRecover.BTTask_ChargerRecover",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerCharge.BTTask_ChargerCharge",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_ChargerSense.BTService_ChargerSense",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon.BTTask_ActivateBeacon",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense.BTService_HostageSense",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Entrega.BP_GameMode_Entrega",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_SenalExtraccion.BP_SenalExtraccion",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconLabel.BP_BeaconLabel",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/BP_ThirdPersonGameMode.BP_ThirdPersonGameMode",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/BP_TargetDummy.BP_TargetDummy",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Aliado/ABP_Aliado.ABP_Aliado",
+    "status": "sin campo serializado",
+    "errors": [
+      "Entry node  Cicle  is not connected to state"
+    ]
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_ZonaIndicador.BP_ZonaIndicador",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_RehenIndicador.BP_RehenIndicador",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Menu.BP_GameMode_Menu",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Bp_Modelos/Bp_PosteLuz.Bp_PosteLuz",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/ThirdPerson/Bp_Modelos/Bp_Carro.Bp_Carro",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/Menu/Menu_Pausa.Menu_Pausa",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Save Manager\\', no necesitas  Cast To BP_DeliverySaveManager ."
+    ]
+  },
+  {
+    "path": "/Game/Menu/Menu_Opciones.Menu_Opciones",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .",
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface ."
+    ]
+  },
+  {
+    "path": "/Game/Menu/HealthBar.HealthBar",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/Menu/Menu_GameOver.Menu_GameOver",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/Menu/Menu_Inicio.Menu_Inicio",
+    "status": "sin campo serializado",
+    "errors": [
+      "\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface ."
+    ]
+  },
+  {
+    "path": "/Game/LevelMenu/BP_Saveable.BP_Saveable",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/BP_SaveGame.BP_SaveGame",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/BP_SaveInterface.BP_SaveInterface",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/BP_GameInstance.BP_GameInstance",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/Menu/HealthBar.HealthBar",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/Menu/Menu_GameOver.Menu_GameOver",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/Menu/Menu_Inicio.Menu_Inicio",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/Menu/Menu_Opciones.Menu_Opciones",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/LevelMenu/Menu/Menu_Pausa.Menu_Pausa",
+    "status": "sin campo serializado",
+    "errors": []
+  },
+  {
+    "path": "/Game/Characters/Mannequins/Animations/ABP_Manny.ABP_Manny",
+    "status": "sin campo serializado",
+    "errors": [
+      "Entry node  Locomotion  is not connected to state",
+      "Entry node  Main States  is not connected to state",
+      "Transition  Jump to Fall Loop  is using an automatic transition rule but the source  Sequence Player \\'MM_Jump\\'  is set as looping.  Please clear the \\'Loop Animation\\' flag"
+    ]
+  },
+  {
+    "path": "/Game/Characters/Mannequins/Animations/ABP_Quinn.ABP_Quinn",
+    "status": "sin campo serializado",
+    "errors": []
+  }
+]

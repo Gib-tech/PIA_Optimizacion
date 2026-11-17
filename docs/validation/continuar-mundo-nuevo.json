@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "method": "SaveCheckpoint, bandera real de Continuar y OpenLevel; lectura en mundo nuevo. Sin pulsación de mando físico.",
+  "inventory": {
+    "Botiquines": 1,
+    "Cargas": 2,
+    "Creditos": 0
+  },
+  "first_person": true,
+  "position_restored": true,
+  "three_zones_without_duplicate_enemies": true,
+  "intro_omitted": true
+}

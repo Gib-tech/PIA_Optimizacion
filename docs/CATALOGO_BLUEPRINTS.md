@@ -1,0 +1,107 @@
+# Catálogo de Blueprints en español
+
+Fuente: exportación de todos los Blueprints de `/Game` mediante el editor. Las fichas describen responsabilidades y muestran evidencia de conexiones; no sustituyen las pruebas de juego. Los assets de ejemplo/proveedor se distinguen por ruta.
+
+Cobertura: **101 Blueprints**, incluidos AnimBlueprints, widgets, interfaces y Control Rigs. Los Behavior Trees/Blackboards se explican en la guía de flujo.
+
+- [/Game/Characters/Mannequins/Animations/ABP_Manny](blueprints/Characters__Mannequins__Animations__ABP_Manny.md) — AnimBlueprint del protagonista usado con la malla del viajero.
+- [/Game/Characters/Mannequins/Animations/ABP_Quinn](blueprints/Characters__Mannequins__Animations__ABP_Quinn.md) — Recurso de animación/rig del personaje.
+- [/Game/Characters/Mannequins/Rigs/ABP_Manny_PostProcess](blueprints/Characters__Mannequins__Rigs__ABP_Manny_PostProcess.md) — Recurso de animación/rig del personaje.
+- [/Game/Characters/Mannequins/Rigs/ABP_Quinn_PostProcess](blueprints/Characters__Mannequins__Rigs__ABP_Quinn_PostProcess.md) — Recurso de animación/rig del personaje.
+- [/Game/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK](blueprints/Characters__Mannequins__Rigs__CR_Mannequin_BasicFootIK.md) — Recurso de animación/rig del personaje.
+- [/Game/Characters/Mannequins/Rigs/CR_Mannequin_Body](blueprints/Characters__Mannequins__Rigs__CR_Mannequin_Body.md) — Recurso de animación/rig del personaje.
+- [/Game/Characters/Mannequins/Rigs/CR_Mannequin_Procedural](blueprints/Characters__Mannequins__Rigs__CR_Mannequin_Procedural.md) — Recurso de animación/rig del personaje.
+- [/Game/LevelMenu/BP_GameInstance](blueprints/LevelMenu__BP_GameInstance.md) — Persiste intención de Nuevo juego/Continuar y datos entre cambios de mapa.
+- [/Game/LevelMenu/BP_SaveGame](blueprints/LevelMenu__BP_SaveGame.md) — Esquema de guardado original del menú.
+- [/Game/LevelMenu/BP_SaveInterface](blueprints/LevelMenu__BP_SaveInterface.md) — Contrato del guardado original.
+- [/Game/LevelMenu/BP_Saveable](blueprints/LevelMenu__BP_Saveable.md) — Interfaz original para objetos guardables.
+- [/Game/LevelMenu/Menu/HealthBar](blueprints/LevelMenu__Menu__HealthBar.md) — Barra de salud de interfaz original.
+- [/Game/LevelMenu/Menu/Menu_GameOver](blueprints/LevelMenu__Menu__Menu_GameOver.md) — Pantalla original de fin de partida.
+- [/Game/LevelMenu/Menu/Menu_Inicio](blueprints/LevelMenu__Menu__Menu_Inicio.md) — Menú de entrada con Nuevo juego, Continuar validado, opciones y salida.
+- [/Game/LevelMenu/Menu/Menu_Opciones](blueprints/LevelMenu__Menu__Menu_Opciones.md) — Interfaz de calidad, resolución, modo de pantalla y volumen.
+- [/Game/LevelMenu/Menu/Menu_Pausa](blueprints/LevelMenu__Menu__Menu_Pausa.md) — Interfaz de pausa con reanudar, guardar, opciones y regreso al menú.
+- [/Game/Menu/HealthBar](blueprints/Menu__HealthBar.md) — Barra de salud de interfaz original.
+- [/Game/Menu/Menu_GameOver](blueprints/Menu__Menu_GameOver.md) — Pantalla original de fin de partida.
+- [/Game/Menu/Menu_Inicio](blueprints/Menu__Menu_Inicio.md) — Menú de entrada con Nuevo juego, Continuar validado, opciones y salida.
+- [/Game/Menu/Menu_Opciones](blueprints/Menu__Menu_Opciones.md) — Interfaz de calidad, resolución, modo de pantalla y volumen.
+- [/Game/Menu/Menu_Pausa](blueprints/Menu__Menu_Pausa.md) — Interfaz de pausa con reanudar, guardar, opciones y regreso al menú.
+- [/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter](blueprints/ParagonKallari__Characters__Heroes__Kallari__KallariPlayerCharacter.md) — Personaje de demostración del pack Paragon Kallari, sin uso como protagonista de la misión.
+- [/Game/ParagonKallari/Characters/Heroes/Kallari/Kallari_AnimBlueprint](blueprints/ParagonKallari__Characters__Heroes__Kallari__Kallari_AnimBlueprint.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/RamsterZ_FreeAnims_Volume1/Demo/Mannequin/Character/Mesh/BP_Knife_GripVariant_Mann](blueprints/RamsterZ_FreeAnims_Volume1__Demo__Mannequin__Character__Mesh__BP_Knife_GripVariant_Mann.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/RamsterZ_FreeAnims_Volume1/Demo/Mannequin/Character/Mesh/BP_Knife_Mann](blueprints/RamsterZ_FreeAnims_Volume1__Demo__Mannequin__Character__Mesh__BP_Knife_Mann.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/RamsterZ_FreeAnims_Volume1/Demo/Mannequin/Character/Mesh/BP_Sword_Mann](blueprints/RamsterZ_FreeAnims_Volume1__Demo__Mannequin__Character__Mesh__BP_Sword_Mann.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/Blueprints/AnimBP/ABP_SciFiTrooperManV3](blueprints/SciFITrooper_Man_03__Blueprints__AnimBP__ABP_SciFiTrooperManV3.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/Blueprints/BP_Character_Master](blueprints/SciFITrooper_Man_03__Blueprints__BP_Character_Master.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/Blueprints/BP_Modular_Master](blueprints/SciFITrooper_Man_03__Blueprints__BP_Modular_Master.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Character_1](blueprints/SciFITrooper_Man_03__DemoContent__BP_Character_1.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Character_2](blueprints/SciFITrooper_Man_03__DemoContent__BP_Character_2.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Character_3](blueprints/SciFITrooper_Man_03__DemoContent__BP_Character_3.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Character_4](blueprints/SciFITrooper_Man_03__DemoContent__BP_Character_4.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Character_5](blueprints/SciFITrooper_Man_03__DemoContent__BP_Character_5.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Modular_1](blueprints/SciFITrooper_Man_03__DemoContent__BP_Modular_1.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/BP_Modular_2](blueprints/SciFITrooper_Man_03__DemoContent__BP_Modular_2.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/SciFITrooper_Man_03/DemoContent/W_DemoWidget](blueprints/SciFITrooper_Man_03__DemoContent__W_DemoWidget.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/ABP_Manny_PostProcess](blueprints/Survival_Character__Demo__Characters__Mannequins__Rigs__ABP_Manny_PostProcess.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/ABP_Quinn_PostProcess](blueprints/Survival_Character__Demo__Characters__Mannequins__Rigs__ABP_Quinn_PostProcess.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/CR_Mannequin_Body](blueprints/Survival_Character__Demo__Characters__Mannequins__Rigs__CR_Mannequin_Body.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/CR_Mannequin_Procedural](blueprints/Survival_Character__Demo__Characters__Mannequins__Rigs__CR_Mannequin_Procedural.md) — Recurso del proveedor o ejemplo del pack.
+- [/Game/ThirdPerson/Blueprints/Aliado/ABP_Aliado](blueprints/ThirdPerson__Blueprints__Aliado__ABP_Aliado.md) — AnimBlueprint de referencia del aliado original.
+- [/Game/ThirdPerson/Blueprints/Aliado/ABP_Hostage](blueprints/ThirdPerson__Blueprints__Aliado__ABP_Hostage.md) — AnimBlueprint original de la escolta con locomoción por velocidad y presentación de muerte.
+- [/Game/ThirdPerson/Blueprints/Aliado/ABP_RehenSuperviviente](blueprints/ThirdPerson__Blueprints__Aliado__ABP_RehenSuperviviente.md) — Copia propia del AnimBlueprint de escolta compatible con el esqueleto del sobreviviente.
+- [/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage](blueprints/ThirdPerson__Blueprints__Aliado__BP_Hostage.md) — Aliado escoltado con salud propia.
+- [/Game/ThirdPerson/Blueprints/Aliado/BP_HostageController](blueprints/ThirdPerson__Blueprints__Aliado__BP_HostageController.md) — Posee al aliado e inicia BT_Hostage/BB_Hostage.
+- [/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense](blueprints/ThirdPerson__Blueprints__Aliado__BTService_HostageSense.md) — Evalúa amenazas, seguimiento y refugios locales con ruta completa.
+- [/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon](blueprints/ThirdPerson__Blueprints__Aliado__BTTask_ActivateBeacon.md) — Canalización de tres segundos mediante el árbol del aliado.
+- [/Game/ThirdPerson/Blueprints/Aliado/BTTask_HostageArrive](blueprints/ThirdPerson__Blueprints__Aliado__BTTask_HostageArrive.md) — Marca llegada al refugio y espera segura.
+- [/Game/ThirdPerson/Blueprints/AnimNotifies/BPC_Health](blueprints/ThirdPerson__Blueprints__AnimNotifies__BPC_Health.md) — Componente de salud del jugador.
+- [/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health](blueprints/ThirdPerson__Blueprints__AnimNotifies__Enemy_Health__BPC_E_Health.md) — Componente de salud enemiga.
+- [/Game/ThirdPerson/Blueprints/AnimNotifies/Health](blueprints/ThirdPerson__Blueprints__AnimNotifies__Health.md) — Widget original de salud del jugador.
+- [/Game/ThirdPerson/Blueprints/AnimNotifies/ResetState_AN](blueprints/ThirdPerson__Blueprints__AnimNotifies__ResetState_AN.md) — Notify de recuperación que devuelve el estado de ataque a Nothing.
+- [/Game/ThirdPerson/Blueprints/AnimNotifies/SaveLightAttack_AN](blueprints/ThirdPerson__Blueprints__AnimNotifies__SaveLightAttack_AN.md) — Notify del montage que habilita/consume buffer del siguiente golpe ligero.
+- [/Game/ThirdPerson/Blueprints/BP_TargetDummy](blueprints/ThirdPerson__Blueprints__BP_TargetDummy.md) — Actor de práctica original.
+- [/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter](blueprints/ThirdPerson__Blueprints__BP_ThirdPersonCharacter.md) — Personaje base del equipo.
+- [/Game/ThirdPerson/Blueprints/BP_ThirdPersonGameMode](blueprints/ThirdPerson__Blueprints__BP_ThirdPersonGameMode.md) — Modo base/histórico del equipo.
+- [/Game/ThirdPerson/Blueprints/DañoDes](blueprints/ThirdPerson__Blueprints__DañoDes.md) — Campo Chaos del equipo que apoya destrucción física.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/ABP_EnemyEntrega](blueprints/ThirdPerson__Blueprints__EnemigoIA__ABP_EnemyEntrega.md) — Envuelve la locomoción original del pack y añade DefaultSlot para montajes de combate.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BPI_Enemy](blueprints/ThirdPerson__Blueprints__EnemigoIA__BPI_Enemy.md) — Contrato de acciones de enemigo utilizado desde tareas del árbol.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy](blueprints/ThirdPerson__Blueprints__EnemigoIA__BP_BaseEnemy.md) — Enemigo orbitador y base común de combate.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerController](blueprints/ThirdPerson__Blueprints__EnemigoIA__BP_ChargerController.md) — Posee al embestidor e inicia BT_Charger con su Blackboard.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy](blueprints/ThirdPerson__Blueprints__EnemigoIA__BP_ChargerEnemy.md) — Especialización del enemigo base para el embestidor.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BP_IAController](blueprints/ThirdPerson__Blueprints__EnemigoIA__BP_IAController.md) — Posee al orbitador, inicializa BB_EnemyIA y ejecuta BT_EnemyIA.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_ChargerSense](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTService_ChargerSense.md) — Servicio de percepción del embestidor.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_LocatePlayer](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTService_LocatePlayer.md) — Servicio de percepción del orbitador.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Attack](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_Attack.md) — Acerca y alinea al orbitador antes de solicitar Attack.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerCharge](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_ChargerCharge.md) — Desplazamiento rápido hacia el punto comprometido.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRecover](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_ChargerRecover.md) — Pausa breve de recuperación de la embestida.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRetreat](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_ChargerRetreat.md) — Retirada local navegable respecto al objetivo de combate real.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerWindup](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_ChargerWindup.md) — Anticipación visible de la embestida.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Defend](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_Defend.md) — Acción corta de defensa/reposición orbital alrededor del objetivo.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_FaceCombatTarget](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_FaceCombatTarget.md) — Fija el foco del controlador en el objetivo de combate y devuelve el control al árbol.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_HitSun](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_HitSun.md) — Acción de aturdimiento; el nombre histórico HitSun se conserva para no romper referencias.
+- [/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Roam](blueprints/ThirdPerson__Blueprints__EnemigoIA__BTTask_Roam.md) — Una acción de patrulla.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_BeaconEntrega.md) — Baliza A/B/C con identidad fija, aproximación y estado activado.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconLabel](blueprints/ThirdPerson__Blueprints__Entrega__BP_BeaconLabel.md) — Identificación visual estable de baliza.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone](blueprints/ThirdPerson__Blueprints__Entrega__BP_CombatZone.md) — Encuentro con dos oleadas de dos enemigos.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface](blueprints/ThirdPerson__Blueprints__Entrega__BP_DeliveryInterface.md) — Orquesta menú de pausa y opciones en ambos mapas.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryOptions](blueprints/ThirdPerson__Blueprints__Entrega__BP_DeliveryOptions.md) — Datos independientes de volumen.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave](blueprints/ThirdPerson__Blueprints__Entrega__BP_DeliverySave.md) — Datos locales de checkpoint, esquema 2 con extensiones aditivas.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager](blueprints/ThirdPerson__Blueprints__Entrega__BP_DeliverySaveManager.md) — Valida momentos seguros, serializa checkpoint y restaura mundo/aliados/cámara.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DestructibleDoor](blueprints/ThirdPerson__Blueprints__Entrega__BP_DestructibleDoor.md) — Puerta de misión.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_DestruibleEntrega.md) — Copia funcional del destruible del equipo para caja, basurero, banca, barril, auto y fuente.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_DirectorEntrega.md) — Coordina rescate, tres encuentros, orden aleatorio de balizas y extracción conjunta.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_DoorFragment](blueprints/ThirdPerson__Blueprints__Entrega__BP_DoorFragment.md) — Fragmento visual/físico de puerta.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Entrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_GameMode_Entrega.md) — Selecciona Pawn y HUD de la misión entregable.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Menu](blueprints/ThirdPerson__Blueprints__Entrega__BP_GameMode_Menu.md) — Modo del menú, sin generar un personaje de combate.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_HUD_Entrega.md) — Presentación de misión: salud, objetivos, orden/tiempo, diálogo progresivo, señales del rehén, daño real e inventario.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega](blueprints/ThirdPerson__Blueprints__Entrega__BP_PlayerEntrega.md) — Personaje jugable de la entrega.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_RehenIndicador](blueprints/ThirdPerson__Blueprints__Entrega__BP_RehenIndicador.md) — Indicador histórico de texto flotante.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_SenalExtraccion](blueprints/ThirdPerson__Blueprints__Entrega__BP_SenalExtraccion.md) — Señal del área de extracción.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios](blueprints/ThirdPerson__Blueprints__Entrega__BP_SistemasComplementarios.md) — Inventario, suministros únicos, curación, pulso y ciclo solar.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal](blueprints/ThirdPerson__Blueprints__Entrega__BP_TecnicoTemporal.md) — BRUNO es un robot de apoyo original fijado al suelo y a la red del recinto: no puede salir con los viajeros.
+- [/Game/ThirdPerson/Blueprints/Entrega/BP_ZonaIndicador](blueprints/ThirdPerson__Blueprints__Entrega__BP_ZonaIndicador.md) — Indicador histórico de zona.
+- [/Game/ThirdPerson/Bp_Modelos/BP_DestruiblePick](blueprints/ThirdPerson__Bp_Modelos__BP_DestruiblePick.md) — Prototipo de destruible del equipo conservado como fuente.
+- [/Game/ThirdPerson/Bp_Modelos/Bp_Carro](blueprints/ThirdPerson__Bp_Modelos__Bp_Carro.md) — Prop de automóvil del equipo.
+- [/Game/ThirdPerson/Bp_Modelos/Bp_PosteLuz](blueprints/ThirdPerson__Bp_Modelos__Bp_PosteLuz.md) — Prop del equipo que agrupa poste y luz.
+- [/Game/ThirdPerson/Cinematics/BP_CinematicDirector](blueprints/ThirdPerson__Cinematics__BP_CinematicDirector.md) — Director de introducción, derrota, victoria y revelación final.
+- [/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega](blueprints/ThirdPerson__Maps__Nivel_Entrega.Nivel_Entrega__PersistentLevel.Nivel_Entrega.md) — Blueprint del nivel entregable.
+- [/Game/ThirdPerson/RecursosPropios/Interfaz/Interfaz](blueprints/ThirdPerson__RecursosPropios__Interfaz__Interfaz.md) — Interfaz de referencia del equipo, conservada bajo RecursosPropios.

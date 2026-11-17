@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "method": "WidgetTree completo y EventGraph fuente antes/después. Se excluyen grafos temporales/diagnósticos del compilador y la renovación del GUID externo de SaveManager.SaveCheckpoint. Sus clase, nombre, pines y conexiones se conservan. No se excluyen estilos, textos, valores ni GUID de nodos/pines.",
+  "menus": [
+    {
+      "asset": "Menu_Inicio",
+      "widget_tree_identical": true,
+      "source_graph_identical": true,
+      "widget_objects": 12
+    },
+    {
+      "asset": "Menu_Pausa",
+      "widget_tree_identical": true,
+      "source_graph_identical": true,
+      "widget_objects": 20
+    },
+    {
+      "asset": "Menu_Opciones",
+      "widget_tree_identical": true,
+      "source_graph_identical": true,
+      "widget_objects": 128
+    }
+  ]
+}

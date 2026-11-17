@@ -32,10 +32,12 @@ rubric_groups={
  'Banca':['SM_LOD_Banco','GC_Banco'],'Automóvil':['SM_LOD_Car','GC_Car2'],
  'Árbol':['SM_LOD_Tree1'],'Poste':['SM_LOD_Light_Pole'],'Fuente':['SM_LOD_fuente','GC_fuente'],
  'Caja':['GC_box'],'Basurero':['GC_Trash'],'Barril':['GC_Barril'],
- 'Protagonista':['SK_SciFITrooper_Man_03'],'Rehén provisional':['SKM_Manny'],'Rival':['SK_SciFiWarrior02'],
+ 'Protagonista':['SK_SciFITrooper_Man_03'],'Rehén sobreviviente':['SK_RehenSuperviviente'],'Rival':['SK_SciFiWarrior02'],
  'Espada':['longsword'],'Martillo':['Decahammer'],'Baliza':['SM_Baliza'],
  'Puerta':['SM_DoorPanel_01','SM_DoorPanel_02','SM_DoorPanel_03'],
- 'Arquitectura de Ian':['SM_Walls_Rescate','SM_Walls_Arena','SM_Walls_Deposito']}
+ 'Arquitectura de Ian':['SM_Walls_Rescate','SM_Walls_Arena','SM_Walls_Deposito'],
+ 'Botiquín temporal':['SM_BotiquinTemporal'],'Celda temporal':['SM_CeldaTemporal'],'Crédito cronal':['SM_CreditoCronal'],
+ 'Caja de suministros':['SM_CajaSuministros'],'Consola del técnico':['SM_ConsolaTecnico'],'Cubeta de estanque':['SM_EstanqueRetencion']}
 rubric_designs={name:sorted(p for p in rubric_meshes if p.rsplit('.',1)[-1] in variants) for name,variants in rubric_groups.items()}
 assert all(rubric_designs.values()),[k for k,v in rubric_designs.items() if not v]
 rubric_sm=unreal.get_editor_subsystem(unreal.StaticMeshEditorSubsystem);rubric_lods=[]
@@ -52,5 +54,6 @@ assert len(set(rubric_collections))==6 and rubric_landscapes
 assert unreal.DeliveryBlueprintBuilder.is_partitioned(rubric_world)
 rubric_enemy.destroy_actor()
 rubric_report={'passed':True,'date':'2026-11-16','isolated_stopped_enemy_inventory_fixture':True,'partitioned_runtime':True,'landscape':rubric_landscapes,'loaded_geometry_paths':sorted(rubric_meshes),'conservative_visual_design_count':len(rubric_designs),'visual_designs':rubric_designs,'authorship_not_proven_by_asset_names':True,'five_four_lod_models':rubric_lods,'six_different_chaos_collections':sorted(set(rubric_collections)),'lights':rubric_lights,'level_logic_executed':True,'owner_professor_acceptance_not_claimed':True}
-with open(os.path.join(unreal.Paths.project_dir(),'Intermediate/inspect/delivery_requirements_audit.json'),'w',encoding='utf-8') as f:json.dump(rubric_report,f,ensure_ascii=False,indent=2)
+rubric_report['date']='2026-11-17'
+with open(os.path.join(unreal.Paths.project_dir(),'docs/validation/inventario-runtime-2026-11-17.json'),'w',encoding='utf-8') as f:json.dump(rubric_report,f,ensure_ascii=False,indent=2)
 unreal.log('CURRENT_RUBRIC_INVENTORY_PASSED '+str(len(rubric_designs))+' visual designs')

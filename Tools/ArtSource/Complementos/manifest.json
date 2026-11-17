@@ -1,0 +1,109 @@
+{
+  "palette": {
+    "Metal": [
+      0.07,
+      0.11,
+      0.14,
+      1
+    ],
+    "Goma": [
+      0.012,
+      0.018,
+      0.022,
+      1
+    ],
+    "Cian": [
+      0.04,
+      0.65,
+      0.9,
+      1
+    ],
+    "Blanco": [
+      0.8,
+      0.85,
+      0.86,
+      1
+    ],
+    "Rojo": [
+      0.6,
+      0.035,
+      0.018,
+      1
+    ],
+    "Bronce": [
+      0.5,
+      0.24,
+      0.055,
+      1
+    ],
+    "Concreto": [
+      0.24,
+      0.22,
+      0.17,
+      1
+    ]
+  },
+  "models": [
+    {
+      "name": "SM_BotiquinTemporal",
+      "materials": [
+        "M_Apoyo_Blanco",
+        "M_Apoyo_Goma",
+        "M_Apoyo_Rojo",
+        "M_Apoyo_Metal"
+      ],
+      "polygons": 686,
+      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+    },
+    {
+      "name": "SM_CeldaTemporal",
+      "materials": [
+        "M_Apoyo_Cian",
+        "M_Apoyo_Metal",
+        "M_Apoyo_Goma"
+      ],
+      "polygons": 878,
+      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+    },
+    {
+      "name": "SM_CreditoCronal",
+      "materials": [
+        "M_Apoyo_Bronce",
+        "M_Apoyo_Metal",
+        "M_Apoyo_Cian"
+      ],
+      "polygons": 680,
+      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+    },
+    {
+      "name": "SM_CajaSuministros",
+      "materials": [
+        "M_Apoyo_Metal",
+        "M_Apoyo_Goma",
+        "M_Apoyo_Cian",
+        "M_Apoyo_Blanco"
+      ],
+      "polygons": 686,
+      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+    },
+    {
+      "name": "SM_ConsolaTecnico",
+      "materials": [
+        "M_Apoyo_Goma",
+        "M_Apoyo_Metal",
+        "M_Apoyo_Cian",
+        "M_Apoyo_Blanco"
+      ],
+      "polygons": 1666,
+      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+    },
+    {
+      "name": "SM_EstanqueRetencion",
+      "materials": [
+        "M_Apoyo_Concreto"
+      ],
+      "polygons": 610,
+      "authoring": "Geometría original generada por build_original_support_models.py; no recurso Fab ni plantilla UE."
+    }
+  ]
+}

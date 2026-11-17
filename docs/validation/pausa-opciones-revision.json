@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "method": "Eventos reales de UMG y reloj real de 1 s. No pulsación física de mando.",
+  "world_and_day_cycle_frozen": true,
+  "save_from_pause": true,
+  "options_return_to_same_pause": true,
+  "move_and_look_restored": true
+}

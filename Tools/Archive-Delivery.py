@@ -19,11 +19,16 @@ with ZipFile(temporary,'w',compression=ZIP_DEFLATED,compresslevel=1,allowZip64=T
         archive.write(path,path.relative_to(delivery))
     archive.write(delivery/'LEEME.txt','LEEME.txt')
     archive.write(delivery/'CREDITOS_MODELOS.md','CREDITOS_MODELOS.md')
+    archive.write(root/'README.md','README.md')
+    for path in sorted((root/'docs').rglob('*')):
+        if path.is_file():archive.write(path,path.relative_to(root))
 temporary.replace(target)
 with ZipFile(target) as archive:
     assert archive.testzip() is None, 'ZIP integrity check failed.'
     assert 'Windows/Terreno.exe' in archive.namelist()
     assert 'CREDITOS_MODELOS.md' in archive.namelist()
+    assert 'docs/CATALOGO_BLUEPRINTS.md' in archive.namelist()
+    assert not any(n.startswith(('Promocional/','docs/academica/')) for n in archive.namelist())
     assert 'Windows/Terreno/Content/Paks/Terreno-Windows.utoc' in archive.namelist()
 print(str(target))
 print('ZIP_BYTES',target.stat().st_size)

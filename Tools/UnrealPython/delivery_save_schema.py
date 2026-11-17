@@ -15,9 +15,13 @@ FIELDS = {
     'FinalStandRevision': 'int', 'OrderRevealed': 'bool',
     'PlayerLocation': 'vector', 'PlayerRotation': 'rotator', 'ControlRotation': 'rotator',
     'HammerUpgraded': 'bool', 'HammerEquipped': 'bool',
+    'FirstPerson': 'bool', 'ExtrasRevision': 'int',
+    'Botiquines': 'int', 'Cargas': 'int', 'Creditos': 'int', 'WorldSeconds': 'real',
+    'RobotEnergy': 'int', 'bFabricating': 'bool', 'FabricationProgress': 'real',
     'HostageHealth': 'real', 'HostageLocation': 'vector', 'HostageRotation': 'rotator',
     'Rescued': 'bool', 'Accompanying': 'bool', 'Waiting': 'bool',
 }
+for i in (1,2,3,4):FIELDS['Recogido'+str(i)]='bool'
 for i in (1, 2, 3):
     for name, kind in [('Cleared', 'bool'), ('Wave', 'int'), ('Phase', 'int'), ('Spawned', 'int')]:
         FIELDS['Zone%d%s' % (i, name)] = kind

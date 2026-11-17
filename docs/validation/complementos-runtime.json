@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "method": "PIE, fixtures con posiciones y salud preparadas; no partida natural",
+  "checks": [
+    "recogida_unica_y_tres_recursos",
+    "inventario_visible_curacion_limitada_sin_duplicacion",
+    "segundo_npc_dialogo_y_compra_sin_saldo_negativo",
+    "pulso_gasta_municion_y_dana_20_con_cooldown",
+    "pausa_detiene_ciclo_horario",
+    "checkpoint_restaura_inventario_municion_dinero_recogida_y_camara"
+  ],
+  "saved": {
+    "Botiquines": 1,
+    "Cargas": 2,
+    "Creditos": 0,
+    "WorldSeconds": 85.17009279876947,
+    "Recogido1": true
+  }
+}

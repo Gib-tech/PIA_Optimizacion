@@ -1,0 +1,11 @@
+{
+  "orbiter_damage": 13.2,
+  "hostage_target": true,
+  "immediate_repeat_damage": 0,
+  "charger_damage": 13.2,
+  "hostage_fixation_survives_player_proximity": true,
+  "method": "PIE con posiciones preparadas y da\u00f1o final letal expl\u00edcito; ataques de orbitador y embestidor por sus \u00e1rboles reales. No es partida natural.",
+  "survivor_valid_anim_on_death": true,
+  "hostage_death_ends_mission": true,
+  "passed": true
+}

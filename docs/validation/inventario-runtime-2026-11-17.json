@@ -1,0 +1,241 @@
+{
+  "passed": true,
+  "date": "2026-11-17",
+  "isolated_stopped_enemy_inventory_fixture": true,
+  "partitioned_runtime": true,
+  "landscape": [
+    "Landscape_0",
+    "LandscapeStreamingProxy_BPO35383STE7QN3D8DUUQINWN_252_0_0_0"
+  ],
+  "loaded_geometry_paths": [
+    "/Game/Fab/long_sword/longsword.longsword",
+    "/Game/SciFITrooper_Man_03/SkeletalMesh/SK_SciFITrooper_Man_03.SK_SciFITrooper_Man_03",
+    "/Game/SciFiWarrior02/Meshes/SK_SciFiWarrior02.SK_SciFiWarrior02",
+    "/Game/ThirdPerson/Bp_Modelos/Decahammer/SkeletalMeshes/Decahammer.Decahammer",
+    "/Game/ThirdPerson/Characters/PrimeraPersona/SK_BrazosPrimeraPersona.SK_BrazosPrimeraPersona",
+    "/Game/ThirdPerson/Characters/Rehen/SK_RehenSuperviviente.SK_RehenSuperviviente",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Roof_Deposito.SM_Roof_Deposito",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Roof_Rescate.SM_Roof_Rescate",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_UpperWalls_Deposito.SM_UpperWalls_Deposito",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_UpperWalls_Rescate.SM_UpperWalls_Rescate",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_AlaEste.SM_Walls_AlaEste",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_AlaOeste.SM_Walls_AlaOeste",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Arena.SM_Walls_Arena",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Atrio.SM_Walls_Atrio",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Deposito.SM_Walls_Deposito",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Jardin.SM_Walls_Jardin",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_PatioNorte.SM_Walls_PatioNorte",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Rescate.SM_Walls_Rescate",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Salida.SM_Walls_Salida",
+    "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Servicio.SM_Walls_Servicio",
+    "/Game/ThirdPerson/Environment/Baliza/SM_Baliza.SM_Baliza",
+    "/Game/ThirdPerson/Environment/Complementos/SM_BotiquinTemporal.SM_BotiquinTemporal",
+    "/Game/ThirdPerson/Environment/Complementos/SM_CajaSuministros.SM_CajaSuministros",
+    "/Game/ThirdPerson/Environment/Complementos/SM_CeldaTemporal.SM_CeldaTemporal",
+    "/Game/ThirdPerson/Environment/Complementos/SM_ConsolaTecnico.SM_ConsolaTecnico",
+    "/Game/ThirdPerson/Environment/Complementos/SM_CreditoCronal.SM_CreditoCronal",
+    "/Game/ThirdPerson/Environment/Complementos/SM_EstanqueRetencion.SM_EstanqueRetencion",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Banco.SM_LOD_Banco",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Car.SM_LOD_Car",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Light_Pole.SM_LOD_Light_Pole",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Tree1.SM_LOD_Tree1",
+    "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_fuente.SM_LOD_fuente",
+    "/Game/ThirdPerson/Environment/Progression/SM_BulkheadModule.SM_BulkheadModule",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorFrame_01.SM_DoorFrame_01",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorFrame_02.SM_DoorFrame_02",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorFrame_03.SM_DoorFrame_03",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_01.SM_DoorPanel_01",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_02.SM_DoorPanel_02",
+    "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_03.SM_DoorPanel_03",
+    "/Game/ThirdPerson/Environment/TeamModels/SM_ArbolFab.SM_ArbolFab",
+    "/Game/ThirdPerson/Environment/TeamModels/SM_AutoDestruido.SM_AutoDestruido",
+    "/Game/ThirdPerson/Environment/TeamModels/SM_Edificio.SM_Edificio",
+    "/Game/ThirdPerson/Environment/TeamModels/SM_Escombros.SM_Escombros",
+    "/Game/ThirdPerson/Environment/TeamModels/SM_Farol.SM_Farol",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente"
+  ],
+  "conservative_visual_design_count": 22,
+  "visual_designs": {
+    "Banca": [
+      "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Banco.SM_LOD_Banco",
+      "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco"
+    ],
+    "Automóvil": [
+      "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Car.SM_LOD_Car",
+      "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2"
+    ],
+    "Árbol": [
+      "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Tree1.SM_LOD_Tree1"
+    ],
+    "Poste": [
+      "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_Light_Pole.SM_LOD_Light_Pole"
+    ],
+    "Fuente": [
+      "/Game/ThirdPerson/Environment/Evaluation/SM_LOD_fuente.SM_LOD_fuente",
+      "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente"
+    ],
+    "Caja": [
+      "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box"
+    ],
+    "Basurero": [
+      "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash"
+    ],
+    "Barril": [
+      "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril"
+    ],
+    "Protagonista": [
+      "/Game/SciFITrooper_Man_03/SkeletalMesh/SK_SciFITrooper_Man_03.SK_SciFITrooper_Man_03"
+    ],
+    "Rehén sobreviviente": [
+      "/Game/ThirdPerson/Characters/Rehen/SK_RehenSuperviviente.SK_RehenSuperviviente"
+    ],
+    "Rival": [
+      "/Game/SciFiWarrior02/Meshes/SK_SciFiWarrior02.SK_SciFiWarrior02"
+    ],
+    "Espada": [
+      "/Game/Fab/long_sword/longsword.longsword"
+    ],
+    "Martillo": [
+      "/Game/ThirdPerson/Bp_Modelos/Decahammer/SkeletalMeshes/Decahammer.Decahammer"
+    ],
+    "Baliza": [
+      "/Game/ThirdPerson/Environment/Baliza/SM_Baliza.SM_Baliza"
+    ],
+    "Puerta": [
+      "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_01.SM_DoorPanel_01",
+      "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_02.SM_DoorPanel_02",
+      "/Game/ThirdPerson/Environment/Progression/SM_DoorPanel_03.SM_DoorPanel_03"
+    ],
+    "Arquitectura de Ian": [
+      "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Arena.SM_Walls_Arena",
+      "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Deposito.SM_Walls_Deposito",
+      "/Game/ThirdPerson/Environment/Atmosphere/SM_Walls_Rescate.SM_Walls_Rescate"
+    ],
+    "Botiquín temporal": [
+      "/Game/ThirdPerson/Environment/Complementos/SM_BotiquinTemporal.SM_BotiquinTemporal"
+    ],
+    "Celda temporal": [
+      "/Game/ThirdPerson/Environment/Complementos/SM_CeldaTemporal.SM_CeldaTemporal"
+    ],
+    "Crédito cronal": [
+      "/Game/ThirdPerson/Environment/Complementos/SM_CreditoCronal.SM_CreditoCronal"
+    ],
+    "Caja de suministros": [
+      "/Game/ThirdPerson/Environment/Complementos/SM_CajaSuministros.SM_CajaSuministros"
+    ],
+    "Consola del técnico": [
+      "/Game/ThirdPerson/Environment/Complementos/SM_ConsolaTecnico.SM_ConsolaTecnico"
+    ],
+    "Cubeta de estanque": [
+      "/Game/ThirdPerson/Environment/Complementos/SM_EstanqueRetencion.SM_EstanqueRetencion"
+    ]
+  },
+  "authorship_not_proven_by_asset_names": true,
+  "five_four_lod_models": [
+    {
+      "model": "Banco",
+      "lod_count": 4,
+      "triangles": [
+        158592,
+        87226,
+        39648,
+        12687
+      ],
+      "nanite": false
+    },
+    {
+      "model": "Car",
+      "lod_count": 4,
+      "triangles": [
+        2548,
+        1402,
+        636,
+        204
+      ],
+      "nanite": false
+    },
+    {
+      "model": "Tree1",
+      "lod_count": 4,
+      "triangles": [
+        210176,
+        115597,
+        52544,
+        16815
+      ],
+      "nanite": false
+    },
+    {
+      "model": "Light_Pole",
+      "lod_count": 4,
+      "triangles": [
+        708,
+        390,
+        176,
+        64
+      ],
+      "nanite": false
+    },
+    {
+      "model": "fuente",
+      "lod_count": 4,
+      "triangles": [
+        11644,
+        6404,
+        2910,
+        932
+      ],
+      "nanite": false
+    }
+  ],
+  "six_different_chaos_collections": [
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Banca/GC_Banco.GC_Banco",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Barril/Barril_Barril/GC_Barril.GC_Barril",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Basura/GC_Trash.GC_Trash",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Box/GC_box.GC_box",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Carro/GC_Car2.GC_Car2",
+    "/Game/ThirdPerson/RecursosPropios/Modelos/Fuente/GC_fuente.GC_fuente"
+  ],
+  "lights": [
+    {
+      "type": "PointLightComponent",
+      "radius": 450.0,
+      "max_draw_distance": 2200.0
+    },
+    {
+      "type": "PointLightComponent",
+      "radius": 450.0,
+      "max_draw_distance": 2200.0
+    },
+    {
+      "type": "DirectionalLightComponent"
+    },
+    {
+      "type": "PointLightComponent",
+      "radius": 180.0,
+      "max_draw_distance": 0.0
+    },
+    {
+      "type": "RectLightComponent",
+      "radius": 1000.0,
+      "max_draw_distance": 2400.0
+    },
+    {
+      "type": "SpotLightComponent",
+      "radius": 1100.0,
+      "max_draw_distance": 2400.0
+    },
+    {
+      "type": "PointLightComponent",
+      "radius": 700.0,
+      "max_draw_distance": 2400.0
+    }
+  ],
+  "level_logic_executed": true,
+  "owner_professor_acceptance_not_claimed": true
+}

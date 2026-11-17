@@ -1,5 +1,13 @@
 # Work items
 
+> **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
+
+## Revisión actual — 17 de noviembre de 2026
+
+Implementados: presentación FP con brazos/armas y recuperación; rehén sobreviviente con locomoción; inventario/suministros/pulso/curación/créditos; Bruno con diálogo/compra; ciclo solar/guardado; estanque; seis modelos de apoyo; paridad de enlaces de pausa/inventario/resultados; guía y catálogo españoles. Ver informes de validación para distinguir implementación, prueba aislada y partida completa.
+
+Pendientes externos: nombres del cronograma, cuentas/publicaciones públicas (45 borradores preparados), autoría académica y mando físico/PC de presentación. El inventario histórico de abajo se conserva como trazabilidad; consultar REVISION_REQUISITOS_2026-11-16.md para el cierre de cada criterio actual.
+
 ## Integración de cinco modelos y checklist del equipo — 2026-11-16
 
 - **Stated:** archivos edificio/farol/escombros/auto y enlace del árbol; integrar/pulir lo necesario del checklist. Propietario confirma autores de edificio/farol por determinar.

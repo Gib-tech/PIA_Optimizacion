@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "method": "Inspección de CDO/instancia y pulsación I mediante automatización de Windows en PIE; apertura del panel observada y InventoryOpen=True leído después. No mando físico.",
+  "problem": "CDO con Player0/prioridad 5, pero instancia del nivel con AutoReceiveInput Disabled/prioridad 0.",
+  "fix": "Instancia Player0/prioridad 5 y EnableInput explícito tras inicializar PlayerController.",
+  "observed_after": {"auto_receive_input": "PLAYER0", "input_priority": 5, "block_input": false, "InventoryOpen": true},
+  "runtime_integration_report": "complementos-runtime.json"
+}

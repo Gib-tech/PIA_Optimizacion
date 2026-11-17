@@ -110,9 +110,12 @@ def interface():
     prev=g.s(prev,'MasterVolume',g.v('MasterVolume'),owner=OPTIONS_DATA,target=data)
     save=g.audio_slot('SaveGameToSlot').pin('SaveGameObject','object',obj='/Script/Engine.SaveGame').pin('ReturnValue','bool',out=True);g.w(data,save,'SaveGameObject');g.chain(prev,save)
     # Pause input is handled above the inherited character P binding.
-    for key in ['P','Escape']:
+    for key in ['P','Escape','Gamepad_Special_Right']:
         k=g.key(key);k.props=[p.replace('bConsumeInput=False','bConsumeInput=True') for p in k.props]
         own(k,'TogglePause','Pressed')
+    back=g.key('Gamepad_FaceButton_Right');back.props=[p.replace('bConsumeInput=False','bConsumeInput=True') for p in back.props]
+    opened=g.c(MATH,'BooleanOR',[('A','bool',g.v('bOptionsOpen','bool')),('B','bool',g.v('bPauseOpen','bool'))],cat='bool')
+    own(g.br(back,opened,'Pressed'),'TogglePause')
     e=g.custom('TogglePause');choice=g.br(e,g.v('bOptionsOpen','bool'));own(choice,'CloseOptions')
     openchoice=g.br(choice,g.v('bPauseOpen','bool'),'else');own(openchoice,'ClosePause');own(openchoice,'OpenPause','else')
     e=g.custom('OpenPause');found=g.find(e,DIRECTOR);valid=g.br(found,(g.valid(found,'ReturnValue'),'ReturnValue'))
@@ -272,6 +275,8 @@ def player_camera():
     g.action_on(prev,PRIM,'SetOwnerNoSee',mesh,[('bNewOwnerNoSee','bool',mode,None)])
     from generate_evaluation_graphs import add_destructible_combat
     add_destructible_combat(g)
+    from generate_first_person_graph import add_first_person
+    add_first_person(g)
     g.write('BP_PlayerEntrega')
 
 if __name__=='__main__':

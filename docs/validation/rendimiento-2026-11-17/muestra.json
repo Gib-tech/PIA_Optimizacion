@@ -1,0 +1,16 @@
+{
+  "method": "PIE, cámara quieta preparada, 3 s calentamiento y 5 s de Slate tick sin límite t.MaxFPS. No es benchmark del paquete ni comparación antes/después. Captura RHI adjunta para draw calls.",
+  "hardware": "AMD Ryzen 5 3600 / NVIDIA GeForce RTX 3060 Ti, Windows 11 25H2; fuente LogInit de Terreno.log",
+  "sample_frames": 401,
+  "editor_tick_mean_ms": 12.468827930174564,
+  "editor_tick_p95_ms": 16.00000000325963,
+  "qualities": {
+    "distance": 1,
+    "aa": 2,
+    "shadow": 1,
+    "texture": 2
+  },
+  "camera": "<Struct 'Vector' (0x0000020C9C68B440) {x: 0.000000, y: -1800.000000, z: 90.150003}>",
+  "rotation": "<Struct 'Rotator' (0x0000020C9C68B440) {pitch: -8.000000, yaw: -90.000000, roll: 0.000000}>",
+  "viewport": "(1014, 550)"
+}

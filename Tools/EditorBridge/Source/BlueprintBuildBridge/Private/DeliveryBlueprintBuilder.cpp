@@ -5,6 +5,7 @@
 #include "EdGraph/EdGraph.h"
 #include "EdGraph/EdGraphSchema.h"
 #include "EdGraphUtilities.h"
+#include "EdGraphNode_Comment.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 #include "Kismet2/KismetEditorUtilities.h"
 #include "BehaviorTree/BehaviorTree.h"
@@ -73,6 +74,28 @@ bool UDeliveryBlueprintBuilder::SetPropertyText(UObject* Object,FName Name,const
 }
 
 bool UDeliveryBlueprintBuilder::IsPartitioned(UWorld* World) { return World && World->IsPartitionedWorld(); }
+bool UDeliveryBlueprintBuilder::AddLayoutComment(UBlueprint* BP,FName Identifier,const FString& Title,FVector2D Position,FVector2D Size,FLinearColor Color) {
+ if(!BP || BP->UbergraphPages.IsEmpty())return false;
+ UEdGraph* Graph=BP->UbergraphPages[0];BP->Modify();Graph->Modify();
+ UEdGraphNode_Comment* Comment=FindObject<UEdGraphNode_Comment>(Graph,*Identifier.ToString());
+ if(!Comment){Comment=NewObject<UEdGraphNode_Comment>(Graph,Identifier,RF_Transactional);Comment->CreateNewGuid();Graph->AddNode(Comment,false,false);}
+ Comment->Modify();Comment->NodeComment=Title;Comment->NodePosX=FMath::RoundToInt(Position.X);Comment->NodePosY=FMath::RoundToInt(Position.Y);
+ Comment->NodeWidth=FMath::RoundToInt(Size.X);Comment->NodeHeight=FMath::RoundToInt(Size.Y);Comment->CommentColor=Color;Comment->FontSize=26;
+ Graph->NotifyGraphChanged();BP->MarkPackageDirty();return true;
+}
+int32 UDeliveryBlueprintBuilder::RemoveGraphNodes(UBlueprint* BP,const TArray<FName>& Names) {
+ if(!BP)return 0;
+ BP->Modify();int32 Removed=0;
+ for(UEdGraph* Graph:BP->UbergraphPages) {
+  const auto Nodes=Graph->Nodes;
+  for(UEdGraphNode* Node:Nodes)if(Node && Names.Contains(Node->GetFName())) {
+   Graph->Modify();FBlueprintEditorUtils::RemoveNode(BP,Node,true);++Removed;
+  }
+  Graph->NotifyGraphChanged();
+ }
+ if(Removed){FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(BP);FKismetEditorUtilities::CompileBlueprint(BP);BP->MarkPackageDirty();}
+ return Removed;
+}
 UBlueprint* UDeliveryBlueprintBuilder::GetLevelBlueprint(UWorld* World) { return World ? World->PersistentLevel->GetLevelScriptBlueprint(false) : nullptr; }
 ALandscape* UDeliveryBlueprintBuilder::CreateEvaluationLandscape(UWorld* World, UMaterialInterface* Material, const TArray<ULandscapeLayerInfoObject*>& Layers) {
  if(!World || !Material || Layers.Num()<4) return nullptr;

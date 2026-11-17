@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "attacks": [
+    {
+      "weapon": "sword",
+      "kind": "light",
+      "index": 0,
+      "montage": "FA_1_Montage",
+      "window_opened": true,
+      "damage_events": [
+        15.0
+      ],
+      "expected": 15,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "sword",
+      "kind": "light",
+      "index": 1,
+      "montage": "FA_2_Montage",
+      "window_opened": true,
+      "damage_events": [
+        15.0
+      ],
+      "expected": 15,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "sword",
+      "kind": "light",
+      "index": 2,
+      "montage": "L_FA_3_Montage",
+      "window_opened": true,
+      "damage_events": [
+        19.0
+      ],
+      "expected": 19,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "sword",
+      "kind": "light",
+      "index": 3,
+      "montage": "L_FA_4_Montage",
+      "window_opened": true,
+      "damage_events": [
+        22.0
+      ],
+      "expected": 22,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "sword",
+      "kind": "heavy",
+      "index": 0,
+      "montage": "H_attack_1_Montage",
+      "window_opened": true,
+      "damage_events": [
+        25.0
+      ],
+      "expected": 25,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "sword",
+      "kind": "heavy",
+      "index": 1,
+      "montage": "H_attack_2_Montage",
+      "window_opened": true,
+      "damage_events": [
+        25.0
+      ],
+      "expected": 25,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "sword",
+      "kind": "heavy",
+      "index": 2,
+      "montage": "H_attack_3_Montage",
+      "window_opened": true,
+      "damage_events": [
+        25.0
+      ],
+      "expected": 25,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "hammer",
+      "kind": "light",
+      "index": 0,
+      "montage": "HA_1_Montage",
+      "window_opened": true,
+      "damage_events": [
+        15.0
+      ],
+      "expected": 15,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "hammer",
+      "kind": "light",
+      "index": 1,
+      "montage": "HA_2_Montage",
+      "window_opened": true,
+      "damage_events": [
+        15.0
+      ],
+      "expected": 15,
+      "collision_closed": true,
+      "passed": true
+    },
+    {
+      "weapon": "hammer",
+      "kind": "heavy",
+      "index": 0,
+      "montage": "Attack_3_Montage",
+      "window_opened": true,
+      "damage_events": [
+        25.0
+      ],
+      "expected": 25,
+      "collision_closed": true,
+      "passed": true
+    }
+  ],
+  "metodo": "Fixture PIE: entradas reales de los diez ataques; enemigo con vida1000 y jugador invulnerable para aislar daño/contactos. No es partida natural."
+}

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "normal_editor_without_helper": true,
+  "no_pie": true,
+  "robot_three_parts_no_human": true,
+  "sky_references_realtime_capture": true,
+  "native_save_read_by_unreal": {
+    "Version": 2,
+    "ExtrasRevision": 2,
+    "Botiquines": 2,
+    "Cargas": 2,
+    "Creditos": 0,
+    "RobotEnergy": 0,
+    "bFabricating": false,
+    "FabricationProgress": 0.0,
+    "WorldSeconds": 165.9697949104011,
+    "FirstPerson": true
+  },
+  "temporary_slot_removed": true,
+  "dirty_packages": []
+}

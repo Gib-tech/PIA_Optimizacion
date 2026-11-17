@@ -1,0 +1,89 @@
+{
+  "authoring": "Modelo original asistido, receta Blender; no recurso de terceros. Un único robot articulado en tres piezas.",
+  "units": "centímetros",
+  "palette": {
+    "Chasis": [
+      0.045,
+      0.085,
+      0.11,
+      1
+    ],
+    "Metal": [
+      0.32,
+      0.37,
+      0.4,
+      1
+    ],
+    "Goma": [
+      0.008,
+      0.012,
+      0.017,
+      1
+    ],
+    "Cobre": [
+      0.38,
+      0.19,
+      0.065,
+      1
+    ],
+    "Ceramica": [
+      0.54,
+      0.61,
+      0.62,
+      1
+    ],
+    "Energia": [
+      0.025,
+      0.7,
+      1,
+      1
+    ],
+    "Ambar": [
+      1,
+      0.35,
+      0.025,
+      1
+    ]
+  },
+  "parts": [
+    {
+      "part": "Chasis",
+      "name": "SM_BRUNO_Chasis",
+      "vertices": 8160,
+      "polygons": 7278,
+      "materials": [
+        "M_BRUNO_Chasis",
+        "M_BRUNO_Metal",
+        "M_BRUNO_Cobre",
+        "M_BRUNO_Goma",
+        "M_BRUNO_Ceramica",
+        "M_BRUNO_Energia",
+        "M_BRUNO_Ambar"
+      ]
+    },
+    {
+      "part": "Cabeza",
+      "name": "SM_BRUNO_Cabeza",
+      "vertices": 2400,
+      "polygons": 2186,
+      "materials": [
+        "M_BRUNO_Chasis",
+        "M_BRUNO_Goma",
+        "M_BRUNO_Metal",
+        "M_BRUNO_Energia",
+        "M_BRUNO_Cobre",
+        "M_BRUNO_Ambar"
+      ]
+    },
+    {
+      "part": "Aro",
+      "name": "SM_BRUNO_Aro",
+      "vertices": 1504,
+      "polygons": 1384,
+      "materials": [
+        "M_BRUNO_Cobre",
+        "M_BRUNO_Energia"
+      ]
+    }
+  ]
+}

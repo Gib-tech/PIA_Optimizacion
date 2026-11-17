@@ -10,4 +10,19 @@ Fecha: 16 de noviembre de 2026. El propietario pidió mantener la autoría de ed
 
 Las huellas SHA-256 de los originales y los conteos de geometría quedan en `Tools/ArtSource/TeamModels/manifest.json`. Los GLB pesados originales permanecen en las rutas aportadas; el repositorio guarda FBX optimizados, atlas y receta reproducible. El árbol original descargado queda en `Intermediate/inspect/team-models` para la autoría local. Los enlaces de descarga temporales no se versionan.
 
-Estos tres recursos descargados no deben presentarse como autoría del equipo. La carpeta histórica RecursosPropios tampoco acredita por sí sola la autoría de sus contenidos. Falta que el equipo identifique y documente sus cinco modelos propios si ese criterio sigue vigente.
+Estos tres recursos descargados no deben presentarse como autoría del equipo. La carpeta histórica RecursosPropios tampoco acredita por sí sola la autoría de sus contenidos. El equipo debe identificar su participación y documentar los modelos cuya autoría académica presente.
+
+## Integración del 17 de noviembre
+
+- **Sobreviviente/rehén y Bruno:** `Survival_Character/Meshes/SK_Survival_Character`, recurso que ya estaba en el proyecto. La copia propia `SK_RehenSuperviviente`, su esqueleto y ABP adaptan apariencia y animación sin adjudicar al equipo la creación del pack. La licencia/adquisición original del pack debe conservarla su titular; no se inventa una licencia a partir del nombre de carpeta.
+- **Brazos en primera persona:** derivados de `SciFITrooper_Man_03/SkeletalMesh/SK_SciFITrooper_Man_03`, ya disponible. Se extraen antebrazos/manos con sus pesos y materiales; no es un personaje comprado o creado de cero durante esta intervención. Fuentes y receta: `Tools/ArtSource/FirstPerson` y `Tools/Blender/build_first_person_arms.py`. Espada y martillo reutilizan los recursos existentes; las quince copias AFP sin notifies son presentación derivada de animaciones existentes.
+- **Seis modelos de apoyo originales:** botiquín, celda, crédito, caja de suministros, consola del técnico y cubeta de retención. Geometría y materiales generados para este proyecto, con fuentes FBX/Blender, manifiesto y receta en `Tools/ArtSource/Complementos` y `Tools/Blender/build_original_support_models.py`. Son trabajo asistido por herramientas, sin atribución inventada a un alumno. La aceptación de esa autoría para el curso corresponde al equipo/evaluador.
+- **Agua:** material propio de superficie que reutiliza la normal `T_Water_N` del contenido ParagonKallari ya disponible; no se atribuye esa textura al equipo.
+
+La documentación y el video de esta revisión distinguen capturas históricas y actuales. La narración promocional local es síntesis de voz de Microsoft Sabina; no representa la voz de un integrante.
+
+## Robot BRUNO e iconos de inventario · revisión del 17/11
+
+Modelo mecánico original asistido: `Tools/Blender/build_robot_bruno.py`, fuente ensamblada `Tools/ArtSource/RobotBRUNO/Robot_BRUNO.blend` y tres FBX articulados. No es un recurso Fab ni un humano del pack. Las tres piezas son un único diseño. Cuatro LOD por pieza; materiales propios compartidos. No se atribuye a un alumno como modelado manual.
+
+Los iconos del inventario se renderizan desde BotiquinTemporal, CeldaTemporal y CreditoCronal del proyecto mediante `Tools/Blender/render_inventory_icons.py`. Fuentes PNG en Tools/ArtSource/Inventario. Se usan atlas de Segoe UI del sistema para la interfaz del inventario; no se redistribuye el archivo de fuente TTF. Menús conservan su tipografía/diseño existente.

@@ -152,8 +152,9 @@ def controller():
     prev=g.s(cast,'TransformOriginActor',own,'object',owner=INSTANCE,target=(cast,'AsDefaultLevelSequenceInstanceData'),obj=ACTOR)
     clear=clear_loading_fade(prev);g.chain(cast,clear,'CastFailed')
     play=g.action_on(clear,MSPLAYER,'Play',player)
-    e=g.key('SpaceBar');e.props=[p.replace('bConsumeInput=False','bConsumeInput=True') for p in e.props]
-    guard=g.br(e,active,'Pressed');owncall(guard,'FinishCinema')
+    for key in ['SpaceBar','Gamepad_FaceButton_Bottom']:
+        e=g.key(key);e.props=[p.replace('bConsumeInput=False','bConsumeInput=True') for p in e.props]
+        guard=g.br(e,active,'Pressed');owncall(guard,'FinishCinema')
     e=g.custom('FinishCinema');guard=g.br(e,active);prev=g.s(guard,'bActive',False,'bool')
     valid=g.br(prev,(g.valid(*player),'ReturnValue'));stop=g.action_on(valid,MSPLAYER,'Stop',player)
     # Both natural completion and skip use this exact camera/input cleanup.

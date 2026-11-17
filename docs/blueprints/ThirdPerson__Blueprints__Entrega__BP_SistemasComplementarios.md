@@ -1,0 +1,97 @@
+# BP_SistemasComplementarios
+
+[Volver al catálogo](../CATALOGO_BLUEPRINTS.md)
+
+**Ruta de Unreal:** `/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios`. **Tipo:** Blueprint.
+**Clase padre:** `"/Script/CoreUObject.Class'/Script/Engine.Actor'"`.
+
+Inventario, suministros únicos, curación, pulso y ciclo solar. BRUNO convierte tres créditos de energía durante tres segundos en un botiquín; valida alcance, saldo y trabajo activo para no consumir ni entregar dos veces. WorldSeconds, FabricationProgress y la animación del robot usan tiempo de juego y se detienen con pausa. El SaveManager conserva energía/proceso y fase; Sun en lux, Moon, Sky con captura continua y SkyMID mantienen día y noche.
+
+## Entradas y responsabilidades del grafo
+
+- **`ReceiveTick`** en `EventGraph`. Operaciones alcanzables desde `then`: `Secuencia`, `Condición`, `Condición`, `Condición`, `Condición`, `Condición`, `Condición`, `GetActorOfClass`, `Condición`, `Condición`, `Condición`, `Condición`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla I`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Asignar InventoryOpen`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Gamepad_Special_Left`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Asignar InventoryOpen`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`AlternarInventario`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `Asignar InventoryOpen`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla H`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Condición`, `Asignar Botiquines`, `Asignar Notice`, `Asignar Health`, `Asignar NoticeUntil`, `PlaySound2D`, `Asignar Notice`, `Asignar NoticeUntil`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Gamepad_LeftShoulder`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Condición`, `Asignar Botiquines`, `Asignar Notice`, `Asignar Health`, `Asignar NoticeUntil`, `PlaySound2D`, `Asignar Notice`, `Asignar NoticeUntil`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UsarBotiquin`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `Condición`, `Asignar Botiquines`, `Asignar Notice`, `Asignar Health`, `Asignar NoticeUntil`, `PlaySound2D`, `Asignar Notice`, `Asignar NoticeUntil`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla E`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Condición`, `Condición`, `Condición`, `Asignar Notice`, `Condición`, `Asignar NoticeUntil`, `Condición`, `Asignar DialogSpeaker`, `Asignar Creditos`, `Asignar Notice`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Gamepad_RightShoulder`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Condición`, `Condición`, `Condición`, `Asignar Notice`, `Condición`, `Asignar NoticeUntil`, `Condición`, `Asignar DialogSpeaker`, `Asignar Creditos`, `Asignar Notice`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`HablarConTecnico`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `Condición`, `Condición`, `Condición`, `Asignar Notice`, `Condición`, `Asignar NoticeUntil`, `Condición`, `Asignar DialogSpeaker`, `Asignar Creditos`, `Asignar Notice`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla MiddleMouseButton`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Condición`, `Asignar LastPulseAt`, `Asignar Cargas`, `SphereTraceSingle`, `Secuencia`, `K2Node_DynamicCast`, `Asignar Notice`, `Condición`, `Asignar NoticeUntil`, `E_Decrease_Health`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`Tecla Gamepad_RightTrigger`** en `EventGraph`. Operaciones alcanzables desde `Pressed`: `Condición`, `Condición`, `Condición`, `Asignar LastPulseAt`, `Asignar Cargas`, `SphereTraceSingle`, `Secuencia`, `K2Node_DynamicCast`, `Asignar Notice`, `Condición`, `Asignar NoticeUntil`, `E_Decrease_Health`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`DispararPulso`** en `EventGraph`. Operaciones alcanzables desde `then`: `Condición`, `Condición`, `Condición`, `Asignar LastPulseAt`, `Asignar Cargas`, `SphereTraceSingle`, `Secuencia`, `K2Node_DynamicCast`, `Asignar Notice`, `Condición`, `Asignar NoticeUntil`, `E_Decrease_Health`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UserConstructionScript`** en `UserConstructionScript`. Entrada/contrato sin una continuación de ejecución serializada en esta exportación; puede ser un grafo de pose, herencia o configuración.
+- **`DispararPulso`** en `DispararPulso`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`HablarConTecnico`** en `HablarConTecnico`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`UsarBotiquin`** en `UsarBotiquin`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`AlternarInventario`** en `AlternarInventario`. Operaciones alcanzables desde `then`: `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`ReceiveTick`** en `ReceiveTick`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_RightTrigger_K2Node_InputKeyEvent_0`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_MiddleMouseButton_K2Node_InputKeyEvent_1`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent_2`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_E_K2Node_InputKeyEvent_3`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_LeftShoulder_K2Node_InputKeyEvent_4`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_H_K2Node_InputKeyEvent_5`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_Gamepad_Special_Left_K2Node_InputKeyEvent_6`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+- **`InputActionHandlerDynamicSignature__DelegateSignature`** en `InpActEvt_I_K2Node_InputKeyEvent_7`. Operaciones alcanzables desde `then`: `K2Node_SetVariableOnPersistentFrame`, `ExecuteUbergraph_BP_SistemasComplementarios`. Las condiciones del grafo deciden qué rama se ejecuta.
+
+## Campos propios declarados
+
+Los identificadores se conservan como aparecen en Unreal para que el equipo pueda buscarlos. El padre puede aportar otros campos heredados; no renombrar contratos sin actualizar consumidores y archivos guardados.
+
+- `bInitialized` — tipo `bool`.
+- `InventoryOpen` — tipo `bool`.
+- `Botiquines` — tipo `int`.
+- `Cargas` — tipo `int`.
+- `Creditos` — tipo `int`.
+- `WorldSeconds` — tipo `real`.
+- `LastPulseAt` — tipo `real`.
+- `DialogUntil` — tipo `real`.
+- `DialogSpeaker` — tipo `string`.
+- `DialogText` — tipo `string`.
+- `Notice` — tipo `string`.
+- `NoticeUntil` — tipo `real`.
+- `Hero` — tipo `object`.
+- `Director` — tipo `object`.
+- `Tecnico` — tipo `object`.
+- `Sun` — tipo `object`.
+- `Sky` — tipo `object`.
+- `Recogido1` — tipo `bool`.
+- `Suministro1` — tipo `object`.
+- `Recogido2` — tipo `bool`.
+- `Suministro2` — tipo `object`.
+- `Recogido3` — tipo `bool`.
+- `Suministro3` — tipo `object`.
+- `Recogido4` — tipo `bool`.
+- `Suministro4` — tipo `object`.
+- `RobotEnergy` — tipo `int`.
+- `bFabricating` — tipo `bool`.
+- `FabricationProgress` — tipo `real`.
+- `SkyDome` — tipo `object`.
+- `SkyMID` — tipo `object`.
+- `Moon` — tipo `object`.
+
+## Operaciones y dependencias verificadas
+
+La exportación contiene 476 nodos con pines. Funciones referenciadas: `Add_DoubleDouble`, `Add_IntInt`, `Add_VectorVector`, `AlternarInventario`, `BooleanAND`, `BreakHitResult`, `CreateDynamicMaterialInstance`, `DegSin`, `DispararPulso`, `Divide_DoubleDouble`, `E_Decrease_Health`, `EnableInput`, `FClamp`, `FMax`, `FMin`, `GetActorOfClass`, `GetCameraLocation`, `GetCameraRotation`, `GetDistanceTo`, `GetForwardVector`, `GetPlayerCameraManager`, `GetPlayerController`, `GetTimeSeconds`, `GreaterEqual_DoubleDouble`, `GreaterEqual_IntInt`, `Greater_DoubleDouble`, `Greater_IntInt`, `HablarConTecnico`, `InputActionHandlerDynamicSignature__DelegateSignature`, `IsMoveInputIgnored`, `IsValid`, `K2_SetActorRotation`, `LessEqual_DoubleDouble`, `Less_DoubleDouble`, `Less_IntInt`, `MakeRotator`, `Multiply_DoubleDouble`, `Multiply_VectorFloat`, `Not_PreBool`, `PlaySound2D`, `ReceiveTick`, `SetActorHiddenInGame`, `SetIntensity`, `SetScalarParameterValue`, `SphereTraceSingle`, `Subtract_DoubleDouble`, `Subtract_IntInt`, `UsarBotiquin`, `UserConstructionScript`.
+
+- `/Game/ThirdPerson/Audio/SW_Rescue.SW_Rescue`
+- `/Game/ThirdPerson/Audio/SW_Upgrade.SW_Upgrade`
+- `/Game/ThirdPerson/Blueprints/AnimNotifies/BPC_Health.BPC_Health_C`
+- `/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health.BPC_E_Health_C`
+- `/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C`
+- `/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy.BP_BaseEnemy_C`
+- `/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega.BP_DirectorEntrega_C`
+- `/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega_C`
+- `/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal.BP_TecnicoTemporal_C`
+
+## Cómo modificarlo sin romper el flujo
+
+1. Revisar primero el padre y los consumidores de sus eventos/variables. Los nombres usados por notifies, Blackboard y guardado son contratos.
+2. Cambiar en la copia propia del proyecto; no sobrescribir packs externos. Si existe un generador en `Tools/UnrealPython`, actualizarlo junto con el asset para conservar reproducibilidad.
+3. Compilar el Blueprint y sus dependencias, guardar y ejecutar el escenario correspondiente de la guía de pruebas. Un grafo compilado no acredita por sí solo comportamiento correcto.
+4. Registrar evidencia en `docs/validation` y regenerar este catálogo después de exportar.
+
+**Huella de exportación:** `e6ebfe8968d9751cf8de712c1d233eeb9bdf89f5d2e4de362176fac4083dcd36`.

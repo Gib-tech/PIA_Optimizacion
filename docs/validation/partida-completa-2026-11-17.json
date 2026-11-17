@@ -1,0 +1,1064 @@
+{
+  "agent_tests_not_owner_acceptance": true,
+  "no_teleports": true,
+  "no_health_or_damage_overrides": true,
+  "healing_uses_consumable_inventory": true,
+  "input_transport": "Pawn movement input with combat guards, real Enhanced Input attack handlers, normal interaction in range; no transform edits",
+  "passed": true,
+  "reason": "Complete mission through gameplay movement and attacks",
+  "stage": "extract",
+  "events": [
+    {
+      "stage": "rescue",
+      "time": 1.07
+    },
+    {
+      "stage": "enter",
+      "time": 1.94
+    },
+    {
+      "stage": "combat",
+      "time": 6.68
+    },
+    {
+      "stage": "recover",
+      "time": 28.27
+    },
+    {
+      "stage": "door",
+      "time": 31.84
+    },
+    {
+      "stage": "enter",
+      "time": 38.24
+    },
+    {
+      "stage": "combat",
+      "time": 70.07
+    },
+    {
+      "stage": "recover",
+      "time": 89.09
+    },
+    {
+      "stage": "door",
+      "time": 91.46
+    },
+    {
+      "stage": "enter",
+      "time": 101.96
+    },
+    {
+      "stage": "combat",
+      "time": 105.27
+    },
+    {
+      "stage": "recover",
+      "time": 138.64
+    },
+    {
+      "stage": "beacon",
+      "time": 140.79
+    },
+    {
+      "stage": "door",
+      "time": 184.25
+    },
+    {
+      "stage": "extract",
+      "time": 193.65
+    }
+  ],
+  "samples": [
+    {
+      "t": 0.0,
+      "stage": "supplies",
+      "player": [
+        0,
+        -560
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 3.0,
+      "stage": "enter",
+      "player": [
+        78,
+        -1364
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 6.0,
+      "stage": "enter",
+      "player": [
+        0,
+        -2697
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 9.1,
+      "stage": "combat",
+      "player": [
+        453,
+        -2832
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 12.1,
+      "stage": "combat",
+      "player": [
+        375,
+        -2828
+      ],
+      "player_health": 100.0,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 15.1,
+      "stage": "combat",
+      "player": [
+        287,
+        -2880
+      ],
+      "player_health": 86.80000019073486,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 18.1,
+      "stage": "combat",
+      "player": [
+        252,
+        -2884
+      ],
+      "player_health": 86.80000019073486,
+      "hostage_health": 100.0,
+      "zones": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 21.1,
+      "stage": "combat",
+      "player": [
+        -178,
+        -3038
+      ],
+      "player_health": 86.80000019073486,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 24.1,
+      "stage": "combat",
+      "player": [
+        -239,
+        -3062
+      ],
+      "player_health": 95.40000057220459,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 27.1,
+      "stage": "combat",
+      "player": [
+        -37,
+        -2996
+      ],
+      "player_health": 95.40000057220459,
+      "hostage_health": 100.0,
+      "zones": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 30.1,
+      "stage": "recover",
+      "player": [
+        -161,
+        -2321
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 33.1,
+      "stage": "door",
+      "player": [
+        -432,
+        -2067
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 36.1,
+      "stage": "door",
+      "player": [
+        -35,
+        -3432
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 39.1,
+      "stage": "enter",
+      "player": [
+        87,
+        -4472
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 42.1,
+      "stage": "enter",
+      "player": [
+        27,
+        -3816
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 45.1,
+      "stage": "enter",
+      "player": [
+        -178,
+        -2384
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 48.1,
+      "stage": "enter",
+      "player": [
+        -1500,
+        -2836
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 51.1,
+      "stage": "enter",
+      "player": [
+        -2007,
+        -3416
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 54.1,
+      "stage": "enter",
+      "player": [
+        -949,
+        -2394
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 57.1,
+      "stage": "enter",
+      "player": [
+        -75,
+        -3060
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 60.1,
+      "stage": "enter",
+      "player": [
+        -516,
+        -4327
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 63.1,
+      "stage": "enter",
+      "player": [
+        -1851,
+        -5012
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 66.1,
+      "stage": "enter",
+      "player": [
+        -3086,
+        -4865
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 69.1,
+      "stage": "enter",
+      "player": [
+        -3192,
+        -4805
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 100.0,
+      "zones": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 72.2,
+      "stage": "combat",
+      "player": [
+        -2852,
+        -4926
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "t": 75.2,
+      "stage": "combat",
+      "player": [
+        -3276,
+        -5153
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "t": 78.2,
+      "stage": "combat",
+      "player": [
+        -3628,
+        -5429
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        2,
+        0
+      ]
+    },
+    {
+      "t": 81.2,
+      "stage": "combat",
+      "player": [
+        -3602,
+        -5344
+      ],
+      "player_health": 82.20000076293945,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "t": 84.2,
+      "stage": "combat",
+      "player": [
+        -3494,
+        -5103
+      ],
+      "player_health": 69.00000095367432,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "t": 87.2,
+      "stage": "combat",
+      "player": [
+        -3333,
+        -4969
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "t": 90.2,
+      "stage": "recover",
+      "player": [
+        -3769,
+        -4836
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "t": 93.2,
+      "stage": "door",
+      "player": [
+        -3653,
+        -4915
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "t": 96.2,
+      "stage": "door",
+      "player": [
+        -2253,
+        -5452
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "t": 99.2,
+      "stage": "door",
+      "player": [
+        -831,
+        -5915
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "t": 102.4,
+      "stage": "enter",
+      "player": [
+        3,
+        -6507
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "t": 105.7,
+      "stage": "combat",
+      "player": [
+        214,
+        -7314
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "t": 108.7,
+      "stage": "combat",
+      "player": [
+        133,
+        -7630
+      ],
+      "player_health": 90.80000114440918,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "t": 111.7,
+      "stage": "combat",
+      "player": [
+        209,
+        -7684
+      ],
+      "player_health": 99.4000015258789,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "t": 114.7,
+      "stage": "combat",
+      "player": [
+        114,
+        -7729
+      ],
+      "player_health": 86.20000171661377,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "t": 117.7,
+      "stage": "combat",
+      "player": [
+        141,
+        -7772
+      ],
+      "player_health": 86.20000171661377,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "t": 120.7,
+      "stage": "combat",
+      "player": [
+        253,
+        -7773
+      ],
+      "player_health": 86.20000171661377,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "t": 123.7,
+      "stage": "combat",
+      "player": [
+        211,
+        -7714
+      ],
+      "player_health": 73.00000190734863,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "t": 126.7,
+      "stage": "combat",
+      "player": [
+        54,
+        -7758
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 129.7,
+      "stage": "combat",
+      "player": [
+        54,
+        -7758
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 132.7,
+      "stage": "combat",
+      "player": [
+        54,
+        -7758
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 135.7,
+      "stage": "combat",
+      "player": [
+        54,
+        -7758
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 138.9,
+      "stage": "recover",
+      "player": [
+        71,
+        -7701
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 141.9,
+      "stage": "beacon",
+      "player": [
+        170,
+        -7229
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 144.9,
+      "stage": "beacon",
+      "player": [
+        101,
+        -8718
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 147.9,
+      "stage": "beacon",
+      "player": [
+        177,
+        -8961
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 150.9,
+      "stage": "beacon",
+      "player": [
+        177,
+        -8961
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 153.9,
+      "stage": "beacon",
+      "player": [
+        177,
+        -8961
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 156.9,
+      "stage": "beacon",
+      "player": [
+        -671,
+        -8610
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 159.9,
+      "stage": "beacon",
+      "player": [
+        -2156,
+        -8411
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 162.9,
+      "stage": "beacon",
+      "player": [
+        -2424,
+        -8369
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 165.9,
+      "stage": "beacon",
+      "player": [
+        -2424,
+        -8369
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 168.9,
+      "stage": "beacon",
+      "player": [
+        -1442,
+        -8363
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 171.9,
+      "stage": "beacon",
+      "player": [
+        7,
+        -8626
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 174.9,
+      "stage": "beacon",
+      "player": [
+        1498,
+        -8513
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 177.9,
+      "stage": "beacon",
+      "player": [
+        2785,
+        -8369
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 181.0,
+      "stage": "beacon",
+      "player": [
+        2785,
+        -8369
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 184.0,
+      "stage": "beacon",
+      "player": [
+        2888,
+        -8192
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 187.0,
+      "stage": "door",
+      "player": [
+        2130,
+        -8846
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 190.0,
+      "stage": "door",
+      "player": [
+        697,
+        -9289
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 193.0,
+      "stage": "door",
+      "player": [
+        -10,
+        -10137
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "t": 196.0,
+      "stage": "extract",
+      "player": [
+        94,
+        -10676
+      ],
+      "player_health": 59.800002098083496,
+      "hostage_health": 86.80000019073486,
+      "zones": [
+        3,
+        3,
+        3
+      ]
+    }
+  ]
+}

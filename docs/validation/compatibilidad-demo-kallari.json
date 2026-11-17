@@ -1,0 +1,8 @@
+{
+  "asset": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter",
+  "removed_nodes": [
+    "K2Node_CallFunction_79",
+    "K2Node_InputAction_3"
+  ],
+  "reason": "Acción ResetVR sin configurar y función HeadMountedDisplay antigua ausente. Ejemplo sin uso en la misión; se retira sólo esa rama."
+}

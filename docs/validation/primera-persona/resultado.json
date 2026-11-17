@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "method": "PIE con llamadas a entradas reales; fixture visual, no partida natural ni mando físico",
+  "checks": [
+    "brazos_sin_colision_animacion_muestreada_sin_notifies",
+    "montaje_ligero_espada",
+    "montaje_pesado_espada",
+    "montaje_ligero_martillo",
+    "montaje_pesado_martillo",
+    "tercera_persona_restaura_cuerpo_y_oculta_brazos",
+    "vista_sigue_pitch_sin_cabeza",
+    "interrupcion_limpia_hitbox_y_estado"
+  ],
+  "samples": [
+    {
+      "stage": -1,
+      "montage": null,
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: -13.722071, y: 108.611660, z: -94.715575}>",
+      "hand": "<Struct 'Vector' (0x0000027060E35690) {x: 22.000000, y: -1852.098801, z: 139.510922}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 0,
+      "montage": null,
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: -13.722071, y: 108.611660, z: -94.715575}>",
+      "hand": "<Struct 'Vector' (0x0000027060E35690) {x: 22.000000, y: -1852.098801, z: 129.660926}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 1,
+      "montage": "FA_1_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: -13.722071, y: 108.611660, z: -94.715575}>",
+      "hand": "<Struct 'Vector' (0x0000027060E35690) {x: 22.000000, y: -1852.098801, z: 129.660926}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 2,
+      "montage": "FA_1_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: -1.405598, y: 109.059852, z: -112.864279}>",
+      "hand": "<Struct 'Vector' (0x0000027060E35690) {x: 22.371307, y: -1959.773932, z: 110.800649}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 3,
+      "montage": "H_attack_1_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: -12.101249, y: 99.322107, z: -84.065691}>",
+      "hand": "<Struct 'Vector' (0x00000270867C5230) {x: 12.710483, y: -1953.873768, z: 139.981590}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 4,
+      "montage": "H_attack_1_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 125.553232, y: 133.372981, z: -57.751947}>",
+      "hand": "<Struct 'Vector' (0x00000270867F29A0) {x: 17.258671, y: -1949.373691, z: 129.456887}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 5,
+      "montage": "HA_1_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 127.590001, y: 142.119401, z: -58.252798}>",
+      "hand": "<Struct 'Vector' (0x00000270867F29A0) {x: 42.624499, y: -1980.320248, z: 179.533393}>",
+      "sword_visible": true,
+      "hammer_visible": false
+    },
+    {
+      "stage": 6,
+      "montage": "HA_1_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 119.635106, y: 43.383955, z: -134.534736}>",
+      "hand": "<Struct 'Vector' (0x00000270867F29A0) {x: 19.574121, y: -1961.017224, z: 129.137554}>",
+      "sword_visible": false,
+      "hammer_visible": true
+    },
+    {
+      "stage": 7,
+      "montage": "Attack_3_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 12.549003, y: -37.652822, z: -121.933633}>",
+      "hand": "<Struct 'Vector' (0x00000270867F3A80) {x: 31.128131, y: -2215.122967, z: 127.856790}>",
+      "sword_visible": false,
+      "hammer_visible": true
+    },
+    {
+      "stage": 8,
+      "montage": "Attack_3_Montage",
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 62.264522, y: 13.112337, z: -229.779927}>",
+      "hand": "<Struct 'Vector' (0x00000270867F3BC0) {x: -3.247444, y: -2313.722353, z: 139.970356}>",
+      "sword_visible": false,
+      "hammer_visible": true
+    },
+    {
+      "stage": 9,
+      "montage": null,
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 14.584323, y: 3.293439, z: -168.469911}>",
+      "hand": "<Struct 'Vector' (0x00000270867F3BC0) {x: 32.309612, y: -2461.111336, z: 174.792574}>",
+      "sword_visible": false,
+      "hammer_visible": true
+    },
+    {
+      "stage": 10,
+      "montage": null,
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 14.584323, y: 3.293439, z: -168.469911}>",
+      "hand": "<Struct 'Vector' (0x00000270867F3BC0) {x: -4.036946, y: -2551.359687, z: 174.792574}>",
+      "sword_visible": false,
+      "hammer_visible": false
+    },
+    {
+      "stage": 11,
+      "montage": null,
+      "arms_location": "<Struct 'Vector' (0x000002734481B580) {x: 58.977710, y: -58.970127, z: -131.683206}>",
+      "hand": "<Struct 'Vector' (0x00000270867F3BC0) {x: -47.024654, y: -2593.497241, z: 181.020061}>",
+      "sword_visible": false,
+      "hammer_visible": true
+    }
+  ]
+}

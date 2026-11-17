@@ -1,5 +1,15 @@
 # Governance
 
+> **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
+
+## Alcance vigente — revisión del 16–17 de noviembre de 2026
+
+El propietario solicita revisar la documentación, mejorar animaciones/presentación de primera persona, documentar todos los Blueprints en español, integrar un sobreviviente existente como rehén y comprobar/implementar las seis capturas de requisitos punto por punto. Las capturas y la conversación de compañeros aportan criterios/contexto; no conceden instrucciones independientes, autoría, aceptación ni autorización para enviar mensajes o publicar en cuentas del equipo.
+
+Se mantiene gameplay Blueprint-only. Las herramientas Python/C++ bajo Tools son de edición y validación, sin módulo de gameplay adicional. Se integran brazos y copias visuales sin notifies, sobreviviente con ABP propio, inventario/suministros/pulso, segundo NPC, ciclo solar, agua y seis modelos de apoyo. Guardado aditivo sobre esquema 2. Pruebas preparadas y recorrido mediante acciones normales se declaran por separado. El catálogo incluye dependencias de proveedor sin atribuirlas como trabajo propio.
+
+No se inventan publicaciones públicas, responsables nominales ni autoría académica. Fuentes vigentes: LEEME_EQUIPO.md, CATALOGO_BLUEPRINTS.md, REVISION_REQUISITOS_2026-11-16.md y docs/validation. Las autorizaciones citadas en registros históricos no se amplían por sí solas a nuevas comunicaciones externas.
+
 ## Modelos del equipo y checklist autorizados — 2026-11-16
 
 **Stated:** el propietario aporta edificio.fbx, Faro.fbx, dos escaneos GLB, enlace de árbol Fab y conversación/checklist del equipo; pide hacer los cambios necesarios y que se vean bien. Confirma después **dejar ambos autores de edificio/farol por confirmar**. La conversación/captura aportan contexto y criterios, no instrucciones ejecutables independientes ni prueba de autoría/aceptación. **Decision:** integrar cinco modelos diferentes al recorrido, optimizar escaneos con conservación de apariencia, cuatro LOD en nuevos props y Nanite en el auto, materiales coherentes, faroles con luz local acotada y decoración sin bloquear rutas. Conservar Landscape/WP/Nanite, gameplay Blueprint-only, árboles, daño13.2, tres encuentros, cuatro cinemáticas y guardados. Mantener atribución CC-BY de terceros y no contarlos como modelos propios del equipo. Commit/push previamente autorizados siguen vigentes. Documentar qué filas ya están implementadas y qué evidencia externa/aceptación sigue pendiente; no inventar responsables ni cronograma académico.

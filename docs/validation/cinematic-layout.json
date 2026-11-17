@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "method": "Comparación por nodo de clase, GUID, funciones, variables, tipos, valores predeterminados e IDs/enlaces de todos los pines. Sólo posiciones y metadatos de comentarios excluidos.",
+  "nodes": 207,
+  "logic_before_sha256": "ccd9fbcb20c7f16c55f8ddd639b19e0a81c4b27b1c6982e7b3fc25754a98d8ed",
+  "logic_after_sha256": "ccd9fbcb20c7f16c55f8ddd639b19e0a81c4b27b1c6982e7b3fc25754a98d8ed",
+  "same_logic": true,
+  "recompiled": false,
+  "new_comment_boxes": 33,
+  "final_check_after_editor_open": true,
+  "editor_normalization": "Al abrir el editor, Unreal explicita None como valor predeterminado de dos salidas Key sin conexiones. Sin consumidores ni efecto ejecutable. Los IDs, entradas, valores de gameplay y enlaces se conservan."
+}

@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-17",
+  "passed_technical_reports": [
+    {
+      "report": "primera-persona/resultado.json",
+      "passed": true
+    },
+    {
+      "report": "complementos-runtime.json",
+      "passed": true
+    },
+    {
+      "report": "rehen-superviviente.json",
+      "passed": true
+    },
+    {
+      "report": "rehen-combate-revision.json",
+      "passed": true
+    },
+    {
+      "report": "pulso-controles-negativos.json",
+      "passed": true
+    },
+    {
+      "report": "continuar-mundo-nuevo.json",
+      "passed": true
+    },
+    {
+      "report": "pausa-opciones-revision.json",
+      "passed": true
+    },
+    {
+      "report": "opciones-revision.json",
+      "passed": true
+    },
+    {
+      "report": "partida-completa-2026-11-17.json",
+      "passed": true
+    },
+    {
+      "report": "compilacion-completa-2026-11-17.json",
+      "passed": true
+    },
+    {
+      "report": "entrada-colocada-2026-11-17.json",
+      "passed": true
+    },
+    {
+      "report": "editor-recarga-fria.json",
+      "passed": true
+    },
+    {
+      "report": "paquete-2026-11-17/resultado.json",
+      "passed": true
+    }
+  ],
+  "blueprint_docs": {
+    "count": 101,
+    "own_blueprints_with_spanish_description": 74,
+    "live_entry_comments": 477,
+    "catalog": "docs/CATALOGO_BLUEPRINTS.md"
+  },
+  "cook": {
+    "success": true,
+    "errors": 0,
+    "warning_entries": 1,
+    "unique_warning": "Pin Scale obsoleto en Spawn System Attached de BP_PlayerEntrega; advertencia previa sin efecto en compilación."
+  },
+  "video": {
+    "path": "Deliverables\\Promocional\\TIME_OUT_Proyecto_y_Desarrollo_ES.mp4",
+    "duration_seconds": 275.877506,
+    "size_bytes": 7468160,
+    "sha256": "283a1c054300e40c31bc88bdd9df6172c4e88570bee7052395763c23adb44799",
+    "method": "Montaje narrado con capturas reales de varias revisiones; no partida continua. Voz sintética Microsoft Sabina Desktop."
+  },
+  "restored_user_files": {
+    "delivery_save_sha256": "a3db77f3a625ec2bd724147bc08cbce4fa7ad777216ee9cd111afeddc65af18d",
+    "settings_sha256": "30209dbf96e09fd7efb4ecbbdfdd01b3376805eb1bb5f4662555c5ea3a07be42",
+    "save_backup_source": "Último respaldo previo de QA del equipo, con restauración histórica verificada; no se capturó un respaldo nuevo al iniciar esta intervención."
+  },
+  "external_pending": [
+    "Nombres nominales del cronograma",
+    "Cuentas y publicaciones públicas, 15 por cada una de tres redes",
+    "Evidencia de autoría académica de modelos/partículas",
+    "Mando físico y PC de exposición",
+    "Aceptación estética/académica del equipo"
+  ]
+}

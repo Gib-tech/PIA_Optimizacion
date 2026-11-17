@@ -1,0 +1,122 @@
+[
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_HA_1.AFP_HA_1",
+    "keys": 39,
+    "tracks": 161,
+    "recovery_end": 1.5833333730697632,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_1_Sequence.HA_1_Sequence",
+    "guard_time": 0.65
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_HA_2.AFP_HA_2",
+    "keys": 27,
+    "tracks": 161,
+    "recovery_end": 1.0833333730697632,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_1_Sequence.HA_1_Sequence",
+    "guard_time": 0.65
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_FA_2.AFP_FA_2",
+    "keys": 26,
+    "tracks": 161,
+    "recovery_end": 0.8333333134651184,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_L_FA_3.AFP_L_FA_3",
+    "keys": 43,
+    "tracks": 161,
+    "recovery_end": 1.399999976158142,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_L_FA_4.AFP_L_FA_4",
+    "keys": 51,
+    "tracks": 161,
+    "recovery_end": 1.6666666269302368,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_H_attack_1.AFP_H_attack_1",
+    "keys": 73,
+    "tracks": 161,
+    "recovery_end": 1.18,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_H_attack_2.AFP_H_attack_2",
+    "keys": 49,
+    "tracks": 161,
+    "recovery_end": 1.05,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_H_attack_3.AFP_H_attack_3",
+    "keys": 96,
+    "tracks": 161,
+    "recovery_end": 1.7,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_FA_1.AFP_FA_1",
+    "keys": 29,
+    "tracks": 161,
+    "recovery_end": 0.9333333373069763,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_Attack_3.AFP_Attack_3",
+    "keys": 91,
+    "tracks": 68,
+    "recovery_end": 3.0,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_1_Sequence.HA_1_Sequence",
+    "guard_time": 0.65
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_Attack_1.AFP_Attack_1",
+    "keys": 27,
+    "tracks": 68,
+    "recovery_end": 0.8666666746139526,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_1_Sequence.HA_1_Sequence",
+    "guard_time": 0.65
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_Attack_2.AFP_Attack_2",
+    "keys": 37,
+    "tracks": 68,
+    "recovery_end": 1.2000000476837158,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/Hammer/HA_1_Sequence.HA_1_Sequence",
+    "guard_time": 0.65
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_ataque_rapido_1.AFP_ataque_rapido_1",
+    "keys": 29,
+    "tracks": 76,
+    "recovery_end": 0.9333333373069763,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_ataque_rapido_2.AFP_ataque_rapido_2",
+    "keys": 26,
+    "tracks": 76,
+    "recovery_end": 0.8333333134651184,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  },
+  {
+    "asset": "/Game/ThirdPerson/Characters/PrimeraPersona/Animaciones/AFP_L_FA_1.AFP_L_FA_1",
+    "keys": 29,
+    "tracks": 161,
+    "recovery_end": 0.9333333373069763,
+    "guard_source": "/Game/ThirdPerson/Animations/Fast_attacks/sword/FA_1.FA_1",
+    "guard_time": 0.33
+  }
+]

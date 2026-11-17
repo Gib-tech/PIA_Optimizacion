@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "method": "PIE; pared/enemigo/cámara/munición preparados para controles negativos",
+  "checks": [
+    "pared_bloquea_dano_y_disparo_consume_una_carga",
+    "objetivo_a_diez_metros_no_recibe_dano",
+    "sin_municion_no_dispara",
+    "escena_bloquea_acciones_complementarias",
+    "pausa_bloquea_inventario_y_recupera_control"
+  ]
+}

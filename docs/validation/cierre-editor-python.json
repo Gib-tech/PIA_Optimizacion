@@ -1,0 +1,10 @@
+{
+  "initial_shutdown_crash": true,
+  "observed": "Excepción en python311/PythonScriptPlugin al cerrar editor tras QA, IsRequestingExit=true; ocurrió después de guardar y destruir la ventana.",
+  "mitigation": "quit_clean_editor.py libera proxies globales de QA, recolecta Python y Unreal y luego solicita cierre; usar tras finalizar/desregistrar callbacks.",
+  "clean_shutdown_after_mitigation": true,
+  "clean_log_closed": "2026-11-17 07:52:05 UTC",
+  "new_crash_after_mitigation": false,
+  "normal_editor_cold_reload": "editor-recarga-fria.json",
+  "inference_limit": "La pila señala el cierre del intérprete. No se atribuye una causa definitiva al motor ni se afirma que todo cierre futuro esté probado. El ejecutable sin Python cerró limpio."
+}

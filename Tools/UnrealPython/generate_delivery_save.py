@@ -36,6 +36,8 @@ def manager():
     director = g.local('Director', DIRECTOR)
     instance = g.local('Instance', GI)
     data = g.local('SaveData', SAVE)
+    from generate_rubric_systems import EXTRAS
+    extras = g.local('Extras', EXTRAS)
     pc = g.c(GS, 'GetPlayerController', [('PlayerIndex', 'int', 0)], cat='object', obj='/Script/Engine.PlayerController')
     health = g.v('BPC_Health', 'object', owner=HERO, target=hero, obj=HEALTH)
     bb = g.blackboard(*host)
@@ -53,7 +55,10 @@ def manager():
         ('HammerUpgraded', 'bool', HERO, hero, 'bHammerUpgraded'),
         ('HammerEquipped', 'bool', HERO, hero, 'bIsHammerEquipped'),
         ('HostageHealth', 'real', HOSTAGE, host, 'Health'),
+        ('FirstPerson', 'bool', HERO, hero, 'CamaraPrimera'),
     ]
+    for name,kind in [('Botiquines','int'),('Cargas','int'),('Creditos','int'),('WorldSeconds','real'),('RobotEnergy','int'),('bFabricating','bool'),('FabricationProgress','real')]+[('Recogido'+str(i),'bool') for i in range(1,5)]:
+        bindings.append((name,kind,EXTRAS,extras,name))
     for i, z in enumerate(zones,1):
         for key, kind, prop in [('Cleared','bool','bCleared'),('Wave','int','CurrentWave'),('Phase','int','Phase'),('Spawned','int','SpawnedCount')]:
             bindings.append(('Zone%d%s'%(i,key),kind,ZONE,z,prop))
@@ -69,7 +74,7 @@ def manager():
     g.action_on(initialized,MANAGER,'InitializeCheckpoint',pin='else')
     f = g.find(init,HERO); c = g.cast(HERO); g.chain(f,c); g.wire(f,'ReturnValue',c,'Object')
     prev = g.s(c,'Hero',(c,'AsBP_PlayerEntrega'),'object',obj=HERO)
-    for name,cls in [('Hostage',HOSTAGE),('Director',DIRECTOR)]:
+    for name,cls in [('Hostage',HOSTAGE),('Director',DIRECTOR),('Extras',EXTRAS)]:
         f = g.find(prev,cls); c=g.cast(cls); g.chain(f,c); g.wire(f,'ReturnValue',c,'Object')
         prev=g.s(c,name,(c,'As'+cls.rsplit('.',1)[-1].removesuffix('_C')),'object',obj=cls)
     gi=g.c(GS,'GetGameInstance',cat='object',obj='/Script/Engine.GameInstance')
@@ -101,7 +106,7 @@ def manager():
 
     # A changed milestone is retried each Tick until it is safe, without timed polling.
     changed=g.neg(g.v('bHasCheckpoint','bool'))
-    tracked=[b for b in bindings if b[0] in ['Paso','OrderRevealed'] or 'Cleared' in b[0] or ('Door' in b[0] and 'Health' in b[0])]
+    tracked=[b for b in bindings if b[0] in ['Paso','OrderRevealed','Botiquines','Cargas','Creditos','RobotEnergy','bFabricating'] or b[0].startswith('Recogido') or 'Cleared' in b[0] or ('Door' in b[0] and 'Health' in b[0])]
     for name,kind,owner,target,prop in tracked:
         fn={'bool':'NotEqual_BoolBool','int':'NotEqual_IntInt','real':'NotEqual_DoubleDouble'}[kind]
         diff=g.cmp(fn,live(prop,kind,owner,target),saved(name,kind),kind)
@@ -121,6 +126,7 @@ def manager():
     prev=g.s(cast,'SaveData',(cast,'AsBP_DeliverySave'),'object',obj=SAVE)
     prev=g.s(prev,'Version',VERSION,'int',owner=SAVE,target=data)
     prev=g.s(prev,'FinalStandRevision',1,'int',owner=SAVE,target=data)
+    prev=g.s(prev,'ExtrasRevision',2,'int',owner=SAVE,target=data)
     for name,kind,owner,target,prop in bindings:
         prev=g.s(prev,name,live(prop,kind,owner,target),kind,owner=SAVE,target=data)
     for label,target in [('Player',hero),('Hostage',host)]:
@@ -152,6 +158,9 @@ def manager():
     prev=checked
     for name,kind,owner,target,prop in bindings:
         prev=g.s(prev,prop,saved(name,kind),kind,owner=owner,target=target)
+    for field,enabled in [('FPC',saved('FirstPerson','bool')),('TPC',g.neg(saved('FirstPerson','bool')))]:
+        camera=g.v(field,'object',owner=HERO,target=hero,obj='/Script/Engine.CameraComponent')
+        prev=g.action_on(prev,'/Script/Engine.ActorComponent','SetActive',camera,[('bNewActive','bool',enabled,None),('bReset','bool',False,None)])
     # Additive revision preserves schema-2 checkpoints. A legacy attempt already
     # activating beacons keeps its progress; earlier attempts face the new horde.
     legacy=g.br(prev,g.cmp('Less_IntInt',saved('FinalStandRevision','int'),1,'int'))

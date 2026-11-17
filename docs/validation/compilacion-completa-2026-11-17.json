@@ -1,0 +1,730 @@
+{
+  "count": 101,
+  "passed": true,
+  "blueprints": [
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/AnimNotifies/BPC_Health.BPC_Health",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health.BPC_E_Health",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/AnimNotifies/Health.Health",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/RecursosPropios/Interfaz/Interfaz.Interfaz",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BPI_Enemy.BPI_Enemy",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/ABP_RehenSuperviviente.ABP_RehenSuperviviente",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Bp_Modelos/BP_DestruiblePick.BP_DestruiblePick",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/BP_Saveable.BP_Saveable",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/BP_SaveGame.BP_SaveGame",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/BP_SaveInterface.BP_SaveInterface",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/BP_GameInstance.BP_GameInstance",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DoorFragment.BP_DoorFragment",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_HostageArrive.BTTask_HostageArrive",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryOptions.BP_DeliveryOptions",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave.BP_DeliverySave",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Roam.BTTask_Roam",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/DañoDes.DañoDes",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/Blueprints/AnimBP/ABP_SciFiTrooperManV3.ABP_SciFiTrooperManV3",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/ABP_EnemyEntrega.ABP_EnemyEntrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_FaceCombatTarget.BTTask_FaceCombatTarget",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy.BP_BaseEnemy",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone.BP_CombatZone",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega.BP_DirectorEntrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega:EventGraph.SV_K2Node_DynamicCast_2",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega.BP_BeaconEntrega:EventGraph.SV_K2Node_DynamicCast_76",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestructibleDoor.BP_DestructibleDoor",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Menu/Menu_Pausa.Menu_Pausa",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface.BP_DeliveryInterface",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface.BP_DeliveryInterface:EventGraph.SV_K2Node_DynamicCast_24",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Options\\', no necesitas  Cast To BP_DeliveryOptions .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface.BP_DeliveryInterface:EventGraph.SV_K2Node_DynamicCast_53",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface.BP_DeliveryInterface:EventGraph.SV_K2Node_DynamicCast_67",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'Menu Pausa\\', no necesitas  Cast To Menu_Pausa .\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/Menu/Menu_Opciones.Menu_Opciones",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/Menu/Menu_Opciones.Menu_Opciones:EventGraph.SV_K2Node_DynamicCast_223",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .\""
+        },
+        {
+          "node": "/Game/Menu/Menu_Opciones.Menu_Opciones:EventGraph.SV_K2Node_DynamicCast_232",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .\""
+        },
+        {
+          "node": "/Game/Menu/Menu_Opciones.Menu_Opciones:EventGraph.SV_K2Node_DynamicCast_241",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .\""
+        },
+        {
+          "node": "/Game/Menu/Menu_Opciones.Menu_Opciones:EventGraph.SV_K2Node_DynamicCast_250",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .\""
+        },
+        {
+          "node": "/Game/Menu/Menu_Opciones.Menu_Opciones:EventGraph.SV_K2Node_DynamicCast_259",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager:EventGraph.SV_K2Node_DynamicCast_27",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Hostage\\', no necesitas  Cast To BP_Hostage .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager:EventGraph.SV_K2Node_DynamicCast_30",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager.BP_DeliverySaveManager:EventGraph.SV_K2Node_DynamicCast_184",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Save\\', no necesitas  Cast To BP_DeliverySave .\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega.BP_PlayerEntrega:EventGraph.K2Node_CallFunction_122",
+          "message": "ErrorMsg=\"El pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\\nEl pin de entrada  Scale  que especifica el valor no predeterminado ya no existe en el nodo  Spawn System Attached . Actualiza el nodo o restablece el valor predeterminado del pin para quitar el pin.\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega.BP_DestruibleEntrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Animations/ABP_Manny.ABP_Manny",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega.BP_HUD_Entrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios.BP_SistemasComplementarios",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios.BP_SistemasComplementarios:EventGraph.SV_K2Node_DynamicCast_12",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios.BP_SistemasComplementarios:EventGraph.SV_K2Node_DynamicCast_15",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal.BP_TecnicoTemporal",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector.BP_CinematicDirector",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/AnimNotifies/SaveLightAttack_AN.SaveLightAttack_AN",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/AnimNotifies/ResetState_AN.ResetState_AN",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/BP_HostageController.BP_HostageController",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy.BP_ChargerEnemy",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_IAController.BP_IAController",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerController.BP_ChargerController",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Defend.BTTask_Defend",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_LocatePlayer.BTService_LocatePlayer",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Attack.BTTask_Attack",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_HitSun.BTTask_HitSun",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerWindup.BTTask_ChargerWindup",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRetreat.BTTask_ChargerRetreat",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRecover.BTTask_ChargerRecover",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerCharge.BTTask_ChargerCharge",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_ChargerSense.BTService_ChargerSense",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon.BTTask_ActivateBeacon",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense.BTService_HostageSense",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Entrega.BP_GameMode_Entrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_SenalExtraccion.BP_SenalExtraccion",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconLabel.BP_BeaconLabel",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Animations/ABP_Quinn.ABP_Quinn",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Rigs/ABP_Quinn_PostProcess.ABP_Quinn_PostProcess",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Rigs/ABP_Manny_PostProcess.ABP_Manny_PostProcess",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Rigs/CR_Mannequin_Procedural.CR_Mannequin_Procedural",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/Menu/Menu_Pausa.Menu_Pausa",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/Menu/Menu_Opciones.Menu_Opciones",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/Menu/Menu_Inicio.Menu_Inicio",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/Menu/Menu_GameOver.Menu_GameOver",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/LevelMenu/Menu/HealthBar.HealthBar",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Menu/Menu_Inicio.Menu_Inicio",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/Menu/Menu_Inicio.Menu_Inicio:EventGraph.SV_K2Node_DynamicCast_37",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Delivery Interface\\', no necesitas  Cast To BP_DeliveryInterface .\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/Menu/Menu_GameOver.Menu_GameOver",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Menu/HealthBar.HealthBar",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAction_60",
+          "message": "ErrorMsg=\"Acción de entrada Evento referencia unknown Action \\'Jump\\' for  InputAction Jump\""
+        },
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAxisEvent_42",
+          "message": "ErrorMsg=\"Controles Axis Evento referencia unknown Axis \\'LookUp\\' for  InputAxis LookUp\""
+        },
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAxisEvent_50",
+          "message": "ErrorMsg=\"Controles Axis Evento referencia unknown Axis \\'Turn\\' for  InputAxis Turn\""
+        },
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAxisEvent_85",
+          "message": "ErrorMsg=\"Controles Axis Evento referencia unknown Axis \\'MoveForward\\' for  InputAxis MoveForward\""
+        },
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAxisEvent_95",
+          "message": "ErrorMsg=\"Controles Axis Evento referencia unknown Axis \\'MoveRight\\' for  InputAxis MoveRight\""
+        },
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAxisEvent_43",
+          "message": "ErrorMsg=\"Controles Axis Evento referencia unknown Axis \\'TurnRate\\' for  InputAxis TurnRate\""
+        },
+        {
+          "node": "/Game/ParagonKallari/Characters/Heroes/Kallari/KallariPlayerCharacter.KallariPlayerCharacter:EventGraph.K2Node_InputAxisEvent_55",
+          "message": "ErrorMsg=\"Controles Axis Evento referencia unknown Axis \\'LookUpRate\\' for  InputAxis LookUpRate\""
+        }
+      ]
+    },
+    {
+      "asset": "/Game/ParagonKallari/Characters/Heroes/Kallari/Kallari_AnimBlueprint.Kallari_AnimBlueprint",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/RamsterZ_FreeAnims_Volume1/Demo/Mannequin/Character/Mesh/BP_Sword_Mann.BP_Sword_Mann",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/RamsterZ_FreeAnims_Volume1/Demo/Mannequin/Character/Mesh/BP_Knife_Mann.BP_Knife_Mann",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/RamsterZ_FreeAnims_Volume1/Demo/Mannequin/Character/Mesh/BP_Knife_GripVariant_Mann.BP_Knife_GripVariant_Mann",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/Blueprints/BP_Modular_Master.BP_Modular_Master",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/Blueprints/BP_Character_Master.BP_Character_Master",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Modular_2.BP_Modular_2",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Modular_1.BP_Modular_1",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Character_5.BP_Character_5",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Character_4.BP_Character_4",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Character_3.BP_Character_3",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Character_2.BP_Character_2",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/BP_Character_1.BP_Character_1",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/SciFITrooper_Man_03/DemoContent/W_DemoWidget.W_DemoWidget",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/ABP_Quinn_PostProcess.ABP_Quinn_PostProcess",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/ABP_Manny_PostProcess.ABP_Manny_PostProcess",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/CR_Mannequin_Procedural.CR_Mannequin_Procedural",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/Survival_Character/Demo/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/BP_ThirdPersonGameMode.BP_ThirdPersonGameMode",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/BP_TargetDummy.BP_TargetDummy",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/ABP_Hostage.ABP_Hostage",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Aliado/ABP_Aliado.ABP_Aliado",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_ZonaIndicador.BP_ZonaIndicador",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_RehenIndicador.BP_RehenIndicador",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Menu.BP_GameMode_Menu",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Bp_Modelos/Bp_PosteLuz.Bp_PosteLuz",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Bp_Modelos/Bp_Carro.Bp_Carro",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "asset": "/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega",
+      "status": "Estado no expuesto; se revisan errores de nodos y cook.",
+      "errors": [],
+      "warnings": [
+        {
+          "node": "/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega.EventGraph.SV_K2Node_DynamicCast_9",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Player Entrega\\', no necesitas  Cast To BP_PlayerEntrega .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega.EventGraph.SV_K2Node_DynamicCast_12",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Hostage\\', no necesitas  Cast To BP_Hostage .\""
+        },
+        {
+          "node": "/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega.EventGraph.SV_K2Node_DynamicCast_15",
+          "message": "ErrorMsg=\"\\'ReturnValue\\' ya es un \\'BP Director Entrega\\', no necesitas  Cast To BP_DirectorEntrega .\""
+        }
+      ]
+    }
+  ],
+  "scope": "Compilación en editor de todos los BP exportados; el cook del paquete es una comprobación adicional."
+}

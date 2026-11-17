@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "build": "Win64 Development, BuildCookRun aprobado; cook 0 errores / 1 advertencia previa de Scale en Spawn System Attached",
+  "method": "Ejecutable Windows controlado con teclado y ratón mediante automatización del escritorio. UserDir aislado; checkpoint preparado por recogida real de una caja y posiciones de fixture. No partida natural ni mando físico.",
+  "checks": [
+    "menú principal y Continuar por clic",
+    "cámara FP restaurada con brazos y arma",
+    "I abre inventario real: 1 botiquín, 3 cargas, 3 créditos",
+    "H a vida completa conserva botiquín y muestra aviso",
+    "E inicia diálogo de Bruno; segundo E compra: 2 botiquines, 0 créditos",
+    "clic central consume una carga: 3 a 2",
+    "F5 confirma checkpoint seguro",
+    "P abre pausa, Opciones abre por clic y Escape vuelve a la misma pausa",
+    "texturas Alta aplicadas; sg.TextureQuality=2 leído en archivo",
+    "volumen25% aplicado y archivo de opciones creado",
+    "cierre completo y nuevo arranque; Continuar restaura 2 botiquines, 2 cargas, 0 créditos y FP",
+    "I funciona después de reiniciar; captura F9 del motor conservada",
+    "salida nativa limpia, sin errores de script/Accessed None"
+  ],
+  "screenshots": ["inventario-nativo.png", "compra-pulso-nativo.png", "continuar-frio-nativo.png"],
+  "known_warning": "Health_Widget ya añadido a pantalla, aviso previo sin bloqueo; el cook conserva el aviso de pin Scale. No se presenta como ejecución sin advertencias.",
+  "initial_loading_observation": "En la carga de mundo se observó un fotograma de exposición alta antes de estabilizar cámara/iluminación; no se usa esa transición como prueba de calidad final.",
+  "limits": "No acredita mando físico, una partida completa nativa ni aceptación artística/académica. La partida completa por acciones normales está en partida-completa-2026-11-17.json."
+}

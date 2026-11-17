@@ -1,5 +1,15 @@
 # Project context
 
+> **Estado vigente, 17/11 — revisión de BRUNO, cielo e inventario.** Alcance: requisitos de Unreal y documentación técnica en español. Redes, campaña, video promocional y documentos administrativos quedan fuera por indicación expresa del propietario. Se conserva el diseño de los menús; se rediseña el inventario. BRUNO usa modelo mecánico original, convierte 3 créditos en energía y fabrica 1 botiquín en 3 s. Ver [ROBOT_CIELO_INVENTARIO.md](ROBOT_CIELO_INVENTARIO.md). El texto posterior conserva historial cuando describe otra revisión.
+
+## Estado vigente en español — 17 de noviembre de 2026
+
+La guía actual es [LEEME_EQUIPO.md](LEEME_EQUIPO.md); catálogo por asset en [CATALOGO_BLUEPRINTS.md](CATALOGO_BLUEPRINTS.md). El rehén ya utiliza el sobreviviente disponible (`SK_RehenSuperviviente`/`ABP_RehenSuperviviente`). Primera persona muestra brazos con postura propia, recuperación y muestreo de montajes sin notificaciones duplicadas. El combate real sigue en las armas originales.
+
+`BP_SistemasComplementarios` añade inventario visible I/SELECT, suministros únicos, curación H/LB, créditos, conversión de energía con BRUNO E/RB, pulso con cargas y ciclo solar guardado. Se integran agua y seis modelos originales de apoyo. Tres encuentros, revelación, balizas y extracción conjunta conservan sus reglas. Los resultados admiten R/A y Enter/cruceta abajo. Prueba con mando físico y evidencia pública del equipo se distinguen de inspección de enlaces/pruebas locales.
+
+Los apartados siguientes son historial: sus referencias a rehén provisional o funciones ausentes no describen por sí solas esta revisión. Evidencia actual en docs/validation y revisión de las seis imágenes.
+
 **Integración visual vigente,16/11:** se incorporan edificio, farol, escombros, auto destruido y árbol Fab como cinco modelos nuevos, en ocho instancias alrededor de accesos/jardín/servicio. Cuatro LOD en edificio/farol/escombros/árbol y Nanite en el auto; los cinco modelos LOD anteriores y la arquitectura Nanite se conservan. Autoría de edificio/farol queda por confirmar por indicación del propietario. Escombros de matousekfoto, auto de Renafox y árbol de danpetro son recursos externos con atribución, no modelos propios acreditados. Fuentes, ajustes y demostración: `MODELOS_EQUIPO.md`, `CREDITOS_MODELOS.md` y handoff vigente. La captura del equipo es un checklist de referencia; las cantidades ya implementadas no se rehacen por aparecer como pendientes históricos.
 
 **Ampliación vigente,16/11:** tercer encuentro «Guardia final» antes del patio, dos oleadas mixtas de dos enemigos. Al vencer al último, el guardián agonizante revela la permutación real A/B/C mediante una cuarta Level Sequence de12s, `LS_Revelacion`. El orden y la siguiente baliza permanecen ocultos hasta terminar u omitir. El reloj y la escolta se suspenden durante el diálogo y se reanudan después. Avisos de guardado limitados a4s. Esquema2 con revisión aditiva para conservar checkpoints antiguos. Esta ampliación sustituye las menciones históricas de sólo dos zonas/tres cinemáticas. Commit anterior de cinemáticas `6773b75` publicado en origin por solicitud del propietario.

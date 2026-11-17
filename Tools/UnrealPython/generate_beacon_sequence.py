@@ -87,6 +87,8 @@ def director():
         g.action_on(hc,HERO,'GrantHammerUpgrade',hp,[('Door','object',door,DOOR)])
     from generate_cinematic_graphs import terminal_hooks
     terminal_hooks(g)
+    from add_result_gamepad_aliases import add_result_aliases
+    add_result_aliases(g)
     g.write('BP_DirectorEntrega')
 
 def beacon():

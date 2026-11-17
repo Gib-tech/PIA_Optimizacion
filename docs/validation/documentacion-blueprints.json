@@ -1,0 +1,372 @@
+[
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/AnimNotifies/BPC_Health",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/AnimNotifies/Enemy_Health/BPC_E_Health",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/AnimNotifies/Health",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/RecursosPropios/Interfaz/Interfaz",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BPI_Enemy",
+    "entradas_comentadas": 1,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/ABP_RehenSuperviviente",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Bp_Modelos/BP_DestruiblePick",
+    "entradas_comentadas": 8,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/BP_Saveable",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/BP_SaveGame",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/BP_SaveInterface",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/BP_GameInstance",
+    "entradas_comentadas": 14,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DoorFragment",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_HostageArrive",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryOptions",
+    "entradas_comentadas": 0,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySave",
+    "entradas_comentadas": 0,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Roam",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/DañoDes",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/ABP_EnemyEntrega",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_FaceCombatTarget",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_BaseEnemy",
+    "entradas_comentadas": 17,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_CombatZone",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage",
+    "entradas_comentadas": 7,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DirectorEntrega",
+    "entradas_comentadas": 11,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconEntrega",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestructibleDoor",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter",
+    "entradas_comentadas": 62,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/Menu/Menu_Pausa",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliveryInterface",
+    "entradas_comentadas": 21,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/Menu/Menu_Opciones",
+    "entradas_comentadas": 29,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_PlayerEntrega",
+    "entradas_comentadas": 8,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DestruibleEntrega",
+    "entradas_comentadas": 7,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Cinematics/BP_CinematicDirector",
+    "entradas_comentadas": 17,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/AnimNotifies/SaveLightAttack_AN",
+    "entradas_comentadas": 1,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/AnimNotifies/ResetState_AN",
+    "entradas_comentadas": 1,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/BP_HostageController",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerEnemy",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_IAController",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BP_ChargerController",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Defend",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_LocatePlayer",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_Attack",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_HitSun",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerWindup",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRetreat",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerRecover",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTTask_ChargerCharge",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/EnemigoIA/BTService_ChargerSense",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/BTTask_ActivateBeacon",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/BTService_HostageSense",
+    "entradas_comentadas": 2,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Entrega",
+    "entradas_comentadas": 1,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_SenalExtraccion",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_BeaconLabel",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/Menu/HealthBar",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/Menu/Menu_GameOver",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/Menu/Menu_Inicio",
+    "entradas_comentadas": 10,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/Menu/Menu_Opciones",
+    "entradas_comentadas": 23,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/LevelMenu/Menu/Menu_Pausa",
+    "entradas_comentadas": 9,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/Menu/HealthBar",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/Menu/Menu_GameOver",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/Menu/Menu_Inicio",
+    "entradas_comentadas": 6,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/BP_ThirdPersonGameMode",
+    "entradas_comentadas": 1,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/BP_TargetDummy",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/ABP_Aliado",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Aliado/ABP_Hostage",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_ZonaIndicador",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_RehenIndicador",
+    "entradas_comentadas": 4,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_GameMode_Menu",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Bp_Modelos/Bp_PosteLuz",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Bp_Modelos/Bp_Carro",
+    "entradas_comentadas": 5,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Maps/Nivel_Entrega.Nivel_Entrega:PersistentLevel.Nivel_Entrega",
+    "entradas_comentadas": 8,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_DeliverySaveManager",
+    "entradas_comentadas": 10,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_HUD_Entrega",
+    "entradas_comentadas": 7,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_SistemasComplementarios",
+    "entradas_comentadas": 19,
+    "descripcion_espanola": true
+  },
+  {
+    "blueprint": "/Game/ThirdPerson/Blueprints/Entrega/BP_TecnicoTemporal",
+    "entradas_comentadas": 3,
+    "descripcion_espanola": true
+  }
+]

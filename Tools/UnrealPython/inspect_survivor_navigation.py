@@ -1,0 +1,5 @@
+import unreal,json
+w=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_game_world();gs=unreal.GameplayStatics;p=gs.get_player_character(w,0)
+h=gs.get_actor_of_class(w,unreal.load_class(None,'/Game/ThirdPerson/Blueprints/Aliado/BP_Hostage.BP_Hostage_C'));c=h.get_controller();bb=c.get_component_by_class(unreal.BlackboardComponent)
+path=unreal.NavigationSystemV1.find_path_to_location_synchronously(w,h.get_actor_location(),p.get_actor_location(),h,None)
+unreal.log('SURVIVOR_NAV '+json.dumps({'player':str(p.get_actor_location()),'hostage':str(h.get_actor_location()),'mode':str(h.character_movement.movement_mode),'speed':h.character_movement.max_walk_speed,'following':bb.get_value_as_bool('bAccompanying'),'flee':bb.get_value_as_bool('bMustFlee'),'waiting':bb.get_value_as_bool('bWaiting'),'target':str(bb.get_value_as_object('PlayerActor')),'distance':bb.get_value_as_float('DistanceToPlayer'),'brain_running':c.get_component_by_class(unreal.BehaviorTreeComponent).is_running(),'path':str(path.path_points) if path else None,'partial':path.is_partial() if path else None}))

@@ -1,0 +1,48 @@
+{
+  "method": "Día, atardecer, noche y robot: PIE con cámaras/fase preparadas y 4 s de adaptación. Inventario: captura F9 del ejecutable final después de Continuar con checkpoint de fixture. Ninguna captura se presenta como partida natural.",
+  "samples": [
+    {
+      "name": "inventario",
+      "source": "Ejecutable final, F9 tras Continuar",
+      "resources": [
+        2,
+        2,
+        0
+      ],
+      "first_person": true,
+      "no_crosshair_over_inventory": true
+    },
+    {
+      "name": "robot",
+      "clock": 4.000187501311302,
+      "sun_lux": 16007.2490234375,
+      "moon_lux": 0.0,
+      "realtime_sky": true,
+      "sky_mid": "<Object '/Game/ThirdPerson/Maps/UEDPIE_0_Nivel_Entrega.Nivel_Entrega:PersistentLevel.StaticMeshActor_UAID_9C6B001967A7AC1503_1781849280.StaticMeshComponent0.CieloDinamico' (0x000001DA9CFEE800) Class 'MaterialInstanceDynamic'>"
+    },
+    {
+      "name": "dia",
+      "clock": 4.000743102282286,
+      "sun_lux": 16007.3974609375,
+      "moon_lux": 0.0,
+      "realtime_sky": true,
+      "sky_mid": "<Object '/Game/ThirdPerson/Maps/UEDPIE_0_Nivel_Entrega.Nivel_Entrega:PersistentLevel.StaticMeshActor_UAID_9C6B001967A7AC1503_1781849280.StaticMeshComponent0.CieloDinamico' (0x000001DA9CFEE800) Class 'MaterialInstanceDynamic'>"
+    },
+    {
+      "name": "atardecer",
+      "clock": 180.000085901469,
+      "sun_lux": 4514.82373046875,
+      "moon_lux": 0.0,
+      "realtime_sky": true,
+      "sky_mid": "<Object '/Game/ThirdPerson/Maps/UEDPIE_0_Nivel_Entrega.Nivel_Entrega:PersistentLevel.StaticMeshActor_UAID_9C6B001967A7AC1503_1781849280.StaticMeshComponent0.CieloDinamico' (0x000001DA9CFEE800) Class 'MaterialInstanceDynamic'>"
+    },
+    {
+      "name": "noche",
+      "clock": 304.00014190003276,
+      "sun_lux": 0.0,
+      "moon_lux": 0.11999999731779099,
+      "realtime_sky": true,
+      "sky_mid": "<Object '/Game/ThirdPerson/Maps/UEDPIE_0_Nivel_Entrega.Nivel_Entrega:PersistentLevel.StaticMeshActor_UAID_9C6B001967A7AC1503_1781849280.StaticMeshComponent0.CieloDinamico' (0x000001DA9CFEE800) Class 'MaterialInstanceDynamic'>"
+    }
+  ]
+}

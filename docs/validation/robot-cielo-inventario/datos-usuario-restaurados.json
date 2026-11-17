@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "backup": "Respaldo nuevo previo a esta revisión; no se usa el respaldo histórico de modelos del equipo.",
+  "sha256": {
+    "Saved/SaveGames/TimeOut_Delivery_v1.sav": "7ad4218d2e5ce4339d631f35423348a15ef66148eae9c8f7d3c1b6a7bf14a95f",
+    "Saved/Config/WindowsEditor/GameUserSettings.ini": "30209dbf96e09fd7efb4ecbbdfdd01b3376805eb1bb5f4662555c5ea3a07be42"
+  },
+  "isolated_native_user_dir": "Intermediate/inspect/revision-native-user"
+}
