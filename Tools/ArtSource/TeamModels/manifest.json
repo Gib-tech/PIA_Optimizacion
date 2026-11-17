@@ -1,0 +1,375 @@
+[
+  {
+    "name": "Edificio",
+    "mesh": "SM_Edificio",
+    "source": "edificio.fbx",
+    "source_sha256": "391d0cacbf3ef1c4c46104b84b4c0d1ae6b6fb146a0ac0bada5bcd30ed32160f",
+    "original_triangles": 7580,
+    "exported_triangles": 7580,
+    "target_cm": 3300,
+    "fit": "height",
+    "materials": [
+      {
+        "slot": "M_Edificio_0",
+        "original": "Material",
+        "base": [
+          0.23999999463558197,
+          0.27000001072883606,
+          0.2800000011920929
+        ],
+        "roughness": 0.8199999928474426,
+        "metallic": 0.10000000149011612,
+        "emission": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "base_texture": null,
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      },
+      {
+        "slot": "M_Edificio_1",
+        "original": "Material.002",
+        "base": [
+          0.06499999761581421,
+          0.07999999821186066,
+          0.10000000149011612
+        ],
+        "roughness": 0.4000000059604645,
+        "metallic": 0.6499999761581421,
+        "emission": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "base_texture": null,
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      },
+      {
+        "slot": "M_Edificio_2",
+        "original": "Material.001",
+        "base": [
+          0.027000000700354576,
+          0.09000000357627869,
+          0.12999999523162842
+        ],
+        "roughness": 0.2199999988079071,
+        "metallic": 0.699999988079071,
+        "emission": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "base_texture": null,
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      }
+    ],
+    "glass_center": null,
+    "collision": {
+      "type": "simple_box",
+      "size_cm": [
+        555.6864013671875,
+        999.9151000976562,
+        3300.0
+      ]
+    },
+    "bounds_cm": {
+      "min": [
+        -277.84320068359375,
+        -499.9575500488281,
+        0.0
+      ],
+      "max": [
+        277.84320068359375,
+        499.9575500488281,
+        3300.0
+      ]
+    }
+  },
+  {
+    "name": "Farol",
+    "mesh": "SM_Farol",
+    "source": "Faro.fbx",
+    "source_sha256": "11f37d33b6716e2739bc4bff72551ea810ba1bbf7cb47b79c54d27740ed71a37",
+    "original_triangles": 9812,
+    "exported_triangles": 9812,
+    "target_cm": 460,
+    "fit": "height",
+    "materials": [
+      {
+        "slot": "M_Farol_0",
+        "original": "Material.003",
+        "base": [
+          0.02800000086426735,
+          0.03400000184774399,
+          0.041999999433755875
+        ],
+        "roughness": 0.3499999940395355,
+        "metallic": 0.7799999713897705,
+        "emission": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "base_texture": null,
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      },
+      {
+        "slot": "M_Farol_1",
+        "original": "Material.001",
+        "base": [
+          0.02800000086426735,
+          0.03400000184774399,
+          0.041999999433755875
+        ],
+        "roughness": 0.3499999940395355,
+        "metallic": 0.7799999713897705,
+        "emission": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "base_texture": null,
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      },
+      {
+        "slot": "M_Farol_2",
+        "original": "Material.002",
+        "base": [
+          1.0,
+          0.6000000238418579,
+          0.2199999988079071
+        ],
+        "roughness": 0.30000001192092896,
+        "metallic": 0.0,
+        "emission": [
+          3.0,
+          1.7999999523162842,
+          0.6600000262260437
+        ],
+        "base_texture": null,
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      }
+    ],
+    "glass_center": [
+      51.04042053222656,
+      8.52346420288086e-06,
+      290.4150390625
+    ],
+    "collision": {
+      "type": "trunk_or_pole_convex",
+      "radius_cm": 14,
+      "height_cm": 460
+    },
+    "bounds_cm": {
+      "min": [
+        -67.8267822265625,
+        -30.356779098510742,
+        0.0
+      ],
+      "max": [
+        67.8267822265625,
+        30.356779098510742,
+        460.0
+      ]
+    }
+  },
+  {
+    "name": "Escombros",
+    "mesh": "SM_Escombros",
+    "source": "waste_construction_lumber.glb",
+    "source_sha256": "d10db11105a6dc72ca6d59d6ab0b52133be035a7894acd2765ec7e299ff41f79",
+    "original_triangles": 876677,
+    "exported_triangles": 45000,
+    "target_cm": 350,
+    "fit": "width",
+    "materials": [
+      {
+        "slot": "M_Escombros_0",
+        "original": "Baked from the supplied source atlases",
+        "base": [
+          1,
+          1,
+          1
+        ],
+        "roughness": 0.82,
+        "metallic": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ],
+        "base_texture": "T_Escombros_0_BaseColor.png",
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      }
+    ],
+    "glass_center": null,
+    "collision": {
+      "type": "simple_box",
+      "size_cm": [
+        306.0412292480469,
+        350.0,
+        88.16447448730469
+      ]
+    },
+    "bounds_cm": {
+      "min": [
+        -153.02061462402344,
+        -175.0,
+        0.0
+      ],
+      "max": [
+        153.02061462402344,
+        175.0,
+        88.16447448730469
+      ]
+    },
+    "texture_bake": {
+      "type": "emission color selected-to-active",
+      "resolution": 2048,
+      "new_uv_atlas": true,
+      "source_appearance_preserved": true
+    }
+  },
+  {
+    "name": "AutoDestruido",
+    "mesh": "SM_AutoDestruido",
+    "source": "destroyed_car_1_raw_scan.glb",
+    "source_sha256": "3d3736416ec27245d50aef6c02b323553f44e008f8fd159253cc30e369f5b648",
+    "original_triangles": 2499999,
+    "exported_triangles": 2499999,
+    "target_cm": 450,
+    "fit": "width",
+    "materials": [
+      {
+        "slot": "M_AutoDestruido_0",
+        "original": "Original scan UV atlas",
+        "base": [
+          1,
+          1,
+          1
+        ],
+        "roughness": 0.85,
+        "metallic": 0.15,
+        "emission": [
+          0,
+          0,
+          0
+        ],
+        "base_texture": "T_AutoDestruido_0_BaseColor.png",
+        "normal_texture": null,
+        "masked": false,
+        "two_sided": true
+      }
+    ],
+    "glass_center": null,
+    "long_axis_aligned": true,
+    "collision": {
+      "type": "simple_box",
+      "size_cm": [
+        372.6342398116367,
+        450.0,
+        102.01916304346875
+      ]
+    },
+    "bounds_cm": {
+      "min": [
+        -186.3171234250554,
+        -225.0,
+        0.0
+      ],
+      "max": [
+        186.3171163865813,
+        225.0,
+        102.01916304346875
+      ]
+    },
+    "nanite": true,
+    "source_fbx": "Intermediate/inspect/team-models/SM_AutoDestruido.fbx",
+    "texture_preservation": "Original source geometry and UVs retained; Nanite streams detail"
+  },
+  {
+    "name": "ArbolFab",
+    "mesh": "SM_ArbolFab",
+    "source": "realistic_tree.glb",
+    "source_sha256": "9aecb3f7fb013261aa29f489a3fa0fe52b2bbf6d3a4edd7b9f5815ef66be5957",
+    "original_triangles": 19921,
+    "exported_triangles": 19921,
+    "target_cm": 700,
+    "fit": "height",
+    "materials": [
+      {
+        "slot": "M_ArbolFab_0",
+        "original": "normal_leaves",
+        "base": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929
+        ],
+        "roughness": 0.5,
+        "metallic": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_texture": "T_ArbolFab_0_BaseColor.png",
+        "normal_texture": "T_ArbolFab_0_Normal.png",
+        "masked": true,
+        "two_sided": true
+      },
+      {
+        "slot": "M_ArbolFab_1",
+        "original": "trunk",
+        "base": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929
+        ],
+        "roughness": 0.5,
+        "metallic": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_texture": "T_ArbolFab_1_BaseColor.png",
+        "normal_texture": "T_ArbolFab_1_Normal.png",
+        "masked": false,
+        "two_sided": true
+      }
+    ],
+    "glass_center": null,
+    "collision": {
+      "type": "trunk_or_pole_convex",
+      "radius_cm": 22,
+      "height_cm": 300
+    },
+    "bounds_cm": {
+      "min": [
+        -312.8392639160156,
+        -255.60377502441406,
+        0.0
+      ],
+      "max": [
+        312.8392639160156,
+        255.60377502441406,
+        700.0
+      ]
+    }
+  }
+]

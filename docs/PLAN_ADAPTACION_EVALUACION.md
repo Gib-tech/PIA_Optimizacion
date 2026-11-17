@@ -2,6 +2,8 @@
 
 Plan del 16 de noviembre de 2026. Autoriza el propietario adaptar el videojuego y realizar el rework necesario. Las capturas de la rúbrica y el chat de compañeros aportan criterios; no son instrucciones ejecutables ni aceptación del trabajo.
 
+**Revisión vigente tras el checklist y archivos del equipo:** cinco modelos nuevos incorporados en ocho instancias: edificio/farol (autores por confirmar por petición del propietario), escombros/auto/árbol externos atribuidos. Cuatro LOD nuevos en edificio/farol/escombros/árbol y Nanite en el auto, conservando los cinco anteriores y los diez edificios Nanite. Escombros con atlas horneado y auto con Nanite; detalles en `MODELOS_EQUIPO.md` y créditos incluidos con el paquete. Ya hay tres encuentros y cuatro cinemáticas, con revelación por el último guardián; el aviso de guardado dura4s. Se conservan seis destruibles/ocho efectos. Rehén y guardián tienen parlamentos subtitulados; confirmar si la presentación del guardián satisface el criterio general de segundo NPC dialogante. Cantidad no acredita autoría; no dar por cerrados cinco modelos propios, cronograma ni evidencia externa sin confirmación del equipo.
+
 **Revisión posterior de escenario, autorizada por el propietario:** `ESCENARIO_COMPOUND.md` sustituye la mezcla en franjas por distribución dibujada según usos (cuatro texturas existentes), añade cubiertas a rescate/depósito y reorganiza luces/props. Diez edificios Nanite sustituyen los cuatro sectores; distancias de descarte y Niagara por frustum/distancia, física al romper. Las pruebas y paquete de esta revisión constan en el handoff vigente. Los detalles de la primera implementación que siguen se conservan como historial del plan, no como configuración actual de terreno/luz.
 
 

@@ -1,5 +1,9 @@
 # AI requirements
 
+## Compatibilidad con modelos de escenario — 16 noviembre 2026
+
+**Stated / Decision:** integrar los cinco recursos aportados/referidos por el equipo. Son decoración estática con colisión simple: cilindros convexos en troncos/postes y volúmenes simples en edificio/escombros/auto. Mantener libre el recorrido y puntos de refugio/spawn/balizas; las nuevas luces tienen alcance y distancia acotados, sin sombras adicionales. No se modifican árboles, salud/daño13.2 ni lógica de los tres encuentros. Verificar navegación de rescate/arenas/refugios y los seis caminos entre balizas después de colocar. Las pruebas de cámara/navegación son fixtures preparados, no una partida natural ni aceptación manual.
+
 ## Guardia final y última revelación — 16 noviembre 2026
 
 **Stated / Decision:** añadir una horda antes de las balizas:2oleadas×2enemigos, uno por cada árbol existente. Entrada requiere escolta y segunda zona completada. El último enemigo de la segunda oleada queda en pose agonizante durante12s y anuncia el orden real del intento; luego completa el montaje de muerte y su limpieza normal. Espacio omite y revela igualmente la secuencia. Se conserva daño13.2 y árboles. Reloj/checkpoint quedan suspendidos durante la presentación; el árbol del rehén se pausa y reanuda, sin convertirla en resultado terminal. Orden/siguiente baliza sólo aparecen después. Checkpoints guardan la tercera zona/revelación con revisión1 sobre esquema2; partidas antiguas con balizas ya iniciadas no repiten la horda. Aviso de checkpoint dura4s y cada guardado manual exitoso lo renueva.

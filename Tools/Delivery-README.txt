@@ -1,5 +1,15 @@
 TIME OUT - Entrega del 18 de noviembre de 2026
 
+ESCENARIO ACTUALIZADO
+Cinco modelos nuevos: edificio, farol, escombros, auto destruido y arbol.
+Edificio, farol, escombros y arbol incluyen cuatro LOD automaticos; el auto
+conserva su detalle con Nanite. Los cinco modelos LOD anteriores se conservan.
+Se conservan
+Landscape, World Partition y la arquitectura Nanite del recinto.
+Creditos completos y cambios: CREDITOS_MODELOS.md, incluido en este paquete.
+Escaneos: matousekfoto y Renafox (CC BY 4.0). Arbol: danpetro (Fab, CC-BY).
+Autores del edificio y farol por confirmar por el equipo.
+
 Abrir Windows/Terreno.exe. Conservar la carpeta Windows completa; el ejecutable
 necesita los archivos y subcarpetas que lo acompañan.
 

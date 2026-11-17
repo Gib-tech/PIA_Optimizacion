@@ -1,0 +1,741 @@
+{
+  "date": "2026-11-16",
+  "passed": true,
+  "agent_fixture_evidence_not_owner_acceptance": true,
+  "new_natural_playthrough": false,
+  "proof": {
+    "import-proof": {
+      "passed": true,
+      "meshes": [
+        {
+          "name": "Edificio",
+          "path": "/Game/ThirdPerson/Environment/TeamModels/SM_Edificio.SM_Edificio",
+          "bounds": "<Struct 'BoxSphereBounds' (0x000001A9D7308A80) {origin: {x: 0.000000, y: 0.000000, z: 1650.000000}, box_extent: {x: 277.843201, y: 499.957550, z: 1650.000000}, sphere_radius: 1746.325961}>",
+          "lods": [
+            {
+              "vertices": 9401,
+              "triangles": 7572
+            },
+            {
+              "vertices": 6463,
+              "triangles": 4164
+            },
+            {
+              "vertices": 3046,
+              "triangles": 1892
+            },
+            {
+              "vertices": 857,
+              "triangles": 606
+            }
+          ],
+          "screen_sizes": [
+            1.0,
+            0.47999998927116394,
+            0.2199999988079071,
+            0.07999999821186066
+          ],
+          "convex_collisions": 1,
+          "nanite": false
+        },
+        {
+          "name": "Farol",
+          "path": "/Game/ThirdPerson/Environment/TeamModels/SM_Farol.SM_Farol",
+          "bounds": "<Struct 'BoxSphereBounds' (0x000001A9D72E1440) {origin: {x: 0.000000, y: 0.000000, z: 230.000000}, box_extent: {x: 67.826782, y: 30.356779, z: 230.000000}, sphere_radius: 239.792556}>",
+          "lods": [
+            {
+              "vertices": 18326,
+              "triangles": 9812
+            },
+            {
+              "vertices": 11238,
+              "triangles": 5396
+            },
+            {
+              "vertices": 5844,
+              "triangles": 2452
+            },
+            {
+              "vertices": 2164,
+              "triangles": 784
+            }
+          ],
+          "screen_sizes": [
+            1.0,
+            0.47999998927116394,
+            0.2199999988079071,
+            0.07999999821186066
+          ],
+          "convex_collisions": 1,
+          "nanite": false
+        },
+        {
+          "name": "Escombros",
+          "path": "/Game/ThirdPerson/Environment/TeamModels/SM_Escombros.SM_Escombros",
+          "bounds": "<Struct 'BoxSphereBounds' (0x000001A85E748600) {origin: {x: 0.000000, y: 0.000000, z: 44.082237}, box_extent: {x: 153.020615, y: 175.000000, z: 44.082237}, sphere_radius: 196.372024}>",
+          "lods": [
+            {
+              "vertices": 76133,
+              "triangles": 45000
+            },
+            {
+              "vertices": 45662,
+              "triangles": 24750
+            },
+            {
+              "vertices": 22958,
+              "triangles": 11249
+            },
+            {
+              "vertices": 8381,
+              "triangles": 3600
+            }
+          ],
+          "screen_sizes": [
+            1.0,
+            0.47999998927116394,
+            0.2199999988079071,
+            0.07999999821186066
+          ],
+          "convex_collisions": 1,
+          "nanite": false
+        },
+        {
+          "name": "ArbolFab",
+          "path": "/Game/ThirdPerson/Environment/TeamModels/SM_ArbolFab.SM_ArbolFab",
+          "bounds": "<Struct 'BoxSphereBounds' (0x000001A9C89A3E00) {origin: {x: 0.000000, y: 0.000000, z: 350.000000}, box_extent: {x: 312.839264, y: 255.603775, z: 350.000000}, sphere_radius: 355.199668}>",
+          "lods": [
+            {
+              "vertices": 28629,
+              "triangles": 19921
+            },
+            {
+              "vertices": 22173,
+              "triangles": 13944
+            },
+            {
+              "vertices": 14660,
+              "triangles": 7969
+            },
+            {
+              "vertices": 6640,
+              "triangles": 3188
+            }
+          ],
+          "screen_sizes": [
+            1.0,
+            0.47999998927116394,
+            0.2199999988079071,
+            0.07999999821186066
+          ],
+          "convex_collisions": 1,
+          "nanite": false
+        },
+        {
+          "name": "AutoDestruido",
+          "path": "/Game/ThirdPerson/Environment/TeamModels/SM_AutoDestruido.SM_AutoDestruido",
+          "bounds": "<Struct 'BoxSphereBounds' (0x000001D1D0AAFC00) {origin: {x: 0.000000, y: 0.000000, z: 51.009583}, box_extent: {x: 186.317123, y: 225.000000, z: 51.009583}, sphere_radius: 296.442474}>",
+          "lods": [
+            {
+              "vertices": 12721,
+              "triangles": 7442
+            }
+          ],
+          "screen_sizes": [
+            1.0
+          ],
+          "convex_collisions": 1,
+          "nanite": true
+        }
+      ]
+    },
+    "placement-proof": {
+      "passed": true,
+      "actors": [
+        {
+          "label": "Equipo_Edificio_Control",
+          "model": "Edificio",
+          "position": [
+            4000,
+            -1900,
+            -2
+          ],
+          "scale": 1,
+          "bounds_center": [
+            4000.0,
+            -1900.0,
+            1648.0
+          ],
+          "bounds_extent": [
+            277.84320068359375,
+            499.9575500488281,
+            1650.0
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Farol_Jardin",
+          "model": "Farol",
+          "position": [
+            2200,
+            -3260,
+            -1
+          ],
+          "scale": 1,
+          "bounds_center": [
+            2200.0,
+            -3260.0,
+            229.0
+          ],
+          "bounds_extent": [
+            67.8267822265625,
+            30.356779098510742,
+            230.0
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Farol_Deposito",
+          "model": "Farol",
+          "position": [
+            -1900,
+            -4150,
+            -1
+          ],
+          "scale": 1,
+          "bounds_center": [
+            -1900.0,
+            -4150.0,
+            229.0
+          ],
+          "bounds_extent": [
+            67.82678222656247,
+            30.356779098510735,
+            230.0
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Escombros_Jardin",
+          "model": "Escombros",
+          "position": [
+            4000,
+            -4150,
+            -2
+          ],
+          "scale": 1,
+          "bounds_center": [
+            4000.0,
+            -4150.0,
+            42.082237243652344
+          ],
+          "bounds_extent": [
+            193.09989651291204,
+            208.6416689585775,
+            44.082237243652344
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Escombros_Servicio",
+          "model": "Escombros",
+          "position": [
+            2860,
+            -5560,
+            -2
+          ],
+          "scale": 0.8,
+          "bounds_center": [
+            2860.0,
+            -5560.0,
+            33.26578979492188
+          ],
+          "bounds_extent": [
+            178.61853511544962,
+            170.11357633240732,
+            35.26578979492188
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Auto_Abandonado",
+          "model": "AutoDestruido",
+          "position": [
+            3850,
+            -3350,
+            -1
+          ],
+          "scale": 1,
+          "bounds_center": [
+            3850.0,
+            -3350.0,
+            50.00958251953125
+          ],
+          "bounds_extent": [
+            252.03535824560973,
+            275.1550489305994,
+            51.00958251953125
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Arbol_Jardin",
+          "model": "ArbolFab",
+          "position": [
+            2550,
+            -4175,
+            -3
+          ],
+          "scale": 1,
+          "bounds_center": [
+            2550.0,
+            -4175.0,
+            347.0
+          ],
+          "bounds_extent": [
+            391.5514840730773,
+            363.8672776210169,
+            350.0
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        },
+        {
+          "label": "Equipo_Arbol_Acceso",
+          "model": "ArbolFab",
+          "position": [
+            2300,
+            -1600,
+            -3
+          ],
+          "scale": 0.85,
+          "bounds_center": [
+            2300.0,
+            -1600.0,
+            294.5
+          ],
+          "bounds_extent": [
+            337.3590960414042,
+            343.3555613940301,
+            297.5
+          ],
+          "resident": true,
+          "automatic_lod": true,
+          "simple_collision": true
+        }
+      ],
+      "lights": 2
+    },
+    "runtime": {
+      "stage": 4,
+      "index": 6,
+      "since": 13.271673034876585,
+      "paths": [
+        {
+          "route": "rescate_arena",
+          "complete": true
+        },
+        {
+          "route": "deposito_refugio_norte",
+          "complete": true
+        },
+        {
+          "route": "deposito_refugio_sur",
+          "complete": true
+        },
+        {
+          "route": "guardia_spawn1",
+          "complete": true
+        },
+        {
+          "route": "guardia_spawn2",
+          "complete": true
+        },
+        {
+          "route": "jardin_con_props",
+          "complete": true
+        },
+        {
+          "route": "baliza_01",
+          "complete": true
+        },
+        {
+          "route": "baliza_02",
+          "complete": true
+        },
+        {
+          "route": "baliza_10",
+          "complete": true
+        },
+        {
+          "route": "baliza_12",
+          "complete": true
+        },
+        {
+          "route": "baliza_20",
+          "complete": true
+        },
+        {
+          "route": "baliza_21",
+          "complete": true
+        }
+      ],
+      "photos": [
+        "skyline",
+        "jardin",
+        "auto",
+        "farol",
+        "escombros",
+        "arbol"
+      ],
+      "prepared_fixture_not_natural_playthrough": true,
+      "five_new_designs_eight_instances": true,
+      "passed": true
+    },
+    "assets": {
+      "passed": true,
+      "meshes": [
+        {
+          "name": "Edificio",
+          "geometry": [
+            {
+              "vertices": 9401,
+              "triangles": 7572
+            },
+            {
+              "vertices": 6463,
+              "triangles": 4164
+            },
+            {
+              "vertices": 3046,
+              "triangles": 1892
+            },
+            {
+              "vertices": 857,
+              "triangles": 606
+            }
+          ],
+          "nanite": false,
+          "one_simple_collision": true,
+          "materials_assigned": true
+        },
+        {
+          "name": "Farol",
+          "geometry": [
+            {
+              "vertices": 18326,
+              "triangles": 9812
+            },
+            {
+              "vertices": 11238,
+              "triangles": 5396
+            },
+            {
+              "vertices": 5844,
+              "triangles": 2452
+            },
+            {
+              "vertices": 2164,
+              "triangles": 784
+            }
+          ],
+          "nanite": false,
+          "one_simple_collision": true,
+          "materials_assigned": true
+        },
+        {
+          "name": "Escombros",
+          "geometry": [
+            {
+              "vertices": 76133,
+              "triangles": 45000
+            },
+            {
+              "vertices": 45662,
+              "triangles": 24750
+            },
+            {
+              "vertices": 22958,
+              "triangles": 11249
+            },
+            {
+              "vertices": 8381,
+              "triangles": 3600
+            }
+          ],
+          "nanite": false,
+          "one_simple_collision": true,
+          "materials_assigned": true
+        },
+        {
+          "name": "AutoDestruido",
+          "geometry": [
+            {
+              "vertices": 12721,
+              "triangles": 7442
+            }
+          ],
+          "nanite": true,
+          "one_simple_collision": true,
+          "materials_assigned": true
+        },
+        {
+          "name": "ArbolFab",
+          "geometry": [
+            {
+              "vertices": 28629,
+              "triangles": 19921
+            },
+            {
+              "vertices": 22173,
+              "triangles": 13944
+            },
+            {
+              "vertices": 14660,
+              "triangles": 7969
+            },
+            {
+              "vertices": 6640,
+              "triangles": 3188
+            }
+          ],
+          "nanite": false,
+          "one_simple_collision": true,
+          "materials_assigned": true
+        }
+      ],
+      "four_lod_designs_total": 9,
+      "architecture_nanite_preserved": 10,
+      "new_nanite_wreck": true,
+      "landscape_world_partition_preserved": true,
+      "three_encounters_four_cinematics_and_damage_preserved": true,
+      "dirty": []
+    },
+    "qa-restored": {
+      "passed": true,
+      "save_sha256": {
+        "TimeOut_Delivery_v1.sav": "a3db77f3a625ec2bd724147bc08cbce4fa7ad777216ee9cd111afeddc65af18d"
+      },
+      "preferences_restored": true
+    },
+    "cold": {
+      "passed": true,
+      "normal_editor_without_helper": true,
+      "no_pie": true,
+      "five_new_designs_eight_resident_instances": true,
+      "four_new_conventional_lod_designs_and_nanite_wreck": true,
+      "dirty_packages": []
+    },
+    "lod_camera_observations": {
+      "index": 16,
+      "stage": 0,
+      "since": 68.40782522037625,
+      "rows": [
+        {
+          "model": "SM_Farol",
+          "requested_step": 0,
+          "distance_cm": 959.1702270507812,
+          "radius_cm": 239.7925567626953,
+          "fov": 60,
+          "file": "SM_Farol-0.png",
+          "rendered_lod_color": "white (visual inspection)"
+        },
+        {
+          "model": "SM_Farol",
+          "requested_step": 1,
+          "distance_cm": 2877.5106811523438,
+          "radius_cm": 239.7925567626953,
+          "fov": 60,
+          "file": "SM_Farol-1.png",
+          "rendered_lod_color": "red",
+          "center_color_pixels": 380
+        },
+        {
+          "model": "SM_Farol",
+          "requested_step": 2,
+          "distance_cm": 5755.0213623046875,
+          "radius_cm": 239.7925567626953,
+          "fov": 60,
+          "file": "SM_Farol-2.png",
+          "rendered_lod_color": "green",
+          "center_color_pixels": 155
+        },
+        {
+          "model": "SM_Farol",
+          "requested_step": 3,
+          "distance_cm": 19183.404541015625,
+          "radius_cm": 239.7925567626953,
+          "fov": 60,
+          "file": "SM_Farol-3.png",
+          "rendered_lod_color": "blue",
+          "center_color_pixels": 14
+        },
+        {
+          "model": "SM_Escombros",
+          "requested_step": 0,
+          "distance_cm": 628.3905029296875,
+          "radius_cm": 157.09762573242188,
+          "fov": 60,
+          "file": "SM_Escombros-0.png",
+          "rendered_lod_color": "white (visual inspection)"
+        },
+        {
+          "model": "SM_Escombros",
+          "requested_step": 1,
+          "distance_cm": 1885.1715087890625,
+          "radius_cm": 157.09762573242188,
+          "fov": 60,
+          "file": "SM_Escombros-1.png",
+          "rendered_lod_color": "red",
+          "center_color_pixels": 2334
+        },
+        {
+          "model": "SM_Escombros",
+          "requested_step": 2,
+          "distance_cm": 3770.343017578125,
+          "radius_cm": 157.09762573242188,
+          "fov": 60,
+          "file": "SM_Escombros-2.png",
+          "rendered_lod_color": "green",
+          "center_color_pixels": 1462
+        },
+        {
+          "model": "SM_Escombros",
+          "requested_step": 3,
+          "distance_cm": 12567.81005859375,
+          "radius_cm": 157.09762573242188,
+          "fov": 60,
+          "file": "SM_Escombros-3.png",
+          "rendered_lod_color": "blue",
+          "center_color_pixels": 117
+        },
+        {
+          "model": "SM_ArbolFab",
+          "requested_step": 0,
+          "distance_cm": 1420.7987060546875,
+          "radius_cm": 355.1996765136719,
+          "fov": 60,
+          "file": "SM_ArbolFab-0.png",
+          "rendered_lod_color": "white (visual inspection)"
+        },
+        {
+          "model": "SM_ArbolFab",
+          "requested_step": 1,
+          "distance_cm": 4262.3961181640625,
+          "radius_cm": 355.1996765136719,
+          "fov": 60,
+          "file": "SM_ArbolFab-1.png",
+          "rendered_lod_color": "red",
+          "center_color_pixels": 2147
+        },
+        {
+          "model": "SM_ArbolFab",
+          "requested_step": 2,
+          "distance_cm": 8524.792236328125,
+          "radius_cm": 355.1996765136719,
+          "fov": 60,
+          "file": "SM_ArbolFab-2.png",
+          "rendered_lod_color": "green",
+          "center_color_pixels": 865
+        },
+        {
+          "model": "SM_ArbolFab",
+          "requested_step": 3,
+          "distance_cm": 28415.97412109375,
+          "radius_cm": 355.1996765136719,
+          "fov": 60,
+          "file": "SM_ArbolFab-3.png",
+          "rendered_lod_color": "blue",
+          "center_color_pixels": 15
+        },
+        {
+          "model": "SM_Edificio",
+          "requested_step": 0,
+          "distance_cm": 6985.3037109375,
+          "radius_cm": 1746.325927734375,
+          "fov": 60,
+          "file": "SM_Edificio-0.png",
+          "rendered_lod_color": "white (visual inspection)"
+        },
+        {
+          "model": "SM_Edificio",
+          "requested_step": 1,
+          "distance_cm": 20955.9111328125,
+          "radius_cm": 1746.325927734375,
+          "fov": 60,
+          "file": "SM_Edificio-1.png",
+          "rendered_lod_color": "red",
+          "center_color_pixels": 1081
+        },
+        {
+          "model": "SM_Edificio",
+          "requested_step": 2,
+          "distance_cm": 41911.822265625,
+          "radius_cm": 1746.325927734375,
+          "fov": 60,
+          "file": "SM_Edificio-2.png",
+          "rendered_lod_color": "green",
+          "center_color_pixels": 475
+        },
+        {
+          "model": "SM_Edificio",
+          "requested_step": 3,
+          "distance_cm": 139706.07421875,
+          "radius_cm": 1746.325927734375,
+          "fov": 60,
+          "file": "SM_Edificio-3.png",
+          "rendered_lod_color": "blue",
+          "center_color_pixels": 53
+        }
+      ],
+      "no_forced_lods": true,
+      "prepared_camera_fixture": true,
+      "passed": true,
+      "rendered_color_checks_passed": true
+    }
+  },
+  "source_manifest": "Tools/ArtSource/TeamModels/manifest.json",
+  "credit_document": "docs/CREDITOS_MODELOS.md",
+  "building_and_lamp_authors": "Unconfirmed, as requested by owner",
+  "package": {
+    "build_success": true,
+    "cook_errors": 0,
+    "cook_warnings": 30,
+    "unique_previous_warning_messages": 15,
+    "new_warning_types": 0,
+    "zip_bytes": 674655940,
+    "zip_crc_verified": true,
+    "credits_in_archive": true
+  },
+  "pending": [
+    "Owner visual acceptance",
+    "Performance on presentation PC",
+    "Authorship and academic/external evidence from team"
+  ],
+  "native_smoke": {
+    "passed": true,
+    "prepared_checkpoint_not_natural_playthrough": true,
+    "menu_continue_loaded": true,
+    "new_car_and_building_visible": true,
+    "new_farol_visible": true,
+    "attack_pause_and_resume_observed": true,
+    "unknown_order_hud_preserved": true,
+    "clean_exit": true,
+    "script_errors_or_accessed_none": 0,
+    "previous_warning": "Health widget already added to screen",
+    "isolated_user_dir": "Intermediate/inspect/team-models/native-user"
+  }
+}

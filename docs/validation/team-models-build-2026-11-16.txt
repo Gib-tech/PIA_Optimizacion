@@ -1,0 +1,9 @@
+LogInit: Display: Success - 0 error(s), 30 warning(s)
+30 warning records repeat the same 15 previous messages: Scale pin +14 stale Manny poses; no new warning types
+BuildCookRun time: 213.28 s
+BUILD SUCCESSFUL
+AutomationTool exiting with ExitCode=0 (Success)
+ZIP_BYTES 674655940
+ZIP_CRC_PASS; credits included; no Saved/PDB/editor helper
+Prepared native Continue: new car, building and farol visible; attack/pause/resume; clean exit
+Not a new natural playthrough. Original workspace SaveGames restored with matching hashes.

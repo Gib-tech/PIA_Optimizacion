@@ -1,5 +1,12 @@
 # Work items
 
+## Integración de cinco modelos y checklist del equipo — 2026-11-16
+
+- **Stated:** archivos edificio/farol/escombros/auto y enlace del árbol; integrar/pulir lo necesario del checklist. Propietario confirma autores de edificio/farol por determinar.
+- **Implemented / Ready para aceptación visual:** cinco diseños nuevos, cuatro LOD en cuatro de ellos y Nanite en el auto, ocho instancias estáticas, dos luces de farol limitadas y fondo de horizonte sin colisión. Escombros reducidos a45000triángulos con atlas horneado; auto con geometría/UV originales y Nanite. Se conservan cinco modelos LOD anteriores, Nanite, WP, iluminación existente y gameplay.
+- **Verified en fixture preparado:** cinco assets/instancias detectados en PIE y doce caminos de navegación completos con props colocados. No se acredita nueva partida natural ni aceptación manual. Evidencia visual, LOD y paquete en handoff vigente.
+- **Documentación:** `MODELOS_EQUIPO.md`, `CREDITOS_MODELOS.md`; créditos incluidos en ZIP. Los recursos externos no completan por inferencia la autoría de cinco modelos propios. Documentación académica/cronograma real, evidencia externa y presentación siguen requiriendo al equipo.
+
 ## Guardia final, revelación y aviso breve — 2026-11-16
 
 - **Stated:** añadir una horda; el último enemigo anuncia el orden de balizas antes de morir; quitar el aviso de checkpoint persistente. Commit/push de cambios anteriores también solicitados.

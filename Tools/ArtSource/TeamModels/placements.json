@@ -1,0 +1,10 @@
+[
+  {"label":"Equipo_Edificio_Control","model":"Edificio","position":[4000,-1900,-2],"yaw":0,"scale":1},
+  {"label":"Equipo_Farol_Jardin","model":"Farol","position":[2200,-3260,-1],"yaw":0,"scale":1},
+  {"label":"Equipo_Farol_Deposito","model":"Farol","position":[-1900,-4150,-1],"yaw":180,"scale":1},
+  {"label":"Equipo_Escombros_Jardin","model":"Escombros","position":[4000,-4150,-2],"yaw":-15,"scale":1},
+  {"label":"Equipo_Escombros_Servicio","model":"Escombros","position":[2860,-5560,-2],"yaw":65,"scale":0.8},
+  {"label":"Equipo_Auto_Abandonado","model":"AutoDestruido","position":[3850,-3350,-1],"yaw":-20,"scale":1},
+  {"label":"Equipo_Arbol_Jardin","model":"ArbolFab","position":[2550,-4175,-3],"yaw":-25,"scale":1},
+  {"label":"Equipo_Arbol_Acceso","model":"ArbolFab","position":[2300,-1600,-3],"yaw":50,"scale":0.85}
+]

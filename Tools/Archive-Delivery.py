@@ -8,6 +8,7 @@ delivery=root/'Deliverables'
 windows=delivery/'Windows'
 assert (windows/'Terreno.exe').is_file(), 'Build the Windows package first.'
 copyfile(root/'Tools'/'Delivery-README.txt',delivery/'LEEME.txt')
+copyfile(root/'docs'/'CREDITOS_MODELOS.md',delivery/'CREDITOS_MODELOS.md')
 target=delivery/'TimeOut_Avance_18Nov2026.zip'
 temporary=target.with_suffix('.zip.part')
 with ZipFile(temporary,'w',compression=ZIP_DEFLATED,compresslevel=1,allowZip64=True) as archive:
@@ -17,10 +18,12 @@ with ZipFile(temporary,'w',compression=ZIP_DEFLATED,compresslevel=1,allowZip64=T
         if path.name=='Manifest_DebugFiles_Win64.txt':continue
         archive.write(path,path.relative_to(delivery))
     archive.write(delivery/'LEEME.txt','LEEME.txt')
+    archive.write(delivery/'CREDITOS_MODELOS.md','CREDITOS_MODELOS.md')
 temporary.replace(target)
 with ZipFile(target) as archive:
     assert archive.testzip() is None, 'ZIP integrity check failed.'
     assert 'Windows/Terreno.exe' in archive.namelist()
+    assert 'CREDITOS_MODELOS.md' in archive.namelist()
     assert 'Windows/Terreno/Content/Paks/Terreno-Windows.utoc' in archive.namelist()
 print(str(target))
 print('ZIP_BYTES',target.stat().st_size)
